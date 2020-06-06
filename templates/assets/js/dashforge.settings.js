@@ -8,7 +8,7 @@ $.ajax({
 
     var hasMode = Cookies.get('df-mode');
     if(hasMode) {
-      $('head').append('<link id="dfMode" rel="stylesheet" href="../../assets/css/skin.'+hasMode+'.css">')
+      $('head').append('<link id="dfMode" rel="stylesheet" href="assets/css/skin.'+hasMode+'.css">')
       $('body').find('.df-mode').each(function(){
         var name = $(this).attr('data-title');
         if(name === hasMode) {
@@ -21,7 +21,7 @@ $.ajax({
 
     var hasSkin = Cookies.get('df-skin');
     if(hasSkin) {
-      $('head').append('<link id="dfSkin" rel="stylesheet" href="../../assets/css/skin.'+hasSkin+'.css">')
+      $('head').append('<link id="dfSkin" rel="stylesheet" href="assets/css/skin.'+hasSkin+'.css">')
       $('body').find('.df-skin').each(function(){
         var name = $(this).attr('data-title');
         if(name === hasSkin) {
@@ -61,12 +61,12 @@ $.ajax({
 
         if($('#dfMode').length === 0) {
           if($('#dfSkin').length === 0) {
-            $('head').append('<link id="dfMode" rel="stylesheet" href="../../assets/css/skin.'+mode+'.css">');
+            $('head').append('<link id="dfMode" rel="stylesheet" href="assets/css/skin.'+mode+'.css">');
           } else {
-            $('<link id="dfMode" rel="stylesheet" href="../../assets/css/skin.'+mode+'.css">').insertBefore($('#dfSkin'));
+            $('<link id="dfMode" rel="stylesheet" href="assets/css/skin.'+mode+'.css">').insertBefore($('#dfSkin'));
           }
         } else {
-          $('#dfMode').attr('href', '../../assets/css/skin.'+mode+'.css');
+          $('#dfMode').attr('href', 'assets/css/skin.'+mode+'.css');
         }
 
         Cookies.set('df-mode', mode);
@@ -88,9 +88,9 @@ $.ajax({
       } else {
 
         if($('#dfSkin').length === 0) {
-          $('head').append('<link id="dfSkin" rel="stylesheet" href="../../assets/css/skin.'+skin+'.css">')
+          $('head').append('<link id="dfSkin" rel="stylesheet" href="assets/css/skin.'+skin+'.css">')
         } else {
-          $('#dfSkin').attr('href', '../../assets/css/skin.'+skin+'.css');
+          $('#dfSkin').attr('href', 'assets/css/skin.'+skin+'.css');
         }
 
         Cookies.set('df-skin', skin);
