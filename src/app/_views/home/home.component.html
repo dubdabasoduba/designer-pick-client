@@ -1,0 +1,223 @@
+<!--
+  ~ Copyright (c) 2019. The content in this file is Protected by the copyright laws of kenya and owned by Re.Kast Limited.
+  ~ Reproducing it in any way or using it without permission from Re.Kast Limited will be a violation of kenyan copyrights law.
+  ~ This may be subject to prosecution according to the kenyan law
+  -->
+<app-navigation></app-navigation>
+<div class="pcoded-main-container" style="margin-top: 80px;">
+	<div class="pcoded-wrapper">
+		<app-sidebar></app-sidebar>
+		<div class="pcoded-content">
+			<div class="pcoded-inner-content">
+				<div class="main-body">
+					<div class="page-wrapper">
+
+						<div class="page-body">
+							<div *ngIf="verify" class="row">
+								<div class="col-md-12 col-xl-12">
+									<div class="alert alert-danger">
+										<a (click)="resendVerification()"
+										   class="btn btn-xs btn-danger text-white pull-right">Resend&nbsp;<i
+											aria-hidden="true" class="fa fa-send"></i></a>
+										<strong>Verify Email!</strong>&nbsp;Please check your re.kast io registered email
+										for verification.
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<!-- card1 start -->
+								<div class="col-md-3 col-xl-3">
+									<div class="card">
+										<div class="job-card">
+											<div class="card-block-small">
+												<img [routerLink]="['/fundings']" class="card1-icon shortcuts"
+												     src="assets/images/sidebar/funding.png">
+												<span class="text-c-salmon f-w-600">Funding</span>
+												<h4><b>${{monthlyFunding}}</b></h4>
+												<div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+								<div class="col-md-3 col-xl-3">
+									<div class="card">
+										<div class="job-card">
+											<div class="card-block-small">
+												<img [routerLink]="['/acquisitions']" class="card1-icon shortcuts"
+												     src="assets/images/sidebar/acquisition.png">
+												<span class="text-viber f-w-600">Acquisitions</span>
+												<h4><b>${{monthlyAcquisitions}}</b></h4>
+												<div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+								<div class="col-md-3 col-xl-3">
+									<div class="card">
+										<div class="job-card">
+											<div class="card-block-small">
+												<img [routerLink]="['/entities']" class="card1-icon shortcuts"
+												     src="assets/images/sidebar/companies.png">
+												<span class="text-c-green f-w-600">Organisations</span>
+												<h4><b><a [routerLink]="['/entities']">{{entities}}</a></b></h4>
+												<div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3 col-xl-3">
+									<div class="card">
+										<div class="job-card">
+											<div class="card-block-small">
+												<img [routerLink]="['/people']" class="card1-icon shortcuts"
+												     src="assets/images/sidebar/people.png">
+												<span class="text-c-yellow f-w-600">People</span>
+												<h4><b><a [routerLink]="['/people']">+{{persons}}</a></b></h4>
+												<div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="card">
+										<div class="card-header">
+											<h5>Featured Funding Rounds</h5>
+											<span>Showing 1-10 latest funding rounds in the african tech ecosystem</span>
+										</div>
+										<div class="card-block">
+											<div class="dt-responsive  table-responsive">
+												<table class="table table-striped table-hover table-condensed nowrap">
+													<thead>
+													<tr>
+														<th class="text-center">#</th>
+														<th>Transaction Name</th>
+														<th>Organisation Name</th>
+														<th>Amount | Funding Series</th>
+														<th class="text-right"># of Investor</th>
+														<th class="text-right">Funding Date</th>
+													</tr>
+													</thead>
+													<tbody>
+													<tr *ngIf="recentFunding.length <= 0">
+														<td class="text-center" colspan="6">
+															No funding has been recorded recently
+														</td>
+													</tr>
+													<!-- the data here maximum shoul be 10 -->
+													<tr *ngFor="let funding of recentFunding; let i = index">
+														<td>{{i + 1}}</td>
+														<td><a routerLink="/funding/{{funding.id}}">{{funding.name}}</a></td>
+														<td>
+															<div class="search-content">
+																<img alt=""
+																     class="card-img-top card-img-bottom"
+																     height="50px" src="{{funding.entityIconImage}}"
+																     width="50px">&nbsp;&nbsp;
+																<a
+																	routerLink="/entity/{{funding.entityId}}">{{funding.entity}}</a>
+															</div>
+														</td>
+														<td *ngIf="funding.amount != 'Not Disclosed'">&#36;{{funding.amount}}&nbsp;|&nbsp;<a
+															routerLink="/funding-type/{{funding.funding_typeId}}">{{funding.funding_type}}</a>
+														</td>
+														<td *ngIf="funding.amount == 'Not Disclosed'">{{funding.amount}}&nbsp;|&nbsp;<a
+															routerLink="/funding-type/{{funding.funding_typeId}}">{{funding.funding_type}}</a>
+														</td>
+														<td class="text-right">{{funding.numberOfSponsors}}</td>
+														<td class="text-right">{{funding.funding_date}}</td>
+													</tr>
+													</tbody>
+													<tfoot>
+													<tr>
+														<th class="text-center">#</th>
+														<th>Transaction Name</th>
+														<th>Organisation Name</th>
+														<th>Amount | Funding Series</th>
+														<th class="text-right"># of Investor</th>
+														<th class="text-right">Funding Date</th>
+													</tr>
+													</tfoot>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<br/>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="card">
+										<div class="card-header">
+											<h5>Featured Acquisitions</h5>
+											<span>Showing 1-10 latest acquisitions in the african tech ecosystem</span>
+											<div class="card-header-right"><i
+												class="icofont icofont-spinner-alt-5"></i></div>
+										</div>
+										<div class="card-block">
+											<div class="dt-responsive  table-responsive">
+												<table class="table table-striped table-hover table-condensed nowrap">
+													<thead>
+													<tr>
+														<th class="text-center">#</th>
+														<th>Transaction Name</th>
+														<th>Acquired Organization Name</th>
+														<th class="text-center"># of Investor</th>
+														<th class="text-right">Date Announced</th>
+													</tr>
+													</thead>
+													<tbody>
+													<tr *ngIf="recentAcquisitions.length <= 0">
+														<td class="text-center" colspan="5">
+															No acquisiton has been recorded recently
+														</td>
+													</tr>
+													<tr *ngFor="let acquisition of recentAcquisitions; let i = index">
+														<td class="text-center"><b>{{i + 1}}</b></td>
+														<td><a class=""
+														       routerLink="/acquisition/{{acquisition.id}}">{{acquisition.name}}</a>
+														</td>
+														<td>
+															<div class="search-content">
+																<img class="card-img-top  card-img-bottom" height="20px"
+																     src="{{acquisition.entityIconImage}}"
+																     width="20px">&nbsp;&nbsp;
+																<a class=""
+																   routerLink="/entity/{{acquisition.entityId}}">{{acquisition.entity}}</a>
+															</div>
+														</td>
+														<td class="text-center">{{acquisition.numberOfBuyers}}</td>
+														<td class="text-right">{{acquisition.acquisition_date}}</td>
+													</tr>
+													</tbody>
+													<tfoot>
+													<tr>
+														<th class="text-center">#</th>
+														<th>Transaction Name</th>
+														<th>Acquired Organization Name</th>
+														<th class="text-center"># of Investor</th>
+														<th class="text-right">Date Announced</th>
+													</tr>
+													</tfoot>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<hr>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

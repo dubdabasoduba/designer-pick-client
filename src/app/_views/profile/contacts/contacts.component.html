@@ -1,0 +1,285 @@
+<!--
+  ~ Copyright (c) 2019. The content in this file is Protected by the copyright laws of kenya and owned by Re.Kast Limited.
+  ~ Reproducing it in any way or using it without permission from Re.Kast Limited will be a violation of kenyan copyrights law.
+  ~ This may be subject to prosecution according to the kenyan law
+  -->
+<app-navigation></app-navigation>
+<div class="pcoded-main-container" style="margin-top: 80px;">
+	<div class="pcoded-wrapper">
+		<app-sidebar></app-sidebar>
+		<div class="pcoded-content">
+			<div class="pcoded-inner-content">
+				<div class="main-body">
+					<div class="page-wrapper">
+						<div class="page-body">
+							<div class="row">
+								<div class="col-sm-12">
+									<div>
+										<div class="content">
+											<div class="">
+												<div class="row">
+													<div class="col-md-12">
+														<div class="row">
+															<div class="col-md-12">
+																<div class="card widget-statstic-card">
+																	<div class="card-header">
+																		<h5
+																			class="title">
+																			{{entityName}}'s&nbsp;
+																			|&nbsp;<b>Contact details</b></h5>
+																		<span>
+																			Display list of {{entityName}} contact details
+																		</span>
+																		<hr/>
+																	</div>
+																	<div class="card-block">
+																		<div class="row table-responsive">
+																			<table
+																				class="table table-striped table-hover table-condensed">
+																				<thead>
+																				<tr>
+																					<th class="text-center">#</th>
+																					<th>Country</th>
+																					<th>County</th>
+																					<th>Phone Number</th>
+																					<th>Email</th>
+																					<th>Is Primary</th>
+																					<th class="text-right">Actions</th>
+																				</tr>
+																				</thead>
+																				<tbody>
+																				<tr *ngIf="contacts.length <= 0">
+																					<td class="text-center" colspan="7">
+																						{{entityName}} has no disclosed
+																						contact details
+																					</td>
+																				</tr>
+																				<tr *ngFor="let contact of contacts; let i = index">
+																					<td class="text-center"><b>{{i + 1}}</b>
+																					</td>
+																					<td>{{contact.country}}&nbsp;&nbsp;</td>
+																					<td>{{contact.county}}</td>
+																					<td>{{contact.phonenumber}}</td>
+																					<td>{{contact.email}}</td>
+																					<td>{{contact.primary}}</td>
+																					<td class="text-right">
+																						<button
+																							(click)="editContact(contact)"
+																							class="btn btn-info action-btn"
+																							rel="tooltip"
+																							title="Edit Contact"
+																							type="button">
+																							<b><i
+																								class="fa fa-edit text-white"></i></b>
+																						</button>
+																						<button
+																							(click)="removeContact(contact)"
+																							class="btn btn-danger action-btn"
+																							rel="tooltip"
+																							title="Remove Contacts"
+																							type="button">
+																							<b><i
+																								class="fa fa-trash-o"></i></b>
+																						</button>
+																					</td>
+																				</tr>
+																				</tbody>
+																				<tfoot>
+																				<tr>
+																					<th class="text-center">#</th>
+																					<th>Country</th>
+																					<th>County</th>
+																					<th>Phone Number</th>
+																					<th>Email</th>
+																					<th>Is Primary</th>
+																					<th class="text-right">Actions</th>
+																				</tr>
+																				</tfoot>
+																			</table>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<br/>
+														<div class="row">
+															<div class="col-md-12">
+																<div class="card widget-statstic-card">
+																	<div class="card-header">
+																		<h5
+																			*ngIf="contactId != null && contactId != undefined"
+																			class="title">
+																			Edit&nbsp;
+																			|&nbsp;<b>{{entityName}}'s contacts</b></h5>
+																		<h5
+																			*ngIf="contactId == null ||contactId == undefined"
+																			class="title">&nbsp;Add
+																			|&nbsp;<b>{{entityName}}'s contacts</b></h5>
+																		<span
+																			*ngIf="contactId != null && contactId != undefined">
+																			Edit {{entityName}}'s &nbsp;contacts
+																		</span>
+																		<span
+																			*ngIf="contactId == null ||contactId == undefined">
+																			Add {{entityName}}'s contacts
+																		</span>
+																		<hr/>
+																	</div>
+																	<div class="card-block">
+																		<app-alert></app-alert>
+																		<form
+																			#f="ngForm"
+																			(ngSubmit)="f.form.valid && addEditContacts()"
+																			novalidate>
+																			<div class="row">
+																				<div class="col-md-6">
+																					<div
+																						class="form-group label-floating">
+																						<label class="control-label"
+																						       for="country">Country&nbsp;<span><b
+																							class="make-me-red">*</b></span>
+																						</label>
+																						<select [(ngModel)]="model.country"
+																						        class="form-control col-sm-12"
+																						        id="country"
+																						        name="country">
+																							<option
+																								label="Select country"
+																								value="">
+																								Select country
+																							</option>
+																							<option
+																								*ngFor="let country of countries;"
+																								label="{{country.name}}"
+																								value="{{country.name}}">
+																								{{country.name}}
+																							</option>
+																						</select>
+																					</div>
+																				</div>
+																				<div class="col-md-6">
+																					<div
+																						class="form-group">
+																						<label class="control-label"
+																						       for="county">County&nbsp;</label>
+																						<input [(ngModel)]="model.county"
+																						       class="form-control"
+																						       data-error=""
+																						       id="county"
+																						       name="county"
+																						       placeholder="Enter county"
+																						       type="text"/>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="row">
+																				<div class="col-md-6">
+																					<div
+																						class="form-group">
+																						<label class="control-label"
+																						       for="phonenumber">Phone
+																							Number
+																							&nbsp;<span><b
+																								class="make-me-red">*</b></span>
+																						</label>
+																						<input
+																							[(ngModel)]="model.phonenumber"
+																							class="form-control"
+																							data-error=""
+																							id="phonenumber"
+																							name="phonenumber"
+																							placeholder="Enter phone number"
+																							required=""
+																							type="text"/>
+																					</div>
+																				</div>
+																				<div class="col-md-6">
+																					<div
+																						class="form-group">
+																						<label class="control-label"
+																						       for="email">Email
+																							Address&nbsp;<span><b
+																								class="make-me-red">*</b></span>
+																						</label>
+																						<input [(ngModel)]="model.email"
+																						       class="form-control"
+																						       data-error=""
+																						       id="email"
+																						       name="email"
+																						       placeholder="Enter email address"
+																						       required="required"
+																						       type="email"/>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="row">
+																				<div class="col-md-6">
+																					<div
+																						class="form-group">
+																						<input [(ngModel)]="model.primary"
+																						       class="checkbox"
+																						       id="primary"
+																						       name="primary"
+																						       type="checkbox">
+																						&nbsp;&nbsp;Is the Main Contact?
+																					</div>
+																				</div>
+																			</div>
+																			<div class="row">
+																				<div class="col-md-8"></div>
+																				<div class="col-md-4">
+																					<div>
+																						<ul style="list-style-type:disc">
+																							<li>The Inputs marked with
+																								an&nbsp;<span><b
+																									class="make-me-red">*
+																								</b></span>&nbsp;are
+																								required.
+																							</li>
+																						</ul>
+																					</div>
+																				</div>
+																			</div>
+																			<hr/>
+																			<div class="row">
+																				<div class="col-md-8"></div>
+																				<div class="col-md-4">
+																					<button
+																						*ngIf="contactId != null && contactId != undefined"
+																						class=" form-control btn btn-primary"
+																						id="editJob"
+																						type="submit"><i
+																						aria-hidden="true"
+																						class="fa fa-send"></i>
+																						&nbsp;Update Contact&nbsp;&nbsp;
+																					</button>
+																					<button
+																						*ngIf="contactId == null || contactId == undefined"
+																						class="form-control btn btn-primary"
+																						id="addJob"
+																						type="submit"><i aria-hidden="true"
+																					                     class="fa fa-send"></i>&nbsp;Add
+																						Contact&nbsp;
+																					</button>
+																				</div>
+																			</div>
+																		</form>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Page-body end -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

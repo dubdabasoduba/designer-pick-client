@@ -1,0 +1,81 @@
+<!--
+  ~ Copyright (c) 2019. The content in this file is Protected by the copyright laws of kenya and owned by Re.Kast Limited.
+  ~ Reproducing it in any way or using it without permission from Re.Kast Limited will be a violation of kenyan copyrights law.
+  ~ This may be subject to prosecution according to the kenyan law
+  -->
+<app-navigation class="disabled"></app-navigation>
+<div class="pcoded-main-container auth-page-margin">
+	<div class="pcoded-wrapper login common-img-bg">
+		<div class="container-fluid">
+			<div>
+				<div class="card signin-card card-block auth-body mr-auto ml-auto">
+					<div class="reservation-page-input-box">
+						<div class="col-md-12">
+							<h3 class="txt-primary">Reset Password</h3>
+						</div>
+						<hr/>
+						<app-alert></app-alert>
+						<form #f="ngForm" (ngSubmit)="f.form.valid && updatePassword()" id="updatePassword" novalidate>
+							<br/>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group label-floating">
+										<input [(ngModel)]="model.password" class="form-control"
+										       data-error="Password field is required" id="password"
+										       name="password" placeholder="Enter new password"
+										       required="" type="password"/>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group label-floating">
+										<input [(ngModel)]="model.confirmPassword" class="form-control"
+										       data-error="Confirm password field is required"
+										       id="confirmPassword" name="confirmPassword"
+										       placeholder="Confirm new Password"
+										       required="" type="password"/>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<button class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20"
+									        id="updatePasswordButton"
+									        type="submit"><i aria-hidden="true" class="fa fa-paper-plane-o"></i>&nbsp;Update
+										Password
+									</button>
+								</div>
+
+							</div>
+						</form>
+						<hr/>
+						<div class="row">
+							<div class="col-md-12">
+								<p class="text-inverse text-center m-b-0">Designed for the African ecosystem</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="text-center">
+				<div class="box-content" id="instructionComponent">
+					<div class="text-center">
+						<div class="row">
+							<div class="col-md-12">
+								<p class="text-inverse text-center m-b-0">New to Re.Kast IO? Get on board <a
+									routerLink="/sign-up">&nbsp;&nbsp;Sign Up</a></p>
+							</div>
+						</div>
+					</div>
+					<div class="text-center">
+						<div class="row">
+							<div class="col-md-12">
+								<p class="text-inverse text-center m-b-0">
+									Already have an account? <a routerLink="/sign-in">&nbsp;Sign In</a></p>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

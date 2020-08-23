@@ -1,0 +1,551 @@
+<!--
+  ~ Copyright (c) 2019. The content in this file is Protected by the copyright laws of kenya and owned by Re.Kast Limited.
+  ~ Reproducing it in any way or using it without permission from Re.Kast Limited will be a violation of kenyan copyrights law.
+  ~ This may be subject to prosecution according to the kenyan law
+  -->
+<app-navigation class="disabled"></app-navigation>
+<div class="pcoded-main-container auth-page-margin">
+	<div class="pcoded-wrapper login common-img-bg">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-12">
+					<!-- Profile update card start -->
+					<div class="card profile-card card-block auth-body mr-auto ml-auto">
+						<div class="reservation-page-input-box">
+							<div class="row">
+								<div class="col-md-12">
+									<h3 class="txt-primary text-center">Update your profile</h3>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<hr>
+									<br>
+									<form
+										#f="ngForm" (ngSubmit)="f.form.valid && editEntity()"
+										*ngIf="entityType === 'false'" novalidate>
+										<div class="row">
+											<div class="col-md-5">
+												<div
+													class="form-group">
+													<label
+														class="control-label"
+														for="entityName">Company/Start-Up/Organisation
+														Name&nbsp;<span><b
+															class="make-me-red">*</b></span></label>
+													<input
+														[(ngModel)]="model.name"
+														class="form-control"
+														data-error=""
+														id="entityName"
+														name="entityName"
+														placeholder="Enter Company/Start-Up/Organisation Name"
+														required=""
+														type="text"/>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div
+													class="form-group label-floating">
+													<label
+														class="control-label"
+														for="entityCategory">Operational
+														Industry&nbsp;<span><b
+															class="make-me-red">*</b></span>
+													</label>
+													<select
+														[(ngModel)]="model.industry"
+														class="form-control col-sm-12"
+														id="entityCategory"
+														name="entityCategory">
+														<option
+															label="Select Operational Industry"
+															value="">
+															Operational
+															Industry
+														</option>
+														<option
+															*ngFor="let industry of industries;"
+															label="{{industry.name}}"
+															value="{{industry._id}}">
+															{{industry.name}}
+														</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-3">
+												<div
+													class="form-group">
+													<label
+														class="control-label"
+														for="dateFounded">Date entity was
+														founded&nbsp;
+													</label>
+													<input
+														[(ngModel)]="model.dateFounded"
+														class="form-control"
+														data-error=""
+														id="dateFounded"
+														name="dateFounded"
+														placeholder="Enter the date when the entity was founded"
+														required=""
+														type="date"/>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-4">
+												<div
+													class="form-group label-floating">
+													<label
+														class="control-label"
+														for="entityCountry">HQ
+														Operational
+														Country&nbsp;<span><b
+															class="make-me-red">*</b></span>
+													</label>
+													<select
+														[(ngModel)]="model.region"
+														class="form-control col-sm-12"
+														id="entityCountry"
+														name="entityCountry">
+														<option
+															label="Select HQ Operational Country"
+															value="">Select HQ Operational Country
+														</option>
+														<option
+															*ngFor="let region of countries;"
+															label="{{region.name}}"
+															value="{{region.name}}">
+															{{region.name}}
+														</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div
+													class="form-group">
+													<label
+														class="control-label"
+														for="entityHeadquarters">Headquarters
+														Location&nbsp;<span><b
+															class="make-me-red">*</b></span>
+													</label>
+													<input
+														[(ngModel)]="model.headquarters"
+														class="form-control"
+														data-error=""
+														id="entityHeadquarters"
+														name="entityHeadquarters"
+														placeholder="Enter Headquarters Location"
+														required=""
+														type="text"/>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div
+													class="form-group">
+													<label
+														class="control-label"
+														for="entityEmail">Email
+														Address&nbsp;<span><b
+															class="make-me-red">*</b></span>
+													</label>
+													<input
+														[(ngModel)]="model.email"
+														class="form-control"
+														data-error=""
+														id="entityEmail"
+														name="entityEmail"
+														placeholder="Enter Email Address"
+														required=""
+														type="email"/>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div
+													class="form-group">
+													<label
+														class="control-label"
+														for="entityPhonenumber">Phone
+														Number&nbsp;<span><b
+															class="make-me-red">*</b></span>
+													</label>
+													<input
+														[(ngModel)]="model.phonenumber"
+														class="form-control"
+														data-error=""
+														id="entityPhonenumber"
+														name="entityPhonenumber"
+														placeholder="Enter Phone number"
+														required=""
+														type="tel"/>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div
+													class="form-group">
+													<label
+														class="control-label"
+														for="pitchVideo">Pitch Video
+													</label>
+													<input
+														[(ngModel)]="model.pitch_video"
+														class="form-control"
+														id="pitchVideo"
+														name="pitchVideo"
+														placeholder="Enter pitch video URL"
+														type="url"/>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-4">
+												<div
+													class="form-group label-floating">
+													<label
+														class="control-label"
+														for="entityType">Select
+														Organisation Type&nbsp;<span><b
+															class="make-me-red">*</b></span>
+													</label>
+													<select
+														[(ngModel)]="model.entity_type"
+														class="form-control col-sm-12"
+														id="entityType"
+														name="entityType">
+														<option
+															label="Select Organisation type"
+															value="">
+															Select Organisation typ
+														</option>
+														<option
+															label="Organisation/Company"
+															value="1">
+															Organisation/Company
+														</option>
+														<option
+															label="Educational Institution"
+															value="0">
+															Educational Institution
+														</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div
+													class="form-group">
+													<br/><br/>
+													<label><input
+														[(ngModel)]="model.isActive"
+														class="checkbox-inline"
+														id="entityIsActive"
+														name="entityIsActive"
+														required=""
+														type="checkbox"
+														value="">&nbsp;Is
+														Active?</label>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<div class="form-group">
+													<label class="control-label"
+													       for="entityDescription">Write a
+														brief description of your
+														organisation
+													</label>
+													<textarea [(ngModel)]="model.description"
+													          class="form-control"
+													          cols="9"
+													          id="entityDescription" name="entityDescription"
+													          rows="5">
+																				</textarea>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div
+												class="col-md-8"></div>
+											<div class="col-md-4">
+												<div>
+													<ul style="list-style-type:disc">
+														<li>The Inputs marked with
+															an&nbsp;<span><b class="make-me-red">*</b></span>&nbsp;are
+															required.
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+										<hr/>
+										<div class="row">
+											<div
+												class="col-md-8"></div>
+											<div class="col-md-4">
+												<button
+													*ngIf="entityId != null && entityId != undefined"
+													class=" form-control btn btn-primary"
+													id="editCompany"
+													type="submit">
+													<i
+														aria-hidden="true"
+														class="fa fa-send"></i>
+													&nbsp;Update
+													Company
+													Profile&nbsp;&nbsp;
+												</button>
+											</div>
+										</div>
+									</form>
+									<form
+										#f="ngForm" (ngSubmit)="f.form.valid && editPerson()"
+										*ngIf="entityType === 'true'" novalidate>
+										<div class="row">
+											<div class="col-md-8">
+												<div
+													class="form-group">
+													<label
+														class="control-label"
+														for="personName">Person
+														Name&nbsp;<span><b
+															class="make-me-red">*</b></span></label>
+													<input
+														[(ngModel)]="model.name"
+														class="form-control"
+														data-error=""
+														id="personName"
+														name="personName"
+														placeholder="Enter person Name"
+														required=""
+														type="text"/>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div
+													class="form-group">
+													<label
+														class="control-label"
+														for="personDoB">Person Date of
+														birth&nbsp;<span><b
+															class="make-me-red">*</b></span>
+													</label>
+													<input
+														[(ngModel)]="model.dob"
+														class="form-control"
+														data-error=""
+														id="personDoB"
+														name="personDoB"
+														placeholder="Enter Date of Birth"
+														required=""
+														type="date"/>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-4">
+												<div
+													class="form-group label-floating">
+													<label
+														class="control-label"
+														for="personGender">Select
+														Gender&nbsp;<span><b
+															class="make-me-red">*</b></span>
+													</label>
+													<select
+														[(ngModel)]="model.gender"
+														class="form-control col-sm-12"
+														id="personGender"
+														name="personGender">
+														<option
+															label="Select Gender"
+															value="">
+															Select
+															Gender
+														</option>
+														<option
+															label="Female"
+															value="1">
+															Female
+														</option>
+														<option
+															label="male"
+															value="0">
+															Male
+														</option>
+														<option
+															label="Non Binary"
+															value="3">
+															Non
+															Binary
+														</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div
+													class="form-group label-floating">
+													<label
+														class="control-label"
+														for="personCountry">Operational
+														Country&nbsp;<span><b
+															class="make-me-red">*</b></span>
+													</label>
+													<select
+														[(ngModel)]="model.country"
+														class="form-control col-sm-12"
+														id="personCountry"
+														name="personCountry">
+														<option
+															label="Select Operational Country"
+															value="">
+															Select
+															Operational
+															Country
+														</option>
+														<option
+															*ngFor="let region of countries;"
+															label="{{region.name}}"
+															value="{{region.name}}">
+															{{region.name}}
+														</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div
+													class="form-group label-floating">
+													<label
+														class="control-label"
+														for="personCategory">Operational
+														Industry&nbsp;<span><b
+															class="make-me-red">*</b></span>
+													</label>
+													<select
+														[(ngModel)]="model.industry"
+														class="form-control col-sm-12"
+														id="personCategory"
+														name="personCategory">
+														<option
+															label="Select Operational Industry"
+															value="">
+															Operational
+															Industry
+														</option>
+														<option
+															*ngFor="let industry of industries;"
+															label="{{industry.name}}"
+															value="{{industry._id}}">
+															{{industry.name}}
+														</option>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div
+													class="form-group">
+													<label
+														class="control-label"
+														for="personEmail">Email
+														Address&nbsp;<span><b
+															class="make-me-red">*</b></span>
+													</label>
+													<input
+														[(ngModel)]="model.email"
+														class="form-control"
+														data-error=""
+														id="personEmail"
+														name="personEmail"
+														placeholder="Enter Email Address"
+														required=""
+														type="email"/>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div
+													class="form-group">
+													<label
+														class="control-label"
+														for="personPhonenumber">Phone
+														Number&nbsp;<span><b
+															class="make-me-red">*</b></span>
+													</label>
+													<input
+														[(ngModel)]="model.phonenumber"
+														class="form-control"
+														data-error=""
+														id="personPhonenumber"
+														name="personPhonenumber"
+														placeholder="Enter Phone number"
+														required=""
+														type="tel"/>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<div class="form-group">
+													<label class="control-label"
+													       for="personDescription">Write a
+														brief description of yourself
+													</label>
+													<textarea [(ngModel)]="model.description"
+													          class="form-control"
+													          cols="9"
+													          id="personDescription" name="personDescription"
+													          rows="6">
+																				</textarea>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div
+												class="col-md-8"></div>
+											<div class="col-md-4">
+												<div>
+													<ul style="list-style-type:disc">
+														<li>The
+															Inputs
+															marked
+															with an&nbsp;<span><b
+																class="make-me-red">*
+															</b></span>&nbsp;are
+															required.
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+										<hr/>
+										<div class="row">
+											<div
+												class="col-md-8"></div>
+											<div class="col-md-4">
+												<button
+													*ngIf="entityId != null && entityId != undefined"
+													class=" form-control btn btn-primary"
+													id="editPerson"
+													type="submit">
+													&nbsp;Update
+													Person Profile&nbsp;<i
+													aria-hidden="true"
+													class="fa fa-send"></i>
+												</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Profile update card end -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

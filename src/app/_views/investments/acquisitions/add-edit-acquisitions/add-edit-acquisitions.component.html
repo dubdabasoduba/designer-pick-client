@@ -1,0 +1,277 @@
+<!--
+  ~ Copyright (c) 2019. The content in this file is Protected by the copyright laws of kenya and owned by Re.Kast Limited.
+  ~ Reproducing it in any way or using it without permission from Re.Kast Limited will be a violation of kenyan copyrights law.
+  ~ This may be subject to prosecution according to the kenyan law
+  -->
+<app-navigation></app-navigation>
+<div class="pcoded-main-container" style="margin-top: 80px;">
+	<div class="pcoded-wrapper">
+		<app-sidebar></app-sidebar>
+		<div class="pcoded-content">
+			<div class="pcoded-inner-content">
+				<div class="main-body">
+					<div class="page-wrapper">
+						<div class="page-body">
+							<div class="row">
+								<div class="col-sm-12">
+									<div>
+										<div class="content social-timeline">
+											<div class="">
+												<div class="row">
+													<div class="col-md-12 search2 search-result">
+														<div class="row">
+															<div class="col-md-12">
+																<div class="card widget-statstic-card">
+																	<div class="card-header">
+																		<h5
+																			*ngIf="acquisitionId != null && acquisitionId != undefined"
+																			class="title">
+																			Edit&nbsp;|&nbsp;<b>{{acquisitionName}}</b></h5>
+																		<h5
+																			*ngIf="acquisitionId == null ||acquisitionId == undefined"
+																			class="title">Add&nbsp;
+																			|&nbsp;<b>Entity Acquisition</b></h5>
+																		<hr/>
+																	</div>
+																	<div class="card-block">
+																		<app-alert></app-alert>
+																		<form
+																			#f="ngForm"
+																			(ngSubmit)="f.form.valid && addEditAcquisition()"
+																			novalidate>
+																			<div class="row">
+																				<div class="col-md-12">
+																					<div
+																						class="form-group">
+																						<label class="control-label"
+																						       for="acquisitionName">Acquisition
+																							Name</label>
+																						<input [(ngModel)]="model.name"
+																						       class="form-control"
+																						       data-error=""
+																						       id="acquisitionName"
+																						       name="acquisitionName"
+																						       placeholder="Company X — Acquisition"
+																						       required=""
+																						       type="text"/>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="row">
+																				<div class="col-md-6">
+																					<div
+																						class="form-group label-floating">
+																						<label class="control-label"
+																						       for="dateAnnounced">Date
+																							Announced</label>
+																						<input
+																							[(ngModel)]="model.announcement"
+																							class="form-control"
+																							data-error=""
+																							id="dateAnnounced"
+																							name="dateAnnounced"
+																							required=""
+																							type="date"/>
+																					</div>
+																				</div>
+																				<div class="col-md-6">
+																					<div
+																						class="form-group label-floating">
+																						<label class="control-label"
+																						       for="acquisitionStatus">Acquisition
+																							Status</label>
+																						<select [(ngModel)]="model.status"
+																						        class="form-control col-sm-12"
+																						        id="acquisitionStatus"
+																						        name="acquisitionStatus">
+																							<option
+																								label="Select Acquisition Status"
+																								value="">
+																								Select Acquisition Status
+																							</option>
+																							<option label="Active" value="1">
+																								Active
+																							</option>
+																							<option label="Deactivated"
+																							        value="0">
+																								Deactivated
+																							</option>
+																						</select>
+																					</div>
+																				</div>
+																			</div>
+																			<hr/>
+																			<div class="row">
+																				<div class="col-md-8"></div>
+																				<div class="col-md-4">
+																					<button
+																						*ngIf="acquisitionId != null && acquisitionId != undefined"
+																						class=" form-control btn btn-primary"
+																						id="editAcquisition"
+																						type="submit"><i
+																						aria-hidden="true"
+																						class="fa fa-send"></i>
+																						&nbsp;Update Acquisition&nbsp;&nbsp;
+																					</button>
+																					<button
+																						*ngIf="acquisitionId == null || acquisitionId == undefined"
+																						class="form-control btn btn-primary"
+																						id="addAcquisition"
+																						type="submit"><i
+																						aria-hidden="true"
+																						class="fa fa-send"></i>&nbsp;Add
+																						Acquisition&nbsp;&nbsp;
+																					</button>
+																				</div>
+																			</div>
+																		</form>
+																	</div>
+																</div>
+															</div>
+															<br/><br/>
+															<div class="col-md-12">
+																<div class="card widget-statstic-card">
+																	<div class="card-header">
+																		<h5 class="title">
+																			Display&nbsp;|&nbsp;<b>{{acquisitionName}}&nbsp;Buyers</b>
+																		</h5>
+																		<span>Displaying 1-50 of {{buyers.length}} buyers
+																			of the {{acquisitionName}} acquisition in the
+																			african technology ecosystem</span>
+																	</div>
+																	<div class="card-block">
+																		<div class="row table-responsive">
+																			<table
+																				class="table table-striped table-hover table-condensed">
+																				<thead>
+																				<tr>
+																					<th class="text-center">#</th>
+																					<th>Buyers Name</th>
+																					<th>Amount</th>
+																					<th class="text-right">Investment Date
+																					</th>
+																					<th class="text-right">Actions</th>
+																				</tr>
+																				</thead>
+																				<tbody>
+																				<tr *ngIf="buyers.length <= 0">
+																					<td class="text-center" colspan="5">
+																						No acquisition buyers were listed
+																					</td>
+																				</tr>
+																				<tr
+																					*ngFor="let sponsor of buyers; let i = index">
+																					<td class="text-center">{{i + 1}}</td>
+																					<td *ngIf="!sponsor.type">
+																						<div class="search-content">
+																							<img
+																								class="card-img-top card-img-bottom"
+																								height="20px"
+																								src="{{sponsor.entityIconImage}}"
+																								width="20px">&nbsp;&nbsp;
+																							<a
+																								class=""
+																								routerLink="/entity/{{sponsor.sponsorId}}">{{sponsor.name}}</a>
+																						</div>
+																					</td>
+																					<td *ngIf="sponsor.type">
+																						<div class="search-content">
+																							<img
+																								class="card-img-top card-img-bottom"
+																								height="20px"
+																								src="{{sponsor.entityIconImage}}"
+																								width="20px">&nbsp;&nbsp;
+																							<a
+																								class=""
+																								routerLink="/person/{{sponsor.sponsorId}}">{{sponsor.name}}</a>
+																						</div>
+																					</td>
+																					<td>&#36;{{sponsor.amount}}</td>
+																					<td class="text-right">
+																						{{sponsor.investmentDate}}
+																					</td>
+																					<td class="text-right">
+																						<a
+																							[queryParams]="{acquisition:acquisitionId,buyer: sponsor.id}"
+																							class="btn btn-info action-btn"
+																							rel="tooltip"
+																							routerLink="/edit-buyer"
+																							title="Edit Acquisition Buyer"><b><i
+																							class="fa fa-edit text-white"></i></b></a>
+																						<button
+																							(click)="removeBuyer(sponsor)"
+																							class="btn btn-danger action-btn"
+																							rel="tooltip"
+																							title="Remove Acquisition Buyer"
+																							type="button">
+																							<b><i
+																								class="fa fa-trash-o"></i></b>
+																						</button>
+																					</td>
+																				</tr>
+																				</tbody>
+																			</table>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-md-12">
+																<div class="user-detail-card">
+																	<div class="row">
+																		<div class="cd-timeline-content card_main">
+																			<img alt=""
+																			     class="img-fluid width-100"
+																			     src="assets/images/recover.png">
+																			<div class="p-20 card">
+																				<div class="card-header">
+																					<h5 class="card-title">Introducing
+																						Re.Kast Pro</h5>
+																					<hr/>
+																				</div>
+																				<div class="card-block">
+																					<p class="text-justify">Add best-in-class
+																						data to Crunchbase—a la
+																						carte. From tech stack to web
+																						traffic,
+																						Marketplace apps enhance your
+																						Crunchbase
+																						research to uncover the best prospect
+																						or investor for you.
+																					</p>
+																					<br/>
+																					<button
+																						class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20"
+																						type="sumbit">
+																						&nbsp;Go Pro
+																					</button>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Page-body end -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div *ngIf="acquisitionId != null && acquisitionId != undefined">
+	<a [queryParams]="{acquisition: acquisitionId}" class="float" routerLink="/add-buyer">
+		<span><img src="assets/images/sidebar/add.png"></span>
+	</a>
+	<div class="label-container">
+		<div class="label-text">Add Buyer</div>
+		<i class="fa fa-play label-arrow"></i>
+	</div>
+</div>
