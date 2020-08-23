@@ -23,7 +23,7 @@ export class SocialMediaComponent implements OnInit {
 	public entityName: string;
 	public socialMediaId: string;
 	public model: any = {};
-	private slimUser: User;
+	private lbsUser: User;
 	private entityId: string;
 	private type: boolean;
 	private entity: any;
@@ -39,10 +39,10 @@ export class SocialMediaComponent implements OnInit {
 
 	ngOnInit() {
 		this.setEmptyModel();
-		this.slimUser = this.authService.getCurrentUser();
-		if (this.slimUser != null) {
-			this.entityId = this.slimUser.entityId;
-			this.type = Boolean(this.slimUser.type);
+		this.lbsUser = this.authService.getCurrentUser();
+		if (this.lbsUser != null) {
+			this.entityId = this.lbsUser.entityId;
+			this.type = Boolean(this.lbsUser.type);
 		}
 
 		if (this.entityId != null) {

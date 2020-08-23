@@ -29,15 +29,21 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 		this.loadThirdPartyJsFiles = this.router.events.subscribe(event => {
 			if (event instanceof NavigationStart) {
 				const jsFiles = [
-					'assets/js/jquery/jquery.min.js',
-					'assets/js/jquery/jquery-ui.min.js',
-					'assets/js/bootstrap/popper.min.js',
-					'assets/js/bootstrap/bootstrap.min.js',
-					'assets/js/modernizr.js',
-					'assets/js/theme/pcoded.min.js',
-					'assets/js/theme/theme.js',
-					'assets/js/social/facebook.min.js',
-					'assets/js/social/linkedin.min.js'
+					'assets/lib/jquery/jquery.min.js',
+					'assets/lib/bootstrap/js/bootstrap.bundle.min.js',
+					'assets/lib/feather-icons/feather.min.js',
+					'assets/lib/perfect-scrollbar/perfect-scrollbar.min.js',
+					'assets/lib/jquery.flot/jquery.flot.js',
+					'assets/lib/jquery.flot/jquery.flot.stack.js',
+					'assets/lib/jquery.flot/jquery.flot.resize.js',
+					'assets/lib/chart.js/Chart.bundle.min.js',
+					'assets/lib/jqvmap/jquery.vmap.min.js',
+					'assets/lib/jqvmap/maps/jquery.vmap.usa.js',
+					'assets/js/dashforge.js',
+					'assets/js/dashforge.sampledata.js',
+					'assets/js/dashboard-one.js',
+					'assets/lib/js-cookie/js.cookie.js',
+					'assets/js/dashforge.settings.js'
 				];
 
 				jsFiles.forEach((jsFile) => {

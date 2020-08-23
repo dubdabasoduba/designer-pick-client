@@ -13,27 +13,16 @@ import {tap} from 'rxjs/operators';
 import {AppCommons} from '../../_helpers/app.commons';
 import {User} from '../../_models';
 
-declare const FB: any;
-
 @Injectable()
 export class AuthenticationService {
-	private _slimUser = 'slimUser';
+	private _lbsUser = 'lbsUser';
 
 	constructor(private http: HttpClient) {
-		FB.init({
-			appId: appConstants.facebookAppId,
-			status: false, // the SDK will attempt to get info about the current user immediately after init
-			cookie: true,  // enable cookies to allow the server to access
-			// the session
-			xfbml: false,  // With xfbml set to true, the SDK will parse your page's DOM to find and initialize any social
-			// plugins that have been added using XFBML
-			version: 'v2.11' // use graph api version 2.5
-		});
 	}
 
 	private static setSession(response) {
 		if (response && response.token) {
-			localStorage.setItem('slimUser', JSON.stringify(response));
+			localStorage.setItem('lbsUser', JSON.stringify(response));
 		}
 		return response;
 	}
@@ -42,20 +31,6 @@ export class AuthenticationService {
 		return this.http.post(appConstants.baseApiV1Url + '/auth/login', {
 			username: username, password: AppCommons.generatePasswordHash(password)
 		}).pipe(tap(response => AuthenticationService.setSession(response)));
-	}
-
-	fbLogin(endPoint) {
-		return new Promise((resolve, reject) => {
-			FB.login(result => {
-				if (result.authResponse) {
-					return this.http.post(appConstants.baseApiV1Url + '/auth/' + endPoint, {
-						access_token: result.authResponse.accessToken
-					}).pipe(tap(response => AuthenticationService.setSession(response)));
-				} else {
-					reject('Failed to generate token');
-				}
-			}, {scope: 'public_profile,email'});
-		});
 	}
 
 	resetPasswordRequest(username: string) {
@@ -86,7 +61,7 @@ export class AuthenticationService {
 	}
 
 	logout() {
-		localStorage.removeItem(this._slimUser);
+		localStorage.removeItem(this._lbsUser);
 		this.http.get(appConstants.baseApiV1Url + '/auth/logout');
 	}
 
@@ -95,22 +70,22 @@ export class AuthenticationService {
 	}
 
 	getToken() {
-		const currentUser = JSON.parse(localStorage.getItem(this._slimUser));
+		const currentUser = JSON.parse(localStorage.getItem(this._lbsUser));
 		return currentUser.token;
 	}
 
 	getCurrentUser(): User {
-		return JSON.parse(localStorage.getItem(this._slimUser));
+		return JSON.parse(localStorage.getItem(this._lbsUser));
 	}
 
 	setUpdatedProfileImage(userImage: string) {
-		const user = JSON.parse(localStorage.getItem(this._slimUser));
+		const user = JSON.parse(localStorage.getItem(this._lbsUser));
 		user.entityIconImage = userImage;
 		AuthenticationService.setSession(user);
 	}
 
 	setForceUpdateState(forceUpdate: boolean) {
-		const user = JSON.parse(localStorage.getItem(this._slimUser));
+		const user = JSON.parse(localStorage.getItem(this._lbsUser));
 		user.forceUpdate = forceUpdate;
 		AuthenticationService.setSession(user);
 	}

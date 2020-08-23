@@ -8,40 +8,40 @@
 	<div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
 	<div class="pcoded-inner-navbar main-menu">
 		<ul class="pcoded-item pcoded-left-item">
-			<li *ngIf="!slimUser" class="col-md-6" id="loginlinks">
-				<a *ngIf="!slimUser" [routerLink]="['/sign-in']" class="btn btn-primary-salmon">
+			<li *ngIf="!lbsUser" class="col-md-6" id="loginlinks">
+				<a *ngIf="!lbsUser" [routerLink]="['/sign-in']" class="btn btn-primary-salmon">
 					<i aria-hidden="true" class="fa fa-sign-in"></i>
 					&nbsp;Sign In
 				</a>
-				<a *ngIf="!slimUser" [routerLink]="['/sign-up']" class="btn btn-primary-blue">
+				<a *ngIf="!lbsUser" [routerLink]="['/sign-up']" class="btn btn-primary-blue">
 					<i aria-hidden="true" class="fa fa-sign-out"></i>
 					&nbsp;Sign Up
 				</a>
 			</li>
-			<li *ngIf="slimUser" id="userDetails">
+			<li *ngIf="lbsUser" id="userDetails">
 				<div class="dropdown" id="userDetailsDropdown">
 					<button aria-expanded="false" aria-haspopup="true"
 					        class="btn btn-primary-O dropdown-toggle form-control text-right"
 					        data-toggle="dropdown" id="dropdownMenuButton" type="button">
-						{{slimUser.username}}
+						{{lbsUser.username}}
 					</button>
 					<div aria-labelledby="dropdownMenuButton" class="dropdown-menu">
-						<a class="dropdown-item" routerLink="/profile/{{slimUser.entityId}}">
+						<a class="dropdown-item" routerLink="/profile/{{lbsUser.entityId}}">
 							<i aria-hidden="true" class="fa fa-cogs"></i>&nbsp;Profile&nbsp;Management</a>
-						<a *ngIf="!slimUser.type" class="dropdown-item" routerLink="/profile/founders/{{slimUser.entityId}}">
+						<a *ngIf="!lbsUser.type" class="dropdown-item" routerLink="/profile/founders/{{lbsUser.entityId}}">
 							<i aria-hidden="true" class="fa fa-user-circle-o"></i>&nbsp;Founders&nbsp;Management
 						</a>
-						<a *ngIf="!slimUser.type" class="dropdown-item"
-						   routerLink="/profile/subsidiary/{{slimUser.entityId}}">
+						<a *ngIf="!lbsUser.type" class="dropdown-item"
+						   routerLink="/profile/subsidiary/{{lbsUser.entityId}}">
 							<i aria-hidden="true" class="fa fa-briefcase"></i>&nbsp;Subsidiaries&nbsp;Management
 						</a>
-						<a class="dropdown-item" routerLink="/profile/category/{{slimUser.entityId}}">
+						<a class="dropdown-item" routerLink="/profile/category/{{lbsUser.entityId}}">
 							<i aria-hidden="true" class="fa fa-list-alt"></i>&nbsp;Operational&nbsp;Industry
 						</a>
-						<a class="dropdown-item" routerLink="/profile/social-media/{{slimUser.entityId}}">
+						<a class="dropdown-item" routerLink="/profile/social-media/{{lbsUser.entityId}}">
 							<i aria-hidden="true" class="fa fa-comments"></i>&nbsp;Social&nbsp;Media
 						</a>
-						<a class="dropdown-item" routerLink="/profile/contacts/{{slimUser.entityId}}">
+						<a class="dropdown-item" routerLink="/profile/contacts/{{lbsUser.entityId}}">
 							<i aria-hidden="true" class="fa fa-envelope-o"></i>&nbsp;Update&nbsp;Contacts
 						</a>
 						<div class="dropdown-divider"></div>
@@ -95,21 +95,21 @@
 				</a>
 			</li>
 			<hr/>
-			<li *ngIf="slimUser" class=" ">
+			<li *ngIf="lbsUser" class=" ">
 				<a [routerLink]="['/entity-profile']">
 					<span><img height="30px" src="assets/images/sidebar/addent.png" width="30px"></span>&nbsp;&nbsp;
 					<span class="pcoded-mtext" data-i18n="nav.animations.main">Create Organisation Profile</span>
 					<span class="pcoded-mcaret"></span>
 				</a>
 			</li>
-			<li *ngIf="slimUser" class=" ">
+			<li *ngIf="lbsUser" class=" ">
 				<a [routerLink]="['/person-profile']">
 					<span><img height="30px" src="assets/images/sidebar/addpeop.png" width="30px"></span>&nbsp;&nbsp;
 					<span class="pcoded-mtext" data-i18n="nav.animations.main">Create Person Profile</span>
 					<span class="pcoded-mcaret"></span>
 				</a>
 			</li>
-			<hr *ngIf="slimUser"/>
+			<hr *ngIf="lbsUser"/>
 		</ul>
 	</div>
 </nav>

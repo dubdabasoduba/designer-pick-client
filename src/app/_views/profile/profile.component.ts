@@ -19,7 +19,7 @@ import {AppCommons} from '../../_helpers/app.commons';
 export class ProfileComponent implements OnInit {
 	public imageIcon = appConstants.defaultImageIcon;
 	loading = false;
-	slimUser: User;
+	lbsUser: User;
 	passwordModel: any = {};
 	deactivateModel: any = {};
 	private profileImage = '';
@@ -35,9 +35,9 @@ export class ProfileComponent implements OnInit {
 	ngOnInit() {
 		this.setPasswordModel();
 		this.setDeactivateModel();
-		this.slimUser = this.authenticationService.getCurrentUser();
-		if (!this.commons.isObjectEmpty(this.slimUser) && !AppCommons.isStringEmpty(this.slimUser.entityIconImage)) {
-			this.imageIcon = this.slimUser.entityIconImage;
+		this.lbsUser = this.authenticationService.getCurrentUser();
+		if (!this.commons.isObjectEmpty(this.lbsUser) && !AppCommons.isStringEmpty(this.lbsUser.entityIconImage)) {
+			this.imageIcon = this.lbsUser.entityIconImage;
 		}
 	}
 
@@ -48,7 +48,7 @@ export class ProfileComponent implements OnInit {
 	changePassword() {
 		if (!AppCommons.isStringEmpty(this.passwordModel.currentPassword)) {
 			this.loading = true;
-			this.authenticationService.passwordChangeRequest(this.passwordModel.currentPassword, this.slimUser.username)
+			this.authenticationService.passwordChangeRequest(this.passwordModel.currentPassword, this.lbsUser.username)
 				.subscribe(
 					data => {
 						this.router.navigateByUrl(appConstants.authSignOutUrl);
@@ -97,7 +97,7 @@ export class ProfileComponent implements OnInit {
 	}
 
 	sendToServer() {
-		const userId = this.slimUser.entityId + '_' + this.slimUser.type;
+		const userId = this.lbsUser.entityId + '_' + this.lbsUser.type;
 		if (!AppCommons.isStringEmpty(userId) && !AppCommons.isStringEmpty(this.profileImage)) {
 			this.loading = true;
 			this.profileService.uploadImage(this.profileImage, userId).subscribe(
@@ -122,9 +122,9 @@ export class ProfileComponent implements OnInit {
 	 */
 	deactivateAccount() {
 		const userDetails = {
-			type: this.slimUser.type,
-			user: this.slimUser.id,
-			entity: this.slimUser.entityId
+			type: this.lbsUser.type,
+			user: this.lbsUser.id,
+			entity: this.lbsUser.entityId
 		};
 
 		this.loading = true;

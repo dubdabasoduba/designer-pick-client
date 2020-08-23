@@ -45,7 +45,7 @@ import {ResultComponent} from './_views/result/result.component';
 import {UpdateUserComponent} from './_views/auth/update-user/update-user.component';
 
 const appRoutes: Routes = [
-	{path: '', component: HomeComponent, runGuardsAndResolvers: 'always'},
+	{path: '', component: SigninComponent, runGuardsAndResolvers: 'always'},
 	{path: 'search', component: ResultComponent, runGuardsAndResolvers: 'always'},
 	{path: 'entities', component: EntitiesComponent, runGuardsAndResolvers: 'always'},
 	{path: 'entity/:id', component: EntityComponent, runGuardsAndResolvers: 'always'},

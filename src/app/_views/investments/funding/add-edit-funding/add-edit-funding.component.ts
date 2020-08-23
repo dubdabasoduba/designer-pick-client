@@ -31,7 +31,7 @@ export class AddEditFundingComponent implements OnInit {
 	fundingName: string;
 	model: any = {};
 	sponsors = [];
-	slimUser: User;
+	lbsUser: User;
 	private entity: string;
 	private funders = [];
 	private funding: any;
@@ -65,7 +65,7 @@ export class AddEditFundingComponent implements OnInit {
 		} else {
 			this.setEmptyModel();
 		}
-		this.slimUser = this.authService.getCurrentUser();
+		this.lbsUser = this.authService.getCurrentUser();
 	}
 
 	addEditFunding() {
@@ -111,7 +111,7 @@ export class AddEditFundingComponent implements OnInit {
 					funding.sponsors = this.funders;
 					funding.amount = AppCommons.createAmount(this.funders).toString();
 					funding.date_updated = new Date();
-					funding.updated_by = this.slimUser.entityId;
+					funding.updated_by = this.lbsUser.entityId;
 					funding.funding_date = this.funding.funding_date;
 					funding.date_added = this.funding.date_added;
 					funding.name = this.funding.name;

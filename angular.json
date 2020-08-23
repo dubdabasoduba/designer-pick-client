@@ -1,168 +1,174 @@
 {
-	"$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-	"version": 1,
-	"newProjectRoot": "projects",
-	"projects": {
-		"rekast-slim": {
-			"root": "",
-			"sourceRoot": "src",
-			"projectType": "application",
-			"architect": {
-				"build": {
-					"builder": "@angular-devkit/build-angular:browser",
-					"options": {
-						"aot": true,
-						"outputPath": "dist",
-						"index": "src/index.html",
-						"polyfills": "src/polyfills.ts",
-						"main": "src/main.ts",
-						"tsConfig": "src/tsconfig.app.json",
-						"assets": [
-							"src/assets",
-							"src/favicon.ico"
-						],
-						"styles": [
-							"src/assets/css/bootstrap.min.css",
-							"src/assets/css/rekast.css",
-							"src/assets/icon/themify-icons/themify-icons.css",
-							"src/assets/icon/ico-fonts/css/icofont.css",
-							"src/assets/icon/font-awesome/css/font-awesome.min.css",
-							"src/styles.css"
-						],
-						"scripts": [
-							"src/assets/js/jquery/jquery.min.js",
-							"src/assets/js/jquery/jquery-ui.min.js",
-							"src/assets/js/bootstrap/popper.min.js",
-							"src/assets/js/bootstrap/bootstrap.min.js",
-							"src/assets/js/modernizr.js",
-							"src/assets/js/theme/pcoded.min.js",
-							"src/assets/js/theme/theme.js",
-							"src/assets/js/social/facebook.min.js",
-							"src/assets/js/social/linkedin.min.js"
-						]
-					},
-					"configurations": {
-						"production": {
-							"budgets": [
-								{
-									"type": "anyComponentStyle",
-									"maximumWarning": "6kb"
-								}
-							],
-							"optimization": true,
-							"outputHashing": "all",
-							"sourceMap": false,
-							"extractCss": true,
-							"namedChunks": false,
-							"aot": true,
-							"extractLicenses": true,
-							"vendorChunk": false,
-							"buildOptimizer": true,
-							"fileReplacements": [
-								{
-									"replace": "src/environments/environment.ts",
-									"with": "src/environments/environment.prod.ts"
-								}
-							]
-						}
-					}
-				},
-				"serve": {
-					"builder": "@angular-devkit/build-angular:dev-server",
-					"options": {
-						"browserTarget": "rekast-slim:build"
-					},
-					"configurations": {
-						"production": {
-							"browserTarget": "rekast-slim:build:production"
-						}
-					}
-				},
-				"extract-i18n": {
-					"builder": "@angular-devkit/build-angular:extract-i18n",
-					"options": {
-						"browserTarget": "rekast-slim:build"
-					}
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "src/test.ts",
-						"karmaConfig": "./karma.conf.js",
-						"polyfills": "src/polyfills.ts",
-						"tsConfig": "src/tsconfig.spec.json",
-						"scripts": [
-							"src/assets/js/jquery/jquery.min.js",
-							"src/assets/js/jquery/jquery-ui.min.js",
-							"src/assets/js/bootstrap/popper.min.js",
-							"src/assets/js/bootstrap/bootstrap.min.js",
-							"src/assets/js/modernizr.js",
-							"src/assets/js/theme/pcoded.min.js",
-							"src/assets/js/theme/theme.js",
-							"src/assets/js/social/facebook.min.js",
-							"src/assets/js/social/linkedin.min.js"
-						],
-						"styles": [
-							"src/assets/css/bootstrap.min.css",
-							"src/assets/css/rekast.css",
-							"src/assets/icon/themify-icons/themify-icons.css",
-							"src/assets/icon/ico-fonts/css/icofont.css",
-							"src/assets/icon/font-awesome/css/font-awesome.min.css",
-							"src/styles.css"
-						],
-						"assets": [
-							"src/assets",
-							"src/favicon.ico"
-						]
-					}
-				},
-				"lint": {
-					"builder": "@angular-devkit/build-angular:tslint",
-					"options": {
-						"tsConfig": [
-							"src/tsconfig.app.json",
-							"src/tsconfig.spec.json"
-						],
-						"exclude": []
-					}
-				}
-			}
-		},
-		"rekast-slim-e2e": {
-			"root": "",
-			"sourceRoot": "e2e",
-			"projectType": "application",
-			"architect": {
-				"e2e": {
-					"builder": "@angular-devkit/build-angular:protractor",
-					"options": {
-						"protractorConfig": "e2e/protractor.conf.js",
-						"devServerTarget": "rekast-slim:serve"
-					}
-				},
-				"lint": {
-					"builder": "@angular-devkit/build-angular:tslint",
-					"options": {
-						"tsConfig": [
-							"e2e/tsconfig.e2e.json"
-						],
-						"exclude": []
-					}
-				}
-			}
-		}
-	},
-	"defaultProject": "rekast-slim",
-	"schematics": {
-		"@schematics/angular:component": {
-			"prefix": "app",
-			"style": "css"
-		},
-		"@schematics/angular:directive": {
-			"prefix": "app"
-		}
-	},
-	"cli": {
-		"analytics": "af7dce89-bf09-42cf-aff5-b3eea382a901"
-	}
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "rekast-slim": {
+      "root": "",
+      "sourceRoot": "src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "aot": true,
+            "outputPath": "dist",
+            "index": "src/index.html",
+            "polyfills": "src/polyfills.ts",
+            "main": "src/main.ts",
+            "tsConfig": "src/tsconfig.app.json",
+            "assets": [
+              "src/assets",
+              "src/favicon.ico"
+            ],
+            "styles": [
+              "src/assets/lib/%40fortawesome/fontawesome-free/css/all.min.css",
+              "src/assets/lib/ionicons/css/ionicons.min.css",
+              "src/assets/lib/jqvmap/jqvmap.min.css",
+              "src/assets/css/dashforge.css",
+              "src/assets/css/dashforge.dashboard.css",
+              "src/styles.css"
+            ],
+            "scripts": [
+              "src/assets/lib/jquery/jquery.min.js",
+              "src/assets/lib/bootstrap/js/bootstrap.bundle.min.js",
+              "src/assets/lib/feather-icons/feather.min.js",
+              "src/assets/lib/perfect-scrollbar/perfect-scrollbar.min.js",
+              "src/assets/lib/jquery.flot/jquery.flot.js",
+              "src/assets/lib/jquery.flot/jquery.flot.stack.js",
+              "src/assets/lib/jquery.flot/jquery.flot.resize.js",
+              "src/assets/lib/chart.js/Chart.bundle.min.js",
+              "src/assets/lib/jqvmap/jquery.vmap.min.js",
+              "src/assets/lib/jqvmap/maps/jquery.vmap.usa.js",
+              "src/assets/js/dashforge.js",
+              "src/assets/js/dashforge.sampledata.js",
+              "src/assets/js/dashboard-one.js",
+              "src/assets/lib/js-cookie/js.cookie.js",
+              "src/assets/js/dashforge.settings.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "rekast-slim:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "rekast-slim:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "rekast-slim:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "karmaConfig": "./karma.conf.js",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.spec.json",
+            "scripts": [
+              "src/assets/js/jquery/jquery.min.js",
+              "src/assets/js/jquery/jquery-ui.min.js",
+              "src/assets/js/bootstrap/popper.min.js",
+              "src/assets/js/bootstrap/bootstrap.min.js",
+              "src/assets/js/modernizr.js",
+              "src/assets/js/theme/pcoded.min.js",
+              "src/assets/js/theme/theme.js",
+              "src/assets/js/social/facebook.min.js",
+              "src/assets/js/social/linkedin.min.js"
+            ],
+            "styles": [
+              "src/assets/css/bootstrap.min.css",
+              "src/assets/css/rekast.css",
+              "src/assets/icon/themify-icons/themify-icons.css",
+              "src/assets/icon/ico-fonts/css/icofont.css",
+              "src/assets/icon/font-awesome/css/font-awesome.min.css",
+              "src/styles.css"
+            ],
+            "assets": [
+              "src/assets",
+              "src/favicon.ico"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "src/tsconfig.app.json",
+              "src/tsconfig.spec.json"
+            ],
+            "exclude": []
+          }
+        }
+      }
+    },
+    "rekast-slim-e2e": {
+      "root": "",
+      "sourceRoot": "e2e",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "rekast-slim:serve"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "e2e/tsconfig.e2e.json"
+            ],
+            "exclude": []
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "rekast-slim",
+  "schematics": {
+    "@schematics/angular:component": {
+      "prefix": "app",
+      "style": "css"
+    },
+    "@schematics/angular:directive": {
+      "prefix": "app"
+    }
+  },
+  "cli": {
+    "analytics": "af7dce89-bf09-42cf-aff5-b3eea382a901"
+  }
 }

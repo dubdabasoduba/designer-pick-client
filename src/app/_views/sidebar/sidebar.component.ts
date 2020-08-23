@@ -14,14 +14,14 @@ import {AuthenticationService} from '../../_services';
 	styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-	slimUser: User;
+	lbsUser: User;
 
 	constructor(
 		private authenticationService: AuthenticationService) {
 	}
 
 	ngOnInit() {
-		this.slimUser = this.authenticationService.getCurrentUser();
+		this.lbsUser = this.authenticationService.getCurrentUser();
 	}
 
 }

@@ -19,7 +19,7 @@ import {ResponseModel} from '../../_models/response.model';
 })
 export class NavigationComponent implements OnInit {
 	loading = false;
-	slimUser: User;
+	lbsUser: User;
 	title = appConstants.appTitle;
 	public model: any = {};
 	private responseModel = new ResponseModel();
@@ -39,9 +39,9 @@ export class NavigationComponent implements OnInit {
 			}
 			window.scrollTo(0, 0);
 		});
-		this.slimUser = this.authenticationService.getCurrentUser();
-		if (!this.commons.isObjectEmpty(this.slimUser) && AppCommons.isStringEmpty(this.slimUser.entityIconImage)) {
-			this.slimUser.entityIconImage = appConstants.defaultImageIcon;
+		this.lbsUser = this.authenticationService.getCurrentUser();
+		if (!this.commons.isObjectEmpty(this.lbsUser) && AppCommons.isStringEmpty(this.lbsUser.entityIconImage)) {
+			this.lbsUser.entityIconImage = appConstants.defaultImageIcon;
 		}
 	}
 

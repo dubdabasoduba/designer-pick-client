@@ -32,16 +32,6 @@ export class SigninComponent implements OnInit {
 		this.loginSuccessfulReturnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 	}
 
-	loginFacebook() {
-		this.authenticationService.fbLogin('login-facebook') // end point is the api end point without version
-			.then(() => {
-				this.router.navigateByUrl('/');
-			})
-			.catch(err => {
-				this.alertService.error(err);
-			});
-	}
-
 	login() {
 		this.loading = true;
 		this.authenticationService.login(this.model.username, this.model.password).subscribe(
