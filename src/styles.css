@@ -1,0 +1,261 @@
+/*
+ * Copyright (c) 2019. The content in this file is Protected by the copyright laws of kenya and owned by Re.Kast Limited.
+ * Reproducing it in any way or using it without permission from Re.Kast Limited will be a violation of kenyan copyrights law.
+ * This may be subject to prosecution according to the kenyan law
+ */
+
+.label-container {
+	position: fixed;
+	bottom: 33px;
+	right: 95px;
+	display: table;
+	visibility: hidden;
+}
+
+.label-text {
+	color: #FFF;
+	background: rgba(51, 51, 51, 0.5);
+	display: table-cell;
+	vertical-align: middle;
+	padding: 10px;
+	border-radius: 3px;
+}
+
+.label-arrow {
+	display: table-cell;
+	vertical-align: middle;
+	color: #333;
+	opacity: 0.5;
+}
+
+.float {
+	position: fixed;
+	width: 50px;
+	height: 50px;
+	bottom: 30px;
+	right: 30px;
+	/*background-color: #EB977A;*/
+	color: #FFF;
+	border-radius: 50px;
+	text-align: center;
+	/*box-shadow: 1px 1px 2px #00AC98;*/
+	z-index: 1000;
+	animation: bot-to-top 2s ease-out;
+}
+
+.float:focus {
+	position: fixed;
+	width: 50px;
+	height: 50px;
+	bottom: 30px;
+	right: 30px;
+	/*background-color: #00AC98;*/
+	color: #FFF;
+	border-radius: 50px;
+	text-align: center;
+	/*box-shadow: 1px 1px 2px #EB977A;*/
+	z-index: 1000;
+	animation: bot-to-top 2s ease-out;
+}
+
+.float:hover {
+	position: fixed;
+	width: 50px;
+	height: 50px;
+	bottom: 30px;
+	right: 30px;
+	/*background-color: #00AC98;*/
+	color: #FFF;
+	border-radius: 50px;
+	text-align: center;
+	/*box-shadow: 1px 1px 2px #EB977A;*/
+	z-index: 1000;
+	animation: bot-to-top 2s ease-out;
+}
+
+.my-float {
+	font-size: 20px;
+	margin-top: 15px;
+}
+
+a.float + div.label-container {
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0s, opacity 0.5s ease;
+}
+
+a.float:hover + div.label-container {
+	visibility: visible;
+	opacity: 1;
+}
+
+.floating-menu {
+	position: fixed;
+	right: 40px;
+	padding-bottom: 20px;
+	bottom: 50px;
+	z-index: 70;
+}
+
+.floating-menu .floating-menu-icons {
+	list-style: none;
+	margin-bottom: 10px;
+}
+
+.floating-menu .floating-menu-icons a {
+	/*background-color: #EB977A;*/
+	color: #FFF;
+	border-radius: 50px;
+	text-align: center;
+	/*box-shadow: 2px 2px 3px #00AC98;*/
+	width: 50px;
+	height: 50px;
+	display: block;
+}
+
+.floating-menu:hover {
+	visibility: visible !important;
+	opacity: 1 !important;
+}
+
+a.floating-icon + div.label-container {
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0s, opacity 0.5s ease;
+}
+
+a.floating-icon:hover + div.label-container {
+	visibility: visible;
+	opacity: 1;
+}
+
+a#menu-share + ul {
+	visibility: hidden;
+}
+
+a#menu-share:hover + ul {
+	visibility: visible;
+	animation: scale-in 0.5s;
+}
+
+a#menu-share i {
+	animation: rotate-in 0.5s;
+}
+
+a#menu-share:hover > i {
+	animation: rotate-out 0.5s;
+}
+
+@keyframes bot-to-top {
+	0% {
+		bottom: -40px
+	}
+	50% {
+		bottom: 40px
+	}
+}
+
+
+@keyframes scale-in {
+	from {
+		transform: scale(0);
+		opacity: 0;
+	}
+	to {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+@keyframes rotate-in {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes rotate-out {
+	from {
+		transform: rotate(360deg);
+	}
+	to {
+		transform: rotate(0deg);
+	}
+}
+
+#menu-share {
+	color: white;
+}
+
+.profile-pics {
+	height: 100px !important;
+	width: 100px !important;
+}
+
+.description-title {
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.card .card-header h5 {
+	font-size: 18px;
+}
+
+.job-address {
+	font-size: 12px !important;
+	font-weight: 400 !important;
+}
+
+.acquired-title {
+	margin-bottom: 40px !important;
+}
+
+.recent-news-title {
+	margin-bottom: 20px !important;
+}
+
+.header-title {
+	margin-bottom: 0;
+	color: #505458;
+	font-size: 18px;
+	display: inline-block;
+	margin-right: 10px;
+	line-height: 1.4;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+	background-color: #EB977A !important;
+	line-height: 20px;
+	padding: 8px 30px 8px 20px !important;
+}
+
+.card .card-header span {
+	color: #919aa3;
+	display: block;
+	font-size: 13px;
+	margin-top: 0 !important;
+}
+
+.action-btn {
+	padding: 5px 5px;
+	margin-right: 5px;
+	font-size: 14px;
+	text-align: center;
+	border-radius: 2px;
+}
+
+.btn i {
+	margin-right: 0 !important;
+}
+
+.checkbox {
+	color: #EB977A;
+	background-color: #EB977A !important;
+}
+
+option:hover {
+	background-color: #000000 !important;
+	color: #ffffff !important;
+}

@@ -1,0 +1,115 @@
+<!--
+  ~ Copyright (c) 2019. The content in this file is Protected by the copyright laws of kenya and owned by Re.Kast Limited.
+  ~ Reproducing it in any way or using it without permission from Re.Kast Limited will be a violation of kenyan copyrights law.
+  ~ This may be subject to prosecution according to the kenyan law
+  -->
+<app-navigation class="disabled"></app-navigation>
+<div class="pcoded-main-container auth-page-margin">
+	<div class="pcoded-wrapper login common-img-bg">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-12">
+					<!-- Authentication card start -->
+					<div class="card signin-card card-block auth-body mr-auto ml-auto">
+						<div class="reservation-page-input-box">
+							<div class="row m-b-20">
+								<div class="col-md-12">
+									<h3 class="txt-primary text-center">Sign In</h3>
+								</div>
+								<!--<div class="col-md-12">
+									<div class="row">
+										<div class="col-md-12">
+											<h6 class="text-inverse">Sign In with Social Media</h6>
+											<hr>
+											<br>
+											<button class="btn btn-social btn-fill btn-twitter">
+												<i class="fa fa-twitter"></i> &nbsp;Connect with Twitter
+												<div class="ripple-container"></div>
+											</button>
+											&nbsp;
+											<button (click)="loginFacebook()" class="btn btn-social btn-fill btn-facebook">
+												<i class="fa fa-facebook-square"></i> &nbsp; Connect with Facebook
+												<div class="ripple-container"></div>
+											</button>
+										</div>
+									</div>
+								</div>
+								<hr>-->
+							</div>
+
+							<div class="row m-b-20">
+								<div class="col-md-12">
+									<h6 class="text-inverse text-center">Sign In with your email</h6>
+									<hr>
+									<br/>
+									<form #f="ngForm" (ngSubmit)="f.form.valid && login()" action="#"
+									      class="md-float-material"
+									      id="LoginAuths" novalidate>
+										<div class="col-md-12">
+											<app-alert></app-alert>
+											<div class="row">
+												<div class="col-md-12">
+													<div class="input-group">
+														<input [(ngModel)]="model.username" class="form-control"
+														       data-error="Username field is required" id="username"
+														       name="username" placeholder="Username"
+														       required="" type="text">
+													</div>
+												</div>
+												<div class="col-md-12">
+													<div class="input-group">
+														<input [(ngModel)]="model.password" class="form-control"
+														       data-error="Password field is required" id=""
+														       name="password" placeholder="password"
+														       required="" type="password">
+													</div>
+												</div>
+												<div class="col-md-12" id="signInButton">
+													<button
+														class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20"
+														type="sumbit">
+														<i aria-hidden="true" class="fa fa-paper-plane-o"></i>&nbsp;Sign In
+													</button>
+												</div>
+											</div>
+										</div>
+									</form>
+									<hr/>
+									<p class="text-inverse text-center m-b-0">Designed for the African
+										ecosystem</p>
+								</div>
+							</div>
+							<!-- end of form -->
+						</div>
+					</div>
+					<div class="text-center">
+						<div class="box-content" id="instructionComponent">
+							<div class="text-center">
+								<div class="row">
+									<div class="col-md-12">
+										<p class="text-inverse text-center m-b-0">New to Re.Kast IO? Get on board <a
+											routerLink="/sign-up">&nbsp;&nbsp;Sign Up</a></p>
+									</div>
+								</div>
+							</div>
+							<div class="text-center">
+								<div class="row">
+									<div class="col-md-12">
+										<p class="text-inverse text-center m-b-0">Forgot your password? <a
+											routerLink="/recover-password">&nbsp;&nbsp;Reset
+											Password</a></p>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<!-- Authentication card end -->
+				</div>
+				<!-- end of col-sm-12 -->
+			</div>
+			<!-- end of row -->
+		</div>
+		<!-- end of container-fluid -->
+	</div>
+</div>

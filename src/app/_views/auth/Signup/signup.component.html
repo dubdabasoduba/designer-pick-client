@@ -1,0 +1,173 @@
+<!--
+  ~ Copyright (c) 2019. The content in this file is Protected by the copyright laws of kenya and owned by Re.Kast Limited.
+  ~ Reproducing it in any way or using it without permission from Re.Kast Limited will be a violation of kenyan copyrights law.
+  ~ This may be subject to prosecution according to the kenyan law
+  -->
+<app-navigation class="disabled"></app-navigation>
+<div class="pcoded-main-container auth-page-margin">
+	<div class="pcoded-wrapper login common-img-bg">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-12">
+					<!-- Authentication card start -->
+					<div class="card signup-card card-block auth-body mr-auto ml-auto">
+						<div class="reservation-page-input-box">
+							<div class="row m-b-20">
+								<div class="col-md-12">
+									<h3 class="txt-primary text-center">Join Re.Kast IO</h3>
+								</div>
+								<!--<div class="col-md-12">
+									<div class="row">
+										<div class="col-md-12">
+											<h6 class="text-inverse">Register Using Social Authentication</h6>
+											<hr>
+											<br>
+											<button class="btn btn-social btn-fill btn-twitter">
+												<i class="fa fa-twitter"></i> &nbsp;Connect with Twitter
+												<div class="ripple-container"></div>
+											</button>
+											&nbsp;
+											<button (click)="loginFacebook()" class="btn btn-social btn-fill btn-facebook">
+												<i class="fa fa-facebook-square"></i> &nbsp; Connect with Facebook
+												<div class="ripple-container"></div>
+											</button>
+										</div>
+									</div>
+								</div>
+								<hr>-->
+							</div>
+							<div class="row m-b-20">
+								<div class="col-md-12">
+									<h6 class="text-inverse text-center ">Register Using Email</h6>
+									<hr>
+									<br>
+									<form #f="ngForm" (ngSubmit)="f.form.valid && register()" id="StartupJoin" novalidate>
+										<div class="col-md-12">
+											<app-alert></app-alert>
+											<div class="row">
+												<div class="col-md-12">
+													<div class="input-group">
+														<input #email="ngModel" [(ngModel)]="model.name" class="form-control"
+														       data-error="Subject field is required"
+														       id="name" name="name"
+														       placeholder="Please give your name"
+														       required="" type="text"/>
+														<span class="md-line"></span>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-6">
+													<div class="input-group">
+														<select [(ngModel)]="model.type"
+														        class="form-control" id="type" name="type"
+														        title="Select user type">
+															<option value="">Select user type</option>
+															<option label="Organisation" value="organization">Organisation
+															</option>
+															<option label="Individual" value="person">Individual</option>
+
+														</select>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="input-group">
+														<input [(ngModel)]="model.username" class="form-control"
+														       data-error="Username field is required" id="userName"
+														       name="name"
+														       placeholder="Please give your username" required=""
+														       type="text"/>
+														<span class="md-line"></span>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-12">
+													<div class="input-group">
+														<input #email="ngModel" [(ngModel)]="model.email"
+														       class="form-control" data-error="Subject field is required"
+														       id="email" name="email"
+														       placeholder="Place give your e-maill address"
+														       required=""
+														       type="email"/>
+														<span class="md-line"></span>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-6">
+													<div class="input-group">
+														<input #password="ngModel" [(ngModel)]="model.password"
+														       class="form-control"
+														       data-error="Subject field is required"
+														       id="passcodeone" name="passcodeone"
+														       placeholder="Please give your password"
+														       required="" type="password"/>
+														<span class="md-line"></span>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="input-group">
+														<input #password="ngModel" [(ngModel)]="model.confirmPassword"
+														       class="form-control"
+														       data-error="Subject field is required"
+														       id="passcodetwo" name="passcodetwo"
+														       placeholder="Please Confirm your Password"
+														       required=""
+														       type="password"/>
+														<span class="md-line"></span>
+													</div>
+												</div>
+											</div>
+											<div class="row m-t-30">
+												<div class="col-md-12">
+													<button
+														class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20"
+														type="sumbit">
+														<i aria-hidden="true" class="fa fa-paper-plane-o"></i>&nbsp;Register
+													</button>
+												</div>
+											</div>
+										</div>
+									</form>
+									<hr/>
+									<div class="row">
+										<div class="col-md-12">
+											<p class="text-inverse text-center m-b-0">Designed for the African ecosystem</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="text-center">
+						<div class="box-content" id="instructionComponent">
+							<div class="text-center">
+								<div class="row">
+									<div class="col-md-12">
+										<p class="text-inverse text-center m-b-0">
+											Already have an account? <a routerLink="/sign-in">&nbsp;Sign In</a></p>
+									</div>
+								</div>
+							</div>
+							<div class="text-center">
+								<div class="row">
+									<div class="col-md-12">
+										<p class="text-inverse text-center m-b-0">Forgot your password? <a
+											routerLink="/recover-password">&nbsp;&nbsp;Reset
+											Password</a></p>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<!-- Authentication card end -->
+				</div>
+				<!-- end of col-sm-12 -->
+			</div>
+			<!-- end of row -->
+		</div>
+		<!-- end of container-fluid -->
+	</div>
+</div>

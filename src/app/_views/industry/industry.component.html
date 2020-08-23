@@ -1,0 +1,142 @@
+<!--
+  ~ Copyright (c) 2019. The content in this file is Protected by the copyright laws of kenya and owned by Re.Kast Limited.
+  ~ Reproducing it in any way or using it without permission from Re.Kast Limited will be a violation of kenyan copyrights law.
+  ~ This may be subject to prosecution according to the kenyan law
+  -->
+<app-navigation></app-navigation>
+<div class="pcoded-main-container" style="margin-top: 80px;">
+	<div class="pcoded-wrapper">
+		<app-sidebar></app-sidebar>
+		<div class="pcoded-content">
+			<div class="pcoded-inner-content">
+				<div class="main-body">
+					<div class="page-wrapper">
+
+						<div class="page-body">
+							<div class="row">
+								<!--row start-->
+								<div class="col-md-12">
+									<!-- Multi-column table start -->
+									<div class="card">
+										<div class="card-header">
+											<h3 class="title">Industry | {{industryName}}</h3>
+											<span>Displaying 1-50 of {{numberOfEntities}} organisations in the
+												{{industryName}}    industry</span>
+											<div class="card-header-right"><i
+												class="icofont icofont-spinner-alt-5"></i></div>
+										</div>
+										<div class=" card-block ">
+											<div class="row table-responsive">
+												<table cellspacing="0" class="table table-striped table-hover" id="startups">
+													<thead>
+													<tr>
+														<th class="text-left"><b>#</b></th>
+														<th class="text-left">Name</th>
+														<th>Headquarters</th>
+														<th class="text-right">Date Founded</th>
+													</tr>
+													</thead>
+													<tfoot>
+													<tr>
+														<th class="text-left"><b>#</b></th>
+														<th class="text-left">Name</th>
+														<th>Headquarters</th>
+														<th class="text-right">Date Founded</th>
+													</tr>
+													</tfoot>
+													<tbody>
+													<tr *ngIf="numberOfEntities <= 0">
+														<td class="text-center" colspan="4">
+															No organisations were found for the Industry {{industryName}}
+														</td>
+													</tr>
+													<tr *ngFor="let entity of industryEntities; let i = index">
+														<td class="text-left"><b>{{i + 1}}</b></td>
+														<td>
+															<div class="search-content">
+																<img class="card-img-top card-img-bottom" height="20px"
+																     src="{{entity.iconImage}}"
+																     width="20px">&nbsp;&nbsp;
+																<a class=""
+																   routerLink="/entity/{{entity.id}}">{{entity.name}}</a>
+															</div>
+														</td>
+														<td>{{entity.location}}</td>
+														<td class="text-right">{{entity.dateFounded}}</td>
+													</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+									<!-- Multi-column table end -->
+								</div>
+								<!--row end-->
+							</div>
+							<br/>
+
+							<div class="row">
+								<!--row start-->
+								<div class="col-md-12">
+									<!-- Multi-column table start -->
+									<div class="card">
+										<div class="card-header">
+											<h3 class="title">Industry | {{industryName}}</h3>
+											<span>Displaying 1-50 of {{numberOfPeople}} people in the
+												{{industryName}}    industry</span>
+											<div class="card-header-right"><i
+												class="icofont icofont-spinner-alt-5"></i></div>
+										</div>
+										<div class=" card-block ">
+											<div class="row table-responsive">
+												<table cellspacing="0" class="table table-striped table-hover" id="people">
+													<thead>
+													<tr>
+														<th class="text-left"><b>#</b></th>
+														<th class="text-left">Name</th>
+														<th class="text-right">Date of Birth</th>
+													</tr>
+													</thead>
+													<tfoot>
+													<tr>
+														<th class="text-left"><b>#</b></th>
+														<th class="text-left">Name</th>
+														<th class="text-right">Date of Birth</th>
+													</tr>
+													</tfoot>
+													<tbody>
+													<tr *ngIf="numberOfPeople <= 0">
+														<td class="text-center" colspan="4">
+															No people were found for the Industry {{industryName}}
+														</td>
+													</tr>
+													<tr *ngFor="let person of industryPeople; let i = index">
+														<td class="text-left"><b>{{i + 1}}</b></td>
+														<td>
+															<div class="search-content">
+																<img class="card-img-top card-img-bottom" height="20px"
+																     src="{{person.iconImage}}"
+																     width="20px">&nbsp;&nbsp;
+																<a class=""
+																   routerLink="/person/{{person.id}}">{{person.name}}</a>
+															</div>
+														</td>
+														<td class="text-right">{{person.dob}}</td>
+													</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+									<!-- Multi-column table end -->
+								</div>
+								<!--row end-->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

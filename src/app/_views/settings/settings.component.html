@@ -1,0 +1,240 @@
+<!--
+  ~ Copyright (c) 2019. The content in this file is Protected by the copyright laws of kenya and owned by Re.Kast Limited.
+  ~ Reproducing it in any way or using it without permission from Re.Kast Limited will be a violation of kenyan copyrights law.
+  ~ This may be subject to prosecution according to the kenyan law
+  -->
+<app-navigation></app-navigation>
+<div class="pcoded-main-container" style="margin-top: 80px;">
+	<div class="pcoded-wrapper">
+		<app-sidebar></app-sidebar>
+		<div class="pcoded-content">
+			<div class="pcoded-inner-content">
+				<div class="main-body">
+					<div class="page-wrapper">
+						<div class="page-body">
+							<div class="row">
+								<div class="col-sm-12">
+									<div>
+										<div class="content social-timeline">
+											<div class="">
+												<!-- Row Starts -->
+												<div class="row">
+													<h4 class="m-b-20"><b>Account </b> Settings </h4>
+													<hr>
+													<div class="col-md-12 search2 search-result">
+														<div class="row">
+															<!-- result to be looped incase many-->
+															<div class="col-md-12 col-xl-4">
+																<div class="card widget-statstic-card">
+																	<div class="card-header">
+																		<div class="card-header-left">
+																			<h5>Basic Information</h5>
+																		</div>
+																	</div>
+																	<div class="card-block">
+																		<form id="BasicInformation" novalidate>
+																			<div class="reservation-page-input-box">
+																				<div class="col-md-12">
+																					<div class="form-group label-floating">
+																						<label class="control-label">First
+																							Name</label>
+																						<input class="form-control"
+																						       data-error="Password field is required"
+																						       id="fname" name="password"
+																						       placeholder="Jessy"
+																						       required=""
+																						       type="text"/>
+																					</div>
+																				</div>
+																				<div class="col-md-12">
+																					<div class="form-group label-floating">
+																						<label class="control-label">Second
+																							Name</label>
+																						<input class="form-control"
+																						       data-error="Confirm password field is required"
+																						       id="sname"
+																						       name="confirmPassword"
+																						       placeholder="Lesley"
+																						       required=""
+																						       type="text"/>
+																					</div>
+																				</div>
+																				<div class="col-md-12">
+																					<div class="form-group label-floating">
+																						<label class="control-label">Email
+																							Address</label>
+																						<input class="form-control"
+																						       data-error="Confirm password field is required"
+																						       id="email"
+																						       name="confirmPassword"
+																						       placeholder="jessy@incubateafrica.net"
+																						       required=""
+																						       type="password"/>
+																					</div>
+																				</div>
+																				<div class="col-md-12">
+																					<button
+																						class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20"
+																						id="updatebasic"
+																						type="submit"><i
+																						aria-hidden="true"
+																						class="fa fa-floppy-o"></i>&nbsp;Update
+																						Information
+																					</button>
+																				</div>
+
+																			</div>
+																		</form>
+																	</div>
+																</div>
+															</div>
+															<!-- result to be looped incase many-->
+
+															<!-- result to be looped incase many-->
+															<div class="col-md-12 col-xl-4">
+																<div class="card widget-statstic-card">
+																	<div class="card-header">
+																		<div class="card-header-left">
+																			<h5>Social Information</h5>
+																		</div>
+																	</div>
+																	<div class="card-block">
+																		<form id="Social Information" novalidate>
+																			<div class="reservation-page-input-box">
+																				<div class="col-md-12">
+																					<div class="form-group label-floating">
+																						<label class="control-label">Website
+																							URL</label>
+																						<input class="form-control"
+																						       data-error="Password field is required"
+																						       id="website" name="password"
+																						       placeholder="https://incubateafrica.net/"
+																						       required=""
+																						       type="text"/>
+																					</div>
+																				</div>
+																				<div class="col-md-12">
+																					<div class="form-group label-floating">
+																						<label class="control-label">Facebook
+																							URL</label>
+																						<input class="form-control"
+																						       data-error="Confirm password field is required"
+																						       id="fburl"
+																						       name="confirmPassword"
+																						       placeholder="https://incubateafrica.net/"
+																						       required=""
+																						       type="text"/>
+																					</div>
+																				</div>
+																				<div class="col-md-12">
+																					<div class="form-group label-floating">
+																						<label class="control-label">Twitter
+																							URL</label>
+																						<input class="form-control"
+																						       data-error="Confirm password field is required"
+																						       id="twitterurl"
+																						       name="confirmPassword"
+																						       placeholder="jessy@incubateafrica.net"
+																						       required=""
+																						       type="password"/>
+																					</div>
+																				</div>
+																				<div class="col-md-12">
+																					<button
+																						class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20"
+																						id="updatesocial"
+																						type="submit"><i
+																						aria-hidden="true"
+																						class="fa fa-floppy-o"></i>&nbsp;Update
+																						Information
+																					</button>
+																				</div>
+
+																			</div>
+																		</form>
+
+																	</div>
+																</div>
+															</div>
+															<!-- result to be looped incase many-->
+
+															<!-- result to be looped incase many-->
+															<div class="col-md-12 col-xl-4">
+																<div class="card widget-statstic-card">
+																	<div class="card-header">
+																		<div class="card-header-left">
+																			<h5>Password</h5>
+																		</div>
+																	</div>
+																	<div class="card-block">
+																		<form #f="ngForm"
+																		      id="updatePassword" novalidate>
+																			<div class="reservation-page-input-box">
+																				<div class="col-md-12">
+																					<div class="form-group label-floating">
+																						<label class="control-label">Enter
+																							Current password</label>
+																						<input class="form-control"
+																						       data-error="Password field is required"
+																						       id="password" name="password"
+																						       required=""
+																						       type="password"/>
+																					</div>
+																				</div>
+																				<div class="col-md-12">
+																					<div class="form-group label-floating">
+																						<label class="control-label"> new
+																							Password</label>
+																						<input class="form-control"
+																						       data-error="Confirm password field is required"
+																						       id="cPassword"
+																						       name="confirmPassword"
+																						       required=""
+																						       type="password"/>
+																					</div>
+																				</div>
+																				<div class="col-md-12">
+																					<div class="form-group label-floating">
+																						<label class="control-label">Confirm
+																							new Password</label>
+																						<input class="form-control"
+																						       data-error="Confirm password field is required"
+																						       id="confirmPassword"
+																						       name="confirmPassword"
+																						       required=""
+																						       type="password"/>
+																					</div>
+																				</div>
+																				<div class="col-md-12">
+																					<button
+																						class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20"
+																						id="updatePasswordButton"
+																						type="submit"><i
+																						aria-hidden="true"
+																						class="fa fa-floppy-o"></i>&nbsp;Update
+																						Password
+																					</button>
+																				</div>
+
+																			</div>
+																		</form>
+																	</div>
+																</div>
+															</div>
+															<!-- result to be looped incase many-->
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Page-body end -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
