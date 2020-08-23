@@ -157,7 +157,7 @@ const appRoutes: Routes = [
 		canActivate: [AuthPagesGuard],
 		runGuardsAndResolvers: 'always'
 	},
-	{path: 'recover-password', component: RecoveryComponent, canActivate: [AuthPagesGuard], runGuardsAndResolvers: 'always'},
+	{path: 'reset-password', component: RecoveryComponent, canActivate: [AuthPagesGuard], runGuardsAndResolvers: 'always'},
 	{
 		path: 'update-password/:userId/:token',
 		component: UpdateComponent,

@@ -22,7 +22,6 @@
               "src/favicon.ico"
             ],
             "styles": [
-              "src/assets/lib/%40fortawesome/fontawesome-free/css/all.min.css",
               "src/assets/lib/ionicons/css/ionicons.min.css",
               "src/assets/lib/jqvmap/jqvmap.min.css",
               "src/assets/css/dashforge.css",
