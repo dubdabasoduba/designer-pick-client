@@ -9,51 +9,70 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AlertService, AuthenticationService, UserService} from '../../../_services';
 
 @Component({
-	selector: 'app-sign-in',
-	templateUrl: './signin.component.html',
-	styleUrls: ['./signin.component.css']
+    selector: 'app-sign-in',
+    templateUrl: './signin.component.html',
+    styleUrls: ['./signin.component.css']
 })
 export class SigninComponent implements OnInit {
-	model: any = {};
-	loading = false;
-	loginSuccessfulReturnUrl: string;
-	entityProfileUpdateUrl = '/profile-update/';
+    model: any = {};
+    loading = false;
+    loginSuccessfulReturnUrl: string;
+    redirectUrl: string;
+    entityProfileUpdateUrl = '/profile-update/';
 
-	constructor(
-		private route: ActivatedRoute,
-		private router: Router,
-		private userService: UserService,
-		private alertService: AlertService,
-		private authenticationService: AuthenticationService) {
-	}
+    lbsUser = {
+        username: "",
+        account_type: ""
+    };
 
-	ngOnInit() {
-		this.authenticationService.logout();
-		this.loginSuccessfulReturnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-	}
+    constructor(
+        private route: ActivatedRoute,
+        private router: Router,
+        private userService: UserService,
+        private alertService: AlertService,
+        private authenticationService: AuthenticationService) {
+    }
 
-	login() {
-		this.loading = true;
-		this.authenticationService.login(this.model.username, this.model.password).subscribe(
-			data => {
-				this.forceUserUpdate(data);
-			},
-			error => {
-				this.alertService.error(error);
-				this.loading = false;
-			}
-		);
-	}
+    ngOnInit() {
+        this.authenticationService.logout();
+        this.loginSuccessfulReturnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    }
 
-	/**
-	 * @desc Forces the Users to update their details before starting the use of the system.
-	 * @param data {@link Object}
-	 */
-	private forceUserUpdate(data: any) {
-		if (data.forceUpdate) {
-			this.router.navigateByUrl(this.entityProfileUpdateUrl + data.entityId + '?type=' + data.type);
-		} else {
-			this.router.navigateByUrl(this.loginSuccessfulReturnUrl);
-		}
-	}
+    login() {
+        this.loading = true;
+        this.authenticationService.login(this.model.username, this.model.password).subscribe(
+            data => {
+                this.generateRedirectUrlForProfiles();
+                this.forceUserUpdate(data);
+            },
+            error => {
+                this.alertService.error(error);
+                this.loading = false;
+            }
+        );
+    }
+
+    private generateRedirectUrlForProfiles() {
+        if (this.lbsUser.account_type === "0" && this.loginSuccessfulReturnUrl === '/') {
+            this.redirectUrl = "";
+        } else if (this.lbsUser.account_type === "1" && this.loginSuccessfulReturnUrl === '/') {
+            this.redirectUrl = "";
+        } else if (this.lbsUser.account_type === "2" && this.loginSuccessfulReturnUrl === '/') {
+            this.redirectUrl = "";
+        } else {
+            this.redirectUrl = this.loginSuccessfulReturnUrl;
+        }
+    }
+
+    /**
+     * @desc Forces the Users to update their details before starting the use of the system.
+     * @param data {@link Object}
+     */
+    private forceUserUpdate(data: any) {
+        if (data.forceUpdate) {
+            this.router.navigateByUrl(this.entityProfileUpdateUrl + data.entityId + '?type=' + data.type);
+        } else {
+            this.router.navigateByUrl(this.redirectUrl);
+        }
+    }
 }

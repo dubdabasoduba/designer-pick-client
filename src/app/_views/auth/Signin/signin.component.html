@@ -17,20 +17,28 @@
                     <h3 class="tx-color-01 mg-b-5">Sign In</h3>
                     <p class="tx-color-03 tx-16 mg-b-40">Welcome back! Please sign in to
                         continue.</p>
-                    <div class="form-group">
-                        <label>Username</label>
-                        <input class="form-control" placeholder="Enter your username"
-                               type="text">
-                    </div>
-                    <div class="form-group">
-                        <div class="d-flex justify-content-between mg-b-5">
-                            <label class="mg-b-0-f">Password</label>
-                            <a class="tx-13" routerLink="/reset-password">Forgot password?</a>
+                    <form #f="ngForm" (ngSubmit)="f.form.valid && login()" action="#"
+                          class="md-float-material"
+                          id="LoginAuths" novalidate>
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input [(ngModel)]="model.username" class="form-control"
+                                   data-error="Username field is required" id="username"
+                                   name="username" placeholder="Username"
+                                   required="" type="text">
                         </div>
-                        <input class="form-control" placeholder="Enter your password"
-                               type="password">
-                    </div>
-                    <button class="btn btn-brand-02 btn-block">Sign In</button>
+                        <div class="form-group">
+                            <div class="d-flex justify-content-between mg-b-5">
+                                <label class="mg-b-0-f">Password</label>
+                                <a class="tx-13" routerLink="/reset-password">Forgot password?</a>
+                            </div>
+                            <input [(ngModel)]="model.password" class="form-control"
+                                   data-error="Password field is required" id=""
+                                   name="password" placeholder="password"
+                                   required="" type="password">
+                        </div>
+                        <button type="submit" class="btn btn-brand-02 btn-block">Sign In</button>
+                    </form>
                     <!-- <div class="divider-text">or</div>
                      <button class="btn btn-outline-facebook btn-block">Sign In With Facebook
                      </button>
