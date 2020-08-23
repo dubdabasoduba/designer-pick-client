@@ -259,3 +259,9 @@ option:hover {
 	background-color: #000000 !important;
 	color: #ffffff !important;
 }
+
+.footer #footer{
+	position: absolute !important;
+	bottom: 0 !important;
+	width: 100%;
+}

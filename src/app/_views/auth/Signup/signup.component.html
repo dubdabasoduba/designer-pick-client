@@ -3,171 +3,53 @@
   ~ Reproducing it in any way or using it without permission from Re.Kast Limited will be a violation of kenyan copyrights law.
   ~ This may be subject to prosecution according to the kenyan law
   -->
-<app-navigation class="disabled"></app-navigation>
-<div class="pcoded-main-container auth-page-margin">
-	<div class="pcoded-wrapper login common-img-bg">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-sm-12">
-					<!-- Authentication card start -->
-					<div class="card signup-card card-block auth-body mr-auto ml-auto">
-						<div class="reservation-page-input-box">
-							<div class="row m-b-20">
-								<div class="col-md-12">
-									<h3 class="txt-primary text-center">Join Re.Kast IO</h3>
-								</div>
-								<!--<div class="col-md-12">
-									<div class="row">
-										<div class="col-md-12">
-											<h6 class="text-inverse">Register Using Social Authentication</h6>
-											<hr>
-											<br>
-											<button class="btn btn-social btn-fill btn-twitter">
-												<i class="fa fa-twitter"></i> &nbsp;Connect with Twitter
-												<div class="ripple-container"></div>
-											</button>
-											&nbsp;
-											<button (click)="loginFacebook()" class="btn btn-social btn-fill btn-facebook">
-												<i class="fa fa-facebook-square"></i> &nbsp; Connect with Facebook
-												<div class="ripple-container"></div>
-											</button>
-										</div>
-									</div>
-								</div>
-								<hr>-->
-							</div>
-							<div class="row m-b-20">
-								<div class="col-md-12">
-									<h6 class="text-inverse text-center ">Register Using Email</h6>
-									<hr>
-									<br>
-									<form #f="ngForm" (ngSubmit)="f.form.valid && register()" id="StartupJoin" novalidate>
-										<div class="col-md-12">
-											<app-alert></app-alert>
-											<div class="row">
-												<div class="col-md-12">
-													<div class="input-group">
-														<input #email="ngModel" [(ngModel)]="model.name" class="form-control"
-														       data-error="Subject field is required"
-														       id="name" name="name"
-														       placeholder="Please give your name"
-														       required="" type="text"/>
-														<span class="md-line"></span>
-													</div>
-												</div>
-											</div>
-											<div class="row">
-												<div class="col-md-6">
-													<div class="input-group">
-														<select [(ngModel)]="model.type"
-														        class="form-control" id="type" name="type"
-														        title="Select user type">
-															<option value="">Select user type</option>
-															<option label="Organisation" value="organization">Organisation
-															</option>
-															<option label="Individual" value="person">Individual</option>
-
-														</select>
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="input-group">
-														<input [(ngModel)]="model.username" class="form-control"
-														       data-error="Username field is required" id="userName"
-														       name="name"
-														       placeholder="Please give your username" required=""
-														       type="text"/>
-														<span class="md-line"></span>
-													</div>
-												</div>
-											</div>
-											<div class="row">
-												<div class="col-md-12">
-													<div class="input-group">
-														<input #email="ngModel" [(ngModel)]="model.email"
-														       class="form-control" data-error="Subject field is required"
-														       id="email" name="email"
-														       placeholder="Place give your e-maill address"
-														       required=""
-														       type="email"/>
-														<span class="md-line"></span>
-													</div>
-												</div>
-											</div>
-											<div class="row">
-												<div class="col-md-6">
-													<div class="input-group">
-														<input #password="ngModel" [(ngModel)]="model.password"
-														       class="form-control"
-														       data-error="Subject field is required"
-														       id="passcodeone" name="passcodeone"
-														       placeholder="Please give your password"
-														       required="" type="password"/>
-														<span class="md-line"></span>
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="input-group">
-														<input #password="ngModel" [(ngModel)]="model.confirmPassword"
-														       class="form-control"
-														       data-error="Subject field is required"
-														       id="passcodetwo" name="passcodetwo"
-														       placeholder="Please Confirm your Password"
-														       required=""
-														       type="password"/>
-														<span class="md-line"></span>
-													</div>
-												</div>
-											</div>
-											<div class="row m-t-30">
-												<div class="col-md-12">
-													<button
-														class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20"
-														type="sumbit">
-														<i aria-hidden="true" class="fa fa-paper-plane-o"></i>&nbsp;Register
-													</button>
-												</div>
-											</div>
-										</div>
-									</form>
-									<hr/>
-									<div class="row">
-										<div class="col-md-12">
-											<p class="text-inverse text-center m-b-0">Designed for the African ecosystem</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="text-center">
-						<div class="box-content" id="instructionComponent">
-							<div class="text-center">
-								<div class="row">
-									<div class="col-md-12">
-										<p class="text-inverse text-center m-b-0">
-											Already have an account? <a routerLink="/sign-in">&nbsp;Sign In</a></p>
-									</div>
-								</div>
-							</div>
-							<div class="text-center">
-								<div class="row">
-									<div class="col-md-12">
-										<p class="text-inverse text-center m-b-0">Forgot your password? <a
-											routerLink="/recover-password">&nbsp;&nbsp;Reset
-											Password</a></p>
-									</div>
-								</div>
-
-							</div>
-						</div>
-					</div>
-					<!-- Authentication card end -->
-				</div>
-				<!-- end of col-sm-12 -->
-			</div>
-			<!-- end of row -->
-		</div>
-		<!-- end of container-fluid -->
-	</div>
+<app-navigation></app-navigation>
+<div class="content content-fixed content-auth">
+    <div class="container">
+        <div class="media align-items-stretch justify-content-center ht-100p pos-relative">
+            <div class="sign-in-wrapper mg-lg-r-50 mg-xl-r-60">
+                <div class="pd-t-20 wd-100p">
+                    <h4 class="tx-color-01 mg-b-5">Create New Account</h4>
+                    <p class="tx-color-03 tx-16 mg-b-40">It's free to signup and only takes a
+                        minute.</p>
+                    <div class="form-group">
+                        <label>Email address</label>
+                        <input type="email" class="form-control"
+                               placeholder="Enter your email address" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <div class="d-flex justify-content-between mg-b-5">
+                            <label class="mg-b-0-f">Password</label>
+                        </div>
+                        <input type="password" class="form-control"
+                               placeholder="Enter your password">
+                    </div>
+                    <div class="form-group">
+                        <label>Firstname</label>
+                        <input type="text" class="form-control" placeholder="Enter your firstname">
+                    </div>
+                    <div class="form-group">
+                        <label>Lastname</label>
+                        <input type="text" class="form-control" placeholder="Enter your lastname">
+                    </div>
+                    <div class="form-group tx-12">
+                        By clicking <strong>Create account</strong> below, you agree to our terms
+                        of service and privacy statement.
+                    </div><!-- form-group -->
+                    <button class="btn btn-brand-02 btn-block">Create Account</button>
+                    <!--  <div class="divider-text">or</div>
+                     <button class="btn btn-outline-facebook btn-block">Sign Up With Facebook
+                     </button>
+                     <button class="btn btn-outline-twitter btn-block">Sign Up With Twitter</button>-->
+                    <div class="tx-13 mg-t-20 tx-center">Already have an account? <a routerLink="/">&nbsp;Sign
+                        In</a></div>
+                </div>
+            </div><!-- sign-wrapper -->
+            <div class="media-body align-items-center d-none d-lg-flex">
+                <div class="mx-wd-600">
+                    <img alt="" class="img-fluid" src="assets/img/img15.png">
+                </div>
+            </div>
+        </div><!-- media -->
+    </div><!-- container -->
 </div>

@@ -26,7 +26,7 @@ export class CategoryComponent implements OnInit {
 	industryId: string;
 	public model: any = {};
 	private entity: any;
-	private slimUser: User;
+	private lbsUser: User;
 	private type: boolean;
 	private responseModel = new ResponseModel();
 
@@ -42,10 +42,10 @@ export class CategoryComponent implements OnInit {
 
 	ngOnInit() {
 		this.setEmptyModel();
-		this.slimUser = this.authenticationService.getCurrentUser();
-		if (this.slimUser != null) {
-			this.entityId = this.slimUser.entityId;
-			this.type = Boolean(this.slimUser.type);
+		this.lbsUser = this.authenticationService.getCurrentUser();
+		if (this.lbsUser != null) {
+			this.entityId = this.lbsUser.entityId;
+			this.type = Boolean(this.lbsUser.type);
 		}
 
 		if (this.entityId != null) {
