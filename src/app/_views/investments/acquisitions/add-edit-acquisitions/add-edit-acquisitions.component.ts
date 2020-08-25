@@ -73,7 +73,7 @@ export class AddEditAcquisitionsComponent implements OnInit {
 					acquisition.buyers = this.funders;
 					acquisition.amount = AppCommons.createAmount(this.funders).toString();
 					acquisition.date_updated = new Date();
-					acquisition.updated_by = this.lbsUser.entityId;
+					acquisition.updated_by = this.lbsUser.uuid;
 					acquisition.acquisition_date = this.acquisition.acquisition_date;
 					acquisition.date_added = this.acquisition.date_added;
 					acquisition.name = this.acquisition.name;

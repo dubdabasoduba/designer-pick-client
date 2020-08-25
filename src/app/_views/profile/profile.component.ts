@@ -97,7 +97,7 @@ export class ProfileComponent implements OnInit {
 	}
 
 	sendToServer() {
-		const userId = this.lbsUser.entityId + '_' + this.lbsUser.type;
+		const userId = this.lbsUser.uuid + '_' + this.lbsUser.type;
 		if (!AppCommons.isStringEmpty(userId) && !AppCommons.isStringEmpty(this.profileImage)) {
 			this.loading = true;
 			this.profileService.uploadImage(this.profileImage, userId).subscribe(
@@ -124,7 +124,7 @@ export class ProfileComponent implements OnInit {
 		const userDetails = {
 			type: this.lbsUser.type,
 			user: this.lbsUser.id,
-			entity: this.lbsUser.entityId
+			entity: this.lbsUser.uuid
 		};
 
 		this.loading = true;

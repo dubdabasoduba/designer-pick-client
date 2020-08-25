@@ -8,9 +8,9 @@ import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/com
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
-import {appConstants} from './app.constants';
 import {AuthenticationService} from '../_services';
 import {Injectable} from '@angular/core';
+import {environment} from '../../environments/environment';
 
 @Injectable()
 export class RequestInterceptor implements HttpInterceptor {
@@ -26,15 +26,12 @@ export class RequestInterceptor implements HttpInterceptor {
      * @author dubdabasoduba
      */
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        const apiKey = '===$2y$10$WxHfCRVuddwDKO88pwK5VOsSOiKYNxufCDyJwcywDKInCFwOM3GKO';
-
         if (this.authService.getCurrentUser() && this.authService.getToken()) {
-            const requestType = request.method;
             let httpRequest = null;
-            httpRequest = this.attachTokens(requestType, httpRequest, request, apiKey);
+            httpRequest = this.attachTokens(httpRequest, request, environment.apiKey);
             return next.handle(httpRequest);
         } else {
-            const httpRequest = request.clone({setHeaders: {Authorization: apiKey}});
+            const httpRequest = request.clone({setHeaders: {Authorization: environment.apiKey}});
             return next.handle(httpRequest);
         }
     }
@@ -47,21 +44,13 @@ export class RequestInterceptor implements HttpInterceptor {
      * @param apiKey {@link String}
      * @author dubdabasoduba
      */
-    private attachTokens(requestType: string, httpRequest, request: HttpRequest<any>, apiKey: string) {
-        if (requestType === appConstants.put || requestType === appConstants.post || requestType === appConstants.delete) {
-            httpRequest = request.clone({
-                setHeaders: {
-                    Authorization: this.authService.getToken() + apiKey
-                }
-            });
-            this.setCurrentUser(httpRequest);
-        } else {
-            httpRequest = request.clone({
-                setHeaders: {
-                    Authorization: apiKey
-                }
-            });
-        }
+    private attachTokens(httpRequest, request: HttpRequest<any>, apiKey: string) {
+        httpRequest = request.clone({
+            setHeaders: {
+                Authorization: "Bearer " + this.authService.getToken() + apiKey
+            }
+        });
+        this.setCurrentUser(httpRequest);
         return httpRequest;
     }
 

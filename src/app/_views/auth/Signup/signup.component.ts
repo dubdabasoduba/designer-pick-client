@@ -32,21 +32,22 @@ export class SignupComponent implements OnInit {
 
 	register() {
 		this.loading = true;
+		console.log(this.model);
 		if (AppCommons.isStringEmpty(this.model.name)) {
-			this.alertService.error('Entity name is required');
-		} else if (AppCommons.isStringEmpty(this.model.type)) {
-			this.alertService.error('Entity type is requires');
+			this.alertService.error('Full name is required');
+		} else if (AppCommons.isStringEmpty(this.model.account_type)) {
+			this.alertService.error('Account type is required');
 		} else if (AppCommons.isStringEmpty(this.model.username)) {
-			this.alertService.error('The user is required');
+			this.alertService.error('Username is required');
 		} else if (AppCommons.isStringEmpty(this.model.email)) {
 			this.alertService.error('Email Address is required');
 		} else if (AppCommons.isStringEmpty(this.model.password)) {
-			this.alertService.error('Phone number is required');
+			this.alertService.error('Password is required');
 		} else if (AppCommons.isStringEmpty(this.model.confirmPassword)) {
-			this.alertService.error('Phone number is required');
+			this.alertService.error('Confirm password is required');
 		} else {
 			const clientData: any = {
-				type: this.model.type,
+				account_type: this.model.account_type,
 				email: this.model.email,
 				name: this.model.name,
 				confirmPassword: AppCommons.generatePasswordHash(this.model.confirmPassword),
@@ -69,7 +70,7 @@ export class SignupComponent implements OnInit {
 	}
 
 	private setEmptyModel() {
-		this.model.type = appConstants.emptyEntry;
+		this.model.account_type = appConstants.emptyEntry;
 		this.model.email = appConstants.emptyEntry;
 		this.model.confirmPassword = appConstants.emptyEntry;
 		this.model.password = appConstants.emptyEntry;

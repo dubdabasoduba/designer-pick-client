@@ -7,6 +7,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AlertService, AuthenticationService, UserService} from '../../../_services';
+import {appConstants} from '../../../_helpers/app.constants';
 
 @Component({
     selector: 'app-sign-in',
@@ -18,12 +19,6 @@ export class SigninComponent implements OnInit {
     loading = false;
     loginSuccessfulReturnUrl: string;
     redirectUrl: string;
-    entityProfileUpdateUrl = '/profile-update/';
-
-    lbsUser = {
-        username: "",
-        account_type: ""
-    };
 
     constructor(
         private route: ActivatedRoute,
@@ -42,7 +37,7 @@ export class SigninComponent implements OnInit {
         this.loading = true;
         this.authenticationService.login(this.model.username, this.model.password).subscribe(
             data => {
-                this.generateRedirectUrlForProfiles();
+                this.generateRedirectUrlForProfiles(data);
                 this.forceUserUpdate(data);
             },
             error => {
@@ -52,12 +47,12 @@ export class SigninComponent implements OnInit {
         );
     }
 
-    private generateRedirectUrlForProfiles() {
-        if (this.lbsUser.account_type === "0" && this.loginSuccessfulReturnUrl === '/') {
+    private generateRedirectUrlForProfiles(lbsUser) {
+        if (lbsUser.account_type === 0 && this.loginSuccessfulReturnUrl === '/') {
             this.redirectUrl = "";
-        } else if (this.lbsUser.account_type === "1" && this.loginSuccessfulReturnUrl === '/') {
+        } else if (lbsUser.account_type === 1 && this.loginSuccessfulReturnUrl === '/') {
             this.redirectUrl = "";
-        } else if (this.lbsUser.account_type === "2" && this.loginSuccessfulReturnUrl === '/') {
+        } else if (lbsUser.account_type === 2 && this.loginSuccessfulReturnUrl === '/') {
             this.redirectUrl = "";
         } else {
             this.redirectUrl = this.loginSuccessfulReturnUrl;
@@ -70,7 +65,7 @@ export class SigninComponent implements OnInit {
      */
     private forceUserUpdate(data: any) {
         if (data.forceUpdate) {
-            this.router.navigateByUrl(this.entityProfileUpdateUrl + data.entityId + '?type=' + data.type);
+            this.router.navigateByUrl(appConstants.profileUpdateUrl + data.person);
         } else {
             this.router.navigateByUrl(this.redirectUrl);
         }

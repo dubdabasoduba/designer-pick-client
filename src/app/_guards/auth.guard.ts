@@ -18,12 +18,12 @@ export class AuthGuard implements CanActivate {
 	canActivate(
 		route: ActivatedRouteSnapshot,
 		state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-		const loggedIn = this.authService.getCurrentUser();
-		if (loggedIn != null) {
-			if (loggedIn.forceUpdate && !state.url.includes(appConstants.profileUpdateUrl)) {
-				this.router.navigate([appConstants.profileUpdateUrl + loggedIn.entityId], {
+		const lbsUser = this.authService.getCurrentUser();
+		if (lbsUser != null) {
+			if (lbsUser.forceUpdate && !state.url.includes(appConstants.profileUpdateUrl)) {
+				this.router.navigate([appConstants.profileUpdateUrl + lbsUser.uuid], {
 					queryParams: {
-						type: loggedIn.type,
+						type: lbsUser.type,
 						returnUrl: state.url
 					}
 				});

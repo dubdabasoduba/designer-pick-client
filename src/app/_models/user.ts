@@ -5,15 +5,16 @@
  */
 
 export class User {
-	id: string;
-	username: string;
-	email: string;
-	password: string;
-	confirmPassword: string;
-	verificationCode: string;
-	verify: boolean;
-	type: string;
-	forceUpdate: boolean;
-	entityId: string;
-	entityIconImage: string;
+    id: string;
+    username: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+    verificationCode: string;
+    verify: boolean;
+    type: string;
+    forceUpdate: boolean;
+    uuid: string;
+    entityIconImage: string;
+    person: string;
 }

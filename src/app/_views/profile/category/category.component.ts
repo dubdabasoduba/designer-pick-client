@@ -44,7 +44,7 @@ export class CategoryComponent implements OnInit {
 		this.setEmptyModel();
 		this.lbsUser = this.authenticationService.getCurrentUser();
 		if (this.lbsUser != null) {
-			this.entityId = this.lbsUser.entityId;
+			this.entityId = this.lbsUser.uuid;
 			this.type = Boolean(this.lbsUser.type);
 		}
 
@@ -70,12 +70,12 @@ export class CategoryComponent implements OnInit {
 			if (this.type) {
 				const person = AppCommons.createPersonObject(this.entity, this.entityId);
 				person.industry = this.createSaveIndustry(this.entity.industry);
-				person.user = this.authenticationService.getCurrentUser().entityId;
+				person.user = this.authenticationService.getCurrentUser().uuid;
 				this.updatePerson(person, false);
 			} else {
 				const entity = AppCommons.createEntityObject(this.entity, this.entityId);
 				entity.categories = this.createSaveIndustry(this.entity.categories);
-				entity.user = this.authenticationService.getCurrentUser().entityId;
+				entity.user = this.authenticationService.getCurrentUser().uuid;
 				this.updateEntity(entity, false);
 			}
 		}
@@ -101,7 +101,7 @@ export class CategoryComponent implements OnInit {
 		let entity;
 		entity = this.type ? AppCommons.createPersonObject(this.entity, this.entityId) : AppCommons.createEntityObject(this.entity,
 			this.entityId);
-		entity.user = this.authenticationService.getCurrentUser().entityId;
+		entity.user = this.authenticationService.getCurrentUser().uuid;
 
 		const categories = this.type ? entity.industry : entity.categories;
 		for (let i = 0; i < categories.length; i++) {

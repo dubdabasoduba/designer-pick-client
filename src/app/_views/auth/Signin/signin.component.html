@@ -17,25 +17,26 @@
                     <h3 class="tx-color-01 mg-b-5">Sign In</h3>
                     <p class="tx-color-03 tx-16 mg-b-40">Welcome back! Please sign in to
                         continue.</p>
+                    <app-alert></app-alert>
                     <form #f="ngForm" (ngSubmit)="f.form.valid && login()" action="#"
                           class="md-float-material"
-                          id="LoginAuths" novalidate>
+                          id="LoginAuths" data-parsley-validate="">
                         <div class="form-group">
-                            <label>Username</label>
+                            <label>Username:&nbsp;<span class="tx-danger">*</span></label>
                             <input [(ngModel)]="model.username" class="form-control"
                                    data-error="Username field is required" id="username"
                                    name="username" placeholder="Username"
-                                   required="" type="text">
+                                   required="required" type="text">
                         </div>
                         <div class="form-group">
                             <div class="d-flex justify-content-between mg-b-5">
-                                <label class="mg-b-0-f">Password</label>
+                                <label class="mg-b-0-f">Password:&nbsp;<span class="tx-danger">*</span></label>
                                 <a class="tx-13" routerLink="/reset-password">Forgot password?</a>
                             </div>
                             <input [(ngModel)]="model.password" class="form-control"
-                                   data-error="Password field is required" id=""
+                                   data-error="Password field is required" id="password"
                                    name="password" placeholder="password"
-                                   required="" type="password">
+                                   required="required" type="password">
                         </div>
                         <button type="submit" class="btn btn-brand-02 btn-block">Sign In</button>
                     </form>

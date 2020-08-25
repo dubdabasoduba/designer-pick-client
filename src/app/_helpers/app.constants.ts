@@ -174,6 +174,7 @@ export const appConstants = {
 	countriesUrl: '/countries',
 	countryUrl: '/country/',
 	profileUpdateUrl: '/profile-update/',
+	profileViewUrl: '/profile/',
 	authSIgnInUrl: '/sign-in'
 };
 

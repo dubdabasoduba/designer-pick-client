@@ -43,7 +43,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 					'assets/js/dashforge.sampledata.js',
 					'assets/js/dashboard-one.js',
 					'assets/lib/js-cookie/js.cookie.js',
-					'assets/js/dashforge.settings.js'
+					'assets/js/tooltip.js'
 				];
 
 				jsFiles.forEach((jsFile) => {

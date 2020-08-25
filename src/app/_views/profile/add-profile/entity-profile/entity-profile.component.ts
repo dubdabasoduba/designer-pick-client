@@ -48,7 +48,7 @@ export class EntityProfileComponent implements OnInit {
 		this.getIndustries();
 		this.setEmptyModel();
 		if (!AppCommons.isStringEmpty(this.entityId)) {
-			if (this.entityId !== this.authenticationService.getCurrentUser().entityId) {
+			if (this.entityId !== this.authenticationService.getCurrentUser().uuid) {
 				this.router.navigate(['/entity-profile']);
 			}
 			this.getEntity();
@@ -232,7 +232,7 @@ export class EntityProfileComponent implements OnInit {
 				this.entity.categories) : [this.commons.createIndustryObject(this.model)];
 			this.entity.status = this.model.isActive;
 			this.entity.old_email = this.oldEmail;
-			this.entity.user = this.authenticationService.getCurrentUser().entityId;
+			this.entity.user = this.authenticationService.getCurrentUser().uuid;
 			return this.entity;
 		}
 	}

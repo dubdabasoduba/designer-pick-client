@@ -64,7 +64,7 @@ export class SubsidiariesComponent implements OnInit {
 			this.alertService.error(appConstants.subsidiaryError);
 		} else {
 			const entity = AppCommons.createEntityObject(this.entity, this.entityId);
-			entity.user = this.authenticationService.getCurrentUser().entityId;
+			entity.user = this.authenticationService.getCurrentUser().uuid;
 			entity.subsidiaries = this.createChildCompany(this.entity.subsidiaries);
 			this.updateEntity(entity, false);
 		}
@@ -73,7 +73,7 @@ export class SubsidiariesComponent implements OnInit {
 	removeSubsidiary(organisations: Entity) {
 		this.loading = true;
 		const entity = AppCommons.createEntityObject(this.entity, this.entityId);
-		entity.user = this.authenticationService.getCurrentUser().entityId;
+		entity.user = this.authenticationService.getCurrentUser().uuid;
 		for (let i = 0; i < entity.subsidiaries.length; i++) {
 			if (entity.subsidiaries[i].entity._id == organisations.id) {
 				entity.subsidiaries.splice(i, 1);

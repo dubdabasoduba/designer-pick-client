@@ -41,7 +41,7 @@ export class ContactsComponent implements OnInit {
 		this.setEmptyModel();
 		this.lbsUser = this.authService.getCurrentUser();
 		if (this.lbsUser != null) {
-			this.entityId = this.lbsUser.entityId;
+			this.entityId = this.lbsUser.uuid;
 			this.type = Boolean(this.lbsUser.type);
 		}
 
@@ -57,7 +57,7 @@ export class ContactsComponent implements OnInit {
 		let entity;
 		entity = this.type ? AppCommons.createPersonObject(this.entity, this.entityId) : AppCommons.createEntityObject(this.entity,
 			this.entityId);
-		entity.user = this.authService.getCurrentUser().entityId;
+		entity.user = this.authService.getCurrentUser().uuid;
 
 		for (let i = 0; i < entity.contacts.length; i++) {
 			if (entity.contacts[i]._id == contact._id) {
@@ -84,12 +84,12 @@ export class ContactsComponent implements OnInit {
 			if (this.type) {
 				const person = AppCommons.createPersonObject(this.entity, this.entityId);
 				person.contacts = this.createContacts(this.entity.contacts);
-				person.user = this.authService.getCurrentUser().entityId;
+				person.user = this.authService.getCurrentUser().uuid;
 				this.updatePerson(person, false);
 			} else {
 				const entity = AppCommons.createEntityObject(this.entity, this.entityId);
 				entity.contacts = this.createContacts(this.entity.contacts);
-				entity.user = this.authService.getCurrentUser().entityId;
+				entity.user = this.authService.getCurrentUser().uuid;
 				this.updateEntity(entity, false);
 			}
 

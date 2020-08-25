@@ -57,7 +57,27 @@
     }
 }
 
-.sign-in-wrapper .form-group label {
+.sign-up-wrapper .form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+
+.sign-up-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+@media (min-width: 1200px) {
+    .sign-up-wrapper {
+        width: 50%;
+    }
+}
+
+.sign-up-wrapper .form-group label {
     display: block;
     margin-bottom: 5px;
 }

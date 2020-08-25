@@ -26,22 +26,22 @@
 						{{lbsUser.username}}
 					</button>
 					<div aria-labelledby="dropdownMenuButton" class="dropdown-menu">
-						<a class="dropdown-item" routerLink="/profile/{{lbsUser.entityId}}">
+						<a class="dropdown-item" routerLink="/profile/{{lbsUser.uuid}}">
 							<i aria-hidden="true" class="fa fa-cogs"></i>&nbsp;Profile&nbsp;Management</a>
-						<a *ngIf="!lbsUser.type" class="dropdown-item" routerLink="/profile/founders/{{lbsUser.entityId}}">
+						<a *ngIf="!lbsUser.type" class="dropdown-item" routerLink="/profile/founders/{{lbsUser.uuid}}">
 							<i aria-hidden="true" class="fa fa-user-circle-o"></i>&nbsp;Founders&nbsp;Management
 						</a>
 						<a *ngIf="!lbsUser.type" class="dropdown-item"
-						   routerLink="/profile/subsidiary/{{lbsUser.entityId}}">
+						   routerLink="/profile/subsidiary/{{lbsUser.uuid}}">
 							<i aria-hidden="true" class="fa fa-briefcase"></i>&nbsp;Subsidiaries&nbsp;Management
 						</a>
-						<a class="dropdown-item" routerLink="/profile/category/{{lbsUser.entityId}}">
+						<a class="dropdown-item" routerLink="/profile/category/{{lbsUser.uuid}}">
 							<i aria-hidden="true" class="fa fa-list-alt"></i>&nbsp;Operational&nbsp;Industry
 						</a>
-						<a class="dropdown-item" routerLink="/profile/social-media/{{lbsUser.entityId}}">
+						<a class="dropdown-item" routerLink="/profile/social-media/{{lbsUser.uuid}}">
 							<i aria-hidden="true" class="fa fa-comments"></i>&nbsp;Social&nbsp;Media
 						</a>
-						<a class="dropdown-item" routerLink="/profile/contacts/{{lbsUser.entityId}}">
+						<a class="dropdown-item" routerLink="/profile/contacts/{{lbsUser.uuid}}">
 							<i aria-hidden="true" class="fa fa-envelope-o"></i>&nbsp;Update&nbsp;Contacts
 						</a>
 						<div class="dropdown-divider"></div>

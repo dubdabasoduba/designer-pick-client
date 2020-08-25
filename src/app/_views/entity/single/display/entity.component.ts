@@ -197,7 +197,7 @@ export class EntityComponent implements OnInit, OnDestroy {
 			this.getFounders();
 
 			if (!this.commons.isObjectEmpty(this.authService.getCurrentUser()) && this.entityId ===
-				this.authService.getCurrentUser().entityId) {
+				this.authService.getCurrentUser().uuid) {
 				this.showEditButtons = true;
 			}
 		}
