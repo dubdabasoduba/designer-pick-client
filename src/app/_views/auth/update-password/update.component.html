@@ -17,7 +17,7 @@
                           id="updatePassword" novalidate>
                         <div class="form-group">
                             <div class="d-flex justify-content-between mg-b-5">
-                                <label class="mg-b-0-f">Password</label>
+                                <label class="mg-b-0-f">Password:&nbsp;<span class="tx-danger">*</span></label>
                             </div>
                             <input [(ngModel)]="model.password" class="form-control"
                                    data-error="Password field is required" id="password"
@@ -26,7 +26,7 @@
                         </div>
                         <div class="form-group">
                             <div class="d-flex justify-content-between mg-b-5">
-                                <label class="mg-b-0-f">Confirm Password</label>
+                                <label class="mg-b-0-f">Confirm Password:&nbsp;<span class="tx-danger">*</span></label>
                             </div>
                             <input [(ngModel)]="model.confirmPassword" class="form-control"
                                    data-error="Confirm password field is required"

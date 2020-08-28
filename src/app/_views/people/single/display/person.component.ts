@@ -53,7 +53,7 @@ export class PersonComponent implements OnInit {
 		});
 
 		if (!this.commons.isObjectEmpty(this.authService.getCurrentUser())) {
-			this.loggedInUser = this.authService.getCurrentUser().entityId;
+			this.loggedInUser = this.authService.getCurrentUser().uuid;
 		}
 
 		if (this.personId !== null) {

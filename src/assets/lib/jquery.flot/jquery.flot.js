@@ -139,7 +139,7 @@ Licensed under the MIT license.
 			context = this.context,
 			pixelRatio = this.pixelRatio;
 
-		// Resize the canvas, increasing its density based on the display's
+		// Resize the canvas, increasing its density based on the designers-dashboard's
 		// pixel ratio; basically giving it more pixels without increasing the
 		// size of its element, to take advantage of the fact that retina
 		// displays have that many more pixels in the same advertised space.
@@ -165,7 +165,7 @@ Licensed under the MIT license.
 		context.restore();
 		context.save();
 
-		// Scale the coordinate space to match the display density; so even though we
+		// Scale the coordinate space to match the designers-dashboard density; so even though we
 		// may have twice as many pixels, we still want lines and other drawing to
 		// appear at the same size; the extra pixels will just make them crisper.
 
@@ -384,7 +384,7 @@ Licensed under the MIT license.
 	// Adds a text string to the canvas text overlay.
 	//
 	// The text isn't drawn immediately; it is marked as rendering, which will
-	// result in its addition to the canvas on the next render pass.
+	// how-it-works in its addition to the canvas on the next render pass.
 	//
 	// @param {string} layer A string of space-separated CSS classes uniquely
 	//     identifying the layer containing this text.
@@ -459,7 +459,7 @@ Licensed under the MIT license.
 	// If no parameters are given, all text within the layer is removed.
 	//
 	// Note that the text is not immediately removed; it is simply marked as
-	// inactive, which will result in its removal on the next render pass.
+	// inactive, which will how-it-works in its removal on the next render pass.
 	// This avoids the performance penalty for 'clear and redraw' behavior,
 	// where we potentially get rid of all text on a layer, but will likely
 	// add back most or all of it later, as when redrawing axes, for example.
@@ -2446,7 +2446,7 @@ Licensed under the MIT license.
                         // it goes to (x1, y1), but we fill that below
                     }
 
-                    // fill triangular section, this sometimes result
+                    // fill triangular section, this sometimes how-it-works
                     // in redundant points if (x1, y1) hasn't changed
                     // from previous line to, but we just ignore that
                     ctx.lineTo(axisx.p2c(x1), axisy.p2c(y1));

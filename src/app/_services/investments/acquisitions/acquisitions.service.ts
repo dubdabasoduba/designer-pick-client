@@ -21,7 +21,7 @@ export class AcquisitionsService {
 	}
 
 	getInvestments(investorId: string, investorType: string) {
-		return this.http.get(appConstants.baseApiV1Url + '/acquisitions/' + investorId + '/' + investorType);
+		return this.http.get(appConstants.baseApiV1Url + '/clients-dashboard/' + investorId + '/' + investorType);
 	}
 
 	getAcquisition(acquisitionId: string) {

@@ -11,5 +11,6 @@
 
 export const environment = {
 	production: false,
-	baseApiUrl: 'http://rekast.server/'
+	baseApiUrl: 'http://rekast.server/',
+	apiKey: '===$2y$10$WxHfCRVuddwDKO88pwK5VOsSOiKYNxufCDyJwcywDKInCFwOM3GKO'
 };

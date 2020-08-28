@@ -44,7 +44,7 @@ export class CategoryComponent implements OnInit {
 		this.setEmptyModel();
 		this.lbsUser = this.authenticationService.getCurrentUser();
 		if (this.lbsUser != null) {
-			this.entityId = this.lbsUser.entityId;
+			this.entityId = this.lbsUser.uuid;
 			this.type = Boolean(this.lbsUser.type);
 		}
 
@@ -56,7 +56,7 @@ export class CategoryComponent implements OnInit {
 	}
 
 	/**
-	 * @desc Verifies that all required fields are added, Creates the entity|person object with the new industries added
+	 * @desc Verifies that all required fields are added, Creates the contests|person object with the new industries added
 	 * then persists it
 	 * @author dubdabasoduba
 	 */
@@ -70,12 +70,12 @@ export class CategoryComponent implements OnInit {
 			if (this.type) {
 				const person = AppCommons.createPersonObject(this.entity, this.entityId);
 				person.industry = this.createSaveIndustry(this.entity.industry);
-				person.user = this.authenticationService.getCurrentUser().entityId;
+				person.user = this.authenticationService.getCurrentUser().uuid;
 				this.updatePerson(person, false);
 			} else {
 				const entity = AppCommons.createEntityObject(this.entity, this.entityId);
 				entity.categories = this.createSaveIndustry(this.entity.categories);
-				entity.user = this.authenticationService.getCurrentUser().entityId;
+				entity.user = this.authenticationService.getCurrentUser().uuid;
 				this.updateEntity(entity, false);
 			}
 		}
@@ -92,7 +92,7 @@ export class CategoryComponent implements OnInit {
 	}
 
 	/**
-	 * @desc Get the entity object then removes the deleted category and persists the updated object to the database
+	 * @desc Get the contests object then removes the deleted category and persists the updated object to the database
 	 * @param category
 	 * @author dubdabasoduba
 	 */
@@ -101,7 +101,7 @@ export class CategoryComponent implements OnInit {
 		let entity;
 		entity = this.type ? AppCommons.createPersonObject(this.entity, this.entityId) : AppCommons.createEntityObject(this.entity,
 			this.entityId);
-		entity.user = this.authenticationService.getCurrentUser().entityId;
+		entity.user = this.authenticationService.getCurrentUser().uuid;
 
 		const categories = this.type ? entity.industry : entity.categories;
 		for (let i = 0; i < categories.length; i++) {
@@ -144,7 +144,7 @@ export class CategoryComponent implements OnInit {
 	}
 
 	/**
-	 * @desc Checks the entity type then decides which entity to get between entity|person
+	 * @desc Checks the contests type then decides which contests to get between contests|person
 	 * @author dubdabasoduba
 	 */
 	private getEntityDetails() {
@@ -177,7 +177,7 @@ export class CategoryComponent implements OnInit {
 	}
 
 	/**
-	 * @desc Gets the logged in entity details
+	 * @desc Gets the logged in contests details
 	 * @param entityId {@link String}
 	 * @author dubdabasoduba
 	 */
@@ -197,7 +197,7 @@ export class CategoryComponent implements OnInit {
 	}
 
 	/**
-	 * @desc Creates the display categories
+	 * @desc Creates the designers-dashboard categories
 	 * @param entity {@link Array}
 	 * @author dubdabasoduba
 	 */
@@ -245,7 +245,7 @@ export class CategoryComponent implements OnInit {
 	}
 
 	/**
-	 * @desc Update the entity object for the entity in question
+	 * @desc Update the contests object for the contests in question
 	 * @param entity {@link Entity}
 	 * @param type {@link Boolean}
 	 * @author dubdabasoduba

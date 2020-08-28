@@ -26,6 +26,7 @@
               "src/assets/lib/jqvmap/jqvmap.min.css",
               "src/assets/css/dashforge.css",
               "src/assets/css/dashforge.dashboard.css",
+              "src/assets/css/dashforge.profile.css",
               "src/styles.css"
             ],
             "scripts": [
@@ -43,7 +44,7 @@
               "src/assets/js/dashforge.sampledata.js",
               "src/assets/js/dashboard-one.js",
               "src/assets/lib/js-cookie/js.cookie.js",
-              "src/assets/js/dashforge.settings.js"
+              "src/assets/js/tooltip.js"
             ]
           },
           "configurations": {
@@ -157,7 +158,7 @@
       }
     }
   },
-  "defaultProject": "rekast-slim",
+  "defaultProject": "lbs",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",

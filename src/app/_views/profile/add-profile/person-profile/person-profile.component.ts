@@ -57,7 +57,7 @@ export class PersonProfileComponent implements OnInit {
 		this.setEmptyModel();
 
 		if (!AppCommons.isStringEmpty(this.personId)) {
-			if (this.personId !== this.authenticationService.getCurrentUser().entityId) {
+			if (this.personId !== this.authenticationService.getCurrentUser().uuid) {
 				this.router.navigate(['/person-profile']);
 			}
 			this.getPerson();
@@ -65,7 +65,7 @@ export class PersonProfileComponent implements OnInit {
 	}
 
 	/**
-	 * @desc checks for missing fields and saves the entity
+	 * @desc checks for missing fields and saves the contests
 	 * @author dubdabasoduba
 	 */
 	addEditPerson() {
@@ -155,7 +155,7 @@ export class PersonProfileComponent implements OnInit {
 			this.person.dob = this.model.dob;
 			this.person.gender = this.model.gender;
 			this.person.old_email = this.oldEmail;
-			this.person.user = this.authenticationService.getCurrentUser().entityId;
+			this.person.user = this.authenticationService.getCurrentUser().uuid;
 			this.person.contacts = this.commons.updateContactObject(this.model, this.person.contacts);
 			this.person.industry = this.person.industry.length > 0 ? this.commons.updateIndustryObject(this.model,
 				this.person.industry) : [this.commons.createIndustryObject(this.model)];

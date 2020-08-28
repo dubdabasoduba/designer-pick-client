@@ -59,7 +59,7 @@ export class ClaimComponent implements OnInit {
 	 */
 	claimProfile() {
 		if (AppCommons.isStringEmpty(this.userId)) {
-			this.alertService.error('The entity to be claimed is required', false);
+			this.alertService.error('The contests to be claimed is required', false);
 		} else if (AppCommons.isStringEmpty(this.claimCode)) {
 			this.alertService.error('The claim code is required', false);
 		} else if (AppCommons.isStringEmpty(this.model.username)) {
@@ -95,7 +95,7 @@ export class ClaimComponent implements OnInit {
 	}
 
 	/**
-	 * @desc Fetch the entity profile to be claimed
+	 * @desc Fetch the contests profile to be claimed
 	 * @author dubdabasoduba
 	 */
 	getEntity() {
@@ -146,7 +146,7 @@ export class ClaimComponent implements OnInit {
 	}
 
 	/**
-	 * @desc updates the email & name on the model to display the profile email & name on the initiateClaim form
+	 * @desc updates the email & name on the model to designers-dashboard the profile email & name on the initiateClaim form
 	 * @param entity
 	 * @author dubdabasoduba
 	 */

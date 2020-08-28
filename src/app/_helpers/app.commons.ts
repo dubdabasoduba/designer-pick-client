@@ -41,7 +41,7 @@ export class AppCommons {
 	}
 
 	/**
-	 * Formats the date to a format that the date input in html is able to display
+	 * Formats the date to a format that the date input in html is able to designers-dashboard
 	 * @param date
 	 * @return date in the format yyyy-MM-dd
 	 */
@@ -61,7 +61,7 @@ export class AppCommons {
 	}
 
 	/**
-	 * @desc Creates a date formatted for display on the system
+	 * @desc Creates a date formatted for designers-dashboard on the system
 	 * @param date
 	 * @author dubdabasoduba
 	 */
@@ -113,7 +113,7 @@ export class AppCommons {
 	}
 
 	/**
-	 * @desc Creates an entity object for display
+	 * @desc Creates an contests object for designers-dashboard
 	 * @param entities
 	 * @author dubdabasoduba
 	 */
@@ -129,7 +129,7 @@ export class AppCommons {
 			entity.id = entities[i]._id;
 
 			/*
-			 * Checks to see if the entity name if filled. If not then that entity is not displayed
+			 * Checks to see if the contests name if filled. If not then that contests is not displayed
 			 * */
 			if (entities[i].name !== null) {
 				entity.name = entities[i].name || appConstants.emptyEntry;
@@ -199,7 +199,7 @@ export class AppCommons {
 	}
 
 	/**
-	 * Get the main person or entity location.
+	 * Get the main person or contests location.
 	 * @param contacts -- Pass in all the user contacts
 	 * @return {string} -- Return a string of the main location from contacts
 	 */
@@ -353,9 +353,9 @@ export class AppCommons {
 	}
 
 	/**
-	 * Creates a list of sponsors to use in the funding & acquisition addition
-	 * @param sponsors -- Pass in the sponsors either people/entity
-	 * @return {any[]} -- Returns a list of formatted people/entity
+	 * Creates a list of sponsors to use in the designers-dashboard & acquisition addition
+	 * @param sponsors -- Pass in the sponsors either people/contests
+	 * @return {any[]} -- Returns a list of formatted people/contests
 	 */
 	public static createSponsorsList(sponsors: any) {
 		const sponsor = [];
@@ -371,7 +371,7 @@ export class AppCommons {
 	}
 
 	/**
-	 * @desc Create display amount
+	 * @desc Create designers-dashboard amount
 	 * @param sponsors
 	 * @author dubdabasoduba
 	 */
@@ -467,7 +467,7 @@ export class AppCommons {
 	}
 
 	/**
-	 * @desc Create an entity object to help in updating the entity the database
+	 * @desc Create an contests object to help in updating the contests the database
 	 * @param organisation {@link Object}
 	 * @param entityId {@link String}
 	 * @author dubdabasoduba
@@ -508,7 +508,7 @@ export class AppCommons {
 	}
 
 	/**
-	 * @desc Creates the entity subsidiaries for the entity
+	 * @desc Creates the contests subsidiaries for the contests
 	 * @param subsidiaries {@link any}
 	 * @author dubdabasoduba
 	 */
@@ -605,7 +605,7 @@ export class AppCommons {
 	}
 
 	/**
-	 * @desc Retrieves the primary contacts for the entity
+	 * @desc Retrieves the primary contacts for the contests
 	 * @param contacts {@link Array}
 	 * @return email {@link String}
 	 * @author dubdabasoduba
@@ -622,7 +622,7 @@ export class AppCommons {
 	}
 
 	/**
-	 * @desc Retrieves the default phonenumber for the entity
+	 * @desc Retrieves the default phonenumber for the contests
 	 * @param contacts {@link Array}
 	 * @return phonenumber {@link String}
 	 * @author dubdabasoduba
@@ -639,7 +639,7 @@ export class AppCommons {
 	}
 
 	/**
-	 * @desc Retrieves the default country for the entity
+	 * @desc Retrieves the default country for the contests
 	 * @param contacts {@link Array}
 	 * @return country {@link String}
 	 * @author dubdabasoduba
@@ -656,7 +656,7 @@ export class AppCommons {
 	}
 
 	/**
-	 * @desc Retrieves the default entity industry
+	 * @desc Retrieves the default contests industry
 	 * @param industries {@link Array}
 	 * @return category {@link String}
 	 * @author dubdabasoduba
@@ -673,7 +673,7 @@ export class AppCommons {
 	}
 
 	/**
-	 * @desc Creates the founder object for display
+	 * @desc Creates the founder object for designers-dashboard
 	 * @param founder {@link Object}
 	 * @param entity {@link Object}
 	 * @param type {@link Boolean}

@@ -20,7 +20,7 @@ export class FoundersService {
 	}
 
 	getEntityFounders(entityId) {
-		return this.http.get<Founders>(appConstants.baseApiV1Url + '/entity-founders/' + entityId);
+		return this.http.get<Founders>(appConstants.baseApiV1Url + '/contests-founders/' + entityId);
 	}
 
 	getFounderById(founderId: string) {

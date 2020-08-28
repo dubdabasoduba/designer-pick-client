@@ -47,8 +47,8 @@ export class AuthenticationService {
 
 	updatePasswordAfterReset(userId: string, verificationCode: string, password: string, confirmPassword: string) {
 		return this.http.post(appConstants.baseApiV1Url + '/auth/update-password', {
-			userId: userId,
-			verificationCode: verificationCode,
+			uuid: userId,
+			reset_code: verificationCode,
 			password: AppCommons.generatePasswordHash(password),
 			confirmPassword: AppCommons.generatePasswordHash(confirmPassword)
 		});
@@ -56,7 +56,7 @@ export class AuthenticationService {
 
 	verifyAccount(userId: string, verificationCode: string) {
 		return this.http.post(appConstants.baseApiV1Url + '/auth/verify-account', {
-			userId: userId, verificationCode: verificationCode
+			uuid: userId, verificationCode: verificationCode
 		});
 	}
 

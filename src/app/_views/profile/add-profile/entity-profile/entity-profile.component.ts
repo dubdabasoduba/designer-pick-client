@@ -48,15 +48,15 @@ export class EntityProfileComponent implements OnInit {
 		this.getIndustries();
 		this.setEmptyModel();
 		if (!AppCommons.isStringEmpty(this.entityId)) {
-			if (this.entityId !== this.authenticationService.getCurrentUser().entityId) {
-				this.router.navigate(['/entity-profile']);
+			if (this.entityId !== this.authenticationService.getCurrentUser().uuid) {
+				this.router.navigate(['/contests-profile']);
 			}
 			this.getEntity();
 		}
 	}
 
 	/**
-	 * @desc checks for missing fields and saves the entity
+	 * @desc checks for missing fields and saves the contests
 	 * @author dubdabasoduba
 	 */
 	addEditCompany() {
@@ -82,7 +82,7 @@ export class EntityProfileComponent implements OnInit {
 	}
 
 	/**
-	 * @desc Gets the entity if an update is required
+	 * @desc Gets the contests if an update is required
 	 * @author dubdabasoduba
 	 */
 	private getEntity() {
@@ -140,7 +140,7 @@ export class EntityProfileComponent implements OnInit {
 	}
 
 	/**
-	 * @desc creates and empty entity model
+	 * @desc creates and empty contests model
 	 * @author dubdabasoduba
 	 */
 	private setEmptyModel() {
@@ -160,7 +160,7 @@ export class EntityProfileComponent implements OnInit {
 	}
 
 	/**
-	 *  @desc Updates the current entity object
+	 *  @desc Updates the current contests object
 	 *  @author dubdabasoduba
 	 */
 	private updateEntity() {
@@ -169,7 +169,7 @@ export class EntityProfileComponent implements OnInit {
 			data => {
 				this.alertService.success('Entity was updated successfully');
 				this.loading = false;
-				this.router.navigate(['/entity-profile']);
+				this.router.navigate(['/contests-profile']);
 			},
 			error => {
 				this.alertService.error(error);
@@ -179,7 +179,7 @@ export class EntityProfileComponent implements OnInit {
 	}
 
 	/**
-	 * @desc Creates the entity from the entity object
+	 * @desc Creates the contests from the contests object
 	 * @author dubdabasoduba
 	 */
 	private addEntity() {
@@ -198,7 +198,7 @@ export class EntityProfileComponent implements OnInit {
 	}
 
 	/**
-	 * @desc Creates an entity object for the save purposes
+	 * @desc Creates an contests object for the save purposes
 	 * @author dubdabasoduba
 	 */
 	private createEntityObject() {
@@ -216,7 +216,7 @@ export class EntityProfileComponent implements OnInit {
 	}
 
 	/**
-	 * @desc Updates the fetched entity with the new values
+	 * @desc Updates the fetched contests with the new values
 	 * @author dubdabasoduba
 	 */
 	private updateEntityObject() {
@@ -232,13 +232,13 @@ export class EntityProfileComponent implements OnInit {
 				this.entity.categories) : [this.commons.createIndustryObject(this.model)];
 			this.entity.status = this.model.isActive;
 			this.entity.old_email = this.oldEmail;
-			this.entity.user = this.authenticationService.getCurrentUser().entityId;
+			this.entity.user = this.authenticationService.getCurrentUser().uuid;
 			return this.entity;
 		}
 	}
 
 	/**
-	 * @desc Populate the model object to prepare for the entity update
+	 * @desc Populate the model object to prepare for the contests update
 	 * @param entity
 	 * @author dubdabasoduba
 	 */

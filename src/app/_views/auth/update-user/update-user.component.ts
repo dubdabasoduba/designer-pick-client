@@ -5,259 +5,136 @@
  */
 
 import {Component, OnInit} from '@angular/core';
-import {AlertService, AuthenticationService, CountriesService, EntitiesService, IndustryService, PersonsService} from '../../../_services';
+import {AlertService, AuthenticationService, PersonsService} from '../../../_services';
 import {AppCommons} from '../../../_helpers/app.commons';
 import {ActivatedRoute, Router} from '@angular/router';
 import {appConstants} from '../../../_helpers/app.constants';
-import {ResponseModel} from '../../../_models/response.model';
 
 @Component({
-	selector: 'app-update-user',
-	templateUrl: './update-user.component.html',
-	styleUrls: ['./update-user.component.css']
+    selector: 'app-update-user',
+    templateUrl: './update-user.component.html',
+    styleUrls: ['./update-user.component.css']
 })
 export class UpdateUserComponent implements OnInit {
-	loading = false;
-	public entityId: string;
-	public entityType: string;
-	public model: any = {};
-	public countries: any;
-	public industries: any;
-	private entity: any;
-	private oldEmail: string;
-	private entityTrue = 'true';
-	private returnUrl: string;
-	private responseModel = new ResponseModel();
+    loading = false;
+    public personUuid: string;
+    public model: any = {};
+    private person: any;
+    private oldEmail: string;
+    private contactUuid: string;
+    private userUuid: string;
+    private returnUrl: string;
 
-	constructor(
-		private countriesService: CountriesService,
-		private authenticationService: AuthenticationService,
-		private industriesService: IndustryService,
-		private entitiesService: EntitiesService,
-		private personService: PersonsService,
-		private commons: AppCommons,
-		private alertService: AlertService,
-		private router: Router,
-		private route: ActivatedRoute) {
-	}
+    constructor(
+        private authenticationService: AuthenticationService,
+        private personService: PersonsService,
+        private commons: AppCommons,
+        private alertService: AlertService,
+        private router: Router,
+        private route: ActivatedRoute) {
+    }
 
-	ngOnInit() {
-		this.loading = false;
-		this.route.params.subscribe(params => {
-			this.entityId = params[appConstants.id];
-		});
+    ngOnInit() {
+        this.loading = false;
+        this.route.params.subscribe(params => {
+            this.personUuid = params[appConstants.id];
+        });
 
-		this.route.queryParams.subscribe(params => {
-			this.entityType = params.type;
-		});
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+        this.setEmptyModel();
+        this.getPerson();
+    }
 
-		this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    updateModelObject(entity: any) {
+        this.person = entity;
+        this.model.uuid = entity.uuid;
+        this.model.name = entity.name;
+        this.model.email = entity.email;
+        this.oldEmail = entity.email;
+        this.model.phonenumber = entity.phone_number;
+        this.model.dob = entity.dob;
+        this.model.gender = entity.gender === null || entity.gender === undefined ? appConstants.emptyEntry : entity.gender;
+        this.model.account_type = entity.account_type;
+        this.model.profile_image = entity.profile_image;
+        this.contactUuid = entity.contact_uuid;
+        this.userUuid = entity.user_uuid;
+    }
 
-		this.getCountries();
-		this.getIndustries();
-		this.setEmptyModel();
+    editPerson() {
+        if (AppCommons.isStringEmpty(this.model.name)) {
+            this.alertService.error('Person name cannot be empty');
+        } else if (AppCommons.isStringEmpty(this.model.account_type)) {
+            this.alertService.error('Account type cannot be empty');
+        } else if (AppCommons.isStringEmpty(this.model.dob)) {
+            this.alertService.error('Date of birth cannot be empty');
+        } else if (AppCommons.isStringEmpty(this.model.email)) {
+            this.alertService.error('Email Address cannot be empty');
+        } else if (AppCommons.isStringEmpty(this.model.phonenumber)) {
+            this.alertService.error('Phone number cannot be empty');
+        } else if (!AppCommons.isStringEmpty(this.model.gender) &&
+            (this.model.gender < 0 || this.model.gender > 3)) {
+            this.alertService.error('Please select gender from the list provided');
+        } else {
+            this.updatePerson();
+        }
+    }
 
-		if (!AppCommons.isStringEmpty(this.entityId)) {
-			if (this.entityType === this.entityTrue) {
-				this.getPerson();
-			} else {
-				this.getEntity();
-			}
-		}
-	}
+    private setEmptyModel() {
+        this.model.uuid = appConstants.emptyEntry;
+        this.model.name = appConstants.emptyEntry;
+        this.model.phonenumber = appConstants.emptyEntry;
+        this.model.account_type = appConstants.emptyEntry;
+        this.model.email = appConstants.emptyEntry;
+        this.model.dob = appConstants.emptyEntry;
+        this.model.gender = appConstants.emptyEntry;
+        this.model.account_type = appConstants.emptyEntry;
+        this.model.profile_image = appConstants.emptyEntry;
+    }
 
-	updateModelObject(entity: any) {
-		this.entity = entity;
-		this.model.id = entity._id;
-		this.model.name = entity.name;
-		this.model.region = this.commons.getDefaultCountry(entity.contacts);
-		this.model.email = this.commons.getDefaultEmail(entity.contacts);
-		this.oldEmail = this.commons.getDefaultEmail(entity.contacts);
-		this.model.phonenumber = this.commons.getDefaultPhonenumber(entity.contacts);
-		this.model.description = entity.description;
-		this.model.avatar = appConstants.emptyEntry;
-		if (this.entityType === this.entityTrue) {
-			this.model.industry = this.commons.getDefaultIndustry(entity.industry);
-			this.model.dob = AppCommons.formatEditDateDisplay(new Date(entity.dob));
-			this.model.gender = entity.gender;
-		} else {
-			this.model.industry = this.commons.getDefaultIndustry(entity.categories);
-			this.model.headquarters = entity.headquarter;
-			this.model.isActive = entity.status;
-			this.model.pitch_video = entity.pitch_video;
-			this.model.entity_type = entity.type ? '1' : '0';
-			this.model.dateFounded = AppCommons.formatEditDateDisplay(new Date(entity.founded));
-		}
-	}
+    private getPerson() {
+        this.loading = true;
+        this.personService.getPersonById(this.personUuid).subscribe(
+            data => {
+                this.updateModelObject(data[0]);
+                this.loading = false;
+            },
+            error => {
+                this.alertService.error(error);
+                this.loading = false;
+            }
+        );
+    }
 
-	editEntity() {
-		if (AppCommons.isStringEmpty(this.model.name)) {
-			this.alertService.error('Entity name cannot be empty');
-		} else if (AppCommons.isStringEmpty(this.model.industry)) {
-			this.alertService.error('Industry of operation cannot be empty');
-		} else if (AppCommons.isStringEmpty(this.model.region)) {
-			this.alertService.error('Country of operation cannot be empty');
-		} else if (AppCommons.isStringEmpty(this.model.email)) {
-			this.alertService.error('Email Address cannot be empty');
-		} else if (AppCommons.isStringEmpty(this.model.phonenumber)) {
-			this.alertService.error('Phone number cannot be empty');
-		} else if (AppCommons.isStringEmpty(this.model.headquarters)) {
-			this.alertService.error('Headquarters cannot be empty');
-		} else {
-			this.updateEntity();
-		}
-	}
+    private updatePerson() {
+        this.loading = true;
+        this.personService.updatePerson(this.updateEntityObject()).subscribe(
+            data => {
+                this.authenticationService.setForceUpdateState(false);
+                this.loading = false;
+                this.router.navigateByUrl(this.returnUrl);
+            },
+            error => {
+                this.alertService.error(error);
+                this.loading = false;
+            }
+        );
+    }
 
-	editPerson() {
-		if (AppCommons.isStringEmpty(this.model.name)) {
-			this.alertService.error('Person name cannot be empty');
-		} else if (AppCommons.isStringEmpty(this.model.industry)) {
-			this.alertService.error('Industry of operation cannot be empty');
-		} else if (AppCommons.isStringEmpty(this.model.region)) {
-			this.alertService.error('Country of operation cannot be empty');
-		} else if (AppCommons.isStringEmpty(this.model.email)) {
-			this.alertService.error('Email Address cannot be empty');
-		} else if (AppCommons.isStringEmpty(this.model.phonenumber)) {
-			this.alertService.error('Phone number cannot be empty');
-		} else if (!AppCommons.isStringEmpty(this.model.gender) &&
-			(this.model.gender < 0 || this.model.gender > 3)) {
-			this.alertService.error('Please select gender from the list provided');
-		} else {
-			this.updatePerson();
-		}
-	}
-
-	private getCountries() {
-		this.loading = true;
-		this.countriesService.getCountries(false).subscribe(
-			data => {
-				// @ts-ignore
-				this.responseModel = data;
-				this.countries = this.responseModel.results;
-				this.loading = false;
-			},
-			error => {
-				this.alertService.error(error);
-				this.loading = false;
-			}
-		);
-	}
-
-	private getIndustries() {
-		this.loading = true;
-		this.industriesService.getIndustries(false).subscribe(
-			data => {
-				// @ts-ignore
-				this.responseModel = data;
-				this.industries = this.responseModel.results;
-				this.loading = false;
-			},
-			error => {
-				this.alertService.error(error);
-				this.loading = false;
-			}
-		);
-	}
-
-	private setEmptyModel() {
-		this.model.id = appConstants.emptyEntry;
-		this.model.name = appConstants.emptyEntry;
-		this.model.industry = appConstants.emptyEntry;
-		this.model.region = appConstants.emptyEntry;
-		this.model.headquarters = appConstants.emptyEntry;
-		this.model.email = appConstants.emptyEntry;
-		this.model.phonenumber = appConstants.emptyEntry;
-		this.model.isActive = appConstants.emptyEntry;
-		this.model.description = appConstants.emptyEntry;
-		this.model.pitch_video = appConstants.emptyEntry;
-		this.model.avatar = appConstants.emptyEntry;
-		this.model.entity_type = appConstants.emptyEntry;
-		this.model.dateFounded = appConstants.emptyEntry;
-		this.model.gender = appConstants.emptyEntry;
-	}
-
-	private getPerson() {
-		this.loading = true;
-		this.personService.getPersonById(this.entityId).subscribe(
-			data => {
-				this.updateModelObject(data);
-				this.loading = false;
-			},
-			error => {
-				this.alertService.error(error);
-				this.loading = false;
-			}
-		);
-	}
-
-	private getEntity() {
-		this.loading = true;
-		this.entitiesService.getEntityById(this.entityId).subscribe(
-			data => {
-				this.updateModelObject(data);
-				this.loading = false;
-			},
-			error => {
-				this.alertService.error(error);
-				this.loading = false;
-			}
-		);
-	}
-
-	private updatePerson() {
-		this.loading = true;
-		this.personService.updatePerson(this.updateEntityObject()).subscribe(
-			data => {
-				this.authenticationService.setForceUpdateState(false);
-				this.loading = false;
-				this.router.navigateByUrl(this.returnUrl);
-			},
-			error => {
-				this.alertService.error(error);
-				this.loading = false;
-			}
-		);
-	}
-
-	private updateEntity() {
-		this.loading = true;
-		this.entitiesService.updateEntity(this.updateEntityObject()).subscribe(
-			data => {
-				this.authenticationService.setForceUpdateState(false);
-				this.loading = false;
-				this.router.navigateByUrl(this.returnUrl);
-			},
-			error => {
-				this.alertService.error(error);
-				this.loading = false;
-			}
-		);
-	}
-
-	private updateEntityObject() {
-		if (!AppCommons.isStringEmpty(this.entityId)) {
-			this.entity.name = this.model.name;
-			this.entity.description = this.model.description;
-			this.entity.contacts = this.commons.updateContactObject(this.model, this.entity.contacts);
-			this.entity.old_email = this.oldEmail;
-			this.entity.user = this.authenticationService.getCurrentUser().entityId;
-			this.entity.forceUpdate = false;
-			if (this.entityType === this.entityTrue) {
-				this.entity.industry = this.entity.industry.length > 0 ? this.commons.updateIndustryObject(this.model,
-					this.entity.industry) : [this.commons.createIndustryObject(this.model)];
-				this.entity.dob = this.model.dob;
-				this.entity.gender = this.model.gender;
-			} else {
-				this.entity.founded = this.model.dateFounded;
-				this.entity.headquarter = this.model.headquarters;
-				this.entity.pitch_video = this.model.pitch_video;
-				this.entity.companyType = this.model.entity_type;
-				this.entity.categories = this.entity.categories.length > 0 ? this.commons.updateIndustryObject(this.model,
-					this.entity.categories) : [this.commons.createIndustryObject(this.model)];
-				this.entity.status = this.model.isActive;
-			}
-
-			return this.entity;
-		}
-	}
+    private updateEntityObject() {
+        if (!AppCommons.isStringEmpty(this.personUuid)) {
+            this.person.name = this.model.name;
+            this.person.description = this.model.description;
+            this.person.email = this.oldEmail;
+            this.person.forceUpdate = false;
+            this.person.dob = this.model.dob;
+            this.person.gender = this.model.gender;
+            this.person.account_type = this.model.account_type;
+            this.person.profile_image = this.model.profile_image;
+            this.person.uuid = this.personUuid;
+            this.person.phonenumber = this.model.phonenumber;
+            this.person.contact_uuid = this.contactUuid;
+            this.person.user_uuid = this.userUuid;
+            return this.person;
+        }
+    }
 }
