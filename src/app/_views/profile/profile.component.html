@@ -16,8 +16,8 @@
 						</div>
 					</div><!-- col -->
 					<div class="col-sm-8 col-md-7 col-lg mg-t-20 mg-sm-t-0 mg-lg-t-25">
-						<h5 class="mg-b-2 tx-spacing--1">Fen Chiu Mao</h5>
-						<p class="tx-color-03 mg-b-25">@fenchiumao</p>
+						<h5 class="mg-b-2 tx-spacing--1">{{person.name}}</h5>
+						<p class="tx-color-03 mg-b-25">@{{person.username}}</p>
 						<div class="d-flex mg-b-25">
 							<a class="btn btn-xs btn-primary flex-fill mg-l-10">Edit Profile</a>
 						</div>
@@ -33,43 +33,19 @@
 							</div>
 						</div>
 					</div><!-- col -->
-					<!--<div class="col-sm-6 col-md-5 col-lg mg-t-40">
-						<label class="tx-sans tx-10 tx-semibold tx-uppercase tx-color-01 tx-spacing-1 mg-b-15">Skills</label>
-						<ul class="list-inline list-inline-skills">
-							<li class="list-inline-item"><a href="#">HTML5</a></li>
-							<li class="list-inline-item"><a href="#">Sass</a></li>
-							<li class="list-inline-item"><a href="#">CSS</a></li>
-							<li class="list-inline-item"><a href="#">React</a></li>
-							<li class="list-inline-item"><a href="#">jQuery</a></li>
-							<li class="list-inline-item"><a href="#">Angular</a></li>
-							<li class="list-inline-item"><a href="#">Wordpress</a></li>
-							<li class="list-inline-item"><a href="#">Photoshop</a></li>
-							<li class="list-inline-item"><a href="#">PHP</a></li>
-							<li class="list-inline-item"><a href="#">Node</a></li>
-							<li class="list-inline-item"><a href="#">Git</a></li>
-							<li class="list-inline-item"><a href="#">Front-End Development</a></li>
-							<li class="list-inline-item"><a href="#">Web Design</a></li>
-						</ul>
-					</div>--><!-- col -->
 					<div class="col-sm-6 col-md-5 col-lg mg-t-40">
 						<label class="tx-sans tx-10 tx-semibold tx-uppercase tx-color-01 tx-spacing-1 mg-b-15">Contact
 							Information</label>
 						<ul class="list-unstyled profile-info-list">
-							<li><i data-feather="briefcase"></i> <span class="tx-color-03">Bay Area, San Francisco, CA</span>
-							</li>
-							<li><i data-feather="home"></i> <span class="tx-color-03">Westfield, Oakland, CA</span>
-							</li>
-							<li><i data-feather="smartphone"></i> <a href="#">(+1) 012 345 6789</a>
-							</li>
-							<li><i data-feather="phone"></i> <a href="#">(+1) 987 654 3201</a></li>
-							<li><i data-feather="mail"></i> <a href="#">me@fenchiumao.me</a></li>
+							<li><i data-feather="phone"></i> <a>{{person.phone_number}}</a></li>
+							<li><i data-feather="mail"></i> <a>{{person.email}}</a></li>
 						</ul>
 					</div><!-- col -->
 					<div class="col-sm-6 col-md-5 col-lg mg-t-40">
 						<label class="tx-sans tx-10 tx-semibold tx-uppercase tx-color-01 tx-spacing-1 mg-b-15">Explore</label>
 						<nav class="nav nav-classic tx-13">
-							<a class="nav-link" href="#"><i data-feather="users"></i><span>Designers</span></a>
-							<a class="nav-link" href="#"><i data-feather="calendar"></i> <span>Contests</span></a>
+							<a class="nav-link" routerLink="/designers"><i data-feather="users"></i><span>Designers</span></a>
+							<a class="nav-link" routerLink="/contests"><i data-feather="calendar"></i> <span>Contests</span></a>
 						</nav>
 					</div><!-- col -->
 				</div><!-- row -->

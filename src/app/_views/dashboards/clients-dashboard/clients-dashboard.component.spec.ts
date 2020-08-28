@@ -6,21 +6,21 @@
 
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {FundingComponent} from './funding.component';
+import {ClientsDashboardComponent} from './clients-dashboard.component';
 
-describe('FundingComponent', () => {
-	let component: FundingComponent;
-	let fixture: ComponentFixture<FundingComponent>;
+describe('AcquisitionsComponent', () => {
+	let component: ClientsDashboardComponent;
+	let fixture: ComponentFixture<ClientsDashboardComponent>;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [FundingComponent]
+			declarations: [ClientsDashboardComponent]
 		})
 			.compileComponents();
 	}));
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(FundingComponent);
+		fixture = TestBed.createComponent(ClientsDashboardComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});

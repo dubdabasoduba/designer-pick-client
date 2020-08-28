@@ -12,20 +12,20 @@ import {
 	EntitiesService,
 	FoundersService,
 	FundingService
-} from '../../../../_services';
+} from '../../../_services';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {Entity} from '../../../../_models';
-import {AppCommons} from '../../../../_helpers/app.commons';
-import {appConstants} from '../../../../_helpers/app.constants';
+import {Entity} from '../../../_models';
+import {AppCommons} from '../../../_helpers/app.commons';
+import {appConstants} from '../../../_helpers/app.constants';
 import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
 	selector: 'app-entity',
-	templateUrl: './entity.component.html',
-	styleUrls: ['./entity.component.css']
+	templateUrl: './designers.component.html',
+	styleUrls: ['./designers.component.css']
 })
 
-export class EntityComponent implements OnInit, OnDestroy {
+export class DesignersComponent implements OnInit, OnDestroy {
 	loading = false;
 	public entity: Entity;
 	public investments: any = [];
@@ -56,18 +56,18 @@ export class EntityComponent implements OnInit, OnDestroy {
 		private route: ActivatedRoute,
 		private router: Router,
 		private sanitizer: DomSanitizer) {
-		this.navigationEnd = this.router.events.subscribe((event: any) => {
+		/*this.navigationEnd = this.router.events.subscribe((event: any) => {
 			if (event instanceof NavigationEnd) {
 				this.resetEntries();
 				this.getEntityInformation();
 			}
-		});
+		});*/
 	}
 
 	ngOnInit() {
-		if (this.commons.isObjectEmpty(this.entity)) {
+		/*if (this.commons.isObjectEmpty(this.entity)) {
 			this.getEntityInformation();
-		}
+		}*/
 	}
 
 	ngOnDestroy() {
@@ -97,7 +97,7 @@ export class EntityComponent implements OnInit, OnDestroy {
 	}
 
 	/**
-	 * @desc creates the Entity display object
+	 * @desc creates the Entity designers-dashboard object
 	 * @param entity
 	 * @author dubdabasoduba
 	 */

@@ -20,7 +20,7 @@ The plugin supports these options:
 			show: true/false
 			radius: 0-1 for percentage of fullsize, or a specified pixel length, or 'auto'
 			innerRadius: 0-1 for percentage of fullsize or a specified pixel length, for creating a donut effect
-			startAngle: 0-2 factor of PI used for starting angle (in radians) i.e 3/2 starts at the top, 0 and 2 have the same result
+			startAngle: 0-2 factor of PI used for starting angle (in radians) i.e 3/2 starts at the top, 0 and 2 have the same how-it-works
 			tilt: 0-1 for percentage to tilt the pie, where 1 is no tilt, and 0 is completely flat (nothing will show)
 			offset: {
 				top: integer value to move the pie up or down

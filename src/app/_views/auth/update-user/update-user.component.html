@@ -37,13 +37,13 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>Birthday:&nbsp;<span class="tx-danger">*</span></label>
-                                <input type="date" class="form-control hasDatepicker"
-                                       placeholder="Choose date of birth" id="updateUserDatepicker">
+                                <input type="date" class="form-control hasDatepicker" [(ngModel)]="model.dob"
+                                       placeholder="Choose date of birth" name="dob" id="dob">
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Select gender:&nbsp;<span
                                         class="tx-danger">*</span></label>
-                                <select class="custom-select">
+                                <select name="gender" id="gender" class="custom-select" [(ngModel)]="model.gender">
                                     <option value="" selected>Select gender</option>
                                     <option value="0">Female</option>
                                     <option value="1">Male</option>
@@ -55,7 +55,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>Phone number:&nbsp;<span class="tx-danger">*</span></label>
-                                <input #email="ngModel" [(ngModel)]="model.phonenumber"
+                                <input [(ngModel)]="model.phonenumber"
                                        class="form-control" data-error="Subject field is required"
                                        id="phonenumber" name="phonenumber"
                                        placeholder="Place give your phonenumber"
@@ -78,7 +78,7 @@
                             <div class="form-group custom-file">
                                 <label class="custom-file-label">Upload profile image:&nbsp;<span
                                         class="tx-danger">*</span></label>
-                                <input type="file" class="custom-file-input form-control" id="customFile">
+                                <input [(ngModel)]="model.profile_image" type="file" name="profile_image" class="custom-file-input form-control" id="profile_image">
                             </div>
                         </div>
                         <div class="form-group tx-12">

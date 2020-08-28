@@ -44,7 +44,7 @@ export class SearchService {
 	}
 
 	/**
-	 * @desc passes the entity data from the navigation component to the results component
+	 * @desc passes the contests data from the navigation component to the results component
 	 * @param data {@link Array}
 	 * @author dubdabasoduba
 	 */

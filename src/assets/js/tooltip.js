@@ -15,11 +15,12 @@ $(function () {
         $('.bg-dark').addClass('bg-gray-50').removeClass('bg-dark');
     }
 
-    var hasMode = Cookies.get('df-mode');
+    let hasMode = Cookies.get('df-mode');
     if (hasMode === 'dark') {
         darkMode();
     } else {
         lightMode();
     }
+
+    $('#updateUserDatepicker').datepicker();
 });
-$('#updateUserDatepicker').datepicker();

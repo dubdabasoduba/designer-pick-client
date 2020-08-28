@@ -5,57 +5,60 @@
  */
 import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './_views/home/home.component';
-import {EntityComponent} from './_views/entity/single/display/entity.component';
-import {EntitiesComponent} from './_views/entity/list/entities.component';
-import {SchoolsComponent} from './_views/entity/list/schools/schools.component';
-import {CompaniesComponent} from './_views/entity/list/companies/companies.component';
+import {ContestsComponent} from './_views/main_views/contests/contests.component';
+import {DesignersComponent} from './_views/main_views/designers/designers.component';
+import {CompaniesComponent} from './_views/main_views/companies/companies.component';
 import {PeopleComponent} from './_views/people/list/people.component';
 import {PersonComponent} from './_views/people/single/display/person.component';
 import {SignupComponent} from './_views/auth/Signup/signup.component';
 import {SigninComponent} from './_views/auth/Signin/signin.component';
 import {RecoveryComponent} from './_views/auth/recovery/recovery.component';
 import {UpdateComponent} from './_views/auth/update-password/update.component';
-import {FundingTypesComponent} from './_views/investments/funding/funding-types/funding-types.component';
+import {FundingTypesComponent} from './_views/dashboards/designers-dashboard/funding-types/funding-types.component';
 import {IndustryComponent} from './_views/industry/industry.component';
 import {VerifyEmailComponent} from './_views/auth/verify-email/verify.component';
-import {FundingDisplayComponent} from './_views/investments/funding/single-funding/single-funding.component';
-import {AcquisitionsComponent} from './_views/investments/acquisitions/acquisitions.component';
-import {AcquisitionDisplayComponent} from './_views/investments/acquisitions/single-acquisition/single-acquisition.component';
-import {FundingComponent} from './_views/investments/funding/funding.component';
+import {FundingDisplayComponent} from './_views/dashboards/designers-dashboard/single-funding/single-funding.component';
+import {ClientsDashboardComponent} from './_views/dashboards/clients-dashboard/clients-dashboard.component';
+import {AcquisitionDisplayComponent} from './_views/dashboards/clients-dashboard/single-acquisition/single-acquisition.component';
+import {DesignersDashboardComponent} from './_views/dashboards/designers-dashboard/designers-dashboard.component';
 import {appConstants} from './_helpers/app.constants';
 import {AuthGuard, AuthPagesGuard, EntityGuard} from './_guards';
-import {AddEditFundingComponent} from './_views/investments/funding/add-edit-funding/add-edit-funding.component';
-import {AddEditAcquisitionsComponent} from './_views/investments/acquisitions/add-edit-acquisitions/add-edit-acquisitions.component';
-import {SponsorsComponent} from './_views/investments/funding/sponsors/sponsors.component';
-import {BuyersComponent} from './_views/investments/acquisitions/buyers/buyers.component';
+import {AddEditFundingComponent} from './_views/dashboards/designers-dashboard/add-edit-funding/add-edit-funding.component';
+import {AddEditAcquisitionsComponent} from './_views/dashboards/clients-dashboard/add-edit-acquisitions/add-edit-acquisitions.component';
+import {SponsorsComponent} from './_views/dashboards/designers-dashboard/sponsors/sponsors.component';
+import {BuyersComponent} from './_views/dashboards/clients-dashboard/buyers/buyers.component';
 import {JobsComponent} from './_views/people/single/jobs/jobs.component';
 import {BoardAppointmentsComponent} from './_views/people/single/board-appointments/board-appointments.component';
 import {ProfileComponent} from './_views/profile/profile.component';
 import {EducationComponent} from './_views/people/single/education/education.component';
-import {SubsidiariesComponent} from './_views/entity/single/subsidiaries/subsidiaries.component';
+import {SubsidiariesComponent} from './_views/main_views/single/subsidiaries/subsidiaries.component';
 import {SocialMediaComponent} from './_views/profile/social-media/social-media.component';
 import {CategoryComponent} from './_views/profile/category/category.component';
 import {ContactsComponent} from './_views/profile/contacts/contacts.component';
-import {FoundersComponent} from './_views/entity/single/founders/founders.component';
+import {FoundersComponent} from './_views/main_views/single/founders/founders.component';
 import {NgModule} from '@angular/core';
 import {EntityProfileComponent} from './_views/profile/add-profile/entity-profile/entity-profile.component';
 import {PersonProfileComponent} from './_views/profile/add-profile/person-profile/person-profile.component';
 import {ClaimComponent} from './_views/auth/claim/claim.component';
-import {ResultComponent} from './_views/result/result.component';
+import {HowItWorksComponent} from './_views/main_views/how-it-works/how-it-works.component';
 import {UpdateUserComponent} from './_views/auth/update-user/update-user.component';
 
 const appRoutes: Routes = [
 	{path: '', component: SigninComponent, runGuardsAndResolvers: 'always'},
-	{path: 'search', component: ResultComponent, runGuardsAndResolvers: 'always'},
-	{path: 'entities', component: EntitiesComponent, runGuardsAndResolvers: 'always'},
-	{path: 'entity/:id', component: EntityComponent, runGuardsAndResolvers: 'always'},
+	{path: 'how-it-works', component: HowItWorksComponent, runGuardsAndResolvers: 'always'},
+	{path: 'contests', component: ContestsComponent, runGuardsAndResolvers: 'always'},
+	{path: 'designers', component: DesignersComponent, runGuardsAndResolvers: 'always'},
+	{path: 'how-it-works', component: HowItWorksComponent, runGuardsAndResolvers: 'always'},
+	{path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard], runGuardsAndResolvers: 'always'},
+	{path: 'client-dashboard/:id', component: ClientsDashboardComponent,canActivate: [AuthGuard], runGuardsAndResolvers: 'always'},
+	{path: 'designers-dashboard/:id', component: DesignersDashboardComponent,canActivate: [AuthGuard], runGuardsAndResolvers: 'always'},
 	{
 		path: 'profile/subsidiary/:id',
 		component: SubsidiariesComponent,
 		canActivate: [AuthGuard, EntityGuard],
 		runGuardsAndResolvers: 'always'
 	},
-	{path: 'schools', component: SchoolsComponent, runGuardsAndResolvers: 'always'},
+	{path: 'schools', component: DesignersComponent, runGuardsAndResolvers: 'always'},
 	{path: 'companies', component: CompaniesComponent, runGuardsAndResolvers: 'always'},
 	{path: 'people', component: PeopleComponent, runGuardsAndResolvers: 'always'},
 	{path: 'person/:id', component: PersonComponent, runGuardsAndResolvers: 'always'},
@@ -87,13 +90,13 @@ const appRoutes: Routes = [
 		runGuardsAndResolvers: 'always'
 	},
 	{
-		path: 'entity-profile',
+		path: 'contests-profile',
 		component: EntityProfileComponent,
 		canActivate: [AuthGuard],
 		runGuardsAndResolvers: 'always'
 	},
 	{
-		path: 'entity-profile/:id',
+		path: 'contests-profile/:id',
 		component: EntityProfileComponent,
 		canActivate: [AuthGuard],
 		runGuardsAndResolvers: 'always'
@@ -110,23 +113,21 @@ const appRoutes: Routes = [
 		canActivate: [AuthGuard],
 		runGuardsAndResolvers: 'always'
 	},
-	{path: 'fundings', component: FundingComponent, runGuardsAndResolvers: 'always'},
-	{path: 'funding/:id', component: FundingDisplayComponent, runGuardsAndResolvers: 'always'},
+	{path: 'designers-dashboard/:id', component: FundingDisplayComponent, runGuardsAndResolvers: 'always'},
 	{
-		path: 'add-edit-funding/:id',
+		path: 'add-edit-designers-dashboard/:id',
 		component: AddEditFundingComponent,
 		canActivate: [AuthGuard],
 		runGuardsAndResolvers: 'always'
 	},
 	{
-		path: 'add-edit-funding',
+		path: 'add-edit-designers-dashboard',
 		component: AddEditFundingComponent,
 		canActivate: [AuthGuard],
 		runGuardsAndResolvers: 'always'
 	},
 	{path: 'add-sponsor', component: SponsorsComponent, canActivate: [AuthGuard], runGuardsAndResolvers: 'always'},
 	{path: 'edit-sponsor', component: SponsorsComponent, canActivate: [AuthGuard], runGuardsAndResolvers: 'always'},
-	{path: 'acquisitions', component: AcquisitionsComponent, runGuardsAndResolvers: 'always'},
 	{path: 'acquisition/:id', component: AcquisitionDisplayComponent, runGuardsAndResolvers: 'always'},
 	{
 		path: 'add-edit-acquisition/:id',
@@ -164,7 +165,7 @@ const appRoutes: Routes = [
 		canActivate: [AuthPagesGuard],
 		runGuardsAndResolvers: 'always'
 	},
-	{path: 'funding-type/:id', component: FundingTypesComponent, runGuardsAndResolvers: 'always'},
+	{path: 'designers-dashboard-type/:id', component: FundingTypesComponent, runGuardsAndResolvers: 'always'},
 	{path: 'industry/:id', component: IndustryComponent, runGuardsAndResolvers: 'always'},
 	{
 		path: 'verify-email/:userId/:token',
@@ -172,7 +173,6 @@ const appRoutes: Routes = [
 		canActivate: [AuthPagesGuard],
 		runGuardsAndResolvers: 'always'
 	},
-	{path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard], runGuardsAndResolvers: 'always'},
 	{
 		path: 'connect-facebook',
 		redirectTo: '/' + appConstants.baseApiV1Url + '/auth/connect-facebook',

@@ -6,26 +6,26 @@
 
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {EntitiesComponent} from './entities.component';
+import {HowItWorksComponent} from './how-it-works.component';
 
-describe('EntitiesComponent', () => {
-	let component: EntitiesComponent;
-	let fixture: ComponentFixture<EntitiesComponent>;
+describe('ResultComponent', () => {
+	let component: HowItWorksComponent;
+	let fixture: ComponentFixture<HowItWorksComponent>;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [EntitiesComponent]
+			declarations: [HowItWorksComponent]
 		})
 			.compileComponents();
 	}));
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(EntitiesComponent);
+		fixture = TestBed.createComponent(HowItWorksComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});
 
-	it('should be created', () => {
+	it('should create', () => {
 		expect(component).toBeTruthy();
 	});
 });

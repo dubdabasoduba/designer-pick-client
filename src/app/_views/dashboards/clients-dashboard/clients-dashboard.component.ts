@@ -13,10 +13,10 @@ import {ResponseModel} from '../../../_models/response.model';
 
 @Component({
 	selector: 'app-acquisitions',
-	templateUrl: './acquisitions.component.html',
-	styleUrls: ['./acquisitions.component.css']
+	templateUrl: './clients-dashboard.component.html',
+	styleUrls: ['./clients-dashboard.component.css']
 })
-export class AcquisitionsComponent implements OnInit {
+export class ClientsDashboardComponent implements OnInit {
 	loading = false;
 	public acquisitions = [];
 	private investments = [];
@@ -28,7 +28,7 @@ export class AcquisitionsComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.getRecentAcquisitions();
+		//this.getRecentAcquisitions();
 	}
 
 	getRecentAcquisitions() {

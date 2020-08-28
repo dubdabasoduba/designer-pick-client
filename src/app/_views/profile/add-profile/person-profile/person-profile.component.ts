@@ -65,7 +65,7 @@ export class PersonProfileComponent implements OnInit {
 	}
 
 	/**
-	 * @desc checks for missing fields and saves the entity
+	 * @desc checks for missing fields and saves the contests
 	 * @author dubdabasoduba
 	 */
 	addEditPerson() {

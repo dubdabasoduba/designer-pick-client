@@ -123,7 +123,7 @@ export class FoundersComponent implements OnInit {
 	}
 
 	/**
-	 * @desc Executes a call to get the entity and its founders
+	 * @desc Executes a call to get the contests and its founders
 	 * @param type {@link Boolean}
 	 * @author dubdabasoduba
 	 */
@@ -187,7 +187,7 @@ export class FoundersComponent implements OnInit {
 	}
 
 	/**
-	 * @desc Gets the entity in questions
+	 * @desc Gets the contests in questions
 	 * @author dudbabasoduba
 	 */
 	private getEntity() {
@@ -205,7 +205,7 @@ export class FoundersComponent implements OnInit {
 	}
 
 	/**
-	 * @desc Gets the founders base on the entity
+	 * @desc Gets the founders base on the contests
 	 * @param trigger {@link Boolean}
 	 * @author dubdabasoduba
 	 */
@@ -255,7 +255,7 @@ export class FoundersComponent implements OnInit {
 		this.foundersService.addFounders(founder).subscribe(
 			data => {
 				if (!type) {
-					this.alertService.success('New entity founder added');
+					this.alertService.success('New contests founder added');
 				}
 				// this.refreshFounders(true);
 				this.ngOnInit();
@@ -287,7 +287,7 @@ export class FoundersComponent implements OnInit {
 	}
 
 	/**
-	 * @desc Creates the entity object for name display and the entity
+	 * @desc Creates the contests object for name designers-dashboard and the contests
 	 * @param entity {@link Array}
 	 * @author dubdabasoduba
 	 */
@@ -297,7 +297,7 @@ export class FoundersComponent implements OnInit {
 	}
 
 	/**
-	 * @desc Concatenates the entity arrays in preparation to the display for the founders selection dropdown
+	 * @desc Concatenates the contests arrays in preparation to the designers-dashboard for the founders selection dropdown
 	 * @param entities {@link Array}
 	 * @param type {@link String}
 	 * @author dubdabasoduba

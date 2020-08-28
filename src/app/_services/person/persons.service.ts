@@ -32,11 +32,11 @@ export class PersonsService {
 	}
 
 	updatePerson(person: Person) {
-		return this.http.put<Person>(appConstants.baseApiV1Url + appConstants.personUrl + person._id, person);
+		console.log(person);
+		return this.http.put<Person>(appConstants.baseApiV1Url + appConstants.personUrl + person.uuid, person);
 	}
 
 	addPerson(person: Person) {
-		console.log(person);
 		return this.http.post<Person>(appConstants.baseApiV1Url + appConstants.personUrl, person);
 	}
 }

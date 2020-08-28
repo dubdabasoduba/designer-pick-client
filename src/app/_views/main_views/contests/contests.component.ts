@@ -12,10 +12,10 @@ import {ResponseModel} from '../../../_models/response.model';
 
 @Component({
 	selector: 'app-entities',
-	templateUrl: './entities.component.html',
-	styleUrls: ['./entities.component.css']
+	templateUrl: './contests.component.html',
+	styleUrls: ['./contests.component.css']
 })
-export class EntitiesComponent implements OnInit {
+export class ContestsComponent implements OnInit {
 	loading = false;
 	public organisations = [];
 	pager = new PagesModel();
@@ -29,7 +29,7 @@ export class EntitiesComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.getEntities();
+		//this.getEntities();
 	}
 
 	getEntities() {

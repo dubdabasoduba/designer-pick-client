@@ -113,7 +113,7 @@ export class SubsidiariesComponent implements OnInit {
 	}
 
 	/**
-	 * @decs Create the subsidiary display model
+	 * @decs Create the subsidiary designers-dashboard model
 	 * @param data {@link Array}
 	 * @author dubdabasoduba
 	 */

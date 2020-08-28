@@ -13,4 +13,5 @@ export class Default {
 	status: any;
 	id: string;
 	_id: string;
+	uuid:string;
 }

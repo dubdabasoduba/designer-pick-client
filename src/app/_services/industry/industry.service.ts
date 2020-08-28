@@ -15,7 +15,7 @@ export class IndustryService {
 	}
 
 	getIndustryCompanies(industryId: string) {
-		return this.http.get(appConstants.baseApiV1Url + '/industry-entity/' + industryId);
+		return this.http.get(appConstants.baseApiV1Url + '/industry-contests/' + industryId);
 	}
 
 	getIndustryPeople(industryId: string) {

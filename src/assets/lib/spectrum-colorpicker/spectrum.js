@@ -108,7 +108,7 @@
                                     "</div>",
                                 "</div>",
                             "</div>",
-                            "<div class='sp-clear sp-clear-display'>",
+                            "<div class='sp-clear sp-clear-designers-dashboard'>",
                             "</div>",
                             "<div class='sp-hue'>",
                                 "<div class='sp-slider'></div>",
@@ -142,7 +142,7 @@
                 var swatchStyle = rgbaSupport ? ("background-color:" + tiny.toRgbString()) : "filter:" + tiny.toFilter();
                 html.push('<span title="' + formattedString + '" data-color="' + tiny.toRgbString() + '" class="' + c + '"><span class="sp-thumb-inner" style="' + swatchStyle + ';" /></span>');
             } else {
-                var cls = 'sp-clear-display';
+                var cls = 'sp-clear-designers-dashboard';
                 html.push($('<div />')
                     .append($('<span data-color="" style="background-color:transparent;" class="' + cls + '"></span>')
                         .attr('title', opts.noColorSelectedText)
@@ -756,12 +756,12 @@
                 displayColor = '';
 
              //reset background info for preview element
-            previewElement.removeClass("sp-clear-display");
+            previewElement.removeClass("sp-clear-designers-dashboard");
             previewElement.css('background-color', 'transparent');
 
             if (!realColor && allowEmpty) {
                 // Update the replaced elements background with icon indicating no color selection
-                previewElement.addClass("sp-clear-display");
+                previewElement.addClass("sp-clear-designers-dashboard");
             }
             else {
                 var realHex = realColor.toHexString(),
@@ -2262,7 +2262,7 @@
         // Try to match string input using regular expressions.
         // Keep most of the number bounding out of this function - don't worry about [0,1] or [0,100] or [0,360]
         // Just return an object and let the conversion functions handle that.
-        // This way the result will be the same whether the tinycolor is initialized with string or object.
+        // This way the how-it-works will be the same whether the tinycolor is initialized with string or object.
         var match;
         if ((match = matchers.rgb.exec(color))) {
             return { r: match[1], g: match[2], b: match[3] };

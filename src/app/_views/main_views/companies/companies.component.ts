@@ -5,10 +5,10 @@
  */
 
 import {Component, OnInit} from '@angular/core';
-import {AlertService, CompaniesService} from '../../../../_services';
-import {AppCommons} from '../../../../_helpers/app.commons';
+import {AlertService, CompaniesService} from '../../../_services';
+import {AppCommons} from '../../../_helpers/app.commons';
 import {ActivatedRoute} from '@angular/router';
-import {ResponseModel} from '../../../../_models/response.model';
+import {ResponseModel} from '../../../_models/response.model';
 
 @Component({
 	selector: 'app-companies',

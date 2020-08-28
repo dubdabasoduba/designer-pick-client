@@ -14,6 +14,7 @@ import {ActivatedRoute, NavigationStart, Router} from '@angular/router';
 })
 export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 	loadThirdPartyJsFiles;
+	public date;
 
 	constructor(
 		private route: ActivatedRoute,
@@ -56,6 +57,8 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 				});
 			}
 		});
+
+		this.date = new Date().getFullYear();
 	}
 
 	ngAfterViewInit() {

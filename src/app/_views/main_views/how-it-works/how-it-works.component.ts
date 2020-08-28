@@ -5,17 +5,17 @@
  */
 
 import {Component, OnInit} from '@angular/core';
-import {AlertService, AuthenticationService} from '../../_services';
-import {SearchService} from '../../_services/search/search.service';
-import {AppCommons} from '../../_helpers/app.commons';
-import {ResponseModel} from '../../_models/response.model';
+import {AlertService, AuthenticationService} from '../../../_services';
+import {SearchService} from '../../../_services/search/search.service';
+import {AppCommons} from '../../../_helpers/app.commons';
+import {ResponseModel} from '../../../_models/response.model';
 
 @Component({
 	selector: 'app-result',
-	templateUrl: './result.component.html',
-	styleUrls: ['./result.component.css']
+	templateUrl: './how-it-works.component.html',
+	styleUrls: ['./how-it-works.component.css']
 })
-export class ResultComponent implements OnInit {
+export class HowItWorksComponent implements OnInit {
 	loading = false;
 	public companies: any = [];
 	public persons: any = [];

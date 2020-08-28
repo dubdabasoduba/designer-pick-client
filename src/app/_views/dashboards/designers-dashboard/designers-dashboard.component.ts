@@ -13,10 +13,10 @@ import {ResponseModel} from '../../../_models/response.model';
 
 @Component({
 	selector: 'app-funding',
-	templateUrl: './funding.component.html',
-	styleUrls: ['./funding.component.css']
+	templateUrl: './designers-dashboard.component.html',
+	styleUrls: ['./designers-dashboard.component.css']
 })
-export class FundingComponent implements OnInit {
+export class DesignersDashboardComponent implements OnInit {
 	loading = false;
 	public fundings = [];
 	private investments = [];
@@ -28,7 +28,7 @@ export class FundingComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.getRecentFunding();
+		//this.getRecentFunding();
 	}
 
 	getRecentFunding() {

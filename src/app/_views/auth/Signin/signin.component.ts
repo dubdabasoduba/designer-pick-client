@@ -49,11 +49,11 @@ export class SigninComponent implements OnInit {
 
     private generateRedirectUrlForProfiles(lbsUser) {
         if (lbsUser.account_type === 0 && this.loginSuccessfulReturnUrl === '/') {
-            this.redirectUrl = "";
+            this.redirectUrl = appConstants.clientDashboardUrl + lbsUser.person;
         } else if (lbsUser.account_type === 1 && this.loginSuccessfulReturnUrl === '/') {
-            this.redirectUrl = "";
+            this.redirectUrl = appConstants.designerDashboardUrl + lbsUser.person;
         } else if (lbsUser.account_type === 2 && this.loginSuccessfulReturnUrl === '/') {
-            this.redirectUrl = "";
+            this.redirectUrl = appConstants.profileViewUrl + lbsUser.person;
         } else {
             this.redirectUrl = this.loginSuccessfulReturnUrl;
         }
