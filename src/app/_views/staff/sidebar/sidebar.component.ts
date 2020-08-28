@@ -5,8 +5,8 @@
  */
 
 import {Component, OnInit} from '@angular/core';
-import {User} from '../../_models';
-import {AuthenticationService} from '../../_services';
+import {User} from '../../../_models';
+import {AuthenticationService} from '../../../_services';
 
 @Component({
 	selector: 'app-sidebar',

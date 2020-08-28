@@ -6,11 +6,11 @@
 
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {AlertService, AuthenticationService, EntitiesService, PersonsService} from '../../../../_services';
-import {appConstants} from '../../../../_helpers/app.constants';
-import {Jobs, Person} from '../../../../_models';
-import {AppCommons} from '../../../../_helpers/app.commons';
-import {ResponseModel} from '../../../../_models/response.model';
+import {AlertService, AuthenticationService, EntitiesService, PersonsService} from '../../../../../_services';
+import {appConstants} from '../../../../../_helpers/app.constants';
+import {Jobs, Person} from '../../../../../_models';
+import {AppCommons} from '../../../../../_helpers/app.commons';
+import {ResponseModel} from '../../../../../_models/response.model';
 
 @Component({
 	selector: 'app-board-appointments',
