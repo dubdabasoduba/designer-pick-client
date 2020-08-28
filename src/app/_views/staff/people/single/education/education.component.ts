@@ -6,10 +6,10 @@
 
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {AlertService, AuthenticationService, EntitiesService, PersonsService, SchoolsService} from '../../../../_services';
-import {appConstants} from '../../../../_helpers/app.constants';
-import {Education, Person} from '../../../../_models';
-import {AppCommons} from '../../../../_helpers/app.commons';
+import {AlertService, AuthenticationService, EntitiesService, PersonsService, SchoolsService} from '../../../../../_services';
+import {appConstants} from '../../../../../_helpers/app.constants';
+import {Education, Person} from '../../../../../_models';
+import {AppCommons} from '../../../../../_helpers/app.commons';
 
 @Component({
 	selector: 'app-education',

@@ -5,12 +5,12 @@
  */
 
 import {Component, OnInit} from '@angular/core';
-import {AlertService, IndustryService} from '../../_services';
+import {AlertService, IndustryService} from '../../../_services';
 import {ActivatedRoute} from '@angular/router';
-import {AppCommons} from '../../_helpers/app.commons';
-import {Person} from '../../_models';
-import {appConstants} from '../../_helpers/app.constants';
-import {ResponseModel} from '../../_models/response.model';
+import {AppCommons} from '../../../_helpers/app.commons';
+import {Person} from '../../../_models';
+import {appConstants} from '../../../_helpers/app.constants';
+import {ResponseModel} from '../../../_models/response.model';
 
 @Component({
 	selector: 'app-industries',

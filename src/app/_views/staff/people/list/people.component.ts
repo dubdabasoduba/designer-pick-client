@@ -5,10 +5,10 @@
  */
 
 import {Component, OnInit} from '@angular/core';
-import {AlertService, PagerService, PersonsService} from '../../../_services';
-import {appConstants} from '../../../_helpers/app.constants';
-import {PagesModel, Person} from '../../../_models';
-import {ResponseModel} from '../../../_models/response.model';
+import {AlertService, PagerService, PersonsService} from '../../../../_services';
+import {appConstants} from '../../../../_helpers/app.constants';
+import {PagesModel, Person} from '../../../../_models';
+import {ResponseModel} from '../../../../_models/response.model';
 
 @Component({
 	selector: 'app-people',

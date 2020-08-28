@@ -11,11 +11,11 @@ import {AcquisitionsService,
 	ClaimService,
 	EntitiesService,
 	FundingService,
-	PersonsService} from '../../../../_services';
+	PersonsService} from '../../../../../_services';
 import {ActivatedRoute, Router} from '@angular/router';
-import {appConstants} from '../../../../_helpers/app.constants';
-import {Education, Person} from '../../../../_models';
-import {AppCommons} from '../../../../_helpers/app.commons';
+import {appConstants} from '../../../../../_helpers/app.constants';
+import {Education, Person} from '../../../../../_models';
+import {AppCommons} from '../../../../../_helpers/app.commons';
 
 @Component({
 	selector: 'app-person',
