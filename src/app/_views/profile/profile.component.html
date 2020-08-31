@@ -19,7 +19,7 @@
 						<h5 class="mg-b-2 tx-spacing--1">{{person.name}}</h5>
 						<p class="tx-color-03 mg-b-25">@{{person.username}}</p>
 						<div class="d-flex mg-b-25">
-							<a class="btn btn-xs btn-primary flex-fill mg-l-10">Edit Profile</a>
+							<a class="btn btn-xs btn-primary flex-fill mg-l-10" routerLink="/profile-update/{{person.uuid}}" [queryParams]="{returnUrl:returnUrl}">Edit Profile</a>
 						</div>
 
 						<div class="d-flex">

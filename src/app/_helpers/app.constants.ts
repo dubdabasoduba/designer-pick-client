@@ -69,7 +69,7 @@ export const appConstants = {
     endDateError: 'The end date is required',
     titleError: 'The title is required',
     entityError: 'The contests is required',
-    industryError: 'The industry is required',
+    industryError: 'The categories is required',
     greaterThanTodayStartDate: 'The start date cannot be greater that the day today',
     greaterThanTodayStartYear: 'The start year cannot be greater that the year today',
     greaterEndYearThanStartYear: 'The start year cannot be greater that the end year',
@@ -93,9 +93,9 @@ export const appConstants = {
     sameEntitySponsorError: 'An contests cannot fund itself',
     userDataMissingError: 'User data is required for you to initialize the claim request',
     founderError: 'An organisation cannot start itself',
-    industryStatus: 'Please let us know if this is the main industry of operation',
-    industryAddSuccess: 'Your industry of operation was added',
-    industryUpdateSuccess: 'Your industry of operation was update',
+    industryStatus: 'Please let us know if this is the main categories of operation',
+    industryAddSuccess: 'Your categories of operation was added',
+    industryUpdateSuccess: 'Your categories of operation was update',
 
     /*
      * The API urls endpoints
@@ -177,7 +177,7 @@ export const appConstants = {
     profileViewUrl: '/profile/',
     authSIgnInUrl: '/sign-in',
     clientDashboardUrl: 'client-dashboard/',
-    designerDashboardUrl: 'designers-dashboard-dashboard/'
+    designerDashboardUrl: 'designers-dashboard/'
 };
 
 

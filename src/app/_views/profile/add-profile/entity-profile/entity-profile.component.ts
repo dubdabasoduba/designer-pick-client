@@ -5,7 +5,7 @@
  */
 
 import {Component, OnInit} from '@angular/core';
-import {AlertService, AuthenticationService, CountriesService, EntitiesService, IndustryService, PersonsService} from '../../../../_services';
+import {AlertService, AuthenticationService, CountriesService, EntitiesService, CategoryService, PersonsService} from '../../../../_services';
 import {ActivatedRoute, Router} from '@angular/router';
 import {appConstants} from '../../../../_helpers/app.constants';
 import {Entity} from '../../../../_models';
@@ -31,7 +31,7 @@ export class EntityProfileComponent implements OnInit {
 	constructor(
 		private countriesService: CountriesService,
 		private authenticationService: AuthenticationService,
-		private industriesService: IndustryService,
+		private industriesService: CategoryService,
 		private entitiesService: EntitiesService,
 		private personService: PersonsService,
 		private alertService: AlertService,
@@ -63,7 +63,7 @@ export class EntityProfileComponent implements OnInit {
 		if (AppCommons.isStringEmpty(this.model.name)) {
 			this.alertService.error('Entity name cannot be empty');
 		} else if (AppCommons.isStringEmpty(this.model.industry)) {
-			this.alertService.error('Industry of operation cannot be empty');
+			this.alertService.error('Category of operation cannot be empty');
 		} else if (AppCommons.isStringEmpty(this.model.country)) {
 			this.alertService.error('Country of operation cannot be empty');
 		} else if (AppCommons.isStringEmpty(this.model.email)) {

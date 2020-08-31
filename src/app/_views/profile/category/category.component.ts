@@ -5,9 +5,9 @@
  */
 
 import {Component, OnInit} from '@angular/core';
-import {Entity, Industry, Person, User} from '../../../_models';
+import {Entity, Category, Person, User} from '../../../_models';
 import {ActivatedRoute} from '@angular/router';
-import {AlertService, AuthenticationService, EntitiesService, IndustryService, PersonsService} from '../../../_services';
+import {AlertService, AuthenticationService, EntitiesService, CategoryService, PersonsService} from '../../../_services';
 import {appConstants} from '../../../_helpers/app.constants';
 import {AppCommons} from '../../../_helpers/app.commons';
 import {ResponseModel} from '../../../_models/response.model';
@@ -36,7 +36,7 @@ export class CategoryComponent implements OnInit {
 		private alertService: AlertService,
 		private personService: PersonsService,
 		private entityService: EntitiesService,
-		private industryService: IndustryService,
+		private industryService: CategoryService,
 		private commons: AppCommons) {
 	}
 
@@ -83,10 +83,10 @@ export class CategoryComponent implements OnInit {
 
 	/**
 	 * @desc Pre-populate the models with the selected category for editing
-	 * @param category {@link Industry}
+	 * @param category {@link Category}
 	 * @author dubdabasoduba
 	 */
-	editIndustry(category: Industry) {
+	editIndustry(category: Category) {
 		this.model.industry = category.categoryId;
 		this.model.main = category.main === appConstants.yes ? '1' : '0';
 	}
@@ -96,7 +96,7 @@ export class CategoryComponent implements OnInit {
 	 * @param category
 	 * @author dubdabasoduba
 	 */
-	removeIndustry(category: Industry) {
+	removeIndustry(category: Category) {
 		this.loading = true;
 		let entity;
 		entity = this.type ? AppCommons.createPersonObject(this.entity, this.entityId) : AppCommons.createEntityObject(this.entity,
@@ -210,7 +210,7 @@ export class CategoryComponent implements OnInit {
 		}
 		if (entityIndustries.length > 0) {
 			entityIndustries.forEach((category) => {
-				const industry = new Industry();
+				const industry = new Category();
 				industry.id = category._id;
 				industry.main = category.main ? appConstants.yes : appConstants.no;
 				industry.category = category.category.name;
@@ -288,11 +288,11 @@ export class CategoryComponent implements OnInit {
 	}
 
 	/**
-	 * @desc Create the Industry object to save;
+	 * @desc Create the Category object to save;
 	 * @param industries
 	 */
 	private createIndustryObject(industries: any) {
-		const category = new Industry();
+		const category = new Category();
 		category.category = this.model.industry;
 		category.main = this.model.main === '1';
 		industries.push(category);

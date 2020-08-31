@@ -15,78 +15,84 @@ import {User} from '../../_models';
 
 @Injectable()
 export class AuthenticationService {
-	private _lbsUser = 'lbsUser';
+    private _lbsUser = 'lbsUser';
 
-	constructor(private http: HttpClient) {
-	}
+    constructor(private http: HttpClient) {
+    }
 
-	private static setSession(response) {
-		if (response && response.token) {
-			localStorage.setItem('lbsUser', JSON.stringify(response));
-		}
-		return response;
-	}
+    private static setSession(response) {
+        if (response && response.token) {
+            localStorage.setItem('lbsUser', JSON.stringify(response));
+        }
+        return response;
+    }
 
-	login(username: string, password: string) {
-		return this.http.post(appConstants.baseApiV1Url + '/auth/login', {
-			username: username, password: AppCommons.generatePasswordHash(password)
-		}).pipe(tap(response => AuthenticationService.setSession(response)));
-	}
+    login(username: string, password: string) {
+        return this.http.post(appConstants.baseApiV1Url + '/auth/login', {
+            username: username, password: AppCommons.generatePasswordHash(password)
+        }).pipe(tap(response => AuthenticationService.setSession(response)));
+    }
 
-	resetPasswordRequest(username: string) {
-		return this.http.post(appConstants.baseApiV1Url + '/auth/reset-password', {
-			username: username
-		});
-	}
+    resetPasswordRequest(username: string) {
+        return this.http.post(appConstants.baseApiV1Url + '/auth/reset-password', {
+            username: username
+        });
+    }
 
-	passwordChangeRequest(password: string, username: string) {
-		return this.http.post(appConstants.baseApiV1Url + appConstants.passwordChangeUrl, {
-			username: username, password: AppCommons.generatePasswordHash(password)
-		});
-	}
+    passwordChangeRequest(password: string, username: string) {
+        return this.http.post(appConstants.baseApiV1Url + appConstants.passwordChangeUrl, {
+            username: username, password: AppCommons.generatePasswordHash(password)
+        });
+    }
 
-	updatePasswordAfterReset(userId: string, verificationCode: string, password: string, confirmPassword: string) {
-		return this.http.post(appConstants.baseApiV1Url + '/auth/update-password', {
-			uuid: userId,
-			reset_code: verificationCode,
-			password: AppCommons.generatePasswordHash(password),
-			confirmPassword: AppCommons.generatePasswordHash(confirmPassword)
-		});
-	}
+    updatePasswordAfterReset(userId: string, verificationCode: string, password: string, confirmPassword: string) {
+        return this.http.post(appConstants.baseApiV1Url + '/auth/update-password', {
+            uuid: userId,
+            reset_code: verificationCode,
+            password: AppCommons.generatePasswordHash(password),
+            confirmPassword: AppCommons.generatePasswordHash(confirmPassword)
+        });
+    }
 
-	verifyAccount(userId: string, verificationCode: string) {
-		return this.http.post(appConstants.baseApiV1Url + '/auth/verify-account', {
-			uuid: userId, verificationCode: verificationCode
-		});
-	}
+    verifyAccount(userId: string, verificationCode: string) {
+        return this.http.post(appConstants.baseApiV1Url + '/auth/verify-account', {
+            uuid: userId, verificationCode: verificationCode
+        });
+    }
 
-	logout() {
-		localStorage.removeItem(this._lbsUser);
-		this.http.get(appConstants.baseApiV1Url + '/auth/logout');
-	}
+    logout() {
+        localStorage.removeItem(this._lbsUser);
+        this.http.get(appConstants.baseApiV1Url + '/auth/logout');
+    }
 
-	resendVerification(username: string) {
-		return this.http.post(appConstants.baseApiV1Url + appConstants.resendCodeUrl, {username: username});
-	}
+    resendVerification(username: string) {
+        return this.http.post(appConstants.baseApiV1Url + appConstants.resendCodeUrl, {username: username});
+    }
 
-	getToken() {
-		const currentUser = JSON.parse(localStorage.getItem(this._lbsUser));
-		return currentUser.token;
-	}
+    getToken() {
+        const currentUser = JSON.parse(localStorage.getItem(this._lbsUser));
+        return currentUser.token;
+    }
 
-	getCurrentUser(): User {
-		return JSON.parse(localStorage.getItem(this._lbsUser));
-	}
+    getCurrentUser(): User {
+        return JSON.parse(localStorage.getItem(this._lbsUser));
+    }
 
-	setUpdatedProfileImage(userImage: string) {
-		const user = JSON.parse(localStorage.getItem(this._lbsUser));
-		user.entityIconImage = userImage;
-		AuthenticationService.setSession(user);
-	}
+    setUpdatedProfileImage(userImage: string) {
+        const user = JSON.parse(localStorage.getItem(this._lbsUser));
+        user.entityIconImage = userImage;
+        AuthenticationService.setSession(user);
+    }
 
-	setForceUpdateState(forceUpdate: boolean) {
-		const user = JSON.parse(localStorage.getItem(this._lbsUser));
-		user.forceUpdate = forceUpdate;
-		AuthenticationService.setSession(user);
-	}
+    setForceUpdateState(forceUpdate: boolean) {
+        const user = JSON.parse(localStorage.getItem(this._lbsUser));
+        user.forceUpdate = forceUpdate;
+        AuthenticationService.setSession(user);
+    }
+
+    setName(name: string) {
+        const user = JSON.parse(localStorage.getItem(this._lbsUser));
+        user.name = name;
+        AuthenticationService.setSession(user);
+    }
 }

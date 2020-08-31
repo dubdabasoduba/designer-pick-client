@@ -6,7 +6,8 @@
 
 export class Default {
 	date_added: string;
-	date_updated: Date;
+	date_created: string;
+	date_updated: string;
 	updated_by: string;
 	created_by: string;
 	entityIconImage: string;

@@ -5,8 +5,10 @@
  */
 import {Default} from './default';
 
-export class Industry extends Default {
+export class Category extends Default {
 	name: string;
+	description: string;
+	is_active: string;
 	main: any;
 	category: string;
 	categoryId: string;

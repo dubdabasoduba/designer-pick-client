@@ -10,7 +10,7 @@ import {
 	AuthenticationService,
 	CountriesService,
 	EntitiesService,
-	IndustryService,
+	CategoryService,
 	PersonsService
 } from '../../../../_services';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -38,7 +38,7 @@ export class PersonProfileComponent implements OnInit {
 	constructor(
 		private countriesService: CountriesService,
 		private authenticationService: AuthenticationService,
-		private industriesService: IndustryService,
+		private industriesService: CategoryService,
 		private entitiesService: EntitiesService,
 		private personService: PersonsService,
 		private commons: AppCommons,
@@ -72,7 +72,7 @@ export class PersonProfileComponent implements OnInit {
 		if (AppCommons.isStringEmpty(this.model.personName)) {
 			this.alertService.error('Person name cannot be empty');
 		} else if (AppCommons.isStringEmpty(this.model.industry)) {
-			this.alertService.error('Industry of operation cannot be empty');
+			this.alertService.error('Category of operation cannot be empty');
 		} else if (AppCommons.isStringEmpty(this.model.country)) {
 			this.alertService.error('Country of operation cannot be empty');
 		} else if (AppCommons.isStringEmpty(this.model.email)) {

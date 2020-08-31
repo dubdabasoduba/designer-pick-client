@@ -15,7 +15,7 @@ export * from './entity/founders/founders.service';
 export * from './investments/funding/funding.service';
 export * from './investments/acquisitions/acquisitions.service';
 export * from './funding-types/funding-types.service';
-export * from './industry/industry.service';
+export * from './industry/category.service';
 export * from './countries/countries.service';
 export * from './social/social.service';
 export * from './profile/claim/claim.service';

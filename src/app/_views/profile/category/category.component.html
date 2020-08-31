@@ -38,7 +38,7 @@
 																				<thead>
 																				<tr>
 																					<th class="text-center">#</th>
-																					<th>Industry</th>
+																					<th>Category</th>
 																					<th>Is Main?</th>
 																					<th class="text-right">Actions</th>
 																				</tr>
@@ -63,7 +63,7 @@
 																							(click)="editIndustry(category)"
 																							class="btn btn-info action-btn"
 																							rel="tooltip"
-																							title="Edit Industry">
+																							title="Edit Category">
 																							<b><i
 																								class="fa fa-edit text-white"></i></b>
 																						</button>
@@ -71,7 +71,7 @@
 																							(click)="removeIndustry(category)"
 																							class="btn btn-danger action-btn"
 																							rel="tooltip"
-																							title="Remove Industry"
+																							title="Remove Category"
 																							type="button">
 																							<b><i
 																								class="fa fa-trash-o"></i></b>
@@ -82,7 +82,7 @@
 																				<tfoot>
 																				<tr>
 																					<th class="text-center">#</th>
-																					<th>Industry</th>
+																					<th>Category</th>
 																					<th>Is Main?</th>
 																					<th class="text-right">Actions</th>
 																				</tr>
@@ -130,7 +130,7 @@
 																					<div
 																						class="form-group label-floating">
 																						<label class="control-label"
-																						       for="industry">Industry&nbsp;<span><b
+																						       for="industry">Category&nbsp;<span><b
 																							class="make-me-red">*</b></span>
 																						</label>
 																						<select [(ngModel)]="model.industry"
@@ -192,7 +192,7 @@
 																							type="submit"><i
 																							aria-hidden="true"
 																							class="fa fa-send"></i>
-																							&nbsp;Update Industry&nbsp;&nbsp;
+																							&nbsp;Update Category&nbsp;&nbsp;
 																						</button>
 																						<button
 																							*ngIf="industryId == null || industryId == undefined"
@@ -201,7 +201,7 @@
 																							type="submit"><i
 																							aria-hidden="true"
 																							class="fa fa-send"></i>&nbsp;Add
-																							Industry&nbsp;
+																							Category&nbsp;
 																						</button>
 																					</div>
 																				</div>
@@ -241,3 +241,4 @@
 		</div>
 	</div>
 </div>
+

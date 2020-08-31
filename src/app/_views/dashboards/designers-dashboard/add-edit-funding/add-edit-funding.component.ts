@@ -110,7 +110,7 @@ export class AddEditFundingComponent implements OnInit {
 					funding._id = this.fundingId;
 					funding.sponsors = this.funders;
 					funding.amount = AppCommons.createAmount(this.funders).toString();
-					funding.date_updated = new Date();
+					funding.date_updated = "";
 					funding.updated_by = this.lbsUser.uuid;
 					funding.funding_date = this.funding.funding_date;
 					funding.date_added = this.funding.date_added;

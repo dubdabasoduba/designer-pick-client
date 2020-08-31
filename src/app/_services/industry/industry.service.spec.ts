@@ -6,16 +6,16 @@
 
 import {inject, TestBed} from '@angular/core/testing';
 
-import {IndustryService} from './industry.service';
+import {CategoryService} from './category.service';
 
 describe('PagerService', () => {
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			providers: [IndustryService]
+			providers: [CategoryService]
 		});
 	});
 
-	it('should be created', inject([IndustryService], (service: IndustryService) => {
+	it('should be created', inject([CategoryService], (service: CategoryService) => {
 		expect(service).toBeTruthy();
 	}));
 });

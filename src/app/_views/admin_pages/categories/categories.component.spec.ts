@@ -6,21 +6,21 @@
 
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {IndustryComponent} from './industry.component';
+import {CategoriesComponent} from './categories.component';
 
 describe('IndustryComponent', () => {
-	let component: IndustryComponent;
-	let fixture: ComponentFixture<IndustryComponent>;
+	let component: CategoriesComponent;
+	let fixture: ComponentFixture<CategoriesComponent>;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [IndustryComponent]
+			declarations: [CategoriesComponent]
 		})
 			.compileComponents();
 	}));
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(IndustryComponent);
+		fixture = TestBed.createComponent(CategoriesComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});
