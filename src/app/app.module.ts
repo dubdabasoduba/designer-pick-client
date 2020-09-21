@@ -73,6 +73,7 @@ import {EntityProfileComponent} from './_views/profile/add-profile/entity-profil
 import {ClaimComponent} from './_views/auth/claim/claim.component';
 import {AppCommons} from './_helpers/app.commons';
 import {UpdateUserComponent} from './_views/auth/update-user/update-user.component';
+import {CountriesComponent} from "./_views/admin_pages/countries/countries.component";
 
 @NgModule({
 	declarations: [
@@ -117,7 +118,8 @@ import {UpdateUserComponent} from './_views/auth/update-user/update-user.compone
 		PersonProfileComponent,
 		EntityProfileComponent,
 		ClaimComponent,
-		UpdateUserComponent
+		UpdateUserComponent,
+		CountriesComponent
 	],
 	imports: [
 		BrowserModule,

@@ -10,7 +10,7 @@ export * from './entity';
 export * from './funding';
 export * from './acquisitions';
 export * from './entity';
-export * from './Category';
+export * from './category';
 export * from './sponsors';
 export * from './founders';
 export * from './contact.model';

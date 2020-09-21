@@ -18,4 +18,5 @@ export class User {
     entityIconImage: string;
     person: string;
     name: string
+    account_type: number;
 }

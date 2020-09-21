@@ -41,6 +41,7 @@ import {PersonProfileComponent} from './_views/profile/add-profile/person-profil
 import {ClaimComponent} from './_views/auth/claim/claim.component';
 import {HowItWorksComponent} from './_views/main_views/how-it-works/how-it-works.component';
 import {UpdateUserComponent} from './_views/auth/update-user/update-user.component';
+import {CountriesComponent} from "./_views/admin_pages/countries/countries.component";
 
 const appRoutes: Routes = [
     {path: '', component: SigninComponent, runGuardsAndResolvers: 'always'},
@@ -101,6 +102,14 @@ const appRoutes: Routes = [
     },
     {
         path: 'categories/:id', component: CategoriesComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'countries', component: CountriesComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'countries/:id', component: CountriesComponent,
         canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
     },
     // probably should be cleared

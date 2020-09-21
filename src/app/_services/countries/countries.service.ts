@@ -11,16 +11,15 @@ import {appConstants} from '../../_helpers/app.constants';
 @Injectable()
 export class CountriesService {
 
-	constructor(private http: HttpClient) {
-	}
+    constructor(private http: HttpClient) {
+    }
 
-	getCountries(paginate: boolean) {
-		return this.http.get(
-			appConstants.baseApiV1Url + appConstants.countriesUrl + '?' + appConstants.pagination + paginate);
-	}
+    getCountries() {
+        return this.http.get(appConstants.baseApiV1Url + appConstants.countriesUrl);
+    }
 
-	getCountry(countryId: string) {
-		return this.http.get(appConstants.baseApiV1Url + appConstants.countryUrl + countryId);
-	}
+    getCountry(countryId: string) {
+        return this.http.get(appConstants.baseApiV1Url + appConstants.countryUrl + countryId);
+    }
 
 }

@@ -208,7 +208,7 @@ export class PersonProfileComponent implements OnInit {
 	 */
 	private getCountries() {
 		this.loading = true;
-		this.countriesService.getCountries(false).subscribe(
+		this.countriesService.getCountries().subscribe(
 			data => {
 				// @ts-ignore
 				this.responseModel = data;
