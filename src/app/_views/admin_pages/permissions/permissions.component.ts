@@ -13,12 +13,12 @@ import {Country} from "../../../_models/country";
 
 @Component({
     selector: 'app-countries',
-    templateUrl: './countries.component.html',
-    styleUrls: ['./countries.component.css']
+    templateUrl: './permissions.component.html',
+    styleUrls: ['./permissions.component.css']
 })
-export class CountriesComponent implements OnInit {
+export class PermissionsComponent implements OnInit {
     loading = false;
-    public countries: Array<Country> = [];
+    public permissions: Array<Country> = [];
     public model = {
         name: "",
         code: "",
@@ -75,7 +75,7 @@ export class CountriesComponent implements OnInit {
             country.date_updated = AppCommons.formatDisplayDate(AppCommons.convertStringToDate(data[i].date_updated));
             country.is_active = data[i].is_active === 1 ? "Yes" : "No";
             country.uuid = data[i].uuid;
-            this.countries.push(country);
+            this.permissions.push(country);
         }
     }
 }

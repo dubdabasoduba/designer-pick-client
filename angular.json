@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "rekast-slim": {
+    "lbs": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",

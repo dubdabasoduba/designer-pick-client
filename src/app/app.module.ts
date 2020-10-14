@@ -10,22 +10,22 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import {
-	AcquisitionsService,
-	AlertService,
-	AuthenticationService,
-	ClaimService,
-	CompaniesService,
-	CountriesService,
-	EntitiesService,
-	FoundersService,
-	FundingService,
-	FundingTypesService,
-	CategoryService,
-	PagerService,
-	PersonsService,
-	ProfileService,
-	SchoolsService,
-	UserService
+    AcquisitionsService,
+    AlertService,
+    AuthenticationService,
+    CategoryService,
+    ClaimService,
+    CompaniesService,
+    CountriesService,
+    EntitiesService,
+    FoundersService,
+    FundingService,
+    FundingTypesService,
+    PagerService,
+    PersonsService,
+    ProfileService,
+    SchoolsService,
+    UserService
 } from './_services';
 
 import {DesignersComponent} from './_views/main_views/designers/designers.component';
@@ -74,73 +74,75 @@ import {ClaimComponent} from './_views/auth/claim/claim.component';
 import {AppCommons} from './_helpers/app.commons';
 import {UpdateUserComponent} from './_views/auth/update-user/update-user.component';
 import {CountriesComponent} from "./_views/admin_pages/countries/countries.component";
+import {PermissionsComponent} from "./_views/admin_pages/permissions/permissions.component";
 
 @NgModule({
-	declarations: [
-		AppComponent,
-		DesignersDashboardComponent,
-		HomeComponent,
-		ContestsComponent,
-		InvestorsComponent,
-		AlertComponent,
-		DesignersComponent,
-		CompaniesComponent,
-		PeopleComponent,
-		PersonComponent,
-		DesignersDashboardComponent,
-		ClientsDashboardComponent,
-		SignupComponent,
-		SigninComponent,
-		RecoveryComponent,
-		UpdateComponent,
-		FundingTypesComponent,
-		CategoriesComponent,
-		VerifyEmailComponent,
-		FundingDisplayComponent,
-		AcquisitionDisplayComponent,
-		SidebarComponent,
-		HowItWorksComponent,
-		SettingsComponent,
-		AddEditFundingComponent,
-		AddEditAcquisitionsComponent,
-		SponsorsComponent,
-		BuyersComponent,
-		JobsComponent,
-		BoardAppointmentsComponent,
-		ProfileComponent,
-		SocialMediaComponent,
-		EducationComponent,
-		CategoryComponent,
-		ContactsComponent,
-		FoundersComponent,
-		NavigationComponent,
-		SubsidiariesComponent,
-		PersonProfileComponent,
-		EntityProfileComponent,
-		ClaimComponent,
-		UpdateUserComponent,
-		CountriesComponent
-	],
-	imports: [
-		BrowserModule,
-		FormsModule,
-		HttpClientModule,
-		AppRoutingModule
-	],
-	providers: [AuthGuard, AuthenticationService, AlertService, UserService, PersonsService,
-		EntitiesService, SchoolsService, CompaniesService, FundingService, AcquisitionsService, AuthPagesGuard,
-		AlertService, FoundersService, CategoryService, FundingTypesService, CountriesService, ClaimService, ProfileService,
-		PagerService,
-		{
-			provide: HTTP_INTERCEPTORS,
-			useClass: RequestInterceptor,
-			multi: true
-		}, {
-			provide: HTTP_INTERCEPTORS,
-			useClass: ResponseInterceptor,
-			multi: true
-		}, AppCommons],
-	bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        DesignersDashboardComponent,
+        HomeComponent,
+        ContestsComponent,
+        InvestorsComponent,
+        AlertComponent,
+        DesignersComponent,
+        CompaniesComponent,
+        PeopleComponent,
+        PersonComponent,
+        DesignersDashboardComponent,
+        ClientsDashboardComponent,
+        SignupComponent,
+        SigninComponent,
+        RecoveryComponent,
+        UpdateComponent,
+        FundingTypesComponent,
+        CategoriesComponent,
+        VerifyEmailComponent,
+        FundingDisplayComponent,
+        AcquisitionDisplayComponent,
+        SidebarComponent,
+        HowItWorksComponent,
+        SettingsComponent,
+        AddEditFundingComponent,
+        AddEditAcquisitionsComponent,
+        SponsorsComponent,
+        BuyersComponent,
+        JobsComponent,
+        BoardAppointmentsComponent,
+        ProfileComponent,
+        SocialMediaComponent,
+        EducationComponent,
+        CategoryComponent,
+        ContactsComponent,
+        FoundersComponent,
+        NavigationComponent,
+        SubsidiariesComponent,
+        PersonProfileComponent,
+        EntityProfileComponent,
+        ClaimComponent,
+        UpdateUserComponent,
+        CountriesComponent,
+        PermissionsComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpClientModule,
+        AppRoutingModule
+    ],
+    providers: [AuthGuard, AuthenticationService, AlertService, UserService, PersonsService,
+        EntitiesService, SchoolsService, CompaniesService, FundingService, AcquisitionsService, AuthPagesGuard,
+        AlertService, FoundersService, CategoryService, FundingTypesService, CountriesService, ClaimService, ProfileService,
+        PagerService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: RequestInterceptor,
+            multi: true
+        }, {
+            provide: HTTP_INTERCEPTORS,
+            useClass: ResponseInterceptor,
+            multi: true
+        }, AppCommons],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }
