@@ -17,9 +17,10 @@
                 </nav>
                 <h4 class="mg-b-0">Manage categories</h4>
             </div>
-            <!--<div class="search-form mg-t-20 mg-sm-t-0">
-                <a class="btn btn-primary" type="button" routerLink="">Add Categories</a>
-            </div>-->
+            <div *ngIf="categoryId != null && categoryId != undefined"
+                 class="search-form mg-t-20 mg-sm-t-0">
+                <a class="btn btn-primary" type="button" routerLink="/categories">Add Categories</a>
+            </div>
         </div>
     </div><!-- container -->
 </div><!-- content -->
@@ -28,44 +29,46 @@
     <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
         <div class="row">
             <div class="col-lg-12 col-xl-12">
-                    <form #f="ngForm" (ngSubmit)="f.form.valid" novalidate>
-                        <div class="form-row">
-                            <div class="form-group col-lg-6">
-                                <label>Category name:&nbsp;<span class="tx-danger">*</span></label>
-                                <input [(ngModel)]="model.name" class="form-control"
-                                       data-error="Subject field is required"
-                                       id="name" name="name"
-                                       placeholder="Please give the category name"
-                                       required="" type="text">
-                            </div>
-                            <div class="form-group col-lg">
-                                <label>Category description:&nbsp;<span class="tx-danger">*</span></label>
-                                <input [(ngModel)]="model.description"
-                                       class="form-control" data-error="Subject field is required"
-                                       id="email" name="email"
-                                       placeholder="Place give the category description"
-                                       required=""
-                                       type="email" autocomplete="off">
-                            </div>
+                <form #f="ngForm" (ngSubmit)="f.form.valid && addEditCategory()" novalidate>
+                    <div class="form-row">
+                        <div class="form-group col-lg-6">
+                            <label>Category name:&nbsp;<span class="tx-danger">*</span></label>
+                            <input [(ngModel)]="model.name" class="form-control"
+                                   data-error="Subject field is required"
+                                   id="name" name="name"
+                                   placeholder="Please give the category name"
+                                   required="" type="text">
                         </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input"
-                                           id="customSwitch1" checked="checked">
-                                    <label class="custom-control-label"
-                                           [(ngModel)]="model.is_active" for="customSwitch1">Deactivate/Activate
-                                        category</label>
-                                </div>
+                        <div class="form-group col-lg">
+                            <label>Category description:&nbsp;</label>
+                            <input [(ngModel)]="model.description"
+                                   class="form-control"
+                                   id="description" name="description"
+                                   placeholder="Place give the category description"
+                                   type="text" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input"
+                                       id="status" [(ngModel)]="model.is_active" name="status">
+                                <label class="custom-control-label" for="status">Deactivate/Activate
+                                    category</label>
+                            </div>
 
-                            </div>
-                            <div class="form-group col-md-3"></div>
-                            <div class="form-group col-md-3">
-                                <button *ngIf="categoryId == null && categoryId == undefined" class="btn btn-primary btn-block">Create category</button>
-                                <button *ngIf="categoryId != null && categoryId != undefined" class="btn btn-primary btn-block">Update category</button>
-                            </div>
                         </div>
-                    </form>
+                        <div class="form-group col-md-3"></div>
+                        <div class="form-group col-md-3">
+                            <button *ngIf="categoryId == null && categoryId == undefined"
+                                    class="btn btn-primary btn-block">Create category
+                            </button>
+                            <button *ngIf="categoryId != null && categoryId != undefined"
+                                    class="btn btn-primary btn-block">Update category
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div><!-- col -->
         </div><!-- row -->
     </div><!-- container -->
@@ -96,13 +99,12 @@
                                 <td class="text-center">{{category.date_updated}}</td>
                                 <td class="text-center">{{category.is_active}}</td>
                                 <td class="text-center">
-                                    <a class="btn btn-primary btn-xs" data-toggle="tooltip"
-                                       data-placement="top" title="Edit category" routerLink="/categories/{{category.uuid}}"><i
+                                    <a class="btn btn-primary btn-xs"
+                                       routerLink="/categories/{{category.uuid}}"><i
                                             class="far fa-edit"></i></a>&nbsp;
-                                    <a class="btn btn-danger btn-xs" data-toggle="tooltip"
-                                       data-placement="top" title="De-activate category"
-                                       routerLink=""><i
-                                            class="fas fa-trash-alt"></i></a>
+                                    <a class="btn btn-danger btn-xs"
+                                       (click)="removeCategory(category.uuid)"><i
+                                            class="fas fa-trash-alt text-white"></i></a>
                                 </td>
                             </tr>
                             </tbody>

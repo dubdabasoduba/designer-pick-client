@@ -96,6 +96,8 @@ export const appConstants = {
     industryStatus: 'Please let us know if this is the main categories of operation',
     industryAddSuccess: 'Your categories of operation was added',
     industryUpdateSuccess: 'Your categories of operation was update',
+    categoryNameError: 'The category name is required',
+    categoryStatusError: 'The category status is required',
 
     /*
      * The API urls endpoints

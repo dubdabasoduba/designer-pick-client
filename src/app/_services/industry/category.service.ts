@@ -7,6 +7,8 @@
 import {Injectable} from '@angular/core';
 import {appConstants} from '../../_helpers/app.constants';
 import {HttpClient} from '@angular/common/http';
+import {Category} from "../../_models";
+import {Observable} from "rxjs";
 
 @Injectable()
 export class CategoryService {
@@ -24,6 +26,23 @@ export class CategoryService {
 
     getCategories() {
         return this.http.get(appConstants.baseApiV1Url + '/categories');
+    }
+
+    getCategory(id: string): Observable<Category> {
+        // @ts-ignore
+        return this.http.get(appConstants.baseApiV1Url + '/category/' + id);
+    }
+
+    removeCategory(id: string) {
+        return this.http.delete(appConstants.baseApiV1Url + '/category/' + id);
+    }
+
+    addCategory(category: Category) {
+        return this.http.post(appConstants.baseApiV1Url + '/category', category);
+    }
+
+    updateCategory(category: Category) {
+        return this.http.put(appConstants.baseApiV1Url + '/category/' + category.uuid, category);
     }
 
     getIndustries(paginate: boolean) {
