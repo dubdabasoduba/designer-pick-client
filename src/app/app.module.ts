@@ -21,7 +21,7 @@ import {
     FoundersService,
     FundingService,
     FundingTypesService,
-    PagerService,
+    PagerService, PermissionsService,
     PersonsService,
     ProfileService,
     SchoolsService,
@@ -75,6 +75,7 @@ import {AppCommons} from './_helpers/app.commons';
 import {UpdateUserComponent} from './_views/auth/update-user/update-user.component';
 import {CountriesComponent} from "./_views/admin_pages/countries/countries.component";
 import {PermissionsComponent} from "./_views/admin_pages/permissions/permissions.component";
+import { RolesComponent } from './_views/admin_pages/roles/roles.component';
 
 @NgModule({
     declarations: [
@@ -121,7 +122,8 @@ import {PermissionsComponent} from "./_views/admin_pages/permissions/permissions
         ClaimComponent,
         UpdateUserComponent,
         CountriesComponent,
-        PermissionsComponent
+        PermissionsComponent,
+        RolesComponent
     ],
     imports: [
         BrowserModule,
@@ -132,7 +134,7 @@ import {PermissionsComponent} from "./_views/admin_pages/permissions/permissions
     providers: [AuthGuard, AuthenticationService, AlertService, UserService, PersonsService,
         EntitiesService, SchoolsService, CompaniesService, FundingService, AcquisitionsService, AuthPagesGuard,
         AlertService, FoundersService, CategoryService, FundingTypesService, CountriesService, ClaimService, ProfileService,
-        PagerService,
+        PagerService,PermissionsService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: RequestInterceptor,

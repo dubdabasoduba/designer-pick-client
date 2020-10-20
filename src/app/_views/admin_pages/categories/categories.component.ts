@@ -102,9 +102,9 @@ export class CategoriesComponent implements OnInit, OnDestroy {
     addEditCategory() {
         this.loading = false;
         if (this.model.name == appConstants.emptyEntry || this.model.name == undefined) {
-            this.alertService.error(appConstants.categoryNameError);
+            this.alertService.error(appConstants.nameError);
         } else if (this.model.is_active === appConstants.emptyEntry || this.model.is_active == undefined) {
-            this.alertService.error(appConstants.categoryStatusError);
+            this.alertService.error(appConstants.statusError);
         } else {
             if (AppCommons.isStringEmpty(this.categoryId)) {
                 this.addCategory();

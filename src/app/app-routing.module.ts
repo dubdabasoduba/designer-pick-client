@@ -42,6 +42,7 @@ import {ClaimComponent} from './_views/auth/claim/claim.component';
 import {HowItWorksComponent} from './_views/main_views/how-it-works/how-it-works.component';
 import {UpdateUserComponent} from './_views/auth/update-user/update-user.component';
 import {CountriesComponent} from "./_views/admin_pages/countries/countries.component";
+import {PermissionsComponent} from "./_views/admin_pages/permissions/permissions.component";
 
 const appRoutes: Routes = [
     {path: '', component: SigninComponent, runGuardsAndResolvers: 'always'},
@@ -112,6 +113,16 @@ const appRoutes: Routes = [
         path: 'countries/:id', component: CountriesComponent,
         canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
     },
+    {
+        path: 'permissions', component: PermissionsComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'permissions/:id', component: PermissionsComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+    },
+
+
     // probably should be cleared
     {
         path: 'profile/subsidiary/:id',
