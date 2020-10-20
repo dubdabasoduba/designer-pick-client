@@ -17,4 +17,6 @@ export class User {
     uuid: string;
     entityIconImage: string;
     person: string;
+    name: string
+    account_type: number;
 }

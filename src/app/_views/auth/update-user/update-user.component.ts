@@ -110,6 +110,7 @@ export class UpdateUserComponent implements OnInit {
         this.personService.updatePerson(this.updateEntityObject()).subscribe(
             data => {
                 this.authenticationService.setForceUpdateState(false);
+                this.authenticationService.setName(this.model.name);
                 this.loading = false;
                 this.router.navigateByUrl(this.returnUrl);
             },
@@ -119,6 +120,8 @@ export class UpdateUserComponent implements OnInit {
             }
         );
     }
+
+
 
     private updateEntityObject() {
         if (!AppCommons.isStringEmpty(this.personUuid)) {

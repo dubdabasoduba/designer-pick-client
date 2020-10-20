@@ -32,7 +32,6 @@ export class PersonsService {
 	}
 
 	updatePerson(person: Person) {
-		console.log(person);
 		return this.http.put<Person>(appConstants.baseApiV1Url + appConstants.personUrl + person.uuid, person);
 	}
 

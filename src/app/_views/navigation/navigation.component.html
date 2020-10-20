@@ -45,10 +45,16 @@
 			</a><!-- dropdown-link -->
 			<div [ngClass]="defaultDropdownElementsClass">
 				<div class="avatar avatar-lg mg-b-15"><img alt="" class="rounded-circle" src="assets/img/img1.png"></div>
-				<h6 class="tx-semibold mg-b-5">Katherine Pechon</h6>
-				<p class="mg-b-25 tx-12 tx-color-03">Administrator</p>
+				<h6 class="tx-semibold mg-b-5">{{lbsUser.name}}</h6>
+				<p class="mg-b-25 tx-12 tx-color-03">@{{lbsUser.username}}</p>
 
-				<a class="dropdown-item" routerLink="/profile-update/{{lbsUser.person}}"><i data-feather="edit-3"></i> Edit Profile</a>
+				<a class="dropdown-item" routerLink="/profile/{{lbsUser.person}}"><i data-feather="edit-3"></i>&nbsp;My profile</a>
+				<div class="dropdown-divider"></div>
+				<a class="dropdown-item" routerLink="/categories"><i data-feather="package"></i>&nbsp;Manage Categories</a>
+				<a class="dropdown-item" routerLink="/countries"><i data-feather="map-pin"></i>&nbsp;Manage Countries</a>
+				<a class="dropdown-item" routerLink="/profile-update/{{lbsUser.person}}"><i data-feather="grid"></i>&nbsp;Manage API Keys</a>
+				<a class="dropdown-item" routerLink="/profile-update/{{lbsUser.person}}"><i data-feather="pie-chart"></i>&nbsp;Manage Roles</a>
+				<a class="dropdown-item" routerLink="/permissions/{{lbsUser.person}}"><i data-feather="inbox"></i>&nbsp;Manage Permission</a>
 				<div class="dropdown-divider"></div>
 				<a class="dropdown-item" routerLink="/sign-out"><i data-feather="log-out"></i>Sign Out</a>
 			</div><!-- dropdown-menu -->

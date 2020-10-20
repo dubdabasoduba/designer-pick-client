@@ -6,7 +6,7 @@
 
 import {Component, OnInit} from '@angular/core';
 import {appConstants} from '../../_helpers/app.constants';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, ActivatedRouteSnapshot, Router, RouterStateSnapshot} from '@angular/router';
 import {AlertService, AuthenticationService, PersonsService, ProfileService} from '../../_services';
 import {User} from '../../_models';
 import {AppCommons} from '../../_helpers/app.commons';
@@ -19,9 +19,9 @@ import {AppCommons} from '../../_helpers/app.commons';
 export class ProfileComponent implements OnInit {
     public imageIcon = appConstants.defaultImageIcon;
     loading = false;
-    lbsUser: User;
     public person: any;
     public personUuid: string;
+    public returnUrl: string;
 
     constructor(
         private authenticationService: AuthenticationService,
@@ -37,6 +37,7 @@ export class ProfileComponent implements OnInit {
         this.route.params.subscribe(params => {
             this.personUuid = params[appConstants.id];
         });
+        this.returnUrl = this.router.url;
         this.getPerson();
     }
 
@@ -44,7 +45,6 @@ export class ProfileComponent implements OnInit {
         this.loading = true;
         this.personService.getPersonById(this.personUuid).subscribe(
             data => {
-                console.log(data[0]);
                 this.person = data[0];
                 this.loading = false;
             },

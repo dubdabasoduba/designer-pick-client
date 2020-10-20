@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "rekast-slim": {
+    "lbs": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -76,18 +76,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "rekast-slim:build"
+            "browserTarget": "lbs:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "rekast-slim:build:production"
+              "browserTarget": "lbs:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "rekast-slim:build"
+            "browserTarget": "lbs:build"
           }
         },
         "test": {
@@ -134,7 +134,7 @@
         }
       }
     },
-    "rekast-slim-e2e": {
+    "lbs-e2e": {
       "root": "",
       "sourceRoot": "e2e",
       "projectType": "application",
@@ -143,7 +143,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "rekast-slim:serve"
+            "devServerTarget": "lbs:serve"
           }
         },
         "lint": {
