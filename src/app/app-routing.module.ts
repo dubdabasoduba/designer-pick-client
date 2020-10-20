@@ -43,6 +43,9 @@ import {HowItWorksComponent} from './_views/main_views/how-it-works/how-it-works
 import {UpdateUserComponent} from './_views/auth/update-user/update-user.component';
 import {CountriesComponent} from "./_views/admin_pages/countries/countries.component";
 import {PermissionsComponent} from "./_views/admin_pages/permissions/permissions.component";
+import {RolesComponent} from "./_views/admin_pages/roles/roles/roles.component";
+import {ViewRolesComponent} from "./_views/admin_pages/roles/view-roles/view-roles.component";
+import {AddEditRolesComponent} from "./_views/admin_pages/roles/add-edit-roles/add-edit-roles.component";
 
 const appRoutes: Routes = [
     {path: '', component: SigninComponent, runGuardsAndResolvers: 'always'},
@@ -119,6 +122,22 @@ const appRoutes: Routes = [
     },
     {
         path: 'permissions/:id', component: PermissionsComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'roles', component: RolesComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'role/:id', component: ViewRolesComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'roles/add', component: AddEditRolesComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'roles/edit/:id', component: AddEditRolesComponent,
         canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
     },
 

@@ -22,3 +22,4 @@ export * from './jobs';
 export * from './socialmedia.model';
 export * from './pages.model';
 export * from './permissions';
+export * from './roles';

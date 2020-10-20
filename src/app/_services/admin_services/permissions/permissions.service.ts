@@ -21,10 +21,6 @@ export class PermissionsService {
         return this.http.get(appConstants.baseApiV1Url + '/permission/' + id);
     }
 
-    removePermission(id: string) {
-        return this.http.delete(appConstants.baseApiV1Url + '/permission/' + id);
-    }
-
     updatePermission(permission: Permissions) {
         return this.http.put(appConstants.baseApiV1Url + '/permission/' + permission.uuid, permission);
     }

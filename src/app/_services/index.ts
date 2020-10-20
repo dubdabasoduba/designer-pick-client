@@ -22,3 +22,4 @@ export * from './profile/claim/claim.service';
 export * from './profile/profile/profile.service';
 export * from './pager/pager.service';
 export * from './admin_services/permissions/permissions.service';
+export * from './admin_services/roles/roles.service';

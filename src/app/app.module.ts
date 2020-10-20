@@ -75,7 +75,9 @@ import {AppCommons} from './_helpers/app.commons';
 import {UpdateUserComponent} from './_views/auth/update-user/update-user.component';
 import {CountriesComponent} from "./_views/admin_pages/countries/countries.component";
 import {PermissionsComponent} from "./_views/admin_pages/permissions/permissions.component";
-import { RolesComponent } from './_views/admin_pages/roles/roles.component';
+import { RolesComponent } from './_views/admin_pages/roles/roles/roles.component';
+import { ViewRolesComponent } from './_views/admin_pages/roles/view-roles/view-roles.component';
+import { AddEditRolesComponent } from './_views/admin_pages/roles/add-edit-roles/add-edit-roles.component';
 
 @NgModule({
     declarations: [
@@ -123,7 +125,9 @@ import { RolesComponent } from './_views/admin_pages/roles/roles.component';
         UpdateUserComponent,
         CountriesComponent,
         PermissionsComponent,
-        RolesComponent
+        RolesComponent,
+        ViewRolesComponent,
+        AddEditRolesComponent
     ],
     imports: [
         BrowserModule,

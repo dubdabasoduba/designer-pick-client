@@ -56,8 +56,8 @@
                             </div>
 
                         </div>
-                        <div class="form-group col-md-3"></div>
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-4"></div>
+                        <div class="form-group col-md-2">
                             <button class="btn btn-primary btn-block">Update permission</button>
                         </div>
                     </div>
@@ -80,7 +80,7 @@
                                 <th class="text-center" scope="col">Date Created</th>
                                 <th class="text-center" scope="col">Date Updated</th>
                                 <th class="text-center" scope="col">Is Active</th>
-                                <th class="text-center" scope="col">Actions</th>
+                                <th class="text-center" scope="col">Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -92,7 +92,7 @@
                                 <td class="text-center">{{permission.date_updated}}</td>
                                 <td class="text-center">{{permission.is_active}}</td>
                                 <td class="text-center">
-                                    <a class="btn btn-primary btn-xs"
+                                    <a class="btn btn-info btn-xs"
                                        routerLink="/permissions/{{permission.uuid}}"><i
                                             class="far fa-edit"></i></a>&nbsp;
                                 </td>
