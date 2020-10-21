@@ -154,7 +154,7 @@ export class PermissionsComponent implements OnInit, OnDestroy {
         this.model.is_active = data.is_active === 1 ? true : false;
     }
 
-    private formatPermissions(data: any) {
+    formatPermissions(data: any) {
         for (let i = 0; i < data.length; i++) {
             let permission = new Permissions();
             permission.name = data[i].name;

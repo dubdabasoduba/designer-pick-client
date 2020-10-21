@@ -16,6 +16,10 @@ export class PermissionsService {
         return this.http.get(appConstants.baseApiV1Url + '/permissions');
     }
 
+    getSearchPermissions(searchQuery: string) {
+        return this.http.get(appConstants.baseApiV1Url + '/permissions/search?' + searchQuery);
+    }
+
     getPermission(id: string): Observable<Permissions> {
         // @ts-ignore
         return this.http.get(appConstants.baseApiV1Url + '/permission/' + id);

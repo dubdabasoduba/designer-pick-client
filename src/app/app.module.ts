@@ -21,11 +21,13 @@ import {
     FoundersService,
     FundingService,
     FundingTypesService,
-    PagerService, PermissionsService,
+    PagerService,
+    PermissionsService,
     PersonsService,
     ProfileService,
     SchoolsService,
-    UserService
+    UserService,
+    ApiKeysService
 } from './_services';
 
 import {DesignersComponent} from './_views/main_views/designers/designers.component';
@@ -78,6 +80,8 @@ import {PermissionsComponent} from "./_views/admin_pages/permissions/permissions
 import { RolesComponent } from './_views/admin_pages/roles/roles/roles.component';
 import { ViewRolesComponent } from './_views/admin_pages/roles/view-roles/view-roles.component';
 import { AddEditRolesComponent } from './_views/admin_pages/roles/add-edit-roles/add-edit-roles.component';
+import { ApiKeysComponent } from './_views/admin_pages/api-keys/api-keys.component';
+import { ViewUsersComponent } from './_views/admin_pages/users/view-users/view-users.component';
 
 @NgModule({
     declarations: [
@@ -127,7 +131,9 @@ import { AddEditRolesComponent } from './_views/admin_pages/roles/add-edit-roles
         PermissionsComponent,
         RolesComponent,
         ViewRolesComponent,
-        AddEditRolesComponent
+        AddEditRolesComponent,
+        ApiKeysComponent,
+        ViewUsersComponent
     ],
     imports: [
         BrowserModule,
@@ -138,7 +144,7 @@ import { AddEditRolesComponent } from './_views/admin_pages/roles/add-edit-roles
     providers: [AuthGuard, AuthenticationService, AlertService, UserService, PersonsService,
         EntitiesService, SchoolsService, CompaniesService, FundingService, AcquisitionsService, AuthPagesGuard,
         AlertService, FoundersService, CategoryService, FundingTypesService, CountriesService, ClaimService, ProfileService,
-        PagerService,PermissionsService,
+        PagerService,PermissionsService,ApiKeysService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: RequestInterceptor,

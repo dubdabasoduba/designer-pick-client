@@ -5,7 +5,7 @@
  */
 
 export * from './alerts/alert.service';
-export * from './user/user.service';
+export * from './admin_services/user/user.service';
 export * from './auth/authentication.service';
 export * from './person/persons.service';
 export * from './entity/entities.service';
@@ -23,3 +23,4 @@ export * from './profile/profile/profile.service';
 export * from './pager/pager.service';
 export * from './admin_services/permissions/permissions.service';
 export * from './admin_services/roles/roles.service';
+export * from './admin_services/api_keys/api-keys.service';
