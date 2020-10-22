@@ -1,0 +1,110 @@
+<!--
+  ~ Copyright (c) 2019. The content in this file is Protected by the copyright laws of kenya and owned by Re.Kast Limited.
+  ~ Reproducing it in any way or using it without permission from Re.Kast Limited will be a violation of kenyan copyrights law.
+  ~ This may be subject to prosecution according to the kenyan law
+  -->
+<app-navigation></app-navigation>
+<div class="content content-fixed bd-b">
+    <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
+        <div class="d-sm-flex align-items-center justify-content-between">
+            <div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-style1 mg-b-10">
+                        <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                        <li class="breadcrumb-item"><a routerLink="/roles">Manage Roles</a></li>
+                        <li *ngIf="roleId == null && roleId == undefined" aria-current="page"
+                            class="breadcrumb-item active">Add Role
+                        </li>
+                        <li *ngIf="roleId != null && roleId != undefined" aria-current="page"
+                            class="breadcrumb-item active">Edit Role
+                        </li>
+                    </ol>
+                </nav>
+                <h4 *ngIf="roleId == null && roleId == undefined" class="mg-b-0">Add Role</h4>
+                <h4 *ngIf="roleId != null && roleId != undefined" class="mg-b-0">Edit Role</h4>
+            </div>
+        </div>
+    </div><!-- container -->
+</div><!-- content -->
+
+<div class="content">
+    <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
+        <div class="row">
+            <div class="col-lg-12 col-xl-12">
+                <fieldset class="form-fieldset">
+                    <legend>Add Role</legend>
+                    <form #f="ngForm" (ngSubmit)="f.form.valid && addEditRole()" novalidate>
+                        <div class="form-row">
+                            <div class="form-group col-lg-5">
+                                <label>Role name:&nbsp;<span
+                                        class="tx-danger">*</span></label>
+                                <input [(ngModel)]="model.name" class="form-control"
+                                       data-error="Subject field is required"
+                                       id="name" name="name"
+                                       placeholder="Please give the role name"
+                                       required="" type="text">
+                            </div>
+                            <div class="form-group col-lg-7">
+                                <label>Role description:&nbsp;</label>
+                                <input [(ngModel)]="model.description"
+                                       class="form-control" data-error="Subject field is required"
+                                       id="description" name="description"
+                                       placeholder="Place give the role description"
+                                       type="text" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <h6>Unassigned permissions</h6>
+                                <hr/>
+                                <div class="custom-control custom-checkbox"
+                                     *ngFor="let permission of permissions;">
+                                    <input type="checkbox" class="custom-control-input"
+                                           id="permissions_{{permission.uuid}}"
+                                           (change)="assignPermissions(permission.uuid)">
+                                    <label class="custom-control-label"
+                                           for="permissions_{{permission.uuid}}">{{permission.name}}</label>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <h6>Assigned permissions</h6>
+                                <hr/>
+                                <div class="custom-control custom-checkbox"
+                                     *ngFor="let permission of assignedPermissions;">
+                                    <input type="checkbox" class="custom-control-input"
+                                           id="permissions_assigned_{{permission.uuid}}" checked
+                                           (change)="unAssignPermissions(permission.uuid)">
+                                    <label class="custom-control-label"
+                                           for="permissions_assigned_{{permission.uuid}}">{{permission.name}}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input"
+                                           [(ngModel)]="model.is_active" id="is_active"
+                                           name="is_active">
+                                    <label class="custom-control-label" for="is_active">Deactivate/Activate
+                                        Role</label>
+                                </div>
+
+                            </div>
+                            <div class="form-group col-md-4"></div>
+                            <div class="form-group col-md-2">
+                                <button *ngIf="roleId == null && roleId == undefined"
+                                        class="btn btn-primary btn-block">Create Role
+                                </button>
+                                <button *ngIf="roleId != null && roleId != undefined"
+                                        class="btn btn-primary btn-block">Update Role
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </fieldset>
+            </div><!-- col -->
+        </div><!-- row -->
+    </div><!-- container -->
+    <br/>
+</div><!-- content -->
+
