@@ -46,6 +46,7 @@ import {PermissionsComponent} from "./_views/admin_pages/permissions/permissions
 import {RolesComponent} from "./_views/admin_pages/roles/roles/roles.component";
 import {ViewRolesComponent} from "./_views/admin_pages/roles/view-roles/view-roles.component";
 import {AddEditRolesComponent} from "./_views/admin_pages/roles/add-edit-roles/add-edit-roles.component";
+import {ApiKeysComponent} from "./_views/admin_pages/api-keys/api-keys.component";
 
 const appRoutes: Routes = [
     {path: '', component: SigninComponent, runGuardsAndResolvers: 'always'},
@@ -138,6 +139,14 @@ const appRoutes: Routes = [
     },
     {
         path: 'roles/edit/:id', component: AddEditRolesComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'api-keys', component: ApiKeysComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'api-keys/:id', component: ApiKeysComponent,
         canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
     },
 
