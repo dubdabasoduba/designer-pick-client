@@ -157,7 +157,7 @@ export class ApiKeysComponent implements OnInit {
 
 
     removeApiKey(apiKeyId: string) {
-        if (confirm("Are you sure you want to delete this category?")) {
+        if (confirm("Are you sure you want to delete this API Key?")) {
             this.loading = true;
             this.apiKeysService.removeApiKey(apiKeyId).subscribe(
                 data => {
