@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, DoCheck, OnDestroy, OnInit} from '@angular/core';
 import {
     AlertService,
     AuthenticationService,
@@ -15,7 +15,7 @@ import {Permissions, Roles} from "../../../../_models";
     templateUrl: './add-edit-roles.component.html',
     styleUrls: ['./add-edit-roles.component.css']
 })
-export class AddEditRolesComponent implements OnInit, OnDestroy {
+export class AddEditRolesComponent implements OnInit, OnDestroy, DoCheck {
     loading = false;
     public model = {
         name: "",
@@ -59,6 +59,10 @@ export class AddEditRolesComponent implements OnInit, OnDestroy {
         this.loggedInUser = this.authenticationService.getCurrentUser().uuid;
     }
 
+    ngDoCheck() {
+        this.removeAlreadyAssignedPermissions();
+    }
+
     ngOnDestroy() {
         if (this.mySubscription) {
             this.mySubscription.unsubscribe();
@@ -74,6 +78,8 @@ export class AddEditRolesComponent implements OnInit, OnDestroy {
         } else {
             if (!AppCommons.isStringEmpty(this.roleId)) {
                 this.updateRole();
+            } else {
+                this.addRole();
             }
         }
     }
@@ -92,14 +98,42 @@ export class AddEditRolesComponent implements OnInit, OnDestroy {
         )
     }
 
+    private addRole() {
+        this.loading = true;
+        this.rolesService.addRole(this.createRole()).subscribe(
+            data => {
+                this.loading = false;
+                this.router.navigateByUrl('/roles');
+            },
+            error => {
+                this.alertService.error(error);
+                this.loading = false;
+            }
+        )
+    }
+
     private createRole() {
-        let roles = this.role;
-        roles.updated_by = this.loggedInUser;
+        let roles = new Roles();
+        if (!AppCommons.isStringEmpty(this.roleId)) {
+            roles = this.role;
+            roles.updated_by = this.loggedInUser;
+        } else {
+            roles.created_by = this.loggedInUser;
+        }
         roles.name = this.model.name;
         roles.description = this.model.description;
         roles.is_active = this.model.is_active;
-
+        roles.permissions = this.createRolePermissions();
         return roles;
+    }
+
+    private createRolePermissions() {
+        let permissions = "";
+        for (let permission of this.assignedPermissions) {
+            permissions += permission.uuid + ",";
+        }
+
+        return permissions.trim().replace(/,\s*$/, ""); //removes a trailing comma;
     }
 
     private getRole() {
@@ -156,7 +190,17 @@ export class AddEditRolesComponent implements OnInit, OnDestroy {
         );
     }
 
-    formatPermissions(data: any) {
+    private removeAlreadyAssignedPermissions() {
+        for (let i = 0; i < this.assignedPermissions.length; i++) {
+            for (let j = 0; j < this.permissions.length; j++) {
+                if (this.permissions[j].uuid === this.assignedPermissions[i].uuid) {
+                    this.permissions.splice(j, 1);
+                }
+            }
+        }
+    }
+
+    private formatPermissions(data: any) {
         let permissions: Array<Permissions> = [];
         for (let i = 0; i < data.length; i++) {
             let permission = new Permissions();
@@ -166,5 +210,25 @@ export class AddEditRolesComponent implements OnInit, OnDestroy {
         }
 
         return permissions
+    }
+
+    assignPermissions(permission: string) {
+        for (let i = 0; i < this.permissions.length; i++) {
+            if (permission === this.permissions[i].uuid) {
+                this.assignedPermissions.push(this.permissions[i])
+                this.permissions.splice(i, 1);
+                break;
+            }
+        }
+    }
+
+    unAssignPermissions(permission: string) {
+        for (let i = 0; i < this.assignedPermissions.length; i++) {
+            if (permission === this.assignedPermissions[i].uuid) {
+                this.permissions.push(this.assignedPermissions[i])
+                this.assignedPermissions.splice(i, 1);
+                break;
+            }
+        }
     }
 }

@@ -21,7 +21,7 @@ export class RolesService {
         return this.http.get(appConstants.baseApiV1Url + '/role/' + id);
     }
 
-    getRolePermissions(id:string) {
+    getRolePermissions(id: string) {
         return this.http.get(appConstants.baseApiV1Url + '/role-permissions/' + id);
     }
 
@@ -31,5 +31,9 @@ export class RolesService {
 
     updateRole(Role: Roles) {
         return this.http.put(appConstants.baseApiV1Url + '/role/' + Role.uuid, Role);
+    }
+
+    addRole(Role: Roles) {
+        return this.http.post(appConstants.baseApiV1Url + '/role', Role);
     }
 }

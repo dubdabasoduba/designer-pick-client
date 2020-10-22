@@ -60,7 +60,8 @@
                                 <div class="custom-control custom-checkbox"
                                      *ngFor="let permission of permissions;">
                                     <input type="checkbox" class="custom-control-input"
-                                           id="permissions_{{permission.uuid}}">
+                                           id="permissions_{{permission.uuid}}"
+                                           (change)="assignPermissions(permission.uuid)">
                                     <label class="custom-control-label"
                                            for="permissions_{{permission.uuid}}">{{permission.name}}</label>
                                 </div>
@@ -71,7 +72,8 @@
                                 <div class="custom-control custom-checkbox"
                                      *ngFor="let permission of assignedPermissions;">
                                     <input type="checkbox" class="custom-control-input"
-                                           id="permissions_assigned_{{permission.uuid}}" checked>
+                                           id="permissions_assigned_{{permission.uuid}}" checked
+                                           (change)="unAssignPermissions(permission.uuid)">
                                     <label class="custom-control-label"
                                            for="permissions_assigned_{{permission.uuid}}">{{permission.name}}</label>
                                 </div>
