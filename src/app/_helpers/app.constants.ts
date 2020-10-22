@@ -97,6 +97,7 @@ export const appConstants = {
     industryAddSuccess: 'Your categories of operation was added',
     industryUpdateSuccess: 'Your categories of operation was update',
     nameError: 'The name is required',
+    apiKeyError: 'The API key is required',
 
     /*
      * The API urls endpoints
