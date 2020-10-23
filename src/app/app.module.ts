@@ -12,6 +12,7 @@ import {FormsModule} from '@angular/forms';
 import {
     AcquisitionsService,
     AlertService,
+    ApiKeysService,
     AuthenticationService,
     CategoryService,
     ClaimService,
@@ -26,8 +27,7 @@ import {
     PersonsService,
     ProfileService,
     SchoolsService,
-    UserService,
-    ApiKeysService
+    UserService
 } from './_services';
 
 import {DesignersComponent} from './_views/main_views/designers/designers.component';
@@ -77,11 +77,13 @@ import {AppCommons} from './_helpers/app.commons';
 import {UpdateUserComponent} from './_views/auth/update-user/update-user.component';
 import {CountriesComponent} from "./_views/admin_pages/countries/countries.component";
 import {PermissionsComponent} from "./_views/admin_pages/permissions/permissions.component";
-import { RolesComponent } from './_views/admin_pages/roles/roles/roles.component';
-import { ViewRolesComponent } from './_views/admin_pages/roles/view-roles/view-roles.component';
-import { AddEditRolesComponent } from './_views/admin_pages/roles/add-edit-roles/add-edit-roles.component';
-import { ApiKeysComponent } from './_views/admin_pages/api-keys/api-keys.component';
-import { ViewUsersComponent } from './_views/admin_pages/users/view-users/view-users.component';
+import {RolesComponent} from './_views/admin_pages/roles/roles/roles.component';
+import {ViewRolesComponent} from './_views/admin_pages/roles/view-roles/view-roles.component';
+import {AddEditRolesComponent} from './_views/admin_pages/roles/add-edit-roles/add-edit-roles.component';
+import {ApiKeysComponent} from './_views/admin_pages/api-keys/api-keys.component';
+import {ViewUsersComponent} from './_views/admin_pages/users/view-users/view-users.component';
+import {AssignUserRolesComponent} from './_views/admin_pages/users/assign-user-roles/assign-user-roles.component';
+import {AddEditUsersComponent} from './_views/admin_pages/users/add-edit-users/add-edit-users.component';
 
 @NgModule({
     declarations: [
@@ -133,7 +135,9 @@ import { ViewUsersComponent } from './_views/admin_pages/users/view-users/view-u
         ViewRolesComponent,
         AddEditRolesComponent,
         ApiKeysComponent,
-        ViewUsersComponent
+        ViewUsersComponent,
+        AssignUserRolesComponent,
+        AddEditUsersComponent
     ],
     imports: [
         BrowserModule,
@@ -144,7 +148,7 @@ import { ViewUsersComponent } from './_views/admin_pages/users/view-users/view-u
     providers: [AuthGuard, AuthenticationService, AlertService, UserService, PersonsService,
         EntitiesService, SchoolsService, CompaniesService, FundingService, AcquisitionsService, AuthPagesGuard,
         AlertService, FoundersService, CategoryService, FundingTypesService, CountriesService, ClaimService, ProfileService,
-        PagerService,PermissionsService,ApiKeysService,
+        PagerService, PermissionsService, ApiKeysService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: RequestInterceptor,
