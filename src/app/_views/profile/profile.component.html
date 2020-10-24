@@ -5,261 +5,281 @@
   -->
 <app-navigation></app-navigation>
 <div class="content content-fixed content-profile">
-	<div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
-		<div class="media d-block d-lg-flex">
-			<div class="profile-sidebar pd-lg-r-25">
-				<div class="row">
-					<div class="col-sm-3 col-md-2 col-lg">
-						<div class="avatar avatar-xxl avatar-online"><img alt=""
-																		  class="rounded-circle"
-																		  src="assets/img/img16.jpg">
-						</div>
-					</div><!-- col -->
-					<div class="col-sm-8 col-md-7 col-lg mg-t-20 mg-sm-t-0 mg-lg-t-25">
-						<h5 class="mg-b-2 tx-spacing--1">{{person.name}}</h5>
-						<p class="tx-color-03 mg-b-25">@{{person.username}}</p>
-						<div class="d-flex mg-b-25">
-							<a class="btn btn-xs btn-primary flex-fill mg-l-10" routerLink="/profile-update/{{person.uuid}}" [queryParams]="{returnUrl:returnUrl}">Edit Profile</a>
-						</div>
+    <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
+        <div class="media d-block d-lg-flex">
+            <div class="profile-sidebar pd-lg-r-25">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 align-content-center">
+                        <div class="avatar avatar-xxl avatar-online">
+                            <img alt="{{person.name}}" class="rounded-circle"
+                                 src="assets/img/img16.jpg">
+                        </div>
+                    </div><!-- col -->
+                    <div class="col-sm-8 col-md-7 col-lg mg-t-20 mg-sm-t-0 mg-lg-t-25">
+                        <h5 class="mg-b-2 tx-spacing--1">{{person.name}}</h5>
+                        <p class="tx-color-03 mg-b-25">@{{person.username}}</p>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="d-flex mg-b-25">
+                                    <a class="btn btn-xs btn-outline-secondary flex-fill"
+                                       routerLink="/profile-update/{{person.uuid}}"
+                                       [queryParams]="{returnUrl:returnUrl}"><i
+                                            class="fas fa-user-edit"></i>&nbsp;Edit
+                                        Profile</a>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="d-flex mg-b-25">
+                                    <a class="btn btn-xs btn-outline-dark flex-fill"
+                                       routerLink="/profile/update-credentials//{{person.uuid}}"
+                                       [queryParams]="{returnUrl:returnUrl}"><i
+                                            class="fas fa-user-lock"></i>&nbsp;Change
+                                        password</a>
+                                </div>
+                            </div>
+                        </div>
 
-						<div class="d-flex">
-							<div class="profile-skillset flex-fill">
-								<h4><a class="link-01" href="#">1.4k</a></h4>
-								<label>Participated</label>
-							</div>
-							<div class="profile-skillset flex-fill">
-								<h4><a class="link-01" href="#">2.8k</a></h4>
-								<label>Won</label>
-							</div>
-						</div>
-					</div><!-- col -->
-					<div class="col-sm-6 col-md-5 col-lg mg-t-40">
-						<label class="tx-sans tx-10 tx-semibold tx-uppercase tx-color-01 tx-spacing-1 mg-b-15">Contact
-							Information</label>
-						<ul class="list-unstyled profile-info-list">
-							<li><i data-feather="phone"></i> <a>{{person.phone_number}}</a></li>
-							<li><i data-feather="mail"></i> <a>{{person.email}}</a></li>
-						</ul>
-					</div><!-- col -->
-					<div class="col-sm-6 col-md-5 col-lg mg-t-40">
-						<label class="tx-sans tx-10 tx-semibold tx-uppercase tx-color-01 tx-spacing-1 mg-b-15">Explore</label>
-						<nav class="nav nav-classic tx-13">
-							<a class="nav-link" routerLink="/designers"><i data-feather="users"></i><span>Designers</span></a>
-							<a class="nav-link" routerLink="/contests"><i data-feather="calendar"></i> <span>Contests</span></a>
-						</nav>
-					</div><!-- col -->
-				</div><!-- row -->
+                        <div class="d-flex">
+                            <div class="profile-skillset flex-fill">
+                                <h4><a class="link-01" href="#">1.4k</a></h4>
+                                <label>Participated</label>
+                            </div>
+                            <div class="profile-skillset flex-fill">
+                                <h4><a class="link-01" href="#">2.8k</a></h4>
+                                <label>Won</label>
+                            </div>
+                        </div>
+                    </div><!-- col -->
+                    <div class="col-sm-6 col-md-5 col-lg mg-t-40">
+                        <label class="tx-sans tx-10 tx-semibold tx-uppercase tx-color-01 tx-spacing-1 mg-b-15">Contact
+                            Information</label>
+                        <ul class="list-unstyled profile-info-list">
+                            <li><i data-feather="phone"></i> <a>{{person.phone_number}}</a></li>
+                            <li><i data-feather="mail"></i> <a>{{person.email}}</a></li>
+                        </ul>
+                    </div><!-- col -->
+                    <div class="col-sm-6 col-md-5 col-lg mg-t-40">
+                        <label class="tx-sans tx-10 tx-semibold tx-uppercase tx-color-01 tx-spacing-1 mg-b-15">Explore</label>
+                        <nav class="nav nav-classic tx-13">
+                            <a class="nav-link" routerLink="/designers"><i data-feather="users"></i><span>Designers</span></a>
+                            <a class="nav-link" routerLink="/contests"><i
+                                    data-feather="calendar"></i> <span>Contests</span></a>
+                        </nav>
+                    </div><!-- col -->
+                </div><!-- row -->
 
-			</div><!-- profile-sidebar -->
-			<div class="media-body mg-t-40 mg-lg-t-0 pd-lg-x-10">
-				<div class="card mg-b-20 mg-lg-b-25">
-					<div class="card-header pd-y-15 pd-x-20 d-flex align-items-center justify-content-between">
-						<h6 class="tx-uppercase tx-semibold mg-b-0">Current Contest participation</h6>
-					</div><!-- card-header -->
-					<div class="card-body pd-20 pd-lg-25">
-						<div class="media align-items-center mg-b-20">
-							<div class="avatar avatar-online"><img alt=""
-																   class="rounded-circle"
-																   src="assets/img/img15.jpg">
-							</div>
-							<div class="media-body pd-l-15">
-								<h6 class="mg-b-3">Dyanne Aceron</h6>
-								<span class="d-block tx-13 tx-color-03">Cigarette Butt Collector</span>
-							</div>
-							<span class="d-none d-sm-block tx-12 tx-color-03 align-self-start">5 hours ago</span>
-						</div><!-- media -->
-						<p class="mg-b-20">Our team is expanding again. We are looking for a Product
-							Manager and Software Engineer to drive our new aspects of our capital
-							projects. If you're interested, please drop a comment here or simply
-							message me. <a href="#">#softwareengineer</a> <a
-									href="#">#engineering</a></p>
+            </div><!-- profile-sidebar -->
+            <div class="media-body mg-t-40 mg-lg-t-0 pd-lg-x-10">
+                <div class="card mg-b-20 mg-lg-b-25">
+                    <div class="card-header pd-y-15 pd-x-20 d-flex align-items-center justify-content-between">
+                        <h6 class="tx-uppercase tx-semibold mg-b-0">Current Contest
+                            participation</h6>
+                    </div><!-- card-header -->
+                    <div class="card-body pd-20 pd-lg-25">
+                        <div class="media align-items-center mg-b-20">
+                            <div class="avatar avatar-online"><img alt=""
+                                                                   class="rounded-circle"
+                                                                   src="assets/img/img15.jpg">
+                            </div>
+                            <div class="media-body pd-l-15">
+                                <h6 class="mg-b-3">Dyanne Aceron</h6>
+                                <span class="d-block tx-13 tx-color-03">Cigarette Butt Collector</span>
+                            </div>
+                            <span class="d-none d-sm-block tx-12 tx-color-03 align-self-start">5 hours ago</span>
+                        </div><!-- media -->
+                        <p class="mg-b-20">Our team is expanding again. We are looking for a Product
+                            Manager and Software Engineer to drive our new aspects of our capital
+                            projects. If you're interested, please drop a comment here or simply
+                            message me. <a href="#">#softwareengineer</a> <a
+                                    href="#">#engineering</a></p>
 
-						<div class="bd bg-gray-50 pd-y-15 pd-x-15 pd-sm-x-20">
-							<h6 class="tx-15 mg-b-3">We're hiring of Product Manager</h6>
-							<p class="mg-b-0 tx-14">Full-time, $60,000 - $80,000 annual</p>
-							<span class="tx-13 tx-color-03">Bay Area, San Francisco, CA</span>
-						</div>
-					</div>
-				</div><!-- card -->
+                        <div class="bd bg-gray-50 pd-y-15 pd-x-15 pd-sm-x-20">
+                            <h6 class="tx-15 mg-b-3">We're hiring of Product Manager</h6>
+                            <p class="mg-b-0 tx-14">Full-time, $60,000 - $80,000 annual</p>
+                            <span class="tx-13 tx-color-03">Bay Area, San Francisco, CA</span>
+                        </div>
+                    </div>
+                </div><!-- card -->
 
-				<div class="card mg-b-20 mg-lg-b-25">
-					<div class="card-header pd-y-15 pd-x-20 d-flex align-items-center justify-content-between">
-						<h6 class="tx-uppercase tx-semibold mg-b-0">Previous won contests</h6>
-					</div><!-- card-header -->
-					<div class="card-body pd-25">
-						<div class="media d-block d-sm-flex">
-							<div class="wd-80 ht-80 bg-ui-04 rounded d-flex align-items-center justify-content-center">
-								<i class="tx-white-7 wd-40 ht-40" data-feather="briefcase"></i>
-							</div>
-							<div class="media-body pd-t-25 pd-sm-t-0 pd-sm-l-25">
-								<h5 class="mg-b-5">Area Sales Manager</h5>
-								<p class="mg-b-3 tx-color-02"><span class="tx-medium tx-color-01">ThemePixels, Inc.</span>,
-									Bay Area, San Francisco, CA</p>
-								<span class="d-block tx-13 tx-color-03">December 2016 - Present</span>
+                <div class="card mg-b-20 mg-lg-b-25">
+                    <div class="card-header pd-y-15 pd-x-20 d-flex align-items-center justify-content-between">
+                        <h6 class="tx-uppercase tx-semibold mg-b-0">Previous won contests</h6>
+                    </div><!-- card-header -->
+                    <div class="card-body pd-25">
+                        <div class="media d-block d-sm-flex">
+                            <div class="wd-80 ht-80 bg-ui-04 rounded d-flex align-items-center justify-content-center">
+                                <i class="tx-white-7 wd-40 ht-40" data-feather="briefcase"></i>
+                            </div>
+                            <div class="media-body pd-t-25 pd-sm-t-0 pd-sm-l-25">
+                                <h5 class="mg-b-5">Area Sales Manager</h5>
+                                <p class="mg-b-3 tx-color-02"><span class="tx-medium tx-color-01">ThemePixels, Inc.</span>,
+                                    Bay Area, San Francisco, CA</p>
+                                <span class="d-block tx-13 tx-color-03">December 2016 - Present</span>
 
-								<ul class="pd-l-10 mg-0 mg-t-20 tx-13">
-									<li>Reaching the targets and goals set for my area.</li>
-									<li>Servicing the needs of my existing customers.</li>
-									<li>Maintaining the relationships with existing customers for
-										repeat business.
-									</li>
-									<li>Reporting to top managers.</li>
-									<li>Keeping up to date with the products.</li>
-								</ul>
-							</div>
-						</div><!-- media -->
-					</div>
-					<div class="card-footer bg-transparent pd-y-15 pd-x-20">
-						<nav class="nav nav-with-icon tx-13">
-							<a class="nav-link" href="#">Show More Experiences (4)</a>
-						</nav>
-					</div><!-- card-footer -->
-				</div><!-- card -->
-			</div><!-- media-body -->
-			<div class="profile-sidebar mg-t-40 mg-lg-t-0 pd-lg-l-25">
-				<div class="row">
-					<div class="col-sm-6 col-md-5 col-lg">
-						<div class="d-flex align-items-center justify-content-between mg-b-20">
-							<h6 class="tx-13 tx-spacng-1 tx-uppercase tx-semibold mg-b-0">
-								Latest contests</h6>
-						</div>
-						<ul class="list-unstyled media-list mg-b-15">
-							<li class="media align-items-center">
-								<a href="#">
-									<div class="avatar avatar-online"><span
-											class="avatar-initial rounded-circle bg-dark">S</span>
-									</div>
-								</a>
-								<div class="media-body pd-l-15">
-									<p class="tx-medium mg-b-0"><a class="link-01" href="#">Socrates
-										Itumay</a></p>
-									<span class="tx-12 tx-color-03">2 hours ago</span>
-								</div>
-							</li>
-							<li class="media align-items-center">
-								<a href="#">
-									<div class="avatar avatar-online"><span
-											class="avatar-initial rounded-circle bg-primary">I</span>
-									</div>
-								</a>
-								<div class="media-body pd-l-15">
-									<p class="tx-medium mg-b-0"><a class="link-01" href="#">Isidore
-										Dilao</a></p>
-									<span class="tx-12 tx-color-03">5 hours ago</span>
-								</div>
-							</li>
-							<li class="media align-items-center">
-								<a href="#">
-									<div class="avatar avatar-offline"><img
-											alt="" class="rounded-circle"
-											src="assets/img/img8.jpg">
-									</div>
-								</a>
-								<div class="media-body pd-l-15">
-									<p class="tx-medium mg-b-0"><a class="link-01" href="#">Angeline
-										Mercado</a></p>
-									<span class="tx-12 tx-color-03">1 day ago</span>
-								</div>
-							</li>
-							<li class="media align-items-center">
-								<a href="#">
-									<div class="avatar avatar-online"><span
-											class="avatar-initial rounded-circle bg-info">K</span>
-									</div>
-								</a>
-								<div class="media-body pd-l-15">
-									<p class="tx-medium mg-b-0"><a class="link-01" href="#">Kirby
-										Avendula</a></p>
-									<span class="tx-12 tx-color-03">2 days ago</span>
-								</div>
-							</li>
-							<li class="media align-items-center">
-								<a href="#">
-									<div class="avatar avatar-online"><span
-											class="avatar-initial rounded-circle bg-dark">S</span>
-									</div>
-								</a>
-								<div class="media-body pd-l-15">
-									<p class="tx-medium mg-b-0"><a class="link-01" href="#">Socrates
-										Itumay</a></p>
-									<span class="tx-12 tx-color-03">2 hours ago</span>
-								</div>
-							</li>
-						</ul>
-						<a class="link-03 d-inline-flex align-items-center" href="#">See more
-							stories <i class="icon ion-ios-arrow-down mg-l-5 mg-t-3 tx-12"></i></a>
-					</div><!-- col -->
-					<div class="col-sm-6 col-md-5 col-lg mg-t-40 mg-sm-t-0 mg-lg-t-40">
-						<div class="d-flex align-items-center justify-content-between mg-b-20">
-							<h6 class="tx-13 tx-spacing-1 tx-uppercase tx-semibold mg-b-0">Designers</h6>
-						</div>
-						<ul class="list-unstyled media-list mg-b-15">
-							<li class="media align-items-center">
-								<a href="#">
-									<div class="avatar avatar-online"><img alt=""
-																		   class="rounded-circle"
-																		   src="assets/img/img6.jpg">
-									</div>
-								</a>
-								<div class="media-body pd-l-15">
-									<p class="tx-medium mg-b-2"><a class="link-01" href="#">Roy
-										Recamadas</a></p>
-									<span class="tx-12 tx-color-03">UI/UX Designer &amp; Developer</span>
-								</div>
-							</li>
-							<li class="media align-items-center">
-								<a href="#">
-									<div class="avatar avatar-offline"><img
-											alt="" class="rounded-circle"
-											src="assets/img/img7.jpg">
-									</div>
-								</a>
-								<div class="media-body pd-l-15">
-									<p class="tx-medium mg-b-2"><a class="link-01" href="#">Raymart
-										Serencio</a></p>
-									<span class="tx-12 tx-color-03">Full-Stack Developer</span>
-								</div>
-							</li>
-							<li class="media align-items-center">
-								<a href="#">
-									<div class="avatar avatar-offline"><span
-											class="avatar-initial rounded-circle bg-teal">R</span>
-									</div>
-								</a>
-								<div class="media-body pd-l-15">
-									<p class="tx-medium mg-b-2"><a class="link-01" href="#">Rolando
-										Paloso Jr</a></p>
-									<span class="tx-12 tx-color-03">Licensed Architect</span>
-								</div>
-							</li>
-							<li class="media align-items-center">
-								<a href="#">
-									<div class="avatar avatar-online"><span
-											class="avatar-initial rounded-circle bg-indigo">R</span>
-									</div>
-								</a>
-								<div class="media-body pd-l-15">
-									<p class="tx-medium mg-b-2"><a class="link-01" href="#">Robert
-										Restificar</a></p>
-									<span class="tx-12 tx-color-03">Business Analyst</span>
-								</div>
-							</li>
-							<li class="media align-items-center">
-								<a href="#">
-									<div class="avatar avatar-online"><span
-											class="avatar-initial rounded-circle bg-gray-600">A</span>
-									</div>
-								</a>
-								<div class="media-body pd-l-15">
-									<p class="tx-medium mg-b-2"><a class="link-01" href="#">Archie
-										Cantones</a></p>
-									<span class="tx-12 tx-color-03">Senior Software Architect</span>
-								</div>
-							</li>
-						</ul>
-					</div><!-- col -->
-				</div><!-- row -->
-			</div><!-- profile-sidebar -->
-		</div><!-- media -->
-	</div><!-- container -->
+                                <ul class="pd-l-10 mg-0 mg-t-20 tx-13">
+                                    <li>Reaching the targets and goals set for my area.</li>
+                                    <li>Servicing the needs of my existing customers.</li>
+                                    <li>Maintaining the relationships with existing customers for
+                                        repeat business.
+                                    </li>
+                                    <li>Reporting to top managers.</li>
+                                    <li>Keeping up to date with the products.</li>
+                                </ul>
+                            </div>
+                        </div><!-- media -->
+                    </div>
+                    <div class="card-footer bg-transparent pd-y-15 pd-x-20">
+                        <nav class="nav nav-with-icon tx-13">
+                            <a class="nav-link" href="#">Show More Experiences (4)</a>
+                        </nav>
+                    </div><!-- card-footer -->
+                </div><!-- card -->
+            </div><!-- media-body -->
+            <div class="profile-sidebar mg-t-40 mg-lg-t-0 pd-lg-l-25">
+                <div class="row">
+                    <div class="col-sm-6 col-md-5 col-lg">
+                        <div class="d-flex align-items-center justify-content-between mg-b-20">
+                            <h6 class="tx-13 tx-spacng-1 tx-uppercase tx-semibold mg-b-0">
+                                Latest contests</h6>
+                        </div>
+                        <ul class="list-unstyled media-list mg-b-15">
+                            <li class="media align-items-center">
+                                <a href="#">
+                                    <div class="avatar avatar-online"><span
+                                            class="avatar-initial rounded-circle bg-dark">S</span>
+                                    </div>
+                                </a>
+                                <div class="media-body pd-l-15">
+                                    <p class="tx-medium mg-b-0"><a class="link-01" href="#">Socrates
+                                        Itumay</a></p>
+                                    <span class="tx-12 tx-color-03">2 hours ago</span>
+                                </div>
+                            </li>
+                            <li class="media align-items-center">
+                                <a href="#">
+                                    <div class="avatar avatar-online"><span
+                                            class="avatar-initial rounded-circle bg-primary">I</span>
+                                    </div>
+                                </a>
+                                <div class="media-body pd-l-15">
+                                    <p class="tx-medium mg-b-0"><a class="link-01" href="#">Isidore
+                                        Dilao</a></p>
+                                    <span class="tx-12 tx-color-03">5 hours ago</span>
+                                </div>
+                            </li>
+                            <li class="media align-items-center">
+                                <a href="#">
+                                    <div class="avatar avatar-offline"><img
+                                            alt="" class="rounded-circle"
+                                            src="assets/img/img8.jpg">
+                                    </div>
+                                </a>
+                                <div class="media-body pd-l-15">
+                                    <p class="tx-medium mg-b-0"><a class="link-01" href="#">Angeline
+                                        Mercado</a></p>
+                                    <span class="tx-12 tx-color-03">1 day ago</span>
+                                </div>
+                            </li>
+                            <li class="media align-items-center">
+                                <a href="#">
+                                    <div class="avatar avatar-online"><span
+                                            class="avatar-initial rounded-circle bg-info">K</span>
+                                    </div>
+                                </a>
+                                <div class="media-body pd-l-15">
+                                    <p class="tx-medium mg-b-0"><a class="link-01" href="#">Kirby
+                                        Avendula</a></p>
+                                    <span class="tx-12 tx-color-03">2 days ago</span>
+                                </div>
+                            </li>
+                            <li class="media align-items-center">
+                                <a href="#">
+                                    <div class="avatar avatar-online"><span
+                                            class="avatar-initial rounded-circle bg-dark">S</span>
+                                    </div>
+                                </a>
+                                <div class="media-body pd-l-15">
+                                    <p class="tx-medium mg-b-0"><a class="link-01" href="#">Socrates
+                                        Itumay</a></p>
+                                    <span class="tx-12 tx-color-03">2 hours ago</span>
+                                </div>
+                            </li>
+                        </ul>
+                        <a class="link-03 d-inline-flex align-items-center" href="#">See more
+                            stories <i class="icon ion-ios-arrow-down mg-l-5 mg-t-3 tx-12"></i></a>
+                    </div><!-- col -->
+                    <div class="col-sm-6 col-md-5 col-lg mg-t-40 mg-sm-t-0 mg-lg-t-40">
+                        <div class="d-flex align-items-center justify-content-between mg-b-20">
+                            <h6 class="tx-13 tx-spacing-1 tx-uppercase tx-semibold mg-b-0">
+                                Designers</h6>
+                        </div>
+                        <ul class="list-unstyled media-list mg-b-15">
+                            <li class="media align-items-center">
+                                <a href="#">
+                                    <div class="avatar avatar-online"><img alt=""
+                                                                           class="rounded-circle"
+                                                                           src="assets/img/img6.jpg">
+                                    </div>
+                                </a>
+                                <div class="media-body pd-l-15">
+                                    <p class="tx-medium mg-b-2"><a class="link-01" href="#">Roy
+                                        Recamadas</a></p>
+                                    <span class="tx-12 tx-color-03">UI/UX Designer &amp; Developer</span>
+                                </div>
+                            </li>
+                            <li class="media align-items-center">
+                                <a href="#">
+                                    <div class="avatar avatar-offline"><img
+                                            alt="" class="rounded-circle"
+                                            src="assets/img/img7.jpg">
+                                    </div>
+                                </a>
+                                <div class="media-body pd-l-15">
+                                    <p class="tx-medium mg-b-2"><a class="link-01" href="#">Raymart
+                                        Serencio</a></p>
+                                    <span class="tx-12 tx-color-03">Full-Stack Developer</span>
+                                </div>
+                            </li>
+                            <li class="media align-items-center">
+                                <a href="#">
+                                    <div class="avatar avatar-offline"><span
+                                            class="avatar-initial rounded-circle bg-teal">R</span>
+                                    </div>
+                                </a>
+                                <div class="media-body pd-l-15">
+                                    <p class="tx-medium mg-b-2"><a class="link-01" href="#">Rolando
+                                        Paloso Jr</a></p>
+                                    <span class="tx-12 tx-color-03">Licensed Architect</span>
+                                </div>
+                            </li>
+                            <li class="media align-items-center">
+                                <a href="#">
+                                    <div class="avatar avatar-online"><span
+                                            class="avatar-initial rounded-circle bg-indigo">R</span>
+                                    </div>
+                                </a>
+                                <div class="media-body pd-l-15">
+                                    <p class="tx-medium mg-b-2"><a class="link-01" href="#">Robert
+                                        Restificar</a></p>
+                                    <span class="tx-12 tx-color-03">Business Analyst</span>
+                                </div>
+                            </li>
+                            <li class="media align-items-center">
+                                <a href="#">
+                                    <div class="avatar avatar-online"><span
+                                            class="avatar-initial rounded-circle bg-gray-600">A</span>
+                                    </div>
+                                </a>
+                                <div class="media-body pd-l-15">
+                                    <p class="tx-medium mg-b-2"><a class="link-01" href="#">Archie
+                                        Cantones</a></p>
+                                    <span class="tx-12 tx-color-03">Senior Software Architect</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div><!-- col -->
+                </div><!-- row -->
+            </div><!-- profile-sidebar -->
+        </div><!-- media -->
+    </div><!-- container -->
 </div><!-- content -->

@@ -9,17 +9,19 @@ import 'rxjs/add/operator/map';
 import {appConstants} from '../../_helpers/app.constants';
 import {HttpClient} from '@angular/common/http';
 import {Person} from '../../_models';
+import {Observable} from "rxjs";
 
 @Injectable()
 export class PersonsService {
 	constructor(private http: HttpClient) {
 	}
 
-	getPeople(paginate: boolean) {
-		return this.http.get(appConstants.baseApiV1Url + appConstants.peopleUrl + '?' + appConstants.pagination + paginate);
+	getPeople() {
+		return this.http.get(appConstants.baseApiV1Url + appConstants.peopleUrl);
 	}
 
-	getPersonById(personId: string) {
+	getPersonById(personId: string):Observable<Person> {
+		// @ts-ignore
 		return this.http.get(appConstants.baseApiV1Url + appConstants.personUrl + personId);
 	}
 

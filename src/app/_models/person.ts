@@ -41,4 +41,5 @@ export class Person extends Default {
     contact_uuid: string;
     user_uuid: string;
     uuid: string;
+    username: string;
 }

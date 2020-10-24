@@ -42,7 +42,12 @@
                             <label><b>Role Description:</b>&nbsp;{{role.description}}</label>
                         </div>
                         <div class="col-md-4">
-                            <label><b>Role Status:</b>&nbsp;{{role.is_active}}</label>
+                            <label *ngIf="role.is_active != null && role.is_active == 1"><b>Role
+                                Status:</b>&nbsp;<span
+                                    class="badge badge-pill badge-success">Active</span></label>
+                            <label *ngIf="role.is_active != null && role.is_active == 0"><b>Role
+                                Status:</b>&nbsp;<span
+                                    class="badge badge-pill badge-danger">De-activated</span></label>
                         </div>
                         <div class="col-md-4">
                             <label><b>Date Created:</b>&nbsp;{{role.date_created}}</label>

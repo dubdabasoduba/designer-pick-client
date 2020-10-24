@@ -49,7 +49,8 @@
                                 <td>{{role.description}}</td>
                                 <td class="text-center">{{role.date_created}}</td>
                                 <td class="text-center">{{role.date_updated}}</td>
-                                <td class="text-center">{{role.is_active}}</td>
+                                <td *ngIf="role.is_active != null && role.is_active == 1" class="text-center"><span class="badge badge-pill badge-success">Yes</span></td>
+                                <td *ngIf="role.is_active != null && role.is_active == 0" class="text-center"><span class="badge badge-pill badge-danger">No</span></td>
                                 <td class="text-center">
                                     <a class="btn btn-secondary btn-xs"
                                        routerLink="/role/{{role.uuid}}"><i class="fas fa-cogs"></i></a>&nbsp;

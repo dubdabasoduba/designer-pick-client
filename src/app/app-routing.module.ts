@@ -40,13 +40,17 @@ import {EntityProfileComponent} from './_views/profile/add-profile/entity-profil
 import {PersonProfileComponent} from './_views/profile/add-profile/person-profile/person-profile.component';
 import {ClaimComponent} from './_views/auth/claim/claim.component';
 import {HowItWorksComponent} from './_views/main_views/how-it-works/how-it-works.component';
-import {UpdateUserComponent} from './_views/auth/update-user/update-user.component';
+import {UpdateUserComponent} from './_views/profile/update-user/update-user.component';
 import {CountriesComponent} from "./_views/admin_pages/countries/countries.component";
 import {PermissionsComponent} from "./_views/admin_pages/permissions/permissions.component";
 import {RolesComponent} from "./_views/admin_pages/roles/roles/roles.component";
 import {ViewRolesComponent} from "./_views/admin_pages/roles/view-roles/view-roles.component";
 import {AddEditRolesComponent} from "./_views/admin_pages/roles/add-edit-roles/add-edit-roles.component";
 import {ApiKeysComponent} from "./_views/admin_pages/api-keys/api-keys.component";
+import {ViewUsersComponent} from "./_views/admin_pages/users/view-users/view-users.component";
+import {AssignUserRolesComponent} from "./_views/admin_pages/users/assign-user-roles/assign-user-roles.component";
+import {AddEditUsersComponent} from "./_views/admin_pages/users/add-edit-users/add-edit-users.component";
+import {UpdateCredentialsComponent} from "./_views/profile/update-credentials/update-credentials.component";
 
 const appRoutes: Routes = [
     {path: '', component: SigninComponent, runGuardsAndResolvers: 'always'},
@@ -54,12 +58,6 @@ const appRoutes: Routes = [
         path: 'sign-up',
         component: SignupComponent,
         canActivate: [AuthPagesGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'profile-update/:id',
-        component: UpdateUserComponent,
-        canActivate: [AuthGuard],
         runGuardsAndResolvers: 'always'
     },
     {path: 'sign-in', component: SigninComponent, runGuardsAndResolvers: 'always'},
@@ -86,6 +84,18 @@ const appRoutes: Routes = [
     {
         path: 'profile/:id',
         component: ProfileComponent,
+        canActivate: [AuthGuard],
+        runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'profile-update/:id',
+        component: UpdateUserComponent,
+        canActivate: [AuthGuard],
+        runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'profile/update-credentials/:id',
+        component: UpdateCredentialsComponent,
         canActivate: [AuthGuard],
         runGuardsAndResolvers: 'always'
     },
@@ -149,7 +159,22 @@ const appRoutes: Routes = [
         path: 'api-keys/:id', component: ApiKeysComponent,
         canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
     },
-
+    {
+        path: 'users', component: ViewUsersComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'assign-user-roles', component: AssignUserRolesComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: "always"
+    },
+    {
+        path: 'users/add', component: AddEditUsersComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'user/edit/:id', component: AddEditUsersComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+    },
 
     // probably should be cleared
     {

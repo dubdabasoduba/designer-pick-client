@@ -74,7 +74,7 @@ import {PersonProfileComponent} from './_views/profile/add-profile/person-profil
 import {EntityProfileComponent} from './_views/profile/add-profile/entity-profile/entity-profile.component';
 import {ClaimComponent} from './_views/auth/claim/claim.component';
 import {AppCommons} from './_helpers/app.commons';
-import {UpdateUserComponent} from './_views/auth/update-user/update-user.component';
+import {UpdateUserComponent} from './_views/profile/update-user/update-user.component';
 import {CountriesComponent} from "./_views/admin_pages/countries/countries.component";
 import {PermissionsComponent} from "./_views/admin_pages/permissions/permissions.component";
 import {RolesComponent} from './_views/admin_pages/roles/roles/roles.component';
@@ -84,6 +84,7 @@ import {ApiKeysComponent} from './_views/admin_pages/api-keys/api-keys.component
 import {ViewUsersComponent} from './_views/admin_pages/users/view-users/view-users.component';
 import {AssignUserRolesComponent} from './_views/admin_pages/users/assign-user-roles/assign-user-roles.component';
 import {AddEditUsersComponent} from './_views/admin_pages/users/add-edit-users/add-edit-users.component';
+import {UpdateCredentialsComponent} from './_views/profile/update-credentials/update-credentials.component';
 
 @NgModule({
     declarations: [
@@ -137,7 +138,8 @@ import {AddEditUsersComponent} from './_views/admin_pages/users/add-edit-users/a
         ApiKeysComponent,
         ViewUsersComponent,
         AssignUserRolesComponent,
-        AddEditUsersComponent
+        AddEditUsersComponent,
+        UpdateCredentialsComponent
     ],
     imports: [
         BrowserModule,
@@ -148,7 +150,7 @@ import {AddEditUsersComponent} from './_views/admin_pages/users/add-edit-users/a
     providers: [AuthGuard, AuthenticationService, AlertService, UserService, PersonsService,
         EntitiesService, SchoolsService, CompaniesService, FundingService, AcquisitionsService, AuthPagesGuard,
         AlertService, FoundersService, CategoryService, FundingTypesService, CountriesService, ClaimService, ProfileService,
-        PagerService, PermissionsService, ApiKeysService,
+        PagerService, PermissionsService, ApiKeysService, ProfileService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: RequestInterceptor,

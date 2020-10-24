@@ -196,7 +196,7 @@ export class ApiKeysComponent implements OnInit {
             apiKey.name = data[i].name;
             apiKey.date_created = AppCommons.formatDisplayDate(new Date(data[i].date_created));
             apiKey.date_updated = AppCommons.formatDisplayDate(AppCommons.convertStringToDate(data[i].date_updated));
-            apiKey.is_active = data[i].is_active === 1 ? "Yes" : "No";
+            apiKey.is_active = data[i].is_active;
             apiKey.uuid = data[i].uuid;
             this.apiKeys.push(apiKey);
         }

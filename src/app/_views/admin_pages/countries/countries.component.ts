@@ -201,7 +201,7 @@ export class CountriesComponent implements OnInit,OnDestroy {
             country.short_name = data[i].short_name;
             country.date_created = AppCommons.formatDisplayDate(new Date(data[i].date_created));
             country.date_updated = AppCommons.formatDisplayDate(AppCommons.convertStringToDate(data[i].date_updated));
-            country.is_active = data[i].is_active === 1 ? "Yes" : "No";
+            country.is_active = data[i].is_active;
             country.uuid = data[i].uuid;
             this.countries.push(country);
         }
