@@ -13,7 +13,9 @@ import {tap} from 'rxjs/operators';
 import {AppCommons} from '../../_helpers/app.commons';
 import {User} from '../../_models';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class AuthenticationService {
     private _lbsUser = 'lbsUser';
 

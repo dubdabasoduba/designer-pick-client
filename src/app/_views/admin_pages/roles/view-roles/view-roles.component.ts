@@ -36,15 +36,20 @@ export class ViewRolesComponent implements OnInit {
         this.loading = true;
         this.rolesService.getRole(this.roleId).subscribe(
             data => {
-                this.role = data;
-                this.role.date_created = AppCommons.formatDisplayDate(new Date(data.date_created));
-                this.role.date_updated = AppCommons.formatDisplayDate(AppCommons.convertStringToDate(data.date_updated));
-                // @ts-ignore
-                this.role.is_active = data.is_active == 1 ? "Active" : "De-activated";
-                this.loading = false;
+                if (data === null || data === undefined) {
+                    this.router.navigateByUrl('/roles');
+                } else {
+                    this.role = data;
+                    this.role.date_created = AppCommons.formatDisplayDate(new Date(data.date_created));
+                    this.role.date_updated = AppCommons.formatDisplayDate(AppCommons.convertStringToDate(data.date_updated));
+                    // @ts-ignore
+                    this.role.is_active = data.is_active;
+                    this.loading = false;
+                }
             },
             error => {
                 this.alertService.error(error);
+                this.router.navigateByUrl('/roles');
                 this.loading = false;
             }
         );

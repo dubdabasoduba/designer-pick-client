@@ -32,7 +32,8 @@
         <div class="row">
             <div class="col-lg-12 col-xl-12">
                 <fieldset class="form-fieldset">
-                    <legend>Add Role</legend>
+                    <legend *ngIf="roleId == null && roleId == undefined">Add Role</legend>
+                    <legend *ngIf="roleId != null && roleId != undefined">Edit Role</legend>
                     <form #f="ngForm" (ngSubmit)="f.form.valid && addEditRole()" novalidate>
                         <div class="form-row">
                             <div class="form-group col-lg-5">
