@@ -113,4 +113,11 @@ export class NavigationComponent implements OnInit {
         this.searchService.passEntityData([]);
         this.searchService.passPersonData([]);
     }
+
+    signOut() {
+        this.loading = true;
+        this.authenticationService.logout();
+        this.router.navigateByUrl('');
+    }
+
 }

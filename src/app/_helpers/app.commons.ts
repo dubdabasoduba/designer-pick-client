@@ -206,9 +206,9 @@ export class AppCommons {
             const contact = new ContactModel();
             contact.country = contacts[j].country;
             contact.county = contacts[j].county;
-            contact.phonenumber = contacts[j].phonenumber;
+            contact.phone_number = contacts[j].phonenumber;
             contact.email = contacts[j].email;
-            contact.is_main = contacts[j].primary == true ? appConstants.yes : appConstants.no;
+            contact.is_main = Number(1)
             contact._id = contacts[j]._id;
             contactDetails.push(contact);
         }
@@ -565,9 +565,9 @@ export class AppCommons {
     public createContactObject(model: any) {
         const contact = new ContactModel();
         contact.email = model.email;
-        contact.phonenumber = model.phonenumber;
+        contact.phone_number = model.phonenumber;
         contact.country = model.country;
-        contact.is_main = true;
+        contact.is_main = Number(0);
         return contact;
     }
 

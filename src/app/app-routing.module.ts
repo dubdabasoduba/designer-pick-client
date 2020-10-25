@@ -53,9 +53,10 @@ import {AddEditUsersComponent} from "./_views/admin_pages/users/add-edit-users/a
 import {UpdateCredentialsComponent} from "./_views/profile/update-credentials/update-credentials.component";
 import {ViewUserComponent} from "./_views/admin_pages/users/view-user/view-user.component";
 import {UserContactsComponent} from "./_views/admin_pages/users/user-contacts/user-contacts.component";
+import {HomeComponent} from "./_views/home/home.component";
 
 const appRoutes: Routes = [
-    {path: '', component: SigninComponent, runGuardsAndResolvers: 'always'},
+    {path: '', component: HomeComponent, runGuardsAndResolvers: 'always'},
     {
         path: 'sign-up',
         component: SignupComponent,
@@ -65,7 +66,7 @@ const appRoutes: Routes = [
     {path: 'sign-in', component: SigninComponent, runGuardsAndResolvers: 'always'},
     {
         path: 'sign-out',
-        redirectTo: 'sign-in',
+        redirectTo: '',
         runGuardsAndResolvers: 'always'
     }, {
         path: 'reset-password',
