@@ -86,6 +86,7 @@ import {AssignUserRolesComponent} from './_views/admin_pages/users/assign-user-r
 import {AddEditUsersComponent} from './_views/admin_pages/users/add-edit-users/add-edit-users.component';
 import {UpdateCredentialsComponent} from './_views/profile/update-credentials/update-credentials.component';
 import { ViewUserComponent } from './_views/admin_pages/users/view-user/view-user.component';
+import { ChatsComponent } from './_views/profile/chats/chats.component';
 
 @NgModule({
     declarations: [
@@ -141,7 +142,8 @@ import { ViewUserComponent } from './_views/admin_pages/users/view-user/view-use
         AssignUserRolesComponent,
         AddEditUsersComponent,
         UpdateCredentialsComponent,
-        ViewUserComponent
+        ViewUserComponent,
+        ChatsComponent
     ],
     imports: [
         BrowserModule,
