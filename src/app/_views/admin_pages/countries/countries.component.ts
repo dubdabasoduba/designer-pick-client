@@ -127,8 +127,8 @@ export class CountriesComponent implements OnInit,OnDestroy {
         country.name = this.model.name;
         country.code = this.model.code;
         country.short_name = this.model.short_name;
-        country.is_active = this.model.is_active;
-
+        country.is_active = Number(this.model.is_active);
+        country.uuid = this.countryId;
         return country;
     }
 
@@ -201,7 +201,7 @@ export class CountriesComponent implements OnInit,OnDestroy {
             country.short_name = data[i].short_name;
             country.date_created = AppCommons.formatDisplayDate(new Date(data[i].date_created));
             country.date_updated = AppCommons.formatDisplayDate(AppCommons.convertStringToDate(data[i].date_updated));
-            country.is_active = data[i].is_active === 1 ? "Yes" : "No";
+            country.is_active = data[i].is_active;
             country.uuid = data[i].uuid;
             this.countries.push(country);
         }

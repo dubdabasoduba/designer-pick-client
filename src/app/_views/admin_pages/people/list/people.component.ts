@@ -90,7 +90,7 @@ export class PeopleComponent implements OnInit {
 
 	getPersons() {
 		this.loading = true;
-		this.personService.getPeople(false).subscribe(
+		this.personService.getPeople().subscribe(
 			data => {
 				// @ts-ignore
 				this.responseModel = data;

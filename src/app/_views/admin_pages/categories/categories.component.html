@@ -100,7 +100,8 @@
                                 <td>{{category.description}}</td>
                                 <td class="text-center">{{category.date_created}}</td>
                                 <td class="text-center">{{category.date_updated}}</td>
-                                <td class="text-center">{{category.is_active}}</td>
+                                <td *ngIf="category.is_active != null && category.is_active == 1" class="text-center"><span class="badge badge-pill badge-success">Yes</span></td>
+                                <td *ngIf="category.is_active != null && category.is_active == 0" class="text-center"><span class="badge badge-pill badge-danger">No</span></td>
                                 <td class="text-center">
                                     <a class="btn btn-info btn-xs"
                                        routerLink="/categories/{{category.uuid}}"><i

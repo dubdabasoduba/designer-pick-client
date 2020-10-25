@@ -123,7 +123,7 @@ export class SponsorsComponent implements OnInit {
 
 	private getPeople() {
 		this.loading = true;
-		this.personService.getPeople(false).subscribe(
+		this.personService.getPeople().subscribe(
 			data => {
 				// @ts-ignore
 				this.responseModel = data;

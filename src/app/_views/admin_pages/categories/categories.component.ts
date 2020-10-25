@@ -22,7 +22,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
     public model = {
         name: "",
         description: "",
-        is_active: ""
+        is_active:"",
     };
     public categoryId: string;
     mySubscription: any;
@@ -124,7 +124,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
         }
         category.name = this.model.name;
         category.description = this.model.description;
-        category.is_active = this.model.is_active;
+        category.is_active = Number(this.model.is_active);
 
         return category;
     }
@@ -195,7 +195,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
             category.description = data[i].description;
             category.date_created = AppCommons.formatDisplayDate(new Date(data[i].date_created));
             category.date_updated = AppCommons.formatDisplayDate(AppCommons.convertStringToDate(data[i].date_updated));
-            category.is_active = data[i].is_active === 1 ? "Yes" : "No";
+            category.is_active = data[i].is_active;
             category.uuid = data[i].uuid;
             this.categories.push(category);
         }

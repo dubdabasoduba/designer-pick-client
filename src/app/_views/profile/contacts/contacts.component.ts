@@ -240,7 +240,7 @@ export class ContactsComponent implements OnInit {
 		contact.county = this.model.county;
 		contact.phonenumber = this.model.phonenumber;
 		contact.email = this.model.email;
-		contact.primary = this.model.primary;
+		contact.is_main = this.model.primary;
 		contacts.push(contact);
 	}
 }

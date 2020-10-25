@@ -12,6 +12,7 @@ import {FormsModule} from '@angular/forms';
 import {
     AcquisitionsService,
     AlertService,
+    ApiKeysService,
     AuthenticationService,
     CategoryService,
     ClaimService,
@@ -26,8 +27,7 @@ import {
     PersonsService,
     ProfileService,
     SchoolsService,
-    UserService,
-    ApiKeysService
+    UserService
 } from './_services';
 
 import {DesignersComponent} from './_views/main_views/designers/designers.component';
@@ -74,14 +74,23 @@ import {PersonProfileComponent} from './_views/profile/add-profile/person-profil
 import {EntityProfileComponent} from './_views/profile/add-profile/entity-profile/entity-profile.component';
 import {ClaimComponent} from './_views/auth/claim/claim.component';
 import {AppCommons} from './_helpers/app.commons';
-import {UpdateUserComponent} from './_views/auth/update-user/update-user.component';
+import {UpdateUserComponent} from './_views/profile/update-user/update-user.component';
 import {CountriesComponent} from "./_views/admin_pages/countries/countries.component";
 import {PermissionsComponent} from "./_views/admin_pages/permissions/permissions.component";
-import { RolesComponent } from './_views/admin_pages/roles/roles/roles.component';
-import { ViewRolesComponent } from './_views/admin_pages/roles/view-roles/view-roles.component';
-import { AddEditRolesComponent } from './_views/admin_pages/roles/add-edit-roles/add-edit-roles.component';
-import { ApiKeysComponent } from './_views/admin_pages/api-keys/api-keys.component';
-import { ViewUsersComponent } from './_views/admin_pages/users/view-users/view-users.component';
+import {RolesComponent} from './_views/admin_pages/roles/roles/roles.component';
+import {ViewRolesComponent} from './_views/admin_pages/roles/view-roles/view-roles.component';
+import {AddEditRolesComponent} from './_views/admin_pages/roles/add-edit-roles/add-edit-roles.component';
+import {ApiKeysComponent} from './_views/admin_pages/api-keys/api-keys.component';
+import {ViewUsersComponent} from './_views/admin_pages/users/view-users/view-users.component';
+import {AssignUserRolesComponent} from './_views/admin_pages/users/assign-user-roles/assign-user-roles.component';
+import {AddEditUsersComponent} from './_views/admin_pages/users/add-edit-users/add-edit-users.component';
+import {UpdateCredentialsComponent} from './_views/profile/update-credentials/update-credentials.component';
+import { ViewUserComponent } from './_views/admin_pages/users/view-user/view-user.component';
+import { ChatsComponent } from './_views/profile/chats/chats.component';
+import { PaymentModesComponent } from './_views/admin_pages/payment-modes/payment-modes.component';
+import { CommissionsComponent } from './_views/admin_pages/commissions/commissions.component';
+import {UserContactsComponent} from "./_views/admin_pages/users/user-contacts/user-contacts.component";
+import {ContactService} from "./_services/admin_services/contact/contact.service";
 
 @NgModule({
     declarations: [
@@ -133,7 +142,15 @@ import { ViewUsersComponent } from './_views/admin_pages/users/view-users/view-u
         ViewRolesComponent,
         AddEditRolesComponent,
         ApiKeysComponent,
-        ViewUsersComponent
+        ViewUsersComponent,
+        AssignUserRolesComponent,
+        AddEditUsersComponent,
+        UpdateCredentialsComponent,
+        ViewUserComponent,
+        ChatsComponent,
+        PaymentModesComponent,
+        CommissionsComponent,
+        UserContactsComponent
     ],
     imports: [
         BrowserModule,
@@ -144,7 +161,7 @@ import { ViewUsersComponent } from './_views/admin_pages/users/view-users/view-u
     providers: [AuthGuard, AuthenticationService, AlertService, UserService, PersonsService,
         EntitiesService, SchoolsService, CompaniesService, FundingService, AcquisitionsService, AuthPagesGuard,
         AlertService, FoundersService, CategoryService, FundingTypesService, CountriesService, ClaimService, ProfileService,
-        PagerService,PermissionsService,ApiKeysService,
+        PagerService, PermissionsService, ApiKeysService, ProfileService, ContactService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: RequestInterceptor,

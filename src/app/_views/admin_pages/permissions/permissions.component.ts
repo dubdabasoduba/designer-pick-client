@@ -106,7 +106,7 @@ export class PermissionsComponent implements OnInit, OnDestroy {
         permission.updated_by = this.loggedInUser;
         permission.name = this.model.name;
         permission.description = this.model.description;
-        permission.is_active = this.model.is_active;
+        permission.is_active = Number(this.model.is_active);
 
         return permission;
     }
@@ -161,7 +161,7 @@ export class PermissionsComponent implements OnInit, OnDestroy {
             permission.description = data[i].description;
             permission.date_created = AppCommons.formatDisplayDate(new Date(data[i].date_created));
             permission.date_updated = AppCommons.formatDisplayDate(AppCommons.convertStringToDate(data[i].date_updated));
-            permission.is_active = data[i].is_active === 1 ? "Yes" : "No";
+            permission.is_active = data[i].is_active;
             permission.uuid = data[i].uuid;
             this.permissions.push(permission);
         }
