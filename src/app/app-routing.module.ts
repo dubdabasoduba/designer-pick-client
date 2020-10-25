@@ -52,6 +52,7 @@ import {AssignUserRolesComponent} from "./_views/admin_pages/users/assign-user-r
 import {AddEditUsersComponent} from "./_views/admin_pages/users/add-edit-users/add-edit-users.component";
 import {UpdateCredentialsComponent} from "./_views/profile/update-credentials/update-credentials.component";
 import {ViewUserComponent} from "./_views/admin_pages/users/view-user/view-user.component";
+import {UserContactsComponent} from "./_views/admin_pages/users/user-contacts/user-contacts.component";
 
 const appRoutes: Routes = [
     {path: '', component: SigninComponent, runGuardsAndResolvers: 'always'},
@@ -173,6 +174,14 @@ const appRoutes: Routes = [
         canActivate: [AuthGuard], runGuardsAndResolvers: "always"
     },
     {
+        path: 'users/contacts/:id/:contactId', component: UserContactsComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: "always"
+    },
+    {
+        path: 'users/contacts/:id', component: UserContactsComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: "always"
+    },
+    {
         path: 'users/add', component: AddEditUsersComponent,
         canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
     },
@@ -223,7 +232,7 @@ const appRoutes: Routes = [
         runGuardsAndResolvers: 'always'
     },
     {
-        path: 'profile/contacts/:id',
+        path: 'profile/user-contacts/:id',
         component: ContactsComponent,
         canActivate: [AuthGuard],
         runGuardsAndResolvers: 'always'

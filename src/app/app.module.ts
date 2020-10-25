@@ -89,6 +89,8 @@ import { ViewUserComponent } from './_views/admin_pages/users/view-user/view-use
 import { ChatsComponent } from './_views/profile/chats/chats.component';
 import { PaymentModesComponent } from './_views/admin_pages/payment-modes/payment-modes.component';
 import { CommissionsComponent } from './_views/admin_pages/commissions/commissions.component';
+import {UserContactsComponent} from "./_views/admin_pages/users/user-contacts/user-contacts.component";
+import {ContactService} from "./_services/admin_services/contact/contact.service";
 
 @NgModule({
     declarations: [
@@ -147,7 +149,8 @@ import { CommissionsComponent } from './_views/admin_pages/commissions/commissio
         ViewUserComponent,
         ChatsComponent,
         PaymentModesComponent,
-        CommissionsComponent
+        CommissionsComponent,
+        UserContactsComponent
     ],
     imports: [
         BrowserModule,
@@ -158,7 +161,7 @@ import { CommissionsComponent } from './_views/admin_pages/commissions/commissio
     providers: [AuthGuard, AuthenticationService, AlertService, UserService, PersonsService,
         EntitiesService, SchoolsService, CompaniesService, FundingService, AcquisitionsService, AuthPagesGuard,
         AlertService, FoundersService, CategoryService, FundingTypesService, CountriesService, ClaimService, ProfileService,
-        PagerService, PermissionsService, ApiKeysService, ProfileService,
+        PagerService, PermissionsService, ApiKeysService, ProfileService, ContactService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: RequestInterceptor,

@@ -196,7 +196,7 @@ export class AppCommons {
     }
 
     /**
-     * @desc Returns the contacts object
+     * @desc Returns the user-contacts object
      * @param contacts
      * @author dubdabasoduba
      */
@@ -208,7 +208,7 @@ export class AppCommons {
             contact.county = contacts[j].county;
             contact.phonenumber = contacts[j].phonenumber;
             contact.email = contacts[j].email;
-            contact.primary = contacts[j].primary == true ? appConstants.yes : appConstants.no;
+            contact.is_main = contacts[j].primary == true ? appConstants.yes : appConstants.no;
             contact._id = contacts[j]._id;
             contactDetails.push(contact);
         }
@@ -218,8 +218,8 @@ export class AppCommons {
 
     /**
      * Get the main person or contests location.
-     * @param contacts -- Pass in all the user contacts
-     * @return {string} -- Return a string of the main location from contacts
+     * @param contacts -- Pass in all the user user-contacts
+     * @return {string} -- Return a string of the main location from user-contacts
      */
     public static getMainLocation(contacts: any) {
         const mainContacts: any = {};
@@ -567,12 +567,12 @@ export class AppCommons {
         contact.email = model.email;
         contact.phonenumber = model.phonenumber;
         contact.country = model.country;
-        contact.primary = true;
+        contact.is_main = true;
         return contact;
     }
 
     /**
-     * @desc Get the current contacts then updates the primary contact in case the are updated
+     * @desc Get the current user-contacts then updates the primary contact in case the are updated
      * @param model {@link any}
      * @param contacts {@link any}
      * @author dubdabasoduba
@@ -626,7 +626,7 @@ export class AppCommons {
     }
 
     /**
-     * @desc Retrieves the primary contacts for the contests
+     * @desc Retrieves the primary user-contacts for the contests
      * @param contacts {@link Array}
      * @return email {@link String}
      * @author dubdabasoduba

@@ -4,11 +4,15 @@
  * This may be subject to prosecution according to the kenyan law
  */
 
-export class ContactModel {
+import {Default} from "./default";
+
+export class ContactModel extends Default{
 	_id: string;
 	country: string;
 	county: string;
-	phonenumber: string;
+	phone_number: string;
 	email: string;
-	primary: any;
+	is_main: number;
+	location: string;
+	person: string;
 }

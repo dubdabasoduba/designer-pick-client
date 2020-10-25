@@ -128,7 +128,7 @@ export class CountriesComponent implements OnInit,OnDestroy {
         country.code = this.model.code;
         country.short_name = this.model.short_name;
         country.is_active = Number(this.model.is_active);
-
+        country.uuid = this.countryId;
         return country;
     }
 
