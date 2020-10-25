@@ -33,7 +33,7 @@
     </div><!-- navbar-menu-wrapper -->
     <div class="navbar-right">
         <div *ngIf="!lbsUser" class="dropdown dropdown-message">
-            <a class="dropdown-link new-indicator" data-toggle="dropdown" routerLink="/">
+            <a class="dropdown-link new-indicator" data-toggle="dropdown" routerLink="/sign-in">
                 Sign In
             </a>
         </div><!-- dropdown -->
@@ -78,7 +78,7 @@
                 <a class="dropdown-item" routerLink="/permissions"><i data-feather="lock"></i>&nbsp;Manage
                     Permission</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" routerLink="/sign-out"><i data-feather="log-out"></i>Sign
+                <a class="dropdown-item" (click)="signOut()"><i data-feather="log-out"></i>Sign
                     Out</a>
             </div><!-- dropdown-menu -->
         </div><!-- dropdown -->

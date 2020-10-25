@@ -48,7 +48,7 @@ export const appConstants = {
     yearly: 'Yearly',
     monthly: 'Monthly',
     weekly: 'Weekly',
-    defaultImageIcon: 'assets/images/avatars/default.png',
+    defaultImageIcon: 'assets/img/avatars/default.png',
 
     /*
      * System error and success helpers

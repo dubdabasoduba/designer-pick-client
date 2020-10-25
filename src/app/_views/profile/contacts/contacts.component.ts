@@ -238,7 +238,7 @@ export class ContactsComponent implements OnInit {
 		const contact = new ContactModel();
 		contact.country = this.model.country;
 		contact.county = this.model.county;
-		contact.phonenumber = this.model.phonenumber;
+		contact.phone_number = this.model.phonenumber;
 		contact.email = this.model.email;
 		contact.is_main = this.model.primary;
 		contacts.push(contact);

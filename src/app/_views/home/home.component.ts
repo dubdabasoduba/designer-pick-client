@@ -44,12 +44,12 @@ export class HomeComponent implements OnInit {
 
 	ngOnInit() {
 		this.currentUser = this.authenticationService.getCurrentUser();
-		this.getRecentFunding();
+		/*this.getRecentFunding();
 		this.getRecentAcquisition();
 		this.getPeopleCount();
 		this.getOrganisationCount();
 		this.getMonthlyFunding();
-		this.getMonthlyAcquisitions();
+		this.getMonthlyAcquisitions();*/
 		if (this.currentUser != null) {
 			this.verify = this.currentUser.verify;
 		}
