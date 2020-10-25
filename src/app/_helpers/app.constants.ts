@@ -22,6 +22,7 @@ export const appConstants = {
     baseApiV1Url: environment.baseApiUrl + 'api/v1',
     baseApiV2Url: environment.baseApiUrl + 'api/v2',
     id: 'id',
+    userId: 'userId',
     entitySchool: 'School',
     yes: 'Yes',
     no: 'No',

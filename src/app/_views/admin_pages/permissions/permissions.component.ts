@@ -106,7 +106,7 @@ export class PermissionsComponent implements OnInit, OnDestroy {
         permission.updated_by = this.loggedInUser;
         permission.name = this.model.name;
         permission.description = this.model.description;
-        permission.is_active = this.model.is_active;
+        permission.is_active = Number(this.model.is_active);
 
         return permission;
     }

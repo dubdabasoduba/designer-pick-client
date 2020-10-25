@@ -18,7 +18,7 @@
                 <h4 class="mg-b-0">Manage Users</h4>
             </div>
             <div class="search-form mg-t-20 mg-sm-t-0">
-                <a class="btn btn-primary" type="button" routerLink="/roles/add">Add User</a>
+                <a class="btn btn-primary" type="button" routerLink="/users/add">Add User</a>
             </div>
         </div>
     </div><!-- container -->
@@ -36,9 +36,9 @@
                                 <th class="text-center" scope="col">#</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Username</th>
-                                <th scope="col">Gender</th>
+                                <th scope="col">Phone number</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Date of Birth</th>
+                                <th scope="col">Age</th>
                                 <th scope="col">Account Type</th>
                                 <th class="text-center" scope="col">Date Created</th>
                                 <th class="text-center" scope="col">Date Updated</th>
@@ -51,12 +51,9 @@
                                 <th class="text-center" scope="row">{{i + 1}}</th>
                                 <td>{{person.name}}</td>
                                 <td>{{person.username}}</td>
-                                <td *ngIf="person.gender != null && person.gender == 0"><span
-                                        class="badge badge-pill badge-info">Female</span></td>
-                                <td *ngIf="person.gender != null && person.gender == 1"><span
-                                        class="badge badge-pill badge-warning">Male</span></td>
+                                <td>{{person.phone_number}}</td>
                                 <td>{{person.email}}</td>
-                                <td>{{person.dob}}</td>
+                                <td>{{person.age}}</td>
                                 <td *ngIf="person.account_type != null && person.account_type == 1">
                                     <span class="badge badge-pill badge-light">Designer</span>
                                 </td>
@@ -74,8 +71,14 @@
                                     class="text-center"><span class="badge badge-pill badge-danger">No</span>
                                 </td>
                                 <td class="text-center">
+                                    <a class="btn btn-danger btn-xs"
+                                       (click)="deactivateUser(person.uuid)"><i
+                                            class="fas fa-user-lock text-white"></i></a>&nbsp;
+                                    <a class="btn btn-info btn-xs"
+                                       (click)="resetUserCredentials(person.user_uuid)"><i
+                                            class="fas fa-unlock text-white"></i></a>&nbsp;
                                     <a class="btn btn-secondary btn-xs"
-                                       routerLink="/role/{{person.uuid}}"><i
+                                       routerLink="/user/{{person.uuid}}/{{person.user_uuid}}"><i
                                             class="fas fa-cogs"></i></a>&nbsp;
                                 </td>
                             </tr>

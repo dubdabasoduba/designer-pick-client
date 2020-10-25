@@ -13,33 +13,37 @@ import {Observable} from "rxjs";
 
 @Injectable()
 export class PersonsService {
-	constructor(private http: HttpClient) {
-	}
+    constructor(private http: HttpClient) {
+    }
 
-	getPeople() {
-		return this.http.get(appConstants.baseApiV1Url + appConstants.peopleUrl);
-	}
+    getPeople() {
+        return this.http.get(appConstants.baseApiV1Url + appConstants.peopleUrl);
+    }
 
-	getPersonById(personId: string):Observable<Person> {
-		// @ts-ignore
-		return this.http.get(appConstants.baseApiV1Url + appConstants.personUrl + personId);
-	}
+    getPersonById(personId: string): Observable<Person> {
+        // @ts-ignore
+        return this.http.get(appConstants.baseApiV1Url + appConstants.personUrl + personId);
+    }
 
-	getPersonEntityById(personId: string) {
-		return this.http.get(appConstants.baseApiV1Url + appConstants.personEntityUrl + personId);
-	}
+    getPersonEntityById(personId: string) {
+        return this.http.get(appConstants.baseApiV1Url + appConstants.personEntityUrl + personId);
+    }
 
-	getPersonCount() {
-		return <any>this.http.get(appConstants.baseApiV1Url + appConstants.peopleCount);
-	}
+    getPersonCount() {
+        return <any>this.http.get(appConstants.baseApiV1Url + appConstants.peopleCount);
+    }
 
-	updatePerson(person: Person) {
-		return this.http.put<Person>(appConstants.baseApiV1Url + appConstants.personUrl + person.uuid, person);
-	}
+    updatePerson(person: Person) {
+        return this.http.put<Person>(appConstants.baseApiV1Url + appConstants.personUrl + person.uuid, person);
+    }
 
-	addPerson(person: Person) {
-		return this.http.post<Person>(appConstants.baseApiV1Url + appConstants.personUrl, person);
-	}
+    addPerson(person: Person) {
+        return this.http.post<Person>(appConstants.baseApiV1Url + appConstants.personUrl, person);
+    }
+
+    getUserRoles(userId: string) {
+        return this.http.get(appConstants.baseApiV1Url + '/person-roles/' + userId);
+    }
 }
 
 

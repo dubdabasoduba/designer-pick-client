@@ -15,5 +15,5 @@ export class Default {
 	id: string;
 	_id: string;
 	uuid:string;
-	is_active: string;
+	is_active: number;
 }

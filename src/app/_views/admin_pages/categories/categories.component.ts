@@ -22,7 +22,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
     public model = {
         name: "",
         description: "",
-        is_active: ""
+        is_active:"",
     };
     public categoryId: string;
     mySubscription: any;
@@ -124,7 +124,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
         }
         category.name = this.model.name;
         category.description = this.model.description;
-        category.is_active = this.model.is_active;
+        category.is_active = Number(this.model.is_active);
 
         return category;
     }

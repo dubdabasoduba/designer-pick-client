@@ -122,7 +122,7 @@ export class AddEditRolesComponent implements OnInit, OnDestroy, DoCheck {
         }
         roles.name = this.model.name;
         roles.description = this.model.description;
-        roles.is_active = this.model.is_active;
+        roles.is_active = Number(this.model.is_active);
         roles.permissions = this.createRolePermissions();
         return roles;
     }

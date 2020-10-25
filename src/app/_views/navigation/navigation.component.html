@@ -54,8 +54,9 @@
                 <h6 class="tx-semibold mg-b-5">{{lbsUser.name}}</h6>
                 <p class="mg-b-25 tx-12 tx-color-03">@{{lbsUser.username}}</p>
 
-                <a class="dropdown-item" routerLink="/profile/{{lbsUser.person}}"><i
-                        data-feather="edit-3"></i>&nbsp;My profile</a>
+                <a class="dropdown-item" routerLink="/profile/{{lbsUser.person}}"><i data-feather="edit-3"></i>&nbsp;My profile</a>
+                <a class="dropdown-item" routerLink="/profile/contacts/{{lbsUser.person}}"><i data-feather="mail"></i>&nbsp;My Contacts</a>
+                <a class="dropdown-item" routerLink="/profile/inbox/{{lbsUser.person}}"><i data-feather="inbox"></i>&nbsp;My Inbox</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" routerLink="/users"><i data-feather="users"></i>&nbsp;Manage
                     users</a>

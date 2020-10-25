@@ -122,7 +122,7 @@ export class ApiKeysComponent implements OnInit {
         apiKey.name = this.model.name;
         apiKey.api_key = this.model.api_key;
         apiKey.expiry = this.model.expiry;
-        apiKey.is_active = this.model.is_active;
+        apiKey.is_active = Number(this.model.is_active);
 
         return apiKey;
     }

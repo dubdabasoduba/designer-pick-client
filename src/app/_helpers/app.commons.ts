@@ -280,12 +280,15 @@ export class AppCommons {
      * @return {number} -- The age from the date of birth
      */
     public static calculateAge(dob) {
-        const today = new Date();
-        const birthDate = new Date(dob);
-        let age = today.getFullYear() - birthDate.getFullYear();
-        const month = today.getMonth() - birthDate.getMonth();
-        if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
-            age--;
+        let age: number
+        if (!this.isStringEmpty(dob)) {
+            const today = new Date();
+            const birthDate = new Date(dob);
+            age = today.getFullYear() - birthDate.getFullYear();
+            const month = today.getMonth() - birthDate.getMonth();
+            if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
         }
         return age;
     }

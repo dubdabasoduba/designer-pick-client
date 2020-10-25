@@ -51,6 +51,7 @@ import {ViewUsersComponent} from "./_views/admin_pages/users/view-users/view-use
 import {AssignUserRolesComponent} from "./_views/admin_pages/users/assign-user-roles/assign-user-roles.component";
 import {AddEditUsersComponent} from "./_views/admin_pages/users/add-edit-users/add-edit-users.component";
 import {UpdateCredentialsComponent} from "./_views/profile/update-credentials/update-credentials.component";
+import {ViewUserComponent} from "./_views/admin_pages/users/view-user/view-user.component";
 
 const appRoutes: Routes = [
     {path: '', component: SigninComponent, runGuardsAndResolvers: 'always'},
@@ -164,6 +165,10 @@ const appRoutes: Routes = [
         canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
     },
     {
+        path: 'user/:id/:userId', component: ViewUserComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+    },
+    {
         path: 'assign-user-roles', component: AssignUserRolesComponent,
         canActivate: [AuthGuard], runGuardsAndResolvers: "always"
     },
@@ -172,7 +177,7 @@ const appRoutes: Routes = [
         canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
     },
     {
-        path: 'user/edit/:id', component: AddEditUsersComponent,
+        path: 'users/edit/:id', component: AddEditUsersComponent,
         canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
     },
 

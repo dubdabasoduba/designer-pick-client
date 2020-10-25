@@ -85,6 +85,7 @@ import {ViewUsersComponent} from './_views/admin_pages/users/view-users/view-use
 import {AssignUserRolesComponent} from './_views/admin_pages/users/assign-user-roles/assign-user-roles.component';
 import {AddEditUsersComponent} from './_views/admin_pages/users/add-edit-users/add-edit-users.component';
 import {UpdateCredentialsComponent} from './_views/profile/update-credentials/update-credentials.component';
+import { ViewUserComponent } from './_views/admin_pages/users/view-user/view-user.component';
 
 @NgModule({
     declarations: [
@@ -139,7 +140,8 @@ import {UpdateCredentialsComponent} from './_views/profile/update-credentials/up
         ViewUsersComponent,
         AssignUserRolesComponent,
         AddEditUsersComponent,
-        UpdateCredentialsComponent
+        UpdateCredentialsComponent,
+        ViewUserComponent
     ],
     imports: [
         BrowserModule,
