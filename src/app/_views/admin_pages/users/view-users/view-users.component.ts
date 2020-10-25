@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Person} from "../../../../_models";
-import {AlertService, PersonsService} from "../../../../_services";
+import {AlertService, AuthenticationService, PersonsService} from "../../../../_services";
 import {AppCommons} from "../../../../_helpers/app.commons";
 import {Router} from "@angular/router";
 
@@ -13,9 +13,7 @@ export class ViewUsersComponent implements OnInit {
     loading = false;
     public people: Array<Person> = [];
 
-    constructor(private personsService: PersonsService,
-                private alertService: AlertService,
-                private router: Router) {
+    constructor(private personsService: PersonsService, private alertService: AlertService, private authenticationService: AuthenticationService, private router: Router)  {
     }
 
     ngOnInit(): void {
@@ -52,17 +50,24 @@ export class ViewUsersComponent implements OnInit {
             person.date_created = AppCommons.formatDisplayDate(new Date(data[i].date_created));
             person.date_updated = AppCommons.formatDisplayDate(AppCommons.convertStringToDate(data[i].date_updated));
             person.is_active = data[i].is_active;
+            person.reset = data[i].reset;
             person.user_uuid = data[i].user_uuid;
             person.uuid = data[i].uuid;
             this.people.push(person);
         }
     }
 
-    deactivateUser(personId: string) {
-
-    }
-
-    resetUserCredentials(userId: string) {
-
+    resetUserCredentials(username: string) {
+        this.loading = true;
+        this.authenticationService.resetPasswordRequest(username).subscribe(
+            data => {
+                this.router.navigateByUrl("/users")
+                this.loading = false;
+            },
+            error => {
+                this.formatPermissions(error);
+                this.loading = false;
+            }
+        );
     }
 }

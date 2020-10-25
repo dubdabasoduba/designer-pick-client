@@ -12,6 +12,10 @@
                     <ol class="breadcrumb breadcrumb-style1 mg-b-10">
                         <li class="breadcrumb-item"><a href="#">Admin</a></li>
                         <li class="breadcrumb-item"><a routerLink="/users">Manage Users</a></li>
+                        <li *ngIf="personId != null && personId != undefined"
+                            class="breadcrumb-item"><a
+                                routerLink="/user/{{person.uuid}}/{{person.user_uuid}}">View
+                            user</a></li>
                         <li *ngIf="personId == null && personId == undefined" aria-current="page"
                             class="breadcrumb-item active">Add User
                         </li>
@@ -59,19 +63,10 @@
                                        class="form-control" data-error="Subject field is required"
                                        id="email" name="email"
                                        placeholder="Please give the email"
-                                       type="text" autocomplete="off">
+                                       type="email" autocomplete="off">
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-lg-4">
-                                <label>Phone number:&nbsp;<span
-                                        class="tx-danger">*</span></label>
-                                <input [(ngModel)]="model.name" class="form-control"
-                                       data-error="Subject field is required"
-                                       id="phone_number" name="phone_number"
-                                       placeholder="Please give the phone number"
-                                       required="" type="text">
-                            </div>
                             <div class="form-group col-lg-4">
                                 <label>Select account type:&nbsp;<span
                                         class="tx-danger">*</span></label>
@@ -84,6 +79,8 @@
                                     <option value="2">Staff</option>
                                 </select>
                             </div>
+                            <div class="form-group col-lg-4"></div>
+                            <div class="form-group col-lg-4"></div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">

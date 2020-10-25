@@ -76,10 +76,10 @@ export class ViewUserComponent implements OnInit {
         );
     }
 
-    removeUser(id: string) {
+    removePerson(id: string) {
         if (confirm("Are you sure you want to delete this user?")) {
             this.loading = true;
-            this.rolesService.removeRole(id).subscribe(
+            this.personsService.removePerson(id).subscribe(
                 data => {
                     this.router.navigateByUrl('/users');
                     this.loading = false;

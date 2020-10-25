@@ -36,4 +36,12 @@ export class RolesService {
     addRole(Role: Roles) {
         return this.http.post(appConstants.baseApiV1Url + '/role', Role);
     }
+
+    getSearchRoles(searchQuery: string) {
+        return this.http.get(appConstants.baseApiV1Url + '/roles/search?' + searchQuery);
+    }
+
+    addUserRoles(personId: string, roles: Array<Roles>) {
+        return this.http.post(appConstants.baseApiV1Url + '/user-roles/' + personId, roles);
+    }
 }

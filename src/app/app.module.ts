@@ -87,6 +87,8 @@ import {AddEditUsersComponent} from './_views/admin_pages/users/add-edit-users/a
 import {UpdateCredentialsComponent} from './_views/profile/update-credentials/update-credentials.component';
 import { ViewUserComponent } from './_views/admin_pages/users/view-user/view-user.component';
 import { ChatsComponent } from './_views/profile/chats/chats.component';
+import { PaymentModesComponent } from './_views/admin_pages/payment-modes/payment-modes.component';
+import { CommissionsComponent } from './_views/admin_pages/commissions/commissions.component';
 
 @NgModule({
     declarations: [
@@ -143,7 +145,9 @@ import { ChatsComponent } from './_views/profile/chats/chats.component';
         AddEditUsersComponent,
         UpdateCredentialsComponent,
         ViewUserComponent,
-        ChatsComponent
+        ChatsComponent,
+        PaymentModesComponent,
+        CommissionsComponent
     ],
     imports: [
         BrowserModule,

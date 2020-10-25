@@ -70,12 +70,10 @@
                                 <td *ngIf="person.is_active != null && person.is_active == 0"
                                     class="text-center"><span class="badge badge-pill badge-danger">No</span>
                                 </td>
-                                <td class="text-center">
-                                    <a class="btn btn-danger btn-xs"
-                                       (click)="deactivateUser(person.uuid)"><i
-                                            class="fas fa-user-lock text-white"></i></a>&nbsp;
-                                    <a class="btn btn-info btn-xs"
-                                       (click)="resetUserCredentials(person.user_uuid)"><i
+                                <td class="text-right">
+                                    <a *ngIf="person.reset != null && person.reset == 0"
+                                       class="btn btn-info btn-xs"
+                                       (click)="resetUserCredentials(person.username)"><i
                                             class="fas fa-unlock text-white"></i></a>&nbsp;
                                     <a class="btn btn-secondary btn-xs"
                                        routerLink="/user/{{person.uuid}}/{{person.user_uuid}}"><i

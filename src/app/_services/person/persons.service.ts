@@ -33,12 +33,16 @@ export class PersonsService {
         return <any>this.http.get(appConstants.baseApiV1Url + appConstants.peopleCount);
     }
 
-    updatePerson(person: Person) {
+    updatePerson(person: Person): Observable<Person> {
         return this.http.put<Person>(appConstants.baseApiV1Url + appConstants.personUrl + person.uuid, person);
     }
 
-    addPerson(person: Person) {
+    addPerson(person: Person): Observable<Person> {
         return this.http.post<Person>(appConstants.baseApiV1Url + appConstants.personUrl, person);
+    }
+
+    removePerson(personId: string) {
+        return this.http.delete(appConstants.baseApiV1Url + appConstants.personUrl + personId);
     }
 
     getUserRoles(userId: string) {

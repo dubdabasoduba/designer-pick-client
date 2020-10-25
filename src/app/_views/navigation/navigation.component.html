@@ -54,12 +54,19 @@
                 <h6 class="tx-semibold mg-b-5">{{lbsUser.name}}</h6>
                 <p class="mg-b-25 tx-12 tx-color-03">@{{lbsUser.username}}</p>
 
-                <a class="dropdown-item" routerLink="/profile/{{lbsUser.person}}"><i data-feather="edit-3"></i>&nbsp;My profile</a>
-                <a class="dropdown-item" routerLink="/profile/contacts/{{lbsUser.person}}"><i data-feather="mail"></i>&nbsp;My Contacts</a>
-                <a class="dropdown-item" routerLink="/profile/inbox/{{lbsUser.person}}"><i data-feather="inbox"></i>&nbsp;My Inbox</a>
+                <a class="dropdown-item" routerLink="/profile/{{lbsUser.person}}"><i
+                        data-feather="edit-3"></i>&nbsp;My profile</a>
+                <a class="dropdown-item" routerLink="/profile/contacts/{{lbsUser.person}}"><i
+                        data-feather="mail"></i>&nbsp;My Contacts</a>
+                <a class="dropdown-item" routerLink="/profile/inbox/{{lbsUser.person}}"><i
+                        data-feather="inbox"></i>&nbsp;My Inbox</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" routerLink="/users"><i data-feather="users"></i>&nbsp;Manage
                     users</a>
+                <a class="dropdown-item" routerLink="/payment/payment-modes"><i
+                        data-feather="credit-card"></i>&nbsp;Manage Payment modes</a>
+                <a class="dropdown-item" routerLink="/payment/commisions"><i
+                        data-feather="shopping-bag"></i>&nbsp;Manage Commission</a>
                 <a class="dropdown-item" routerLink="/categories"><i data-feather="package"></i>&nbsp;Manage
                     Categories</a>
                 <a class="dropdown-item" routerLink="/countries"><i data-feather="map-pin"></i>&nbsp;Manage
@@ -68,7 +75,7 @@
                         data-feather="grid"></i>&nbsp;Manage API Keys</a>
                 <a class="dropdown-item" routerLink="/roles"><i data-feather="pie-chart"></i>&nbsp;Manage
                     Roles</a>
-                <a class="dropdown-item" routerLink="/permissions"><i data-feather="inbox"></i>&nbsp;Manage
+                <a class="dropdown-item" routerLink="/permissions"><i data-feather="lock"></i>&nbsp;Manage
                     Permission</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" routerLink="/sign-out"><i data-feather="log-out"></i>Sign

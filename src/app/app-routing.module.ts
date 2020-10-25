@@ -169,7 +169,7 @@ const appRoutes: Routes = [
         canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
     },
     {
-        path: 'assign-user-roles', component: AssignUserRolesComponent,
+        path: 'users/assign-roles/:id/:userId', component: AssignUserRolesComponent,
         canActivate: [AuthGuard], runGuardsAndResolvers: "always"
     },
     {

@@ -1,12 +1,13 @@
-import {Component, DoCheck, OnInit} from '@angular/core';
-import {Permissions, Person, Roles} from "../../../../_models";
+import {Component, OnInit} from '@angular/core';
+import {Permissions, Person} from "../../../../_models";
 import {
     AlertService,
     AuthenticationService,
-    PermissionsService, PersonsService,
+    PermissionsService,
+    PersonsService,
     RolesService
 } from "../../../../_services";
-import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {appConstants} from "../../../../_helpers/app.constants";
 import {AppCommons} from "../../../../_helpers/app.commons";
 
@@ -15,19 +16,17 @@ import {AppCommons} from "../../../../_helpers/app.commons";
     templateUrl: './add-edit-users.component.html',
     styleUrls: ['./add-edit-users.component.css']
 })
-export class AddEditUsersComponent implements OnInit, DoCheck {
+export class AddEditUsersComponent implements OnInit {
     loading = false;
     public model = {
         name: "",
         username: "",
         email: "",
-        dob: "",
-        gender: "",
+        phone_number:"",
         account_type: "",
         is_active: ""
     };
     public personId: string;
-    mySubscription: any;
     loggedInUser: string;
     person: Person;
     public permissions: Array<Permissions> = [];
@@ -40,39 +39,16 @@ export class AddEditUsersComponent implements OnInit, DoCheck {
         private alertService: AlertService,
         private route: ActivatedRoute, private router: Router,
         private authenticationService: AuthenticationService) {
-        this.router.routeReuseStrategy.shouldReuseRoute = function () {
-            return false;
-        };
-
-        this.mySubscription = this.router.events.subscribe((event) => {
-            if (event instanceof NavigationEnd) {
-                // Trick the Router into believing it's last link wasn't previously loaded
-                this.router.navigated = false;
-            }
-        });
     }
 
     ngOnInit(): void {
         this.route.params.subscribe(params => {
             this.personId = params[appConstants.id];
         });
-        this.getPermissions();
         if (!AppCommons.isStringEmpty(this.personId)) {
-            this.getRole();
-            this.getRolePermissions();
+            this.getPerson();
         }
         this.loggedInUser = this.authenticationService.getCurrentUser().uuid;
-    }
-
-
-    ngDoCheck() {
-        this.removeAlreadyAssignedPermissions();
-    }
-
-    ngOnDestroy() {
-        if (this.mySubscription) {
-            this.mySubscription.unsubscribe();
-        }
     }
 
     addEditUser() {
@@ -92,10 +68,10 @@ export class AddEditUsersComponent implements OnInit, DoCheck {
 
     private updateUser() {
         this.loading = true;
-        this.rolesService.updateRole(this.createUser()).subscribe(
+        this.personsService.updatePerson(this.createUser()).subscribe(
             data => {
                 this.loading = false;
-                this.router.navigateByUrl('/users');
+                this.redirectToAssignRolesPage(data);
             },
             error => {
                 this.alertService.error(error);
@@ -106,10 +82,10 @@ export class AddEditUsersComponent implements OnInit, DoCheck {
 
     private addUser() {
         this.loading = true;
-        this.rolesService.addRole(this.createUser()).subscribe(
+        this.personsService.addPerson(this.createUser()).subscribe(
             data => {
                 this.loading = false;
-                this.router.navigateByUrl('/users');
+                this.redirectToAssignRolesPage(data);
             },
             error => {
                 this.alertService.error(error);
@@ -118,37 +94,38 @@ export class AddEditUsersComponent implements OnInit, DoCheck {
         )
     }
 
-    private createUser() {
-        let roles = new Roles();
-        if (!AppCommons.isStringEmpty(this.personId)) {
-            roles = this.person;
-            roles.updated_by = this.loggedInUser;
+    redirectToAssignRolesPage(person: Person) {
+        if (!AppCommons.isStringEmpty(person.user_uuid)) {
+            this.router.navigateByUrl('/users/assign-roles/' + person.uuid + "/" + person.user_uuid);
         } else {
-            roles.created_by = this.loggedInUser;
+            this.router.navigateByUrl('/users');
         }
-        roles.name = this.model.name;
-        roles.description = this.model.description;
-        roles.is_active = Number(this.model.is_active);
-        roles.permissions = this.createRolePermissions();
-        return roles;
     }
 
-    private createRolePermissions() {
-        let permissions = "";
-        for (let permission of this.assignedPermissions) {
-            permissions += permission.uuid + ",";
+    private createUser() {
+        let person = new Person();
+        if (!AppCommons.isStringEmpty(this.personId)) {
+            person = this.person;
+            person.updated_by = this.loggedInUser;
+        } else {
+            person.update_on_first_login = 1;
+            person.created_by = this.loggedInUser;
         }
-
-        return permissions.trim().replace(/,\s*$/, ""); //removes a trailing comma;
+        person.name = this.model.name;
+        person.username = this.model.username;
+        person.is_active = Number(this.model.is_active);
+        person.email = this.model.email;
+        person.account_type = this.model.account_type;
+        return person;
     }
 
-    private getRole() {
+    private getPerson() {
         this.loading = true;
-        this.rolesService.getRole(this.personId).subscribe(
+        this.personsService.getPersonById(this.personId).subscribe(
             data => {
-                this.person = data;
+                this.person = data[0];
                 this.loading = false;
-                this.populateModel(data)
+                this.populateModel(data[0])
             },
             error => {
                 this.alertService.error(error);
@@ -159,82 +136,10 @@ export class AddEditUsersComponent implements OnInit, DoCheck {
 
     private populateModel(data: any) {
         this.model.name = data.name;
-        this.model.description = data.description;
+        this.model.username = data.username;
+        this.model.email = data.email;
+        this.model.account_type = data.account_type;
         // @ts-ignore
-        this.model.is_active = data.is_active === 1 ? true : false;
-    }
-
-    /**
-     * Get the permissions in the system
-     */
-    private getPermissions() {
-        this.loading = true;
-        let searchQuery = "is_active=" + 1;
-        this.permissionsService.getSearchPermissions(searchQuery).subscribe(
-            data => {
-                this.permissions = this.formatPermissions(data);
-                this.loading = false;
-            },
-            error => {
-                this.alertService.error(error);
-                this.loading = false;
-            }
-        );
-    }
-
-    private getRolePermissions() {
-        this.loading = true;
-        this.rolesService.getRolePermissions(this.personId).subscribe(
-            data => {
-                this.assignedPermissions = this.formatPermissions(data);
-                this.loading = false;
-            },
-            error => {
-                this.alertService.error(error);
-                this.loading = false;
-            }
-        );
-    }
-
-    private removeAlreadyAssignedPermissions() {
-        for (let i = 0; i < this.assignedPermissions.length; i++) {
-            for (let j = 0; j < this.permissions.length; j++) {
-                if (this.permissions[j].uuid === this.assignedPermissions[i].uuid) {
-                    this.permissions.splice(j, 1);
-                }
-            }
-        }
-    }
-
-    private formatPermissions(data: any) {
-        let permissions: Array<Permissions> = [];
-        for (let i = 0; i < data.length; i++) {
-            let permission = new Permissions();
-            permission.name = data[i].name;
-            permission.uuid = data[i].uuid;
-            permissions.push(permission);
-        }
-
-        return permissions
-    }
-
-    assignPermissions(permission: string) {
-        for (let i = 0; i < this.permissions.length; i++) {
-            if (permission === this.permissions[i].uuid) {
-                this.assignedPermissions.push(this.permissions[i])
-                this.permissions.splice(i, 1);
-                break;
-            }
-        }
-    }
-
-    unAssignPermissions(permission: string) {
-        for (let i = 0; i < this.assignedPermissions.length; i++) {
-            if (permission === this.assignedPermissions[i].uuid) {
-                this.permissions.push(this.assignedPermissions[i])
-                this.assignedPermissions.splice(i, 1);
-                break;
-            }
-        }
+        this.model.is_active = data.is_active;
     }
 }

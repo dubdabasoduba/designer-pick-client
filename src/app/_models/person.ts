@@ -43,5 +43,7 @@ export class Person extends Default {
     uuid: string;
     username: string;
     phone_number: string;
-    is_verified:number;
+    is_verified: number;
+    update_on_first_login: number;
+    reset: number;
 }
