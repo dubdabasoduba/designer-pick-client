@@ -4,14 +4,14 @@
  * This may be subject to prosecution according to the kenyan law
  */
 #instructionComponent a {
-	cursor: pointer !important;
-	font-weight: bold;
+    cursor: pointer !important;
+    font-weight: bold;
 }
 
 .pcoded-inner-content {
-	padding: 0 !important;
+    padding: 0 !important;
 }
 
 #authpages .pcoded[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="expanded"][vertical-effect="shrink"] .pcoded-content {
-	margin-left: 0 !important;
+    margin-left: 0 !important;
 }

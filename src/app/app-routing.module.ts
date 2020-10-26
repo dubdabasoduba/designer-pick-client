@@ -6,39 +6,19 @@
 import {RouterModule, Routes} from '@angular/router';
 import {ContestsComponent} from './_views/main_views/contests/contests.component';
 import {DesignersComponent} from './_views/main_views/designers/designers.component';
-import {CompaniesComponent} from './_views/main_views/companies/companies.component';
-import {PeopleComponent} from './_views/admin_pages/people/list/people.component';
-import {PersonComponent} from './_views/admin_pages/people/single/display/person.component';
 import {SignupComponent} from './_views/auth/Signup/signup.component';
 import {SigninComponent} from './_views/auth/Signin/signin.component';
 import {RecoveryComponent} from './_views/auth/recovery/recovery.component';
 import {UpdateComponent} from './_views/auth/update-password/update.component';
-import {FundingTypesComponent} from './_views/dashboards/designers-dashboard/funding-types/funding-types.component';
 import {CategoriesComponent} from './_views/admin_pages/categories/categories.component';
 import {VerifyEmailComponent} from './_views/auth/verify-email/verify.component';
-import {FundingDisplayComponent} from './_views/dashboards/designers-dashboard/single-funding/single-funding.component';
 import {ClientsDashboardComponent} from './_views/dashboards/clients-dashboard/clients-dashboard.component';
-import {AcquisitionDisplayComponent} from './_views/dashboards/clients-dashboard/single-acquisition/single-acquisition.component';
 import {DesignersDashboardComponent} from './_views/dashboards/designers-dashboard/designers-dashboard.component';
 import {appConstants} from './_helpers/app.constants';
 import {AuthGuard, AuthPagesGuard, EntityGuard} from './_guards';
-import {AddEditFundingComponent} from './_views/dashboards/designers-dashboard/add-edit-funding/add-edit-funding.component';
-import {AddEditAcquisitionsComponent} from './_views/dashboards/clients-dashboard/add-edit-acquisitions/add-edit-acquisitions.component';
-import {SponsorsComponent} from './_views/dashboards/designers-dashboard/sponsors/sponsors.component';
-import {BuyersComponent} from './_views/dashboards/clients-dashboard/buyers/buyers.component';
-import {JobsComponent} from './_views/admin_pages/people/single/jobs/jobs.component';
-import {BoardAppointmentsComponent} from './_views/admin_pages/people/single/board-appointments/board-appointments.component';
 import {ProfileComponent} from './_views/profile/profile.component';
-import {EducationComponent} from './_views/admin_pages/people/single/education/education.component';
-import {SubsidiariesComponent} from './_views/main_views/single/subsidiaries/subsidiaries.component';
-import {SocialMediaComponent} from './_views/profile/social-media/social-media.component';
-import {CategoryComponent} from './_views/profile/category/category.component';
 import {ContactsComponent} from './_views/profile/contacts/contacts.component';
-import {FoundersComponent} from './_views/main_views/single/founders/founders.component';
 import {NgModule} from '@angular/core';
-import {EntityProfileComponent} from './_views/profile/add-profile/entity-profile/entity-profile.component';
-import {PersonProfileComponent} from './_views/profile/add-profile/person-profile/person-profile.component';
-import {ClaimComponent} from './_views/auth/claim/claim.component';
 import {HowItWorksComponent} from './_views/main_views/how-it-works/how-it-works.component';
 import {UpdateUserComponent} from './_views/profile/update-user/update-user.component';
 import {CountriesComponent} from "./_views/admin_pages/countries/countries.component";
@@ -54,6 +34,8 @@ import {UpdateCredentialsComponent} from "./_views/profile/update-credentials/up
 import {ViewUserComponent} from "./_views/admin_pages/users/view-user/view-user.component";
 import {UserContactsComponent} from "./_views/admin_pages/users/user-contacts/user-contacts.component";
 import {HomeComponent} from "./_views/home/home.component";
+import {PaymentModesComponent} from "./_views/admin_pages/payment-modes/payment-modes.component";
+import {CommissionsComponent} from "./_views/admin_pages/commissions/commissions.component";
 
 const appRoutes: Routes = [
     {path: '', component: HomeComponent, runGuardsAndResolvers: 'always'},
@@ -190,151 +172,28 @@ const appRoutes: Routes = [
         path: 'users/edit/:id', component: AddEditUsersComponent,
         canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
     },
+    {
+        path: 'payment/payment-modes', component: PaymentModesComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'payment/payment-modes/:id', component: PaymentModesComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'payment/commissions', component: CommissionsComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'payment/commissions/:id', component: CommissionsComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+    },
 
     // probably should be cleared
-    {
-        path: 'profile/subsidiary/:id',
-        component: SubsidiariesComponent,
-        canActivate: [AuthGuard, EntityGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {path: 'schools', component: DesignersComponent, runGuardsAndResolvers: 'always'},
-    {path: 'companies', component: CompaniesComponent, runGuardsAndResolvers: 'always'},
-    {path: 'people', component: PeopleComponent, runGuardsAndResolvers: 'always'},
-    {path: 'person/:id', component: PersonComponent, runGuardsAndResolvers: 'always'},
-    {
-        path: 'person-jobs/:id',
-        component: JobsComponent,
-        canActivate: [AuthGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'person-board-appointments/:id',
-        component: BoardAppointmentsComponent,
-        canActivate: [AuthGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'education-history/:id',
-        component: EducationComponent,
-        canActivate: [AuthGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'profile/social-media/:id',
-        component: SocialMediaComponent,
-        canActivate: [AuthGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'profile/category/:id',
-        component: CategoryComponent,
-        canActivate: [AuthGuard],
-        runGuardsAndResolvers: 'always'
-    },
     {
         path: 'profile/user-contacts/:id',
         component: ContactsComponent,
         canActivate: [AuthGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'profile/founders/:id',
-        component: FoundersComponent,
-        canActivate: [AuthGuard, EntityGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'contests-profile',
-        component: EntityProfileComponent,
-        canActivate: [AuthGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'contests-profile/:id',
-        component: EntityProfileComponent,
-        canActivate: [AuthGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'person-profile/:id',
-        component: PersonProfileComponent,
-        canActivate: [AuthGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'person-profile',
-        component: PersonProfileComponent,
-        canActivate: [AuthGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'designers-dashboard/:id',
-        component: FundingDisplayComponent,
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'add-edit-designers-dashboard/:id',
-        component: AddEditFundingComponent,
-        canActivate: [AuthGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'add-edit-designers-dashboard',
-        component: AddEditFundingComponent,
-        canActivate: [AuthGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'add-sponsor',
-        component: SponsorsComponent,
-        canActivate: [AuthGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'edit-sponsor',
-        component: SponsorsComponent,
-        canActivate: [AuthGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'acquisition/:id',
-        component: AcquisitionDisplayComponent,
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'add-edit-acquisition/:id',
-        component: AddEditAcquisitionsComponent,
-        canActivate: [AuthGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'add-edit-acquisition',
-        component: AddEditAcquisitionsComponent,
-        canActivate: [AuthGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'add-buyer',
-        component: BuyersComponent,
-        canActivate: [AuthGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'edit-buyer',
-        component: BuyersComponent,
-        canActivate: [AuthGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'claim/:type/:id/:token',
-        component: ClaimComponent,
-        canActivate: [AuthPagesGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'designers-dashboard-type/:id',
-        component: FundingTypesComponent,
         runGuardsAndResolvers: 'always'
     },
     {
