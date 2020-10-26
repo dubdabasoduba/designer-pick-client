@@ -12,14 +12,14 @@
                     <ol class="breadcrumb breadcrumb-style1 mg-b-10">
                         <li class="breadcrumb-item"><a href="#">Admin</a></li>
                         <li class="breadcrumb-item"><a routerLink="/users">Manage Users</a></li>
-                        <li aria-current="page" class="breadcrumb-item active">View UserModel</li>
+                        <li aria-current="page" class="breadcrumb-item active">View User</li>
                     </ol>
                 </nav>
-                <h4 class="mg-b-0">View UserModel</h4>
+                <h4 class="mg-b-0">View User</h4>
             </div>
             <div class="search-form mg-t-20 mg-sm-t-0">
                 <a class="btn btn-primary text-white" routerLink="/users/add" type="button">Add
-                    UserModel</a>
+                    User</a>
             </div>
         </div>
     </div><!-- container -->
@@ -31,7 +31,7 @@
                 <fieldset class="form-fieldset">
                     <legend>{{person.name}}&nbsp;user details</legend>
                     <br/>
-                    <h6>UserModel Details</h6>
+                    <h6>User Details</h6>
                     <hr/>
                     <div class="row mg-l-10 mg-r-10">
                         <br/>
@@ -110,7 +110,7 @@
                                               class="btn btn-danger text-white"
                                               type="button"><i
                                 class="fas fa-trash-alt text-white"></i>&nbsp;Delete
-                            UserModel&nbsp;</a></div>
+                            User&nbsp;</a></div>
                         <div class="pd-10"><a class="btn btn-light"
                                               routerLink="/users/contacts/{{person.uuid}}"
                                               type="button"><i
@@ -124,7 +124,7 @@
                         <div class="pd-10"><a class="btn btn-info text-white"
                                               routerLink="/users/edit/{{personId}}"
                                               type="button"><i
-                                class="far fa-edit"></i>&nbsp;Edit UserModel&nbsp;</a>
+                                class="far fa-edit"></i>&nbsp;Edit User&nbsp;</a>
                         </div>
                     </div>
                 </fieldset>

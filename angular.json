@@ -55,7 +55,8 @@
               "src/assets/js/dashboard-one.js",
               "src/assets/lib/js-cookie/js.cookie.js",
               "src/assets/js/tooltip.js",
-              "src/assets/js/main.js"
+              "src/assets/js/main.js",
+              "src/assets/js/jquery.dataTables.min.js"
             ]
           },
           "configurations": {
