@@ -106,19 +106,23 @@
                     </div>
                     <br/>
                     <div class="d-flex flex-row-reverse mg-b-20">
-                        <div class="pd-10"><a (click)="removePerson(person.uuid)" class="btn btn-danger text-white"
+                        <div class="pd-10"><a (click)="removePerson(person.uuid)"
+                                              class="btn btn-danger text-white"
                                               type="button"><i
                                 class="fas fa-trash-alt text-white"></i>&nbsp;Delete
                             UserModel&nbsp;</a></div>
-                        <div class="pd-10"><a class="btn btn-light" routerLink="/users/contacts/{{person.uuid}}"
+                        <div class="pd-10"><a class="btn btn-light"
+                                              routerLink="/users/contacts/{{person.uuid}}"
                                               type="button"><i
                                 class="far fa-envelope"></i>&nbsp;Manage contacts&nbsp;</a>
                         </div>
-                        <div class="pd-10"><a class="btn btn-dark" routerLink="/users/assign-roles/{{person.uuid}}/{{person.user_uuid}}"
+                        <div class="pd-10"><a class="btn btn-dark"
+                                              routerLink="/users/assign-roles/{{person.uuid}}/{{person.user_uuid}}"
                                               type="button"><i
                                 class="far fa-edit"></i>&nbsp;Assign Roles&nbsp;</a>
                         </div>
-                        <div class="pd-10"><a class="btn btn-info text-white" routerLink="/users/edit/{{personId}}"
+                        <div class="pd-10"><a class="btn btn-info text-white"
+                                              routerLink="/users/edit/{{personId}}"
                                               type="button"><i
                                 class="far fa-edit"></i>&nbsp;Edit UserModel&nbsp;</a>
                         </div>

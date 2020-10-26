@@ -21,7 +21,8 @@
                 <h4 class="mg-b-0">Manage Payment Modes</h4>
             </div>
             <div class="search-form mg-t-20 mg-sm-t-0">
-                <a class="btn btn-primary text-white" routerLink="/users/add" type="button">Add
+                <a class="btn btn-primary text-white" routerLink="/payment/payment-modes"
+                   type="button">Add
                     Payment Mode</a>
             </div>
         </div>
@@ -33,14 +34,15 @@
             <div class="col-lg-12 col-xl-12">
                 <fieldset class="form-fieldset">
                     <legend>Add&nbsp;|Edit&nbsp;Payment Mode</legend>
-                    <form #f="ngForm" (ngSubmit)="f.form.valid && addEditCategory()" novalidate>
+                    <form #f="ngForm" (ngSubmit)="f.form.valid && addEditPaymentMode()" novalidate>
                         <div class="form-row">
                             <div class="form-group col-lg-5">
-                                <label>Payment Mode name:&nbsp;<span class="tx-danger">*</span></label>
+                                <label>Payment Mode name:&nbsp;<span
+                                        class="tx-danger">*</span></label>
                                 <input [(ngModel)]="model.name" class="form-control"
                                        data-error="Subject field is required"
                                        id="name" name="name"
-                                       placeholder="Please give the category name"
+                                       placeholder="Please give the payment mode name"
                                        required="" type="text">
                             </div>
                             <div class="form-group col-lg-7">
@@ -49,26 +51,28 @@
                                        autocomplete="off"
                                        class="form-control" id="description"
                                        name="description"
-                                       placeholder="Place give the category description" type="text">
+                                       placeholder="Place give the payment mode description"
+                                       type="text">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <div class="custom-control custom-switch">
-                                    <input [(ngModel)]="model.is_active" class="custom-control-input"
+                                    <input [(ngModel)]="model.is_active"
+                                           class="custom-control-input"
                                            id="status" name="status" type="checkbox">
                                     <label class="custom-control-label" for="status">Deactivate/Activate
-                                        category</label>
+                                        payment mode</label>
                                 </div>
 
                             </div>
                             <div class="form-group col-md-4"></div>
                             <div class="form-group col-md-2">
-                                <button *ngIf="categoryId == null && categoryId == undefined"
-                                        class="btn btn-primary btn-block">Create category
+                                <button *ngIf="paymentId == null && paymentId == undefined"
+                                        class="btn btn-primary btn-block">Create payment mode
                                 </button>
-                                <button *ngIf="categoryId != null && categoryId != undefined"
-                                        class="btn btn-primary btn-block">Update category
+                                <button *ngIf="paymentId != null && paymentId != undefined"
+                                        class="btn btn-primary btn-block">Update payment mode
                                 </button>
                             </div>
                         </div>
@@ -96,23 +100,23 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr *ngFor="let category of categories; let i = index">
+                            <tr *ngFor="let payment_mode of paymentModes; let i = index">
                                 <th class="text-center" scope="row">{{i + 1}}</th>
-                                <td>{{category.name}}</td>
-                                <td>{{category.description}}</td>
-                                <td class="text-center">{{category.date_created}}</td>
-                                <td class="text-center">{{category.date_updated}}</td>
-                                <td *ngIf="category.is_active != null && category.is_active == 1"
+                                <td>{{payment_mode.name}}</td>
+                                <td>{{payment_mode.description}}</td>
+                                <td class="text-center">{{payment_mode.date_created}}</td>
+                                <td class="text-center">{{payment_mode.date_updated}}</td>
+                                <td *ngIf="payment_mode.is_active != null && payment_mode.is_active == 1"
                                     class="text-center"><span
                                         class="badge badge-pill badge-success">Yes</span></td>
-                                <td *ngIf="category.is_active != null && category.is_active == 0"
+                                <td *ngIf="payment_mode.is_active != null && payment_mode.is_active == 0"
                                     class="text-center"><span class="badge badge-pill badge-danger">No</span>
                                 </td>
                                 <td class="text-center">
                                     <a class="btn btn-info btn-xs"
-                                       routerLink="/categories/{{category.uuid}}"><i
+                                       routerLink="/payment/payment-modes/{{payment_mode.uuid}}"><i
                                             class="far fa-edit"></i></a>&nbsp;
-                                    <a (click)="removeCategory(category.uuid)"
+                                    <a (click)="removePaymentMode(payment_mode.uuid)"
                                        class="btn btn-danger btn-xs"><i
                                             class="fas fa-trash-alt text-white"></i></a>
                                 </td>

@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {CategoryModel} from "../../../_models";
-import {AlertService, AuthenticationService, CategoryService} from "../../../_services";
+import {CommissionsModel} from "../../../_models";
+import {AlertService, AuthenticationService, CommissionsService} from "../../../_services";
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {appConstants} from "../../../_helpers/app.constants";
 import {AppCommons} from "../../../_helpers/app.commons";
@@ -12,19 +12,19 @@ import {AppCommons} from "../../../_helpers/app.commons";
 })
 export class CommissionsComponent implements OnInit, OnDestroy {
     loading = false;
-    public categories: Array<CategoryModel> = [];
+    public commissions: Array<CommissionsModel> = [];
     public model = {
         name: "",
-        description: "",
+        percentage: 0,
         is_active: "",
     };
-    public categoryId: string;
+    public commissionId: string;
     mySubscription: any;
-    category = new CategoryModel();
+    commission = new CommissionsModel();
     loggedInUser: string;
 
     constructor(
-        private categoryService: CategoryService, private alertService: AlertService,
+        private commissionsService: CommissionsService, private alertService: AlertService,
         private route: ActivatedRoute, private router: Router,
         private authenticationService: AuthenticationService) {
         this.router.routeReuseStrategy.shouldReuseRoute = function () {
@@ -41,12 +41,12 @@ export class CommissionsComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.route.params.subscribe(params => {
-            this.categoryId = params[appConstants.id];
+            this.commissionId = params[appConstants.id];
         });
-        this.getCategories();
+        this.getCommissions();
         this.resetModel();
-        if (!AppCommons.isStringEmpty(this.categoryId)) {
-            this.getCategory();
+        if (!AppCommons.isStringEmpty(this.commissionId)) {
+            this.getCommission();
         }
         this.loggedInUser = this.authenticationService.getCurrentUser().uuid;
     }
@@ -57,27 +57,27 @@ export class CommissionsComponent implements OnInit, OnDestroy {
         }
     }
 
-    addEditCategory() {
+    addEditCommission() {
         this.loading = false;
         if (this.model.name == appConstants.emptyEntry || this.model.name == undefined) {
             this.alertService.error(appConstants.nameError);
         } else if (this.model.is_active === appConstants.emptyEntry || this.model.is_active == undefined) {
             this.alertService.error(appConstants.statusError);
         } else {
-            if (AppCommons.isStringEmpty(this.categoryId)) {
-                this.addCategory();
+            if (AppCommons.isStringEmpty(this.commissionId)) {
+                this.addCommission();
             } else {
-                this.updateCategory();
+                this.updateCommission();
             }
         }
     }
 
-    removeCategory(categoryId: string) {
-        if (confirm("Are you sure you want to delete this category?")) {
+    removeCommission(commissionId: string) {
+        if (confirm("Are you sure you want to delete this commission?")) {
             this.loading = true;
-            this.categoryService.removeCategory(categoryId).subscribe(
+            this.commissionsService.removeCommission(commissionId).subscribe(
                 data => {
-                    this.router.navigateByUrl('/categories');
+                    this.router.navigateByUrl('/payment/commissions');
                     this.loading = false;
                 },
                 error => {
@@ -91,11 +91,11 @@ export class CommissionsComponent implements OnInit, OnDestroy {
     /**
      * Get the given categories
      */
-    private getCategories() {
+    private getCommissions() {
         this.loading = true;
-        this.categoryService.getCategories().subscribe(
+        this.commissionsService.getCommissions().subscribe(
             data => {
-                this.formatCategories(data);
+                this.formatCommission(data);
                 this.loading = false;
             },
             error => {
@@ -109,11 +109,11 @@ export class CommissionsComponent implements OnInit, OnDestroy {
      * Get a specific category
      * @private
      */
-    private getCategory() {
+    private getCommission() {
         this.loading = true;
-        this.categoryService.getCategory(this.categoryId).subscribe(
+        this.commissionsService.getCommission(this.commissionId).subscribe(
             data => {
-                this.category = data;
+                this.commission = data;
                 this.loading = false;
                 this.populateModel(data)
             },
@@ -124,24 +124,24 @@ export class CommissionsComponent implements OnInit, OnDestroy {
         );
     }
 
-    private createCategory() {
-        let category = new CategoryModel();
-        if (AppCommons.isStringEmpty(this.categoryId)) {
-            category.created_by = this.loggedInUser;
+    private createCommission() {
+        let commissionsModel = new CommissionsModel();
+        if (AppCommons.isStringEmpty(this.commissionId)) {
+            commissionsModel.created_by = this.loggedInUser;
         } else {
-            category = this.category;
-            category.updated_by = this.loggedInUser;
+            commissionsModel = this.commission;
+            commissionsModel.updated_by = this.loggedInUser;
         }
-        category.name = this.model.name;
-        category.description = this.model.description;
-        category.is_active = Number(this.model.is_active);
+        commissionsModel.name = this.model.name;
+        commissionsModel.percentage = this.model.percentage;
+        commissionsModel.is_active = Number(this.model.is_active);
 
-        return category;
+        return commissionsModel;
     }
 
-    private addCategory() {
+    private addCommission() {
         this.loading = true;
-        this.categoryService.addCategory(this.createCategory()).subscribe(
+        this.commissionsService.addCommission(this.createCommission()).subscribe(
             data => {
                 this.loading = false;
                 this.ngOnInit();
@@ -153,12 +153,12 @@ export class CommissionsComponent implements OnInit, OnDestroy {
         )
     }
 
-    private updateCategory() {
+    private updateCommission() {
         this.loading = true;
-        this.categoryService.updateCategory(this.createCategory()).subscribe(
+        this.commissionsService.updateCommission(this.createCommission()).subscribe(
             data => {
                 this.loading = false;
-                this.router.navigateByUrl('/categories');
+                this.router.navigateByUrl('/payment/commissions');
             },
             error => {
                 this.alertService.error(error);
@@ -169,28 +169,28 @@ export class CommissionsComponent implements OnInit, OnDestroy {
 
     private populateModel(data: any) {
         this.model.name = data.name;
-        this.model.description = data.description;
+        this.model.percentage = data.percentage;
         // @ts-ignore
-        this.model.is_active = data.is_active === 1 ? true : false;
+        this.model.is_active = data.is_active;
     }
 
     private resetModel() {
         this.model.name = appConstants.emptyEntry;
-        this.model.description = appConstants.emptyEntry;
+        this.model.percentage = 0;
         this.model.is_active = appConstants.emptyEntry;
     }
 
-    private formatCategories(data: any) {
-        this.categories = [];
+    private formatCommission(data: any) {
+        this.commissions = [];
         for (let i = 0; i < data.length; i++) {
-            let category = new CategoryModel();
-            category.name = data[i].name;
-            category.description = data[i].description;
-            category.date_created = AppCommons.formatDisplayDate(new Date(data[i].date_created));
-            category.date_updated = AppCommons.formatDisplayDate(AppCommons.convertStringToDate(data[i].date_updated));
-            category.is_active = data[i].is_active;
-            category.uuid = data[i].uuid;
-            this.categories.push(category);
+            let commissionsModel = new CommissionsModel();
+            commissionsModel.name = data[i].name;
+            commissionsModel.percentage = data[i].percentage;
+            commissionsModel.date_created = AppCommons.formatDisplayDate(new Date(data[i].date_created));
+            commissionsModel.date_updated = AppCommons.formatDisplayDate(AppCommons.convertStringToDate(data[i].date_updated));
+            commissionsModel.is_active = data[i].is_active;
+            commissionsModel.uuid = data[i].uuid;
+            this.commissions.push(commissionsModel);
         }
     }
 

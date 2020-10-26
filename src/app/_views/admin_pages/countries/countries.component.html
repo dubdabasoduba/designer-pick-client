@@ -18,7 +18,8 @@
                 <h4 class="mg-b-0">Manage countries</h4>
             </div>
             <div class="search-form mg-t-20 mg-sm-t-0">
-                <a class="btn btn-primary" routerLink="/countries" type="button">Add CountryModel</a>
+                <a class="btn btn-primary" routerLink="/countries" type="button">Add
+                    CountryModel</a>
             </div>
         </div>
     </div><!-- container -->
@@ -33,7 +34,8 @@
                     <form #f="ngForm" (ngSubmit)="f.form.valid && addEditCountry()" novalidate>
                         <div class="form-row">
                             <div class="form-group col-lg-4">
-                                <label>CountryModel name:&nbsp;<span class="tx-danger">*</span></label>
+                                <label>CountryModel name:&nbsp;<span
+                                        class="tx-danger">*</span></label>
                                 <input [(ngModel)]="model.name" class="form-control"
                                        data-error="Subject field is required"
                                        id="name" name="name"
@@ -52,7 +54,8 @@
                             </div>
                             <div class="form-group col-lg-4">
                                 <label>CountryModel code:&nbsp;</label>
-                                <input [(ngModel)]="model.code" autocomplete="off" class="form-control"
+                                <input [(ngModel)]="model.code" autocomplete="off"
+                                       class="form-control"
                                        id="code" name="code"
                                        placeholder="Please give the country code" type="text">
                             </div>
@@ -60,7 +63,8 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <div class="custom-control custom-switch">
-                                    <input [(ngModel)]="model.is_active" class="custom-control-input"
+                                    <input [(ngModel)]="model.is_active"
+                                           class="custom-control-input"
                                            id="is_active" name="is_active"
                                            type="checkbox">
                                     <label class="custom-control-label" for="is_active">Deactivate/Activate

@@ -122,7 +122,6 @@ export class UpdateUserComponent implements OnInit {
     }
 
 
-
     private updateEntityObject() {
         if (!AppCommons.isStringEmpty(this.personUuid)) {
             this.person.name = this.model.name;

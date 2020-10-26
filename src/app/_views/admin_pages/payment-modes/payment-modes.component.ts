@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {CategoryModel} from "../../../_models";
-import {AlertService, AuthenticationService, CategoryService} from "../../../_services";
+import {CategoryModel, PaymentModeModel} from "../../../_models";
+import {AlertService, AuthenticationService, PaymentModesService} from "../../../_services";
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {appConstants} from "../../../_helpers/app.constants";
 import {AppCommons} from "../../../_helpers/app.commons";
@@ -12,21 +12,20 @@ import {AppCommons} from "../../../_helpers/app.commons";
 })
 export class PaymentModesComponent implements OnInit, OnDestroy {
     loading = false;
-    public categories: Array<CategoryModel> = [];
+    public paymentModes: Array<CategoryModel> = [];
     public model = {
         name: "",
         description: "",
         is_active: "",
     };
-    public categoryId: string;
+    public paymentId: string;
     mySubscription: any;
-    category = new CategoryModel();
+    paymentMode = new PaymentModeModel();
     loggedInUser: string;
 
     constructor(
-        private categoryService: CategoryService, private alertService: AlertService,
-        private route: ActivatedRoute, private router: Router,
-        private authenticationService: AuthenticationService) {
+        private paymentModesService: PaymentModesService, private alertService: AlertService,
+        private route: ActivatedRoute, private router: Router, private authenticationService: AuthenticationService) {
         this.router.routeReuseStrategy.shouldReuseRoute = function () {
             return false;
         };
@@ -41,12 +40,12 @@ export class PaymentModesComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.route.params.subscribe(params => {
-            this.categoryId = params[appConstants.id];
+            this.paymentId = params[appConstants.id];
         });
-        this.getCategories();
+        this.getPaymentModes();
         this.resetModel();
-        if (!AppCommons.isStringEmpty(this.categoryId)) {
-            this.getCategory();
+        if (!AppCommons.isStringEmpty(this.paymentId)) {
+            this.getPaymentMode();
         }
         this.loggedInUser = this.authenticationService.getCurrentUser().uuid;
     }
@@ -57,27 +56,27 @@ export class PaymentModesComponent implements OnInit, OnDestroy {
         }
     }
 
-    addEditCategory() {
+    addEditPaymentMode() {
         this.loading = false;
         if (this.model.name == appConstants.emptyEntry || this.model.name == undefined) {
             this.alertService.error(appConstants.nameError);
         } else if (this.model.is_active === appConstants.emptyEntry || this.model.is_active == undefined) {
             this.alertService.error(appConstants.statusError);
         } else {
-            if (AppCommons.isStringEmpty(this.categoryId)) {
-                this.addCategory();
+            if (AppCommons.isStringEmpty(this.paymentId)) {
+                this.addPaymentMode();
             } else {
-                this.updateCategory();
+                this.updatePaymentMode();
             }
         }
     }
 
-    removeCategory(categoryId: string) {
-        if (confirm("Are you sure you want to delete this category?")) {
+    removePaymentMode(paymentModeId: string) {
+        if (confirm("Are you sure you want to delete this payment mode?")) {
             this.loading = true;
-            this.categoryService.removeCategory(categoryId).subscribe(
+            this.paymentModesService.removePaymentMode(paymentModeId).subscribe(
                 data => {
-                    this.router.navigateByUrl('/categories');
+                    this.router.navigateByUrl('/payment/payment-modes');
                     this.loading = false;
                 },
                 error => {
@@ -91,9 +90,9 @@ export class PaymentModesComponent implements OnInit, OnDestroy {
     /**
      * Get the given categories
      */
-    private getCategories() {
+    private getPaymentModes() {
         this.loading = true;
-        this.categoryService.getCategories().subscribe(
+        this.paymentModesService.getPaymentModes().subscribe(
             data => {
                 this.formatCategories(data);
                 this.loading = false;
@@ -109,11 +108,11 @@ export class PaymentModesComponent implements OnInit, OnDestroy {
      * Get a specific category
      * @private
      */
-    private getCategory() {
+    private getPaymentMode() {
         this.loading = true;
-        this.categoryService.getCategory(this.categoryId).subscribe(
+        this.paymentModesService.getPaymentMode(this.paymentId).subscribe(
             data => {
-                this.category = data;
+                this.paymentMode = data;
                 this.loading = false;
                 this.populateModel(data)
             },
@@ -124,24 +123,24 @@ export class PaymentModesComponent implements OnInit, OnDestroy {
         );
     }
 
-    private createCategory() {
-        let category = new CategoryModel();
-        if (AppCommons.isStringEmpty(this.categoryId)) {
-            category.created_by = this.loggedInUser;
+    private createPaymentMode() {
+        let paymentModeModel = new PaymentModeModel();
+        if (AppCommons.isStringEmpty(this.paymentId)) {
+            paymentModeModel.created_by = this.loggedInUser;
         } else {
-            category = this.category;
-            category.updated_by = this.loggedInUser;
+            paymentModeModel = this.paymentMode;
+            paymentModeModel.updated_by = this.loggedInUser;
         }
-        category.name = this.model.name;
-        category.description = this.model.description;
-        category.is_active = Number(this.model.is_active);
+        paymentModeModel.name = this.model.name;
+        paymentModeModel.description = this.model.description;
+        paymentModeModel.is_active = Number(this.model.is_active);
 
-        return category;
+        return paymentModeModel;
     }
 
-    private addCategory() {
+    private addPaymentMode() {
         this.loading = true;
-        this.categoryService.addCategory(this.createCategory()).subscribe(
+        this.paymentModesService.addPaymentMode(this.createPaymentMode()).subscribe(
             data => {
                 this.loading = false;
                 this.ngOnInit();
@@ -153,12 +152,12 @@ export class PaymentModesComponent implements OnInit, OnDestroy {
         )
     }
 
-    private updateCategory() {
+    private updatePaymentMode() {
         this.loading = true;
-        this.categoryService.updateCategory(this.createCategory()).subscribe(
+        this.paymentModesService.updatePaymentMode(this.createPaymentMode()).subscribe(
             data => {
                 this.loading = false;
-                this.router.navigateByUrl('/categories');
+                this.router.navigateByUrl('/payment/payment-modes');
             },
             error => {
                 this.alertService.error(error);
@@ -171,7 +170,7 @@ export class PaymentModesComponent implements OnInit, OnDestroy {
         this.model.name = data.name;
         this.model.description = data.description;
         // @ts-ignore
-        this.model.is_active = data.is_active === 1 ? true : false;
+        this.model.is_active = data.is_active;
     }
 
     private resetModel() {
@@ -181,7 +180,7 @@ export class PaymentModesComponent implements OnInit, OnDestroy {
     }
 
     private formatCategories(data: any) {
-        this.categories = [];
+        this.paymentModes = [];
         for (let i = 0; i < data.length; i++) {
             let category = new CategoryModel();
             category.name = data[i].name;
@@ -190,7 +189,7 @@ export class PaymentModesComponent implements OnInit, OnDestroy {
             category.date_updated = AppCommons.formatDisplayDate(AppCommons.convertStringToDate(data[i].date_updated));
             category.is_active = data[i].is_active;
             category.uuid = data[i].uuid;
-            this.categories.push(category);
+            this.paymentModes.push(category);
         }
     }
 
