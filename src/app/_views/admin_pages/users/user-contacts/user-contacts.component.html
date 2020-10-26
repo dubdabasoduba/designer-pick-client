@@ -21,7 +21,8 @@
                 <h4 class="mg-b-0">Manage Contacts</h4>
             </div>
             <div class="search-form mg-t-20 mg-sm-t-0">
-                <a class="btn btn-primary text-white" type="button" routerLink="/users/contacts/{{personId}}">Add
+                <a class="btn btn-primary text-white" routerLink="/users/contacts/{{personId}}"
+                   type="button">Add
                     Contact</a>
             </div>
         </div>
@@ -47,36 +48,36 @@
                                 <label>Location:&nbsp;<span
                                         class="tx-danger">*</span></label>
                                 <input [(ngModel)]="model.location"
-                                       class="form-control" data-error="Subject field is required"
-                                       id="location" name="location"
+                                       autocomplete="off" class="form-control"
+                                       data-error="Subject field is required" id="location"
+                                       name="location"
                                        placeholder="Please give the location"
-                                       required=""
-                                       type="text" autocomplete="off">
+                                       required="" type="text">
                             </div>
                             <div class="form-group col-lg-4">
                                 <label>Phone Numbr:&nbsp;</label>
-                                <input [(ngModel)]="model.phone_number" class="form-control"
+                                <input [(ngModel)]="model.phone_number" autocomplete="off"
+                                       class="form-control"
                                        id="phone_number"
                                        name="phone_number"
-                                       placeholder="Please give the phone number"
-                                       type="text" autocomplete="off">
+                                       placeholder="Please give the phone number" type="text">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-5">
                                 <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input"
+                                    <input [(ngModel)]="model.is_main" class="custom-control-input"
                                            id="is_main" name="is_active"
-                                           [(ngModel)]="model.is_main">
+                                           type="checkbox">
                                     <label class="custom-control-label" for="is_main">Is main
                                         contact?</label>
                                 </div>
                             </div>
                             <div class="form-group col-md-5">
                                 <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input"
+                                    <input [(ngModel)]="model.is_active" class="custom-control-input"
                                            id="is_active" name="is_active"
-                                           [(ngModel)]="model.is_active">
+                                           type="checkbox">
                                     <label class="custom-control-label" for="is_active">Deactivate/Activate
                                         contact</label>
                                 </div>
@@ -139,8 +140,8 @@
                                     <a class="btn btn-info btn-xs"
                                        routerLink="/users/contacts/{{personId}}/{{contact.uuid}}"><i
                                             class="far fa-edit"></i></a>&nbsp;
-                                    <a class="btn btn-danger btn-xs"
-                                       (click)="removeContact(contact.uuid)"><i
+                                    <a (click)="removeContact(contact.uuid)"
+                                       class="btn btn-danger btn-xs"><i
                                             class="fas fa-trash-alt text-white"></i></a>
                                 </td>
                             </tr>

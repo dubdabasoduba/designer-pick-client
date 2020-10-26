@@ -4,13 +4,13 @@
  * This may be subject to prosecution according to the kenyan law
  */
 @media only screen and (max-width: 768px) {
-	#searchrow {
-		display: flex !important;
-	}
+    #searchrow {
+        display: flex !important;
+    }
 }
 
 @media only screen and (min-width: 1024px) {
-	#searchrow {
-		display: none !important;
-	}
+    #searchrow {
+        display: none !important;
+    }
 }

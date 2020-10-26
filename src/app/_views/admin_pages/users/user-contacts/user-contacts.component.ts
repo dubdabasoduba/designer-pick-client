@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ContactModel, Person} from "../../../../_models";
+import {ContactModel, PersonModel} from "../../../../_models";
 import {AlertService, AuthenticationService, PersonsService} from "../../../../_services";
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {appConstants} from "../../../../_helpers/app.constants";
@@ -26,7 +26,7 @@ export class UserContactsComponent implements OnInit {
     mySubscription: any;
     contact = new ContactModel();
     loggedInUser: string;
-    person = new Person();
+    person = new PersonModel();
     redirectUrl: string;
 
     constructor(
@@ -68,6 +68,40 @@ export class UserContactsComponent implements OnInit {
         }
     }
 
+    addEditContact() {
+        this.loading = false;
+        if (this.model.email == appConstants.emptyEntry || this.model.email == undefined) {
+            this.alertService.error("The email address is required");
+        } else if (this.model.phone_number === appConstants.emptyEntry || this.model.phone_number == undefined) {
+            this.alertService.error("The phone number is required");
+        } else if (this.model.location === appConstants.emptyEntry || this.model.location == undefined) {
+            this.alertService.error("The location is required");
+        } else if (this.model.is_active === appConstants.emptyEntry || this.model.is_active == undefined) {
+            this.alertService.error(appConstants.statusError);
+        } else {
+            if (AppCommons.isStringEmpty(this.contactId)) {
+                this.addContact();
+            } else {
+                this.updateContact();
+            }
+        }
+    }
+
+    removeContact(contactId: string) {
+        if (confirm("Are you sure you want to delete this contact?")) {
+            this.loading = true;
+            this.contactService.removeContact(contactId).subscribe(
+                data => {
+                    this.router.navigateByUrl("/users/contacts/" + this.personId);
+                    this.loading = false;
+                },
+                error => {
+                    this.alertService.error(error);
+                    this.loading = false;
+                }
+            );
+        }
+    }
 
     private getPerson() {
         this.loading = true;
@@ -124,25 +158,6 @@ export class UserContactsComponent implements OnInit {
         );
     }
 
-    addEditContact() {
-        this.loading = false;
-        if (this.model.email == appConstants.emptyEntry || this.model.email == undefined) {
-            this.alertService.error("The email address is required");
-        } else if (this.model.phone_number === appConstants.emptyEntry || this.model.phone_number == undefined) {
-            this.alertService.error("The phone number is required");
-        } else if (this.model.location === appConstants.emptyEntry || this.model.location == undefined) {
-            this.alertService.error("The location is required");
-        } else if (this.model.is_active === appConstants.emptyEntry || this.model.is_active == undefined) {
-            this.alertService.error(appConstants.statusError);
-        } else {
-            if (AppCommons.isStringEmpty(this.contactId)) {
-                this.addContact();
-            } else {
-                this.updateContact();
-            }
-        }
-    }
-
     private createContact() {
         let contact = new ContactModel();
         if (AppCommons.isStringEmpty(this.contactId)) {
@@ -188,26 +203,9 @@ export class UserContactsComponent implements OnInit {
         )
     }
 
-
-    removeContact(contactId: string) {
-        if (confirm("Are you sure you want to delete this contact?")) {
-            this.loading = true;
-            this.contactService.removeContact(contactId).subscribe(
-                data => {
-                    this.router.navigateByUrl("/users/contacts/" + this.personId);
-                    this.loading = false;
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                }
-            );
-        }
-    }
-
     private populateModel(data: any) {
         this.model.email = data.email;
-        ;
+
         this.model.location = data.location;
         this.model.phone_number = data.phone_number;
         this.model.is_main = data.is_main;
@@ -229,9 +227,9 @@ export class UserContactsComponent implements OnInit {
             let contact = new ContactModel();
             contact.email = data[i].email;
             contact.location = data[i].location;
-            ;
+
             contact.phone_number = data[i].phone_number;
-            ;
+
             contact.is_main = data[i].is_main;
             contact.date_created = AppCommons.formatDisplayDate(new Date(data[i].date_created));
             contact.date_updated = AppCommons.formatDisplayDate(AppCommons.convertStringToDate(data[i].date_updated));

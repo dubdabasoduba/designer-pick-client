@@ -19,7 +19,7 @@
             </div>
             <div *ngIf="apiKeyId != null && apiKeyId != undefined"
                  class="search-form mg-t-20 mg-sm-t-0">
-                <a class="btn btn-primary" type="button" routerLink="/api-keys">Add Api Key</a>
+                <a class="btn btn-primary" routerLink="/api-keys" type="button">Add Api Key</a>
             </div>
         </div>
     </div><!-- container -->
@@ -33,8 +33,8 @@
                     <legend>Add&nbsp;|Edit&nbsp;Api Keys</legend>
                     <form #f="ngForm" (ngSubmit)="f.form.valid && addEditApiKey()" novalidate>
                         <div class="form-row">
-                            <div class="form-group col-lg-12"
-                                 *ngIf="apiKeyId != null && apiKeyId != undefined">
+                            <div *ngIf="apiKeyId != null && apiKeyId != undefined"
+                                 class="form-group col-lg-12">
                                 <label>Api Key Requester Name:&nbsp;<span class="tx-danger">*</span></label>
                                 <input [(ngModel)]="model.name" class="form-control"
                                        data-error="Subject field is required"
@@ -43,25 +43,25 @@
                                        required="" type="text">
                             </div>
                         </div>
-                        <div class="form-row" *ngIf="apiKeyId != null && apiKeyId != undefined">
+                        <div *ngIf="apiKeyId != null && apiKeyId != undefined" class="form-row">
                             <div class="form-group col-lg-6">
                                 <label>Api Key:&nbsp;<span class="tx-danger">*</span></label>
                                 <input [(ngModel)]="model.api_key" class="form-control"
                                        data-error="Subject field is required"
-                                       id="api_key" name="api_key"
-                                       placeholder="Please give the Api Key name"
-                                       required="" type="text" disabled>
+                                       disabled id="api_key"
+                                       name="api_key"
+                                       placeholder="Please give the Api Key name" required="" type="text">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label>Api Key expiry date:&nbsp;</label>
                                 <input [(ngModel)]="model.expiry"
-                                       class="form-control"
-                                       id="expiry" name="expiry"
-                                       placeholder="Please give the Api Key expiry date"
-                                       type="text" autocomplete="off">
+                                       autocomplete="off"
+                                       class="form-control" id="expiry"
+                                       name="expiry"
+                                       placeholder="Please give the Api Key expiry date" type="text">
                             </div>
                         </div>
-                        <div class="form-row" *ngIf="apiKeyId == null && apiKeyId == undefined">
+                        <div *ngIf="apiKeyId == null && apiKeyId == undefined" class="form-row">
                             <div class="form-group col-lg-6">
                                 <label>Api Key Requester Name:&nbsp;<span class="tx-danger">*</span></label>
                                 <input [(ngModel)]="model.name" class="form-control"
@@ -73,18 +73,18 @@
                             <div class="form-group col-lg-6">
                                 <label>Api Key expiry date:&nbsp;</label>
                                 <input [(ngModel)]="model.expiry"
-                                       class="form-control"
-                                       id="expiry_add" name="expiry_add"
-                                       placeholder="Please give the Api Key expiry date"
-                                       type="text" autocomplete="off">
+                                       autocomplete="off"
+                                       class="form-control" id="expiry_add"
+                                       name="expiry_add"
+                                       placeholder="Please give the Api Key expiry date" type="text">
                             </div>
                         </div>
                         <br/>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input"
-                                           id="status" [(ngModel)]="model.is_active" name="status">
+                                    <input [(ngModel)]="model.is_active" class="custom-control-input"
+                                           id="status" name="status" type="checkbox">
                                     <label class="custom-control-label" for="status">Deactivate/Activate
                                         Api Key</label>
                                 </div>
@@ -132,14 +132,18 @@
                                 <td>{{apiKey.expiry}}</td>
                                 <td class="text-center">{{apiKey.date_created}}</td>
                                 <td class="text-center">{{apiKey.date_updated}}</td>
-                                <td *ngIf="apiKey.is_active != null && apiKey.is_active == 1" class="text-center"><span class="badge badge-pill badge-success">Yes</span></td>
-                                <td *ngIf="apiKey.is_active != null && apiKey.is_active == 0" class="text-center"><span class="badge badge-pill badge-danger">No</span></td>
+                                <td *ngIf="apiKey.is_active != null && apiKey.is_active == 1"
+                                    class="text-center"><span
+                                        class="badge badge-pill badge-success">Yes</span></td>
+                                <td *ngIf="apiKey.is_active != null && apiKey.is_active == 0"
+                                    class="text-center"><span class="badge badge-pill badge-danger">No</span>
+                                </td>
                                 <td class="text-center">
                                     <a class="btn btn-info btn-xs"
                                        routerLink="/api-keys/{{apiKey.uuid}}"><i
                                             class="far fa-edit"></i></a>&nbsp;
-                                    <a class="btn btn-danger btn-xs"
-                                       (click)="removeApiKey(apiKey.uuid)"><i
+                                    <a (click)="removeApiKey(apiKey.uuid)"
+                                       class="btn btn-danger btn-xs"><i
                                             class="fas fa-trash-alt text-white"></i></a>
                                 </td>
                             </tr>

@@ -21,8 +21,8 @@
                 <h4 class="mg-b-0">Assign Roles</h4>
             </div>
             <div class="search-form mg-t-20 mg-sm-t-0">
-                <a class="btn btn-primary text-white" type="button" routerLink="/users/add">Add
-                    User</a>
+                <a class="btn btn-primary text-white" routerLink="/users/add" type="button">Add
+                    UserModel</a>
             </div>
         </div>
     </div><!-- container -->
@@ -39,11 +39,11 @@
                             <div class="form-group col-md-6">
                                 <h6>Unassigned Roles</h6>
                                 <hr/>
-                                <div class="custom-control custom-checkbox"
-                                     *ngFor="let role of roles;">
-                                    <input type="checkbox" class="custom-control-input"
+                                <div *ngFor="let role of roles;"
+                                     class="custom-control custom-checkbox">
+                                    <input (change)="assignRoles(role.uuid)" class="custom-control-input"
                                            id="roles_{{role.uuid}}"
-                                           (change)="assignRoles(role.uuid)">
+                                           type="checkbox">
                                     <label class="custom-control-label"
                                            for="roles_{{role.uuid}}">{{role.name}}</label>
                                 </div>
@@ -51,11 +51,11 @@
                             <div class="form-group col-md-6">
                                 <h6>Assigned Roles</h6>
                                 <hr/>
-                                <div class="custom-control custom-checkbox"
-                                     *ngFor="let role of assignedRoles;">
-                                    <input type="checkbox" class="custom-control-input"
-                                           id="roles_assigned_{{role.uuid}}" checked
-                                           (change)="unAssignRoles(role.uuid)">
+                                <div *ngFor="let role of assignedRoles;"
+                                     class="custom-control custom-checkbox">
+                                    <input (change)="unAssignRoles(role.uuid)" checked
+                                           class="custom-control-input" id="roles_assigned_{{role.uuid}}"
+                                           type="checkbox">
                                     <label class="custom-control-label"
                                            for="roles_assigned_{{role.uuid}}">{{role.name}}</label>
                                 </div>

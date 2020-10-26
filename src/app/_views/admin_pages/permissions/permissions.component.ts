@@ -9,7 +9,7 @@ import {AlertService, AuthenticationService, PermissionsService} from '../../../
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {AppCommons} from '../../../_helpers/app.commons';
 import {appConstants} from "../../../_helpers/app.constants";
-import {Permissions} from "../../../_models";
+import {PermissionModel} from "../../../_models";
 
 @Component({
     selector: 'app-countries',
@@ -18,7 +18,7 @@ import {Permissions} from "../../../_models";
 })
 export class PermissionsComponent implements OnInit, OnDestroy {
     loading = false;
-    public permissions: Array<Permissions> = [];
+    public permissions: Array<PermissionModel> = [];
     public model = {
         name: "",
         description: "",
@@ -27,7 +27,7 @@ export class PermissionsComponent implements OnInit, OnDestroy {
     public permissionId: string;
     mySubscription: any;
     loggedInUser: string;
-    permission: Permissions;
+    permission: PermissionModel;
 
     constructor(
         private permissionsService: PermissionsService,
@@ -76,6 +76,19 @@ export class PermissionsComponent implements OnInit, OnDestroy {
             if (!AppCommons.isStringEmpty(this.permissionId)) {
                 this.updatePermission();
             }
+        }
+    }
+
+    formatPermissions(data: any) {
+        for (let i = 0; i < data.length; i++) {
+            let permission = new PermissionModel();
+            permission.name = data[i].name;
+            permission.description = data[i].description;
+            permission.date_created = AppCommons.formatDisplayDate(new Date(data[i].date_created));
+            permission.date_updated = AppCommons.formatDisplayDate(AppCommons.convertStringToDate(data[i].date_updated));
+            permission.is_active = data[i].is_active;
+            permission.uuid = data[i].uuid;
+            this.permissions.push(permission);
         }
     }
 
@@ -152,18 +165,5 @@ export class PermissionsComponent implements OnInit, OnDestroy {
         this.model.description = data.description;
         // @ts-ignore
         this.model.is_active = data.is_active === 1 ? true : false;
-    }
-
-    formatPermissions(data: any) {
-        for (let i = 0; i < data.length; i++) {
-            let permission = new Permissions();
-            permission.name = data[i].name;
-            permission.description = data[i].description;
-            permission.date_created = AppCommons.formatDisplayDate(new Date(data[i].date_created));
-            permission.date_updated = AppCommons.formatDisplayDate(AppCommons.convertStringToDate(data[i].date_updated));
-            permission.is_active = data[i].is_active;
-            permission.uuid = data[i].uuid;
-            this.permissions.push(permission);
-        }
     }
 }

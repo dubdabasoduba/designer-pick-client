@@ -18,7 +18,7 @@
                 <h4 class="mg-b-0">Manage countries</h4>
             </div>
             <div class="search-form mg-t-20 mg-sm-t-0">
-                <a class="btn btn-primary" type="button" routerLink="/countries">Add Country</a>
+                <a class="btn btn-primary" routerLink="/countries" type="button">Add CountryModel</a>
             </div>
         </div>
     </div><!-- container -->
@@ -29,11 +29,11 @@
         <div class="row">
             <div class="col-lg-12 col-xl-12">
                 <fieldset class="form-fieldset">
-                    <legend>Add&nbsp;|Edit&nbsp;Country</legend>
+                    <legend>Add&nbsp;|Edit&nbsp;CountryModel</legend>
                     <form #f="ngForm" (ngSubmit)="f.form.valid && addEditCountry()" novalidate>
                         <div class="form-row">
                             <div class="form-group col-lg-4">
-                                <label>Country name:&nbsp;<span class="tx-danger">*</span></label>
+                                <label>CountryModel name:&nbsp;<span class="tx-danger">*</span></label>
                                 <input [(ngModel)]="model.name" class="form-control"
                                        data-error="Subject field is required"
                                        id="name" name="name"
@@ -41,27 +41,28 @@
                                        required="" type="text">
                             </div>
                             <div class="form-group col-lg-4">
-                                <label>Country short name:&nbsp;<span
+                                <label>CountryModel short name:&nbsp;<span
                                         class="tx-danger">*</span></label>
                                 <input [(ngModel)]="model.short_name"
-                                       class="form-control" data-error="Subject field is required"
-                                       id="shortName" name="shortName"
+                                       autocomplete="off" class="form-control"
+                                       data-error="Subject field is required" id="shortName"
+                                       name="shortName"
                                        placeholder="Please give the country short name"
-                                       required=""
-                                       type="text" autocomplete="off">
+                                       required="" type="text">
                             </div>
                             <div class="form-group col-lg-4">
-                                <label>Country code:&nbsp;</label>
-                                <input [(ngModel)]="model.code" class="form-control" id="code"
-                                       name="code" placeholder="Please give the country code"
-                                       type="text" autocomplete="off">
+                                <label>CountryModel code:&nbsp;</label>
+                                <input [(ngModel)]="model.code" autocomplete="off" class="form-control"
+                                       id="code" name="code"
+                                       placeholder="Please give the country code" type="text">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input"
-                                           id="is_active" name="is_active" [(ngModel)]="model.is_active">
+                                    <input [(ngModel)]="model.is_active" class="custom-control-input"
+                                           id="is_active" name="is_active"
+                                           type="checkbox">
                                     <label class="custom-control-label" for="is_active">Deactivate/Activate
                                         country</label>
                                 </div>
@@ -91,9 +92,9 @@
                             <thead class="thead-dark">
                             <tr>
                                 <th class="text-center" scope="col">#</th>
-                                <th scope="col">Country Name</th>
-                                <th scope="col">Country Code</th>
-                                <th scope="col">Country Short Name</th>
+                                <th scope="col">CountryModel Name</th>
+                                <th scope="col">CountryModel Code</th>
+                                <th scope="col">CountryModel Short Name</th>
                                 <th class="text-center" scope="col">Date Created</th>
                                 <th class="text-center" scope="col">Date Updated</th>
                                 <th class="text-center" scope="col">Is Active</th>
@@ -108,14 +109,18 @@
                                 <td>{{country.short_name}}</td>
                                 <td class="text-center">{{country.date_created}}</td>
                                 <td class="text-center">{{country.date_updated}}</td>
-                                <td *ngIf="country.is_active != null && country.is_active == 1" class="text-center"><span class="badge badge-pill badge-success">Yes</span></td>
-                                <td *ngIf="country.is_active != null && country.is_active == 0" class="text-center"><span class="badge badge-pill badge-danger">No</span></td>
+                                <td *ngIf="country.is_active != null && country.is_active == 1"
+                                    class="text-center"><span
+                                        class="badge badge-pill badge-success">Yes</span></td>
+                                <td *ngIf="country.is_active != null && country.is_active == 0"
+                                    class="text-center"><span class="badge badge-pill badge-danger">No</span>
+                                </td>
                                 <td class="text-center">
                                     <a class="btn btn-info btn-xs"
                                        routerLink="/countries/{{country.uuid}}"><i
                                             class="far fa-edit"></i></a>&nbsp;
-                                    <a class="btn btn-danger btn-xs"
-                                       (click)="removeCountry(country.uuid)"><i
+                                    <a (click)="removeCountry(country.uuid)"
+                                       class="btn btn-danger btn-xs"><i
                                             class="fas fa-trash-alt text-white"></i></a>
                                 </td>
                             </tr>

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Permissions, Person} from "../../../../_models";
+import {PermissionModel, PersonModel} from "../../../../_models";
 import {
     AlertService,
     AuthenticationService,
@@ -22,15 +22,15 @@ export class AddEditUsersComponent implements OnInit {
         name: "",
         username: "",
         email: "",
-        phone_number:"",
+        phone_number: "",
         account_type: "",
         is_active: ""
     };
     public personId: string;
     loggedInUser: string;
-    person: Person;
-    public permissions: Array<Permissions> = [];
-    public assignedPermissions: Array<Permissions> = [];
+    person: PersonModel;
+    public permissions: Array<PermissionModel> = [];
+    public assignedPermissions: Array<PermissionModel> = [];
 
     constructor(
         private permissionsService: PermissionsService,
@@ -66,6 +66,14 @@ export class AddEditUsersComponent implements OnInit {
         }
     }
 
+    redirectToAssignRolesPage(person: PersonModel) {
+        if (!AppCommons.isStringEmpty(person.user_uuid)) {
+            this.router.navigateByUrl('/users/assign-roles/' + person.uuid + "/" + person.user_uuid);
+        } else {
+            this.router.navigateByUrl('/users');
+        }
+    }
+
     private updateUser() {
         this.loading = true;
         this.personsService.updatePerson(this.createUser()).subscribe(
@@ -94,16 +102,8 @@ export class AddEditUsersComponent implements OnInit {
         )
     }
 
-    redirectToAssignRolesPage(person: Person) {
-        if (!AppCommons.isStringEmpty(person.user_uuid)) {
-            this.router.navigateByUrl('/users/assign-roles/' + person.uuid + "/" + person.user_uuid);
-        } else {
-            this.router.navigateByUrl('/users');
-        }
-    }
-
     private createUser() {
-        let person = new Person();
+        let person = new PersonModel();
         if (!AppCommons.isStringEmpty(this.personId)) {
             person = this.person;
             person.updated_by = this.loggedInUser;

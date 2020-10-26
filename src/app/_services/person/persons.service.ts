@@ -8,7 +8,7 @@ import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
 import {appConstants} from '../../_helpers/app.constants';
 import {HttpClient} from '@angular/common/http';
-import {Person} from '../../_models';
+import {PersonModel} from '../../_models';
 import {Observable} from "rxjs";
 
 @Injectable()
@@ -20,7 +20,7 @@ export class PersonsService {
         return this.http.get(appConstants.baseApiV1Url + appConstants.peopleUrl);
     }
 
-    getPersonById(personId: string): Observable<Person> {
+    getPersonById(personId: string): Observable<PersonModel> {
         // @ts-ignore
         return this.http.get(appConstants.baseApiV1Url + appConstants.personUrl + personId);
     }
@@ -33,12 +33,12 @@ export class PersonsService {
         return <any>this.http.get(appConstants.baseApiV1Url + appConstants.peopleCount);
     }
 
-    updatePerson(person: Person): Observable<Person> {
-        return this.http.put<Person>(appConstants.baseApiV1Url + appConstants.personUrl + person.uuid, person);
+    updatePerson(person: PersonModel): Observable<PersonModel> {
+        return this.http.put<PersonModel>(appConstants.baseApiV1Url + appConstants.personUrl + person.uuid, person);
     }
 
-    addPerson(person: Person): Observable<Person> {
-        return this.http.post<Person>(appConstants.baseApiV1Url + appConstants.personUrl, person);
+    addPerson(person: PersonModel): Observable<PersonModel> {
+        return this.http.post<PersonModel>(appConstants.baseApiV1Url + appConstants.personUrl, person);
     }
 
     removePerson(personId: string) {

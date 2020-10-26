@@ -7,56 +7,56 @@ import {Injectable} from '@angular/core';
 import {NavigationStart, Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
-import {Alert, AlertType} from '../../_models';
+import {AlertModel, AlertType} from '../../_models';
 
 @Injectable()
 export class AlertService {
-	private subject = new Subject<Alert>();
-	private keepAfterRouteChange = false;
+    private subject = new Subject<AlertModel>();
+    private keepAfterRouteChange = false;
 
-	constructor(private router: Router) {
-		// clear alert message on routes change
-		router.events.subscribe(event => {
-			if (event instanceof NavigationStart) {
-				// only keep for a single location change
-				this.keepAfterRouteChange = false;
-			} else {
-				// clear the alert
-				this.clear();
-			}
-		});
-	}
+    constructor(private router: Router) {
+        // clear alert message on routes change
+        router.events.subscribe(event => {
+            if (event instanceof NavigationStart) {
+                // only keep for a single location change
+                this.keepAfterRouteChange = false;
+            } else {
+                // clear the alert
+                this.clear();
+            }
+        });
+    }
 
-	getAlert(): Observable<any> {
-		return this.subject.asObservable();
-	}
+    getAlert(): Observable<any> {
+        return this.subject.asObservable();
+    }
 
-	success(message: any, keepAfterRouteChange = false) {
-		this.alert(AlertType.Success, message, keepAfterRouteChange);
-	}
+    success(message: any, keepAfterRouteChange = false) {
+        this.alert(AlertType.Success, message, keepAfterRouteChange);
+    }
 
-	error(message: any, keepAfterRouteChange = false) {
-		this.alert(AlertType.Error, message, keepAfterRouteChange);
-	}
+    error(message: any, keepAfterRouteChange = false) {
+        this.alert(AlertType.Error, message, keepAfterRouteChange);
+    }
 
-	info(message: any, keepAfterRouteChange = false) {
-		this.alert(AlertType.Info, message, keepAfterRouteChange);
-	}
+    info(message: any, keepAfterRouteChange = false) {
+        this.alert(AlertType.Info, message, keepAfterRouteChange);
+    }
 
-	warn(message: any, keepAfterRouteChange = false) {
-		this.alert(AlertType.Warning, message, keepAfterRouteChange);
-	}
+    warn(message: any, keepAfterRouteChange = false) {
+        this.alert(AlertType.Warning, message, keepAfterRouteChange);
+    }
 
-	alert(type: AlertType, message: string, keepAfterRouteChange = false) {
-		this.keepAfterRouteChange = keepAfterRouteChange;
-		this.subject.next(<Alert>{
-			type: type,
-			message: message
-		});
-	}
+    alert(type: AlertType, message: string, keepAfterRouteChange = false) {
+        this.keepAfterRouteChange = keepAfterRouteChange;
+        this.subject.next(<AlertModel>{
+            type: type,
+            message: message
+        });
+    }
 
-	clear() {
-		this.subject.next();
-	}
+    clear() {
+        this.subject.next();
+    }
 
 }

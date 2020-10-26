@@ -33,9 +33,10 @@ import {AddEditUsersComponent} from "./_views/admin_pages/users/add-edit-users/a
 import {UpdateCredentialsComponent} from "./_views/profile/update-credentials/update-credentials.component";
 import {ViewUserComponent} from "./_views/admin_pages/users/view-user/view-user.component";
 import {UserContactsComponent} from "./_views/admin_pages/users/user-contacts/user-contacts.component";
-import {HomeComponent} from "./_views/home/home.component";
+import {HomeComponent} from "./_views/main_views/home/home.component";
 import {PaymentModesComponent} from "./_views/admin_pages/payment-modes/payment-modes.component";
 import {CommissionsComponent} from "./_views/admin_pages/commissions/commissions.component";
+import {SettingsComponent} from "./_views/admin_pages/settings/settings.component";
 
 const appRoutes: Routes = [
     {path: '', component: HomeComponent, runGuardsAndResolvers: 'always'},
@@ -186,6 +187,10 @@ const appRoutes: Routes = [
     },
     {
         path: 'payment/commissions/:id', component: CommissionsComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'settings', component: SettingsComponent,
         canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
     },
 

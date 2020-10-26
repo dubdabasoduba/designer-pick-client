@@ -8,31 +8,31 @@ import {Component, OnInit} from '@angular/core';
 import {AlertService, AuthenticationService} from '../../../_services';
 
 @Component({
-	selector: 'app-recovery',
-	templateUrl: './recovery.component.html',
-	styleUrls: ['./recovery.component.css']
+    selector: 'app-recovery',
+    templateUrl: './recovery.component.html',
+    styleUrls: ['./recovery.component.css']
 })
 export class RecoveryComponent implements OnInit {
-	model: any = {};
+    model: any = {};
 
-	constructor(
-		private authenticationService: AuthenticationService,
-		private alertService: AlertService) {
-	}
+    constructor(
+        private authenticationService: AuthenticationService,
+        private alertService: AlertService) {
+    }
 
-	ngOnInit() {
-	}
+    ngOnInit() {
+    }
 
-	resetPasswordRequest() {
-		this.authenticationService.resetPasswordRequest(this.model.username)
-			.subscribe(
-				data => {
-					this.alertService.success(data, false);
-				},
-				error => {
-					this.alertService.error(error);
-				}
-			);
-	}
+    resetPasswordRequest() {
+        this.authenticationService.resetPasswordRequest(this.model.username)
+            .subscribe(
+                data => {
+                    this.alertService.success(data, false);
+                },
+                error => {
+                    this.alertService.error(error);
+                }
+            );
+    }
 
 }

@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {appConstants} from "../../../_helpers/app.constants";
 import {Observable} from "rxjs";
-import {Permissions} from "../../../_models";
+import {PermissionModel} from "../../../_models";
 
 @Injectable({
     providedIn: 'root'
@@ -20,12 +20,12 @@ export class PermissionsService {
         return this.http.get(appConstants.baseApiV1Url + '/permissions/search?' + searchQuery);
     }
 
-    getPermission(id: string): Observable<Permissions> {
+    getPermission(id: string): Observable<PermissionModel> {
         // @ts-ignore
         return this.http.get(appConstants.baseApiV1Url + '/permission/' + id);
     }
 
-    updatePermission(permission: Permissions) {
+    updatePermission(permission: PermissionModel) {
         return this.http.put(appConstants.baseApiV1Url + '/permission/' + permission.uuid, permission);
     }
 }

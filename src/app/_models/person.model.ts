@@ -4,9 +4,9 @@
  * This may be subject to prosecution according to the kenyan law
  */
 
-import {Default} from './default';
+import {DefaultModel} from './default.model';
 
-export class Person extends Default {
+export class PersonModel extends DefaultModel {
     name: string;
     description: string;
     contacts: any;

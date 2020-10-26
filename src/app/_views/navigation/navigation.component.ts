@@ -4,7 +4,7 @@
  * This may be subject to prosecution according to the kenyan law
  */
 import {Component, OnInit} from '@angular/core';
-import {User} from '../../_models';
+import {UserModel} from '../../_models';
 import {appConstants} from '../../_helpers/app.constants';
 import {AlertService, AuthenticationService} from '../../_services';
 import {NavigationEnd, Router} from '@angular/router';
@@ -19,16 +19,15 @@ import {ResponseModel} from '../../_models/response.model';
 })
 export class NavigationComponent implements OnInit {
     loading = false;
-    lbsUser: User;
+    lbsUser: UserModel;
     title = appConstants.appTitle;
     public model: any = {};
-    private showDropdown = false;
-    private responseModel = new ResponseModel();
     public defaultDropdownMainClass = "dropdown dropdown-profile"
     public clickedDropdownMainClass = "dropdown dropdown-profile show"
-
     public defaultDropdownElementsClass = "dropdown-menu dropdown-menu-right tx-13"
     public clickedDropdownElementsClass = "dropdown-menu dropdown-menu-right tx-13 show"
+    private showDropdown = false;
+    private responseModel = new ResponseModel();
 
     constructor(
         private authenticationService: AuthenticationService,
@@ -77,6 +76,12 @@ export class NavigationComponent implements OnInit {
         }
     }
 
+    signOut() {
+        this.loading = true;
+        this.authenticationService.logout();
+        this.router.navigateByUrl('');
+    }
+
     private searchEntity(searchTerm) {
         this.loading = true;
         this.searchService.searchEntity(searchTerm).subscribe(
@@ -112,12 +117,6 @@ export class NavigationComponent implements OnInit {
     private resetSearchData() {
         this.searchService.passEntityData([]);
         this.searchService.passPersonData([]);
-    }
-
-    signOut() {
-        this.loading = true;
-        this.authenticationService.logout();
-        this.router.navigateByUrl('');
     }
 
 }

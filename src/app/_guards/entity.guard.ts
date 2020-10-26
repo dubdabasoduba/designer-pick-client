@@ -7,14 +7,14 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {Observable} from 'rxjs';
-import {User} from '../_models';
+import {UserModel} from '../_models';
 import {AuthenticationService} from '../_services';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class EntityGuard implements CanActivate {
-	private user: User;
+	private user: UserModel;
 
 	constructor(private router: Router, private authService: AuthenticationService) {
 	}

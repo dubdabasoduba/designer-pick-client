@@ -8,7 +8,7 @@ import {
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {appConstants} from "../../../../_helpers/app.constants";
 import {AppCommons} from "../../../../_helpers/app.commons";
-import {Permissions, Roles} from "../../../../_models";
+import {PermissionModel, Roles} from "../../../../_models";
 
 @Component({
     selector: 'app-add-edit-roles',
@@ -26,8 +26,8 @@ export class AddEditRolesComponent implements OnInit, OnDestroy, DoCheck {
     mySubscription: any;
     loggedInUser: string;
     role: Roles;
-    public permissions: Array<Permissions> = [];
-    public assignedPermissions: Array<Permissions> = [];
+    public permissions: Array<PermissionModel> = [];
+    public assignedPermissions: Array<PermissionModel> = [];
 
     constructor(
         private permissionsService: PermissionsService,
@@ -80,6 +80,26 @@ export class AddEditRolesComponent implements OnInit, OnDestroy, DoCheck {
                 this.updateRole();
             } else {
                 this.addRole();
+            }
+        }
+    }
+
+    assignPermissions(permission: string) {
+        for (let i = 0; i < this.permissions.length; i++) {
+            if (permission === this.permissions[i].uuid) {
+                this.assignedPermissions.push(this.permissions[i])
+                this.permissions.splice(i, 1);
+                break;
+            }
+        }
+    }
+
+    unAssignPermissions(permission: string) {
+        for (let i = 0; i < this.assignedPermissions.length; i++) {
+            if (permission === this.assignedPermissions[i].uuid) {
+                this.permissions.push(this.assignedPermissions[i])
+                this.assignedPermissions.splice(i, 1);
+                break;
             }
         }
     }
@@ -201,34 +221,14 @@ export class AddEditRolesComponent implements OnInit, OnDestroy, DoCheck {
     }
 
     private formatPermissions(data: any) {
-        let permissions: Array<Permissions> = [];
+        let permissions: Array<PermissionModel> = [];
         for (let i = 0; i < data.length; i++) {
-            let permission = new Permissions();
+            let permission = new PermissionModel();
             permission.name = data[i].name;
             permission.uuid = data[i].uuid;
             permissions.push(permission);
         }
 
         return permissions
-    }
-
-    assignPermissions(permission: string) {
-        for (let i = 0; i < this.permissions.length; i++) {
-            if (permission === this.permissions[i].uuid) {
-                this.assignedPermissions.push(this.permissions[i])
-                this.permissions.splice(i, 1);
-                break;
-            }
-        }
-    }
-
-    unAssignPermissions(permission: string) {
-        for (let i = 0; i < this.assignedPermissions.length; i++) {
-            if (permission === this.assignedPermissions[i].uuid) {
-                this.permissions.push(this.assignedPermissions[i])
-                this.assignedPermissions.splice(i, 1);
-                break;
-            }
-        }
     }
 }

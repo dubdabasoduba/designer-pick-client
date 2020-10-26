@@ -15,3 +15,6 @@ export * from './pager/pager.service';
 export * from './admin_services/permissions/permissions.service';
 export * from './admin_services/roles/roles.service';
 export * from './admin_services/api_keys/api-keys.service';
+export * from './admin_services/payment-modes/payment-modes.service';
+export * from './admin_services/commissions/commissions.service';
+export * from './admin_services/settings/settings.service';

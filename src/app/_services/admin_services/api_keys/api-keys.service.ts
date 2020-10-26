@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {appConstants} from "../../../_helpers/app.constants";
 import {Observable} from "rxjs";
-import {ApiKey} from "../../../_models/api-key";
+import {ApiKeyModel} from "../../../_models/api-key.model";
 
 @Injectable({
     providedIn: 'root'
@@ -16,7 +16,7 @@ export class ApiKeysService {
         return this.http.get(appConstants.baseApiV1Url + '/api-keys');
     }
 
-    getApiKey(id: string): Observable<ApiKey> {
+    getApiKey(id: string): Observable<ApiKeyModel> {
         // @ts-ignore
         return this.http.get(appConstants.baseApiV1Url + '/api-key/' + id);
     }
@@ -25,11 +25,11 @@ export class ApiKeysService {
         return this.http.delete(appConstants.baseApiV1Url + '/api-key/' + id);
     }
 
-    addApiKey(apiKey: ApiKey) {
+    addApiKey(apiKey: ApiKeyModel) {
         return this.http.post(appConstants.baseApiV1Url + '/api-key', apiKey);
     }
 
-    updateApiKey(apiKey: ApiKey) {
+    updateApiKey(apiKey: ApiKeyModel) {
         return this.http.put(appConstants.baseApiV1Url + '/api-key/' + apiKey.uuid, apiKey);
     }
 }

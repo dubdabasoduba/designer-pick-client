@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Person} from "../../../../_models";
+import {PersonModel} from "../../../../_models";
 import {AlertService, PersonsService, RolesService} from "../../../../_services";
 import {ActivatedRoute, Router} from "@angular/router";
 import {appConstants} from "../../../../_helpers/app.constants";
@@ -13,10 +13,10 @@ import {combineLatest} from 'rxjs';
 })
 export class ViewUserComponent implements OnInit {
     loading = false;
-    public person: Person = new Person();
+    public person: PersonModel = new PersonModel();
     public userRoles = [];
-    private userId: string;
     public personId: string;
+    private userId: string;
 
     constructor(private rolesService: RolesService, private personsService: PersonsService,
                 private alertService: AlertService, private route: ActivatedRoute,
@@ -35,6 +35,22 @@ export class ViewUserComponent implements OnInit {
             this.getUserRoles();
         } else {
             this.router.navigateByUrl('/users');
+        }
+    }
+
+    removePerson(id: string) {
+        if (confirm("Are you sure you want to delete this user?")) {
+            this.loading = true;
+            this.personsService.removePerson(id).subscribe(
+                data => {
+                    this.router.navigateByUrl('/users');
+                    this.loading = false;
+                },
+                error => {
+                    this.alertService.error(error);
+                    this.loading = false;
+                }
+            );
         }
     }
 
@@ -74,21 +90,5 @@ export class ViewUserComponent implements OnInit {
                 this.loading = false;
             }
         );
-    }
-
-    removePerson(id: string) {
-        if (confirm("Are you sure you want to delete this user?")) {
-            this.loading = true;
-            this.personsService.removePerson(id).subscribe(
-                data => {
-                    this.router.navigateByUrl('/users');
-                    this.loading = false;
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                }
-            );
-        }
     }
 }

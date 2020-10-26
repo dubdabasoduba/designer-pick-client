@@ -10,54 +10,54 @@ import {appConstants} from '../../_helpers/app.constants';
 import {Observable, Subject} from 'rxjs';
 
 @Injectable({
-	providedIn: 'root'
+    providedIn: 'root'
 })
 export class SearchService {
-	entityData: Observable<any>;
-	personData: Observable<any>;
-	private entityDataSubject = new Subject<any>();
-	private personDataSubject = new Subject<any>();
+    entityData: Observable<any>;
+    personData: Observable<any>;
+    private entityDataSubject = new Subject<any>();
+    private personDataSubject = new Subject<any>();
 
-	constructor(private http: HttpClient) {
-		this.entityData = this.entityDataSubject.asObservable();
-		this.personData = this.personDataSubject.asObservable();
-	}
+    constructor(private http: HttpClient) {
+        this.entityData = this.entityDataSubject.asObservable();
+        this.personData = this.personDataSubject.asObservable();
+    }
 
-	/**
-	 * @desc Search entities from the database
-	 * @param searchTerm {@link String}
-	 * @author dubdabasoduba
-	 */
-	searchEntity(searchTerm: string) {
-		const params = new HttpParams().set('q', searchTerm);
-		return this.http.get(appConstants.baseApiV1Url + appConstants.searchEntity, {params});
-	}
+    /**
+     * @desc Search entities from the database
+     * @param searchTerm {@link String}
+     * @author dubdabasoduba
+     */
+    searchEntity(searchTerm: string) {
+        const params = new HttpParams().set('q', searchTerm);
+        return this.http.get(appConstants.baseApiV1Url + appConstants.searchEntity, {params});
+    }
 
-	/**
-	 * @desc Search persons from the database
-	 * @param searchTerm {@link String}
-	 * @author dubdabasoduba
-	 */
-	searchPerson(searchTerm: string) {
-		const params = new HttpParams().set('q', searchTerm);
-		return this.http.get(appConstants.baseApiV1Url + appConstants.searchPerson, {params});
-	}
+    /**
+     * @desc Search persons from the database
+     * @param searchTerm {@link String}
+     * @author dubdabasoduba
+     */
+    searchPerson(searchTerm: string) {
+        const params = new HttpParams().set('q', searchTerm);
+        return this.http.get(appConstants.baseApiV1Url + appConstants.searchPerson, {params});
+    }
 
-	/**
-	 * @desc passes the contests data from the navigation component to the results component
-	 * @param data {@link Array}
-	 * @author dubdabasoduba
-	 */
-	passEntityData(data: any) {
-		this.entityDataSubject.next(data);
-	}
+    /**
+     * @desc passes the contests data from the navigation component to the results component
+     * @param data {@link Array}
+     * @author dubdabasoduba
+     */
+    passEntityData(data: any) {
+        this.entityDataSubject.next(data);
+    }
 
-	/**
-	 * @desc passes the person data from the navigation component to the results component
-	 * @param data {@link Array}
-	 * @author dubdabasoduba
-	 */
-	passPersonData(data: any) {
-		this.personDataSubject.next(data);
-	}
+    /**
+     * @desc passes the person data from the navigation component to the results component
+     * @param data {@link Array}
+     * @author dubdabasoduba
+     */
+    passPersonData(data: any) {
+        this.personDataSubject.next(data);
+    }
 }

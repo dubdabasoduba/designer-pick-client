@@ -4,7 +4,7 @@
  * This may be subject to prosecution according to the kenyan law
  */
 
-export class User {
+export class UserModel {
     id: string;
     username: string;
     email: string;

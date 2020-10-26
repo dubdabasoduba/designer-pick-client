@@ -48,21 +48,21 @@
                             <div class="form-group col-lg-7">
                                 <label>Role description:&nbsp;</label>
                                 <input [(ngModel)]="model.description"
-                                       class="form-control" data-error="Subject field is required"
-                                       id="description" name="description"
-                                       placeholder="Place give the role description"
-                                       type="text" autocomplete="off">
+                                       autocomplete="off" class="form-control"
+                                       data-error="Subject field is required" id="description"
+                                       name="description"
+                                       placeholder="Place give the role description" type="text">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <h6>Unassigned permissions</h6>
                                 <hr/>
-                                <div class="custom-control custom-checkbox"
-                                     *ngFor="let permission of permissions;">
-                                    <input type="checkbox" class="custom-control-input"
+                                <div *ngFor="let permission of permissions;"
+                                     class="custom-control custom-checkbox">
+                                    <input (change)="assignPermissions(permission.uuid)" class="custom-control-input"
                                            id="permissions_{{permission.uuid}}"
-                                           (change)="assignPermissions(permission.uuid)">
+                                           type="checkbox">
                                     <label class="custom-control-label"
                                            for="permissions_{{permission.uuid}}">{{permission.name}}</label>
                                 </div>
@@ -70,11 +70,11 @@
                             <div class="form-group col-md-6">
                                 <h6>Assigned permissions</h6>
                                 <hr/>
-                                <div class="custom-control custom-checkbox"
-                                     *ngFor="let permission of assignedPermissions;">
-                                    <input type="checkbox" class="custom-control-input"
-                                           id="permissions_assigned_{{permission.uuid}}" checked
-                                           (change)="unAssignPermissions(permission.uuid)">
+                                <div *ngFor="let permission of assignedPermissions;"
+                                     class="custom-control custom-checkbox">
+                                    <input (change)="unAssignPermissions(permission.uuid)" checked
+                                           class="custom-control-input" id="permissions_assigned_{{permission.uuid}}"
+                                           type="checkbox">
                                     <label class="custom-control-label"
                                            for="permissions_assigned_{{permission.uuid}}">{{permission.name}}</label>
                                 </div>
@@ -83,9 +83,9 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input"
-                                           [(ngModel)]="model.is_active" id="is_active"
-                                           name="is_active">
+                                    <input [(ngModel)]="model.is_active" class="custom-control-input"
+                                           id="is_active" name="is_active"
+                                           type="checkbox">
                                     <label class="custom-control-label" for="is_active">Deactivate/Activate
                                         Role</label>
                                 </div>

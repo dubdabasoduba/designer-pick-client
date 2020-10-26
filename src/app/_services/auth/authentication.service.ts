@@ -11,7 +11,7 @@ import 'rxjs/add/operator/toPromise';
 import {HttpClient} from '@angular/common/http';
 import {tap} from 'rxjs/operators';
 import {AppCommons} from '../../_helpers/app.commons';
-import {User} from '../../_models';
+import {UserModel} from '../../_models';
 
 @Injectable({
     providedIn: 'root'
@@ -76,7 +76,7 @@ export class AuthenticationService {
         return currentUser.token;
     }
 
-    getCurrentUser(): User {
+    getCurrentUser(): UserModel {
         return JSON.parse(localStorage.getItem(this._lbsUser));
     }
 

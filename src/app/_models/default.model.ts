@@ -4,17 +4,16 @@
  * This may be subject to prosecution according to the kenyan law
  */
 
-export class PagesModel {
-	totalItems: number;
-	currentPage: number;
-	pageSize: number;
-	totalPages: number;
-	startPage: number;
-	endPage: number;
-	startIndex: number;
-	endIndex: number;
-	pages: number[];
-	page: number;
-	limit: number;
-	paginate: boolean;
+export class DefaultModel {
+    date_added: string;
+    date_created: string;
+    date_updated: string;
+    updated_by: string;
+    created_by: string;
+    entityIconImage: string;
+    status: any;
+    id: string;
+    _id: string;
+    uuid: string;
+    is_active: number;
 }
