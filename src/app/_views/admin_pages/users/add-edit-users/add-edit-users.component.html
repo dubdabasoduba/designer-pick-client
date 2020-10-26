@@ -17,15 +17,17 @@
                                 routerLink="/user/{{person.uuid}}/{{person.user_uuid}}">View
                             user</a></li>
                         <li *ngIf="personId == null && personId == undefined" aria-current="page"
-                            class="breadcrumb-item active">Add User
+                            class="breadcrumb-item active">Add UserModel
                         </li>
                         <li *ngIf="personId != null && personId != undefined" aria-current="page"
-                            class="breadcrumb-item active">Edit User
+                            class="breadcrumb-item active">Edit UserModel
                         </li>
                     </ol>
                 </nav>
-                <h4 *ngIf="personId == null && personId == undefined" class="mg-b-0">Add User</h4>
-                <h4 *ngIf="personId != null && personId != undefined" class="mg-b-0">Edit User</h4>
+                <h4 *ngIf="personId == null && personId == undefined" class="mg-b-0">Add
+                    UserModel</h4>
+                <h4 *ngIf="personId != null && personId != undefined" class="mg-b-0">Edit
+                    UserModel</h4>
             </div>
         </div>
     </div><!-- container -->
@@ -36,12 +38,13 @@
         <div class="row">
             <div class="col-lg-12 col-xl-12">
                 <fieldset class="form-fieldset">
-                    <legend *ngIf="personId == null && personId == undefined">Add User</legend>
-                    <legend *ngIf="personId != null && personId != undefined">Edit User</legend>
+                    <legend *ngIf="personId == null && personId == undefined">Add UserModel</legend>
+                    <legend *ngIf="personId != null && personId != undefined">Edit UserModel
+                    </legend>
                     <form #f="ngForm" (ngSubmit)="f.form.valid && addEditUser()" novalidate>
                         <div class="form-row">
                             <div class="form-group col-lg-4">
-                                <label>Person name:&nbsp;<span
+                                <label>PersonModel name:&nbsp;<span
                                         class="tx-danger">*</span></label>
                                 <input [(ngModel)]="model.name" class="form-control"
                                        data-error="Subject field is required"
@@ -50,20 +53,20 @@
                                        required="" type="text">
                             </div>
                             <div class="form-group col-lg-4">
-                                <label>Person username:&nbsp;</label>
+                                <label>PersonModel username:&nbsp;</label>
                                 <input [(ngModel)]="model.username"
-                                       class="form-control" data-error="Subject field is required"
-                                       id="username" name="username"
-                                       placeholder="Please give the person username"
-                                       type="text" autocomplete="off">
+                                       autocomplete="off" class="form-control"
+                                       data-error="Subject field is required" id="username"
+                                       name="username"
+                                       placeholder="Please give the person username" type="text">
                             </div>
                             <div class="form-group col-lg-4">
                                 <label>Email Address:&nbsp;</label>
                                 <input [(ngModel)]="model.email"
-                                       class="form-control" data-error="Subject field is required"
-                                       id="email" name="email"
-                                       placeholder="Please give the email"
-                                       type="email" autocomplete="off">
+                                       autocomplete="off" class="form-control"
+                                       data-error="Subject field is required" id="email"
+                                       name="email"
+                                       placeholder="Please give the email" type="email">
                             </div>
                         </div>
                         <div class="form-row">
@@ -71,9 +74,10 @@
                                 <label>Select account type:&nbsp;<span
                                         class="tx-danger">*</span></label>
                                 <select [(ngModel)]="model.account_type"
-                                        class="form-control" id="account_type" name="account_type"
-                                        title="Select user type" class="custom-select form-control">
-                                    <option value="" selected>Select account type</option>
+                                        class="form-control" class="custom-select form-control"
+                                        id="account_type"
+                                        name="account_type" title="Select user type">
+                                    <option selected value="">Select account type</option>
                                     <option value="0">Client</option>
                                     <option value="1">Designer</option>
                                     <option value="2">Staff</option>
@@ -85,20 +89,21 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input"
-                                           [(ngModel)]="model.is_active" id="is_active"
-                                           name="is_active">
+                                    <input [(ngModel)]="model.is_active"
+                                           class="custom-control-input"
+                                           id="is_active" name="is_active"
+                                           type="checkbox">
                                     <label class="custom-control-label" for="is_active">Deactivate/Activate
-                                        User</label>
+                                        UserModel</label>
                                 </div>
                             </div>
                             <div class="form-group col-md-4"></div>
                             <div class="form-group col-md-2">
                                 <button *ngIf="personId == null && personId == undefined"
-                                        class="btn btn-primary btn-block">Create User
+                                        class="btn btn-primary btn-block">Create UserModel
                                 </button>
                                 <button *ngIf="personId != null && personId != undefined"
-                                        class="btn btn-primary btn-block">Update User
+                                        class="btn btn-primary btn-block">Update UserModel
                                 </button>
                             </div>
                         </div>

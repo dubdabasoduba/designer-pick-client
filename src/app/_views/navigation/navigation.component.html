@@ -43,8 +43,8 @@
             </a>
         </div><!-- dropdown -->
         <div *ngIf="lbsUser" [ngClass]="defaultDropdownMainClass">
-            <a class="dropdown-link" data-display="static" data-toggle="dropdown"
-               (click)="displayProfileDropDown()" href="#" aria-expanded="true">
+            <a (click)="displayProfileDropDown()" aria-expanded="true" class="dropdown-link"
+               data-display="static" data-toggle="dropdown" href="#">
                 <div class="avatar avatar-sm"><img alt="" class="rounded-circle"
                                                    src="assets/img/img1.png"></div>
             </a><!-- dropdown-link -->
@@ -65,7 +65,7 @@
                     users</a>
                 <a class="dropdown-item" routerLink="/payment/payment-modes"><i
                         data-feather="credit-card"></i>&nbsp;Manage Payment modes</a>
-                <a class="dropdown-item" routerLink="/payment/commisions"><i
+                <a class="dropdown-item" routerLink="/payment/commissions"><i
                         data-feather="shopping-bag"></i>&nbsp;Manage Commission</a>
                 <a class="dropdown-item" routerLink="/categories"><i data-feather="package"></i>&nbsp;Manage
                     Categories</a>
@@ -77,8 +77,9 @@
                     Roles</a>
                 <a class="dropdown-item" routerLink="/permissions"><i data-feather="lock"></i>&nbsp;Manage
                     Permission</a>
+                <a class="dropdown-item" routerLink="/settings"><i data-feather="settings"></i>&nbsp;Settings</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" (click)="signOut()"><i data-feather="log-out"></i>Sign
+                <a (click)="signOut()" class="dropdown-item"><i data-feather="log-out"></i>Sign
                     Out</a>
             </div><!-- dropdown-menu -->
         </div><!-- dropdown -->

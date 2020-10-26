@@ -32,6 +32,22 @@ export class ViewRolesComponent implements OnInit {
         }
     }
 
+    removeRole(id: string) {
+        if (confirm("Are you sure you want to delete this role?")) {
+            this.loading = true;
+            this.rolesService.removeRole(id).subscribe(
+                data => {
+                    this.router.navigateByUrl('/roles');
+                    this.loading = false;
+                },
+                error => {
+                    this.alertService.error(error);
+                    this.loading = false;
+                }
+            );
+        }
+    }
+
     private getRole() {
         this.loading = true;
         this.rolesService.getRole(this.roleId).subscribe(
@@ -68,21 +84,5 @@ export class ViewRolesComponent implements OnInit {
                 this.loading = false;
             }
         );
-    }
-
-    removeRole(id: string) {
-        if (confirm("Are you sure you want to delete this role?")) {
-            this.loading = true;
-            this.rolesService.removeRole(id).subscribe(
-                data => {
-                    this.router.navigateByUrl('/roles');
-                    this.loading = false;
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                }
-            );
-        }
     }
 }

@@ -21,18 +21,18 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="d-flex mg-b-25">
-                                    <a class="btn btn-xs btn-outline-secondary flex-fill"
-                                       routerLink="/profile-update/{{person.uuid}}"
-                                       [queryParams]="{returnUrl:returnUrl}"><i
+                                    <a [queryParams]="{returnUrl:returnUrl}"
+                                       class="btn btn-xs btn-outline-secondary flex-fill"
+                                       routerLink="/profile-update/{{person.uuid}}"><i
                                             class="fas fa-user-edit"></i>&nbsp;Edit
                                         Profile</a>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="d-flex mg-b-25">
-                                    <a class="btn btn-xs btn-outline-dark flex-fill"
-                                       routerLink="/profile/update-credentials//{{person.uuid}}"
-                                       [queryParams]="{returnUrl:returnUrl}"><i
+                                    <a [queryParams]="{returnUrl:returnUrl}"
+                                       class="btn btn-xs btn-outline-dark flex-fill"
+                                       routerLink="/profile/update-credentials//{{person.uuid}}"><i
                                             class="fas fa-user-lock"></i>&nbsp;Change
                                         password</a>
                                 </div>

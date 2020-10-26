@@ -12,14 +12,14 @@
                     <ol class="breadcrumb breadcrumb-style1 mg-b-10">
                         <li class="breadcrumb-item"><a href="#">Admin</a></li>
                         <li class="breadcrumb-item"><a routerLink="/users">Manage Users</a></li>
-                        <li aria-current="page" class="breadcrumb-item active">View User</li>
+                        <li aria-current="page" class="breadcrumb-item active">View UserModel</li>
                     </ol>
                 </nav>
-                <h4 class="mg-b-0">View User</h4>
+                <h4 class="mg-b-0">View UserModel</h4>
             </div>
             <div class="search-form mg-t-20 mg-sm-t-0">
-                <a class="btn btn-primary text-white" type="button" routerLink="/users/add">Add
-                    User</a>
+                <a class="btn btn-primary text-white" routerLink="/users/add" type="button">Add
+                    UserModel</a>
             </div>
         </div>
     </div><!-- container -->
@@ -31,7 +31,7 @@
                 <fieldset class="form-fieldset">
                     <legend>{{person.name}}&nbsp;user details</legend>
                     <br/>
-                    <h6>User Details</h6>
+                    <h6>UserModel Details</h6>
                     <hr/>
                     <div class="row mg-l-10 mg-r-10">
                         <br/>
@@ -63,18 +63,18 @@
                             <label><b>Date Updated:</b>&nbsp;{{person.date_updated}}</label>
                         </div>
                         <div class="col-md-4">
-                            <label *ngIf="person.is_active != null && person.is_active == 1"><b>Person
+                            <label *ngIf="person.is_active != null && person.is_active == 1"><b>PersonModel
                                 Status:</b>&nbsp;<span
                                     class="badge badge-pill badge-success">Active</span></label>
-                            <label *ngIf="person.is_active != null && person.is_active == 0"><b>Person
+                            <label *ngIf="person.is_active != null && person.is_active == 0"><b>PersonModel
                                 Status:</b>&nbsp;<span
                                     class="badge badge-pill badge-danger">De-activated</span></label>
                         </div>
                         <div class="col-md-4">
-                            <label *ngIf="person.is_verified != null && person.is_verified == 1"><b>Person
+                            <label *ngIf="person.is_verified != null && person.is_verified == 1"><b>PersonModel
                                 contacts:</b>&nbsp;<span
                                     class="badge badge-pill badge-success">Verified</span></label>
-                            <label *ngIf="person.is_verified != null && person.is_verified == 0"><b>Person
+                            <label *ngIf="person.is_verified != null && person.is_verified == 0"><b>PersonModel
                                 contacts:</b>&nbsp;<span
                                     class="badge badge-pill badge-danger">Not Verified</span></label>
                         </div>
@@ -95,10 +95,10 @@
                     <hr/>
                     <div class="row mg-l-10 mg-r-10">
                         <br/>
-                        <div class="col-md-4" *ngFor="let role of userRoles;">
+                        <div *ngFor="let role of userRoles;" class="col-md-4">
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input"
-                                       id="assigned-Role" checked disabled>
+                                <input checked class="custom-control-input"
+                                       disabled id="assigned-Role" type="checkbox">
                                 <label class="custom-control-label"
                                        for="assigned-Role">{{role.name}}</label>
                             </div>
@@ -106,21 +106,25 @@
                     </div>
                     <br/>
                     <div class="d-flex flex-row-reverse mg-b-20">
-                        <div class="pd-10"><a class="btn btn-danger text-white" type="button"
-                                              (click)="removePerson(person.uuid)"><i
+                        <div class="pd-10"><a (click)="removePerson(person.uuid)"
+                                              class="btn btn-danger text-white"
+                                              type="button"><i
                                 class="fas fa-trash-alt text-white"></i>&nbsp;Delete
-                            User&nbsp;</a></div>
-                        <div class="pd-10"><a class="btn btn-light" type="button"
-                                              routerLink="/users/contacts/{{person.uuid}}"><i
+                            UserModel&nbsp;</a></div>
+                        <div class="pd-10"><a class="btn btn-light"
+                                              routerLink="/users/contacts/{{person.uuid}}"
+                                              type="button"><i
                                 class="far fa-envelope"></i>&nbsp;Manage contacts&nbsp;</a>
                         </div>
-                        <div class="pd-10"><a class="btn btn-dark" type="button"
-                                              routerLink="/users/assign-roles/{{person.uuid}}/{{person.user_uuid}}"><i
+                        <div class="pd-10"><a class="btn btn-dark"
+                                              routerLink="/users/assign-roles/{{person.uuid}}/{{person.user_uuid}}"
+                                              type="button"><i
                                 class="far fa-edit"></i>&nbsp;Assign Roles&nbsp;</a>
                         </div>
-                        <div class="pd-10"><a class="btn btn-info text-white" type="button"
-                                              routerLink="/users/edit/{{personId}}"><i
-                                class="far fa-edit"></i>&nbsp;Edit User&nbsp;</a>
+                        <div class="pd-10"><a class="btn btn-info text-white"
+                                              routerLink="/users/edit/{{personId}}"
+                                              type="button"><i
+                                class="far fa-edit"></i>&nbsp;Edit UserModel&nbsp;</a>
                         </div>
                     </div>
                 </fieldset>

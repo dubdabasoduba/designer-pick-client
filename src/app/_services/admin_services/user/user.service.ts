@@ -5,25 +5,25 @@
  */
 import {Injectable} from '@angular/core';
 
-import {User} from '../../../_models';
+import {UserModel} from '../../../_models';
 import {appConstants} from '../../../_helpers/app.constants';
 import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class UserService {
 
-	constructor(private http: HttpClient) {
-	}
+    constructor(private http: HttpClient) {
+    }
 
-	getById(id: string) {
-		return this.http.get(appConstants.baseApiV1Url + '/user/' + id);
-	}
+    getById(id: string) {
+        return this.http.get(appConstants.baseApiV1Url + '/user/' + id);
+    }
 
-	create(user: User) {
-		return this.http.post(appConstants.baseApiV1Url + '/auth/register', user);
-	}
+    create(user: UserModel) {
+        return this.http.post(appConstants.baseApiV1Url + '/auth/register', user);
+    }
 
-	claim(user) {
-		return this.http.post(appConstants.baseApiV1Url + '/auth/register', user);
-	}
+    claim(user) {
+        return this.http.post(appConstants.baseApiV1Url + '/auth/register', user);
+    }
 }

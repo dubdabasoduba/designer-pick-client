@@ -9,17 +9,16 @@ import {AlertService, AuthenticationService, CountriesService} from '../../../_s
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {AppCommons} from '../../../_helpers/app.commons';
 import {appConstants} from "../../../_helpers/app.constants";
-import {Country} from "../../../_models/country";
-import {Category} from "../../../_models";
+import {CountryModel} from "../../../_models/country.model";
 
 @Component({
     selector: 'app-countries',
     templateUrl: './countries.component.html',
     styleUrls: ['./countries.component.css']
 })
-export class CountriesComponent implements OnInit,OnDestroy {
+export class CountriesComponent implements OnInit, OnDestroy {
     loading = false;
-    public countries: Array<Country> = [];
+    public countries: Array<CountryModel> = [];
     public model = {
         name: "",
         code: "",
@@ -28,7 +27,7 @@ export class CountriesComponent implements OnInit,OnDestroy {
     };
     public countryId: string;
     mySubscription: any;
-    country = new Country();
+    country = new CountryModel();
     loggedInUser: string;
 
     constructor(
@@ -62,6 +61,37 @@ export class CountriesComponent implements OnInit,OnDestroy {
     ngOnDestroy() {
         if (this.mySubscription) {
             this.mySubscription.unsubscribe();
+        }
+    }
+
+    addEditCountry() {
+        this.loading = false;
+        if (this.model.name == appConstants.emptyEntry || this.model.name == undefined) {
+            this.alertService.error(appConstants.nameError);
+        } else if (this.model.is_active === appConstants.emptyEntry || this.model.is_active == undefined) {
+            this.alertService.error(appConstants.statusError);
+        } else {
+            if (AppCommons.isStringEmpty(this.countryId)) {
+                this.addCountry();
+            } else {
+                this.updateCountry();
+            }
+        }
+    }
+
+    removeCountry(countryId: string) {
+        if (confirm("Are you sure you want to delete this country?")) {
+            this.loading = true;
+            this.countriesService.removeCountry(countryId).subscribe(
+                data => {
+                    this.router.navigateByUrl('/countries');
+                    this.loading = false;
+                },
+                error => {
+                    this.alertService.error(error);
+                    this.loading = false;
+                }
+            );
         }
     }
 
@@ -101,23 +131,8 @@ export class CountriesComponent implements OnInit,OnDestroy {
         );
     }
 
-    addEditCountry() {
-        this.loading = false;
-        if (this.model.name == appConstants.emptyEntry || this.model.name == undefined) {
-            this.alertService.error(appConstants.nameError);
-        } else if (this.model.is_active === appConstants.emptyEntry || this.model.is_active == undefined) {
-            this.alertService.error(appConstants.statusError);
-        } else {
-            if (AppCommons.isStringEmpty(this.countryId)) {
-                this.addCountry();
-            } else {
-                this.updateCountry();
-            }
-        }
-    }
-
     private createCountry() {
-        let country = new Country();
+        let country = new CountryModel();
         if (AppCommons.isStringEmpty(this.countryId)) {
             country.created_by = this.loggedInUser;
         } else {
@@ -160,23 +175,6 @@ export class CountriesComponent implements OnInit,OnDestroy {
         )
     }
 
-
-    removeCountry(countryId: string) {
-        if (confirm("Are you sure you want to delete this country?")) {
-            this.loading = true;
-            this.countriesService.removeCountry(countryId).subscribe(
-                data => {
-                    this.router.navigateByUrl('/countries');
-                    this.loading = false;
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                }
-            );
-        }
-    }
-
     private populateModel(data: any) {
         this.model.name = data.name;
         this.model.code = data.code;
@@ -195,7 +193,7 @@ export class CountriesComponent implements OnInit,OnDestroy {
     private formatCountries(data: any) {
         this.countries = [];
         for (let i = 0; i < data.length; i++) {
-            let country = new Country();
+            let country = new CountryModel();
             country.name = data[i].name;
             country.code = data[i].code;
             country.short_name = data[i].short_name;

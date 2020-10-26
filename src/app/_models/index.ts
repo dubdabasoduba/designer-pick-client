@@ -4,24 +4,16 @@
  * This may be subject to prosecution according to the kenyan law
  */
 
-export * from './user';
-export * from './alert';
-export * from './entity';
-export * from './funding';
-export * from './acquisitions';
-export * from './entity';
-export * from './category';
-export * from './sponsors';
-export * from './founders';
+export * from './user.model';
+export * from './alert.model';
+export * from './category.model';
 export * from './contact.model';
-export * from './person';
-export * from './work';
-export * from './education';
-export * from './fundingTypes';
-export * from './jobs';
-export * from './socialmedia.model';
-export * from './pages.model';
-export * from './permissions';
-export * from './roles';
-export * from './api-key';
-export * from './country';
+export * from './person.model';
+export * from './page.model';
+export * from './permission.model';
+export * from './role.model';
+export * from './api-key.model';
+export * from './country.model';
+export * from './commissions.model';
+export * from './payment-mode.model';
+export * from './settings.model';

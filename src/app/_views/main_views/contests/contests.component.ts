@@ -5,58 +5,56 @@
  */
 
 import {Component, OnInit} from '@angular/core';
-import {AppCommons} from '../../../_helpers/app.commons';
-import {AlertService, EntitiesService, PagerService} from '../../../_services';
-import {PagesModel} from '../../../_models';
+import {AlertService, PagerService} from '../../../_services';
+import {PageModel} from '../../../_models';
 import {ResponseModel} from '../../../_models/response.model';
 
 @Component({
-	selector: 'app-entities',
-	templateUrl: './contests.component.html',
-	styleUrls: ['./contests.component.css']
+    selector: 'app-entities',
+    templateUrl: './contests.component.html',
+    styleUrls: ['./contests.component.css']
 })
 export class ContestsComponent implements OnInit {
-	loading = false;
-	public organisations = [];
-	pager = new PagesModel();
-	pagedItems: any[];
-	private responseModel = new ResponseModel();
+    loading = false;
+    public organisations = [];
+    pager = new PageModel();
+    pagedItems: any[];
+    private responseModel = new ResponseModel();
 
-	constructor(
-		private entityService: EntitiesService,
-		private pagerService: PagerService,
-		private alertService: AlertService) {
-	}
+    constructor(
+        private pagerService: PagerService,
+        private alertService: AlertService) {
+    }
 
-	ngOnInit() {
-		//this.getEntities();
-	}
+    ngOnInit() {
+        //this.getEntities();
+    }
 
-	getEntities() {
-		this.loading = true;
-		this.entityService.getEntities(true).subscribe(
-			data => {
-				// @ts-ignore
-				this.responseModel = data;
-				this.createDisplay(this.responseModel.results);
-				this.loading = false;
-			},
-			error => {
-				this.alertService.error(error);
-				this.loading = false;
-			}
-		);
-	}
-
-	/*setPage(page: number) {
-		// get pager object from service
-		this.pager = this.pagerService.getPager(this.organisations.length, page);
-		// get current page of items
-		this.pagedItems = this.organisations.slice(this.pager.startIndex, this.pager.endIndex + 1);
-	}*/
-
-	private createDisplay(entities) {
-		this.organisations = AppCommons.createEntityDisplay(entities);
-		// this.setPage(1);
-	}
+    // getEntities() {
+    // 	this.loading = true;
+    // 	this.entityService.getEntities(true).subscribe(
+    // 		data => {
+    // 			// @ts-ignore
+    // 			this.responseModel = data;
+    // 			this.createDisplay(this.responseModel.results);
+    // 			this.loading = false;
+    // 		},
+    // 		error => {
+    // 			this.alertService.error(error);
+    // 			this.loading = false;
+    // 		}
+    // 	);
+    // }
+    //
+    // /*setPage(page: number) {
+    // 	// get pager object from service
+    // 	this.pager = this.pagerService.getPager(this.organisations.length, page);
+    // 	// get current page of items
+    // 	this.pagedItems = this.organisations.slice(this.pager.startIndex, this.pager.endIndex + 1);
+    // }*/
+    //
+    // private createDisplay(entities) {
+    // 	this.organisations = AppCommons.createEntityDisplay(entities);
+    // 	// this.setPage(1);
+    // }
 }

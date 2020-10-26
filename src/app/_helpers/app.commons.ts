@@ -4,17 +4,7 @@
  * This may be subject to prosecution according to the kenyan law
  */
 
-import {
-    Acquisitions,
-    Category,
-    ContactModel,
-    Entity,
-    Founders,
-    Funding,
-    PagesModel,
-    Person,
-    Work
-} from '../_models';
+import {CategoryModel, ContactModel, PageModel, PersonModel} from '../_models';
 import {appConstants} from './app.constants';
 import * as CryptoJS from 'crypto-js';
 import {PersonsService} from '../_services';
@@ -23,7 +13,7 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class AppCommons {
     public static getPagingInfo(page, limit, paginate) {
-        const paging = new PagesModel();
+        const paging = new PageModel();
         if ((this.isStringEmpty(page) || page <= 0) && (this.isStringEmpty(limit) || limit <= 0) &&
             this.isStringEmpty(paginate)) {
             paging.page = 1;
@@ -38,7 +28,7 @@ export class AppCommons {
         return paging;
     }
 
-    public static getPagingUrl(paging: PagesModel) {
+    public static getPagingUrl(paging: PageModel) {
         let url = '';
         if ((!this.isStringEmpty(String(paging.page)) || paging.page > 0) &&
             (!this.isStringEmpty(String(paging.limit)) || paging.limit > 0) &&
@@ -131,60 +121,6 @@ export class AppCommons {
     }
 
     /**
-     * @desc Creates an contests object for designers-dashboard
-     * @param entities
-     * @author dubdabasoduba
-     */
-    public static createEntityDisplay(entities) {
-        const organisations = [];
-        for (let i = 0; i < entities.length; i++) {
-            const entity = new Entity();
-            let contacts = [];
-            if (entities[i].contacts != undefined) {
-                contacts = entities[i].contacts;
-            }
-            const industry = entities[i].categories;
-            entity.id = entities[i]._id;
-
-            /*
-             * Checks to see if the contests name if filled. If not then that contests is not displayed
-             * */
-            if (entities[i].name !== null) {
-                entity.name = entities[i].name || appConstants.emptyEntry;
-                entity.dateFounded = !AppCommons.isStringEmpty(entities[i].founded) ? this.formatDisplayDate(
-                    new Date(Date.parse(entities[i].founded))) : appConstants.notDisclosed;
-                entity.iconImage = entities[i].iconImage || appConstants.defaultImageIcon;
-                if (contacts.length > 0) {
-                    for (let v = 0; v < contacts.length; v++) {
-                        if (contacts[v].primary === true) {
-                            const contact = contacts[v].county || appConstants.notDisclosed + ', ' + contacts[v].country ||
-                                appConstants.notDisclosed;
-                            entity.location = contact || appConstants.notDisclosed;
-                        }
-                    }
-                } else {
-                    entity.location = entities[i].headquarter || appConstants.notDisclosed;
-                }
-                if (industry.length > 0) {
-                    const industries = [];
-                    for (let w = 0; w < industry.length; w++) {
-                        if (industry[w].main === true) {
-                            const category = new Category();
-
-                            category.id = industry[w].category._id;
-                            category.name = industry[w].category.name;
-                            industries.push(category);
-                        }
-                        entity.industry = industries;
-                    }
-                }
-                organisations.push(entity);
-            }
-        }
-        return organisations;
-    }
-
-    /**
      * Creates the hased password to be stored in the database
      * @param {string} password -- The input password
      * @return {string} -- The encrypted password
@@ -233,47 +169,6 @@ export class AppCommons {
         return mainContacts.county + ', ' + mainContacts.country;
     }
 
-    public static createFunding(funding: any) {
-        const investors = [];
-        funding.forEach((partner) => {
-            const fundingDisplay = new Funding();
-            fundingDisplay.id = partner._id;
-            fundingDisplay.name = partner.name;
-            fundingDisplay.isLargest = partner.isLargest ? appConstants.yes : appConstants.no;
-            fundingDisplay.sponsorType = partner.sponsor_type;
-            fundingDisplay.sponsorName = partner.sponsor_name;
-            fundingDisplay.sponsorId = partner.sponsor_id;
-            fundingDisplay.entityIconImage = partner.iconImage || appConstants.defaultImageIcon;
-            fundingDisplay.funding_date = AppCommons.formatDisplayDate(new Date(partner.date_of_investment));
-            investors.push(fundingDisplay);
-        });
-
-        return investors;
-    }
-
-    /**
-     * Creates the list or all the place a person works i.e job & board appointments
-     * @param work -- pass in the jobs or board appointments
-     * @return {any[]} -- returns a list of all the work places and positions
-     */
-    public static createWorkList(work: any) {
-        const workList = [];
-        for (let i = 0; i < work.length; i++) {
-            const userWork = new Work();
-            userWork.entityId = work[i].organisation._id;
-            userWork.entity = work[i].organisation.name;
-            userWork.entityIconImage = work[i].organisation.iconImage || appConstants.defaultImageIcon;
-            userWork.title = work[i].title;
-            userWork.startDate = AppCommons.getYear(new Date(work[i].startDate));
-            userWork.endDate =
-                work[i].endDate == undefined || work[i].endDate == null ? appConstants.present : AppCommons.getYear(
-                    new Date(work[i].endDate));
-            userWork.isMain = work[i].isMain == true ? appConstants.primary : appConstants.emptyEntry;
-            workList.push(userWork);
-        }
-        return workList;
-    }
-
     /**
      * Calculate the age of persons using the dob
      * @param dob -- Date of birth
@@ -291,86 +186,6 @@ export class AppCommons {
             }
         }
         return age;
-    }
-
-    public static createInvestments(fundings: any) {
-        if (fundings.length > 0) {
-            const investments = [];
-            fundings.forEach((current_funding) => {
-                const funding = new Funding();
-                funding.id = current_funding._id;
-                funding.name = current_funding.name;
-                funding.entityId = current_funding.entity._id;
-                funding.entity = current_funding.entity.name;
-                funding.entityIconImage = current_funding.entity.iconImage || appConstants.defaultImageIcon;
-                funding.amount = AppCommons.shortenNumber(current_funding.amount, 2);
-                funding.funding_type = current_funding.funding_type.name;
-                funding.funding_typeId = current_funding.funding_type._id;
-                funding.isLargest = current_funding.isLargest == true ? appConstants.yes : appConstants.no;
-                investments.push(funding);
-            });
-
-            return investments;
-        }
-    }
-
-    public static getAcquisitions(acquisitions: any) {
-        if (acquisitions.length > 0) {
-            const investments = [];
-            acquisitions.forEach((buyoff) => {
-                const acquisition = new Acquisitions();
-                acquisition.id = buyoff._id;
-                acquisition.name = buyoff.name;
-                acquisition.entityId = buyoff.entity._id;
-                acquisition.entity = buyoff.entity.name;
-                acquisition.entityIconImage = buyoff.entity.iconImage || appConstants.defaultImageIcon;
-                acquisition.acquisition_date = AppCommons.formatDisplayDate(new Date(buyoff.date_of_investment));
-                investments.push(acquisition);
-            });
-
-            return investments;
-        }
-    }
-
-    public static createCompanies(companies: any) {
-        if (companies != null && companies != '' && companies.length > 0) {
-            const entities = [];
-            for (let i = 0; i < companies.length; i++) {
-                const company = new Entity();
-                company.id = companies[i]._id;
-                company.name = companies[i].name;
-                company.iconImage = companies[i].iconImage || appConstants.defaultImageIcon;
-                company.dateFounded =
-                    AppCommons.formatDisplayDate(new Date(companies[i].founded)) || appConstants.notDisclosed;
-                if (companies[i].headquarter == null) {
-                    if (companies[i].contacts.length > 0) {
-                        for (let j = 0; j < companies[i].contacts.length; j++) {
-                            if (companies[i].contacts[j].primary == true) {
-                                company.location = companies[i].contacts[j].county + ', ' + companies[i].contacts[j].country;
-                            }
-                        }
-                    }
-                } else {
-                    company.location = companies[i].headquarter;
-                }
-                entities.push(company);
-            }
-
-            return entities;
-        }
-    }
-
-    public static createEntities(organisations: any) {
-        const entities = [];
-        organisations.forEach((industry) => {
-            if (!this.isStringEmpty(industry.name)) {
-                const entity = new Entity();
-                entity.id = industry._id;
-                entity.name = industry.name;
-                entities.push(entity);
-            }
-        });
-        return entities;
     }
 
     /**
@@ -464,7 +279,7 @@ export class AppCommons {
      * @author dubdabasoduba
      */
     public static createPersonObject(user: any, personId: string) {
-        const person = new Person();
+        const person = new PersonModel();
         person.name = user.name;
         person.description = user.description;
         person.iconImage = user.iconImage;
@@ -485,47 +300,6 @@ export class AppCommons {
         person.date_added = user.date_added;
         person.date_updated = user.date_updated;
         return person;
-    }
-
-    /**
-     * @desc Create an contests object to help in updating the contests the database
-     * @param organisation {@link Object}
-     * @param entityId {@link String}
-     * @author dubdabasoduba
-     */
-    public static createEntityObject(organisation: any, entityId: string) {
-        const entity = new Entity();
-        entity.name = organisation.name;
-        entity.description = organisation.description;
-        entity.backgroundImage = organisation.backgroundImage;
-        entity.iconImage = organisation.iconImage;
-        entity.type = organisation.type;
-        entity.contacts = organisation.contacts;
-        entity.status = organisation.status;
-        entity.subsidiaries = organisation.subsidiaries;
-        entity.claimed = organisation.claimed;
-        entity.date_claimed = organisation.date_claimed;
-        entity.claim_code = organisation.claim_code;
-        entity.headquarter = organisation.headquarter;
-        entity.dateFounded = organisation.founded;
-        entity.socialMedia = organisation.social_media;
-        entity.social_media = organisation.social_media;
-        entity.industry = organisation.industry;
-        entity.founded = organisation.founded;
-        entity.employees = organisation.employees;
-        entity.valuation = organisation.valuation;
-        entity.companyType = organisation.type;
-        entity.mentor = organisation.is_mentor;
-        entity.is_mentor = organisation.is_mentor;
-        entity.is_investor = organisation.is_investor;
-        entity.categories = organisation.categories;
-        entity._id = entityId;
-        entity.date_added = organisation.date_added;
-        entity.dateClosed = organisation.dateClosed;
-        entity.created_by = organisation.created_by;
-        entity.updated_by = organisation.updated_by;
-        entity.pitch_video = organisation.pitch_video;
-        return entity;
     }
 
     /**
@@ -591,11 +365,11 @@ export class AppCommons {
 
     /**
      * @desc Creates an categories model object
-     * @param model {@link Category}
+     * @param model {@link CategoryModel}
      * @author dubdabasoduba
      */
     public createIndustryObject(model: any) {
-        const industry = new Category();
+        const industry = new CategoryModel();
         industry.category = model.industry;
         industry.main = true;
         return industry;
@@ -660,23 +434,6 @@ export class AppCommons {
     }
 
     /**
-     * @desc Retrieves the default country for the contests
-     * @param contacts {@link Array}
-     * @return country {@link String}
-     * @author dubdabasoduba
-     */
-    public getDefaultCountry(contacts: any) {
-        let country = appConstants.emptyEntry;
-        contacts.forEach((contact) => {
-            if (contact.primary && !AppCommons.isStringEmpty(contact.country)) {
-                country = contact.country;
-            }
-        });
-
-        return country;
-    }
-
-    /**
      * @desc Retrieves the default contests categories
      * @param industries {@link Array}
      * @return category {@link String}
@@ -691,26 +448,6 @@ export class AppCommons {
         });
 
         return category;
-    }
-
-    /**
-     * @desc Creates the founder object for designers-dashboard
-     * @param founder {@link Object}
-     * @param entity {@link Object}
-     * @param type {@link Boolean}
-     * @author dubdabasoduba
-     */
-    public createFounder(founder: any, entity: any, type: any) {
-        const currentFounder = new Founders();
-        currentFounder._id = founder._id;
-        currentFounder.entityId = entity._id;
-        currentFounder.entity = entity.name;
-        currentFounder.type = type;
-        currentFounder.status = founder.status;
-        currentFounder.date_added = founder.date_added;
-        currentFounder.entityImageIcon =
-            AppCommons.isStringEmpty(entity.iconImage) ? appConstants.defaultImageIcon : entity.iconImage;
-        return currentFounder;
     }
 
     public getPerson(personService: PersonsService, entityId: string) {

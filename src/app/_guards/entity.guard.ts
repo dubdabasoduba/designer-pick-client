@@ -7,35 +7,35 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {Observable} from 'rxjs';
-import {User} from '../_models';
+import {UserModel} from '../_models';
 import {AuthenticationService} from '../_services';
 
 @Injectable({
-	providedIn: 'root'
+    providedIn: 'root'
 })
 export class EntityGuard implements CanActivate {
-	private user: User;
+    private user: UserModel;
 
-	constructor(private router: Router, private authService: AuthenticationService) {
-	}
+    constructor(private router: Router, private authService: AuthenticationService) {
+    }
 
-	canActivate(
-		next: ActivatedRouteSnapshot,
-		state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-		this.user = this.authService.getCurrentUser();
-		if (this.user != null) {
-			if (this.user.type) {
-				this.changeRoute();
-			} else {
-				return true;
-			}
-		} else {
-			this.changeRoute();
-		}
-	}
+    canActivate(
+        next: ActivatedRouteSnapshot,
+        state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+        this.user = this.authService.getCurrentUser();
+        if (this.user != null) {
+            if (this.user.type) {
+                this.changeRoute();
+            } else {
+                return true;
+            }
+        } else {
+            this.changeRoute();
+        }
+    }
 
-	private changeRoute() {
-		this.router.navigate(['']);
-		return false;
-	}
+    private changeRoute() {
+        this.router.navigate(['']);
+        return false;
+    }
 }

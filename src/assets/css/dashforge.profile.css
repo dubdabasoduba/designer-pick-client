@@ -5,7 +5,7 @@
  *
  */
 .page-profile {
-    color: #1b2e4b;
+    background: #FFFFFF !important;
 }
 
 @media (min-width: 992px) {

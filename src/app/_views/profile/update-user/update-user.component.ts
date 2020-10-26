@@ -62,7 +62,7 @@ export class UpdateUserComponent implements OnInit {
 
     editPerson() {
         if (AppCommons.isStringEmpty(this.model.name)) {
-            this.alertService.error('Person name cannot be empty');
+            this.alertService.error('PersonModel name cannot be empty');
         } else if (AppCommons.isStringEmpty(this.model.account_type)) {
             this.alertService.error('Account type cannot be empty');
         } else if (AppCommons.isStringEmpty(this.model.dob)) {
@@ -120,7 +120,6 @@ export class UpdateUserComponent implements OnInit {
             }
         );
     }
-
 
 
     private updateEntityObject() {

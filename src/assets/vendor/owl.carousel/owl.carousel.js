@@ -180,7 +180,7 @@
 	}
 
 	/**
-	 * Default options for the carousel.
+	 * DefaultModel options for the carousel.
 	 * @public
 	 */
 	Owl.Defaults = {
@@ -646,7 +646,7 @@
 	/**
 	 * Gets the width of the view.
 	 * @public
-	 * @param {Owl.Width} [dimension=Owl.Width.Default] - The dimension to return.
+	 * @param {Owl.Width} [dimension=Owl.Width.DefaultModel] - The dimension to return.
 	 * @returns {Number} - The width of the view in pixel.
 	 */
 	Owl.prototype.width = function(dimension) {
@@ -1811,7 +1811,7 @@
 	};
 
 	/**
-	 * Default options.
+	 * DefaultModel options.
 	 * @public
 	 */
 	AutoRefresh.Defaults = {
@@ -1945,7 +1945,7 @@
 	};
 
 	/**
-	 * Default options.
+	 * DefaultModel options.
 	 * @public
 	 */
 	Lazy.Defaults = {
@@ -2098,7 +2098,7 @@
 	};
 
 	/**
-	 * Default options.
+	 * DefaultModel options.
 	 * @public
 	 */
 	AutoHeight.Defaults = {
@@ -2238,7 +2238,7 @@
 	};
 
 	/**
-	 * Default options.
+	 * DefaultModel options.
 	 * @public
 	 */
 	Video.Defaults = {
@@ -2521,7 +2521,7 @@
 	};
 
 	/**
-	 * Default options.
+	 * DefaultModel options.
 	 * @public
 	 */
 	Animate.Defaults = {
@@ -2714,7 +2714,7 @@
 	};
 
 	/**
-	 * Default options.
+	 * DefaultModel options.
 	 * @public
 	 */
 	Autoplay.Defaults = {
@@ -2956,7 +2956,7 @@
 	};
 
 	/**
-	 * Default options.
+	 * DefaultModel options.
 	 * @public
 	 * @todo Rename `slideBy` to `navBy`
 	 */
@@ -3335,7 +3335,7 @@
 	};
 
 	/**
-	 * Default options.
+	 * DefaultModel options.
 	 * @public
 	 */
 	Hash.Defaults = {

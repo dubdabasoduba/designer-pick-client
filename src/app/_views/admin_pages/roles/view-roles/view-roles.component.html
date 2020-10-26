@@ -18,7 +18,7 @@
                 <h4 class="mg-b-0">View Role</h4>
             </div>
             <div class="search-form mg-t-20 mg-sm-t-0">
-                <a class="btn btn-primary text-white" type="button" routerLink="/roles/add">Add
+                <a class="btn btn-primary text-white" routerLink="/roles/add" type="button">Add
                     Role</a>
             </div>
         </div>
@@ -61,10 +61,10 @@
                     <hr/>
                     <div class="row mg-l-10 mg-r-10">
                         <br/>
-                        <div class="col-md-4" *ngFor="let permission of rolePermissions;">
+                        <div *ngFor="let permission of rolePermissions;" class="col-md-4">
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input"
-                                       id="assigned-Role" checked disabled>
+                                <input checked class="custom-control-input"
+                                       disabled id="assigned-Role" type="checkbox">
                                 <label class="custom-control-label"
                                        for="assigned-Role">{{permission.name}}</label>
                             </div>
@@ -72,12 +72,14 @@
                     </div>
                     <br/>
                     <div class="d-flex flex-row-reverse mg-b-20">
-                        <div class="pd-10"><a class="btn btn-danger text-white" type="button"
-                                              (click)="removeRole(role.uuid)"><i
+                        <div class="pd-10"><a (click)="removeRole(role.uuid)"
+                                              class="btn btn-danger text-white"
+                                              type="button"><i
                                 class="fas fa-trash-alt text-white"></i>&nbsp;Delete
                             Role&nbsp;({{role.name}})</a></div>
-                        <div class="pd-10"><a class="btn btn-info text-white" type="button"
-                                              routerLink="/roles/edit/{{roleId}}"><i
+                        <div class="pd-10"><a class="btn btn-info text-white"
+                                              routerLink="/roles/edit/{{roleId}}"
+                                              type="button"><i
                                 class="far fa-edit"></i>&nbsp;Edit Role&nbsp;({{role.name}})</a>
                         </div>
                     </div>

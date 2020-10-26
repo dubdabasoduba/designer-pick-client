@@ -4,10 +4,10 @@
  * This may be subject to prosecution according to the kenyan law
  */
 
-import {Default} from './default';
+import {DefaultModel} from './default.model';
 
-export class ImageUpload extends Default {
-	constructor(public src: string, public file: File) {
-		super();
-	}
+export class ImageUpload extends DefaultModel {
+    constructor(public src: string, public file: File) {
+        super();
+    }
 }
