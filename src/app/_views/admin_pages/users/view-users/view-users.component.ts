@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Person} from "../../../../_models";
+import {PersonModel} from "../../../../_models";
 import {AlertService, AuthenticationService, PersonsService} from "../../../../_services";
 import {AppCommons} from "../../../../_helpers/app.commons";
 import {Router} from "@angular/router";
@@ -11,13 +11,27 @@ import {Router} from "@angular/router";
 })
 export class ViewUsersComponent implements OnInit {
     loading = false;
-    public people: Array<Person> = [];
+    public people: Array<PersonModel> = [];
 
-    constructor(private personsService: PersonsService, private alertService: AlertService, private authenticationService: AuthenticationService, private router: Router)  {
+    constructor(private personsService: PersonsService, private alertService: AlertService, private authenticationService: AuthenticationService, private router: Router) {
     }
 
     ngOnInit(): void {
         this.getPersons();
+    }
+
+    resetUserCredentials(username: string) {
+        this.loading = true;
+        this.authenticationService.resetPasswordRequest(username).subscribe(
+            data => {
+                this.router.navigateByUrl("/users")
+                this.loading = false;
+            },
+            error => {
+                this.formatPermissions(error);
+                this.loading = false;
+            }
+        );
     }
 
     /**
@@ -39,7 +53,7 @@ export class ViewUsersComponent implements OnInit {
 
     private formatPermissions(data: any) {
         for (let i = 0; i < data.length; i++) {
-            let person = new Person();
+            let person = new PersonModel();
             person.name = data[i].name;
             person.username = data[i].username;
             person.phone_number = data[i].phone_number;
@@ -55,19 +69,5 @@ export class ViewUsersComponent implements OnInit {
             person.uuid = data[i].uuid;
             this.people.push(person);
         }
-    }
-
-    resetUserCredentials(username: string) {
-        this.loading = true;
-        this.authenticationService.resetPasswordRequest(username).subscribe(
-            data => {
-                this.router.navigateByUrl("/users")
-                this.loading = false;
-            },
-            error => {
-                this.formatPermissions(error);
-                this.loading = false;
-            }
-        );
     }
 }

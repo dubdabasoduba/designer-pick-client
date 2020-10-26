@@ -5,9 +5,7 @@
  */
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Entity} from '../../../_models';
 import {AppCommons} from '../../../_helpers/app.commons';
-import {appConstants} from '../../../_helpers/app.constants';
 import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
@@ -18,22 +16,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 
 export class DesignersComponent implements OnInit, OnDestroy {
     loading = false;
-    public entity: Entity;
-    public investments: any = [];
-    public acquisitions: any = [];
-    public investors: any = [];
-    public founders: any = [];
-    public industry: any = [];
-    public social_media: any = [];
-    public contacts: any = [];
-    public subsidiaries: any = [];
-    public pitch_video: any = appConstants.emptyEntry;
-    public categories: any = [];
-    public showEditButtons = false;
-    public claimed = true;
-    public display = true;
     navigationEnd;
-    private entityId: string;
 
     constructor(
         private commons: AppCommons,

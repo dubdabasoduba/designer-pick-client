@@ -1,5 +1,5 @@
 import {Component, DoCheck, OnInit} from '@angular/core';
-import {Person, Roles} from "../../../../_models";
+import {PersonModel, Roles} from "../../../../_models";
 import {AlertService, PersonsService, RolesService} from "../../../../_services";
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {appConstants} from "../../../../_helpers/app.constants";
@@ -12,13 +12,13 @@ import {AppCommons} from "../../../../_helpers/app.commons";
 })
 export class AssignUserRolesComponent implements OnInit, DoCheck {
     loading = false;
-    public person: Person = new Person();
+    public person: PersonModel = new PersonModel();
     public assignedRoles: Array<Roles> = [];
     public roles: Array<Roles> = [];
-    private userId: string;
     public personId: string;
     mySubscription: any;
     redirectUrl: string;
+    private userId: string;
 
     constructor(private rolesService: RolesService, private personsService: PersonsService,
                 private alertService: AlertService, private route: ActivatedRoute,
@@ -33,6 +33,18 @@ export class AssignUserRolesComponent implements OnInit, DoCheck {
                 this.router.navigated = false;
             }
         });
+    }
+
+    private static formatRoles(data: any, useRole: boolean) {
+        let roles: Array<Roles> = [];
+        for (let i = 0; i < data.length; i++) {
+            let role = new Roles();
+            role.name = data[i].name;
+            role.uuid = useRole ? data[i].role : data[i].uuid;
+            roles.push(role);
+        }
+
+        return roles
     }
 
     ngOnInit(): void {
@@ -60,6 +72,40 @@ export class AssignUserRolesComponent implements OnInit, DoCheck {
         if (this.mySubscription) {
             this.mySubscription.unsubscribe();
         }
+    }
+
+    assignRoles(role: string) {
+        for (let i = 0; i < this.roles.length; i++) {
+            if (role === this.roles[i].uuid) {
+                this.assignedRoles.push(this.roles[i])
+                this.roles.splice(i, 1);
+                break;
+            }
+        }
+    }
+
+    unAssignRoles(role: string) {
+        for (let i = 0; i < this.assignedRoles.length; i++) {
+            if (role === this.assignedRoles[i].uuid) {
+                this.roles.push(this.assignedRoles[i])
+                this.assignedRoles.splice(i, 1);
+                break;
+            }
+        }
+    }
+
+    assignRole() {
+        this.loading = true;
+        this.rolesService.addUserRoles(this.userId, this.assignedRoles).subscribe(
+            data => {
+                this.router.navigateByUrl(this.redirectUrl);
+                this.loading = false;
+            },
+            error => {
+                this.alertService.error(error);
+                this.loading = false;
+            }
+        );
     }
 
     private getPerson() {
@@ -121,51 +167,5 @@ export class AssignUserRolesComponent implements OnInit, DoCheck {
                 }
             }
         }
-    }
-
-    private static formatRoles(data: any, useRole: boolean) {
-        let roles: Array<Roles> = [];
-        for (let i = 0; i < data.length; i++) {
-            let role = new Roles();
-            role.name = data[i].name;
-            role.uuid = useRole ? data[i].role : data[i].uuid;
-            roles.push(role);
-        }
-
-        return roles
-    }
-
-    assignRoles(role: string) {
-        for (let i = 0; i < this.roles.length; i++) {
-            if (role === this.roles[i].uuid) {
-                this.assignedRoles.push(this.roles[i])
-                this.roles.splice(i, 1);
-                break;
-            }
-        }
-    }
-
-    unAssignRoles(role: string) {
-        for (let i = 0; i < this.assignedRoles.length; i++) {
-            if (role === this.assignedRoles[i].uuid) {
-                this.roles.push(this.assignedRoles[i])
-                this.assignedRoles.splice(i, 1);
-                break;
-            }
-        }
-    }
-
-    assignRole() {
-        this.loading = true;
-        this.rolesService.addUserRoles(this.userId, this.assignedRoles).subscribe(
-            data => {
-                this.router.navigateByUrl(this.redirectUrl);
-                this.loading = false;
-            },
-            error => {
-                this.alertService.error(error);
-                this.loading = false;
-            }
-        );
     }
 }

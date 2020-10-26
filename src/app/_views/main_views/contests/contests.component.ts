@@ -6,7 +6,7 @@
 
 import {Component, OnInit} from '@angular/core';
 import {AlertService, PagerService} from '../../../_services';
-import {PagesModel} from '../../../_models';
+import {PageModel} from '../../../_models';
 import {ResponseModel} from '../../../_models/response.model';
 
 @Component({
@@ -17,7 +17,7 @@ import {ResponseModel} from '../../../_models/response.model';
 export class ContestsComponent implements OnInit {
     loading = false;
     public organisations = [];
-    pager = new PagesModel();
+    pager = new PageModel();
     pagedItems: any[];
     private responseModel = new ResponseModel();
 

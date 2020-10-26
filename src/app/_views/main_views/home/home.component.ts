@@ -6,8 +6,8 @@
 
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {AlertService, AuthenticationService} from '../../_services';
-import {User} from '../../_models';
+import {AlertService, AuthenticationService} from '../../../_services';
+import {UserModel} from '../../../_models';
 
 @Component({
     selector: 'app-home',
@@ -16,7 +16,7 @@ import {User} from '../../_models';
 })
 export class HomeComponent implements OnInit {
     loading = false;
-    private currentUser = new User();
+    private currentUser = new UserModel();
 
     constructor(
         private router: Router,

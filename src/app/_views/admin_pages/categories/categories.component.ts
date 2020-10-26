@@ -8,7 +8,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AlertService, AuthenticationService, CategoryService} from '../../../_services';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {AppCommons} from '../../../_helpers/app.commons';
-import {Category} from '../../../_models';
+import {CategoryModel} from '../../../_models';
 import {appConstants} from "../../../_helpers/app.constants";
 
 @Component({
@@ -18,15 +18,15 @@ import {appConstants} from "../../../_helpers/app.constants";
 })
 export class CategoriesComponent implements OnInit, OnDestroy {
     loading = false;
-    public categories: Array<Category> = [];
+    public categories: Array<CategoryModel> = [];
     public model = {
         name: "",
         description: "",
-        is_active:"",
+        is_active: "",
     };
     public categoryId: string;
     mySubscription: any;
-    category = new Category();
+    category = new CategoryModel();
     loggedInUser: string;
 
     constructor(
@@ -60,6 +60,37 @@ export class CategoriesComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         if (this.mySubscription) {
             this.mySubscription.unsubscribe();
+        }
+    }
+
+    addEditCategory() {
+        this.loading = false;
+        if (this.model.name == appConstants.emptyEntry || this.model.name == undefined) {
+            this.alertService.error(appConstants.nameError);
+        } else if (this.model.is_active === appConstants.emptyEntry || this.model.is_active == undefined) {
+            this.alertService.error(appConstants.statusError);
+        } else {
+            if (AppCommons.isStringEmpty(this.categoryId)) {
+                this.addCategory();
+            } else {
+                this.updateCategory();
+            }
+        }
+    }
+
+    removeCategory(categoryId: string) {
+        if (confirm("Are you sure you want to delete this category?")) {
+            this.loading = true;
+            this.categoryService.removeCategory(categoryId).subscribe(
+                data => {
+                    this.router.navigateByUrl('/categories');
+                    this.loading = false;
+                },
+                error => {
+                    this.alertService.error(error);
+                    this.loading = false;
+                }
+            );
         }
     }
 
@@ -99,23 +130,8 @@ export class CategoriesComponent implements OnInit, OnDestroy {
         );
     }
 
-    addEditCategory() {
-        this.loading = false;
-        if (this.model.name == appConstants.emptyEntry || this.model.name == undefined) {
-            this.alertService.error(appConstants.nameError);
-        } else if (this.model.is_active === appConstants.emptyEntry || this.model.is_active == undefined) {
-            this.alertService.error(appConstants.statusError);
-        } else {
-            if (AppCommons.isStringEmpty(this.categoryId)) {
-                this.addCategory();
-            } else {
-                this.updateCategory();
-            }
-        }
-    }
-
     private createCategory() {
-        let category = new Category();
+        let category = new CategoryModel();
         if (AppCommons.isStringEmpty(this.categoryId)) {
             category.created_by = this.loggedInUser;
         } else {
@@ -157,23 +173,6 @@ export class CategoriesComponent implements OnInit, OnDestroy {
         )
     }
 
-
-    removeCategory(categoryId: string) {
-        if (confirm("Are you sure you want to delete this category?")) {
-            this.loading = true;
-            this.categoryService.removeCategory(categoryId).subscribe(
-                data => {
-                    this.router.navigateByUrl('/categories');
-                    this.loading = false;
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                }
-            );
-        }
-    }
-
     private populateModel(data: any) {
         this.model.name = data.name;
         this.model.description = data.description;
@@ -190,7 +189,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
     private formatCategories(data: any) {
         this.categories = [];
         for (let i = 0; i < data.length; i++) {
-            let category = new Category();
+            let category = new CategoryModel();
             category.name = data[i].name;
             category.description = data[i].description;
             category.date_created = AppCommons.formatDisplayDate(new Date(data[i].date_created));

@@ -3,14 +3,12 @@
  * Reproducing it in any way or using it without permission from Re.Kast Limited will be a violation of kenyan copyrights law.
  * This may be subject to prosecution according to the kenyan law
  */
+import {DefaultModel} from './default.model';
 
-import {Default} from './default';
-
-export class Work extends Default {
-	entityId: string;
-	entity: string;
-	title: string;
-	startDate: string;
-	endDate: string;
-	isMain: string;
+export class CategoryModel extends DefaultModel {
+    name: string;
+    description: string;
+    main: any;
+    category: string;
+    categoryId: string;
 }

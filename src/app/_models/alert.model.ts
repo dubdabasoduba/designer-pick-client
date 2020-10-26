@@ -4,9 +4,14 @@
  * This may be subject to prosecution according to the kenyan law
  */
 
-import {Default} from './default';
+export class AlertModel {
+    type: AlertType;
+    message: string;
+}
 
-export class FundingTypes extends Default {
-	description: string;
-	name: string;
+export enum AlertType {
+    Success,
+    Error,
+    Info,
+    Warning
 }

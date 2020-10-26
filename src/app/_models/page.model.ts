@@ -4,15 +4,17 @@
  * This may be subject to prosecution according to the kenyan law
  */
 
-import {Default} from './default';
-
-export class Founders extends Default {
-	entityId: string;
-	entity: string;
-	entityImageIcon: string;
-	type: boolean;
-	founders: any = {
-		person: null,
-		entity: null
-	};
+export class PageModel {
+    totalItems: number;
+    currentPage: number;
+    pageSize: number;
+    totalPages: number;
+    startPage: number;
+    endPage: number;
+    startIndex: number;
+    endIndex: number;
+    pages: number[];
+    page: number;
+    limit: number;
+    paginate: boolean;
 }

@@ -5,7 +5,7 @@
  */
 
 import {Component, OnInit} from '@angular/core';
-import {ContactModel, Person, User} from '../../../_models';
+import {ContactModel, PersonModel, UserModel} from '../../../_models';
 import {
     AlertService,
     AuthenticationService,
@@ -29,7 +29,7 @@ export class ContactsComponent implements OnInit {
     public contacts: any = [];
     public model: any = {};
     public countries: any = [];
-    private lbsUser: User;
+    private lbsUser: UserModel;
     private entityId: string;
     private type: boolean;
     private responseModel = new ResponseModel();
@@ -54,24 +54,6 @@ export class ContactsComponent implements OnInit {
         }
 
         this.getCountries();
-    }
-
-    removeContact(contact: ContactModel) {
-        this.loading = true;
-        let entity;
-        entity = this.type ? AppCommons.createPersonObject(this.entity, this.entityId) : AppCommons.createEntityObject(this.entity,
-            this.entityId);
-        entity.user = this.authService.getCurrentUser().uuid;
-
-        for (let i = 0; i < entity.contacts.length; i++) {
-            if (entity.contacts[i]._id == contact._id) {
-                entity.contacts.splice(i, 1);
-            }
-        }
-
-        if (this.type) {
-            this.updatePerson(entity, true);
-        }
     }
 
     addEditContacts() {
@@ -157,7 +139,7 @@ export class ContactsComponent implements OnInit {
         );
     }
 
-    private updatePerson(person: Person, type: boolean) {
+    private updatePerson(person: PersonModel, type: boolean) {
         this.loading = true;
         this.personService.updatePerson(person).subscribe(
             data => {

@@ -7,7 +7,7 @@
 import {Injectable} from '@angular/core';
 import {appConstants} from '../../../_helpers/app.constants';
 import {HttpClient} from '@angular/common/http';
-import {Category} from "../../../_models";
+import {CategoryModel} from "../../../_models";
 import {Observable} from "rxjs";
 
 @Injectable()
@@ -28,7 +28,7 @@ export class CategoryService {
         return this.http.get(appConstants.baseApiV1Url + '/categories');
     }
 
-    getCategory(id: string): Observable<Category> {
+    getCategory(id: string): Observable<CategoryModel> {
         // @ts-ignore
         return this.http.get(appConstants.baseApiV1Url + '/category/' + id);
     }
@@ -37,11 +37,11 @@ export class CategoryService {
         return this.http.delete(appConstants.baseApiV1Url + '/category/' + id);
     }
 
-    addCategory(category: Category) {
+    addCategory(category: CategoryModel) {
         return this.http.post(appConstants.baseApiV1Url + '/category', category);
     }
 
-    updateCategory(category: Category) {
+    updateCategory(category: CategoryModel) {
         return this.http.put(appConstants.baseApiV1Url + '/category/' + category.uuid, category);
     }
 

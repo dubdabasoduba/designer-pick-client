@@ -3,16 +3,6 @@
  * Reproducing it in any way or using it without permission from Re.Kast Limited will be a violation of kenyan copyrights law.
  * This may be subject to prosecution according to the kenyan law
  */
-
-import {Default} from './default';
-
-export class Acquisitions extends Default {
-	name: string;
-	amount: string;
-	acquisition_date: string;
-	entity: string;
-	entityId: string;
-	buyers: any;
-	numberOfBuyers: string;
+.shortcuts {
+    cursor: pointer !important;
 }
-

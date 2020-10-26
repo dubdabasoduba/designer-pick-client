@@ -9,23 +9,23 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ClientsDashboardComponent} from './clients-dashboard.component';
 
 describe('AcquisitionsComponent', () => {
-	let component: ClientsDashboardComponent;
-	let fixture: ComponentFixture<ClientsDashboardComponent>;
+    let component: ClientsDashboardComponent;
+    let fixture: ComponentFixture<ClientsDashboardComponent>;
 
-	beforeEach(async(() => {
-		TestBed.configureTestingModule({
-			declarations: [ClientsDashboardComponent]
-		})
-			.compileComponents();
-	}));
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            declarations: [ClientsDashboardComponent]
+        })
+            .compileComponents();
+    }));
 
-	beforeEach(() => {
-		fixture = TestBed.createComponent(ClientsDashboardComponent);
-		component = fixture.componentInstance;
-		fixture.detectChanges();
-	});
+    beforeEach(() => {
+        fixture = TestBed.createComponent(ClientsDashboardComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-	it('should be created', () => {
-		expect(component).toBeTruthy();
-	});
+    it('should be created', () => {
+        expect(component).toBeTruthy();
+    });
 });

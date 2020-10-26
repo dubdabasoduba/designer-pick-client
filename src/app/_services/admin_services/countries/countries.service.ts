@@ -8,7 +8,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {appConstants} from '../../../_helpers/app.constants';
 import {Observable} from "rxjs";
-import {Country} from "../../../_models";
+import {CountryModel} from "../../../_models";
 
 @Injectable()
 export class CountriesService {
@@ -20,7 +20,7 @@ export class CountriesService {
         return this.http.get(appConstants.baseApiV1Url + appConstants.countriesUrl);
     }
 
-    getCountry(countryId: string): Observable<Country> {
+    getCountry(countryId: string): Observable<CountryModel> {
         // @ts-ignore
         return this.http.get(appConstants.baseApiV1Url + appConstants.countryUrl + countryId);
     }
@@ -29,11 +29,11 @@ export class CountriesService {
         return this.http.delete(appConstants.baseApiV1Url + '/country/' + id);
     }
 
-    addCountry(country: Country) {
+    addCountry(country: CountryModel) {
         return this.http.post(appConstants.baseApiV1Url + '/country', country);
     }
 
-    updateCountry(country: Country) {
+    updateCountry(country: CountryModel) {
         return this.http.put(appConstants.baseApiV1Url + '/country/' + country.uuid, country);
     }
 }

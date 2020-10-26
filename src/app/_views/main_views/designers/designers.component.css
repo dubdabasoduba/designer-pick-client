@@ -5,102 +5,102 @@
  */
 
 .card-header {
-	background-color: white;
+    background-color: white;
 }
 
 #image-background {
-	background-color: white;
-	padding: 2px;
-	border-radius: 4px;
+    background-color: white;
+    padding: 2px;
+    border-radius: 4px;
 }
 
 .md-tabs .nav-item {
-	width: calc(100% / 3) !important;
-	text-align: center !important;
+    width: calc(100% / 3) !important;
+    text-align: center !important;
 }
 
 .nav-tabs .slide {
-	background: #EB977A !important;
-	width: calc(100% / 3) !important;
-	height: 4px !important;
-	position: absolute !important;
-	-webkit-transition: left 0.3s ease-out !important;
-	transition: left 0.3s ease-out !important;
-	bottom: 0 !important;
+    background: #EB977A !important;
+    width: calc(100% / 3) !important;
+    height: 4px !important;
+    position: absolute !important;
+    -webkit-transition: left 0.3s ease-out !important;
+    transition: left 0.3s ease-out !important;
+    bottom: 0 !important;
 }
 
 .label-container-entity {
-	position: fixed;
-	bottom: 195px;
-	right: 105px;
-	display: table;
-	visibility: hidden;
+    position: fixed;
+    bottom: 195px;
+    right: 105px;
+    display: table;
+    visibility: hidden;
 }
 
 a.floating-icon + div.label-container-entity {
-	visibility: hidden;
-	opacity: 0;
-	transition: visibility 0s, opacity 0.5s ease;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s ease;
 }
 
 a.floating-icon:hover + div.label-container-entity {
-	visibility: visible;
-	opacity: 1;
+    visibility: visible;
+    opacity: 1;
 }
 
 .label-container-subsidiary {
-	position: fixed;
-	bottom: 195px;
-	right: 105px;
-	display: table;
-	visibility: hidden;
+    position: fixed;
+    bottom: 195px;
+    right: 105px;
+    display: table;
+    visibility: hidden;
 }
 
 a.floating-icon + div.label-container-subsidiary {
-	visibility: hidden;
-	opacity: 0;
-	transition: visibility 0s, opacity 0.5s ease;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s ease;
 }
 
 a.floating-icon:hover + div.label-container-subsidiary {
-	visibility: visible;
-	opacity: 1;
+    visibility: visible;
+    opacity: 1;
 }
 
 .label-container-acquisition {
-	position: fixed;
-	bottom: 135px;
-	right: 105px;
-	display: table;
-	visibility: hidden;
+    position: fixed;
+    bottom: 135px;
+    right: 105px;
+    display: table;
+    visibility: hidden;
 }
 
 a.floating-icon + div.label-container-acquisition {
-	visibility: hidden;
-	opacity: 0;
-	transition: visibility 0s, opacity 0.5s ease;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s ease;
 }
 
 a.floating-icon:hover + div.label-container-acquisition {
-	visibility: visible;
-	opacity: 1;
+    visibility: visible;
+    opacity: 1;
 }
 
 .label-container-funding {
-	position: fixed;
-	bottom: 75px;
-	right: 105px;
-	display: table;
-	visibility: hidden;
+    position: fixed;
+    bottom: 75px;
+    right: 105px;
+    display: table;
+    visibility: hidden;
 }
 
 a.floating-icon + div.label-container-funding {
-	visibility: hidden;
-	opacity: 0;
-	transition: visibility 0s, opacity 0.5s ease;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s ease;
 }
 
 a.floating-icon:hover + div.label-container-funding {
-	visibility: visible;
-	opacity: 1;
+    visibility: visible;
+    opacity: 1;
 }

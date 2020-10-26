@@ -5,29 +5,29 @@
  */
 
 #extraInfo {
-	display: none !important;
+    display: none !important;
 }
 
 .main .main-raised {
-	width: 50% !important;
+    width: 50% !important;
 }
 
 .main-raised {
-	margin: 80px 500px 0px !important;
-	border-radius: 6px;
-	box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+    margin: 80px 500px 0px !important;
+    border-radius: 6px;
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
 }
 
 .section-components .container .title {
-	margin-top: 70px !important;
-	margin-bottom: 5px;
+    margin-top: 70px !important;
+    margin-bottom: 5px;
 }
 
 #resetButton {
-	margin-top: 10px;
+    margin-top: 10px;
 }
 
 #instructionComponent a {
-	cursor: pointer !important;
-	font-weight: bold;
+    cursor: pointer !important;
+    font-weight: bold;
 }

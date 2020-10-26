@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ApiKey} from "../../../_models";
+import {ApiKeyModel} from "../../../_models";
 import {AlertService, ApiKeysService, AuthenticationService} from "../../../_services";
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {appConstants} from "../../../_helpers/app.constants";
@@ -12,7 +12,7 @@ import {AppCommons} from "../../../_helpers/app.commons";
 })
 export class ApiKeysComponent implements OnInit {
     loading = false;
-    public apiKeys: Array<ApiKey> = [];
+    public apiKeys: Array<ApiKeyModel> = [];
     public model = {
         name: "",
         api_key: "",
@@ -21,7 +21,7 @@ export class ApiKeysComponent implements OnInit {
     };
     public apiKeyId: string;
     mySubscription: any;
-    apiKey = new ApiKey();
+    apiKey = new ApiKeyModel();
     loggedInUser: string;
 
     constructor(private apiKeysService: ApiKeysService, private alertService: AlertService,
@@ -57,6 +57,39 @@ export class ApiKeysComponent implements OnInit {
         }
     }
 
+    addEditApiKey() {
+        this.loading = false;
+        if (this.model.name == appConstants.emptyEntry || this.model.name == undefined) {
+            this.alertService.error(appConstants.nameError);
+        } else if (this.model.is_active === appConstants.emptyEntry || this.model.is_active == undefined) {
+            this.alertService.error(appConstants.apiKeyError);
+        } else if (this.model.is_active === appConstants.emptyEntry || this.model.is_active == undefined) {
+            this.alertService.error(appConstants.statusError);
+        } else {
+            if (AppCommons.isStringEmpty(this.apiKeyId)) {
+                this.addApiKey();
+            } else {
+                this.updateApiKey();
+            }
+        }
+    }
+
+    removeApiKey(apiKeyId: string) {
+        if (confirm("Are you sure you want to delete this API Key?")) {
+            this.loading = true;
+            this.apiKeysService.removeApiKey(apiKeyId).subscribe(
+                data => {
+                    this.router.navigateByUrl('/api-keys');
+                    this.loading = false;
+                },
+                error => {
+                    this.alertService.error(error);
+                    this.loading = false;
+                }
+            );
+        }
+    }
+
     /**
      * Get the given categories
      */
@@ -73,7 +106,6 @@ export class ApiKeysComponent implements OnInit {
             }
         );
     }
-
 
     /**
      * Get a specific category
@@ -94,25 +126,8 @@ export class ApiKeysComponent implements OnInit {
         );
     }
 
-    addEditApiKey() {
-        this.loading = false;
-        if (this.model.name == appConstants.emptyEntry || this.model.name == undefined) {
-            this.alertService.error(appConstants.nameError);
-        } else if (this.model.is_active === appConstants.emptyEntry || this.model.is_active == undefined) {
-            this.alertService.error(appConstants.apiKeyError);
-        } else if (this.model.is_active === appConstants.emptyEntry || this.model.is_active == undefined) {
-            this.alertService.error(appConstants.statusError);
-        } else {
-            if (AppCommons.isStringEmpty(this.apiKeyId)) {
-                this.addApiKey();
-            } else {
-                this.updateApiKey();
-            }
-        }
-    }
-
     private createCategory() {
-        let apiKey = new ApiKey();
+        let apiKey = new ApiKeyModel();
         if (AppCommons.isStringEmpty(this.apiKeyId)) {
             apiKey.created_by = this.loggedInUser;
         } else {
@@ -155,23 +170,6 @@ export class ApiKeysComponent implements OnInit {
         )
     }
 
-
-    removeApiKey(apiKeyId: string) {
-        if (confirm("Are you sure you want to delete this API Key?")) {
-            this.loading = true;
-            this.apiKeysService.removeApiKey(apiKeyId).subscribe(
-                data => {
-                    this.router.navigateByUrl('/api-keys');
-                    this.loading = false;
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                }
-            );
-        }
-    }
-
     private populateModel(data: any) {
         this.model.api_key = data.api_key;
         this.model.expiry = data.expiry;
@@ -190,7 +188,7 @@ export class ApiKeysComponent implements OnInit {
     private formatApiKeys(data: any) {
         this.apiKeys = [];
         for (let i = 0; i < data.length; i++) {
-            let apiKey = new ApiKey();
+            let apiKey = new ApiKeyModel();
             apiKey.api_key = data[i].api_key;
             apiKey.expiry = data[i].expiry;
             apiKey.name = data[i].name;

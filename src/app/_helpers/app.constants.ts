@@ -93,7 +93,7 @@ export const appConstants = {
     educationAdditionSuccess: 'Your education history was added',
     sameEntityBuyerError: 'An contests cannot acquire itself',
     sameEntitySponsorError: 'An contests cannot fund itself',
-    userDataMissingError: 'User data is required for you to initialize the claim request',
+    userDataMissingError: 'UserModel data is required for you to initialize the claim request',
     founderError: 'An organisation cannot start itself',
     industryStatus: 'Please let us know if this is the main categories of operation',
     industryAddSuccess: 'Your categories of operation was added',

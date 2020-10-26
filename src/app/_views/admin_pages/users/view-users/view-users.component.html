@@ -18,7 +18,7 @@
                 <h4 class="mg-b-0">Manage Users</h4>
             </div>
             <div class="search-form mg-t-20 mg-sm-t-0">
-                <a class="btn btn-primary" type="button" routerLink="/users/add">Add User</a>
+                <a class="btn btn-primary" routerLink="/users/add" type="button">Add UserModel</a>
             </div>
         </div>
     </div><!-- container -->
@@ -71,9 +71,9 @@
                                     class="text-center"><span class="badge badge-pill badge-danger">No</span>
                                 </td>
                                 <td class="text-right">
-                                    <a *ngIf="person.reset != null && person.reset == 0"
-                                       class="btn btn-info btn-xs"
-                                       (click)="resetUserCredentials(person.username)"><i
+                                    <a (click)="resetUserCredentials(person.username)"
+                                       *ngIf="person.reset != null && person.reset == 0"
+                                       class="btn btn-info btn-xs"><i
                                             class="fas fa-unlock text-white"></i></a>&nbsp;
                                     <a class="btn btn-secondary btn-xs"
                                        routerLink="/user/{{person.uuid}}/{{person.user_uuid}}"><i

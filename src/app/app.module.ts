@@ -14,11 +14,14 @@ import {
     ApiKeysService,
     AuthenticationService,
     CategoryService,
+    CommissionsService,
     CountriesService,
     PagerService,
+    PaymentModesService,
     PermissionsService,
     PersonsService,
     ProfileService,
+    SettingsService,
     UserService
 } from './_services';
 
@@ -30,7 +33,7 @@ import {UpdateComponent} from './_views/auth/update-password/update.component';
 import {CategoriesComponent} from './_views/admin_pages/categories/categories.component';
 import {VerifyEmailComponent} from './_views/auth/verify-email/verify.component';
 import {AppComponent} from './app.component';
-import {HomeComponent} from './_views/home/home.component';
+import {HomeComponent} from './_views/main_views/home/home.component';
 import {ContestsComponent} from './_views/main_views/contests/contests.component';
 import {AlertComponent} from './_views/alert/alert.component';
 import {ClientsDashboardComponent} from './_views/dashboards/clients-dashboard/clients-dashboard.component';
@@ -109,6 +112,7 @@ import {ContactService} from "./_services/admin_services/contact/contact.service
     providers: [AuthGuard, AuthenticationService, AlertService, UserService, PersonsService,
         AuthPagesGuard, AlertService, CategoryService, CountriesService, ProfileService,
         PagerService, PermissionsService, ApiKeysService, ProfileService, ContactService,
+        CommissionsService, PaymentModesService, SettingsService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: RequestInterceptor,
