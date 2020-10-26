@@ -199,4 +199,52 @@
     aos_init();
   });
 
+  $(document).ready( function () {
+    $('#users_table').DataTable();
+  } );
+
+  $(document).ready( function () {
+    $('#api_keys_table').DataTable();
+  } );
+
+  $(document).ready( function () {
+    $('#category_table').DataTable();
+  } );
+
+  $(document).ready( function () {
+    $('#commission_table').DataTable();
+  } );
+
+  $(document).ready( function () {
+    $('#country_table').DataTable();
+  } );
+
+  $(document).ready( function () {
+    $('#payment_mode_table').DataTable();
+  } );
+
+  $(document).ready( function () {
+    $('#permission_table').DataTable();
+  } );
+
+  $(document).ready( function () {
+    $('#role_table').DataTable();
+  } );
+
+  $(document).ready( function () {
+    $('#user_contact_table').DataTable();
+  } );
+
+  $(document).ready( function () {
+    $('#api_keys_table').DataTable();
+  } );
+
+  $(document).ready( function () {
+    $('#api_keys_table').DataTable();
+  } );
+
+  $(document).ready( function () {
+    $('#api_keys_table').DataTable();
+  } );
+
 })(jQuery);

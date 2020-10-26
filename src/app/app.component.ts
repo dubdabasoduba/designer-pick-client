@@ -54,7 +54,8 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
                     "assets/vendor/venobox/venobox.min.js",
                     "assets/vendor/owl.carousel/owl.carousel.min.js",
                     "assets/vendor/aos/aos.js",
-                    "assets/js/main.js"
+                    "assets/js/main.js",
+                    "assets/js/jquery.dataTables.min.js"
                 ];
 
                 jsFiles.forEach((jsFile) => {

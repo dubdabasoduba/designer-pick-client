@@ -19,7 +19,7 @@
             </div>
             <div class="search-form mg-t-20 mg-sm-t-0">
                 <a class="btn btn-primary" routerLink="/countries" type="button">Add
-                    CountryModel</a>
+                    Country</a>
             </div>
         </div>
     </div><!-- container -->
@@ -30,11 +30,11 @@
         <div class="row">
             <div class="col-lg-12 col-xl-12">
                 <fieldset class="form-fieldset">
-                    <legend>Add&nbsp;|Edit&nbsp;CountryModel</legend>
+                    <legend>Add&nbsp;|Edit&nbsp;Country</legend>
                     <form #f="ngForm" (ngSubmit)="f.form.valid && addEditCountry()" novalidate>
                         <div class="form-row">
                             <div class="form-group col-lg-4">
-                                <label>CountryModel name:&nbsp;<span
+                                <label>Country name:&nbsp;<span
                                         class="tx-danger">*</span></label>
                                 <input [(ngModel)]="model.name" class="form-control"
                                        data-error="Subject field is required"
@@ -43,7 +43,7 @@
                                        required="" type="text">
                             </div>
                             <div class="form-group col-lg-4">
-                                <label>CountryModel short name:&nbsp;<span
+                                <label>Country short name:&nbsp;<span
                                         class="tx-danger">*</span></label>
                                 <input [(ngModel)]="model.short_name"
                                        autocomplete="off" class="form-control"
@@ -53,7 +53,7 @@
                                        required="" type="text">
                             </div>
                             <div class="form-group col-lg-4">
-                                <label>CountryModel code:&nbsp;</label>
+                                <label>Country code:&nbsp;</label>
                                 <input [(ngModel)]="model.code" autocomplete="off"
                                        class="form-control"
                                        id="code" name="code"
@@ -92,13 +92,13 @@
             <div class="col-lg-12 col-xl-12">
                 <div class="row row-md mg-b-25 pd-l-20-f pd-r-20-f">
                     <div class="table-responsive">
-                        <table class="table table-striped table-hover table-md mg-b-0">
+                        <table class="table table-striped table-hover table-md mg-b-0" id="country_table">
                             <thead class="thead-dark">
                             <tr>
                                 <th class="text-center" scope="col">#</th>
-                                <th scope="col">CountryModel Name</th>
-                                <th scope="col">CountryModel Code</th>
-                                <th scope="col">CountryModel Short Name</th>
+                                <th scope="col">Country Name</th>
+                                <th scope="col">Country Code</th>
+                                <th scope="col">Country Short Name</th>
                                 <th class="text-center" scope="col">Date Created</th>
                                 <th class="text-center" scope="col">Date Updated</th>
                                 <th class="text-center" scope="col">Is Active</th>
