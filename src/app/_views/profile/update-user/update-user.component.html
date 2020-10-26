@@ -27,24 +27,26 @@
                             <div class="form-group col-md-6">
                                 <label>Email address:&nbsp;<span class="tx-danger">*</span></label>
                                 <input #email="ngModel" [(ngModel)]="model.email"
-                                       class="form-control" data-error="Subject field is required"
-                                       id="email" name="email"
+                                       autocomplete="off" class="form-control"
+                                       data-error="Subject field is required" id="email"
+                                       name="email"
                                        placeholder="Place give your email address"
-                                       required=""
-                                       type="email" autocomplete="off">
+                                       required="" type="email">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>Birthday:&nbsp;<span class="tx-danger">*</span></label>
-                                <input type="date" class="form-control hasDatepicker" [(ngModel)]="model.dob"
-                                       placeholder="Choose date of birth" name="dob" id="dob">
+                                <input [(ngModel)]="model.dob" class="form-control hasDatepicker"
+                                       id="dob"
+                                       name="dob" placeholder="Choose date of birth" type="date">
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Select gender:&nbsp;<span
                                         class="tx-danger">*</span></label>
-                                <select name="gender" id="gender" class="custom-select" [(ngModel)]="model.gender">
-                                    <option value="" selected>Select gender</option>
+                                <select [(ngModel)]="model.gender" class="custom-select" id="gender"
+                                        name="gender">
+                                    <option selected value="">Select gender</option>
                                     <option value="0">Female</option>
                                     <option value="1">Male</option>
                                     <option value="2">Gender Netural</option>
@@ -56,19 +58,19 @@
                             <div class="form-group col-md-6">
                                 <label>Phone number:&nbsp;<span class="tx-danger">*</span></label>
                                 <input [(ngModel)]="model.phonenumber"
-                                       class="form-control" data-error="Subject field is required"
-                                       id="phonenumber" name="phonenumber"
+                                       autocomplete="off" class="form-control"
+                                       data-error="Subject field is required" id="phonenumber"
+                                       name="phonenumber"
                                        placeholder="Place give your phonenumber"
-                                       required=""
-                                       type="email" autocomplete="off">
+                                       required="" type="email">
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Select account type:&nbsp;<span
                                         class="tx-danger">*</span></label>
                                 <select [(ngModel)]="model.account_type"
-                                        class="form-control" id="account_type" name="account_type"
-                                        title="Select user type" class="custom-select form-control">
-                                    <option value="" selected>Select account type</option>
+                                        class="form-control" class="custom-select form-control" id="account_type"
+                                        name="account_type" title="Select user type">
+                                    <option selected value="">Select account type</option>
                                     <option value="0">Client</option>
                                     <option value="1">Designer</option>
                                 </select>
@@ -78,7 +80,9 @@
                             <div class="form-group custom-file">
                                 <label class="custom-file-label">Upload profile image:&nbsp;<span
                                         class="tx-danger">*</span></label>
-                                <input [(ngModel)]="model.profile_image" type="file" name="profile_image" class="custom-file-input form-control" id="profile_image">
+                                <input [(ngModel)]="model.profile_image" class="custom-file-input form-control"
+                                       id="profile_image" name="profile_image"
+                                       type="file">
                             </div>
                         </div>
                         <div class="form-group tx-12">

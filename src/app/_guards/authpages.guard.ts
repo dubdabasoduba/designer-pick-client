@@ -11,17 +11,17 @@ import {AuthenticationService} from '../_services';
 
 @Injectable({providedIn: 'root'})
 export class AuthPagesGuard implements CanActivate {
-	constructor(private router: Router, private authService: AuthenticationService) {
-	}
+    constructor(private router: Router, private authService: AuthenticationService) {
+    }
 
-	canActivate(
-		route: ActivatedRouteSnapshot,
-		state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-		if (this.authService.getCurrentUser() != null) {
-			this.router.navigate(['']);
-			return false;
-		} else {
-			return true;
-		}
-	}
+    canActivate(
+        route: ActivatedRouteSnapshot,
+        state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+        if (this.authService.getCurrentUser() != null) {
+            this.router.navigate(['']);
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

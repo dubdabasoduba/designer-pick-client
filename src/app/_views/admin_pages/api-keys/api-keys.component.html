@@ -50,7 +50,8 @@
                                        data-error="Subject field is required"
                                        disabled id="api_key"
                                        name="api_key"
-                                       placeholder="Please give the Api Key name" required="" type="text">
+                                       placeholder="Please give the Api Key name" required=""
+                                       type="text">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label>Api Key expiry date:&nbsp;</label>
@@ -58,7 +59,8 @@
                                        autocomplete="off"
                                        class="form-control" id="expiry"
                                        name="expiry"
-                                       placeholder="Please give the Api Key expiry date" type="text">
+                                       placeholder="Please give the Api Key expiry date"
+                                       type="text">
                             </div>
                         </div>
                         <div *ngIf="apiKeyId == null && apiKeyId == undefined" class="form-row">
@@ -76,14 +78,16 @@
                                        autocomplete="off"
                                        class="form-control" id="expiry_add"
                                        name="expiry_add"
-                                       placeholder="Please give the Api Key expiry date" type="text">
+                                       placeholder="Please give the Api Key expiry date"
+                                       type="text">
                             </div>
                         </div>
                         <br/>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <div class="custom-control custom-switch">
-                                    <input [(ngModel)]="model.is_active" class="custom-control-input"
+                                    <input [(ngModel)]="model.is_active"
+                                           class="custom-control-input"
                                            id="status" name="status" type="checkbox">
                                     <label class="custom-control-label" for="status">Deactivate/Activate
                                         Api Key</label>

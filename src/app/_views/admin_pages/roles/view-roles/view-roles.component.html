@@ -72,11 +72,13 @@
                     </div>
                     <br/>
                     <div class="d-flex flex-row-reverse mg-b-20">
-                        <div class="pd-10"><a (click)="removeRole(role.uuid)" class="btn btn-danger text-white"
+                        <div class="pd-10"><a (click)="removeRole(role.uuid)"
+                                              class="btn btn-danger text-white"
                                               type="button"><i
                                 class="fas fa-trash-alt text-white"></i>&nbsp;Delete
                             Role&nbsp;({{role.name}})</a></div>
-                        <div class="pd-10"><a class="btn btn-info text-white" routerLink="/roles/edit/{{roleId}}"
+                        <div class="pd-10"><a class="btn btn-info text-white"
+                                              routerLink="/roles/edit/{{roleId}}"
                                               type="button"><i
                                 class="far fa-edit"></i>&nbsp;Edit Role&nbsp;({{role.name}})</a>
                         </div>

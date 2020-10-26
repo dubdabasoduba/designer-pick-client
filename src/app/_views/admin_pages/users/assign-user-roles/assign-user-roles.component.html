@@ -41,7 +41,8 @@
                                 <hr/>
                                 <div *ngFor="let role of roles;"
                                      class="custom-control custom-checkbox">
-                                    <input (change)="assignRoles(role.uuid)" class="custom-control-input"
+                                    <input (change)="assignRoles(role.uuid)"
+                                           class="custom-control-input"
                                            id="roles_{{role.uuid}}"
                                            type="checkbox">
                                     <label class="custom-control-label"
@@ -54,7 +55,8 @@
                                 <div *ngFor="let role of assignedRoles;"
                                      class="custom-control custom-checkbox">
                                     <input (change)="unAssignRoles(role.uuid)" checked
-                                           class="custom-control-input" id="roles_assigned_{{role.uuid}}"
+                                           class="custom-control-input"
+                                           id="roles_assigned_{{role.uuid}}"
                                            type="checkbox">
                                     <label class="custom-control-label"
                                            for="roles_assigned_{{role.uuid}}">{{role.name}}</label>

@@ -14,3 +14,6 @@ export * from './permission.model';
 export * from './role.model';
 export * from './api-key.model';
 export * from './country.model';
+export * from './commissions.model';
+export * from './payment-mode.model';
+export * from './settings.model';

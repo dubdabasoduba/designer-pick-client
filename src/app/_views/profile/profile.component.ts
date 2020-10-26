@@ -6,9 +6,8 @@
 
 import {Component, OnInit} from '@angular/core';
 import {appConstants} from '../../_helpers/app.constants';
-import {ActivatedRoute, ActivatedRouteSnapshot, Router, RouterStateSnapshot} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AlertService, AuthenticationService, PersonsService, ProfileService} from '../../_services';
-import {UserModel} from '../../_models';
 import {AppCommons} from '../../_helpers/app.commons';
 
 @Component({

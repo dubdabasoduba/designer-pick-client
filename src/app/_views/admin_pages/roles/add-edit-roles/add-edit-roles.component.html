@@ -60,7 +60,8 @@
                                 <hr/>
                                 <div *ngFor="let permission of permissions;"
                                      class="custom-control custom-checkbox">
-                                    <input (change)="assignPermissions(permission.uuid)" class="custom-control-input"
+                                    <input (change)="assignPermissions(permission.uuid)"
+                                           class="custom-control-input"
                                            id="permissions_{{permission.uuid}}"
                                            type="checkbox">
                                     <label class="custom-control-label"
@@ -73,7 +74,8 @@
                                 <div *ngFor="let permission of assignedPermissions;"
                                      class="custom-control custom-checkbox">
                                     <input (change)="unAssignPermissions(permission.uuid)" checked
-                                           class="custom-control-input" id="permissions_assigned_{{permission.uuid}}"
+                                           class="custom-control-input"
+                                           id="permissions_assigned_{{permission.uuid}}"
                                            type="checkbox">
                                     <label class="custom-control-label"
                                            for="permissions_assigned_{{permission.uuid}}">{{permission.name}}</label>
@@ -83,7 +85,8 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <div class="custom-control custom-switch">
-                                    <input [(ngModel)]="model.is_active" class="custom-control-input"
+                                    <input [(ngModel)]="model.is_active"
+                                           class="custom-control-input"
                                            id="is_active" name="is_active"
                                            type="checkbox">
                                     <label class="custom-control-label" for="is_active">Deactivate/Activate

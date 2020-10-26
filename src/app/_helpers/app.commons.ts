@@ -4,12 +4,7 @@
  * This may be subject to prosecution according to the kenyan law
  */
 
-import {
-    CategoryModel,
-    ContactModel,
-    PageModel,
-    PersonModel
-} from '../_models';
+import {CategoryModel, ContactModel, PageModel, PersonModel} from '../_models';
 import {appConstants} from './app.constants';
 import * as CryptoJS from 'crypto-js';
 import {PersonsService} from '../_services';
@@ -306,6 +301,7 @@ export class AppCommons {
         person.date_updated = user.date_updated;
         return person;
     }
+
     /**
      * @desc Creates the contests subsidiaries for the contests
      * @param subsidiaries {@link any}
