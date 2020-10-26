@@ -6,7 +6,6 @@
 
 import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationStart, Router} from '@angular/router';
-import {AlertService, AuthenticationService} from "./_services";
 
 @Component({
     selector: 'app-root',
@@ -18,12 +17,9 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     public date;
     loading = false;
 
-
     constructor(
         private route: ActivatedRoute,
-        private router: Router,
-        private alertService: AlertService,
-        private authenticationService: AuthenticationService) {
+        private router: Router) {
     }
 
     ngOnInit() {
