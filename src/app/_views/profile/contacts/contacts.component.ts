@@ -4,243 +4,246 @@
  * This may be subject to prosecution according to the kenyan law
  */
 
-import {Component, OnInit} from '@angular/core';
-import {ContactModel, Entity, Person, User} from '../../../_models';
-import {AlertService, AuthenticationService, CountriesService, EntitiesService, PersonsService} from '../../../_services';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {
+    AlertService,
+    AuthenticationService,
+    ContactService,
+    PersonsService,
+    ProfileService
+} from '../../../_services';
 import {appConstants} from '../../../_helpers/app.constants';
 import {AppCommons} from '../../../_helpers/app.commons';
-import {ResponseModel} from '../../../_models/response.model';
+import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
+import {ContactModel, PersonModel} from "../../../_models";
 
 @Component({
-	selector: 'app-contacts',
-	templateUrl: './contacts.component.html',
-	styleUrls: ['./contacts.component.css']
+    selector: 'app-profile-contacts',
+    templateUrl: './contacts.component.html',
+    styleUrls: ['./contacts.component.css']
 })
-export class ContactsComponent implements OnInit {
-	loading = false;
-	public entityName: string;
-	public entity: any;
-	public contactId: string;
-	public contacts: any = [];
-	public model: any = {};
-	public countries: any = [];
-	private slimUser: User;
-	private entityId: string;
-	private type: boolean;
-	private responseModel = new ResponseModel();
+export class ContactsComponent implements OnInit, OnDestroy {
+    public imageIcon = appConstants.defaultImageIcon;
+    loading = false;
+    public person: PersonModel;
+    public returnUrl: string;
+    mySubscription: any;
+    public contacts: Array<ContactModel> = [];
+    public model = {
+        email: "",
+        location: "",
+        phone_number: "",
+        is_main: "",
+        is_active: ""
+    };
+    public personId: string;
+    public contactId: string;
+    contact = new ContactModel();
+    loggedInUser: string;
 
-	constructor(
-		private entitiesService: EntitiesService,
-		private personService: PersonsService,
-		private countriesService: CountriesService,
-		private alertService: AlertService,
-		private authService: AuthenticationService) {
-	}
+    constructor(
+        private authenticationService: AuthenticationService, private contactService: ContactService,
+        private profileService: ProfileService, private personService: PersonsService,
+        private commons: AppCommons, private alertService: AlertService,
+        private router: Router, private route: ActivatedRoute) {
+        this.router.routeReuseStrategy.shouldReuseRoute = function () {
+            return false;
+        };
 
-	ngOnInit() {
-		this.setEmptyModel();
-		this.slimUser = this.authService.getCurrentUser();
-		if (this.slimUser != null) {
-			this.entityId = this.slimUser.entityId;
-			this.type = Boolean(this.slimUser.type);
-		}
+        this.mySubscription = this.router.events.subscribe((event) => {
+            if (event instanceof NavigationEnd) {
+                // Trick the Router into believing it's last link wasn't previously loaded
+                this.router.navigated = false;
+            }
+        });
+    }
 
-		if (this.entityId != null) {
-			this.getEntityDetails();
-		}
+    ngOnInit() {
+        this.route.params.subscribe(params => {
+            this.personId = params[appConstants.id];
+            this.contactId = params[appConstants.contactId];
+        });
+        this.getContacts();
+        this.getPerson();
+        this.resetModel();
+        if (!AppCommons.isStringEmpty(this.contactId)) {
+            this.getContact();
+        }
+        this.returnUrl = this.router.url;
+    }
 
-		this.getCountries();
-	}
+    ngOnDestroy() {
+        if (this.mySubscription) {
+            this.mySubscription.unsubscribe();
+        }
+    }
 
-	removeContact(contact: ContactModel) {
-		this.loading = true;
-		let entity;
-		entity = this.type ? AppCommons.createPersonObject(this.entity, this.entityId) : AppCommons.createEntityObject(this.entity,
-			this.entityId);
-		entity.user = this.authService.getCurrentUser().entityId;
+    private getPerson() {
+        this.loading = true;
+        this.personService.getPersonById(this.personId).subscribe(
+            data => {
+                this.person = data[0];
+                this.loading = false;
+            },
+            error => {
+                this.alertService.error(error);
+                this.loading = false;
+            }
+        );
+    }
 
-		for (let i = 0; i < entity.contacts.length; i++) {
-			if (entity.contacts[i]._id == contact._id) {
-				entity.contacts.splice(i, 1);
-			}
-		}
+    addEditContact() {
+        this.loading = false;
+        if (this.model.email == appConstants.emptyEntry || this.model.email == undefined) {
+            this.alertService.error("The email address is required");
+        } else if (this.model.phone_number === appConstants.emptyEntry || this.model.phone_number == undefined) {
+            this.alertService.error("The phone number is required");
+        } else if (this.model.location === appConstants.emptyEntry || this.model.location == undefined) {
+            this.alertService.error("The location is required");
+        } else if (this.model.is_active === appConstants.emptyEntry || this.model.is_active == undefined) {
+            this.alertService.error(appConstants.statusError);
+        } else {
+            if (AppCommons.isStringEmpty(this.contactId)) {
+                this.addContact();
+            } else {
+                this.updateContact();
+            }
+        }
+    }
 
-		if (this.type) {
-			this.updatePerson(entity, true);
-		} else {
-			this.updateEntity(entity, true);
-		}
-	}
+    removeContact(contactId: string) {
+        if (confirm("Are you sure you want to delete this contact?")) {
+            this.loading = true;
+            this.contactService.removeContact(contactId).subscribe(
+                data => {
+                    this.router.navigateByUrl("/profile/contacts/" + this.personId);
+                    this.loading = false;
+                    this.alertService.success("User contact deleted successfully");
+                },
+                error => {
+                    this.alertService.error(error);
+                    this.loading = false;
+                }
+            );
+        }
+    }
 
-	addEditContacts() {
-		this.loading = false;
-		if (this.model.country == appConstants.emptyEntry || this.model.country == undefined) {
-			this.alertService.error(appConstants.countryError);
-		} else if (this.model.phonenumber == appConstants.emptyEntry || this.model.phonenumber == undefined) {
-			this.alertService.error(appConstants.phonenumberError);
-		} else if (this.model.email == appConstants.emptyEntry || this.model.email == undefined) {
-			this.alertService.error(appConstants.emailError);
-		} else {
-			if (this.type) {
-				const person = AppCommons.createPersonObject(this.entity, this.entityId);
-				person.contacts = this.createContacts(this.entity.contacts);
-				person.user = this.authService.getCurrentUser().entityId;
-				this.updatePerson(person, false);
-			} else {
-				const entity = AppCommons.createEntityObject(this.entity, this.entityId);
-				entity.contacts = this.createContacts(this.entity.contacts);
-				entity.user = this.authService.getCurrentUser().entityId;
-				this.updateEntity(entity, false);
-			}
+    /**
+     * Get the given countries
+     */
+    private getContacts() {
+        this.loading = true;
+        this.contactService.getContacts(this.personId).subscribe(
+            data => {
+                this.formatContacts(data);
+                this.loading = false;
+            },
+            error => {
+                this.alertService.error(error);
+                this.loading = false;
+            }
+        );
+    }
 
-		}
-	}
+    /**
+     * Get a specific country
+     * @private
+     */
+    private getContact() {
+        this.loading = true;
+        this.contactService.getContact(this.contactId).subscribe(
+            data => {
+                this.contact = data;
+                this.loading = false;
+                this.populateModel(data)
+            },
+            error => {
+                this.alertService.error(error);
+                this.loading = false;
+            }
+        );
+    }
 
-	fetchContacts(entity: any) {
-		if (entity != null) {
-			this.entityName = entity.name;
-			this.contacts = AppCommons.fetchContacts(entity.contacts);
-		}
-	}
+    private createContact() {
+        let contact = new ContactModel();
+        if (AppCommons.isStringEmpty(this.contactId)) {
+            contact.created_by = this.loggedInUser;
+        } else {
+            contact = this.contact;
+            contact.updated_by = this.loggedInUser;
+        }
+        contact.email = this.model.email;
+        contact.location = this.model.location;
+        contact.phone_number = this.model.phone_number;
+        contact.is_main = Number(this.model.is_main);
+        contact.is_active = Number(this.model.is_active);
+        contact.person = this.personId;
+        return contact;
+    }
 
-	editContact(contact) {
-		this.contactId = contact._id;
-		this.model.id = contact._id;
-		this.model.country = contact.country;
-		this.model.county = contact.county;
-		this.model.phonenumber = contact.phonenumber;
-		this.model.email = contact.email;
-		this.model.primary = contact.country == appConstants.yes;
-	}
+    private addContact() {
+        this.loading = true;
+        this.contactService.addContact(this.createContact()).subscribe(
+            data => {
+                this.loading = false;
+                this.router.navigateByUrl("/profile/contacts/" + this.personId);
+                this.alertService.success("User contact added successfully");
+            },
+            error => {
+                this.alertService.error(error);
+                this.loading = false;
+            }
+        )
+    }
 
-	private setEmptyModel() {
-		this.model.id = appConstants.emptyEntry;
-		this.model.country = appConstants.emptyEntry;
-		this.model.county = appConstants.emptyEntry;
-		this.model.phonenumber = appConstants.emptyEntry;
-		this.model.email = appConstants.emptyEntry;
-		this.model.primary = appConstants.emptyEntry;
-	}
+    private updateContact() {
+        this.loading = true;
+        this.contactService.updateContact(this.createContact()).subscribe(
+            data => {
+                this.loading = false;
+                this.router.navigateByUrl("/profile/contacts/" + this.personId);
+                this.alertService.success("User contact updated successfully");
+            },
+            error => {
+                this.alertService.error(error);
+                this.loading = false;
+            }
+        )
+    }
 
-	private getEntityDetails() {
-		if (this.type) {
-			this.fetchPerson(this.entityId);
-		} else {
-			this.fetchEntity(this.entityId);
-		}
-	}
+    private populateModel(data: any) {
+        this.model.email = data.email;
 
-	private fetchPerson(personId: string) {
-		this.loading = true;
-		this.personService.getPersonById(personId).subscribe(
-			data => {
-				this.fetchContacts(data);
-				this.entity = data;
-				this.loading = false;
-			},
-			error => {
-				this.alertService.error(error);
-				this.loading = false;
-			}
-		);
-	}
+        this.model.location = data.location;
+        this.model.phone_number = data.phone_number;
+        this.model.is_main = data.is_main;
+        // @ts-ignore
+        this.model.is_active = data.is_active;
+    }
 
-	private fetchEntity(entityId: string) {
-		this.loading = true;
-		this.entitiesService.getEntityById(entityId).subscribe(
-			data => {
-				this.fetchContacts(data);
-				this.entity = data;
-				this.loading = false;
-			},
-			error => {
-				this.alertService.error(error);
-				this.loading = false;
-			}
-		);
-	}
+    private resetModel() {
+        this.model.email = appConstants.emptyEntry;
+        this.model.location = appConstants.emptyEntry;
+        this.model.phone_number = appConstants.emptyEntry;
+        this.model.is_main = appConstants.emptyEntry;
+        this.model.is_active = appConstants.emptyEntry;
+    }
 
-	private getCountries() {
-		this.loading = true;
-		this.countriesService.getCountries(false).subscribe(
-			data => {
-				// @ts-ignore
-				this.responseModel = data;
-				this.countries = this.responseModel.results;
-				this.loading = false;
-			},
-			error => {
-				this.alertService.error(error);
-				this.loading = false;
-			}
-		);
-	}
+    private formatContacts(data: any) {
+        this.contacts = [];
+        for (let i = 0; i < data.length; i++) {
+            let contact = new ContactModel();
+            contact.email = data[i].email;
+            contact.location = data[i].location;
 
-	private updateEntity(entity: Entity, type: boolean) {
-		this.loading = true;
-		this.entitiesService.updateEntity(entity).subscribe(
-			data => {
-				if (!type) {
-					this.alertService.success(appConstants.contactsAdditionSuccess);
-				}
-				this.getEntityDetails();
-				this.setEmptyModel();
-				this.loading = false;
-			},
-			error => {
-				this.alertService.error(error);
-				this.loading = false;
-			}
-		);
-	}
+            contact.phone_number = data[i].phone_number;
 
-	private updatePerson(person: Person, type: boolean) {
-		this.loading = true;
-		this.personService.updatePerson(person).subscribe(
-			data => {
-				if (!type) {
-					this.alertService.success(appConstants.contactsAdditionSuccess);
-				}
-				this.getEntityDetails();
-				this.setEmptyModel();
-				this.loading = false;
-			},
-			error => {
-				this.alertService.error(error);
-				this.loading = false;
-			}
-		);
-	}
-
-	private createContacts(contacts: any[] | any) {
-		if (contacts.length <= 0) {
-			this.createContactsObjects(contacts);
-		} else {
-			if (this.contactId != null || this.contactId != undefined) {
-				for (let i = 0; i < contacts.length; i++) {
-					if (this.contactId == contacts[i]._id) {
-						contacts[i].country = this.model.country;
-						contacts[i].county = this.model.county;
-						contacts[i].phonenumber = this.model.phonenumber;
-						contacts[i].email = this.model.email;
-						contacts[i].primary = this.model.primary;
-					}
-				}
-			} else {
-				this.createContactsObjects(contacts);
-			}
-		}
-
-		return contacts;
-	}
-
-	private createContactsObjects(contacts: any) {
-		const contact = new ContactModel();
-		contact.country = this.model.country;
-		contact.county = this.model.county;
-		contact.phonenumber = this.model.phonenumber;
-		contact.email = this.model.email;
-		contact.primary = this.model.primary;
-		contacts.push(contact);
-	}
+            contact.is_main = data[i].is_main;
+            contact.date_created = AppCommons.formatDisplayDate(new Date(data[i].date_created));
+            contact.date_updated = AppCommons.formatDisplayDate(AppCommons.convertStringToDate(data[i].date_updated));
+            contact.is_active = data[i].is_active;
+            contact.uuid = data[i].uuid;
+            this.contacts.push(contact);
+        }
+    }
 }

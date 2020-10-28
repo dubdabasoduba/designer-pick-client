@@ -99,7 +99,7 @@
 			}
 
 			// To prevent the for loop in the first place assign an empty array
-			// in case there are no cookies at all. Also prevents odd result when
+			// in case there are no cookies at all. Also prevents odd how-it-works when
 			// calling "get()"
 			var cookies = document.cookie ? document.cookie.split('; ') : [];
 			var rdecode = /(%[0-9A-Z]{2})+/g;

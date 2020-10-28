@@ -3,7 +3,9 @@
   ~ Reproducing it in any way or using it without permission from Re.Kast Limited will be a violation of kenyan copyrights law.
   ~ This may be subject to prosecution according to the kenyan law
   -->
-<div *ngFor="let alert of alerts" class="{{ cssClass(alert) }} alert-dismissable" style="margin-top: 7px">
-	{{alert.message}}
-	<a (click)="removeAlert(alert)" class="close"><i aria-hidden="true" class="fa fa-times-circle-o"></i></a>
+<div *ngFor="let alert of alerts" class="{{ cssClass(alert) }} alert-dismissable"
+     style="margin-top: 7px">
+    {{alert.message}}
+    <a (click)="removeAlert(alert)" class="close"><i aria-hidden="true"
+                                                     class="fa fa-times-circle-o"></i></a>
 </div>

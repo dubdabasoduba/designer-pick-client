@@ -28,12 +28,12 @@ ____________________________________________________
  what it is:
  ____________________________________________________
 
- curvedLines is a plugin for flot, that tries to display lines in a smoother way.
+ curvedLines is a plugin for flot, that tries to designers-dashboard lines in a smoother way.
  This is achieved through adding of more data points. The plugin is a data processor and can thus be used
  in combination with standard line / point rendering options.
 
  => 1) with large data sets you may get trouble
- => 2) if you want to display the points too, you have to plot them as 2nd data series over the lines
+ => 2) if you want to designers-dashboard the points too, you have to plot them as 2nd data series over the lines
  => 3) consecutive x data points are not allowed to have the same value
 
  Feel free to further improve the code
@@ -190,7 +190,7 @@ ____________________________________________________
 			var result = [];
 
 			//sample the function
-			// (the result is intependent from the input data =>
+			// (the how-it-works is intependent from the input data =>
 			//	it is ok to alter the input after this method)
 			var j = 0;
 			for (var i = 0; i < points.length - ps; i += ps) {

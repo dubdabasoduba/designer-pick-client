@@ -5,39 +5,79 @@
  *
  */
 .content-auth {
-  min-height: calc(100vh - 106px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center; }
-  .content-auth > .container {
-    padding: 0; }
-    @media (max-width: 1139px) {
-      .content-auth > .container {
+    min-height: calc(100vh - 106px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.content-auth > .container {
+    padding: 0;
+}
+
+@media (max-width: 1139px) {
+    .content-auth > .container {
         max-width: none;
-        padding: 0 20px; } }
-    .content-auth > .container:first-child {
-      flex: 1; }
+        padding: 0 20px;
+    }
+}
+
+.content-auth > .container:first-child {
+    flex: 1;
+}
 
 .content-auth-alt {
-  min-height: calc(100vh - 106px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center; }
-  .content-auth-alt .container {
-    padding: 0; }
-    @media (max-width: 1139px) {
-      .content-auth-alt .container {
-        max-width: none; } }
+    min-height: calc(100vh - 106px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
-.sign-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 340px; }
-  @media (min-width: 1200px) {
-    .sign-wrapper {
-      width: 340px; } }
-  .sign-wrapper .form-group label {
+.content-auth-alt .container {
+    padding: 0;
+}
+
+@media (max-width: 1139px) {
+    .content-auth-alt .container {
+        max-width: none;
+    }
+}
+
+.sign-in-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+}
+
+@media (min-width: 1200px) {
+    .sign-in-wrapper {
+        width: 30%;
+    }
+}
+
+.sign-up-wrapper .form-group label {
     display: block;
-    margin-bottom: 5px; }
+    margin-bottom: 5px;
+}
+
+
+.sign-up-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+@media (min-width: 1200px) {
+    .sign-up-wrapper {
+        width: 50%;
+    }
+}
+
+.sign-up-wrapper .form-group label {
+    display: block;
+    margin-bottom: 5px;
+}

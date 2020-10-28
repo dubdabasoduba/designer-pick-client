@@ -1,0 +1,183 @@
+<!--
+  ~ Copyright (c) 2019. The content in this file is Protected by the copyright laws of kenya and owned by Re.Kast Limited.
+  ~ Reproducing it in any way or using it without permission from Re.Kast Limited will be a violation of kenyan copyrights law.
+  ~ This may be subject to prosecution according to the kenyan law
+  -->
+<app-navigation></app-navigation>
+<div class="content content-fixed bd-b">
+    <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
+        <div class="d-sm-flex align-items-center justify-content-between">
+            <div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-style1 mg-b-10">
+                        <li class="breadcrumb-item"><a
+                                routerLink="/profile/{{person.uuid}}">Profile</a></li>
+                        <li aria-current="page" class="breadcrumb-item active">Update user details
+                        </li>
+                    </ol>
+                </nav>
+                <h4 class="mg-b-0">Update user details</h4>
+            </div>
+        </div>
+    </div><!-- container -->
+</div><!-- content -->
+<div class="content">
+    <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0 mg-b-25-f">
+        <div class="media d-block d-lg-flex">
+            <div class="profile-sidebar pd-lg-r-25">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 align-content-center">
+                        <div class="avatar avatar-xxl avatar-online">
+                            <img alt="{{person.name}}" class="rounded-circle"
+                                 src="assets/img/profile-image.png">
+                        </div>
+                    </div><!-- col -->
+                    <div class="col-sm-8 col-md-7 col-lg mg-t-20 mg-sm-t-0 mg-lg-t-25">
+                        <h5 class="mg-b-2 tx-spacing--1">{{person.name}}</h5>
+                        <p class="tx-color-03 mg-b-25">@{{person.username}}</p>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="d-flex mg-b-25">
+                                    <a [queryParams]="{returnUrl:returnUrl}"
+                                       class="btn btn-xs btn-outline-secondary flex-fill"
+                                       routerLink="/profile/update/{{person.uuid}}"><i
+                                            class="fas fa-user-edit"></i>&nbsp;Edit
+                                        Profile</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex">
+                            <div class="profile-skillset flex-fill">
+                                <h4><a class="link-01" href="#">1.4k</a></h4>
+                                <label>Participated</label>
+                            </div>
+                            <div class="profile-skillset flex-fill">
+                                <h4><a class="link-01" href="#">2.8k</a></h4>
+                                <label>Won</label>
+                            </div>
+                        </div>
+                    </div><!-- col -->
+                    <div class="col-sm-6 col-md-5 col-lg mg-t-40">
+                        <label class="tx-sans tx-10 tx-semibold tx-uppercase tx-color-01 tx-spacing-1 mg-b-15">Contact
+                            Information</label>
+                        <ul class="list-unstyled profile-info-list">
+                            <li><i data-feather="phone"></i> <a>{{person.phone_number}}</a></li>
+                            <li><i data-feather="mail"></i> <a>{{person.email}}</a></li>
+                        </ul>
+                    </div><!-- col -->
+                    <div class="col-sm-6 col-md-5 col-lg mg-t-40">
+                        <label class="tx-sans tx-10 tx-semibold tx-uppercase tx-color-01 tx-spacing-1 mg-b-15">Explore</label>
+                        <nav class="nav nav-classic tx-13">
+                            <a class="nav-link" routerLink="/designers"><i data-feather="users"></i><span>Designers</span></a>
+                            <a class="nav-link" routerLink="/contests"><i
+                                    data-feather="calendar"></i> <span>Contests</span></a>
+                        </nav>
+                    </div><!-- col -->
+                </div><!-- row -->
+
+            </div><!-- profile-sidebar -->
+            <div class="media-body mg-t-40 mg-lg-t-0 pd-lg-x-10">
+                <div class="row">
+                    <div class="col-lg-12 col-xl-12">
+                        <fieldset class="form-fieldset">
+                            <legend>Update&nbsp;User&nbsp;Details</legend>
+                            <app-alert></app-alert>
+                            <form #f="ngForm" (ngSubmit)="f.form.valid && editPerson()" id="join"
+                                  novalidate>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>Full Name:&nbsp;<span
+                                                class="tx-danger">*</span></label>
+                                        <input [(ngModel)]="model.name" class="form-control"
+                                               data-error="Subject field is required"
+                                               id="name" name="name"
+                                               placeholder="Please give your name"
+                                               required="" type="text">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Email address:&nbsp;<span class="tx-danger">*</span></label>
+                                        <input #email="ngModel" [(ngModel)]="model.email"
+                                               autocomplete="off" class="form-control"
+                                               data-error="Subject field is required" id="email"
+                                               name="email"
+                                               placeholder="Place give your email address"
+                                               required="" type="email">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>Birthday:&nbsp;<span
+                                                class="tx-danger">*</span></label>
+                                        <input [(ngModel)]="model.dob"
+                                               class="form-control hasDatepicker"
+                                               id="dob"
+                                               name="dob" placeholder="Choose date of birth"
+                                               type="date">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Select gender:&nbsp;<span
+                                                class="tx-danger">*</span></label>
+                                        <select [(ngModel)]="model.gender" class="custom-select"
+                                                id="gender"
+                                                name="gender">
+                                            <option selected value="">Select gender</option>
+                                            <option value="0">Female</option>
+                                            <option value="1">Male</option>
+                                            <option value="2">Gender Netural</option>
+                                            <option value="3">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>Phone number:&nbsp;<span
+                                                class="tx-danger">*</span></label>
+                                        <input [(ngModel)]="model.phone_number"
+                                               autocomplete="off" class="form-control"
+                                               data-error="Subject field is required"
+                                               id="phone_number"
+                                               name="phone_number"
+                                               placeholder="Place give your phonenumber"
+                                               required="" type="email">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label *ngIf="model.account_type != 2">Select account type:&nbsp;<span
+                                                class="tx-danger">*</span></label>
+                                        <select *ngIf="model.account_type != 2"
+                                                [(ngModel)]="model.account_type"
+                                                class="form-control"
+                                                class="custom-select form-control" id="account_type"
+                                                name="account_type" title="Select user type">
+                                            <option selected value="">Select account type</option>
+                                            <option value="0">Client</option>
+                                            <option value="1">Designer</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group custom-file col-md-12">
+                                        <label class="custom-file-label">Upload profile image:&nbsp;<span
+                                                class="tx-danger">*</span></label>
+                                        <input [(ngModel)]="model.profile_image"
+                                               class="custom-file-input form-control"
+                                               id="profile_image" name="profile_image"
+                                               type="file">
+                                    </div>
+                                </div><!-- form-group -->
+                                <br/>
+                                <div class="form-row">
+                                    <div class="form-group col-md-10"></div>
+                                    <div class="form-group col-md-2">
+                                        <button class="btn btn-primary btn-block">Update Profile
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </fieldset>
+                    </div><!-- col -->
+                </div><!-- row -->
+            </div>
+        </div><!-- media -->
+    </div><!-- container -->
+</div><!-- content -->

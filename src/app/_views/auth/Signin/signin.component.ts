@@ -7,63 +7,67 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AlertService, AuthenticationService, UserService} from '../../../_services';
+import {appConstants} from '../../../_helpers/app.constants';
 
 @Component({
-	selector: 'app-sign-in',
-	templateUrl: './signin.component.html',
-	styleUrls: ['./signin.component.css']
+    selector: 'app-sign-in',
+    templateUrl: './signin.component.html',
+    styleUrls: ['./signin.component.css']
 })
 export class SigninComponent implements OnInit {
-	model: any = {};
-	loading = false;
-	loginSuccessfulReturnUrl: string;
-	entityProfileUpdateUrl = '/profile-update/';
+    model: any = {};
+    loading = false;
+    loginSuccessfulReturnUrl: string;
+    redirectUrl: string;
 
-	constructor(
-		private route: ActivatedRoute,
-		private router: Router,
-		private userService: UserService,
-		private alertService: AlertService,
-		private authenticationService: AuthenticationService) {
-	}
+    constructor(
+        private route: ActivatedRoute,
+        private router: Router,
+        private userService: UserService,
+        private alertService: AlertService,
+        private authenticationService: AuthenticationService) {
+    }
 
-	ngOnInit() {
-		this.authenticationService.logout();
-		this.loginSuccessfulReturnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-	}
+    ngOnInit() {
+        this.authenticationService.logout();
+        this.loginSuccessfulReturnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    }
 
-	loginFacebook() {
-		this.authenticationService.fbLogin('login-facebook') // end point is the api end point without version
-			.then(() => {
-				this.router.navigateByUrl('/');
-			})
-			.catch(err => {
-				this.alertService.error(err);
-			});
-	}
+    login() {
+        this.loading = true;
+        this.authenticationService.login(this.model.username, this.model.password).subscribe(
+            data => {
+                this.generateRedirectUrlForProfiles(data);
+                this.forceUserUpdate(data);
+            },
+            error => {
+                this.alertService.error(error);
+                this.loading = false;
+            }
+        );
+    }
 
-	login() {
-		this.loading = true;
-		this.authenticationService.login(this.model.username, this.model.password).subscribe(
-			data => {
-				this.forceUserUpdate(data);
-			},
-			error => {
-				this.alertService.error(error);
-				this.loading = false;
-			}
-		);
-	}
+    private generateRedirectUrlForProfiles(lbsUser) {
+        if (lbsUser.account_type === 0 && this.loginSuccessfulReturnUrl === '/') {
+            this.redirectUrl = appConstants.clientDashboardUrl + lbsUser.person;
+        } else if (lbsUser.account_type === 1 && this.loginSuccessfulReturnUrl === '/') {
+            this.redirectUrl = appConstants.designerDashboardUrl + lbsUser.person;
+        } else if (lbsUser.account_type === 2 && this.loginSuccessfulReturnUrl === '/') {
+            this.redirectUrl = appConstants.profileViewUrl + lbsUser.person;
+        } else {
+            this.redirectUrl = this.loginSuccessfulReturnUrl;
+        }
+    }
 
-	/**
-	 * @desc Forces the Users to update their details before starting the use of the system.
-	 * @param data {@link Object}
-	 */
-	private forceUserUpdate(data: any) {
-		if (data.forceUpdate) {
-			this.router.navigateByUrl(this.entityProfileUpdateUrl + data.entityId + '?type=' + data.type);
-		} else {
-			this.router.navigateByUrl(this.loginSuccessfulReturnUrl);
-		}
-	}
+    /**
+     * @desc Forces the Users to update their details before starting the use of the system.
+     * @param data {@link Object}
+     */
+    private forceUserUpdate(data: any) {
+        if (data.forceUpdate) {
+            this.router.navigateByUrl(appConstants.profileUpdateUrl + data.person);
+        } else {
+            this.router.navigateByUrl(this.redirectUrl);
+        }
+    }
 }

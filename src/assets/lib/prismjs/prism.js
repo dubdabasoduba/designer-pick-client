@@ -610,7 +610,7 @@ Prism.languages.markup = {
 Prism.languages.markup['tag'].inside['attr-value'].inside['entity'] =
 	Prism.languages.markup['entity'];
 
-// Plugin to make entity title show the real entity, idea by Roman Komarov
+// Plugin to make contests title show the real contests, idea by Roman Komarov
 Prism.hooks.add('wrap', function(env) {
 
 	if (env.type === 'entity') {

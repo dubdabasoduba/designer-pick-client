@@ -8,37 +8,53 @@ import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
 import {appConstants} from '../../_helpers/app.constants';
 import {HttpClient} from '@angular/common/http';
-import {Person} from '../../_models';
+import {PersonModel} from '../../_models';
+import {Observable} from "rxjs";
 
 @Injectable()
 export class PersonsService {
-	constructor(private http: HttpClient) {
-	}
+    constructor(private http: HttpClient) {
+    }
 
-	getPeople(paginate: boolean) {
-		return this.http.get(appConstants.baseApiV1Url + appConstants.peopleUrl + '?' + appConstants.pagination + paginate);
-	}
+    getPeople(accountType: string) {
+        return this.http.get(appConstants.baseApiV1Url + appConstants.peopleUrl + "?account_type=" + accountType);
+    }
 
-	getPersonById(personId: string) {
-		return this.http.get(appConstants.baseApiV1Url + appConstants.personUrl + personId);
-	}
+    getDesigners(accountType: string) {
+        return this.http.get(appConstants.baseApiV1Url + '/designers' + "?account_type=" + accountType);
+    }
 
-	getPersonEntityById(personId: string) {
-		return this.http.get(appConstants.baseApiV1Url + appConstants.personEntityUrl + personId);
-	}
+    getDesignerById(personId: string): Observable<PersonModel> {
+        // @ts-ignore
+        return this.http.get(appConstants.baseApiV1Url + '/designer/' + personId);
+    }
 
-	getPersonCount() {
-		return <any>this.http.get(appConstants.baseApiV1Url + appConstants.peopleCount);
-	}
+    getPersonById(personId: string): Observable<PersonModel> {
+        // @ts-ignore
+        return this.http.get(appConstants.baseApiV1Url + appConstants.personUrl + personId);
+    }
 
-	updatePerson(person: Person) {
-		return this.http.put<Person>(appConstants.baseApiV1Url + appConstants.personUrl + person._id, person);
-	}
+    getPersonEntityById(personId: string) {
+        return this.http.get(appConstants.baseApiV1Url + appConstants.personEntityUrl + personId);
+    }
 
-	addPerson(person: Person) {
-		console.log(person);
-		return this.http.post<Person>(appConstants.baseApiV1Url + appConstants.personUrl, person);
-	}
+    getPersonCount() {
+        return <any>this.http.get(appConstants.baseApiV1Url + appConstants.peopleCount);
+    }
+
+    updatePerson(person: PersonModel): Observable<PersonModel> {
+        return this.http.put<PersonModel>(appConstants.baseApiV1Url + appConstants.personUrl + person.uuid, person);
+    }
+
+    addPerson(person: PersonModel): Observable<PersonModel> {
+        return this.http.post<PersonModel>(appConstants.baseApiV1Url + appConstants.personUrl, person);
+    }
+
+    removePerson(personId: string) {
+        return this.http.delete(appConstants.baseApiV1Url + appConstants.personUrl + personId);
+    }
+
+    getUserRoles(userId: string) {
+        return this.http.get(appConstants.baseApiV1Url + '/person-roles/' + userId);
+    }
 }
-
-
