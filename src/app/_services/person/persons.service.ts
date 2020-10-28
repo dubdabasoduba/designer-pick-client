@@ -16,8 +16,17 @@ export class PersonsService {
     constructor(private http: HttpClient) {
     }
 
-    getPeople() {
-        return this.http.get(appConstants.baseApiV1Url + appConstants.peopleUrl);
+    getPeople(accountType: string) {
+        return this.http.get(appConstants.baseApiV1Url + appConstants.peopleUrl + "?account_type=" + accountType);
+    }
+
+    getDesigners(accountType: string) {
+        return this.http.get(appConstants.baseApiV1Url + '/designers' + "?account_type=" + accountType);
+    }
+
+    getDesignerById(personId: string): Observable<PersonModel> {
+        // @ts-ignore
+        return this.http.get(appConstants.baseApiV1Url + '/designer/' + personId);
     }
 
     getPersonById(personId: string): Observable<PersonModel> {
@@ -49,5 +58,3 @@ export class PersonsService {
         return this.http.get(appConstants.baseApiV1Url + '/person-roles/' + userId);
     }
 }
-
-

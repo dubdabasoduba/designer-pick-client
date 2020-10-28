@@ -144,7 +144,7 @@ export class CommissionsComponent implements OnInit, OnDestroy {
         this.commissionsService.addCommission(this.createCommission()).subscribe(
             data => {
                 this.loading = false;
-                this.ngOnInit();
+                this.router.navigateByUrl('/payment/commissions');
             },
             error => {
                 this.alertService.error(error);

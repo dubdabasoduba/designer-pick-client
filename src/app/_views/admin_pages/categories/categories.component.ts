@@ -150,7 +150,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
         this.categoryService.addCategory(this.createCategory()).subscribe(
             data => {
                 this.loading = false;
-                this.ngOnInit();
+                this.router.navigateByUrl('/categories');
             },
             error => {
                 this.alertService.error(error);

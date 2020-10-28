@@ -12,12 +12,11 @@
                     <ol class="breadcrumb breadcrumb-style1 mg-b-10">
                         <li class="breadcrumb-item"><a
                                 routerLink="/profile/{{person.uuid}}">Profile</a></li>
-                        <li aria-current="page" class="breadcrumb-item active">Update user
-                            credentials
+                        <li aria-current="page" class="breadcrumb-item active">Update user details
                         </li>
                     </ol>
                 </nav>
-                <h4 class="mg-b-0">Update user credentials</h4>
+                <h4 class="mg-b-0">Update user details</h4>
             </div>
         </div>
     </div><!-- container -->
@@ -82,49 +81,95 @@
                 <div class="row">
                     <div class="col-lg-12 col-xl-12">
                         <fieldset class="form-fieldset">
-                            <legend>Change&nbsp;Password</legend>
+                            <legend>Update&nbsp;User&nbsp;Details</legend>
                             <app-alert></app-alert>
-                            <form #f="ngForm" (ngSubmit)="f.form.valid && changePassword()"
+                            <form #f="ngForm" (ngSubmit)="f.form.valid && editPerson()" id="join"
                                   novalidate>
                                 <div class="form-row">
-                                    <div class="form-group col-lg-12">
-                                        <label>Old password:&nbsp;<span
+                                    <div class="form-group col-md-6">
+                                        <label>Full Name:&nbsp;<span
                                                 class="tx-danger">*</span></label>
-                                        <input [(ngModel)]="model.old_password" class="form-control"
+                                        <input [(ngModel)]="model.name" class="form-control"
                                                data-error="Subject field is required"
-                                               autocomplete="off"
-                                               id="old_password" name="old_password"
-                                               placeholder="Please give the old password"
-                                               required="required" type="password">
+                                               id="name" name="name"
+                                               placeholder="Please give your name"
+                                               required="" type="text">
                                     </div>
-                                    <div class="form-group col-lg-12">
-                                        <label>New Password:&nbsp;<span
-                                                class="tx-danger">*</span></label>
-                                        <input [(ngModel)]="model.new_password"
+                                    <div class="form-group col-md-6">
+                                        <label>Email address:&nbsp;<span class="tx-danger">*</span></label>
+                                        <input #email="ngModel" [(ngModel)]="model.email"
                                                autocomplete="off" class="form-control"
-                                               data-error="Subject field is required"
-                                               id="new_password"
-                                               name="new_password"
-                                               placeholder="Please give the new password"
-                                               required="required" type="password">
-                                    </div>
-                                    <div class="form-group col-lg-12">
-                                        <label>Confirm New Password:&nbsp;<span
-                                                class="tx-danger">*</span></label>
-                                        <input [(ngModel)]="model.confirm_new_password"
-                                               autocomplete="off"
-                                               class="form-control" id="confirm_new_password"
-                                               name="confirm_new_password" required="required"
-                                               placeholder="Please confirm the new password"
-                                               type="password">
+                                               data-error="Subject field is required" id="email"
+                                               name="email"
+                                               placeholder="Place give your email address"
+                                               required="" type="email">
                                     </div>
                                 </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>Birthday:&nbsp;<span
+                                                class="tx-danger">*</span></label>
+                                        <input [(ngModel)]="model.dob"
+                                               class="form-control hasDatepicker"
+                                               id="dob"
+                                               name="dob" placeholder="Choose date of birth"
+                                               type="date">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Select gender:&nbsp;<span
+                                                class="tx-danger">*</span></label>
+                                        <select [(ngModel)]="model.gender" class="custom-select"
+                                                id="gender"
+                                                name="gender">
+                                            <option selected value="">Select gender</option>
+                                            <option value="0">Female</option>
+                                            <option value="1">Male</option>
+                                            <option value="2">Gender Netural</option>
+                                            <option value="3">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>Phone number:&nbsp;<span
+                                                class="tx-danger">*</span></label>
+                                        <input [(ngModel)]="model.phone_number"
+                                               autocomplete="off" class="form-control"
+                                               data-error="Subject field is required"
+                                               id="phone_number"
+                                               name="phone_number"
+                                               placeholder="Place give your phonenumber"
+                                               required="" type="email">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label *ngIf="model.account_type != 2">Select account type:&nbsp;<span
+                                                class="tx-danger">*</span></label>
+                                        <select *ngIf="model.account_type != 2"
+                                                [(ngModel)]="model.account_type"
+                                                class="form-control"
+                                                class="custom-select form-control" id="account_type"
+                                                name="account_type" title="Select user type">
+                                            <option selected value="">Select account type</option>
+                                            <option value="0">Client</option>
+                                            <option value="1">Designer</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group custom-file col-md-12">
+                                        <label class="custom-file-label">Upload profile image:&nbsp;<span
+                                                class="tx-danger">*</span></label>
+                                        <input [(ngModel)]="model.profile_image"
+                                               class="custom-file-input form-control"
+                                               id="profile_image" name="profile_image"
+                                               type="file">
+                                    </div>
+                                </div><!-- form-group -->
                                 <br/>
                                 <div class="form-row">
-                                    <div class="form-group col-md-5"></div>
-                                    <div class="form-group col-md-5"></div>
+                                    <div class="form-group col-md-10"></div>
                                     <div class="form-group col-md-2">
-                                        <button class="btn btn-primary btn-block">Change password
+                                        <button class="btn btn-primary btn-block">Update Profile
                                         </button>
                                     </div>
                                 </div>

@@ -152,7 +152,7 @@ export class CountriesComponent implements OnInit, OnDestroy {
         this.countriesService.addCountry(this.createCountry()).subscribe(
             data => {
                 this.loading = false;
-                this.ngOnInit();
+                this.router.navigateByUrl('/countries');
             },
             error => {
                 this.alertService.error(error);

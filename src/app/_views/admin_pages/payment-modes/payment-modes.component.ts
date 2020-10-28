@@ -143,7 +143,7 @@ export class PaymentModesComponent implements OnInit, OnDestroy {
         this.paymentModesService.addPaymentMode(this.createPaymentMode()).subscribe(
             data => {
                 this.loading = false;
-                this.ngOnInit();
+                this.router.navigateByUrl('/payment/payment-modes');
             },
             error => {
                 this.alertService.error(error);

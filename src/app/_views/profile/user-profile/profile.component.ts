@@ -1,20 +1,26 @@
+/*
+ * Copyright (c) 2019. The content in this file is Protected by the copyright laws of kenya and owned by Re.Kast Limited.
+ * Reproducing it in any way or using it without permission from Re.Kast Limited will be a violation of kenyan copyrights law.
+ * This may be subject to prosecution according to the kenyan law
+ */
+
 import {Component, OnInit} from '@angular/core';
-import {appConstants} from "../../../_helpers/app.constants";
+import {appConstants} from '../../../_helpers/app.constants';
+import {ActivatedRoute, Router} from '@angular/router';
 import {
     AlertService,
     AuthenticationService,
     PersonsService,
     ProfileService
-} from "../../../_services";
-import {AppCommons} from "../../../_helpers/app.commons";
-import {ActivatedRoute, Router} from "@angular/router";
+} from '../../../_services';
+import {AppCommons} from '../../../_helpers/app.commons';
 
 @Component({
-    selector: 'app-chats',
-    templateUrl: './chats.component.html',
-    styleUrls: ['./chats.component.css']
+    selector: 'app-profile',
+    templateUrl: './profile.component.html',
+    styleUrls: ['./profile.component.css']
 })
-export class ChatsComponent implements OnInit {
+export class ProfileComponent implements OnInit {
     public imageIcon = appConstants.defaultImageIcon;
     loading = false;
     public person: any;

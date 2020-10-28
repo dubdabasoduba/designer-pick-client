@@ -1,30 +1,63 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {PersonModel} from "../../../../_models";
 import {AlertService, AuthenticationService, PersonsService} from "../../../../_services";
 import {AppCommons} from "../../../../_helpers/app.commons";
-import {Router} from "@angular/router";
+import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
+import {combineLatest} from "rxjs";
+import {appConstants} from "../../../../_helpers/app.constants";
 
 @Component({
     selector: 'app-view-users',
     templateUrl: './view-users.component.html',
     styleUrls: ['./view-users.component.css']
 })
-export class ViewUsersComponent implements OnInit {
+export class ViewUsersComponent implements OnInit, OnDestroy  {
     loading = false;
+    public model = {
+        user_account: ""
+    }
     public people: Array<PersonModel> = [];
+    private accountType: string;
+    mySubscription: any;
 
-    constructor(private personsService: PersonsService, private alertService: AlertService, private authenticationService: AuthenticationService, private router: Router) {
+    constructor(private personsService: PersonsService, private alertService: AlertService,
+                private authenticationService: AuthenticationService, private router: Router,
+                private route: ActivatedRoute) {
+        this.router.routeReuseStrategy.shouldReuseRoute = function () {
+            return false;
+        };
+
+        this.mySubscription = this.router.events.subscribe((event) => {
+            if (event instanceof NavigationEnd) {
+                // Trick the Router into believing it's last link wasn't previously loaded
+                this.router.navigated = false;
+            }
+        });
+    }
+
+    ngOnDestroy() {
+        if (this.mySubscription) {
+            this.mySubscription.unsubscribe();
+        }
     }
 
     ngOnInit(): void {
-        this.getPersons();
+        this.route.queryParamMap.subscribe(params => {
+            this.accountType = params.get("account_type");
+        });
+        this.model.user_account = this.accountType;
+        if (this.model.user_account != null && !AppCommons.isStringEmpty(this.model.user_account) && this.model.user_account != undefined) {
+            this.getPersons(this.model.user_account);
+        } else {
+            this.people = [];
+        }
     }
 
     resetUserCredentials(username: string) {
         this.loading = true;
         this.authenticationService.resetPasswordRequest(username).subscribe(
             data => {
-                this.router.navigateByUrl("/users")
+                this.router.navigateByUrl("/users?account_type=" + this.model.user_account)
                 this.loading = false;
             },
             error => {
@@ -34,12 +67,20 @@ export class ViewUsersComponent implements OnInit {
         );
     }
 
+    getUserType(event: any) {
+        this.people = [];
+        this.model.user_account = event.target.value;
+        if (this.model.user_account != null && !AppCommons.isStringEmpty(this.model.user_account) && this.model.user_account != undefined) {
+            this.router.navigateByUrl("/users?account_type=" + this.model.user_account)
+        }
+    }
+
     /**
      * Get the permissions in the system
      */
-    private getPersons() {
+    private getPersons(accountType: string) {
         this.loading = true;
-        this.personsService.getPeople().subscribe(
+        this.personsService.getPeople(accountType).subscribe(
             data => {
                 this.formatPermissions(data);
                 this.loading = false;

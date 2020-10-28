@@ -4,8 +4,9 @@
  * This may be subject to prosecution according to the kenyan law
  */
 
-export class UserModel {
-    id: string;
+import {DefaultModel} from "./default.model";
+
+export class UserModel extends DefaultModel {
     username: string;
     email: string;
     password: string;
@@ -14,8 +15,6 @@ export class UserModel {
     verify: boolean;
     type: string;
     forceUpdate: boolean;
-    uuid: string;
-    entityIconImage: string;
     person: string;
     name: string
     account_type: number;
