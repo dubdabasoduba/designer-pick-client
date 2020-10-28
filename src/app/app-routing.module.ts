@@ -5,7 +5,7 @@
  */
 import {RouterModule, Routes} from '@angular/router';
 import {ContestsComponent} from './_views/main_views/contests/contests.component';
-import {DesignersComponent} from './_views/main_views/designers/designers.component';
+import {DesignersComponent} from './_views/main_views/designers/designers/designers.component';
 import {SignupComponent} from './_views/auth/Signup/signup.component';
 import {SigninComponent} from './_views/auth/Signin/signin.component';
 import {RecoveryComponent} from './_views/auth/recovery/recovery.component';
@@ -15,12 +15,12 @@ import {VerifyEmailComponent} from './_views/auth/verify-email/verify.component'
 import {ClientsDashboardComponent} from './_views/dashboards/clients-dashboard/clients-dashboard.component';
 import {DesignersDashboardComponent} from './_views/dashboards/designers-dashboard/designers-dashboard.component';
 import {appConstants} from './_helpers/app.constants';
-import {AuthGuard, AuthPagesGuard, EntityGuard} from './_guards';
-import {ProfileComponent} from './_views/profile/profile.component';
+import {AuthGuard, AuthPagesGuard} from './_guards';
+import {ProfileComponent} from './_views/profile/user-profile/profile.component';
 import {ContactsComponent} from './_views/profile/contacts/contacts.component';
 import {NgModule} from '@angular/core';
 import {HowItWorksComponent} from './_views/main_views/how-it-works/how-it-works.component';
-import {UpdateUserComponent} from './_views/profile/update-user/update-user.component';
+import {UpdateUserComponent} from './_views/auth/update-user/update-user.component';
 import {CountriesComponent} from "./_views/admin_pages/countries/countries.component";
 import {PermissionsComponent} from "./_views/admin_pages/permissions/permissions.component";
 import {RolesComponent} from "./_views/admin_pages/roles/roles/roles.component";
@@ -37,6 +37,9 @@ import {HomeComponent} from "./_views/main_views/home/home.component";
 import {PaymentModesComponent} from "./_views/admin_pages/payment-modes/payment-modes.component";
 import {CommissionsComponent} from "./_views/admin_pages/commissions/commissions.component";
 import {SettingsComponent} from "./_views/admin_pages/settings/settings.component";
+import {ChatsComponent} from "./_views/profile/chats/chats.component";
+import {UpdateUserDetailsComponent} from "./_views/profile/update-user-details/update-user-details.component";
+import {DesignerProfileComponent} from "./_views/main_views/designers/designer-profile/designer-profile.component";
 
 const appRoutes: Routes = [
     {path: '', component: HomeComponent, runGuardsAndResolvers: 'always'},
@@ -66,6 +69,11 @@ const appRoutes: Routes = [
     {path: 'how-it-works', component: HowItWorksComponent, runGuardsAndResolvers: 'always'},
     {path: 'contests', component: ContestsComponent, runGuardsAndResolvers: 'always'},
     {path: 'designers', component: DesignersComponent, runGuardsAndResolvers: 'always'},
+    {
+        path: 'designer/:id',
+        component: DesignerProfileComponent,
+        runGuardsAndResolvers: 'always'
+    },
     {path: 'how-it-works', component: HowItWorksComponent, runGuardsAndResolvers: 'always'},
     {
         path: 'profile/:id',
@@ -80,8 +88,26 @@ const appRoutes: Routes = [
         runGuardsAndResolvers: 'always'
     },
     {
-        path: 'profile/update-credentials/:id',
+        path: 'profile/change-password/:id',
         component: UpdateCredentialsComponent,
+        canActivate: [AuthGuard],
+        runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'profile/contacts/:id',
+        component: ContactsComponent,
+        canActivate: [AuthGuard],
+        runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'profile/inbox/:id',
+        component: ChatsComponent,
+        canActivate: [AuthGuard],
+        runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'profile/update/:id',
+        component: UpdateUserDetailsComponent,
         canActivate: [AuthGuard],
         runGuardsAndResolvers: 'always'
     },

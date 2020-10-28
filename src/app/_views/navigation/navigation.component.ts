@@ -48,6 +48,7 @@ export class NavigationComponent implements OnInit {
         if (!this.commons.isObjectEmpty(this.lbsUser) && AppCommons.isStringEmpty(this.lbsUser.entityIconImage)) {
             this.lbsUser.entityIconImage = appConstants.defaultImageIcon;
         }
+        console.log(this.router.url + " your fucking url is")
     }
 
     displayProfileDropDown() {

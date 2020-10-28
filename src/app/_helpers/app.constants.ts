@@ -120,7 +120,7 @@ export const appConstants = {
 
     // acquisition url endpoints
     acquisitionAddUrl: '/acquisition',
-    acquisitionUrl: '/clients-dashboard',
+    acquisitionUrl: '/designers-dashboard',
     acquisitionUpdateUrl: '/acquisition/',
     addEditAcquisitionUrl: '/add-edit-acquisition/',
 
@@ -130,9 +130,9 @@ export const appConstants = {
     monthlyFundingCount: '/summary/monthly-designers-dashboard',
     annualFundingCount: '/summary/annual-designers-dashboard',
     weeklyFundingCount: '/summary/weekly-designers-dashboard',
-    monthlyAcquisitionsCount: '/summary/monthly-clients-dashboard',
-    annualAcquisitionsCount: '/summary/annual-clients-dashboard',
-    weeklyAcquisitionsCount: '/summary/weekly-clients-dashboard',
+    monthlyAcquisitionsCount: '/summary/monthly-designers-dashboard',
+    annualAcquisitionsCount: '/summary/annual-designers-dashboard',
+    weeklyAcquisitionsCount: '/summary/weekly-designers-dashboard',
 
     // auth url endpoints
     resendCodeUrl: '/auth/resend-verification',

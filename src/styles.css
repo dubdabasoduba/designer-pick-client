@@ -1263,7 +1263,7 @@ section {
     font-size: 14px;
 }
 
-.contact .php-email-form input::focus, .contact .php-email-form textarea::focus {
+.contact .php-email-form input:focus, .contact .php-email-form textarea:focus {
     background-color: #67b0d1;
 }
 
@@ -1416,7 +1416,7 @@ section {
     background: #fff;
     padding: 6px 10px;
     position: relative;
-    border-radius: 4;
+    border-radius: 4px;
 }
 
 #footer .footer-top .footer-newsletter form input[type="email"] {
@@ -1437,7 +1437,7 @@ section {
     background: #67b0d1;
     color: #fff;
     transition: 0.3s;
-    border-radius: 4;
+    border-radius: 4px;
 }
 
 #footer .footer-top .footer-newsletter form input[type="submit"]:hover {
@@ -1461,4 +1461,21 @@ section {
     #footer .footer-top .footer-info {
         margin: -20px 0 30px 0;
     }
+}
+
+/*------------------------------------------------------------------------
+ # Extras
+--------------------------------------------------------------------------*/
+
+.thead-dark {
+    background-color: #263f49 !important;
+}
+
+/*------------------------------------------------------------------------
+ # Data tables Extras
+--------------------------------------------------------------------------*/
+
+table.dataTable thead .sorting {
+    /* background-image: none; */
+     position: unset !important;
 }

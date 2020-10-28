@@ -25,7 +25,7 @@ import {
     UserService
 } from './_services';
 
-import {DesignersComponent} from './_views/main_views/designers/designers.component';
+import {DesignersComponent} from './_views/main_views/designers/designers/designers.component';
 import {SignupComponent} from './_views/auth/Signup/signup.component';
 import {SigninComponent} from './_views/auth/Signin/signin.component';
 import {RecoveryComponent} from './_views/auth/recovery/recovery.component';
@@ -43,11 +43,11 @@ import {SettingsComponent} from './_views/admin_pages/settings/settings.componen
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {RequestInterceptor} from './_helpers/requestInterceptor';
 import {ResponseInterceptor} from './_helpers/responseInterceptor';
-import {ProfileComponent} from './_views/profile/profile.component';
+import {ProfileComponent} from './_views/profile/user-profile/profile.component';
 import {ContactsComponent} from './_views/profile/contacts/contacts.component';
 import {NavigationComponent} from './_views/navigation/navigation.component';
 import {AppCommons} from './_helpers/app.commons';
-import {UpdateUserComponent} from './_views/profile/update-user/update-user.component';
+import {UpdateUserComponent} from './_views/auth/update-user/update-user.component';
 import {CountriesComponent} from "./_views/admin_pages/countries/countries.component";
 import {PermissionsComponent} from "./_views/admin_pages/permissions/permissions.component";
 import {RolesComponent} from './_views/admin_pages/roles/roles/roles.component';
@@ -64,6 +64,9 @@ import {PaymentModesComponent} from './_views/admin_pages/payment-modes/payment-
 import {CommissionsComponent} from './_views/admin_pages/commissions/commissions.component';
 import {UserContactsComponent} from "./_views/admin_pages/users/user-contacts/user-contacts.component";
 import {ContactService} from "./_services/admin_services/contact/contact.service";
+import {UpdateUserDetailsComponent} from './_views/profile/update-user-details/update-user-details.component';
+import {DesignerProfileComponent} from './_views/main_views/designers/designer-profile/designer-profile.component';
+import {ClientProfilesComponent} from './_views/profile/client-profiles/client-profiles.component';
 
 @NgModule({
     declarations: [
@@ -101,7 +104,10 @@ import {ContactService} from "./_services/admin_services/contact/contact.service
         ChatsComponent,
         PaymentModesComponent,
         CommissionsComponent,
-        UserContactsComponent
+        UserContactsComponent,
+        UpdateUserDetailsComponent,
+        DesignerProfileComponent,
+        ClientProfilesComponent
     ],
     imports: [
         BrowserModule,

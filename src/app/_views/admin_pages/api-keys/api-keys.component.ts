@@ -147,7 +147,7 @@ export class ApiKeysComponent implements OnInit {
         this.apiKeysService.addApiKey(this.createCategory()).subscribe(
             data => {
                 this.loading = false;
-                this.ngOnInit();
+                this.router.navigateByUrl('/api-keys');
             },
             error => {
                 this.alertService.error(error);

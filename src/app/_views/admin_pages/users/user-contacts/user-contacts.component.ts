@@ -1,17 +1,21 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ContactModel, PersonModel} from "../../../../_models";
-import {AlertService, AuthenticationService, PersonsService} from "../../../../_services";
+import {
+    AlertService,
+    AuthenticationService,
+    ContactService,
+    PersonsService
+} from "../../../../_services";
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {appConstants} from "../../../../_helpers/app.constants";
 import {AppCommons} from "../../../../_helpers/app.commons";
-import {ContactService} from "../../../../_services/admin_services/contact/contact.service";
 
 @Component({
     selector: 'app-contacts',
     templateUrl: './user-contacts.component.html',
     styleUrls: ['./user-contacts.component.css']
 })
-export class UserContactsComponent implements OnInit {
+export class UserContactsComponent implements OnInit, OnDestroy {
     loading = false;
     public contacts: Array<ContactModel> = [];
     public model = {

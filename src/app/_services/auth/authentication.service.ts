@@ -62,6 +62,14 @@ export class AuthenticationService {
         });
     }
 
+    updatePasswordFormProfile(user: UserModel) {
+        return this.http.post(appConstants.baseApiV1Url + '/auth/profile/update-password', {
+            uuid: user.uuid,
+            password: AppCommons.generatePasswordHash(user.password),
+            confirmPassword: AppCommons.generatePasswordHash(user.confirmPassword)
+        });
+    }
+
     logout() {
         localStorage.removeItem(this._lbsUser);
         this.http.get(appConstants.baseApiV1Url + '/auth/logout');

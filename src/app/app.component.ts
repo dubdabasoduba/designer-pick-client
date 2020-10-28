@@ -20,6 +20,13 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     constructor(
         private route: ActivatedRoute,
         private router: Router) {
+        //
+        // combineLatest( [this.route.paramMap, this.route.queryParamMap] )
+        //     .subscribe( ([pathParams, queryParams]) => {
+        //         let userId = pathParams.get('userId');    // =666
+        //         let age    = queryParams.get('age');      // =23
+        //         // ...
+        //     })
     }
 
     ngOnInit() {

@@ -4,15 +4,30 @@
   ~ This may be subject to prosecution according to the kenyan law
   -->
 <app-navigation></app-navigation>
-<div class="content content-fixed content-profile">
+<div class="content content-fixed bd-b">
     <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
+        <div class="d-sm-flex align-items-center justify-content-between">
+            <div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-style1 mg-b-10">
+                        <li class="breadcrumb-item"><a>Profile</a></li>
+                        <li aria-current="page" class="breadcrumb-item active">{{person.name}}</li>
+                    </ol>
+                </nav>
+                <h4 class="mg-b-0">{{person.name}}</h4>
+            </div>
+        </div>
+    </div><!-- container -->
+</div><!-- content -->
+<div class="content">
+    <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0 mg-b-25-f">
         <div class="media d-block d-lg-flex">
             <div class="profile-sidebar pd-lg-r-25">
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-12 align-content-center">
                         <div class="avatar avatar-xxl avatar-online">
                             <img alt="{{person.name}}" class="rounded-circle"
-                                 src="assets/img/img16.jpg">
+                                 src="../../../../assets/img/profile-image.png">
                         </div>
                     </div><!-- col -->
                     <div class="col-sm-8 col-md-7 col-lg mg-t-20 mg-sm-t-0 mg-lg-t-25">
@@ -23,18 +38,9 @@
                                 <div class="d-flex mg-b-25">
                                     <a [queryParams]="{returnUrl:returnUrl}"
                                        class="btn btn-xs btn-outline-secondary flex-fill"
-                                       routerLink="/profile-update/{{person.uuid}}"><i
+                                       routerLink="/profile/update/{{person.uuid}}"><i
                                             class="fas fa-user-edit"></i>&nbsp;Edit
                                         Profile</a>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="d-flex mg-b-25">
-                                    <a [queryParams]="{returnUrl:returnUrl}"
-                                       class="btn btn-xs btn-outline-dark flex-fill"
-                                       routerLink="/profile/update-credentials//{{person.uuid}}"><i
-                                            class="fas fa-user-lock"></i>&nbsp;Change
-                                        password</a>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +85,7 @@
                         <div class="media align-items-center mg-b-20">
                             <div class="avatar avatar-online"><img alt=""
                                                                    class="rounded-circle"
-                                                                   src="assets/img/img15.jpg">
+                                                                   src="../../../../assets/img/img15.jpg">
                             </div>
                             <div class="media-body pd-l-15">
                                 <h6 class="mg-b-3">Dyanne Aceron</h6>
@@ -171,7 +177,7 @@
                                 <a href="#">
                                     <div class="avatar avatar-offline"><img
                                             alt="" class="rounded-circle"
-                                            src="assets/img/img8.jpg">
+                                            src="../../../../assets/img/img8.jpg">
                                     </div>
                                 </a>
                                 <div class="media-body pd-l-15">
@@ -218,7 +224,7 @@
                                 <a href="#">
                                     <div class="avatar avatar-online"><img alt=""
                                                                            class="rounded-circle"
-                                                                           src="assets/img/img6.jpg">
+                                                                           src="../../../../assets/img/img6.jpg">
                                     </div>
                                 </a>
                                 <div class="media-body pd-l-15">
@@ -231,7 +237,7 @@
                                 <a href="#">
                                     <div class="avatar avatar-offline"><img
                                             alt="" class="rounded-circle"
-                                            src="assets/img/img7.jpg">
+                                            src="../../../../assets/img/img7.jpg">
                                     </div>
                                 </a>
                                 <div class="media-body pd-l-15">

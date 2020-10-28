@@ -46,4 +46,6 @@ export class PersonModel extends DefaultModel {
     is_verified: number;
     update_on_first_login: number;
     reset: number;
+    initials: string;
+    force_update: boolean;
 }
