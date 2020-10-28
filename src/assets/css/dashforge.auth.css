@@ -5,7 +5,7 @@
  *
  */
 .content-auth {
-    min-height: calc(100vh - 106px);
+   /* min-height: calc(100vh - 106px);*/
     display: flex;
     flex-direction: column;
     justify-content: center;

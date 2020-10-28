@@ -123,7 +123,6 @@
                                 <th scope="col">Api Key</th>
                                 <th scope="col">Expiry</th>
                                 <th class="text-center" scope="col">Date Created</th>
-                                <th class="text-center" scope="col">Date Updated</th>
                                 <th class="text-center" scope="col">Is Active</th>
                                 <th class="text-center" scope="col">Actions</th>
                             </tr>
@@ -135,7 +134,6 @@
                                 <td>{{apiKey.api_key}}</td>
                                 <td>{{apiKey.expiry}}</td>
                                 <td class="text-center">{{apiKey.date_created}}</td>
-                                <td class="text-center">{{apiKey.date_updated}}</td>
                                 <td *ngIf="apiKey.is_active != null && apiKey.is_active == 1"
                                     class="text-center"><span
                                         class="badge badge-pill badge-success">Yes</span></td>

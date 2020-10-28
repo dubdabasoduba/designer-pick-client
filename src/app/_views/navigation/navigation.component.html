@@ -33,16 +33,7 @@
         </ul>
     </div><!-- navbar-menu-wrapper -->
     <div class="navbar-right">
-        <div *ngIf="!lbsUser" class="dropdown dropdown-message">
-            <a class="dropdown-link new-indicator" data-toggle="dropdown" routerLink="/sign-in">
-                Sign In
-            </a>
-        </div><!-- dropdown -->
-        <div *ngIf="!lbsUser" class="dropdown dropdown-notification">
-            <a class="dropdown-link new-indicator" data-toggle="dropdown" routerLink="/sign-up">
-                Sign up
-            </a>
-        </div><!-- dropdown -->
+        <a *ngIf="!lbsUser" id="get_started" class="btn btn-secondary" routerLink="/sign-in">&nbsp;Get Started&nbsp;<i class="bx bx-chevron-right"></i></a>
         <div *ngIf="lbsUser" [ngClass]="defaultDropdownMainClass">
             <a (click)="displayProfileDropDown()" aria-expanded="true" class="dropdown-link"
                data-display="static" data-toggle="dropdown" href="#">

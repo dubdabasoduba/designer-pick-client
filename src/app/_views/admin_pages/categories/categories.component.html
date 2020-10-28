@@ -90,7 +90,6 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Description</th>
                                 <th class="text-center" scope="col">Date Created</th>
-                                <th class="text-center" scope="col">Date Updated</th>
                                 <th class="text-center" scope="col">Is Active</th>
                                 <th class="text-center" scope="col">Actions</th>
                             </tr>
@@ -101,7 +100,6 @@
                                 <td>{{category.name}}</td>
                                 <td>{{category.description}}</td>
                                 <td class="text-center">{{category.date_created}}</td>
-                                <td class="text-center">{{category.date_updated}}</td>
                                 <td *ngIf="category.is_active != null && category.is_active == 1"
                                     class="text-center"><span
                                         class="badge badge-pill badge-success">Yes</span></td>

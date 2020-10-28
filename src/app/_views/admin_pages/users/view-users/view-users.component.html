@@ -61,9 +61,8 @@
                                 <th scope="col">Phone number</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Age</th>
-                                <th scope="col">Account Type</th>
+                                <th class="text-center" scope="col">Account Type</th>
                                 <th class="text-center" scope="col">Date Created</th>
-                                <th class="text-center" scope="col">Date Updated</th>
                                 <th class="text-center" scope="col">Is Active</th>
                                 <th class="text-center" scope="col">Action</th>
                             </tr>
@@ -76,7 +75,7 @@
                                 <td>{{person.phone_number}}</td>
                                 <td>{{person.email}}</td>
                                 <td>{{person.age}}</td>
-                                <td>
+                                <td class="text-center">
                                     <span *ngIf="person.account_type != null && person.account_type == 1"
                                           class="badge badge-pill badge-light">Designer</span>
                                     <span *ngIf="person.account_type != null && person.account_type == 0"
@@ -85,7 +84,6 @@
                                           class="badge badge-pill badge-dark">Staff</span>
                                 </td>
                                 <td class="text-center">{{person.date_created}}</td>
-                                <td class="text-center">{{person.date_updated}}</td>
                                 <td class="text-center">
                                     <span *ngIf="person.is_active != null && person.is_active == 1"
                                           class="badge badge-pill badge-success">Yes</span>
