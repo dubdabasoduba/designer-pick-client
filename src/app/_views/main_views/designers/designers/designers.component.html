@@ -29,8 +29,8 @@
         <div class="row">
             <div class="col-lg-10">
                 <div class="row row-xs mg-b-25">
-                    <div class="col-sm-2 col-md-2 mg-t-10 mg-sm-t-10"
-                         *ngFor="let person of people; let i = index">
+                    <div *ngFor="let person of people; let i = index"
+                         class="col-sm-2 col-md-2 mg-t-10 mg-sm-t-10">
                         <div class="card card-profile">
                             <img alt="" class="card-img-top"
                                  src="../../../../../assets/img/profile-placeholder.png">

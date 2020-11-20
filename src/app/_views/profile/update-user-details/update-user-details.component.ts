@@ -19,11 +19,11 @@ export class UpdateUserDetailsComponent implements OnInit {
     loading = false;
     public model: any = {};
     public person: any;
+    public personUuid: string;
+    public returnUrl: string;
     private oldEmail: string;
     private contactUuid: string;
     private userUuid: string;
-    public personUuid: string;
-    public returnUrl: string;
 
     constructor(
         private authenticationService: AuthenticationService,

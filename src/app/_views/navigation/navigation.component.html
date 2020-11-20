@@ -33,7 +33,8 @@
         </ul>
     </div><!-- navbar-menu-wrapper -->
     <div class="navbar-right">
-        <a *ngIf="!lbsUser" id="get_started" class="btn btn-secondary" routerLink="/sign-in">&nbsp;Get Started&nbsp;<i class="bx bx-chevron-right"></i></a>
+        <a *ngIf="!lbsUser" class="btn btn-secondary" id="get_started" routerLink="/sign-in">&nbsp;Get
+            Started&nbsp;<i class="bx bx-chevron-right"></i></a>
         <div *ngIf="lbsUser" [ngClass]="defaultDropdownMainClass">
             <a (click)="displayProfileDropDown()" aria-expanded="true" class="dropdown-link"
                data-display="static" data-toggle="dropdown" href="#">
@@ -45,37 +46,37 @@
                                                            src="assets/img/img1.png"></div>
                 <h6 class="tx-semibold mg-b-5">{{lbsUser.name}}</h6>
                 <p class="mg-b-25 tx-12 tx-color-03">@{{lbsUser.username}}</p>
-                <a class="dropdown-item" routerLinkActive="active"
-                   routerLink="/profile/{{lbsUser.person}}">&nbsp;&nbsp;<i
+                <a class="dropdown-item" routerLink="/profile/{{lbsUser.person}}"
+                   routerLinkActive="active">&nbsp;&nbsp;<i
                         data-feather="edit-3"></i>&nbsp;My profile</a>
-                <a class="dropdown-item" routerLinkActive="active"
-                   routerLink="/profile/change-password/{{lbsUser.person}}">&nbsp;&nbsp;<i
+                <a class="dropdown-item" routerLink="/profile/change-password/{{lbsUser.person}}"
+                   routerLinkActive="active">&nbsp;&nbsp;<i
                         data-feather="lock"></i>&nbsp;Change Password</a>
-                <a class="dropdown-item" routerLinkActive="active"
-                   routerLink="/profile/contacts/{{lbsUser.person}}">&nbsp;&nbsp;<i
+                <a class="dropdown-item" routerLink="/profile/contacts/{{lbsUser.person}}"
+                   routerLinkActive="active">&nbsp;&nbsp;<i
                         data-feather="mail"></i>&nbsp;Contacts</a>
-                <a class="dropdown-item" routerLinkActive="active"
-                   routerLink="/profile/inbox/{{lbsUser.person}}">&nbsp;&nbsp;<i
+                <a class="dropdown-item" routerLink="/profile/inbox/{{lbsUser.person}}"
+                   routerLinkActive="active">&nbsp;&nbsp;<i
                         data-feather="inbox"></i>&nbsp;Inbox</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" routerLinkActive="active"
-                   routerLink="/users">&nbsp;&nbsp;<i data-feather="users"></i>&nbsp;Users</a>
-                <a class="dropdown-item" routerLinkActive="active"
-                   routerLink="/payment/payment-modes">&nbsp;&nbsp;<i
+                <a class="dropdown-item" routerLink="/users"
+                   routerLinkActive="active">&nbsp;&nbsp;<i data-feather="users"></i>&nbsp;Users</a>
+                <a class="dropdown-item" routerLink="/payment/payment-modes"
+                   routerLinkActive="active">&nbsp;&nbsp;<i
                         data-feather="credit-card"></i>&nbsp;Payment modes</a>
-                <a class="dropdown-item" routerLinkActive="active"
-                   routerLink="/payment/commissions">&nbsp;&nbsp;<i data-feather="shopping-bag"></i>&nbsp;Commissions</a>
-                <a class="dropdown-item" routerLinkActive="active" routerLink="/categories">&nbsp;&nbsp;<i
+                <a class="dropdown-item" routerLink="/payment/commissions"
+                   routerLinkActive="active">&nbsp;&nbsp;<i data-feather="shopping-bag"></i>&nbsp;Commissions</a>
+                <a class="dropdown-item" routerLink="/categories" routerLinkActive="active">&nbsp;&nbsp;<i
                         data-feather="package"></i>&nbsp;Categories</a>
-                <a class="dropdown-item" routerLinkActive="active" routerLink="/countries">&nbsp;&nbsp;<i
+                <a class="dropdown-item" routerLink="/countries" routerLinkActive="active">&nbsp;&nbsp;<i
                         data-feather="map-pin"></i>&nbsp;Countries</a>
-                <a class="dropdown-item" routerLinkActive="active" routerLink="/api-keys">&nbsp;&nbsp;<i
+                <a class="dropdown-item" routerLink="/api-keys" routerLinkActive="active">&nbsp;&nbsp;<i
                         data-feather="grid"></i>&nbsp;Api Keys</a>
-                <a class="dropdown-item" routerLinkActive="active"
-                   routerLink="/roles">&nbsp;&nbsp;<i data-feather="pie-chart"></i>&nbsp; Roles</a>
-                <a class="dropdown-item" routerLinkActive="active" routerLink="/permissions">&nbsp;&nbsp;<i
+                <a class="dropdown-item" routerLink="/roles"
+                   routerLinkActive="active">&nbsp;&nbsp;<i data-feather="pie-chart"></i>&nbsp; Roles</a>
+                <a class="dropdown-item" routerLink="/permissions" routerLinkActive="active">&nbsp;&nbsp;<i
                         data-feather="lock"></i>&nbsp;Permissions</a>
-                <a class="dropdown-item" routerLinkActive="active" routerLink="/settings">&nbsp;&nbsp;<i
+                <a class="dropdown-item" routerLink="/settings" routerLinkActive="active">&nbsp;&nbsp;<i
                         data-feather="settings"></i>&nbsp;Settings</a>
                 <div class="dropdown-divider"></div>
                 <a (click)="signOut()" class="dropdown-item">&nbsp;&nbsp;<i
