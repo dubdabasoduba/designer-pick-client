@@ -4,7 +4,7 @@
  * This may be subject to prosecution according to the kenyan law
  */
 
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import {RecoveryComponent} from './recovery.component';
 
@@ -12,7 +12,7 @@ describe('RecoveryComponent', () => {
     let component: RecoveryComponent;
     let fixture: ComponentFixture<RecoveryComponent>;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [RecoveryComponent]
         })

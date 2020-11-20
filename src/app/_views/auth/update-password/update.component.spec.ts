@@ -4,7 +4,7 @@
  * This may be subject to prosecution according to the kenyan law
  */
 
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import {UpdateComponent} from './update.component';
 
@@ -12,7 +12,7 @@ describe('UpdateComponent', () => {
     let component: UpdateComponent;
     let fixture: ComponentFixture<UpdateComponent>;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [UpdateComponent]
         })
