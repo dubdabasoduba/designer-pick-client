@@ -4,7 +4,7 @@
  * This may be subject to prosecution according to the kenyan law
  */
 /* tslint:disable:no-unused-variable */
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
 import {AlertComponent} from './alert.component';
 

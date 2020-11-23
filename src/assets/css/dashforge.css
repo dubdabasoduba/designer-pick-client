@@ -19847,7 +19847,7 @@ textarea.parsley-success:focus {
 
 .content {
     padding: 20px;
-  height: 100%;
+    height: 100%;
 }
 
 @media (min-width: 992px) {
@@ -20772,7 +20772,7 @@ textarea.parsley-success:focus {
 }
 
 .bg-dashforge {
-    background-color:#67b0d1;
+    background-color: #67b0d1;
 }
 
 a.bg-dashforge:hover, a.bg-dashforge:focus, button.bg-dashforge:hover, button.bg-dashforge:focus, .btn.bg-dashforge:hover, .ui-datepicker-buttonpane button.bg-dashforge:hover, .sp-container button.bg-dashforge:hover, .btn.bg-dashforge:focus, .ui-datepicker-buttonpane button.bg-dashforge:focus, .sp-container button.bg-dashforge:focus {

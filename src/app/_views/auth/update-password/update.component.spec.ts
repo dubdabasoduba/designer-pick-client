@@ -4,7 +4,7 @@
  * This may be subject to prosecution according to the kenyan law
  */
 
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
 import {UpdateComponent} from './update.component';
 

@@ -4,7 +4,7 @@
  * This may be subject to prosecution according to the kenyan law
  */
 
-import { TestBed, waitForAsync } from '@angular/core/testing';
+import {TestBed, waitForAsync} from '@angular/core/testing';
 
 import {AppComponent} from './app.component';
 
