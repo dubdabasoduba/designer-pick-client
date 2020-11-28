@@ -12174,7 +12174,6 @@ textarea.form-control {
 }
 
 .form-fieldset {
-    background-color: #fff;
     border: 1px solid rgba(72, 94, 144, 0.16);
     padding: 20px 25px 25px;
     border-radius: 0.25rem;
@@ -12186,7 +12185,6 @@ textarea.form-control {
 
 .form-fieldset legend {
     width: auto;
-    background-color: inherit;
     padding: 0 10px;
     position: relative;
     margin-left: -10px;
@@ -12194,7 +12192,7 @@ textarea.form-control {
     font-weight: 600;
     font-size: inherit;
     color: #1c273c;
-    letter-spacing: .5;
+    letter-spacing: .5px;
     margin-bottom: 0;
 }
 
