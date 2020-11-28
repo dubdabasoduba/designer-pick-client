@@ -4,7 +4,7 @@
  * This may be subject to prosecution according to the kenyan law
  */
 
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
 import {DesignersDashboardComponent} from './designers-dashboard.component';
 
@@ -12,7 +12,7 @@ describe('FundingComponent', () => {
     let component: DesignersDashboardComponent;
     let fixture: ComponentFixture<DesignersDashboardComponent>;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [DesignersDashboardComponent]
         })

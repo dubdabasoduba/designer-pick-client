@@ -14,74 +14,76 @@
                         minute.</p>
                     <app-alert></app-alert>
                     <form #f="ngForm" (ngSubmit)="f.form.valid && register()" id="join" novalidate>
-                        <div class="form-group">
-                            <label>Full Name:&nbsp;<span class="tx-danger">*</span></label>
-                            <input [(ngModel)]="model.name" class="form-control"
-                                   data-error="Subject field is required"
-                                   id="name" name="name"
-                                   placeholder="Please give your name"
-                                   required="" type="text">
-                        </div>
-                        <div class="form-group">
-                            <label>Email address:&nbsp;<span class="tx-danger">*</span></label>
-                            <input #email="ngModel" [(ngModel)]="model.email"
-                                   autocomplete="off" class="form-control"
-                                   data-error="Subject field is required" id="email"
-                                   name="email"
-                                   placeholder="Place give your email address"
-                                   required="" type="email">
-                        </div>
-                        <div class="form-group">
-                            <label>Select account type:&nbsp;<span
-                                    class="tx-danger">*</span></label>
-                            <select [(ngModel)]="model.account_type"
-                                    class="form-control" class="custom-select form-control"
-                                    id="account_type"
-                                    name="account_type" title="Select user type">
-                                <option selected value="">Select account type</option>
-                                <option value="0">Client</option>
-                                <option value="1">Designer</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Username:&nbsp;<span class="tx-danger">*</span></label>
-                            <input [(ngModel)]="model.username" class="form-control"
-                                   data-error="Username field is required" id="userName"
-                                   name="name"
-                                   placeholder="Please give your username" required=""
-                                   type="text">
-                        </div>
-                        <div class="form-group">
-                            <div class="d-flex justify-content-between mg-b-5">
-                                <label class="mg-b-0-f">Password:&nbsp;<span
-                                        class="tx-danger">*</span></label>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Full Name:&nbsp;<span class="tx-danger">*</span></label>
+                                <input [(ngModel)]="model.name" class="form-control"
+                                       data-error="Subject field is required"
+                                       id="name" name="name"
+                                       placeholder="Please give your name"
+                                       required="" type="text">
                             </div>
-                            <input #password="ngModel" [(ngModel)]="model.password"
-                                   class="form-control"
-                                   data-error="Subject field is required"
-                                   id="passcodeone" name="passcodeone"
-                                   placeholder="Please give your password"
-                                   required="" type="password">
-                        </div>
-                        <div class="form-group">
-                            <div class="d-flex justify-content-between mg-b-5">
-                                <label class="mg-b-0-f">Confirm Password:&nbsp;<span
-                                        class="tx-danger">*</span></label>
+                            <div class="form-group col-md-6">
+                                <label>Email address:&nbsp;<span class="tx-danger">*</span></label>
+                                <input #email="ngModel" [(ngModel)]="model.email"
+                                       autocomplete="off" class="form-control"
+                                       data-error="Subject field is required" id="email"
+                                       name="email"
+                                       placeholder="Place give your email address"
+                                       required="" type="email">
                             </div>
-                            <input #password="ngModel" [(ngModel)]="model.confirmPassword"
-                                   class="form-control"
-                                   data-error="Subject field is required"
-                                   id="passcodetwo" name="passcodetwo"
-                                   placeholder="Please Confirm your Password"
-                                   required=""
-                                   type="password">
+                            <div class="form-group col-md-6">
+                                <label>Select account type:&nbsp;<span
+                                        class="tx-danger">*</span></label>
+                                <select [(ngModel)]="model.account_type"
+                                        class="form-control" class="custom-select form-control"
+                                        id="account_type"
+                                        name="account_type" title="Select user type">
+                                    <option selected value="">Select account type</option>
+                                    <option value="0">Client</option>
+                                    <option value="1">Designer</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Username:&nbsp;<span class="tx-danger">*</span></label>
+                                <input [(ngModel)]="model.username" class="form-control"
+                                       data-error="Username field is required" id="userName"
+                                       name="name"
+                                       placeholder="Please give your username" required=""
+                                       type="text">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <div class="d-flex justify-content-between mg-b-5">
+                                    <label class="mg-b-0-f">Password:&nbsp;<span
+                                            class="tx-danger">*</span></label>
+                                </div>
+                                <input #password="ngModel" [(ngModel)]="model.password"
+                                       class="form-control"
+                                       data-error="Subject field is required"
+                                       id="passcodeone" name="passcodeone"
+                                       placeholder="Please give your password"
+                                       required="" type="password">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <div class="d-flex justify-content-between mg-b-5">
+                                    <label class="mg-b-0-f">Confirm Password:&nbsp;<span
+                                            class="tx-danger">*</span></label>
+                                </div>
+                                <input #password="ngModel" [(ngModel)]="model.confirmPassword"
+                                       class="form-control"
+                                       data-error="Subject field is required"
+                                       id="passcodetwo" name="passcodetwo"
+                                       placeholder="Please Confirm your Password"
+                                       required=""
+                                       type="password">
+                            </div>
+                            <div class="form-group tx-12">
+                                By clicking <strong>Create account</strong> below, you agree to our
+                                terms
+                                of service and privacy statement.
+                            </div><!-- form-group -->
+                            <button class="btn btn-brand-02 btn-block">Create Account</button>
                         </div>
-                        <div class="form-group tx-12">
-                            By clicking <strong>Create account</strong> below, you agree to our
-                            terms
-                            of service and privacy statement.
-                        </div><!-- form-group -->
-                        <button class="btn btn-brand-02 btn-block">Create Account</button>
                     </form>
                     <div class="tx-13 mg-t-20 tx-center">Already have an account? <a
                             routerLink="/sign-in">&nbsp;Sign

@@ -78,20 +78,6 @@ export class ContactsComponent implements OnInit, OnDestroy {
         }
     }
 
-    private getPerson() {
-        this.loading = true;
-        this.personService.getPersonById(this.personId).subscribe(
-            data => {
-                this.person = data[0];
-                this.loading = false;
-            },
-            error => {
-                this.alertService.error(error);
-                this.loading = false;
-            }
-        );
-    }
-
     addEditContact() {
         this.loading = false;
         if (this.model.email == appConstants.emptyEntry || this.model.email == undefined) {
@@ -126,6 +112,20 @@ export class ContactsComponent implements OnInit, OnDestroy {
                 }
             );
         }
+    }
+
+    private getPerson() {
+        this.loading = true;
+        this.personService.getPersonById(this.personId).subscribe(
+            data => {
+                this.person = data[0];
+                this.loading = false;
+            },
+            error => {
+                this.alertService.error(error);
+                this.loading = false;
+            }
+        );
     }
 
     /**

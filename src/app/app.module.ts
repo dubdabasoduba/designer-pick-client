@@ -67,6 +67,7 @@ import {ContactService} from "./_services/admin_services/contact/contact.service
 import {UpdateUserDetailsComponent} from './_views/profile/update-user-details/update-user-details.component';
 import {DesignerProfileComponent} from './_views/main_views/designers/designer-profile/designer-profile.component';
 import {ClientProfilesComponent} from './_views/profile/client-profiles/client-profiles.component';
+import {ContactFormComponent} from './_views/main_views/contact-form/contact-form.component';
 
 @NgModule({
     declarations: [
@@ -107,7 +108,8 @@ import {ClientProfilesComponent} from './_views/profile/client-profiles/client-p
         UserContactsComponent,
         UpdateUserDetailsComponent,
         DesignerProfileComponent,
-        ClientProfilesComponent
+        ClientProfilesComponent,
+        ContactFormComponent
     ],
     imports: [
         BrowserModule,

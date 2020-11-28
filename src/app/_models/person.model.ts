@@ -40,7 +40,6 @@ export class PersonModel extends DefaultModel {
     account_type: string;
     contact_uuid: string;
     user_uuid: string;
-    uuid: string;
     username: string;
     phone_number: string;
     is_verified: number;

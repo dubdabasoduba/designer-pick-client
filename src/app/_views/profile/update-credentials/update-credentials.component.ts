@@ -45,20 +45,6 @@ export class UpdateCredentialsComponent implements OnInit {
         this.getPerson();
     }
 
-    private getPerson() {
-        this.loading = true;
-        this.personService.getPersonById(this.personUuid).subscribe(
-            data => {
-                this.person = data[0];
-                this.loading = false;
-            },
-            error => {
-                this.alertService.error(error);
-                this.loading = false;
-            }
-        );
-    }
-
     changePassword() {
         if (AppCommons.isStringEmpty(this.model.old_password)) {
             this.alertService.error('The old password cannot be empty');
@@ -71,6 +57,26 @@ export class UpdateCredentialsComponent implements OnInit {
         } else {
             this.updateCredentials();
         }
+    }
+
+    signOut() {
+        this.loading = true;
+        this.authenticationService.logout();
+        this.router.navigateByUrl('');
+    }
+
+    private getPerson() {
+        this.loading = true;
+        this.personService.getPersonById(this.personUuid).subscribe(
+            data => {
+                this.person = data[0];
+                this.loading = false;
+            },
+            error => {
+                this.alertService.error(error);
+                this.loading = false;
+            }
+        );
     }
 
     private updateCredentials() {
@@ -94,11 +100,5 @@ export class UpdateCredentialsComponent implements OnInit {
         user.password = this.model.old_password;
         user.confirmPassword = this.model.confirm_new_password;
         return user;
-    }
-
-    signOut() {
-        this.loading = true;
-        this.authenticationService.logout();
-        this.router.navigateByUrl('');
     }
 }

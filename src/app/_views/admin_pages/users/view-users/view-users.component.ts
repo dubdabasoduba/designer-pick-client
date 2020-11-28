@@ -3,22 +3,20 @@ import {PersonModel} from "../../../../_models";
 import {AlertService, AuthenticationService, PersonsService} from "../../../../_services";
 import {AppCommons} from "../../../../_helpers/app.commons";
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
-import {combineLatest} from "rxjs";
-import {appConstants} from "../../../../_helpers/app.constants";
 
 @Component({
     selector: 'app-view-users',
     templateUrl: './view-users.component.html',
     styleUrls: ['./view-users.component.css']
 })
-export class ViewUsersComponent implements OnInit, OnDestroy  {
+export class ViewUsersComponent implements OnInit, OnDestroy {
     loading = false;
     public model = {
         user_account: ""
     }
     public people: Array<PersonModel> = [];
-    private accountType: string;
     mySubscription: any;
+    private accountType: string;
 
     constructor(private personsService: PersonsService, private alertService: AlertService,
                 private authenticationService: AuthenticationService, private router: Router,

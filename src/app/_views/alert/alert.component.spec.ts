@@ -4,7 +4,7 @@
  * This may be subject to prosecution according to the kenyan law
  */
 /* tslint:disable:no-unused-variable */
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
 import {AlertComponent} from './alert.component';
 
@@ -12,7 +12,7 @@ describe('AlertComponent', () => {
     let component: AlertComponent;
     let fixture: ComponentFixture<AlertComponent>;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [AlertComponent]
         })
