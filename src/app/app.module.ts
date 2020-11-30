@@ -15,7 +15,8 @@ import {
     AuthenticationService,
     CategoryService,
     CommissionsService,
-    CountriesService, DiscountsService,
+    CountriesService,
+    DiscountsService,
     PagerService,
     PaymentModesService,
     PermissionsService,
@@ -68,7 +69,7 @@ import {UpdateUserDetailsComponent} from './_views/profile/update-user-details/u
 import {DesignerProfileComponent} from './_views/main_views/designers/designer-profile/designer-profile.component';
 import {ClientProfilesComponent} from './_views/profile/client-profiles/client-profiles.component';
 import {ContactFormComponent} from './_views/main_views/contact-form/contact-form.component';
-import { DiscountsComponent } from './_views/admin_pages/discounts/discounts.component';
+import {DiscountsComponent} from './_views/admin_pages/discounts/discounts.component';
 
 @NgModule({
     declarations: [
