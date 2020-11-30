@@ -17,3 +17,4 @@ export * from './country.model';
 export * from './commissions.model';
 export * from './payment-mode.model';
 export * from './settings.model';
+export * from './discounts.model';
