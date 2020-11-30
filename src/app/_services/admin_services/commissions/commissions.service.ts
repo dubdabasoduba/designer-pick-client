@@ -30,7 +30,7 @@ export class CommissionsService {
         return this.http.post(appConstants.baseApiV1Url + '/commission', commissionsModel);
     }
 
-    updateCommission(paymentModeModel: CommissionsModel) {
-        return this.http.put(appConstants.baseApiV1Url + '/commission/' + paymentModeModel.uuid, paymentModeModel);
+    updateCommission(commissionsModel: CommissionsModel) {
+        return this.http.put(appConstants.baseApiV1Url + '/commission/' + commissionsModel.uuid, commissionsModel);
     }
 }

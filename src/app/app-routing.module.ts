@@ -40,6 +40,7 @@ import {SettingsComponent} from "./_views/admin_pages/settings/settings.componen
 import {ChatsComponent} from "./_views/profile/chats/chats.component";
 import {UpdateUserDetailsComponent} from "./_views/profile/update-user-details/update-user-details.component";
 import {DesignerProfileComponent} from "./_views/main_views/designers/designer-profile/designer-profile.component";
+import {DiscountsComponent} from "./_views/admin_pages/discounts/discounts.component";
 
 const appRoutes: Routes = [
     {path: '', component: HomeComponent, runGuardsAndResolvers: 'always'},
@@ -213,6 +214,14 @@ const appRoutes: Routes = [
     },
     {
         path: 'payment/commissions/:id', component: CommissionsComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'payment/discounts', component: DiscountsComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'payment/discounts/:id', component: DiscountsComponent,
         canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
     },
     {

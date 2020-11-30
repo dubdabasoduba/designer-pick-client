@@ -19,3 +19,4 @@ export * from './admin_services/payment-modes/payment-modes.service';
 export * from './admin_services/commissions/commissions.service';
 export * from './admin_services/settings/settings.service';
 export * from './admin_services/contact/contact.service';
+export * from './admin_services/discounts/discounts.service';
