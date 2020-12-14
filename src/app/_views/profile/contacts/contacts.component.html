@@ -12,7 +12,7 @@
                     <ol class="breadcrumb breadcrumb-style1 mg-b-10">
                         <li class="breadcrumb-item"><a
                                 routerLink="/profile/{{personId}}">Profile</a></li>
-                        <li aria-current="page" class="breadcrumb-item active">User contacts</li>
+                        <li aria-current="page" class="breadcrumb-item active">My contacts</li>
                     </ol>
                 </nav>
                 <h4 class="mg-b-0">User contacts</h4>
@@ -190,7 +190,7 @@
                                         </td>
                                         <td class="text-center">
                                             <a class="btn btn-info btn-xs"
-                                               routerLink="/users/contacts/{{personId}}/{{contact.uuid}}"><i
+                                               routerLink="/profile/contacts/{{personId}}/{{contact.uuid}}"><i
                                                     class="far fa-edit"></i></a>&nbsp;
                                             <a (click)="removeContact(contact.uuid)"
                                                class="btn btn-danger btn-xs"><i

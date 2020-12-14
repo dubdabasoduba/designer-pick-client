@@ -23,7 +23,6 @@ import {ContactModel, PersonModel} from "../../../_models";
     styleUrls: ['./contacts.component.css']
 })
 export class ContactsComponent implements OnInit, OnDestroy {
-    public imageIcon = appConstants.defaultImageIcon;
     loading = false;
     public person: PersonModel;
     public returnUrl: string;

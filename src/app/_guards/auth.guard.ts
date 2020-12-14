@@ -20,10 +20,10 @@ export class AuthGuard implements CanActivate {
         state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
         const lbsUser = this.authService.getCurrentUser();
         if (lbsUser != null) {
-            if (lbsUser.forceUpdate && !state.url.includes(appConstants.profileUpdateUrl)) {
-                this.router.navigate([appConstants.profileUpdateUrl + lbsUser.uuid], {
+            if (lbsUser.auth.forceUpdate && !state.url.includes(appConstants.profileUpdateUrl)) {
+                this.router.navigate([appConstants.profileUpdateUrl + lbsUser.user.uuid], {
                     queryParams: {
-                        type: lbsUser.type,
+                        type: lbsUser.user.type,
                         returnUrl: state.url
                     }
                 });

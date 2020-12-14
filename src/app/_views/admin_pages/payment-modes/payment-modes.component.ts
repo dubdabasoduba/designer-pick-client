@@ -47,7 +47,7 @@ export class PaymentModesComponent implements OnInit, OnDestroy {
         if (!AppCommons.isStringEmpty(this.paymentId)) {
             this.getPaymentMode();
         }
-        this.loggedInUser = this.authenticationService.getCurrentUser().uuid;
+        this.loggedInUser = this.authenticationService.getCurrentUser().user.uuid;
     }
 
     ngOnDestroy() {

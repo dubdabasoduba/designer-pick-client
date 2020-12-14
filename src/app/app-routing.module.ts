@@ -101,6 +101,12 @@ const appRoutes: Routes = [
         runGuardsAndResolvers: 'always'
     },
     {
+        path: 'profile/contacts/:id/:contactId',
+        component: ContactsComponent,
+        canActivate: [AuthGuard],
+        runGuardsAndResolvers: 'always'
+    },
+    {
         path: 'profile/inbox/:id',
         component: ChatsComponent,
         canActivate: [AuthGuard],

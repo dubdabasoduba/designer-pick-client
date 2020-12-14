@@ -11,7 +11,7 @@ import 'rxjs/add/operator/toPromise';
 import {HttpClient} from '@angular/common/http';
 import {tap} from 'rxjs/operators';
 import {AppCommons} from '../../_helpers/app.commons';
-import {UserModel} from '../../_models';
+import {AuthenticatedUserModel, UserModel} from '../../_models';
 
 @Injectable({
     providedIn: 'root'
@@ -23,7 +23,7 @@ export class AuthenticationService {
     }
 
     private static setSession(response) {
-        if (response && response.token) {
+        if (response && response.auth && response.auth.token) {
             localStorage.setItem('lbsUser', JSON.stringify(response));
         }
         return response;
@@ -81,28 +81,28 @@ export class AuthenticationService {
 
     getToken() {
         const currentUser = JSON.parse(localStorage.getItem(this._lbsUser));
-        return currentUser.token;
+        return currentUser.auth.token;
     }
 
-    getCurrentUser(): UserModel {
+    getCurrentUser(): AuthenticatedUserModel {
         return JSON.parse(localStorage.getItem(this._lbsUser));
     }
 
     setUpdatedProfileImage(userImage: string) {
         const user = JSON.parse(localStorage.getItem(this._lbsUser));
-        user.entityIconImage = userImage;
+        user.user.entityIconImage = userImage;
         AuthenticationService.setSession(user);
     }
 
     setForceUpdateState(forceUpdate: boolean) {
         const user = JSON.parse(localStorage.getItem(this._lbsUser));
-        user.forceUpdate = forceUpdate;
+        user.auth.forceUpdate = forceUpdate;
         AuthenticationService.setSession(user);
     }
 
     setName(name: string) {
         const user = JSON.parse(localStorage.getItem(this._lbsUser));
-        user.name = name;
+        user.auth.name = name;
         AuthenticationService.setSession(user);
     }
 }

@@ -54,7 +54,7 @@ export class PermissionsComponent implements OnInit, OnDestroy {
         if (!AppCommons.isStringEmpty(this.permissionId)) {
             this.getPermission();
         }
-        this.loggedInUser = this.authenticationService.getCurrentUser().uuid;
+        this.loggedInUser = this.authenticationService.getCurrentUser().user.uuid;
     }
 
     ngOnDestroy() {

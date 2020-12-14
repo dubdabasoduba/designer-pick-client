@@ -16,7 +16,7 @@
         <ul class="nav navbar-menu">
             <li class="nav-label pd-l-20 pd-lg-l-25 d-lg-none">Main Navigation</li>
             <li *ngIf="lbsUser" class="nav-item" routerLinkActive="active">
-                <a class="nav-link" routerLink="/profile/{{lbsUser.person}}"><i
+                <a class="nav-link" routerLink="/profile/{{lbsUser.user.person}}"><i
                         data-feather="pie-chart"></i> Profile</a>
             </li>
             <li class="nav-item" routerLinkActive="active">
@@ -44,18 +44,18 @@
             <div [ngClass]="defaultDropdownElementsClass">
                 <div class="avatar avatar-lg mg-b-15"><img alt="" class="rounded-circle"
                                                            src="assets/img/img1.png"></div>
-                <h6 class="tx-semibold mg-b-5">{{lbsUser.name}}</h6>
-                <p class="mg-b-25 tx-12 tx-color-03">@{{lbsUser.username}}</p>
-                <a class="dropdown-item" routerLink="/profile/{{lbsUser.person}}"
+                <h6 class="tx-semibold mg-b-5">{{lbsUser.user.name}}</h6>
+                <p class="mg-b-25 tx-12 tx-color-03">@{{lbsUser.user.username}}</p>
+                <a class="dropdown-item" routerLink="/profile/{{lbsUser.user.person}}"
                    routerLinkActive="active">&nbsp;&nbsp;<i
                         data-feather="edit-3"></i>&nbsp;My profile</a>
-                <a class="dropdown-item" routerLink="/profile/change-password/{{lbsUser.person}}"
+                <a class="dropdown-item" routerLink="/profile/change-password/{{lbsUser.user.person}}"
                    routerLinkActive="active">&nbsp;&nbsp;<i
                         data-feather="lock"></i>&nbsp;Change Password</a>
-                <a class="dropdown-item" routerLink="/profile/contacts/{{lbsUser.person}}"
+                <a class="dropdown-item" routerLink="/profile/contacts/{{lbsUser.user.person}}"
                    routerLinkActive="active">&nbsp;&nbsp;<i
                         data-feather="mail"></i>&nbsp;Contacts</a>
-                <a class="dropdown-item" routerLink="/profile/inbox/{{lbsUser.person}}"
+                <a class="dropdown-item" routerLink="/profile/inbox/{{lbsUser.user.person}}"
                    routerLinkActive="active">&nbsp;&nbsp;<i
                         data-feather="inbox"></i>&nbsp;Inbox</a>
                 <div class="dropdown-divider"></div>

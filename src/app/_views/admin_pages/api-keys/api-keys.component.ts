@@ -48,7 +48,7 @@ export class ApiKeysComponent implements OnInit {
         if (!AppCommons.isStringEmpty(this.apiKeyId)) {
             this.getApiKey();
         }
-        this.loggedInUser = this.authenticationService.getCurrentUser().uuid;
+        this.loggedInUser = this.authenticationService.getCurrentUser().user.uuid;
     }
 
     ngOnDestroy() {

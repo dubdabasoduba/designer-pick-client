@@ -49,7 +49,7 @@ export class DiscountsComponent implements OnInit, OnDestroy {
         if (!AppCommons.isStringEmpty(this.discountId)) {
             this.getDiscount();
         }
-        this.loggedInUser = this.authenticationService.getCurrentUser().uuid;
+        this.loggedInUser = this.authenticationService.getCurrentUser().user.uuid;
     }
 
     ngOnDestroy() {

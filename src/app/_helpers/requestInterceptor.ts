@@ -60,7 +60,7 @@ export class RequestInterceptor implements HttpInterceptor {
      */
     private setCurrentUser(httpRequest) {
         if (httpRequest.body !== null) {
-            httpRequest.body.currentUser = this.authService.getCurrentUser().id;
+            httpRequest.body.currentUser = this.authService.getCurrentUser().user.uuid;
         }
     }
 }

@@ -55,7 +55,7 @@ export class CountriesComponent implements OnInit, OnDestroy {
         if (!AppCommons.isStringEmpty(this.countryId)) {
             this.getCountry();
         }
-        this.loggedInUser = this.authenticationService.getCurrentUser().uuid;
+        this.loggedInUser = this.authenticationService.getCurrentUser().user.uuid;
     }
 
     ngOnDestroy() {

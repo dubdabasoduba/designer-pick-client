@@ -4,7 +4,7 @@
  * This may be subject to prosecution according to the kenyan law
  */
 import {Component, OnInit} from '@angular/core';
-import {UserModel} from '../../_models';
+import {AuthenticatedUserModel, UserModel} from '../../_models';
 import {appConstants} from '../../_helpers/app.constants';
 import {AlertService, AuthenticationService} from '../../_services';
 import {NavigationEnd, Router} from '@angular/router';
@@ -19,7 +19,7 @@ import {ResponseModel} from '../../_models/response.model';
 })
 export class NavigationComponent implements OnInit {
     loading = false;
-    lbsUser: UserModel;
+    lbsUser: AuthenticatedUserModel;
     title = appConstants.appTitle;
     public model: any = {};
     public defaultDropdownMainClass = "dropdown dropdown-profile"
@@ -45,8 +45,8 @@ export class NavigationComponent implements OnInit {
             window.scrollTo(0, 0);
         });
         this.lbsUser = this.authenticationService.getCurrentUser();
-        if (!this.commons.isObjectEmpty(this.lbsUser) && AppCommons.isStringEmpty(this.lbsUser.entityIconImage)) {
-            this.lbsUser.entityIconImage = appConstants.defaultImageIcon;
+        if (!this.commons.isObjectEmpty(this.lbsUser) && AppCommons.isStringEmpty(this.lbsUser.user.profile_image)) {
+            this.lbsUser.user.profile_image = appConstants.defaultImageIcon;
         }
     }
 

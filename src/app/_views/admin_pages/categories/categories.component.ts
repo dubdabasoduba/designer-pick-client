@@ -54,7 +54,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
         if (!AppCommons.isStringEmpty(this.categoryId)) {
             this.getCategory();
         }
-        this.loggedInUser = this.authenticationService.getCurrentUser().uuid;
+        this.loggedInUser = this.authenticationService.getCurrentUser().user.uuid;
     }
 
     ngOnDestroy() {

@@ -48,7 +48,7 @@ export class AddEditUsersComponent implements OnInit {
         if (!AppCommons.isStringEmpty(this.personId)) {
             this.getPerson();
         }
-        this.loggedInUser = this.authenticationService.getCurrentUser().uuid;
+        this.loggedInUser = this.authenticationService.getCurrentUser().user.uuid;
     }
 
     addEditUser() {
