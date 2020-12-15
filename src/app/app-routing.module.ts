@@ -41,6 +41,8 @@ import {ChatsComponent} from "./_views/profile/chats/chats.component";
 import {UpdateUserDetailsComponent} from "./_views/profile/update-user-details/update-user-details.component";
 import {DesignerProfileComponent} from "./_views/main_views/designers/designer-profile/designer-profile.component";
 import {DiscountsComponent} from "./_views/admin_pages/discounts/discounts.component";
+import {ProfileMainPageComponent} from "./_views/profile/profile-main-page/profile-main-page.component";
+import {AdminMainPageComponent} from "./_views/admin_pages/admin-main-page/admin-main-page.component";
 
 const appRoutes: Routes = [
     {path: '', component: HomeComponent, runGuardsAndResolvers: 'always'},
@@ -89,6 +91,12 @@ const appRoutes: Routes = [
         runGuardsAndResolvers: 'always'
     },
     {
+        path: 'profile/:id',
+        component: ProfileMainPageComponent,
+        canActivate: [AuthGuard],
+        runGuardsAndResolvers: 'always'
+    },
+    {
         path: 'profile/change-password/:id',
         component: UpdateCredentialsComponent,
         canActivate: [AuthGuard],
@@ -129,6 +137,10 @@ const appRoutes: Routes = [
         component: DesignersDashboardComponent,
         canActivate: [AuthGuard],
         runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'admin', component: AdminMainPageComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
     },
     {
         path: 'categories', component: CategoriesComponent,

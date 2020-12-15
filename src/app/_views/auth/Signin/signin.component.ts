@@ -48,12 +48,12 @@ export class SigninComponent implements OnInit {
     }
 
     private generateRedirectUrlForProfiles(lbsUser) {
-        if (lbsUser.account_type === 0 && this.loginSuccessfulReturnUrl === '/') {
-            this.redirectUrl = appConstants.clientDashboardUrl + lbsUser.person;
-        } else if (lbsUser.account_type === 1 && this.loginSuccessfulReturnUrl === '/') {
-            this.redirectUrl = appConstants.designerDashboardUrl + lbsUser.person;
-        } else if (lbsUser.account_type === 2 && this.loginSuccessfulReturnUrl === '/') {
-            this.redirectUrl = appConstants.profileViewUrl + lbsUser.person;
+        if (lbsUser.user.account_type === 0 && this.loginSuccessfulReturnUrl === '/') {
+            this.redirectUrl = appConstants.clientDashboardUrl + lbsUser.user.person;
+        } else if (lbsUser.user.account_type === 1 && this.loginSuccessfulReturnUrl === '/') {
+            this.redirectUrl = appConstants.designerDashboardUrl + lbsUser.user.person;
+        } else if (lbsUser.user.account_type === 2 && this.loginSuccessfulReturnUrl === '/') {
+            this.redirectUrl = appConstants.staffAdminViewUrl;
         } else {
             this.redirectUrl = this.loginSuccessfulReturnUrl;
         }

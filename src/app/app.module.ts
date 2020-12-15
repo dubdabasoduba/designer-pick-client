@@ -70,6 +70,8 @@ import {DesignerProfileComponent} from './_views/main_views/designers/designer-p
 import {ClientProfilesComponent} from './_views/profile/client-profiles/client-profiles.component';
 import {ContactFormComponent} from './_views/main_views/contact-form/contact-form.component';
 import {DiscountsComponent} from './_views/admin_pages/discounts/discounts.component';
+import { AdminMainPageComponent } from './_views/admin_pages/admin-main-page/admin-main-page.component';
+import { ProfileMainPageComponent } from './_views/profile/profile-main-page/profile-main-page.component';
 
 @NgModule({
     declarations: [
@@ -112,7 +114,9 @@ import {DiscountsComponent} from './_views/admin_pages/discounts/discounts.compo
         DesignerProfileComponent,
         ClientProfilesComponent,
         ContactFormComponent,
-        DiscountsComponent
+        DiscountsComponent,
+        AdminMainPageComponent,
+        ProfileMainPageComponent
     ],
     imports: [
         BrowserModule,

@@ -179,6 +179,7 @@ export const appConstants = {
     countryUrl: '/country/',
     profileUpdateUrl: '/profile-update/',
     profileViewUrl: '/profile/',
+    staffAdminViewUrl: '/admin',
     authSIgnInUrl: '/sign-in',
     clientDashboardUrl: 'client-dashboard/',
     designerDashboardUrl: 'designers-dashboard/'
