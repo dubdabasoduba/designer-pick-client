@@ -15,7 +15,7 @@ import {VerifyEmailComponent} from './_views/auth/verify-email/verify.component'
 import {ClientsDashboardComponent} from './_views/dashboards/clients-dashboard/clients-dashboard.component';
 import {DesignersDashboardComponent} from './_views/dashboards/designers-dashboard/designers-dashboard.component';
 import {appConstants} from './_helpers/app.constants';
-import {AuthGuard, AuthPagesGuard} from './_guards';
+import {AuthGuard, PermissionsGuard} from './_guards';
 import {ProfileComponent} from './_views/profile/user-profile/profile.component';
 import {ContactsComponent} from './_views/profile/contacts/contacts.component';
 import {NgModule} from '@angular/core';
@@ -49,7 +49,7 @@ const appRoutes: Routes = [
     {
         path: 'sign-up',
         component: SignupComponent,
-        canActivate: [AuthPagesGuard],
+        canActivate: [PermissionsGuard],
         runGuardsAndResolvers: 'always'
     },
     {path: 'sign-in', component: SigninComponent, runGuardsAndResolvers: 'always'},
@@ -60,13 +60,13 @@ const appRoutes: Routes = [
     }, {
         path: 'reset-password',
         component: RecoveryComponent,
-        canActivate: [AuthPagesGuard],
+        canActivate: [PermissionsGuard],
         runGuardsAndResolvers: 'always'
     },
     {
         path: 'update-password/:userId/:token',
         component: UpdateComponent,
-        canActivate: [AuthPagesGuard],
+        canActivate: [PermissionsGuard],
         runGuardsAndResolvers: 'always'
     },
     {path: 'how-it-works', component: HowItWorksComponent, runGuardsAndResolvers: 'always'},
@@ -160,7 +160,8 @@ const appRoutes: Routes = [
     },
     {
         path: 'permissions', component: PermissionsComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
+        data: {permission: '4984ac5d-92d7-46bd-b255-aa6bf805690e-90'}
     },
     {
         path: 'permissions/:id', component: PermissionsComponent,
@@ -257,7 +258,7 @@ const appRoutes: Routes = [
     {
         path: 'verify-email/:userId/:token',
         component: VerifyEmailComponent,
-        canActivate: [AuthPagesGuard],
+        canActivate: [PermissionsGuard],
         runGuardsAndResolvers: 'always'
     },
     {
@@ -271,7 +272,7 @@ const appRoutes: Routes = [
 
 @NgModule({
     imports: [RouterModule.forRoot(appRoutes, {
-        useHash: true,
+        useHash: false,
         onSameUrlNavigation: 'reload',
         relativeLinkResolution: 'legacy'
     })],

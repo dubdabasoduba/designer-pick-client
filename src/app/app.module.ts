@@ -4,7 +4,7 @@
  * This may be subject to prosecution according to the kenyan law
  */
 
-import {AuthGuard, AuthPagesGuard} from './_guards';
+import {AuthGuard, PermissionsGuard} from './_guards';
 import {AppRoutingModule} from './app-routing.module';
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
@@ -125,7 +125,7 @@ import { ProfileMainPageComponent } from './_views/profile/profile-main-page/pro
         AppRoutingModule
     ],
     providers: [AuthGuard, AuthenticationService, AlertService, UserService, PersonsService,
-        AuthPagesGuard, AlertService, CategoryService, CountriesService, ProfileService,
+        PermissionsGuard, AlertService, CategoryService, CountriesService, ProfileService,
         PagerService, PermissionsService, ApiKeysService, ProfileService, ContactService,
         CommissionsService, PaymentModesService, SettingsService, DiscountsService,
         {
