@@ -1,0 +1,129 @@
+<app-navigation></app-navigation>
+<div class="content content-fixed bd-b">
+    <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
+        <div class="d-sm-flex align-items-center justify-content-between">
+            <div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-style1 mg-b-10">
+                        <li class="breadcrumb-item"><a routerLink="/admin">Admin</a></li>
+                    </ol>
+                </nav>
+                <h4 class="mg-b-0">Admin Functions</h4>
+            </div>
+        </div>
+    </div><!-- container -->
+</div><!-- content -->
+
+<div class="content">
+    <div class="container">
+        <!-- ======= Services Section ======= -->
+        <section class="services" id="services">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
+                         *ngIf="checkPermissions(appConstants.getAllUsers)">
+                        <div class="icon-box" data-aos="fade-up">
+                            <h4 class="title"><a routerLink="/users">User Management</a></h4>
+                            <p class="description">Allows the current logged in user to manage
+                                other users</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
+                         *ngIf="checkPermissions(appConstants.getAllPaymentModes)">
+                        <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                            <h4 class="title"><a routerLink="/payment/payment-modes">Payment
+                                Modes Management</a></h4>
+                            <p class="description">Allows the current logged in user to manage
+                                payment modes</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
+                         *ngIf="checkPermissions(appConstants.getAllCommissions)">
+                        <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+                            <h4 class="title"><a routerLink="/payment/commissions">Commissions
+                                Management</a></h4>
+                            <p class="description">Allows the current logged in user to manage
+                                commissions</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
+                         *ngIf="checkPermissions(appConstants.getAllDiscounts)">
+                        <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+                            <h4 class="title"><a routerLink="/payment/discounts">Discounts
+                                Management</a></h4>
+                            <p class="description">Allows the current logged in user to manage
+                                discounts</p>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
+                         *ngIf="checkPermissions(appConstants.getAllCategories)">
+                        <div class="icon-box" data-aos="fade-up">
+                            <h4 class="title"><a routerLink="/categories">Categories
+                                Management</a></h4>
+                            <p class="description">Allows the current logged in user to manage
+                                categories</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
+                         *ngIf="checkPermissions(appConstants.getAllCountries)">
+                        <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                            <h4 class="title"><a routerLink="/countries">Countries
+                                Management</a></h4>
+                            <p class="description">Allows the current logged in user to manage
+                                countries</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
+                         *ngIf="checkPermissions(appConstants.getAllApiKeys)">
+                        <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+                            <h4 class="title"><a routerLink="/api-keys">API Keys Management</a>
+                            </h4>
+                            <p class="description">Allows the current logged in user to manage
+                                system API keys</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
+                         *ngIf="checkPermissions(appConstants.getAllRoles)">
+                        <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+                            <h4 class="title"><a routerLink="/roles">Roles Management</a></h4>
+                            <p class="description">Allows the current logged in user to manage
+                                system roles</p>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
+                         *ngIf="checkPermissions(appConstants.getAllContestStages)">
+                        <div class="icon-box" data-aos="fade-up">
+                            <h4 class="title"><a routerLink="/contest-stages">Contest Stage
+                                Management</a></h4>
+                            <p class="description">Allows the current logged in user to manage
+                                contest stages</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
+                         *ngIf="checkPermissions(appConstants.getAllPermissions)">
+                        <div class="icon-box" data-aos="fade-up">
+                            <h4 class="title"><a routerLink="/permissions">Permissions
+                                Management</a></h4>
+                            <p class="description">Allows the current logged in user to manage
+                                system permissions</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
+                         *ngIf="checkPermissions(appConstants.getAllSettings)">
+                        <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                            <h4 class="title"><a routerLink="/settings">System Settings</a></h4>
+                            <p class="description">Allows the current logged in user to manage
+                                system settings</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- End Services Section -->
+    </div><!-- content -->
+</div>

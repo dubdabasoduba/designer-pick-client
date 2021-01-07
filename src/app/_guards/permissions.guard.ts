@@ -8,20 +8,24 @@ import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {Observable} from 'rxjs';
 import {AuthenticationService} from '../_services';
+import {AppCommons} from "../_helpers";
 
 @Injectable({providedIn: 'root'})
-export class AuthPagesGuard implements CanActivate {
+export class PermissionsGuard implements CanActivate {
+    PERMISSION = 'permission';
+
     constructor(private router: Router, private authService: AuthenticationService) {
     }
 
     canActivate(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-        if (this.authService.getCurrentUser() != null) {
+        let permission = route.data[this.PERMISSION];
+        if (this.authService.getCurrentUser() !== null && AppCommons.checkIfPermissionsExist(permission, this.authService.getCurrentUser().auth.permissions)) {
+            return true;
+        } else {
             this.router.navigate(['']);
             return false;
-        } else {
-            return true;
         }
     }
 }

@@ -62,7 +62,6 @@ export class ResponseInterceptor implements HttpInterceptor {
             }
             return throwError(error);
         });
-
     }
 
     /**

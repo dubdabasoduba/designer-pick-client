@@ -7,7 +7,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AlertService, AuthenticationService} from '../../../_services';
-import {UserModel} from '../../../_models';
+import {AuthenticatedUserModel, UserModel} from '../../../_models';
 
 @Component({
     selector: 'app-home',
@@ -16,7 +16,7 @@ import {UserModel} from '../../../_models';
 })
 export class HomeComponent implements OnInit {
     loading = false;
-    private currentUser = new UserModel();
+    private currentUser = new AuthenticatedUserModel();
 
     constructor(
         private router: Router,
@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
 
     resendVerification() {
         this.loading = true;
-        this.authenticationService.resendVerification(this.currentUser.username).subscribe(
+        this.authenticationService.resendVerification(this.currentUser.user.username).subscribe(
             data => {
                 this.router.navigateByUrl('/sign-out');
                 this.loading = false;

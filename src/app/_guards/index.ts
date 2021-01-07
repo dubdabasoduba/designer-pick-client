@@ -5,5 +5,4 @@
  */
 
 export * from './auth.guard';
-export * from './authpages.guard';
-export * from './entity.guard';
+export * from './permissions.guard';

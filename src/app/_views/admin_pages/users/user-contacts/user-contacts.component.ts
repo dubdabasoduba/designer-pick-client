@@ -62,7 +62,7 @@ export class UserContactsComponent implements OnInit, OnDestroy {
         if (!AppCommons.isStringEmpty(this.personId)) {
             this.getPerson();
         }
-        this.loggedInUser = this.authenticationService.getCurrentUser().uuid;
+        this.loggedInUser = this.authenticationService.getCurrentUser().user.uuid;
         this.redirectUrl = '/user/' + this.personId + '/' + this.person.user_uuid;
     }
 

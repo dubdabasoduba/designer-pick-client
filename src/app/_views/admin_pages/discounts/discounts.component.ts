@@ -49,7 +49,7 @@ export class DiscountsComponent implements OnInit, OnDestroy {
         if (!AppCommons.isStringEmpty(this.discountId)) {
             this.getDiscount();
         }
-        this.loggedInUser = this.authenticationService.getCurrentUser().uuid;
+        this.loggedInUser = this.authenticationService.getCurrentUser().user.uuid;
     }
 
     ngOnDestroy() {
@@ -64,7 +64,7 @@ export class DiscountsComponent implements OnInit, OnDestroy {
             this.alertService.error(appConstants.nameError);
         } else if (this.model.is_active === appConstants.emptyEntry || this.model.is_active == undefined) {
             this.alertService.error(appConstants.statusError);
-        }else if (this.model.code === appConstants.emptyEntry || this.model.code == undefined) {
+        } else if (this.model.code === appConstants.emptyEntry || this.model.code == undefined) {
             this.alertService.error("Discount code is required");
         } else {
             if (AppCommons.isStringEmpty(this.discountId)) {

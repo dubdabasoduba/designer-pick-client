@@ -14,8 +14,8 @@ import {CategoriesComponent} from './_views/admin_pages/categories/categories.co
 import {VerifyEmailComponent} from './_views/auth/verify-email/verify.component';
 import {ClientsDashboardComponent} from './_views/dashboards/clients-dashboard/clients-dashboard.component';
 import {DesignersDashboardComponent} from './_views/dashboards/designers-dashboard/designers-dashboard.component';
-import {appConstants} from './_helpers/app.constants';
-import {AuthGuard, AuthPagesGuard} from './_guards';
+import {appConstants} from './_helpers';
+import {AuthGuard, PermissionsGuard} from './_guards';
 import {ProfileComponent} from './_views/profile/user-profile/profile.component';
 import {ContactsComponent} from './_views/profile/contacts/contacts.component';
 import {NgModule} from '@angular/core';
@@ -41,13 +41,16 @@ import {ChatsComponent} from "./_views/profile/chats/chats.component";
 import {UpdateUserDetailsComponent} from "./_views/profile/update-user-details/update-user-details.component";
 import {DesignerProfileComponent} from "./_views/main_views/designers/designer-profile/designer-profile.component";
 import {DiscountsComponent} from "./_views/admin_pages/discounts/discounts.component";
+import {ProfileMainPageComponent} from "./_views/profile/profile-main-page/profile-main-page.component";
+import {AdminMainPageComponent} from "./_views/admin_pages/admin-main-page/admin-main-page.component";
+import {ContestStagesComponent} from "./_views/admin_pages/contest-stages/contest-stages.component";
 
 const appRoutes: Routes = [
     {path: '', component: HomeComponent, runGuardsAndResolvers: 'always'},
     {
         path: 'sign-up',
         component: SignupComponent,
-        canActivate: [AuthPagesGuard],
+        canActivate: [PermissionsGuard],
         runGuardsAndResolvers: 'always'
     },
     {path: 'sign-in', component: SigninComponent, runGuardsAndResolvers: 'always'},
@@ -58,13 +61,13 @@ const appRoutes: Routes = [
     }, {
         path: 'reset-password',
         component: RecoveryComponent,
-        canActivate: [AuthPagesGuard],
+        canActivate: [PermissionsGuard],
         runGuardsAndResolvers: 'always'
     },
     {
         path: 'update-password/:userId/:token',
         component: UpdateComponent,
-        canActivate: [AuthPagesGuard],
+        canActivate: [PermissionsGuard],
         runGuardsAndResolvers: 'always'
     },
     {path: 'how-it-works', component: HowItWorksComponent, runGuardsAndResolvers: 'always'},
@@ -89,6 +92,12 @@ const appRoutes: Routes = [
         runGuardsAndResolvers: 'always'
     },
     {
+        path: 'profile/:id',
+        component: ProfileMainPageComponent,
+        canActivate: [AuthGuard],
+        runGuardsAndResolvers: 'always'
+    },
+    {
         path: 'profile/change-password/:id',
         component: UpdateCredentialsComponent,
         canActivate: [AuthGuard],
@@ -96,6 +105,12 @@ const appRoutes: Routes = [
     },
     {
         path: 'profile/contacts/:id',
+        component: ContactsComponent,
+        canActivate: [AuthGuard],
+        runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'profile/contacts/:id/:contactId',
         component: ContactsComponent,
         canActivate: [AuthGuard],
         runGuardsAndResolvers: 'always'
@@ -125,11 +140,23 @@ const appRoutes: Routes = [
         runGuardsAndResolvers: 'always'
     },
     {
+        path: 'admin', component: AdminMainPageComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+    },
+    {
         path: 'categories', component: CategoriesComponent,
         canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
     },
     {
         path: 'categories/:id', component: CategoriesComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'contest-stages', component: ContestStagesComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'contest-stage/:id', component: ContestStagesComponent,
         canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
     },
     {
@@ -142,7 +169,8 @@ const appRoutes: Routes = [
     },
     {
         path: 'permissions', component: PermissionsComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
+        data: {permission: appConstants.getAllPermissions}
     },
     {
         path: 'permissions/:id', component: PermissionsComponent,
@@ -239,7 +267,7 @@ const appRoutes: Routes = [
     {
         path: 'verify-email/:userId/:token',
         component: VerifyEmailComponent,
-        canActivate: [AuthPagesGuard],
+        canActivate: [PermissionsGuard],
         runGuardsAndResolvers: 'always'
     },
     {
@@ -253,7 +281,7 @@ const appRoutes: Routes = [
 
 @NgModule({
     imports: [RouterModule.forRoot(appRoutes, {
-        useHash: true,
+        useHash: false,
         onSameUrlNavigation: 'reload',
         relativeLinkResolution: 'legacy'
     })],

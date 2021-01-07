@@ -48,7 +48,7 @@ export class CommissionsComponent implements OnInit, OnDestroy {
         if (!AppCommons.isStringEmpty(this.commissionId)) {
             this.getCommission();
         }
-        this.loggedInUser = this.authenticationService.getCurrentUser().uuid;
+        this.loggedInUser = this.authenticationService.getCurrentUser().user.uuid;
     }
 
     ngOnDestroy() {

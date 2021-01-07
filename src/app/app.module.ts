@@ -4,7 +4,7 @@
  * This may be subject to prosecution according to the kenyan law
  */
 
-import {AuthGuard, AuthPagesGuard} from './_guards';
+import {AuthGuard, PermissionsGuard} from './_guards';
 import {AppRoutingModule} from './app-routing.module';
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
@@ -14,8 +14,9 @@ import {
     ApiKeysService,
     AuthenticationService,
     CategoryService,
-    CommissionsService,
-    CountriesService, DiscountsService,
+    CommissionsService, ContestStagesService,
+    CountriesService,
+    DiscountsService,
     PagerService,
     PaymentModesService,
     PermissionsService,
@@ -68,7 +69,10 @@ import {UpdateUserDetailsComponent} from './_views/profile/update-user-details/u
 import {DesignerProfileComponent} from './_views/main_views/designers/designer-profile/designer-profile.component';
 import {ClientProfilesComponent} from './_views/profile/client-profiles/client-profiles.component';
 import {ContactFormComponent} from './_views/main_views/contact-form/contact-form.component';
-import { DiscountsComponent } from './_views/admin_pages/discounts/discounts.component';
+import {DiscountsComponent} from './_views/admin_pages/discounts/discounts.component';
+import { AdminMainPageComponent } from './_views/admin_pages/admin-main-page/admin-main-page.component';
+import { ProfileMainPageComponent } from './_views/profile/profile-main-page/profile-main-page.component';
+import { ContestStagesComponent } from './_views/admin_pages/contest-stages/contest-stages.component';
 
 @NgModule({
     declarations: [
@@ -111,7 +115,10 @@ import { DiscountsComponent } from './_views/admin_pages/discounts/discounts.com
         DesignerProfileComponent,
         ClientProfilesComponent,
         ContactFormComponent,
-        DiscountsComponent
+        DiscountsComponent,
+        AdminMainPageComponent,
+        ProfileMainPageComponent,
+        ContestStagesComponent
     ],
     imports: [
         BrowserModule,
@@ -120,9 +127,9 @@ import { DiscountsComponent } from './_views/admin_pages/discounts/discounts.com
         AppRoutingModule
     ],
     providers: [AuthGuard, AuthenticationService, AlertService, UserService, PersonsService,
-        AuthPagesGuard, AlertService, CategoryService, CountriesService, ProfileService,
+        PermissionsGuard, AlertService, CategoryService, CountriesService, ProfileService,
         PagerService, PermissionsService, ApiKeysService, ProfileService, ContactService,
-        CommissionsService, PaymentModesService, SettingsService, DiscountsService,
+        CommissionsService, PaymentModesService, SettingsService, DiscountsService, ContestStagesService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: RequestInterceptor,

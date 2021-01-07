@@ -56,7 +56,7 @@ export class AddEditRolesComponent implements OnInit, OnDestroy, DoCheck {
             this.getRole();
             this.getRolePermissions();
         }
-        this.loggedInUser = this.authenticationService.getCurrentUser().uuid;
+        this.loggedInUser = this.authenticationService.getCurrentUser().user.uuid;
     }
 
     ngDoCheck() {
