@@ -19,3 +19,4 @@ export * from './payment-mode.model';
 export * from './settings.model';
 export * from './discounts.model';
 export * from './authenticated-user.model';
+export * from './contest-stage.model';

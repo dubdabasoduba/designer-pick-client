@@ -12,6 +12,27 @@ import {Injectable} from '@angular/core';
 
 @Injectable()
 export class AppCommons {
+    /**
+     * Checks the user permissions to make sure the users are authorised to see of perform the actions they wish to perfom
+     * @param requiredPermissions {@link string}: The permission required to perform the action
+     * @param assignedPermissions {@link Array}: The user assigned permissions
+     */
+    public static checkIfPermissionsExist(requiredPermissions: string, assignedPermissions: []) {
+        let hasPermissions = false
+        if (!AppCommons.isStringEmpty(requiredPermissions)) {
+            if (assignedPermissions !== null && assignedPermissions !== undefined) {
+                for (let i = 0; i < assignedPermissions.length; i++) {
+                    // @ts-ignore
+                    if (assignedPermissions[i].uuid === requiredPermissions) {
+                        hasPermissions = true;
+                        break;
+                    }
+                }
+            }
+        }
+        return hasPermissions;
+    }
+
     public static getPagingInfo(page, limit, paginate) {
         const paging = new PageModel();
         if ((this.isStringEmpty(page) || page <= 0) && (this.isStringEmpty(limit) || limit <= 0) &&

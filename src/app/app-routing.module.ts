@@ -14,7 +14,7 @@ import {CategoriesComponent} from './_views/admin_pages/categories/categories.co
 import {VerifyEmailComponent} from './_views/auth/verify-email/verify.component';
 import {ClientsDashboardComponent} from './_views/dashboards/clients-dashboard/clients-dashboard.component';
 import {DesignersDashboardComponent} from './_views/dashboards/designers-dashboard/designers-dashboard.component';
-import {appConstants} from './_helpers/app.constants';
+import {appConstants} from './_helpers';
 import {AuthGuard, PermissionsGuard} from './_guards';
 import {ProfileComponent} from './_views/profile/user-profile/profile.component';
 import {ContactsComponent} from './_views/profile/contacts/contacts.component';
@@ -43,6 +43,7 @@ import {DesignerProfileComponent} from "./_views/main_views/designers/designer-p
 import {DiscountsComponent} from "./_views/admin_pages/discounts/discounts.component";
 import {ProfileMainPageComponent} from "./_views/profile/profile-main-page/profile-main-page.component";
 import {AdminMainPageComponent} from "./_views/admin_pages/admin-main-page/admin-main-page.component";
+import {ContestStagesComponent} from "./_views/admin_pages/contest-stages/contest-stages.component";
 
 const appRoutes: Routes = [
     {path: '', component: HomeComponent, runGuardsAndResolvers: 'always'},
@@ -151,6 +152,14 @@ const appRoutes: Routes = [
         canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
     },
     {
+        path: 'contest-stages', component: ContestStagesComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'contest-stage/:id', component: ContestStagesComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+    },
+    {
         path: 'countries', component: CountriesComponent,
         canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
     },
@@ -161,7 +170,7 @@ const appRoutes: Routes = [
     {
         path: 'permissions', component: PermissionsComponent,
         canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
-        data: {permission: '4984ac5d-92d7-46bd-b255-aa6bf805690e-90'}
+        data: {permission: appConstants.getAllPermissions}
     },
     {
         path: 'permissions/:id', component: PermissionsComponent,

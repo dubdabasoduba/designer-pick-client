@@ -14,7 +14,7 @@ import {
     ApiKeysService,
     AuthenticationService,
     CategoryService,
-    CommissionsService,
+    CommissionsService, ContestStagesService,
     CountriesService,
     DiscountsService,
     PagerService,
@@ -72,6 +72,7 @@ import {ContactFormComponent} from './_views/main_views/contact-form/contact-for
 import {DiscountsComponent} from './_views/admin_pages/discounts/discounts.component';
 import { AdminMainPageComponent } from './_views/admin_pages/admin-main-page/admin-main-page.component';
 import { ProfileMainPageComponent } from './_views/profile/profile-main-page/profile-main-page.component';
+import { ContestStagesComponent } from './_views/admin_pages/contest-stages/contest-stages.component';
 
 @NgModule({
     declarations: [
@@ -116,7 +117,8 @@ import { ProfileMainPageComponent } from './_views/profile/profile-main-page/pro
         ContactFormComponent,
         DiscountsComponent,
         AdminMainPageComponent,
-        ProfileMainPageComponent
+        ProfileMainPageComponent,
+        ContestStagesComponent
     ],
     imports: [
         BrowserModule,
@@ -127,7 +129,7 @@ import { ProfileMainPageComponent } from './_views/profile/profile-main-page/pro
     providers: [AuthGuard, AuthenticationService, AlertService, UserService, PersonsService,
         PermissionsGuard, AlertService, CategoryService, CountriesService, ProfileService,
         PagerService, PermissionsService, ApiKeysService, ProfileService, ContactService,
-        CommissionsService, PaymentModesService, SettingsService, DiscountsService,
+        CommissionsService, PaymentModesService, SettingsService, DiscountsService, ContestStagesService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: RequestInterceptor,

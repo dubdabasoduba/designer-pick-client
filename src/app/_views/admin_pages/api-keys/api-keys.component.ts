@@ -75,7 +75,7 @@ export class ApiKeysComponent implements OnInit {
     }
 
     removeApiKey(apiKeyId: string) {
-        if (confirm("Are you sure you want to delete this API Key?")) {
+        if (confirm('Delete an API Key will result in the clients using it being blocked from accessing the system servers. Are you sure you want to delete this API Key?')) {
             this.loading = true;
             this.apiKeysService.removeApiKey(apiKeyId).subscribe(
                 data => {
