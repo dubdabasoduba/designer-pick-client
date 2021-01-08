@@ -4,7 +4,7 @@
  * This may be subject to prosecution according to the kenyan law
  */
 import {RouterModule, Routes} from '@angular/router';
-import {ContestsComponent} from './_views/main_views/contests/contests.component';
+import {ContestsComponent} from './_views/main_views/contests/view-contests/contests.component';
 import {DesignersComponent} from './_views/main_views/designers/designers/designers.component';
 import {SignupComponent} from './_views/auth/Signup/signup.component';
 import {SigninComponent} from './_views/auth/Signin/signin.component';
@@ -44,6 +44,7 @@ import {DiscountsComponent} from "./_views/admin_pages/discounts/discounts.compo
 import {ProfileMainPageComponent} from "./_views/profile/profile-main-page/profile-main-page.component";
 import {AdminMainPageComponent} from "./_views/admin_pages/admin-main-page/admin-main-page.component";
 import {ContestStagesComponent} from "./_views/admin_pages/contest-stages/contest-stages.component";
+import {LogoUsesComponent} from "./_views/admin_pages/logo-uses/logo-uses.component";
 
 const appRoutes: Routes = [
     {path: '', component: HomeComponent, runGuardsAndResolvers: 'always'},
@@ -157,6 +158,14 @@ const appRoutes: Routes = [
     },
     {
         path: 'contest-stage/:id', component: ContestStagesComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'logo-uses', component: LogoUsesComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'logo-uses/:id', component: LogoUsesComponent,
         canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
     },
     {
