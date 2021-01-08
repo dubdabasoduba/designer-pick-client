@@ -14,9 +14,12 @@ import {
     ApiKeysService,
     AuthenticationService,
     CategoryService,
-    CommissionsService, ContestStagesService,
+    CommissionsService,
+    ContestsService,
+    ContestStagesService,
     CountriesService,
     DiscountsService,
+    LogoUsesService,
     PagerService,
     PaymentModesService,
     PermissionsService,
@@ -35,7 +38,7 @@ import {CategoriesComponent} from './_views/admin_pages/categories/categories.co
 import {VerifyEmailComponent} from './_views/auth/verify-email/verify.component';
 import {AppComponent} from './app.component';
 import {HomeComponent} from './_views/main_views/home/home.component';
-import {ContestsComponent} from './_views/main_views/contests/contests.component';
+import {ContestsComponent} from './_views/main_views/contests/view-contests/contests.component';
 import {AlertComponent} from './_views/alert/alert.component';
 import {ClientsDashboardComponent} from './_views/dashboards/clients-dashboard/clients-dashboard.component';
 import {DesignersDashboardComponent} from './_views/dashboards/designers-dashboard/designers-dashboard.component';
@@ -70,9 +73,11 @@ import {DesignerProfileComponent} from './_views/main_views/designers/designer-p
 import {ClientProfilesComponent} from './_views/profile/client-profiles/client-profiles.component';
 import {ContactFormComponent} from './_views/main_views/contact-form/contact-form.component';
 import {DiscountsComponent} from './_views/admin_pages/discounts/discounts.component';
-import { AdminMainPageComponent } from './_views/admin_pages/admin-main-page/admin-main-page.component';
-import { ProfileMainPageComponent } from './_views/profile/profile-main-page/profile-main-page.component';
-import { ContestStagesComponent } from './_views/admin_pages/contest-stages/contest-stages.component';
+import {AdminMainPageComponent} from './_views/admin_pages/admin-main-page/admin-main-page.component';
+import {ProfileMainPageComponent} from './_views/profile/profile-main-page/profile-main-page.component';
+import {ContestStagesComponent} from './_views/admin_pages/contest-stages/contest-stages.component';
+import {AddContestsComponent} from './_views/main_views/contests/add-contests/add-contests.component';
+import {LogoUsesComponent} from './_views/admin_pages/logo-uses/logo-uses.component';
 
 @NgModule({
     declarations: [
@@ -118,7 +123,9 @@ import { ContestStagesComponent } from './_views/admin_pages/contest-stages/cont
         DiscountsComponent,
         AdminMainPageComponent,
         ProfileMainPageComponent,
-        ContestStagesComponent
+        ContestStagesComponent,
+        AddContestsComponent,
+        LogoUsesComponent
     ],
     imports: [
         BrowserModule,
@@ -130,6 +137,7 @@ import { ContestStagesComponent } from './_views/admin_pages/contest-stages/cont
         PermissionsGuard, AlertService, CategoryService, CountriesService, ProfileService,
         PagerService, PermissionsService, ApiKeysService, ProfileService, ContactService,
         CommissionsService, PaymentModesService, SettingsService, DiscountsService, ContestStagesService,
+        ContestsService, LogoUsesService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: RequestInterceptor,
