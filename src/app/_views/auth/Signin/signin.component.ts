@@ -7,7 +7,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AlertService, AuthenticationService, UserService} from '../../../_services';
-import {appConstants} from '../../../_helpers/app.constants';
+import {appConstants} from '../../../_helpers';
 
 @Component({
     selector: 'app-sign-in',

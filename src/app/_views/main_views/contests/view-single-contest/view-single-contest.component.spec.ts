@@ -1,20 +1,20 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {ContestStagesComponent} from './contest-stages.component';
+import {ViewSingleContestComponent} from './view-single-contest.component';
 
-describe('ContestStagesComponent', () => {
-    let component: ContestStagesComponent;
-    let fixture: ComponentFixture<ContestStagesComponent>;
+describe('ViewSingleContestComponent', () => {
+    let component: ViewSingleContestComponent;
+    let fixture: ComponentFixture<ViewSingleContestComponent>;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [ContestStagesComponent]
+            declarations: [ViewSingleContestComponent]
         })
             .compileComponents();
     });
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(ContestStagesComponent);
+        fixture = TestBed.createComponent(ViewSingleContestComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

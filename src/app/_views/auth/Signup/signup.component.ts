@@ -7,8 +7,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AlertService, UserService} from '../../../_services';
-import {appConstants} from '../../../_helpers/app.constants';
-import {AppCommons} from '../../../_helpers/app.commons';
+import {AppCommons, appConstants} from '../../../_helpers';
 
 @Component({
     selector: 'app-sign-up',

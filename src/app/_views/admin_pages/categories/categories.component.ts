@@ -7,9 +7,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AlertService, AuthenticationService, CategoryService} from '../../../_services';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {AppCommons} from '../../../_helpers/app.commons';
+import {AppCommons, appConstants} from '../../../_helpers';
 import {CategoryModel} from '../../../_models';
-import {appConstants} from "../../../_helpers/app.constants";
 
 @Component({
     selector: 'app-industries',

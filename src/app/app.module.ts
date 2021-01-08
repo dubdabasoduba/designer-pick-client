@@ -78,6 +78,7 @@ import {ProfileMainPageComponent} from './_views/profile/profile-main-page/profi
 import {ContestStagesComponent} from './_views/admin_pages/contest-stages/contest-stages.component';
 import {AddContestsComponent} from './_views/main_views/contests/add-contests/add-contests.component';
 import {LogoUsesComponent} from './_views/admin_pages/logo-uses/logo-uses.component';
+import {ViewSingleContestComponent} from './_views/main_views/contests/view-single-contest/view-single-contest.component';
 
 @NgModule({
     declarations: [
@@ -125,7 +126,8 @@ import {LogoUsesComponent} from './_views/admin_pages/logo-uses/logo-uses.compon
         ProfileMainPageComponent,
         ContestStagesComponent,
         AddContestsComponent,
-        LogoUsesComponent
+        LogoUsesComponent,
+        ViewSingleContestComponent
     ],
     imports: [
         BrowserModule,

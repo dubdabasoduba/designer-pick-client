@@ -7,7 +7,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AlertService, AuthenticationService} from '../../../_services';
 import {SearchService} from '../../../_services/search/search.service';
-import {AppCommons} from '../../../_helpers/app.commons';
+import {AppCommons} from '../../../_helpers';
 import {ResponseModel} from '../../../_models/response.model';
 
 @Component({
