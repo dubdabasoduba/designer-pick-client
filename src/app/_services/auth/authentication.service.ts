@@ -6,11 +6,10 @@
 
 import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
-import {appConstants} from '../../_helpers/app.constants';
+import {AppCommons, appConstants} from '../../_helpers';
 import 'rxjs/add/operator/toPromise';
 import {HttpClient} from '@angular/common/http';
 import {tap} from 'rxjs/operators';
-import {AppCommons} from '../../_helpers/app.commons';
 import {AuthenticatedUserModel, UserModel} from '../../_models';
 
 @Injectable({

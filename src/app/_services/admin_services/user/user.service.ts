@@ -6,7 +6,7 @@
 import {Injectable} from '@angular/core';
 
 import {UserModel} from '../../../_models';
-import {appConstants} from '../../../_helpers/app.constants';
+import {appConstants} from '../../../_helpers';
 import {HttpClient} from '@angular/common/http';
 
 @Injectable()
