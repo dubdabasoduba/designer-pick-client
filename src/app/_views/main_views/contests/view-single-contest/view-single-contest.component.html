@@ -1,1 +1,187 @@
-<p>view-single-contest works!</p>
+<!--
+  ~ Copyright (c) 2019. The content in this file is Protected by the copyright laws of kenya and owned by Re.Kast Limited.
+  ~ Reproducing it in any way or using it without permission from Re.Kast Limited will be a violation of kenyan copyrights law.
+  ~ This may be subject to prosecution according to the kenyan law
+  -->
+<app-navigation></app-navigation>
+<div class="content content-fixed bd-b">
+    <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
+        <div class="d-sm-flex align-items-center justify-content-between">
+            <div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-style1 mg-b-10">
+                        <li class="breadcrumb-item"><a routerLink="/contests">Contests</a></li>
+                        <li aria-current="page" class="breadcrumb-item active">{{contest.business_name}} Logo Design
+                            Contest
+                        </li>
+                    </ol>
+                </nav>
+                <h4 class="mg-b-0">{{contest.business_name}} Logo Design Contest</h4>
+            </div>
+            <div class="mg-t-20 mg-sm-t-0">
+                <a class="btn btn-primary btn-block text-white" routerLink="/contests-add">Create a Contest Like this</a>
+            </div>
+        </div>
+    </div><!-- container -->
+</div><!-- content -->
+<div class="content">
+    <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
+        <div class="media d-block d-lg-flex">
+            <div class="profile-sidebar pd-lg-r-25">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 align-content-center">
+                        <div class="avatar-contest">
+                            <img alt="{{contest.business_name}}"
+                                 src="../../../../../assets/img/contest-image.png">
+                        </div>
+                    </div><!--  col -->
+                    <div class="col-sm-12 col-md-12 col-lg-12 mg-t-20 mg-sm-t-0 mg-lg-t-25">
+                        <h5 class="mg-b-2 tx-spacing&#45;&#45;1">{{contest.business_name}}&nbsp;Logo
+                            Design Contest</h5>
+                        <hr/>
+                        <div class="d-flex">
+                            <div class="profile-skillset flex-fill">
+                                <h4>&#36;{{contest.amount}}</h4>
+                                <label>Cash Prize</label>
+                            </div>
+                            <div class="profile-skillset flex-fill">
+                                <h4>254</h4>
+                                <label>Contest Entries</label>
+                            </div>
+                        </div>
+                    </div><!--  col -->
+                    <div class="col-sm-12 col-md-12 col-lg-12 mg-t-20 mg-sm-t-0 mg-lg-t-25">
+                        <hr/>
+                        <div class="d-flex">
+                            <div class="profile-skillset flex-fill">
+                                <h4>{{contest.contest_period}}</h4>
+                                <label>Contest Period</label>
+                            </div>
+                        </div>
+                    </div><!--  col -->
+                    <div class="col-sm-12 col-md-12 col-lg-12 mg-t-20 mg-sm-t-0 mg-lg-t-25">
+                        <hr/>
+                        <div class="d-flex">
+                            <div class="profile-skillset flex-fill">
+                                <a class="btn btn-info btn-block text-white">Submit Entries</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-5 col-lg mg-t-40">
+                        <label class="tx-sans tx-10 tx-semibold tx-uppercase tx-color-01 tx-spacing-1 mg-b-15">Explore</label>
+                        <nav class="nav nav-classic tx-13">
+                            <a class="nav-link" routerLink="/designers"><i data-feather="users"></i><span>Designers</span></a>
+                            <a class="nav-link" routerLink="/contests"><i
+                                    data-feather="calendar"></i> <span>Contests</span></a>
+                        </nav>
+                    </div><!--  col -->
+                    <div class="col-sm-6 col-md-5 col-lg mg-t-40">
+                    </div><!--  col -->
+                </div><!--  row -->
+            </div><!-- profile-sidebar -->
+            <div class="media-body mg-t-40 mg-lg-t-0 pd-lg-x-10">
+                <div class="card mg-b-20 mg-lg-b-25">
+                    <div class="card-header pd-y-15 pd-x-20 d-flex align-items-center justify-content-between">
+                        <h6 class="tx-uppercase tx-semibold mg-b-0">Business Information</h6>
+                    </div><!-- card-header -->
+                    <div class="card-body pd-25">
+                        <div class="media d-block d-sm-flex">
+                            <div class="media-body pd-t-25 pd-sm-t-0 pd-sm-l-25">
+                                <h5 class="mg-b-5"><b>Name on Logo: </b>{{contest.business_name}}
+                                </h5>
+                                <p class="mg-b-3 tx-color-02"><span
+                                        class="tx-medium tx-color-01"><b>Our slogan: </b></span>
+                                    {{contest.slogan}}</p>
+                                <br/>
+                                <p class="mg-b-3 tx-color-02"><span
+                                        class="tx-medium tx-color-01"><b>What we do: </b></span>
+                                    {{contest.business_description}}</p>
+                                <br/>
+                                <span class="d-block tx-13 tx-color-02"><b>Contest Duration: </b>{{contest.start_date}}
+                                    -- {{contest.end_date}}</span>
+                                <span class="d-block tx-13 tx-color-02"><b>Operational Industries: </b>{{contest.category_name}}</span>
+                            </div>
+                        </div><!-- media -->
+                    </div>
+                </div><!-- card -->
+                <div class="card mg-b-20 mg-lg-b-25">
+                    <div class="card-header pd-y-15 pd-x-20 d-flex align-items-center justify-content-between">
+                        <h6 class="tx-uppercase tx-semibold mg-b-0">Target Audience & Things to
+                            communicate</h6>
+                    </div><!-- card-header -->
+                    <div class="card-body pd-25">
+                        <div class="media d-block d-sm-flex">
+                            <div class="media-body pd-t-25 pd-sm-t-0 pd-sm-l-25">
+                                <h5 class="mg-b-5">Target Audience</h5>
+                                <ul class="pd-l-10 mg-0 mg-t-20 tx-13">
+                                    <li>{{contest.target_audience}}</li>
+                                </ul>
+                                <br/>
+                                <br/>
+                                <h5 class="mg-b-5">Things to communicate</h5>
+                                <ul class="pd-l-10 mg-0 mg-t-20 tx-13">
+                                    <li>{{contest.main_communication_points}}</li>
+                                </ul>
+                            </div>
+                        </div><!-- media -->
+                    </div>
+                </div><!-- card -->
+                <div class="card mg-b-20 mg-lg-b-25">
+                    <div class="card-header pd-y-15 pd-x-20 d-flex align-items-center justify-content-between">
+                        <h6 class="tx-uppercase tx-semibold mg-b-0">Style & Concept</h6>
+                    </div><!-- card-header -->
+                    <div class="card-body pd-25">
+                        <div class="media d-block d-sm-flex">
+                            <div class="media-body pd-t-25 pd-sm-t-0 pd-sm-l-25">
+                                <p class="mg-b-3 tx-color-02">{{contest.style}}</p>
+                            </div>
+                        </div><!-- media -->
+                    </div>
+                </div><!-- card -->
+                <div class="card mg-b-20 mg-lg-b-25">
+                    <div class="card-header pd-y-15 pd-x-20 d-flex align-items-center justify-content-between">
+                        <h6 class="tx-uppercase tx-semibold mg-b-0">Logo Usage</h6>
+                    </div><!-- card-header -->
+                    <div class="card-body pd-25">
+                        <div class="media d-block d-sm-flex">
+                            <div class="media-body pd-t-25 pd-sm-t-0 pd-sm-l-25">
+                                <p class="mg-b-3 tx-color-02">This logo will be used in the following areas</p>
+                                <ul class="pd-l-10 mg-0 mg-t-20 tx-13">
+                                    <li>{{contest.logo_uses}}</li>
+                                </ul>
+                            </div>
+                        </div><!-- media -->
+                    </div>
+                </div><!-- card -->
+                <!--<div class="card mg-b-20 mg-lg-b-25">
+                    <div class="card-header pd-y-15 pd-x-20 d-flex align-items-center justify-content-between">
+                        <h6 class="tx-uppercase tx-semibold mg-b-0">Submitted Entries</h6>
+                    </div>&lt;!&ndash; card-header &ndash;&gt;
+                    <div class="card-body pd-25">
+                        <div class="media d-block d-sm-flex">
+                            <div class="wd-80 ht-80 bg-ui-04 rounded d-flex align-items-center justify-content-center">
+                                <i class="tx-white-7 wd-40 ht-40" data-feather="briefcase"></i>
+                            </div>
+                            <div class="media-body pd-t-25 pd-sm-t-0 pd-sm-l-25">
+                                <h5 class="mg-b-5">Area Sales Manager</h5>
+                                <p class="mg-b-3 tx-color-02"><span class="tx-medium tx-color-01">ThemePixels, Inc.</span>,
+                                    Bay Area, San Francisco, CA</p>
+                                <span class="d-block tx-13 tx-color-03">December 2016 - Present</span>
+
+                                <ul class="pd-l-10 mg-0 mg-t-20 tx-13">
+                                    <li>Reaching the targets and goals set for my area.</li>
+                                    <li>Servicing the needs of my existing customers.</li>
+                                    <li>Maintaining the relationships with existing customers for
+                                        repeat business.
+                                    </li>
+                                    <li>Reporting to top managers.</li>
+                                    <li>Keeping up to date with the products.</li>
+                                </ul>
+                            </div>
+                        </div>&lt;!&ndash; media &ndash;&gt;
+                    </div>
+                </div>--><!-- card -->
+            </div><!-- media-body -->
+        </div><!-- media -->
+    </div><!-- container -->
+</div><!-- content -->

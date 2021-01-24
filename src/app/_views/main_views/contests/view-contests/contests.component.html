@@ -10,7 +10,7 @@
             <div>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-style1 mg-b-10">
-                        <li class="breadcrumb-item"><a href="#">Contests</a></li>
+                        <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
                         <li aria-current="page" class="breadcrumb-item active">All contests</li>
                     </ol>
                 </nav>
@@ -29,23 +29,33 @@
         <div class="row">
             <div class="col-lg-10 col-xl-10">
                 <div class="row row-sm mg-b-25">
-                    <div class="col-md-3 mg-t-20">
+                    <div *ngFor="let contest of contests; let i = index" class="col-md-3 mg-t-20">
                         <div class="card card-event">
-                            <img alt="" class="card-img-top"
+                            <img *ngIf="contest.is_private" alt="" class="card-img-top"
+                                 src="../../../../../assets/img/private-contest.png">
+                            <img *ngIf="!contest.is_private" alt="" class="card-img-top"
                                  src="../../../../../assets/img/img27.jpg">
-                            <div class="card-body tx-13">
-                                <h5><a href="#">Moto Rally Championship</a></h5>
-                                <p class="mg-b-0">Mar 22 - Mar 24, World Trade Center Metro </p>
-                                <span class="tx-12 tx-color-03">Manila, Philippines</span>
+                            <div class="card-body tx-13" *ngIf="!contest.is_highlighted">
+                                <h5 *ngIf="!contest.is_private"><a
+                                        routerLink="/contests/{{contest.uuid}}">{{contest.business_name}}
+                                    Logo Design Contest</a><i class="bi bi-award-fill"></i></h5>
+                                <h5 *ngIf="contest.is_private"><a (click)="redirectToSign(contest.uuid)">Private
+                                    Contest Logo Design Contest</a><i class="bi bi-award-fill"></i></h5>
+                                <p class="mg-b-0">{{contest.start_date}}&nbsp;--&nbsp;{{contest.end_date}}</p>
+                                <span class="tx-12 tx-color-03">6, Entries</span>
                             </div><!-- card-body -->
-                            <div class="card-footer tx-13">
-                                <span class="tx-color-03">6 Entries</span>
-                                <button class="btn btn-xs btn-secondary">Interested</button>
-                            </div><!-- card-footer -->
+                            <div class="card-body tx-13 highlight-color" *ngIf="contest.is_highlighted">
+                                <h5 *ngIf="!contest.is_private"><a
+                                        routerLink="/contests/{{contest.uuid}}">{{contest.business_name}}
+                                    Logo Design Contest</a></h5>
+                                <h5 *ngIf="contest.is_private"><a (click)="redirectToSign(contest.uuid)">Private
+                                    Contest Logo Design Contest</a></h5>
+                                <p class="mg-b-0">{{contest.start_date}}&nbsp;--&nbsp;{{contest.end_date}}</p>
+                                <span class="tx-12 tx-color-03">6, Entries</span>
+                            </div><!-- card-body -->
                         </div><!-- card -->
                     </div><!-- col -->
                 </div><!-- row -->
-
             </div><!-- col -->
             <div class="col-sm-7 col-md-5 col-lg-2 col-xl-2 mg-t-40 mg-lg-t-0">
                 <div class="d-flex align-items-center justify-content-between mg-b-20">

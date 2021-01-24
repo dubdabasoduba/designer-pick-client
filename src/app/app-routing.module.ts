@@ -45,6 +45,8 @@ import {ProfileMainPageComponent} from "./_views/profile/profile-main-page/profi
 import {AdminMainPageComponent} from "./_views/admin_pages/admin-main-page/admin-main-page.component";
 import {ContestStagesComponent} from "./_views/admin_pages/contest-stages/contest-stages.component";
 import {LogoUsesComponent} from "./_views/admin_pages/logo-uses/logo-uses.component";
+import {ViewSingleContestComponent} from "./_views/main_views/contests/view-single-contest/view-single-contest.component";
+import {AddContestsComponent} from "./_views/main_views/contests/add-contests/add-contests.component";
 
 const appRoutes: Routes = [
     {path: '', component: HomeComponent, runGuardsAndResolvers: 'always'},
@@ -73,9 +75,14 @@ const appRoutes: Routes = [
     },
     {path: 'how-it-works', component: HowItWorksComponent, runGuardsAndResolvers: 'always'},
     {path: 'contests', component: ContestsComponent, runGuardsAndResolvers: 'always'},
+    {path: 'contests/:id', component: ViewSingleContestComponent, runGuardsAndResolvers: 'always'},
+    {
+        path: 'contests-add', component: AddContestsComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+    },
     {path: 'designers', component: DesignersComponent, runGuardsAndResolvers: 'always'},
     {
-        path: 'designer/:id',
+        path: 'designers/:id',
         component: DesignerProfileComponent,
         runGuardsAndResolvers: 'always'
     },
