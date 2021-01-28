@@ -5,7 +5,7 @@
  */
 
 import {Component, OnInit} from '@angular/core';
-import {appConstants} from '../../../_helpers/app.constants';
+import {AppCommons, appConstants} from '../../../_helpers';
 import {ActivatedRoute, Router} from '@angular/router';
 import {
     AlertService,
@@ -13,7 +13,6 @@ import {
     PersonsService,
     ProfileService
 } from '../../../_services';
-import {AppCommons} from '../../../_helpers/app.commons';
 
 @Component({
     selector: 'app-profile',

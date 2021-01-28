@@ -48,8 +48,7 @@ export class DesignersComponent implements OnInit {
     private formatPermissions(data: any) {
         for (let i = 0; i < data.length; i++) {
             let person = new PersonModel();
-            let initials = data[i].name.match(/\b\w/g) || [];
-            initials = ((initials.shift() || '') + (initials.pop() || '')).toUpperCase();
+            let initials = DesignersComponent.getPersonInitials(data, i);
 
             person.name = data[i].name;
             person.username = data[i].username;
@@ -57,5 +56,10 @@ export class DesignersComponent implements OnInit {
             person.initials = initials;
             this.people.push(person);
         }
+    }
+
+    private static getPersonInitials(data: any, i: number) {
+        let initials = data[i].name.match(/\b\w/g) || [];
+        return ((initials.shift() || '') + (initials.pop() || '')).toUpperCase();
     }
 }

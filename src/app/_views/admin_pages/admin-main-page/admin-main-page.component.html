@@ -20,16 +20,16 @@
         <section class="services" id="services">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
-                         *ngIf="checkPermissions(appConstants.getAllUsers)">
+                    <div *ngIf="checkPermissions(appConstants.getAllUsers)"
+                         class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                         <div class="icon-box" data-aos="fade-up">
                             <h4 class="title"><a routerLink="/users">User Management</a></h4>
                             <p class="description">Allows the current logged in user to manage
                                 other users</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
-                         *ngIf="checkPermissions(appConstants.getAllPaymentModes)">
+                    <div *ngIf="checkPermissions(appConstants.getAllPaymentModes)"
+                         class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
                             <h4 class="title"><a routerLink="/payment/payment-modes">Payment
                                 Modes Management</a></h4>
@@ -37,8 +37,8 @@
                                 payment modes</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
-                         *ngIf="checkPermissions(appConstants.getAllCommissions)">
+                    <div *ngIf="checkPermissions(appConstants.getAllCommissions)"
+                         class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
                             <h4 class="title"><a routerLink="/payment/commissions">Commissions
                                 Management</a></h4>
@@ -46,8 +46,8 @@
                                 commissions</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
-                         *ngIf="checkPermissions(appConstants.getAllDiscounts)">
+                    <div *ngIf="checkPermissions(appConstants.getAllDiscounts)"
+                         class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
                             <h4 class="title"><a routerLink="/payment/discounts">Discounts
                                 Management</a></h4>
@@ -58,8 +58,8 @@
                 </div>
                 <br/>
                 <div class="row">
-                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
-                         *ngIf="checkPermissions(appConstants.getAllCategories)">
+                    <div *ngIf="checkPermissions(appConstants.getAllCategories)"
+                         class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                         <div class="icon-box" data-aos="fade-up">
                             <h4 class="title"><a routerLink="/categories">Categories
                                 Management</a></h4>
@@ -67,8 +67,8 @@
                                 categories</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
-                         *ngIf="checkPermissions(appConstants.getAllCountries)">
+                    <div *ngIf="checkPermissions(appConstants.getAllCountries)"
+                         class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
                             <h4 class="title"><a routerLink="/countries">Countries
                                 Management</a></h4>
@@ -76,8 +76,8 @@
                                 countries</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
-                         *ngIf="checkPermissions(appConstants.getAllApiKeys)">
+                    <div *ngIf="checkPermissions(appConstants.getAllApiKeys)"
+                         class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
                             <h4 class="title"><a routerLink="/api-keys">API Keys Management</a>
                             </h4>
@@ -85,8 +85,8 @@
                                 system API keys</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
-                         *ngIf="checkPermissions(appConstants.getAllRoles)">
+                    <div *ngIf="checkPermissions(appConstants.getAllRoles)"
+                         class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
                             <h4 class="title"><a routerLink="/roles">Roles Management</a></h4>
                             <p class="description">Allows the current logged in user to manage
@@ -96,8 +96,8 @@
                 </div>
                 <br/>
                 <div class="row">
-                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
-                         *ngIf="checkPermissions(appConstants.getAllContestStages)">
+                    <div *ngIf="checkPermissions(appConstants.getAllContestStages)"
+                         class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                         <div class="icon-box" data-aos="fade-up">
                             <h4 class="title"><a routerLink="/contest-stages">Contest Stage
                                 Management</a></h4>
@@ -105,8 +105,8 @@
                                 contest stages</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
-                         *ngIf="checkPermissions(appConstants.getAllLogoUses)">
+                    <div *ngIf="checkPermissions(appConstants.getAllLogoUses)"
+                         class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                         <div class="icon-box" data-aos="fade-up">
                             <h4 class="title"><a routerLink="/logo-uses">Logo Uses
                                 Management</a></h4>
@@ -114,8 +114,8 @@
                                 uses</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
-                         *ngIf="checkPermissions(appConstants.getAllPermissions)">
+                    <div *ngIf="checkPermissions(appConstants.getAllPermissions)"
+                         class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                         <div class="icon-box" data-aos="fade-up">
                             <h4 class="title"><a routerLink="/permissions">Permissions
                                 Management</a></h4>
@@ -123,8 +123,8 @@
                                 system permissions</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
-                         *ngIf="checkPermissions(appConstants.getAllSettings)">
+                    <div *ngIf="checkPermissions(appConstants.getAllSettings)"
+                         class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
                             <h4 class="title"><a routerLink="/settings">System Settings</a></h4>
                             <p class="description">Allows the current logged in user to manage

@@ -1,15 +1,15 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthenticatedUserModel, ContestModel} from "../../../../_models";
-import {AlertService, AuthenticationService, ContestsService} from "../../../../_services";
 import {AppCommons, appConstants} from "../../../../_helpers";
+import {AlertService, AuthenticationService, ContestsService} from "../../../../_services";
 import {ActivatedRoute, Router} from "@angular/router";
+import {AuthenticatedUserModel, ContestModel} from "../../../../_models";
 
 @Component({
-    selector: 'app-add-contests',
-    templateUrl: './add-contests.component.html',
-    styleUrls: ['./add-contests.component.css']
+    selector: 'app-view-single-contest',
+    templateUrl: './view-single-contest.component.html',
+    styleUrls: ['./view-single-contest.component.css']
 })
-export class AddContestsComponent implements OnInit {
+export class ViewSingleContestComponent implements OnInit {
     loading = false;
     public contest: ContestModel;
     public contestUuid: string;
@@ -59,5 +59,4 @@ export class AddContestsComponent implements OnInit {
             this.router.navigateByUrl('/contests');
         }
     }
-
 }

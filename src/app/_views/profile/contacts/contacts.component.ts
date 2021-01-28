@@ -12,8 +12,7 @@ import {
     PersonsService,
     ProfileService
 } from '../../../_services';
-import {appConstants} from '../../../_helpers/app.constants';
-import {AppCommons} from '../../../_helpers/app.commons';
+import {AppCommons, appConstants} from '../../../_helpers';
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {ContactModel, PersonModel} from "../../../_models";
 

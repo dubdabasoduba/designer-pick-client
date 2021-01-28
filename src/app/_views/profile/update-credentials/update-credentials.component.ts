@@ -1,12 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {appConstants} from "../../../_helpers/app.constants";
+import {AppCommons, appConstants} from "../../../_helpers";
 import {
     AlertService,
     AuthenticationService,
     PersonsService,
     ProfileService
 } from "../../../_services";
-import {AppCommons} from "../../../_helpers/app.commons";
 import {ActivatedRoute, Router} from "@angular/router";
 import {PersonModel, UserModel} from "../../../_models";
 

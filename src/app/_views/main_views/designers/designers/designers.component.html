@@ -10,7 +10,7 @@
             <div>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-style1 mg-b-10">
-                        <li class="breadcrumb-item"><a href="#">Designers</a></li>
+                        <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
                         <li aria-current="page" class="breadcrumb-item active">Discover Designers
                         </li>
                     </ol>
@@ -42,7 +42,7 @@
                                     <h5>{{person.name}}</h5>
                                     <p>@{{person.username}}</p>
                                     <a class="btn btn-block btn-dark"
-                                       routerLink="/designer/{{person.uuid}}">View
+                                       routerLink="/designers/{{person.uuid}}">View
                                         designer</a>
                                 </div>
                             </div>

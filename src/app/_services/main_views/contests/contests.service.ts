@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {appConstants} from "../../../_helpers";
 import {Observable} from "rxjs";
-import {PersonModel} from "../../../_models";
+import {ContestModel, PersonModel} from "../../../_models";
 
 @Injectable({
     providedIn: 'root'
@@ -12,8 +12,9 @@ export class ContestsService {
     constructor(private http: HttpClient) {
     }
 
-    getContests(accountType: string) {
-        return this.http.get(appConstants.baseApiV1Url + '/designers' + "?account_type=" + accountType);
+
+    getContests() {
+        return this.http.get(appConstants.baseApiV1Url + '/designers');
     }
 
     getContestById(personId: string): Observable<PersonModel> {
@@ -21,12 +22,12 @@ export class ContestsService {
         return this.http.get(appConstants.baseApiV1Url + '/designer/' + personId);
     }
 
-    getDisplayContests(accountType: string) {
-        return this.http.get(appConstants.baseApiV1Url + '/designers' + "?account_type=" + accountType);
+    getDisplayContests() {
+        return this.http.get(appConstants.baseApiV1Url + '/display-contests');
     }
 
-    getDisplayContestById(personId: string): Observable<PersonModel> {
+    getDisplayContestById(contestId: string): Observable<ContestModel> {
         // @ts-ignore
-        return this.http.get(appConstants.baseApiV1Url + '/designer/' + personId);
+        return this.http.get(appConstants.baseApiV1Url + '/display-contest/' + contestId);
     }
 }

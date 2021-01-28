@@ -244,5 +244,7 @@
         $('#api_keys_table').DataTable();
     });
 
+    $('[data-toggle="tooltip"]').tooltip();
+
 
 })(jQuery);

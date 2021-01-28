@@ -7,8 +7,7 @@ import {
     PersonsService
 } from "../../../../_services";
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
-import {appConstants} from "../../../../_helpers/app.constants";
-import {AppCommons} from "../../../../_helpers/app.commons";
+import {AppCommons, appConstants} from "../../../../_helpers";
 
 @Component({
     selector: 'app-contacts',

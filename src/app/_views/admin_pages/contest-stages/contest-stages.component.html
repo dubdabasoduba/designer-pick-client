@@ -19,7 +19,8 @@
             </div>
             <div *ngIf="contestStageId != null && contestStageId != undefined"
                  class="search-form mg-t-20 mg-sm-t-0">
-                <a class="btn btn-primary" routerLink="/contest-stages" type="button">Add Contest stages</a>
+                <a class="btn btn-primary" routerLink="/contest-stages" type="button">Add Contest
+                    stages</a>
             </div>
         </div>
     </div><!-- container -->
@@ -34,7 +35,8 @@
                     <form #f="ngForm" (ngSubmit)="f.form.valid && addEditContestStage()" novalidate>
                         <div class="form-row">
                             <div class="form-group col-lg-5">
-                                <label>Contest stages name:&nbsp;<span class="tx-danger">*</span></label>
+                                <label>Contest stages name:&nbsp;<span
+                                        class="tx-danger">*</span></label>
                                 <input [(ngModel)]="model.name" class="form-control"
                                        data-error="Subject field is required"
                                        id="name" name="name"
