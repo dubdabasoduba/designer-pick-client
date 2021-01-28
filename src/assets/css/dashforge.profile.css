@@ -25,6 +25,16 @@
 }
 
 @media (min-width: 992px) {
+    .contests-sidebar {
+        width: 30%;
+    }
+}
+
+.contests-sidebar .media-list .media + .media {
+    margin-top: 15px;
+}
+
+@media (min-width: 992px) {
     .profile-sidebar-two {
         width: 230px;
     }

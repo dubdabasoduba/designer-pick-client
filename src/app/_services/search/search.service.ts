@@ -6,7 +6,7 @@
 
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {appConstants} from '../../_helpers/app.constants';
+import {appConstants} from '../../_helpers';
 import {Observable, Subject} from 'rxjs';
 
 @Injectable({

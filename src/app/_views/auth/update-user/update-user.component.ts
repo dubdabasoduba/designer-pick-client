@@ -6,9 +6,8 @@
 
 import {Component, OnInit} from '@angular/core';
 import {AlertService, AuthenticationService, PersonsService} from '../../../_services';
-import {AppCommons} from '../../../_helpers/app.commons';
+import {AppCommons, appConstants} from '../../../_helpers';
 import {ActivatedRoute, Router} from '@angular/router';
-import {appConstants} from '../../../_helpers/app.constants';
 
 @Component({
     selector: 'app-update-user',

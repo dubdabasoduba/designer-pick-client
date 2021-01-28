@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {appConstants} from "../../../_helpers/app.constants";
+import {appConstants} from "../../../_helpers";
 import {Observable} from "rxjs";
-import {ApiKeyModel} from "../../../_models/api-key.model";
+import {ApiKeyModel} from "../../../_models";
 
 @Injectable({
     providedIn: 'root'

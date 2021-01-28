@@ -5839,6 +5839,10 @@ input[type="button"].btn-block {
     padding: 1.25rem;
 }
 
+.card-body:last-child {
+    border-radius: 0 0 calc(0.25rem - 1px) calc(0.25rem - 1px);
+}
+
 .card-title {
     margin-bottom: 0.75rem;
 }
@@ -13568,10 +13572,24 @@ textarea.form-control {
     height: 50px;
 }
 
+.avatar-contest {
+    position: relative;
+    width: 200px;
+    height: 150px;
+    border-radius: 10px;
+}
+
 .avatar img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.avatar-contest img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 3px;
 }
 
 .avatar-initial {

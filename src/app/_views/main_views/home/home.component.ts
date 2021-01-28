@@ -7,7 +7,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AlertService, AuthenticationService} from '../../../_services';
-import {AuthenticatedUserModel, UserModel} from '../../../_models';
+import {AuthenticatedUserModel} from '../../../_models';
 
 @Component({
     selector: 'app-home',

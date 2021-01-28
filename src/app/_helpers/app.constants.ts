@@ -228,6 +228,10 @@ export const appConstants = {
     getAllContestStages: "360dd679-63c6-4f53-9c37-7dabe7c2eea0",
     updateContestStage: "4bc31e86-f723-402a-9981-b54a6a2eb97f",
     deleteContestStage: "aab86e8b-7e0b-4c0d-a4c5-4d54478124a5",
+    readLogoUses: "52f1da67-efa7-45ae-9745-5a09b5c4754b",
+    getAllLogoUses: "f7ac3fc6-d906-4807-9a5d-e3f9e147f1f9",
+    updateLogoUses: "904ffbb6-a29f-411f-a644-909aeedd986f",
+    deleteLogoUses: "2fbfad4f-f68e-474c-9431-5906f782320d",
 };
 
 

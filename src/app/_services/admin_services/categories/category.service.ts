@@ -5,7 +5,7 @@
  */
 
 import {Injectable} from '@angular/core';
-import {appConstants} from '../../../_helpers/app.constants';
+import {appConstants} from '../../../_helpers';
 import {HttpClient} from '@angular/common/http';
 import {CategoryModel} from "../../../_models";
 import {Observable} from "rxjs";

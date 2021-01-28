@@ -7,9 +7,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AlertService, AuthenticationService, CountriesService} from '../../../_services';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {AppCommons} from '../../../_helpers/app.commons';
-import {appConstants} from "../../../_helpers/app.constants";
-import {CountryModel} from "../../../_models/country.model";
+import {AppCommons, appConstants} from '../../../_helpers';
+import {CountryModel} from "../../../_models";
 
 @Component({
     selector: 'app-countries',

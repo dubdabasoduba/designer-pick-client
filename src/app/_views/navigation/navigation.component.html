@@ -59,8 +59,8 @@
                 <a class="dropdown-item" routerLink="/profile/inbox/{{lbsUser.user.person}}"
                    routerLinkActive="active">&nbsp;&nbsp;<i
                         data-feather="inbox"></i>&nbsp;Inbox</a>
-                <div class="dropdown-divider" *ngIf="is_staff"></div>
-                <a class="dropdown-item" routerLink="/admin" *ngIf="is_staff"
+                <div *ngIf="is_staff" class="dropdown-divider"></div>
+                <a *ngIf="is_staff" class="dropdown-item" routerLink="/admin"
                    routerLinkActive="active">&nbsp;&nbsp;<i data-feather="users"></i>&nbsp;System
                     Administrator</a>
                 <div class="dropdown-divider"></div>

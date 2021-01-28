@@ -20,3 +20,6 @@ export * from './settings.model';
 export * from './discounts.model';
 export * from './authenticated-user.model';
 export * from './contest-stage.model';
+export * from './logo-brief.model';
+export * from './contest.model';
+export * from './logo-uses.model';

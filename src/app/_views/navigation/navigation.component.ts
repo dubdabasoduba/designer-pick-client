@@ -5,10 +5,9 @@
  */
 import {Component, OnInit} from '@angular/core';
 import {AuthenticatedUserModel} from '../../_models';
-import {appConstants} from '../../_helpers/app.constants';
+import {AppCommons, appConstants} from '../../_helpers';
 import {AlertService, AuthenticationService} from '../../_services';
 import {NavigationEnd, Router} from '@angular/router';
-import {AppCommons} from '../../_helpers/app.commons';
 import {SearchService} from '../../_services/search/search.service';
 import {ResponseModel} from '../../_models/response.model';
 
@@ -26,9 +25,9 @@ export class NavigationComponent implements OnInit {
     public clickedDropdownMainClass = "dropdown dropdown-profile show"
     public defaultDropdownElementsClass = "dropdown-menu dropdown-menu-right tx-13"
     public clickedDropdownElementsClass = "dropdown-menu dropdown-menu-right tx-13 show"
+    is_staff: boolean = false;
     private showDropdown = false;
     private responseModel = new ResponseModel();
-    is_staff: boolean = false;
 
     constructor(
         private authenticationService: AuthenticationService,
