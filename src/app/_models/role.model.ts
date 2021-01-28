@@ -1,6 +1,6 @@
 import {DefaultModel} from "./default.model";
 
-export class Roles extends DefaultModel {
+export class RolesModel extends DefaultModel {
     name: string;
     description: string;
     permissions: string;

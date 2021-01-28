@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Roles} from "../../../../_models";
+import {RolesModel} from "../../../../_models";
 import {AlertService, RolesService} from "../../../../_services";
 import {appConstants} from "../../../../_helpers/app.constants";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -12,7 +12,7 @@ import {AppCommons} from "../../../../_helpers/app.commons";
 })
 export class ViewRolesComponent implements OnInit {
     loading = false;
-    public role: Roles = new Roles();
+    public role: RolesModel = new RolesModel();
     public rolePermissions = [];
     public roleId: string;
 

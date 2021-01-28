@@ -5,6 +5,7 @@
  */
 
 import {Component, OnInit} from '@angular/core';
+import {SettingsModel} from "../../../_models";
 
 @Component({
     selector: 'app-settings',
@@ -12,6 +13,16 @@ import {Component, OnInit} from '@angular/core';
     styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
+    loading = false;
+    public countries: Array<SettingsModel> = [];
+    public model = {
+        name: "",
+        value: ""
+    };
+    public countryId: string;
+    mySubscription: any;
+    setting = new SettingsModel();
+    loggedInUser: string;
 
     constructor() {
     }
