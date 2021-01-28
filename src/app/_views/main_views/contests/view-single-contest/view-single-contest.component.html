@@ -11,7 +11,8 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-style1 mg-b-10">
                         <li class="breadcrumb-item"><a routerLink="/contests">Contests</a></li>
-                        <li aria-current="page" class="breadcrumb-item active">{{contest.business_name}} Logo Design
+                        <li aria-current="page"
+                            class="breadcrumb-item active">{{contest.business_name}} Logo Design
                             Contest
                         </li>
                     </ol>
@@ -19,7 +20,8 @@
                 <h4 class="mg-b-0">{{contest.business_name}} Logo Design Contest</h4>
             </div>
             <div class="mg-t-20 mg-sm-t-0">
-                <a class="btn btn-primary btn-block text-white" routerLink="/contests-add">Create a Contest Like this</a>
+                <a class="btn btn-primary btn-block text-white" routerLink="/contests-add">Create a
+                    Contest Like this</a>
             </div>
         </div>
     </div><!-- container -->
@@ -37,7 +39,18 @@
                     </div><!--  col -->
                     <div class="col-sm-12 col-md-12 col-lg-12 mg-t-20 mg-sm-t-0 mg-lg-t-25">
                         <h5 class="mg-b-2 tx-spacing&#45;&#45;1">{{contest.business_name}}&nbsp;Logo
-                            Design Contest</h5>
+                            Design Contest&nbsp;
+                            <svg *ngIf="contest.is_featured" data-toggle="tooltip" data-placement="bottom" title="Contest is featured"
+                                 xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                 fill="currentColor" class="bi bi-patch-check-fill"
+                                 viewBox="0 0 16 16">
+                                <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"/>
+                            </svg>
+
+                        </h5>
+                        <br/>
+                        <p *ngIf="contest.is_highlighted" data-toggle="tooltip" data-placement="bottom" title="Contest is highlighted"><span
+                                class="badge badge-info">Highlighted</span></p>
                         <hr/>
                         <div class="d-flex">
                             <div class="profile-skillset flex-fill">
@@ -145,7 +158,8 @@
                     <div class="card-body pd-25">
                         <div class="media d-block d-sm-flex">
                             <div class="media-body pd-t-25 pd-sm-t-0 pd-sm-l-25">
-                                <p class="mg-b-3 tx-color-02">This logo will be used in the following areas</p>
+                                <p class="mg-b-3 tx-color-02">This logo will be used in the
+                                    following areas</p>
                                 <ul class="pd-l-10 mg-0 mg-t-20 tx-13">
                                     <li>{{contest.logo_uses}}</li>
                                 </ul>

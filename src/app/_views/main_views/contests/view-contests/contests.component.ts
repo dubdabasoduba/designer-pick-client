@@ -5,8 +5,8 @@
  */
 
 import {Component, OnInit} from '@angular/core';
-import {AlertService, ContestsService} from '../../../../_services';
-import {ContestModel} from "../../../../_models";
+import {AlertService, AuthenticationService, ContestsService} from '../../../../_services';
+import {AuthenticatedUserModel, ContestModel} from "../../../../_models";
 import {AppCommons, appConstants} from "../../../../_helpers";
 import {Router} from "@angular/router";
 
@@ -18,21 +18,31 @@ import {Router} from "@angular/router";
 export class ContestsComponent implements OnInit {
     loading = false;
     public contests: Array<ContestModel> = [];
+    lbsUser: AuthenticatedUserModel;
 
     constructor(
-        private contestsService: ContestsService, private alertService: AlertService, private router: Router) {
+        private authenticationService: AuthenticationService,
+        private contestsService: ContestsService,
+        private alertService: AlertService,
+        private router: Router,
+        private commons: AppCommons,) {
     }
 
     ngOnInit() {
+        this.lbsUser = this.authenticationService.getCurrentUser();
         this.getContests();
     }
 
     redirectToSign(contest: string) {
-        this.router.navigate([appConstants.authSIgnInUrl], {
-            queryParams: {
-                returnUrl: "/contests/" + contest
-            }
-        });
+        if (!this.commons.isObjectEmpty(this.lbsUser)) {
+            this.router.navigateByUrl('/contests/' + contest);
+        } else {
+            this.router.navigate([appConstants.authSIgnInUrl], {
+                queryParams: {
+                    returnUrl: "/contests/" + contest
+                }
+            });
+        }
     }
 
     /**
@@ -64,6 +74,7 @@ export class ContestsComponent implements OnInit {
             contest.start_date = AppCommons.formatDisplayDate(new Date(contests[i].start_date));
             contest.end_date = AppCommons.formatDisplayDate(new Date(contests[i].end_date));
             contest.is_private = contests[i].is_private;
+            contest.is_featured = contests[i].is_featured;
             contest.is_highlighted = contests[i].is_highlighted;
             contest.uuid = contests[i].uuid;
             this.contests.push(contest);
