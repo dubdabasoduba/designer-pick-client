@@ -101,6 +101,18 @@ export const appConstants = {
     nameError: 'The name is required',
     apiKeyError: 'The API key is required',
 
+    /**
+     * The settings keys for the platform
+     */
+    commissions:"commissions",
+    privateListingAmount:"private_listing_amount",
+    highlightAmount:"highlight_amount",
+    listingAmount:"listing_amount",
+    featuringAmount:"featuring_amount",
+    handlingAmount:"handling_amount",
+    supportHours:"support_hours",
+
+
     /*
      * The API urls endpoints
      * */
