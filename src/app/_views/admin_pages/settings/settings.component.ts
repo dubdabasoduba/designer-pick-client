@@ -50,6 +50,22 @@ export class SettingsComponent implements OnInit {
         this.getSettings();
     }
 
+    saveCommissions() {
+        this.loading = false;
+        let model = this.commissionModel;
+        this.saveSettings(model);
+    }
+
+    private saveSettings(model: { is_active: string; name: string; value: string }) {
+        if (model.name == appConstants.emptyEntry || model.name == undefined) {
+            this.alertService.error(appConstants.nameError);
+        } else if (model.is_active === appConstants.emptyEntry || model.is_active == undefined) {
+            this.alertService.error(appConstants.statusError);
+        } else if (model.value === appConstants.emptyEntry || model.value == undefined) {
+            this.alertService.error("The value is required");
+        } else {
+        }
+    }
 
     private getSettings() {
         this.loading = true;
@@ -68,42 +84,28 @@ export class SettingsComponent implements OnInit {
     private getCommissionsSetting(data: any) {
         for (let i = 0; i < data.length; i++) {
             if (data[i].setting_key == appConstants.commissions) {
-                let setting_value = JSON.parse(data[i].setting_value);
-                this.commissionModel.name = setting_value.settings.name;
-                this.commissionModel.value = setting_value.settings.value;
-                this.commissionModel.is_active = data[i].is_active;
+                SettingsComponent.setModel(data[i], this.commissionModel);
             } else if (data[i].setting_key == appConstants.privateListingAmount) {
-                let setting_value = JSON.parse(data[i].setting_value);
-                this.privateListingModel.name = setting_value.settings.name;
-                this.privateListingModel.value = setting_value.settings.value;
-                this.privateListingModel.is_active = data[i].is_active;
+                SettingsComponent.setModel(data[i], this.privateListingModel);
             } else if (data[i].setting_key == appConstants.highlightAmount) {
-                let setting_value = JSON.parse(data[i].setting_value);
-                this.highLightingModel.name = setting_value.settings.name;
-                this.highLightingModel.value = setting_value.settings.value;
-                this.highLightingModel.is_active = data[i].is_active;
+                SettingsComponent.setModel(data[i], this.highLightingModel);
             } else if (data[i].setting_key == appConstants.listingAmount) {
-                let setting_value = JSON.parse(data[i].setting_value);
-                this.listingModel.name = setting_value.settings.name;
-                this.listingModel.value = setting_value.settings.value;
-                this.listingModel.is_active = data[i].is_active;
+                SettingsComponent.setModel(data[i], this.listingModel);
             } else if (data[i].setting_key == appConstants.featuringAmount) {
-                let setting_value = JSON.parse(data[i].setting_value);
-                this.featuringModel.name = setting_value.settings.name;
-                this.featuringModel.value = setting_value.settings.value;
-                this.featuringModel.is_active = data[i].is_active;
+                SettingsComponent.setModel(data[i], this.featuringModel);
             } else if (data[i].setting_key == appConstants.handlingAmount) {
-                let setting_value = JSON.parse(data[i].setting_value);
-                this.handlingFeeModel.name = setting_value.settings.name;
-                this.handlingFeeModel.value = setting_value.settings.value;
-                this.handlingFeeModel.is_active = data[i].is_active;
+                SettingsComponent.setModel(data[i], this.handlingFeeModel);
             } else if (data[i].setting_key == appConstants.supportHours) {
-                let setting_value = JSON.parse(data[i].setting_value);
-                this.supportHoursModel.name = setting_value.settings.name;
-                this.supportHoursModel.value = setting_value.settings.value;
-                this.supportHoursModel.is_active = data[i].is_active;
+                SettingsComponent.setModel(data[i], this.supportHoursModel);
             }
         }
+    }
+
+    private static setModel(data: any, model: any) {
+        let setting_value = JSON.parse(data.setting_value);
+        model.name = setting_value.settings.name;
+        model.value = setting_value.settings.value;
+        model.is_active = data.is_active;
     }
 
     private getCommissions() {
