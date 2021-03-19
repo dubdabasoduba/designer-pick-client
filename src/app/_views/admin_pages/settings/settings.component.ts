@@ -24,13 +24,13 @@ export class SettingsComponent implements OnInit {
     loading = false;
     public settings: Array<SettingsModel> = [];
     public commissions: Array<CommissionsModel> = [];
-    public commissionModel = {name: "", value: "", is_active: ""};
-    public privateListingModel = {name: "", value: "", is_active: ""};
-    public highLightingModel = {name: "", value: "", is_active: ""};
-    public featuringModel = {name: "", value: "", is_active: ""};
-    public listingModel = {name: "", value: "", is_active: ""};
-    public handlingFeeModel = {name: "", value: "", is_active: ""};
-    public supportHoursModel = {name: "", value: "", is_active: ""};
+    public commissionModel = {name: "", value: "", is_active: "", uuid: "", setting_key: ""};
+    public privateListingModel = {name: "", value: "", is_active: "", uuid: "", setting_key: ""};
+    public highLightingModel = {name: "", value: "", is_active: "", uuid: "", setting_key: ""};
+    public featuringModel = {name: "", value: "", is_active: "", uuid: "", setting_key: ""};
+    public listingModel = {name: "", value: "", is_active: "", uuid: "", setting_key: ""};
+    public handlingFeeModel = {name: "", value: "", is_active: "", uuid: "", setting_key: ""};
+    public supportHoursModel = {name: "", value: "", is_active: "", uuid: "", setting_key: ""};
     public countryId: string;
     mySubscription: any;
     setting = new SettingsModel();
@@ -56,7 +56,7 @@ export class SettingsComponent implements OnInit {
         this.saveSettings(model);
     }
 
-    private saveSettings(model: { is_active: string; name: string; value: string }) {
+    private saveSettings(model: { is_active: string; name: string; value: string; uuid: string; setting_key: string }) {
         if (model.name == appConstants.emptyEntry || model.name == undefined) {
             this.alertService.error(appConstants.nameError);
         } else if (model.is_active === appConstants.emptyEntry || model.is_active == undefined) {
@@ -64,14 +64,23 @@ export class SettingsComponent implements OnInit {
         } else if (model.value === appConstants.emptyEntry || model.value == undefined) {
             this.alertService.error("The value is required");
         } else {
+
         }
+    }
+
+    private createSettings() {
+        let settings = new SettingsModel();
+    }
+
+    private updateSettings() {
+        let settings = new SettingsModel();
     }
 
     private getSettings() {
         this.loading = true;
         this.settingsService.getSettings().subscribe(
             data => {
-                this.getCommissionsSetting(data);
+                this.assignSettings(data);
                 this.loading = false;
             },
             error => {
@@ -81,7 +90,7 @@ export class SettingsComponent implements OnInit {
         );
     }
 
-    private getCommissionsSetting(data: any) {
+    private assignSettings(data: any) {
         for (let i = 0; i < data.length; i++) {
             if (data[i].setting_key == appConstants.commissions) {
                 SettingsComponent.setModel(data[i], this.commissionModel);
@@ -103,6 +112,8 @@ export class SettingsComponent implements OnInit {
 
     private static setModel(data: any, model: any) {
         let setting_value = JSON.parse(data.setting_value);
+        model.uuid = data.uuid;
+        model.setting_key = data.setting_key;
         model.name = setting_value.settings.name;
         model.value = setting_value.settings.value;
         model.is_active = data.is_active;
