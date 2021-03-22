@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Roles} from "../../../../_models";
+import {RolesModel} from "../../../../_models";
 import {AlertService, RolesService} from "../../../../_services";
 import {AppCommons} from "../../../../_helpers/app.commons";
 
@@ -10,7 +10,7 @@ import {AppCommons} from "../../../../_helpers/app.commons";
 })
 export class RolesComponent implements OnInit {
     loading = false;
-    public roles: Array<Roles> = [];
+    public roles: Array<RolesModel> = [];
 
     constructor(private rolesService: RolesService,
                 private alertService: AlertService) {
@@ -39,7 +39,7 @@ export class RolesComponent implements OnInit {
 
     private formatPermissions(data: any) {
         for (let i = 0; i < data.length; i++) {
-            let role = new Roles();
+            let role = new RolesModel();
             role.name = data[i].name;
             role.description = data[i].description;
             role.date_created = AppCommons.formatDisplayDate(new Date(data[i].date_created));

@@ -1,5 +1,5 @@
 import {Component, DoCheck, OnInit} from '@angular/core';
-import {PersonModel, Roles} from "../../../../_models";
+import {PersonModel, RolesModel} from "../../../../_models";
 import {AlertService, PersonsService, RolesService} from "../../../../_services";
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {appConstants} from "../../../../_helpers/app.constants";
@@ -13,8 +13,8 @@ import {AppCommons} from "../../../../_helpers/app.commons";
 export class AssignUserRolesComponent implements OnInit, DoCheck {
     loading = false;
     public person: PersonModel = new PersonModel();
-    public assignedRoles: Array<Roles> = [];
-    public roles: Array<Roles> = [];
+    public assignedRoles: Array<RolesModel> = [];
+    public roles: Array<RolesModel> = [];
     public personId: string;
     mySubscription: any;
     redirectUrl: string;
@@ -36,9 +36,9 @@ export class AssignUserRolesComponent implements OnInit, DoCheck {
     }
 
     private static formatRoles(data: any, useRole: boolean) {
-        let roles: Array<Roles> = [];
+        let roles: Array<RolesModel> = [];
         for (let i = 0; i < data.length; i++) {
-            let role = new Roles();
+            let role = new RolesModel();
             role.name = data[i].name;
             role.uuid = useRole ? data[i].role : data[i].uuid;
             roles.push(role);

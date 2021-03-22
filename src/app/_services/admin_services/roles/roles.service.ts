@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {appConstants} from "../../../_helpers";
 import {Observable} from "rxjs";
-import {Roles} from "../../../_models";
+import {RolesModel} from "../../../_models";
 
 @Injectable({
     providedIn: 'root'
@@ -16,7 +16,7 @@ export class RolesService {
         return this.http.get(appConstants.baseApiV1Url + '/roles');
     }
 
-    getRole(id: string): Observable<Roles> {
+    getRole(id: string): Observable<RolesModel> {
         // @ts-ignore
         return this.http.get(appConstants.baseApiV1Url + '/role/' + id);
     }
@@ -29,11 +29,11 @@ export class RolesService {
         return this.http.delete(appConstants.baseApiV1Url + '/role/' + id);
     }
 
-    updateRole(Role: Roles) {
+    updateRole(Role: RolesModel) {
         return this.http.put(appConstants.baseApiV1Url + '/role/' + Role.uuid, Role);
     }
 
-    addRole(Role: Roles) {
+    addRole(Role: RolesModel) {
         return this.http.post(appConstants.baseApiV1Url + '/role', Role);
     }
 
@@ -41,7 +41,7 @@ export class RolesService {
         return this.http.get(appConstants.baseApiV1Url + '/roles/search?' + searchQuery);
     }
 
-    addUserRoles(personId: string, roles: Array<Roles>) {
+    addUserRoles(personId: string, roles: Array<RolesModel>) {
         return this.http.post(appConstants.baseApiV1Url + '/user-roles/' + personId, roles);
     }
 }

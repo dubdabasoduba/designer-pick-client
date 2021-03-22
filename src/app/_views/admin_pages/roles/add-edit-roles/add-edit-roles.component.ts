@@ -7,7 +7,7 @@ import {
 } from "../../../../_services";
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {AppCommons, appConstants} from "../../../../_helpers";
-import {PermissionModel, Roles} from "../../../../_models";
+import {PermissionModel, RolesModel} from "../../../../_models";
 
 @Component({
     selector: 'app-add-edit-roles',
@@ -24,7 +24,7 @@ export class AddEditRolesComponent implements OnInit, OnDestroy, DoCheck {
     public roleId: string;
     mySubscription: any;
     loggedInUser: string;
-    role: Roles;
+    role: RolesModel;
     public permissions: Array<PermissionModel> = [];
     public assignedPermissions: Array<PermissionModel> = [];
 
@@ -132,7 +132,7 @@ export class AddEditRolesComponent implements OnInit, OnDestroy, DoCheck {
     }
 
     private createRole() {
-        let roles = new Roles();
+        let roles = new RolesModel();
         if (!AppCommons.isStringEmpty(this.roleId)) {
             roles = this.role;
             roles.updated_by = this.loggedInUser;
