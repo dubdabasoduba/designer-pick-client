@@ -15,11 +15,11 @@ export class UserService {
     constructor(private http: HttpClient) {
     }
 
-    getById(id: string) {
+    getUserById(id: string) {
         return this.http.get(appConstants.baseApiV1Url + '/user/' + id);
     }
 
-    create(user: UserModel) {
+    createUser(user: UserModel) {
         return this.http.post(appConstants.baseApiV1Url + '/auth/register', user);
     }
 
