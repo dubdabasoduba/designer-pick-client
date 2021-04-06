@@ -54,7 +54,7 @@ export class SignupComponent implements OnInit {
                 username: this.model.username
             };
 
-            this.userService.create(clientData).subscribe(
+            this.userService.createUser(clientData).subscribe(
                 data => {
                     this.alertService.success(appConstants.registrationSuccessful, false);
                     this.loading = false;

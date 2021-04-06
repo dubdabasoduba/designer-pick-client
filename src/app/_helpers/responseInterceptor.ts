@@ -52,7 +52,7 @@ export class ResponseInterceptor implements HttpInterceptor {
                 }
                 return data;
             }
-        }).catch((error: any, caught) => {
+        }).catch((error: any) => {
             if (error.status === 401 || error.status === 403) {
                 this.redirectToLogin(error.url);
             } else {
