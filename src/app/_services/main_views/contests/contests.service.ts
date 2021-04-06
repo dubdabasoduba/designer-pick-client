@@ -30,4 +30,8 @@ export class ContestsService {
         // @ts-ignore
         return this.http.get(appConstants.baseApiV1Url + '/display-contest/' + contestId);
     }
+
+    getLogoBriefs(userId) {
+        return this.http.get(appConstants.baseApiV1Url + '/user-logo-briefs/' + userId);
+    }
 }

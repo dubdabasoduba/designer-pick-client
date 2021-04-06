@@ -16,14 +16,6 @@ export class CategoryService {
     constructor(private http: HttpClient) {
     }
 
-    getIndustryCompanies(industryId: string) {
-        return this.http.get(appConstants.baseApiV1Url + '/categories-contests/' + industryId);
-    }
-
-    getIndustryPeople(industryId: string) {
-        return this.http.get(appConstants.baseApiV1Url + '/categories-person/' + industryId);
-    }
-
     getCategories() {
         return this.http.get(appConstants.baseApiV1Url + '/categories');
     }

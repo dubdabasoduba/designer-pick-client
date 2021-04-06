@@ -80,6 +80,10 @@ const appRoutes: Routes = [
         path: 'contests-add', component: AddContestsComponent,
         canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
     },
+    {
+        path: 'contests-edit/:id', component: AddContestsComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+    },
     {path: 'designers', component: DesignersComponent, runGuardsAndResolvers: 'always'},
     {
         path: 'designers/:id',
