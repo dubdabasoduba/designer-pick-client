@@ -5,31 +5,31 @@ import {Observable} from "rxjs";
 import {ApiKeyModel} from "../../../_models";
 
 @Injectable({
-    providedIn: 'root'
+	providedIn: 'root'
 })
 export class ApiKeysService {
 
-    constructor(private http: HttpClient) {
-    }
+	constructor(private http: HttpClient) {
+	}
 
-    getApiKeys() {
-        return this.http.get(appConstants.baseApiV1Url + '/api-keys');
-    }
+	getApiKeys() {
+		return this.http.get(appConstants.baseApiV1Url + '/api-keys');
+	}
 
-    getApiKey(id: string): Observable<ApiKeyModel> {
-        // @ts-ignore
-        return this.http.get(appConstants.baseApiV1Url + '/api-key/' + id);
-    }
+	getApiKey(id: string): Observable<ApiKeyModel> {
+		// @ts-ignore
+		return this.http.get(appConstants.baseApiV1Url + '/api-key/' + id);
+	}
 
-    removeApiKey(id: string) {
-        return this.http.delete(appConstants.baseApiV1Url + '/api-key/' + id);
-    }
+	removeApiKey(id: string) {
+		return this.http.delete(appConstants.baseApiV1Url + '/api-key/' + id);
+	}
 
-    addApiKey(apiKey: ApiKeyModel) {
-        return this.http.post(appConstants.baseApiV1Url + '/api-key', apiKey);
-    }
+	addApiKey(apiKey: ApiKeyModel) {
+		return this.http.post(appConstants.baseApiV1Url + '/api-key', apiKey);
+	}
 
-    updateApiKey(apiKey: ApiKeyModel) {
-        return this.http.put(appConstants.baseApiV1Url + '/api-key/' + apiKey.uuid, apiKey);
-    }
+	updateApiKey(apiKey: ApiKeyModel) {
+		return this.http.put(appConstants.baseApiV1Url + '/api-key/' + apiKey.uuid, apiKey);
+	}
 }

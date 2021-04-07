@@ -9,13 +9,13 @@ import {inject, TestBed} from '@angular/core/testing';
 import {CategoryService} from './category.service';
 
 describe('PagerService', () => {
-    beforeEach(() => {
-        TestBed.configureTestingModule({
-            providers: [CategoryService]
-        });
-    });
+	beforeEach(() => {
+		TestBed.configureTestingModule({
+			providers: [CategoryService]
+		});
+	});
 
-    it('should be created', inject([CategoryService], (service: CategoryService) => {
-        expect(service).toBeTruthy();
-    }));
+	it('should be created', inject([CategoryService], (service: CategoryService) => {
+		expect(service).toBeTruthy();
+	}));
 });

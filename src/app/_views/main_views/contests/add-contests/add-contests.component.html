@@ -5,295 +5,295 @@
   -->
 <app-navigation></app-navigation>
 <div class="content content-fixed bd-b">
-    <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
-        <div class="d-sm-flex align-items-center justify-content-between">
-            <div>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb breadcrumb-style1 mg-b-10">
-                        <li class="breadcrumb-item"><a routerLink="/contests">Contests</a></li>
-                        <li aria-current="page" class="breadcrumb-item active">Add Logo Design
-                            Contest
-                        </li>
-                    </ol>
-                </nav>
-                <h4 class="mg-b-0">Add Logo Design Contest</h4>
-            </div>
-        </div>
-    </div><!-- container -->
+	<div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
+		<div class="d-sm-flex align-items-center justify-content-between">
+			<div>
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb breadcrumb-style1 mg-b-10">
+						<li class="breadcrumb-item"><a routerLink="/contests">Contests</a></li>
+						<li aria-current="page" class="breadcrumb-item active">Add Logo Design
+							Contest
+						</li>
+					</ol>
+				</nav>
+				<h4 class="mg-b-0">Add Logo Design Contest</h4>
+			</div>
+		</div>
+	</div><!-- container -->
 </div><!-- content -->
 <div class="content">
-    <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
-        <div class="media d-block d-lg-flex">
-            <div class="media-body mg-t-40 mg-lg-t-0 pd-lg-x-10" *ngIf="logoBriefs.length > 0">
-                <div class="row">
-                    <div class="col-md-12 col-xl-12">
-                        <fieldset class="form-fieldset">
-                            <legend>Select Existing Logo brief</legend>
-                            <form #f="ngForm" novalidate>
-                                <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                        <label>Select Existing Logo briefs:&nbsp;<span
-                                                class="tx-danger">*</span></label>
-                                        <select [(ngModel)]="logoBriefModel.logo_brief"
-                                                class="custom-select form-control"
-                                                id="logo_brief"
-                                                name="logo_brief"
-                                                title="Select Existing Logo brief">
-                                            <option selected value="">Select Existing Logo brief
-                                            </option>
-                                            <option *ngFor="let logoBrief of logoBriefs"
-                                                    value="{{logoBrief.uuid}}">{{logoBrief.business_name}}</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </form>
-                        </fieldset>
-                    </div><!-- col -->
-                </div><!-- row -->
-                <br/>
-                <div class="row">
-                    <div class="col-md-12 col-xl-12">
-                        <fieldset class="form-fieldset">
-                            <legend>Add&nbsp;|Edit&nbsp;Contest</legend>
-                            <form #f="ngForm" (ngSubmit)="f.form.valid && addContest()"
-                                  novalidate>
-                                <div class="form-row">
-                                    <div class="form-group col-md-4">
-                                        <label>Business name:&nbsp;<span
-                                                class="tx-danger">*</span></label>
-                                        <input class="form-control"
-                                               data-error="Subject field is required"
-                                               id="business_name" name="business_name"
-                                               placeholder="Please enter the business name"
-                                               required="" type="email">
-                                    </div>
-                                    <div class="form-group col-md-8">
-                                        <label>Business slogan:&nbsp;<span
-                                                class="tx-danger">*</span></label>
-                                        <input
-                                                autocomplete="off" class="form-control"
-                                                data-error="Subject field is required"
-                                                id="business_slogan"
-                                                name="business_slogan"
-                                                placeholder="Please enter the business slogan"
-                                                required="" type="text">
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                        <label>Business description&nbsp;<span
-                                                class="tx-danger">*</span></label>
-                                        <textarea autocomplete="off"
-                                                  class="form-control"
-                                                  id="business_description"
-                                                  name="business_description" required=""
-                                                  placeholder="Please enter the business description"
-                                                  type="text"></textarea>
-                                    </div>
-                                </div>
-                                <br/>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label>Industry:&nbsp;<span
-                                                class="tx-danger">*</span></label>
-                                        <select class="custom-select form-control"
-                                                id="industry"
-                                                name="industry"
-                                                title="Select the industry of Operation">
-                                            <option selected value="">Select the industry of
-                                                Operation
-                                            </option>
-                                            <option *ngFor="let industry of industries"
-                                                    value="{{industry.uuid}}">{{industry.name}}</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label>Country:&nbsp;<span
-                                                class="tx-danger">*</span></label>
-                                        <select class="custom-select form-control"
-                                                id="country"
-                                                name="country"
-                                                title="Select country of operation">
-                                            <option selected value="">Select country of operation
-                                            </option>
-                                            <option *ngFor="let country of countries"
-                                                    value="{{country.uuid}}">{{country.name}}</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                        <label>Main communication point 1:&nbsp;<span
-                                                class="tx-danger">*</span></label>
-                                        <input autocomplete="off"
-                                               class="form-control"
-                                               id="comm_point_one"
-                                               name="comm_point_one" required=""
-                                               placeholder="Please enter the main communication point 1"
-                                               type="text">
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label>Main communication point 2:&nbsp;<span
-                                                class="tx-danger">*</span></label>
-                                        <input autocomplete="off"
-                                               class="form-control"
-                                               id="comm_point_two"
-                                               name="comm_point_two" required=""
-                                               placeholder="Please enter the main communication point 2"
-                                               type="text">
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label>Main communication point 2:&nbsp;<span
-                                                class="tx-danger">*</span></label>
-                                        <input autocomplete="off"
-                                               class="form-control"
-                                               id="comm_point_three"
-                                               name="comm_point_three" required=""
-                                               placeholder="Please enter the main communication point 3"
-                                               type="text">
-                                    </div>
-                                </div>
-                                <br/>
-                                <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                        <label>Target Audience:&nbsp;<span
-                                                class="tx-danger">*</span></label>
-                                        <textarea autocomplete="off"
-                                                  class="form-control"
-                                                  data-error="Subject field is required"
-                                                  id="target_audience"
-                                                  name="target_audience" required=""
-                                                  placeholder="Please enter the target audience"
-                                                  type="text"></textarea>
-                                    </div>
-                                </div>
-                                <br/>
-                                <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                        <label>Share some of your favorite fonts, colors and style:&nbsp;<span
-                                                class="tx-danger">*</span></label>
-                                        <textarea autocomplete="off"
-                                                  class="form-control"
-                                                  data-error="Subject field is required"
-                                                  id="style"
-                                                  name="style" required=""
-                                                  placeholder="Please share some of your favorite fonts, colors and style:&nbsp;"
-                                                  type="text"></textarea>
-                                    </div>
-                                </div>
-                                <br/>
-                                <div class="form-row">
-                                    <label>Where will the logo be used:&nbsp;<span
-                                            class="tx-danger">*&nbsp;&nbsp;&nbsp;</span></label>
-                                    <div *ngFor="let logoUse of logoUses;"
-                                         class="form-group col-md-2">
-                                        <div class="custom-control custom-checkbox">
-                                            <input (change)="updateLogoUses(logoUse.uuid)"
-                                                   class="custom-control-input"
-                                                   id="logo_use_{{logoUse.uuid}}"
-                                                   type="checkbox">
-                                            <label class="custom-control-label"
-                                                   for="logo_use_{{logoUse.uuid}}">{{logoUse.name}}</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-4">
-                                        <label>Contest start date<span
-                                                class="tx-danger">*</span></label>
-                                        <input autocomplete="off"
-                                               class="form-control"
-                                               data-error="Subject field is required"
-                                               id="startDate"
-                                               name="startDate" required=""
-                                               placeholder="Please enter the start date:&nbsp;"
-                                               type="datetime-local">
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <label>Contest end date<span
-                                                class="tx-danger">*</span></label>
-                                        <input autocomplete="off"
-                                               class="form-control"
-                                               data-error="Subject field is required"
-                                               id="endDate"
-                                               name="endDate" required=""
-                                               placeholder="Please enter the end date:&nbsp;"
-                                               type="datetime-local">
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <label>Please enter the contest amount:&nbsp;<span
-                                                class="tx-danger">*</span></label>
-                                        <input autocomplete="off"
-                                               class="form-control"
-                                               data-error="Subject field is required"
-                                               id="amount"
-                                               name="amount" required=""
-                                               placeholder="Please share some of your favorite fonts, colors and style:&nbsp;"
-                                               type="number"/>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-3">
-                                        <div class="custom-control custom-switch">
-                                            <input
-                                                    class="custom-control-input"
-                                                    id="is_private" name="is_private"
-                                                    type="checkbox">
-                                            <label class="custom-control-label" for="is_private">Is
-                                                a private contest?</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <div class="custom-control custom-switch">
-                                            <input
-                                                    class="custom-control-input"
-                                                    id="is_featured" name="is_featured"
-                                                    type="checkbox">
-                                            <label class="custom-control-label" for="is_featured">Is
-                                                a featured contest?</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <div class="custom-control custom-switch">
-                                            <input
-                                                    class="custom-control-input"
-                                                    id="is_highlighted" name="is_highlighted"
-                                                    type="checkbox">
-                                            <label class="custom-control-label"
-                                                   for="is_highlighted">Is a highlighted
-                                                contest?</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <div class="custom-control custom-switch">
-                                            <input
-                                                    class="custom-control-input"
-                                                    id="is_active" name="is_active"
-                                                    type="checkbox">
-                                            <label class="custom-control-label" for="is_active">Deactivate/Activate
-                                                contest</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <br/>
-                                <div class="form-row">
-                                    <div class="form-group col-md-5"></div>
-                                    <div class="form-group col-md-5"></div>
-                                    <div class="form-group col-md-2">
-                                        <button *ngIf="contestId == null && contestId == undefined"
-                                                class="btn btn-primary btn-block">Create contest
-                                        </button>
-                                        <button *ngIf="contestId != null && contestId != undefined"
-                                                class="btn btn-primary btn-block">Update contest
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </fieldset>
-                    </div><!-- col -->
-                </div><!-- row -->
-                <br/>
-            </div>
-        </div><!-- media -->
-    </div><!-- container -->
+	<div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
+		<div class="media d-block d-lg-flex">
+			<div *ngIf="logoBriefs.length > 0" class="media-body mg-t-40 mg-lg-t-0 pd-lg-x-10">
+				<div class="row">
+					<div class="col-md-12 col-xl-12">
+						<fieldset class="form-fieldset">
+							<legend>Select Existing Logo brief</legend>
+							<form #f="ngForm" novalidate>
+								<div class="form-row">
+									<div class="form-group col-md-12">
+										<label>Select Existing Logo briefs:&nbsp;<span
+												class="tx-danger">*</span></label>
+										<select [(ngModel)]="logoBriefModel.logo_brief"
+										        class="custom-select form-control"
+										        id="logo_brief"
+										        name="logo_brief"
+										        title="Select Existing Logo brief">
+											<option selected value="">Select Existing Logo brief
+											</option>
+											<option *ngFor="let logoBrief of logoBriefs"
+											        value="{{logoBrief.uuid}}">{{logoBrief.business_name}}</option>
+										</select>
+									</div>
+								</div>
+							</form>
+						</fieldset>
+					</div><!-- col -->
+				</div><!-- row -->
+				<br/>
+				<div class="row">
+					<div class="col-md-12 col-xl-12">
+						<fieldset class="form-fieldset">
+							<legend>Add&nbsp;|Edit&nbsp;Contest</legend>
+							<form #f="ngForm" (ngSubmit)="f.form.valid && addContest()"
+							      novalidate>
+								<div class="form-row">
+									<div class="form-group col-md-4">
+										<label>Business name:&nbsp;<span
+												class="tx-danger">*</span></label>
+										<input class="form-control"
+										       data-error="Subject field is required"
+										       id="business_name" name="business_name"
+										       placeholder="Please enter the business name"
+										       required="" type="email">
+									</div>
+									<div class="form-group col-md-8">
+										<label>Business slogan:&nbsp;<span
+												class="tx-danger">*</span></label>
+										<input
+												autocomplete="off" class="form-control"
+												data-error="Subject field is required"
+												id="business_slogan"
+												name="business_slogan"
+												placeholder="Please enter the business slogan"
+												required="" type="text">
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-group col-md-12">
+										<label>Business description&nbsp;<span
+												class="tx-danger">*</span></label>
+										<textarea autocomplete="off"
+										          class="form-control"
+										          id="business_description"
+										          name="business_description" placeholder="Please enter the business description"
+										          required=""
+										          type="text"></textarea>
+									</div>
+								</div>
+								<br/>
+								<div class="form-row">
+									<div class="form-group col-md-6">
+										<label>Industry:&nbsp;<span
+												class="tx-danger">*</span></label>
+										<select class="custom-select form-control"
+										        id="industry"
+										        name="industry"
+										        title="Select the industry of Operation">
+											<option selected value="">Select the industry of
+												Operation
+											</option>
+											<option *ngFor="let industry of industries"
+											        value="{{industry.uuid}}">{{industry.name}}</option>
+										</select>
+									</div>
+									<div class="form-group col-md-6">
+										<label>Country:&nbsp;<span
+												class="tx-danger">*</span></label>
+										<select class="custom-select form-control"
+										        id="country"
+										        name="country"
+										        title="Select country of operation">
+											<option selected value="">Select country of operation
+											</option>
+											<option *ngFor="let country of countries"
+											        value="{{country.uuid}}">{{country.name}}</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-group col-md-12">
+										<label>Main communication point 1:&nbsp;<span
+												class="tx-danger">*</span></label>
+										<input autocomplete="off"
+										       class="form-control"
+										       id="comm_point_one"
+										       name="comm_point_one" placeholder="Please enter the main communication point 1"
+										       required=""
+										       type="text">
+									</div>
+									<div class="form-group col-md-12">
+										<label>Main communication point 2:&nbsp;<span
+												class="tx-danger">*</span></label>
+										<input autocomplete="off"
+										       class="form-control"
+										       id="comm_point_two"
+										       name="comm_point_two" placeholder="Please enter the main communication point 2"
+										       required=""
+										       type="text">
+									</div>
+									<div class="form-group col-md-12">
+										<label>Main communication point 2:&nbsp;<span
+												class="tx-danger">*</span></label>
+										<input autocomplete="off"
+										       class="form-control"
+										       id="comm_point_three"
+										       name="comm_point_three" placeholder="Please enter the main communication point 3"
+										       required=""
+										       type="text">
+									</div>
+								</div>
+								<br/>
+								<div class="form-row">
+									<div class="form-group col-md-12">
+										<label>Target Audience:&nbsp;<span
+												class="tx-danger">*</span></label>
+										<textarea autocomplete="off"
+										          class="form-control"
+										          data-error="Subject field is required"
+										          id="target_audience"
+										          name="target_audience" placeholder="Please enter the target audience"
+										          required=""
+										          type="text"></textarea>
+									</div>
+								</div>
+								<br/>
+								<div class="form-row">
+									<div class="form-group col-md-12">
+										<label>Share some of your favorite fonts, colors and style:&nbsp;<span
+												class="tx-danger">*</span></label>
+										<textarea autocomplete="off"
+										          class="form-control"
+										          data-error="Subject field is required"
+										          id="style"
+										          name="style" placeholder="Please share some of your favorite fonts, colors and style:&nbsp;"
+										          required=""
+										          type="text"></textarea>
+									</div>
+								</div>
+								<br/>
+								<div class="form-row">
+									<label>Where will the logo be used:&nbsp;<span
+											class="tx-danger">*&nbsp;&nbsp;&nbsp;</span></label>
+									<div *ngFor="let logoUse of logoUses;"
+									     class="form-group col-md-2">
+										<div class="custom-control custom-checkbox">
+											<input (change)="updateLogoUses(logoUse.uuid)"
+											       class="custom-control-input"
+											       id="logo_use_{{logoUse.uuid}}"
+											       type="checkbox">
+											<label class="custom-control-label"
+											       for="logo_use_{{logoUse.uuid}}">{{logoUse.name}}</label>
+										</div>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-group col-md-4">
+										<label>Contest start date<span
+												class="tx-danger">*</span></label>
+										<input autocomplete="off"
+										       class="form-control"
+										       data-error="Subject field is required"
+										       id="startDate"
+										       name="startDate" placeholder="Please enter the start date:&nbsp;"
+										       required=""
+										       type="datetime-local">
+									</div>
+									<div class="form-group col-md-4">
+										<label>Contest end date<span
+												class="tx-danger">*</span></label>
+										<input autocomplete="off"
+										       class="form-control"
+										       data-error="Subject field is required"
+										       id="endDate"
+										       name="endDate" placeholder="Please enter the end date:&nbsp;"
+										       required=""
+										       type="datetime-local">
+									</div>
+									<div class="form-group col-md-4">
+										<label>Please enter the contest amount:&nbsp;<span
+												class="tx-danger">*</span></label>
+										<input autocomplete="off"
+										       class="form-control"
+										       data-error="Subject field is required"
+										       id="amount"
+										       name="amount" placeholder="Please share some of your favorite fonts, colors and style:&nbsp;"
+										       required=""
+										       type="number"/>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-group col-md-3">
+										<div class="custom-control custom-switch">
+											<input
+													class="custom-control-input"
+													id="is_private" name="is_private"
+													type="checkbox">
+											<label class="custom-control-label" for="is_private">Is
+												a private contest?</label>
+										</div>
+									</div>
+									<div class="form-group col-md-3">
+										<div class="custom-control custom-switch">
+											<input
+													class="custom-control-input"
+													id="is_featured" name="is_featured"
+													type="checkbox">
+											<label class="custom-control-label" for="is_featured">Is
+												a featured contest?</label>
+										</div>
+									</div>
+									<div class="form-group col-md-3">
+										<div class="custom-control custom-switch">
+											<input
+													class="custom-control-input"
+													id="is_highlighted" name="is_highlighted"
+													type="checkbox">
+											<label class="custom-control-label"
+											       for="is_highlighted">Is a highlighted
+												contest?</label>
+										</div>
+									</div>
+									<div class="form-group col-md-3">
+										<div class="custom-control custom-switch">
+											<input
+													class="custom-control-input"
+													id="is_active" name="is_active"
+													type="checkbox">
+											<label class="custom-control-label" for="is_active">Deactivate/Activate
+												contest</label>
+										</div>
+									</div>
+								</div>
+								<br/>
+								<div class="form-row">
+									<div class="form-group col-md-5"></div>
+									<div class="form-group col-md-5"></div>
+									<div class="form-group col-md-2">
+										<button *ngIf="contestId == null && contestId == undefined"
+										        class="btn btn-primary btn-block">Create contest
+										</button>
+										<button *ngIf="contestId != null && contestId != undefined"
+										        class="btn btn-primary btn-block">Update contest
+										</button>
+									</div>
+								</div>
+							</form>
+						</fieldset>
+					</div><!-- col -->
+				</div><!-- row -->
+				<br/>
+			</div>
+		</div><!-- media -->
+	</div><!-- container -->
 </div><!-- content -->

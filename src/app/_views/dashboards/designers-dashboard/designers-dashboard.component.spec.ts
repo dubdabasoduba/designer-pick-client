@@ -9,23 +9,23 @@ import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {DesignersDashboardComponent} from './designers-dashboard.component';
 
 describe('FundingComponent', () => {
-    let component: DesignersDashboardComponent;
-    let fixture: ComponentFixture<DesignersDashboardComponent>;
+	let component: DesignersDashboardComponent;
+	let fixture: ComponentFixture<DesignersDashboardComponent>;
 
-    beforeEach(waitForAsync(() => {
-        TestBed.configureTestingModule({
-            declarations: [DesignersDashboardComponent]
-        })
-            .compileComponents();
-    }));
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			declarations: [DesignersDashboardComponent]
+		})
+			.compileComponents();
+	}));
 
-    beforeEach(() => {
-        fixture = TestBed.createComponent(DesignersDashboardComponent);
-        component = fixture.componentInstance;
-        fixture.detectChanges();
-    });
+	beforeEach(() => {
+		fixture = TestBed.createComponent(DesignersDashboardComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
 
-    it('should be created', () => {
-        expect(component).toBeTruthy();
-    });
+	it('should be created', () => {
+		expect(component).toBeTruthy();
+	});
 });

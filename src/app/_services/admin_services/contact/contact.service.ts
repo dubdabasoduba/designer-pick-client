@@ -5,31 +5,31 @@ import {Observable} from "rxjs";
 import {ContactModel} from "../../../_models";
 
 @Injectable({
-    providedIn: 'root'
+	providedIn: 'root'
 })
 export class ContactService {
 
-    constructor(private http: HttpClient) {
-    }
+	constructor(private http: HttpClient) {
+	}
 
-    getContacts(id: string) {
-        return this.http.get(appConstants.baseApiV1Url + "/contacts/" + id);
-    }
+	getContacts(id: string) {
+		return this.http.get(appConstants.baseApiV1Url + "/contacts/" + id);
+	}
 
-    getContact(contactId: string): Observable<ContactModel> {
-        // @ts-ignore
-        return this.http.get(appConstants.baseApiV1Url + "/contact/" + contactId);
-    }
+	getContact(contactId: string): Observable<ContactModel> {
+		// @ts-ignore
+		return this.http.get(appConstants.baseApiV1Url + "/contact/" + contactId);
+	}
 
-    removeContact(id: string) {
-        return this.http.delete(appConstants.baseApiV1Url + '/contact/' + id);
-    }
+	removeContact(id: string) {
+		return this.http.delete(appConstants.baseApiV1Url + '/contact/' + id);
+	}
 
-    addContact(contact: ContactModel) {
-        return this.http.post(appConstants.baseApiV1Url + '/contact', contact);
-    }
+	addContact(contact: ContactModel) {
+		return this.http.post(appConstants.baseApiV1Url + '/contact', contact);
+	}
 
-    updateContact(contact: ContactModel) {
-        return this.http.put(appConstants.baseApiV1Url + '/contact/' + contact.uuid, contact);
-    }
+	updateContact(contact: ContactModel) {
+		return this.http.put(appConstants.baseApiV1Url + '/contact/' + contact.uuid, contact);
+	}
 }

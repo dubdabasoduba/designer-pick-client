@@ -49,263 +49,263 @@ import {ViewSingleContestComponent} from "./_views/main_views/contests/view-sing
 import {AddContestsComponent} from "./_views/main_views/contests/add-contests/add-contests.component";
 
 const appRoutes: Routes = [
-    {path: '', component: HomeComponent, runGuardsAndResolvers: 'always'},
-    {
-        path: 'sign-up',
-        component: SignupComponent,
-        canActivate: [PermissionsGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {path: 'sign-in', component: SigninComponent, runGuardsAndResolvers: 'always'},
-    {
-        path: 'sign-out',
-        redirectTo: '',
-        runGuardsAndResolvers: 'always'
-    }, {
-        path: 'reset-password',
-        component: RecoveryComponent,
-        canActivate: [PermissionsGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'update-password/:userId/:token',
-        component: UpdateComponent,
-        canActivate: [PermissionsGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {path: 'how-it-works', component: HowItWorksComponent, runGuardsAndResolvers: 'always'},
-    {path: 'contests', component: ContestsComponent, runGuardsAndResolvers: 'always'},
-    {path: 'contests/:id', component: ViewSingleContestComponent, runGuardsAndResolvers: 'always'},
-    {
-        path: 'contests-add', component: AddContestsComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'contests-edit/:id', component: AddContestsComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
-    },
-    {path: 'designers', component: DesignersComponent, runGuardsAndResolvers: 'always'},
-    {
-        path: 'designers/:id',
-        component: DesignerProfileComponent,
-        runGuardsAndResolvers: 'always'
-    },
-    {path: 'how-it-works', component: HowItWorksComponent, runGuardsAndResolvers: 'always'},
-    {
-        path: 'profile/:id',
-        component: ProfileComponent,
-        canActivate: [AuthGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'profile-update/:id',
-        component: UpdateUserComponent,
-        canActivate: [AuthGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'profile/:id',
-        component: ProfileMainPageComponent,
-        canActivate: [AuthGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'profile/change-password/:id',
-        component: UpdateCredentialsComponent,
-        canActivate: [AuthGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'profile/contacts/:id',
-        component: ContactsComponent,
-        canActivate: [AuthGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'profile/contacts/:id/:contactId',
-        component: ContactsComponent,
-        canActivate: [AuthGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'profile/inbox/:id',
-        component: ChatsComponent,
-        canActivate: [AuthGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'profile/update/:id',
-        component: UpdateUserDetailsComponent,
-        canActivate: [AuthGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'client-dashboard/:id',
-        component: ClientsDashboardComponent,
-        canActivate: [AuthGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'designers-dashboard/:id',
-        component: DesignersDashboardComponent,
-        canActivate: [AuthGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'admin', component: AdminMainPageComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'categories', component: CategoriesComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'categories/:id', component: CategoriesComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'contest-stages', component: ContestStagesComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'contest-stage/:id', component: ContestStagesComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'logo-uses', component: LogoUsesComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'logo-uses/:id', component: LogoUsesComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'countries', component: CountriesComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'countries/:id', component: CountriesComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'permissions', component: PermissionsComponent,
-        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
-        data: {permission: appConstants.getAllPermissions}
-    },
-    {
-        path: 'permissions/:id', component: PermissionsComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'roles', component: RolesComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'role/:id', component: ViewRolesComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'roles/add', component: AddEditRolesComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'roles/edit/:id', component: AddEditRolesComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'api-keys', component: ApiKeysComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'api-keys/:id', component: ApiKeysComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'users', component: ViewUsersComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'user/:id/:userId', component: ViewUserComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'users/assign-roles/:id/:userId', component: AssignUserRolesComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: "always"
-    },
-    {
-        path: 'users/contacts/:id/:contactId', component: UserContactsComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: "always"
-    },
-    {
-        path: 'users/contacts/:id', component: UserContactsComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: "always"
-    },
-    {
-        path: 'users/add', component: AddEditUsersComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'users/edit/:id', component: AddEditUsersComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'payment/payment-modes', component: PaymentModesComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'payment/payment-modes/:id', component: PaymentModesComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'payment/commissions', component: CommissionsComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'payment/commissions/:id', component: CommissionsComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'payment/discounts', component: DiscountsComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'payment/discounts/:id', component: DiscountsComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'settings', component: SettingsComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
-    },
+	{path: '', component: HomeComponent, runGuardsAndResolvers: 'always'},
+	{
+		path: 'sign-up',
+		component: SignupComponent,
+		canActivate: [PermissionsGuard],
+		runGuardsAndResolvers: 'always'
+	},
+	{path: 'sign-in', component: SigninComponent, runGuardsAndResolvers: 'always'},
+	{
+		path: 'sign-out',
+		redirectTo: '',
+		runGuardsAndResolvers: 'always'
+	}, {
+		path: 'reset-password',
+		component: RecoveryComponent,
+		canActivate: [PermissionsGuard],
+		runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'update-password/:userId/:token',
+		component: UpdateComponent,
+		canActivate: [PermissionsGuard],
+		runGuardsAndResolvers: 'always'
+	},
+	{path: 'how-it-works', component: HowItWorksComponent, runGuardsAndResolvers: 'always'},
+	{path: 'contests', component: ContestsComponent, runGuardsAndResolvers: 'always'},
+	{path: 'contests/:id', component: ViewSingleContestComponent, runGuardsAndResolvers: 'always'},
+	{
+		path: 'contests-add', component: AddContestsComponent,
+		canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'contests-edit/:id', component: AddContestsComponent,
+		canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+	},
+	{path: 'designers', component: DesignersComponent, runGuardsAndResolvers: 'always'},
+	{
+		path: 'designers/:id',
+		component: DesignerProfileComponent,
+		runGuardsAndResolvers: 'always'
+	},
+	{path: 'how-it-works', component: HowItWorksComponent, runGuardsAndResolvers: 'always'},
+	{
+		path: 'profile/:id',
+		component: ProfileComponent,
+		canActivate: [AuthGuard],
+		runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'profile-update/:id',
+		component: UpdateUserComponent,
+		canActivate: [AuthGuard],
+		runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'profile/:id',
+		component: ProfileMainPageComponent,
+		canActivate: [AuthGuard],
+		runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'profile/change-password/:id',
+		component: UpdateCredentialsComponent,
+		canActivate: [AuthGuard],
+		runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'profile/contacts/:id',
+		component: ContactsComponent,
+		canActivate: [AuthGuard],
+		runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'profile/contacts/:id/:contactId',
+		component: ContactsComponent,
+		canActivate: [AuthGuard],
+		runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'profile/inbox/:id',
+		component: ChatsComponent,
+		canActivate: [AuthGuard],
+		runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'profile/update/:id',
+		component: UpdateUserDetailsComponent,
+		canActivate: [AuthGuard],
+		runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'client-dashboard/:id',
+		component: ClientsDashboardComponent,
+		canActivate: [AuthGuard],
+		runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'designers-dashboard/:id',
+		component: DesignersDashboardComponent,
+		canActivate: [AuthGuard],
+		runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'admin', component: AdminMainPageComponent,
+		canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'categories', component: CategoriesComponent,
+		canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'categories/:id', component: CategoriesComponent,
+		canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'contest-stages', component: ContestStagesComponent,
+		canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'contest-stage/:id', component: ContestStagesComponent,
+		canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'logo-uses', component: LogoUsesComponent,
+		canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'logo-uses/:id', component: LogoUsesComponent,
+		canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'countries', component: CountriesComponent,
+		canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'countries/:id', component: CountriesComponent,
+		canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'permissions', component: PermissionsComponent,
+		canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
+		data: {permission: appConstants.getAllPermissions}
+	},
+	{
+		path: 'permissions/:id', component: PermissionsComponent,
+		canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'roles', component: RolesComponent,
+		canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'role/:id', component: ViewRolesComponent,
+		canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'roles/add', component: AddEditRolesComponent,
+		canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'roles/edit/:id', component: AddEditRolesComponent,
+		canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'api-keys', component: ApiKeysComponent,
+		canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'api-keys/:id', component: ApiKeysComponent,
+		canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'users', component: ViewUsersComponent,
+		canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'user/:id/:userId', component: ViewUserComponent,
+		canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'users/assign-roles/:id/:userId', component: AssignUserRolesComponent,
+		canActivate: [AuthGuard], runGuardsAndResolvers: "always"
+	},
+	{
+		path: 'users/contacts/:id/:contactId', component: UserContactsComponent,
+		canActivate: [AuthGuard], runGuardsAndResolvers: "always"
+	},
+	{
+		path: 'users/contacts/:id', component: UserContactsComponent,
+		canActivate: [AuthGuard], runGuardsAndResolvers: "always"
+	},
+	{
+		path: 'users/add', component: AddEditUsersComponent,
+		canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'users/edit/:id', component: AddEditUsersComponent,
+		canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'payment/payment-modes', component: PaymentModesComponent,
+		canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'payment/payment-modes/:id', component: PaymentModesComponent,
+		canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'payment/commissions', component: CommissionsComponent,
+		canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'payment/commissions/:id', component: CommissionsComponent,
+		canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'payment/discounts', component: DiscountsComponent,
+		canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'payment/discounts/:id', component: DiscountsComponent,
+		canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'settings', component: SettingsComponent,
+		canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+	},
 
-    // probably should be cleared
-    {
-        path: 'profile/user-contacts/:id',
-        component: ContactsComponent,
-        canActivate: [AuthGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'verify-email/:userId/:token',
-        component: VerifyEmailComponent,
-        canActivate: [PermissionsGuard],
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'connect-facebook',
-        redirectTo: '/' + appConstants.baseApiV1Url + '/auth/connect-facebook',
-        pathMatch: 'full',
-        runGuardsAndResolvers: 'always'
-    },
-    {path: '**', redirectTo: '', runGuardsAndResolvers: 'always'}
+	// probably should be cleared
+	{
+		path: 'profile/user-contacts/:id',
+		component: ContactsComponent,
+		canActivate: [AuthGuard],
+		runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'verify-email/:userId/:token',
+		component: VerifyEmailComponent,
+		canActivate: [PermissionsGuard],
+		runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'connect-facebook',
+		redirectTo: '/' + appConstants.baseApiV1Url + '/auth/connect-facebook',
+		pathMatch: 'full',
+		runGuardsAndResolvers: 'always'
+	},
+	{path: '**', redirectTo: '', runGuardsAndResolvers: 'always'}
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(appRoutes, {
-        useHash: false,
-        onSameUrlNavigation: 'reload',
-        relativeLinkResolution: 'legacy'
-    })],
-    exports: [RouterModule]
+	imports: [RouterModule.forRoot(appRoutes, {
+		useHash: false,
+		onSameUrlNavigation: 'reload',
+		relativeLinkResolution: 'legacy'
+	})],
+	exports: [RouterModule]
 })
 export class AppRoutingModule {
 }

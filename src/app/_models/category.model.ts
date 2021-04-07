@@ -6,9 +6,9 @@
 import {DefaultModel} from './default.model';
 
 export class CategoryModel extends DefaultModel {
-    name: string;
-    description: string;
-    main: any;
-    category: string;
-    categoryId: string;
+	name: string;
+	description: string;
+	main: any;
+	category: string;
+	categoryId: string;
 }

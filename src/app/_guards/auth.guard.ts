@@ -12,32 +12,32 @@ import {appConstants} from '../_helpers';
 
 @Injectable({providedIn: 'root'})
 export class AuthGuard implements CanActivate {
-    constructor(private router: Router, private authService: AuthenticationService) {
-    }
+	constructor(private router: Router, private authService: AuthenticationService) {
+	}
 
-    canActivate(
-        route: ActivatedRouteSnapshot,
-        state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-        const lbsUser = this.authService.getCurrentUser();
-        if (lbsUser != null) {
-            if (lbsUser.auth.forceUpdate && !state.url.includes(appConstants.profileUpdateUrl)) {
-                this.router.navigate([appConstants.profileUpdateUrl + lbsUser.user.uuid], {
-                    queryParams: {
-                        type: lbsUser.user.type,
-                        returnUrl: state.url
-                    }
-                });
-                return false;
-            } else {
-                return true;
-            }
-        } else {
-            this.router.navigate([appConstants.authSIgnInUrl], {
-                queryParams: {
-                    returnUrl: state.url
-                }
-            });
-            return false;
-        }
-    }
+	canActivate(
+		route: ActivatedRouteSnapshot,
+		state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+		const lbsUser = this.authService.getCurrentUser();
+		if (lbsUser != null) {
+			if (lbsUser.auth.forceUpdate && !state.url.includes(appConstants.profileUpdateUrl)) {
+				this.router.navigate([appConstants.profileUpdateUrl + lbsUser.user.uuid], {
+					queryParams: {
+						type: lbsUser.user.type,
+						returnUrl: state.url
+					}
+				});
+				return false;
+			} else {
+				return true;
+			}
+		} else {
+			this.router.navigate([appConstants.authSIgnInUrl], {
+				queryParams: {
+					returnUrl: state.url
+				}
+			});
+			return false;
+		}
+	}
 }

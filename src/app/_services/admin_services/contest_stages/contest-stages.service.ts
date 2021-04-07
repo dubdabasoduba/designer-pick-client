@@ -13,27 +13,27 @@ import {Observable} from "rxjs";
 @Injectable()
 export class ContestStagesService {
 
-    constructor(private http: HttpClient) {
-    }
+	constructor(private http: HttpClient) {
+	}
 
-    getContentsStages() {
-        return this.http.get(appConstants.baseApiV1Url + '/contest-stages');
-    }
+	getContentsStages() {
+		return this.http.get(appConstants.baseApiV1Url + '/contest-stages');
+	}
 
-    getContentsStage(id: string): Observable<ContestStageModel> {
-        // @ts-ignore
-        return this.http.get(appConstants.baseApiV1Url + '/contest-stage/' + id);
-    }
+	getContentsStage(id: string): Observable<ContestStageModel> {
+		// @ts-ignore
+		return this.http.get(appConstants.baseApiV1Url + '/contest-stage/' + id);
+	}
 
-    removeContentsStage(id: string) {
-        return this.http.delete(appConstants.baseApiV1Url + '/contest-stage/' + id);
-    }
+	removeContentsStage(id: string) {
+		return this.http.delete(appConstants.baseApiV1Url + '/contest-stage/' + id);
+	}
 
-    addContentsStage(contestStage: ContestStageModel) {
-        return this.http.post(appConstants.baseApiV1Url + '/contest-stage', contestStage);
-    }
+	addContentsStage(contestStage: ContestStageModel) {
+		return this.http.post(appConstants.baseApiV1Url + '/contest-stage', contestStage);
+	}
 
-    updateContentsStage(contestStage: ContestStageModel) {
-        return this.http.put(appConstants.baseApiV1Url + '/contest-stage/' + contestStage.uuid, contestStage);
-    }
+	updateContentsStage(contestStage: ContestStageModel) {
+		return this.http.put(appConstants.baseApiV1Url + '/contest-stage/' + contestStage.uuid, contestStage);
+	}
 }

@@ -13,95 +13,95 @@ import {tap} from 'rxjs/operators';
 import {AuthenticatedUserModel, UserModel} from '../../_models';
 
 @Injectable({
-    providedIn: 'root'
+	providedIn: 'root'
 })
 export class AuthenticationService {
-    private _lbsUser = 'lbsUser';
+	private _lbsUser = 'lbsUser';
 
-    constructor(private http: HttpClient) {
-    }
+	constructor(private http: HttpClient) {
+	}
 
-    private static setSession(response) {
-        if (response && response.auth && response.auth.token) {
-            localStorage.setItem('lbsUser', JSON.stringify(response));
-        }
-        return response;
-    }
+	private static setSession(response) {
+		if (response && response.auth && response.auth.token) {
+			localStorage.setItem('lbsUser', JSON.stringify(response));
+		}
+		return response;
+	}
 
-    login(username: string, password: string) {
-        return this.http.post(appConstants.baseApiV1Url + '/auth/login', {
-            username: username, password: AppCommons.generatePasswordHash(password)
-        }).pipe(tap(response => AuthenticationService.setSession(response)));
-    }
+	login(username: string, password: string) {
+		return this.http.post(appConstants.baseApiV1Url + '/auth/login', {
+			username: username, password: AppCommons.generatePasswordHash(password)
+		}).pipe(tap(response => AuthenticationService.setSession(response)));
+	}
 
-    resetPasswordRequest(username: string) {
-        return this.http.post(appConstants.baseApiV1Url + '/auth/reset-password', {
-            username: username
-        });
-    }
+	resetPasswordRequest(username: string) {
+		return this.http.post(appConstants.baseApiV1Url + '/auth/reset-password', {
+			username: username
+		});
+	}
 
-    passwordChangeRequest(password: string, username: string) {
-        return this.http.post(appConstants.baseApiV1Url + appConstants.passwordChangeUrl, {
-            username: username, password: AppCommons.generatePasswordHash(password)
-        });
-    }
+	passwordChangeRequest(password: string, username: string) {
+		return this.http.post(appConstants.baseApiV1Url + appConstants.passwordChangeUrl, {
+			username: username, password: AppCommons.generatePasswordHash(password)
+		});
+	}
 
-    updatePasswordAfterReset(userId: string, verificationCode: string, password: string, confirmPassword: string) {
-        return this.http.post(appConstants.baseApiV1Url + '/auth/update-password', {
-            uuid: userId,
-            reset_code: verificationCode,
-            password: AppCommons.generatePasswordHash(password),
-            confirmPassword: AppCommons.generatePasswordHash(confirmPassword)
-        });
-    }
+	updatePasswordAfterReset(userId: string, verificationCode: string, password: string, confirmPassword: string) {
+		return this.http.post(appConstants.baseApiV1Url + '/auth/update-password', {
+			uuid: userId,
+			reset_code: verificationCode,
+			password: AppCommons.generatePasswordHash(password),
+			confirmPassword: AppCommons.generatePasswordHash(confirmPassword)
+		});
+	}
 
-    verifyAccount(userId: string, verificationCode: string) {
-        return this.http.post(appConstants.baseApiV1Url + '/auth/verify-account', {
-            uuid: userId, verificationCode: verificationCode
-        });
-    }
+	verifyAccount(userId: string, verificationCode: string) {
+		return this.http.post(appConstants.baseApiV1Url + '/auth/verify-account', {
+			uuid: userId, verificationCode: verificationCode
+		});
+	}
 
-    updatePasswordFormProfile(user: UserModel) {
-        return this.http.post(appConstants.baseApiV1Url + '/auth/profile/update-password', {
-            uuid: user.uuid,
-            password: AppCommons.generatePasswordHash(user.password),
-            confirmPassword: AppCommons.generatePasswordHash(user.confirmPassword)
-        });
-    }
+	updatePasswordFormProfile(user: UserModel) {
+		return this.http.post(appConstants.baseApiV1Url + '/auth/profile/update-password', {
+			uuid: user.uuid,
+			password: AppCommons.generatePasswordHash(user.password),
+			confirmPassword: AppCommons.generatePasswordHash(user.confirmPassword)
+		});
+	}
 
-    logout() {
-        localStorage.removeItem(this._lbsUser);
-        this.http.get(appConstants.baseApiV1Url + '/auth/logout');
-    }
+	logout() {
+		localStorage.removeItem(this._lbsUser);
+		this.http.get(appConstants.baseApiV1Url + '/auth/logout');
+	}
 
-    resendVerification(username: string) {
-        return this.http.post(appConstants.baseApiV1Url + appConstants.resendCodeUrl, {username: username});
-    }
+	resendVerification(username: string) {
+		return this.http.post(appConstants.baseApiV1Url + appConstants.resendCodeUrl, {username: username});
+	}
 
-    getToken() {
-        const currentUser = JSON.parse(localStorage.getItem(this._lbsUser));
-        return currentUser.auth.token;
-    }
+	getToken() {
+		const currentUser = JSON.parse(localStorage.getItem(this._lbsUser));
+		return currentUser.auth.token;
+	}
 
-    getCurrentUser(): AuthenticatedUserModel {
-        return JSON.parse(localStorage.getItem(this._lbsUser));
-    }
+	getCurrentUser(): AuthenticatedUserModel {
+		return JSON.parse(localStorage.getItem(this._lbsUser));
+	}
 
-    setUpdatedProfileImage(userImage: string) {
-        const user = JSON.parse(localStorage.getItem(this._lbsUser));
-        user.user.entityIconImage = userImage;
-        AuthenticationService.setSession(user);
-    }
+	setUpdatedProfileImage(userImage: string) {
+		const user = JSON.parse(localStorage.getItem(this._lbsUser));
+		user.user.entityIconImage = userImage;
+		AuthenticationService.setSession(user);
+	}
 
-    setForceUpdateState(forceUpdate: boolean) {
-        const user = JSON.parse(localStorage.getItem(this._lbsUser));
-        user.auth.forceUpdate = forceUpdate;
-        AuthenticationService.setSession(user);
-    }
+	setForceUpdateState(forceUpdate: boolean) {
+		const user = JSON.parse(localStorage.getItem(this._lbsUser));
+		user.auth.forceUpdate = forceUpdate;
+		AuthenticationService.setSession(user);
+	}
 
-    setName(name: string) {
-        const user = JSON.parse(localStorage.getItem(this._lbsUser));
-        user.auth.name = name;
-        AuthenticationService.setSession(user);
-    }
+	setName(name: string) {
+		const user = JSON.parse(localStorage.getItem(this._lbsUser));
+		user.auth.name = name;
+		AuthenticationService.setSession(user);
+	}
 }

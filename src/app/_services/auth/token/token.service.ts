@@ -9,18 +9,18 @@ import {HttpClient} from '@angular/common/http';
 import {appConstants} from '../../../_helpers';
 
 @Injectable({
-    providedIn: 'root'
+	providedIn: 'root'
 })
 export class TokenService {
 
-    constructor(private http: HttpClient) {
-    }
+	constructor(private http: HttpClient) {
+	}
 
-    getTokens() {
-        return this.http.get(appConstants.baseApiV1Url + '/tokens');
-    }
+	getTokens() {
+		return this.http.get(appConstants.baseApiV1Url + '/tokens');
+	}
 
-    getToken(tokenId: string) {
-        return this.http.get(appConstants.baseApiV1Url + '/token/' + tokenId);
-    }
+	getToken(tokenId: string) {
+		return this.http.get(appConstants.baseApiV1Url + '/token/' + tokenId);
+	}
 }

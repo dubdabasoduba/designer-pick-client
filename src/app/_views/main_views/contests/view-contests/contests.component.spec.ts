@@ -9,23 +9,23 @@ import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {ContestsComponent} from './contests.component';
 
 describe('EntitiesComponent', () => {
-    let component: ContestsComponent;
-    let fixture: ComponentFixture<ContestsComponent>;
+	let component: ContestsComponent;
+	let fixture: ComponentFixture<ContestsComponent>;
 
-    beforeEach(waitForAsync(() => {
-        TestBed.configureTestingModule({
-            declarations: [ContestsComponent]
-        })
-            .compileComponents();
-    }));
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			declarations: [ContestsComponent]
+		})
+			.compileComponents();
+	}));
 
-    beforeEach(() => {
-        fixture = TestBed.createComponent(ContestsComponent);
-        component = fixture.componentInstance;
-        fixture.detectChanges();
-    });
+	beforeEach(() => {
+		fixture = TestBed.createComponent(ContestsComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
 
-    it('should be created', () => {
-        expect(component).toBeTruthy();
-    });
+	it('should be created', () => {
+		expect(component).toBeTruthy();
+	});
 });
