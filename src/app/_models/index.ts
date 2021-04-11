@@ -23,3 +23,4 @@ export * from './contest-stage.model';
 export * from './logo-brief.model';
 export * from './contest.model';
 export * from './logo-uses.model';
+export * from './news-letters.model';

@@ -82,6 +82,7 @@ import {ViewSingleContestComponent} from './_views/main_views/contests/view-sing
 import {FaqComponent} from './_views/main_views/faq/faq.component';
 import {PolicyComponent} from './_views/main_views/policy/policy.component';
 import {TosComponent} from './_views/main_views/tos/tos.component';
+import { FooterComponent } from './_views/main_views/footer/footer.component';
 
 @NgModule({
     declarations: [
@@ -133,7 +134,8 @@ import {TosComponent} from './_views/main_views/tos/tos.component';
         ViewSingleContestComponent,
         FaqComponent,
         PolicyComponent,
-        TosComponent
+        TosComponent,
+        FooterComponent
     ],
     imports: [
         BrowserModule,

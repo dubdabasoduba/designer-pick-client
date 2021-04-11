@@ -196,6 +196,9 @@ export const appConstants = {
     clientDashboardUrl: 'client-dashboard/',
     designerDashboardUrl: 'designers-dashboard/',
 
+    //news letter url endpoints
+    subscribeToNewsLetterUrl: '/news-letters',
+
     //permissions
     readPermission: "82257bde-6381-48aa-862d-94d46948f8ca",
     updatePermission: "85ce62ba-b991-4fae-9c22-120afc2eb1a1",
