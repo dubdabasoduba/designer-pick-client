@@ -5,7 +5,7 @@
   -->
 <div *ngFor="let alert of alerts" class="{{ cssClass(alert) }} alert-dismissable"
      style="margin-top: 7px">
-	{{alert.message}}
-	<a (click)="removeAlert(alert)" class="close"><i aria-hidden="true"
-	                                                 class="fa fa-times-circle-o"></i></a>
+    {{alert.message}}
+    <a (click)="removeAlert(alert)" class="close"><i aria-hidden="true"
+                                                     class="fa fa-times-circle-o"></i></a>
 </div>

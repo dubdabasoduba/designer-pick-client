@@ -5,33 +5,33 @@ import {Observable} from "rxjs";
 import {ContestModel, PersonModel} from "../../../_models";
 
 @Injectable({
-	providedIn: 'root'
+    providedIn: 'root'
 })
 export class ContestsService {
 
-	constructor(private http: HttpClient) {
-	}
+    constructor(private http: HttpClient) {
+    }
 
 
-	getContests() {
-		return this.http.get(appConstants.baseApiV1Url + '/designers');
-	}
+    getContests() {
+        return this.http.get(appConstants.baseApiV1Url + '/designers');
+    }
 
-	getContestById(personId: string): Observable<PersonModel> {
-		// @ts-ignore
-		return this.http.get(appConstants.baseApiV1Url + '/designer/' + personId);
-	}
+    getContestById(personId: string): Observable<PersonModel> {
+        // @ts-ignore
+        return this.http.get(appConstants.baseApiV1Url + '/designer/' + personId);
+    }
 
-	getDisplayContests() {
-		return this.http.get(appConstants.baseApiV1Url + '/display-contests');
-	}
+    getDisplayContests() {
+        return this.http.get(appConstants.baseApiV1Url + '/display-contests');
+    }
 
-	getDisplayContestById(contestId: string): Observable<ContestModel> {
-		// @ts-ignore
-		return this.http.get(appConstants.baseApiV1Url + '/display-contest/' + contestId);
-	}
+    getDisplayContestById(contestId: string): Observable<ContestModel> {
+        // @ts-ignore
+        return this.http.get(appConstants.baseApiV1Url + '/display-contest/' + contestId);
+    }
 
-	getLogoBriefs(userId) {
-		return this.http.get(appConstants.baseApiV1Url + '/user-logo-briefs/' + userId);
-	}
+    getLogoBriefs(userId) {
+        return this.http.get(appConstants.baseApiV1Url + '/user-logo-briefs/' + userId);
+    }
 }

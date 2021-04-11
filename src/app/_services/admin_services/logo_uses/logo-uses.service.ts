@@ -5,31 +5,31 @@ import {LogoUsesModel} from "../../../_models";
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({
-	providedIn: 'root'
+    providedIn: 'root'
 })
 export class LogoUsesService {
 
-	constructor(private http: HttpClient) {
-	}
+    constructor(private http: HttpClient) {
+    }
 
-	getLogoUses() {
-		return this.http.get(appConstants.baseApiV1Url + '/logo-uses');
-	}
+    getLogoUses() {
+        return this.http.get(appConstants.baseApiV1Url + '/logo-uses');
+    }
 
-	getLogoUse(id: string): Observable<LogoUsesModel> {
-		// @ts-ignore
-		return this.http.get(appConstants.baseApiV1Url + '/logo-use/' + id);
-	}
+    getLogoUse(id: string): Observable<LogoUsesModel> {
+        // @ts-ignore
+        return this.http.get(appConstants.baseApiV1Url + '/logo-use/' + id);
+    }
 
-	removeLogoUse(id: string) {
-		return this.http.delete(appConstants.baseApiV1Url + '/logo-use/' + id);
-	}
+    removeLogoUse(id: string) {
+        return this.http.delete(appConstants.baseApiV1Url + '/logo-use/' + id);
+    }
 
-	addLogoUse(category: LogoUsesModel) {
-		return this.http.post(appConstants.baseApiV1Url + '/logo-use', category);
-	}
+    addLogoUse(category: LogoUsesModel) {
+        return this.http.post(appConstants.baseApiV1Url + '/logo-use', category);
+    }
 
-	updateLogoUse(category: LogoUsesModel) {
-		return this.http.put(appConstants.baseApiV1Url + '/logo-use/' + category.uuid, category);
-	}
+    updateLogoUse(category: LogoUsesModel) {
+        return this.http.put(appConstants.baseApiV1Url + '/logo-use/' + category.uuid, category);
+    }
 }

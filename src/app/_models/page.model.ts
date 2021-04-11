@@ -5,16 +5,16 @@
  */
 
 export class PageModel {
-	totalItems: number;
-	currentPage: number;
-	pageSize: number;
-	totalPages: number;
-	startPage: number;
-	endPage: number;
-	startIndex: number;
-	endIndex: number;
-	pages: number[];
-	page: number;
-	limit: number;
-	paginate: boolean;
+    totalItems: number;
+    currentPage: number;
+    pageSize: number;
+    totalPages: number;
+    startPage: number;
+    endPage: number;
+    startIndex: number;
+    endIndex: number;
+    pages: number[];
+    page: number;
+    limit: number;
+    paginate: boolean;
 }

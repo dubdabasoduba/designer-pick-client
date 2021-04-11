@@ -5,132 +5,136 @@
   -->
 <app-navigation></app-navigation>
 <div class="content content-fixed bd-b">
-	<div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
-		<div class="d-sm-flex align-items-center justify-content-between">
-			<div>
-				<nav aria-label="breadcrumb">
-					<ol class="breadcrumb breadcrumb-style1 mg-b-10">
-						<li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-						<li aria-current="page" class="breadcrumb-item active">All contests</li>
-					</ol>
-				</nav>
-				<h4 class="mg-b-0">All contests</h4>
-			</div>
-			<div class="search-form mg-t-20 mg-sm-t-0">
-				<input class="form-control" placeholder="Search contests" type="search">
-				<button class="btn" type="button"><i data-feather="search"></i></button>
-			</div>
-		</div>
-	</div><!-- container -->
+    <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
+        <div class="d-sm-flex align-items-center justify-content-between">
+            <div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-style1 mg-b-10">
+                        <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+                        <li aria-current="page" class="breadcrumb-item active">All contests</li>
+                    </ol>
+                </nav>
+                <h4 class="mg-b-0">All contests</h4>
+            </div>
+            <div class="search-form mg-t-20 mg-sm-t-0">
+                <input class="form-control" placeholder="Search contests" type="search">
+                <button class="btn" type="button"><i data-feather="search"></i></button>
+            </div>
+        </div>
+    </div><!-- container -->
 </div><!-- content -->
 
 <div class="content">
-	<div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
-		<div class="row">
-			<div class="col-lg-10 col-xl-10">
-				<div class="row row-sm mg-b-25">
-					<div *ngFor="let contest of contests; let i = index" class="col-md-3 mg-t-20">
-						<div class="card card-event">
-							<img *ngIf="contest.is_private" alt="" class="card-img-top"
-							     src="../../../../../assets/img/private-contest.png">
-							<img *ngIf="!contest.is_private" alt="" class="card-img-top"
-							     src="../../../../../assets/img/img27.jpg">
-							<div *ngIf="!contest.is_highlighted" class="card-body tx-13">
-								<h5 *ngIf="!contest.is_private"><a
-										routerLink="/contests/{{contest.uuid}}">{{contest.business_name}}
-									Logo Design Contest</a>&nbsp;
-									<svg *ngIf="contest.is_featured" class="bi bi-patch-check-fill" data-placement="bottom"
-									     data-toggle="tooltip"
-									     fill="currentColor" height="16" title="Contest is featured"
-									     viewBox="0 0 16 16" width="16"
-									     xmlns="http://www.w3.org/2000/svg">
-										<path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"/>
-									</svg>
-								</h5>
-								<h5 *ngIf="contest.is_private"><a
-										(click)="redirectToSign(contest.uuid)">Private
-									Contest Logo Design Contest</a>&nbsp;
-									<svg *ngIf="contest.is_featured" class="bi bi-patch-check-fill" data-placement="bottom"
-									     data-toggle="tooltip"
-									     fill="currentColor" height="16" title="Contest is featured"
-									     viewBox="0 0 16 16" width="16"
-									     xmlns="http://www.w3.org/2000/svg">
-										<path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"/>
-									</svg>
-								</h5>
-								<p class="mg-b-0">{{contest.start_date}}&nbsp;--&nbsp;{{contest.end_date}}</p>
-								<span class="tx-12 tx-color-03">6, Entries</span>
-							</div><!-- card-body -->
-							<div *ngIf="contest.is_highlighted"
-							     class="card-body tx-13 highlight-color">
-								<h5 *ngIf="!contest.is_private"><a
-										routerLink="/contests/{{contest.uuid}}">{{contest.business_name}}
-									Logo Design Contest</a>&nbsp;
-									<svg *ngIf="contest.is_featured" class="bi bi-patch-check-fill" data-placement="bottom"
-									     data-toggle="tooltip"
-									     fill="currentColor" height="16" title="Contest is featured"
-									     viewBox="0 0 16 16" width="16"
-									     xmlns="http://www.w3.org/2000/svg">
-										<path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"/>
-									</svg>
-								</h5>
-								<h5 *ngIf="contest.is_private"><a
-										(click)="redirectToSign(contest.uuid)">Private
-									Contest Logo Design Contest</a>&nbsp;
-									<svg *ngIf="contest.is_featured" class="bi bi-patch-check-fill" data-placement="bottom"
-									     data-toggle="tooltip"
-									     fill="currentColor" height="16" title="Contest is featured"
-									     viewBox="0 0 16 16" width="16"
-									     xmlns="http://www.w3.org/2000/svg">
-										<path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"/>
-									</svg>
-								</h5>
-								<p class="mg-b-0">{{contest.start_date}}&nbsp;--&nbsp;{{contest.end_date}}</p>
-								<span class="tx-12 tx-color-03">6, Entries</span>
-							</div><!-- card-body -->
-						</div><!-- card -->
-					</div><!-- col -->
-				</div><!-- row -->
-			</div><!-- col -->
-			<div class="col-sm-7 col-md-5 col-lg-2 col-xl-2 mg-t-40 mg-lg-t-0">
-				<div class="d-flex align-items-center justify-content-between mg-b-20">
-					<h6 class="tx-uppercase tx-semibold mg-b-0">Almost expiring contests</h6>
-				</div>
-				<ul class="list-unstyled media-list mg-b-15">
-					<li class="media align-items-center">
-						<div class="wd-40 ht-40 bg-dark tx-white d-flex align-items-center justify-content-center rounded">
-							<i data-feather="calendar"></i>
-						</div>
-						<div class="media-body pd-l-15">
-							<h6 class="mg-b-2"><a class="link-01" href="#">My 32th Birthday</a></h6>
-							<span class="tx-13 tx-color-03">Today, April 21, 5:00pm</span>
-						</div>
-					</li>
-					<li class="media align-items-center mg-t-15">
-						<div class="wd-40 ht-40 bg-indigo tx-white d-flex align-items-center justify-content-center rounded">
-							<i data-feather="calendar"></i>
-						</div>
-						<div class="media-body pd-l-15">
-							<h6 class="mg-b-2"><a class="link-01" href="#">Dribbble Meetup</a></h6>
-							<span class="tx-13 tx-color-03">Tomorrow, April 22, 3:00pm</span>
-						</div>
-					</li>
-				</ul>
+    <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
+        <div class="row">
+            <div class="col-lg-10 col-xl-10">
+                <div class="row row-sm mg-b-25">
+                    <div *ngFor="let contest of contests; let i = index" class="col-md-3 mg-t-20">
+                        <div class="card card-event">
+                            <img *ngIf="contest.is_private" alt="" class="card-img-top"
+                                 src="../../../../../assets/img/private-contest.png">
+                            <img *ngIf="!contest.is_private" alt="" class="card-img-top"
+                                 src="../../../../../assets/img/img27.jpg">
+                            <div *ngIf="!contest.is_highlighted" class="card-body tx-13">
+                                <h5 *ngIf="!contest.is_private"><a
+                                        routerLink="/contests/{{contest.uuid}}">{{contest.business_name}}
+                                    Logo Design Contest</a>&nbsp;
+                                    <svg *ngIf="contest.is_featured" class="bi bi-patch-check-fill"
+                                         data-placement="bottom"
+                                         data-toggle="tooltip"
+                                         fill="currentColor" height="16" title="Contest is featured"
+                                         viewBox="0 0 16 16" width="16"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"/>
+                                    </svg>
+                                </h5>
+                                <h5 *ngIf="contest.is_private"><a
+                                        (click)="redirectToSign(contest.uuid)">Private
+                                    Contest Logo Design Contest</a>&nbsp;
+                                    <svg *ngIf="contest.is_featured" class="bi bi-patch-check-fill"
+                                         data-placement="bottom"
+                                         data-toggle="tooltip"
+                                         fill="currentColor" height="16" title="Contest is featured"
+                                         viewBox="0 0 16 16" width="16"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"/>
+                                    </svg>
+                                </h5>
+                                <p class="mg-b-0">{{contest.start_date}}&nbsp;--&nbsp;{{contest.end_date}}</p>
+                                <span class="tx-12 tx-color-03">6, Entries</span>
+                            </div><!-- card-body -->
+                            <div *ngIf="contest.is_highlighted"
+                                 class="card-body tx-13 highlight-color">
+                                <h5 *ngIf="!contest.is_private"><a
+                                        routerLink="/contests/{{contest.uuid}}">{{contest.business_name}}
+                                    Logo Design Contest</a>&nbsp;
+                                    <svg *ngIf="contest.is_featured" class="bi bi-patch-check-fill"
+                                         data-placement="bottom"
+                                         data-toggle="tooltip"
+                                         fill="currentColor" height="16" title="Contest is featured"
+                                         viewBox="0 0 16 16" width="16"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"/>
+                                    </svg>
+                                </h5>
+                                <h5 *ngIf="contest.is_private"><a
+                                        (click)="redirectToSign(contest.uuid)">Private
+                                    Contest Logo Design Contest</a>&nbsp;
+                                    <svg *ngIf="contest.is_featured" class="bi bi-patch-check-fill"
+                                         data-placement="bottom"
+                                         data-toggle="tooltip"
+                                         fill="currentColor" height="16" title="Contest is featured"
+                                         viewBox="0 0 16 16" width="16"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"/>
+                                    </svg>
+                                </h5>
+                                <p class="mg-b-0">{{contest.start_date}}&nbsp;--&nbsp;{{contest.end_date}}</p>
+                                <span class="tx-12 tx-color-03">6, Entries</span>
+                            </div><!-- card-body -->
+                        </div><!-- card -->
+                    </div><!-- col -->
+                </div><!-- row -->
+            </div><!-- col -->
+            <div class="col-sm-7 col-md-5 col-lg-2 col-xl-2 mg-t-40 mg-lg-t-0">
+                <div class="d-flex align-items-center justify-content-between mg-b-20">
+                    <h6 class="tx-uppercase tx-semibold mg-b-0">Almost expiring contests</h6>
+                </div>
+                <ul class="list-unstyled media-list mg-b-15">
+                    <li class="media align-items-center">
+                        <div class="wd-40 ht-40 bg-dark tx-white d-flex align-items-center justify-content-center rounded">
+                            <i data-feather="calendar"></i>
+                        </div>
+                        <div class="media-body pd-l-15">
+                            <h6 class="mg-b-2"><a class="link-01" href="#">My 32th Birthday</a></h6>
+                            <span class="tx-13 tx-color-03">Today, April 21, 5:00pm</span>
+                        </div>
+                    </li>
+                    <li class="media align-items-center mg-t-15">
+                        <div class="wd-40 ht-40 bg-indigo tx-white d-flex align-items-center justify-content-center rounded">
+                            <i data-feather="calendar"></i>
+                        </div>
+                        <div class="media-body pd-l-15">
+                            <h6 class="mg-b-2"><a class="link-01" href="#">Dribbble Meetup</a></h6>
+                            <span class="tx-13 tx-color-03">Tomorrow, April 22, 3:00pm</span>
+                        </div>
+                    </li>
+                </ul>
 
-				<h6 class="tx-uppercase tx-semibold mg-t-50 mg-b-15">Contests By Industries</h6>
-				<nav class="nav nav-classic tx-13">
-					<a class="nav-link" href="#"><span>Worldwide</span> <span
-							class="badge">20</span></a>
-					<a class="nav-link" href="#"><span>Asia Pacific</span> <span
-							class="badge">18</span></a>
-					<a class="nav-link" href="#"><span>United States</span> <span
-							class="badge">14</span></a>
-					<a class="nav-link" href="#"><span>Europe</span> <span
-							class="badge">12</span></a>
-					<a class="nav-link" href="#"><span>Nearby</span> <span
-							class="badge">10</span></a>
-				</nav>
-			</div><!-- col -->
-		</div><!-- row -->
-	</div><!-- container -->
+                <h6 class="tx-uppercase tx-semibold mg-t-50 mg-b-15">Contests By Industries</h6>
+                <nav class="nav nav-classic tx-13">
+                    <a class="nav-link" href="#"><span>Worldwide</span> <span
+                            class="badge">20</span></a>
+                    <a class="nav-link" href="#"><span>Asia Pacific</span> <span
+                            class="badge">18</span></a>
+                    <a class="nav-link" href="#"><span>United States</span> <span
+                            class="badge">14</span></a>
+                    <a class="nav-link" href="#"><span>Europe</span> <span
+                            class="badge">12</span></a>
+                    <a class="nav-link" href="#"><span>Nearby</span> <span
+                            class="badge">10</span></a>
+                </nav>
+            </div><!-- col -->
+        </div><!-- row -->
+    </div><!-- container -->
 </div><!-- content -->

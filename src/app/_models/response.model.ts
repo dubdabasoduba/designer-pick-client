@@ -5,8 +5,8 @@
  */
 
 export class ResponseModel {
-	itemCount: number;
-	pageCount: number;
-	pages: [];
-	results: [];
+    itemCount: number;
+    pageCount: number;
+    pages: [];
+    results: [];
 }

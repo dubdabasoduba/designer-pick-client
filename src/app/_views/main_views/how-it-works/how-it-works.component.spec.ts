@@ -9,23 +9,23 @@ import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {HowItWorksComponent} from './how-it-works.component';
 
 describe('ResultComponent', () => {
-	let component: HowItWorksComponent;
-	let fixture: ComponentFixture<HowItWorksComponent>;
+    let component: HowItWorksComponent;
+    let fixture: ComponentFixture<HowItWorksComponent>;
 
-	beforeEach(waitForAsync(() => {
-		TestBed.configureTestingModule({
-			declarations: [HowItWorksComponent]
-		})
-			.compileComponents();
-	}));
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [HowItWorksComponent]
+        })
+            .compileComponents();
+    }));
 
-	beforeEach(() => {
-		fixture = TestBed.createComponent(HowItWorksComponent);
-		component = fixture.componentInstance;
-		fixture.detectChanges();
-	});
+    beforeEach(() => {
+        fixture = TestBed.createComponent(HowItWorksComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-	it('should create', () => {
-		expect(component).toBeTruthy();
-	});
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

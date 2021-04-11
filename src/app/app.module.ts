@@ -10,23 +10,23 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import {
-	AlertService,
-	ApiKeysService,
-	AuthenticationService,
-	CategoryService,
-	CommissionsService,
-	ContestsService,
-	ContestStagesService,
-	CountriesService,
-	DiscountsService,
-	LogoUsesService,
-	PagerService,
-	PaymentModesService,
-	PermissionsService,
-	PersonsService,
-	ProfileService,
-	SettingsService,
-	UserService
+    AlertService,
+    ApiKeysService,
+    AuthenticationService,
+    CategoryService,
+    CommissionsService,
+    ContestsService,
+    ContestStagesService,
+    CountriesService,
+    DiscountsService,
+    LogoUsesService,
+    PagerService,
+    PaymentModesService,
+    PermissionsService,
+    PersonsService,
+    ProfileService,
+    SettingsService,
+    UserService
 } from './_services';
 
 import {DesignersComponent} from './_views/main_views/designers/designers/designers.component';
@@ -79,77 +79,83 @@ import {ContestStagesComponent} from './_views/admin_pages/contest-stages/contes
 import {AddContestsComponent} from './_views/main_views/contests/add-contests/add-contests.component';
 import {LogoUsesComponent} from './_views/admin_pages/logo-uses/logo-uses.component';
 import {ViewSingleContestComponent} from './_views/main_views/contests/view-single-contest/view-single-contest.component';
+import {FaqComponent} from './_views/main_views/faq/faq.component';
+import {PolicyComponent} from './_views/main_views/policy/policy.component';
+import {TosComponent} from './_views/main_views/tos/tos.component';
 
 @NgModule({
-	declarations: [
-		AppComponent,
-		DesignersDashboardComponent,
-		HomeComponent,
-		ContestsComponent,
-		AlertComponent,
-		DesignersComponent,
-		DesignersDashboardComponent,
-		ClientsDashboardComponent,
-		SignupComponent,
-		SigninComponent,
-		RecoveryComponent,
-		UpdateComponent,
-		CategoriesComponent,
-		VerifyEmailComponent,
-		HowItWorksComponent,
-		SettingsComponent,
-		ProfileComponent,
-		ContactsComponent,
-		NavigationComponent,
-		UpdateUserComponent,
-		CountriesComponent,
-		PermissionsComponent,
-		RolesComponent,
-		ViewRolesComponent,
-		AddEditRolesComponent,
-		ApiKeysComponent,
-		ViewUsersComponent,
-		AssignUserRolesComponent,
-		AddEditUsersComponent,
-		UpdateCredentialsComponent,
-		ViewUserComponent,
-		ChatsComponent,
-		PaymentModesComponent,
-		CommissionsComponent,
-		UserContactsComponent,
-		UpdateUserDetailsComponent,
-		DesignerProfileComponent,
-		ClientProfilesComponent,
-		ContactFormComponent,
-		DiscountsComponent,
-		AdminMainPageComponent,
-		ProfileMainPageComponent,
-		ContestStagesComponent,
-		AddContestsComponent,
-		LogoUsesComponent,
-		ViewSingleContestComponent
-	],
-	imports: [
-		BrowserModule,
-		FormsModule,
-		HttpClientModule,
-		AppRoutingModule
-	],
-	providers: [AuthGuard, AuthenticationService, AlertService, UserService, PersonsService,
-		PermissionsGuard, AlertService, CategoryService, CountriesService, ProfileService,
-		PagerService, PermissionsService, ApiKeysService, ProfileService, ContactService,
-		CommissionsService, PaymentModesService, SettingsService, DiscountsService, ContestStagesService,
-		ContestsService, LogoUsesService,
-		{
-			provide: HTTP_INTERCEPTORS,
-			useClass: RequestInterceptor,
-			multi: true
-		}, {
-			provide: HTTP_INTERCEPTORS,
-			useClass: ResponseInterceptor,
-			multi: true
-		}, AppCommons],
-	bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        DesignersDashboardComponent,
+        HomeComponent,
+        ContestsComponent,
+        AlertComponent,
+        DesignersComponent,
+        DesignersDashboardComponent,
+        ClientsDashboardComponent,
+        SignupComponent,
+        SigninComponent,
+        RecoveryComponent,
+        UpdateComponent,
+        CategoriesComponent,
+        VerifyEmailComponent,
+        HowItWorksComponent,
+        SettingsComponent,
+        ProfileComponent,
+        ContactsComponent,
+        NavigationComponent,
+        UpdateUserComponent,
+        CountriesComponent,
+        PermissionsComponent,
+        RolesComponent,
+        ViewRolesComponent,
+        AddEditRolesComponent,
+        ApiKeysComponent,
+        ViewUsersComponent,
+        AssignUserRolesComponent,
+        AddEditUsersComponent,
+        UpdateCredentialsComponent,
+        ViewUserComponent,
+        ChatsComponent,
+        PaymentModesComponent,
+        CommissionsComponent,
+        UserContactsComponent,
+        UpdateUserDetailsComponent,
+        DesignerProfileComponent,
+        ClientProfilesComponent,
+        ContactFormComponent,
+        DiscountsComponent,
+        AdminMainPageComponent,
+        ProfileMainPageComponent,
+        ContestStagesComponent,
+        AddContestsComponent,
+        LogoUsesComponent,
+        ViewSingleContestComponent,
+        FaqComponent,
+        PolicyComponent,
+        TosComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpClientModule,
+        AppRoutingModule
+    ],
+    providers: [AuthGuard, AuthenticationService, AlertService, UserService, PersonsService,
+        PermissionsGuard, AlertService, CategoryService, CountriesService, ProfileService,
+        PagerService, PermissionsService, ApiKeysService, ProfileService, ContactService,
+        CommissionsService, PaymentModesService, SettingsService, DiscountsService, ContestStagesService,
+        ContestsService, LogoUsesService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: RequestInterceptor,
+            multi: true
+        }, {
+            provide: HTTP_INTERCEPTORS,
+            useClass: ResponseInterceptor,
+            multi: true
+        }, AppCommons],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }

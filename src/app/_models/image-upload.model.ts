@@ -7,7 +7,7 @@
 import {DefaultModel} from './default.model';
 
 export class ImageUpload extends DefaultModel {
-	constructor(public src: string, public file: File) {
-		super();
-	}
+    constructor(public src: string, public file: File) {
+        super();
+    }
 }

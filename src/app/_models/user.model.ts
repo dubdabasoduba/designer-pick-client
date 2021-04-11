@@ -7,15 +7,15 @@
 import {DefaultModel} from "./default.model";
 
 export class UserModel extends DefaultModel {
-	username: string;
-	email: string;
-	password: string;
-	confirmPassword: string;
-	verificationCode: string;
-	verify: boolean;
-	type: string;
-	forceUpdate: boolean;
-	person: string;
-	name: string
-	account_type: number;
+    username: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+    verificationCode: string;
+    verify: boolean;
+    type: string;
+    forceUpdate: boolean;
+    person: string;
+    name: string
+    account_type: number;
 }
