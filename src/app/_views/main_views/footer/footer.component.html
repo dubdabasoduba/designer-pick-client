@@ -58,7 +58,8 @@
                     <p>Please feel free to subscribe to our news letter in order to get frequent
                         updates</p>
                     <form #f="ngForm" (ngSubmit)="f.form.valid && subscribeNewsLetter()" novalidate>
-                        <input name="email" type="email" id="email" [(ngModel)]="model.email" required="required"/><input
+                        <input [(ngModel)]="model.email" id="email" name="email" required="required"
+                               type="email"/><input
                             type="submit" value="Subscribe"/>
                     </form>
                     <app-alert></app-alert>
