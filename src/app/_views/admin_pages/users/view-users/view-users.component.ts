@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {PersonModel} from "../../../../_models";
 import {AlertService, AuthenticationService, PersonsService} from "../../../../_services";
-import {AppCommons} from "../../../../_helpers/app.commons";
+import {AppCommons} from "../../../../_helpers";
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 
 @Component({

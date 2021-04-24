@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {RolesModel} from "../../../../_models";
 import {AlertService, RolesService} from "../../../../_services";
-import {appConstants} from "../../../../_helpers/app.constants";
+import {AppCommons, appConstants} from "../../../../_helpers";
 import {ActivatedRoute, Router} from "@angular/router";
-import {AppCommons} from "../../../../_helpers/app.commons";
 
 @Component({
     selector: 'app-view-roles',

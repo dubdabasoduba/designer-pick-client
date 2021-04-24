@@ -2,8 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {PersonModel} from "../../../../_models";
 import {AlertService, PersonsService, RolesService} from "../../../../_services";
 import {ActivatedRoute, Router} from "@angular/router";
-import {appConstants} from "../../../../_helpers/app.constants";
-import {AppCommons} from "../../../../_helpers/app.commons";
+import {AppCommons, appConstants} from "../../../../_helpers";
 import {combineLatest} from 'rxjs';
 
 @Component({

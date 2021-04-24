@@ -2,8 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DiscountsModel} from "../../../_models";
 import {AlertService, AuthenticationService, DiscountsService} from "../../../_services";
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
-import {appConstants} from "../../../_helpers/app.constants";
-import {AppCommons} from "../../../_helpers/app.commons";
+import {AppCommons, appConstants} from "../../../_helpers";
 
 @Component({
     selector: 'app-discounts',

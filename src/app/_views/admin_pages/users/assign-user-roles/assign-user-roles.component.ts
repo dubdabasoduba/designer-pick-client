@@ -2,8 +2,7 @@ import {Component, DoCheck, OnInit} from '@angular/core';
 import {PersonModel, RolesModel} from "../../../../_models";
 import {AlertService, PersonsService, RolesService} from "../../../../_services";
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
-import {appConstants} from "../../../../_helpers/app.constants";
-import {AppCommons} from "../../../../_helpers/app.commons";
+import {AppCommons, appConstants} from "../../../../_helpers";
 
 @Component({
     selector: 'app-assign-user-roles',

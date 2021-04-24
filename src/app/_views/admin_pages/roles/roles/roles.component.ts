@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {RolesModel} from "../../../../_models";
 import {AlertService, RolesService} from "../../../../_services";
-import {AppCommons} from "../../../../_helpers/app.commons";
+import {AppCommons} from "../../../../_helpers";
 
 @Component({
     selector: 'app-roles',
