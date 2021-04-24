@@ -15,6 +15,7 @@ import {
     AuthenticationService,
     CategoryService,
     CommissionsService,
+    ContactService,
     ContestsService,
     ContestStagesService,
     CountriesService,
@@ -45,12 +46,10 @@ import {DesignersDashboardComponent} from './_views/dashboards/designers-dashboa
 import {HowItWorksComponent} from './_views/main_views/how-it-works/how-it-works.component';
 import {SettingsComponent} from './_views/admin_pages/settings/settings.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {RequestInterceptor} from './_helpers/requestInterceptor';
-import {ResponseInterceptor} from './_helpers/responseInterceptor';
+import {AppCommons, RequestInterceptor, ResponseInterceptor} from './_helpers';
 import {ProfileComponent} from './_views/profile/user-profile/profile.component';
 import {ContactsComponent} from './_views/profile/contacts/contacts.component';
 import {NavigationComponent} from './_views/navigation/navigation.component';
-import {AppCommons} from './_helpers/app.commons';
 import {UpdateUserComponent} from './_views/auth/update-user/update-user.component';
 import {CountriesComponent} from "./_views/admin_pages/countries/countries.component";
 import {PermissionsComponent} from "./_views/admin_pages/permissions/permissions.component";
@@ -67,7 +66,6 @@ import {ChatsComponent} from './_views/profile/chats/chats.component';
 import {PaymentModesComponent} from './_views/admin_pages/payment-modes/payment-modes.component';
 import {CommissionsComponent} from './_views/admin_pages/commissions/commissions.component';
 import {UserContactsComponent} from "./_views/admin_pages/users/user-contacts/user-contacts.component";
-import {ContactService} from "./_services/admin_services/contact/contact.service";
 import {UpdateUserDetailsComponent} from './_views/profile/update-user-details/update-user-details.component';
 import {DesignerProfileComponent} from './_views/main_views/designers/designer-profile/designer-profile.component';
 import {ClientProfilesComponent} from './_views/profile/client-profiles/client-profiles.component';
@@ -83,6 +81,7 @@ import {FaqComponent} from './_views/main_views/faq/faq.component';
 import {PolicyComponent} from './_views/main_views/policy/policy.component';
 import {TosComponent} from './_views/main_views/tos/tos.component';
 import {FooterComponent} from './_views/main_views/footer/footer.component';
+import {NewsLettersComponent} from './_views/admin_pages/news-letters/news-letters.component';
 
 @NgModule({
     declarations: [
@@ -135,7 +134,8 @@ import {FooterComponent} from './_views/main_views/footer/footer.component';
         FaqComponent,
         PolicyComponent,
         TosComponent,
-        FooterComponent
+        FooterComponent,
+        NewsLettersComponent
     ],
     imports: [
         BrowserModule,

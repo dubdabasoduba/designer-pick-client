@@ -5,11 +5,11 @@ import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {AppCommons, appConstants} from "../../../_helpers";
 
 @Component({
-    selector: 'app-api-keys',
-    templateUrl: './api-keys.component.html',
-    styleUrls: ['./api-keys.component.css']
+    selector: 'app-news-letters',
+    templateUrl: './news-letters.component.html',
+    styleUrls: ['./news-letters.component.css']
 })
-export class ApiKeysComponent implements OnInit {
+export class NewsLettersComponent implements OnInit {
     loading = false;
     public apiKeys: Array<ApiKeyModel> = [];
     public model = {
