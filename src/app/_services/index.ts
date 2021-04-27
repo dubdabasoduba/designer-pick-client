@@ -24,3 +24,4 @@ export * from './admin_services/contest_stages/contest-stages.service';
 export * from './main_views/contests/contests.service';
 export * from './admin_services/logo_uses/logo-uses.service';
 export * from './main_views/footer/footer.service'
+export * from './admin_services/news_letters/news-letters-subscriptions.service'

@@ -65,61 +65,10 @@ export class NavigationComponent implements OnInit {
         }
     }
 
-    goToResultsPage() {
-        this.router.navigateByUrl('/search');
-    }
-
-    search() {
-        if (AppCommons.isStringEmpty(this.model.search)) {
-            this.alertService.error('The search term cannot be empty');
-            this.resetSearchData();
-        } else {
-            this.searchEntity(this.model.search);
-            this.searchPerson(this.model.search);
-        }
-    }
-
     signOut() {
         this.loading = true;
         this.authenticationService.logout();
         this.router.navigateByUrl('');
-    }
-
-    private searchEntity(searchTerm) {
-        this.loading = true;
-        this.searchService.searchEntity(searchTerm).subscribe(
-            data => {
-                // @ts-ignore
-                this.responseModel = data;
-                this.searchService.passEntityData(this.responseModel.results);
-                this.loading = false;
-            },
-            error => {
-                this.alertService.error(error);
-                this.loading = false;
-            }
-        );
-    }
-
-    private searchPerson(searchTerm) {
-        this.loading = true;
-        this.searchService.searchPerson(searchTerm).subscribe(
-            data => {
-                // @ts-ignore
-                this.responseModel = data;
-                this.searchService.passPersonData(this.responseModel.results);
-                this.loading = false;
-            },
-            error => {
-                this.alertService.error(error);
-                this.loading = false;
-            }
-        );
-    }
-
-    private resetSearchData() {
-        this.searchService.passEntityData([]);
-        this.searchService.passPersonData([]);
     }
 
 }

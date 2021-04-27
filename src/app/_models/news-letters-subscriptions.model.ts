@@ -1,5 +1,5 @@
 import {DefaultModel} from "./default.model";
 
-export class NewsLettersModel extends DefaultModel {
+export class NewsLettersSubscriptionsModel extends DefaultModel {
     email: string
 }

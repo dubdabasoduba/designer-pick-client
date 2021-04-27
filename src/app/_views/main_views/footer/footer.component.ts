@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {appConstants} from "../../../_helpers";
 import {AlertService, FooterService} from "../../../_services";
 import {ActivatedRoute, Router} from "@angular/router";
-import {NewsLettersModel} from "../../../_models";
+import {NewsLettersSubscriptionsModel} from "../../../_models";
 
 @Component({
     selector: 'app-footer',
@@ -46,8 +46,8 @@ export class FooterComponent implements OnInit {
     }
 
     private createNewsLetterEmail() {
-        let newsLetter = new NewsLettersModel();
-        newsLetter.email = this.model.email;
-        return newsLetter;
+        let newsLettersSubscriptionsModel = new NewsLettersSubscriptionsModel();
+        newsLettersSubscriptionsModel.email = this.model.email;
+        return newsLettersSubscriptionsModel;
     }
 }

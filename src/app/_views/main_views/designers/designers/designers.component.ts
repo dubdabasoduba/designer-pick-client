@@ -15,7 +15,6 @@ import {PersonModel} from "../../../../_models";
 })
 
 export class DesignersComponent implements OnInit {
-
     loading = false;
     public people: Array<PersonModel> = [];
 

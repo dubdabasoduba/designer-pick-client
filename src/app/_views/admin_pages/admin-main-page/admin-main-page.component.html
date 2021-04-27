@@ -123,6 +123,18 @@
                                 system permissions</p>
                         </div>
                     </div>
+                    <div *ngIf="checkPermissions(appConstants.getAllNewsLetters)"
+                         class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                        <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                            <h4 class="title"><a routerLink="/news-letters-subscriptions">News
+                                Letters Management</a></h4>
+                            <p class="description">Allows the current logged in user to manage
+                                news letters</p>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
                     <div *ngIf="checkPermissions(appConstants.getAllSettings)"
                          class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="100">

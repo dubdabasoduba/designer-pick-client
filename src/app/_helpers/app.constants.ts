@@ -197,7 +197,7 @@ export const appConstants = {
     designerDashboardUrl: 'designers-dashboard/',
 
     //news letter url endpoints
-    subscribeToNewsLetterUrl: '/news-letters',
+    subscribeToNewsLetterUrl: '/news-letters-subscriptions',
 
     //permissions
     readPermission: "82257bde-6381-48aa-862d-94d46948f8ca",
@@ -247,6 +247,10 @@ export const appConstants = {
     getAllLogoUses: "f7ac3fc6-d906-4807-9a5d-e3f9e147f1f9",
     updateLogoUses: "904ffbb6-a29f-411f-a644-909aeedd986f",
     deleteLogoUses: "2fbfad4f-f68e-474c-9431-5906f782320d",
+    updateNewsLetters: "922effb8-c7c0-490d-9a35-e5d5c8be1d94",
+    getAllNewsLetters: "92c0db4a-2275-487e-be6f-675305c0c0d5",
+    deleteNewsLetters: "c88ba660-17a3-4100-918e-b09c9088fa4b",
+    readNewsLetters: "e1e53791-eaca-480d-b086-b307bc3a3dd0"
 };
 
 

@@ -81,7 +81,7 @@ import {FaqComponent} from './_views/main_views/faq/faq.component';
 import {PolicyComponent} from './_views/main_views/policy/policy.component';
 import {TosComponent} from './_views/main_views/tos/tos.component';
 import {FooterComponent} from './_views/main_views/footer/footer.component';
-import {NewsLettersComponent} from './_views/admin_pages/news-letters/news-letters.component';
+import {NewsLettersSubscriptionsComponent} from "./_views/admin_pages/news-letters-subscriptions/news-letters--subscriptions.component";
 
 @NgModule({
     declarations: [
@@ -135,7 +135,7 @@ import {NewsLettersComponent} from './_views/admin_pages/news-letters/news-lette
         PolicyComponent,
         TosComponent,
         FooterComponent,
-        NewsLettersComponent
+        NewsLettersSubscriptionsComponent
     ],
     imports: [
         BrowserModule,

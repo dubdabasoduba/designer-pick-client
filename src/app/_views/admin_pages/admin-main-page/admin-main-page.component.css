@@ -25,7 +25,7 @@
 }
 
 .services .icon-box:hover::before {
-    background: #67b0d1;
+    background: #0066cc;
     top: 0;
     border-radius: 0px;
 }
@@ -37,7 +37,7 @@
 .services .icon i {
     font-size: 48px;
     line-height: 1;
-    color: #67b0d1;
+    color: #0066cc;
     transition: all 0.3s ease-in-out;
 }
 

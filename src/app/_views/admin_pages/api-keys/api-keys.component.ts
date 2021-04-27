@@ -60,7 +60,7 @@ export class ApiKeysComponent implements OnInit {
         this.loading = false;
         if (this.model.name == appConstants.emptyEntry || this.model.name == undefined) {
             this.alertService.error(appConstants.nameError);
-        } else if (this.model.is_active === appConstants.emptyEntry || this.model.is_active == undefined) {
+        } else if (this.model.api_key === appConstants.emptyEntry || this.model.api_key == undefined) {
             this.alertService.error(appConstants.apiKeyError);
         } else if (this.model.is_active === appConstants.emptyEntry || this.model.is_active == undefined) {
             this.alertService.error(appConstants.statusError);

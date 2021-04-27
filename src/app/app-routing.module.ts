@@ -50,6 +50,7 @@ import {AddContestsComponent} from "./_views/main_views/contests/add-contests/ad
 import {FaqComponent} from "./_views/main_views/faq/faq.component";
 import {PolicyComponent} from "./_views/main_views/policy/policy.component";
 import {TosComponent} from "./_views/main_views/tos/tos.component";
+import {NewsLettersSubscriptionsComponent} from "./_views/admin_pages/news-letters-subscriptions/news-letters--subscriptions.component";
 
 const appRoutes: Routes = [
     {path: '', component: HomeComponent, runGuardsAndResolvers: 'always'},
@@ -104,7 +105,6 @@ const appRoutes: Routes = [
         component: DesignerProfileComponent,
         runGuardsAndResolvers: 'always'
     },
-    {path: 'how-it-works', component: HowItWorksComponent, runGuardsAndResolvers: 'always'},
     {
         path: 'profile/:id',
         component: ProfileComponent,
@@ -288,6 +288,14 @@ const appRoutes: Routes = [
     },
     {
         path: 'settings', component: SettingsComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'news-letters-subscriptions', component: NewsLettersSubscriptionsComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'news-letters-subscriptions/:id', component: NewsLettersSubscriptionsComponent,
         canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
     },
 

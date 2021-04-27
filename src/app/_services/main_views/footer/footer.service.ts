@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {NewsLettersModel} from "../../../_models";
+import {NewsLettersSubscriptionsModel} from "../../../_models";
 import {Observable} from "rxjs";
 import {appConstants} from "../../../_helpers";
 
@@ -12,7 +12,7 @@ export class FooterService {
     constructor(private http: HttpClient) {
     }
 
-    subscribeToNewsLetter(newsLetter: NewsLettersModel): Observable<NewsLettersModel> {
-        return this.http.post<NewsLettersModel>(appConstants.baseApiV1Url + appConstants.subscribeToNewsLetterUrl, newsLetter);
+    subscribeToNewsLetter(newsLettersSubscriptionsModel: NewsLettersSubscriptionsModel): Observable<NewsLettersSubscriptionsModel> {
+        return this.http.post<NewsLettersSubscriptionsModel>(appConstants.baseApiV1Url + appConstants.subscribeToNewsLetterUrl, newsLettersSubscriptionsModel);
     }
 }
