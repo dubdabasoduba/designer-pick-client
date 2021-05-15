@@ -22,7 +22,7 @@ import {appConstants} from './app.constants';
 
 @Injectable()
 export class ResponseInterceptor implements HttpInterceptor {
-    constructor(private router: Router, private commons: AppCommons) {
+    constructor(private router: Router) {
     }
 
     /**
@@ -44,7 +44,7 @@ export class ResponseInterceptor implements HttpInterceptor {
      */
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(request).map(data => {
-            if (!this.commons.isObjectEmpty(data)) {
+            if (!AppCommons.isObjectEmpty(data)) {
                 if (data instanceof HttpResponse) {
                     data = data.clone({
                         body: ResponseInterceptor.formatResponse(data.body)

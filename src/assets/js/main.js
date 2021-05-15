@@ -245,6 +245,8 @@
     });
 
     $('[data-toggle="tooltip"]').tooltip();
-
+    $(document).ready(function () {
+        $(".navbar").fullScreenScroller();
+    });
 
 })(jQuery);

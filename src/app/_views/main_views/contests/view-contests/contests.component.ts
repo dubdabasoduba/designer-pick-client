@@ -24,8 +24,7 @@ export class ContestsComponent implements OnInit {
         private authenticationService: AuthenticationService,
         private contestsService: ContestsService,
         private alertService: AlertService,
-        private router: Router,
-        private commons: AppCommons,) {
+        private router: Router,) {
     }
 
     ngOnInit() {
@@ -34,7 +33,7 @@ export class ContestsComponent implements OnInit {
     }
 
     redirectToSign(contest: string) {
-        if (!this.commons.isObjectEmpty(this.lbsUser)) {
+        if (!AppCommons.isObjectEmpty(this.lbsUser)) {
             this.router.navigateByUrl('/contests/' + contest);
         } else {
             this.router.navigate([appConstants.authSIgnInUrl], {

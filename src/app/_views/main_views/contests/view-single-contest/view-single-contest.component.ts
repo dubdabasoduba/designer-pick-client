@@ -43,8 +43,6 @@ export class ViewSingleContestComponent implements OnInit {
                 this.contest.contest_period = AppCommons.calculateDays(this.contest.start_date, this.contest.end_date);
                 this.contest.start_date = AppCommons.formatDisplayDate(new Date(this.contest.start_date));
                 this.contest.end_date = AppCommons.formatDisplayDate(new Date(this.contest.end_date));
-
-                console.log(this.contest);
                 this.loading = false;
             },
             error => {
@@ -55,7 +53,7 @@ export class ViewSingleContestComponent implements OnInit {
     }
 
     private checkIfUserIdLoggedIn(contest: ContestModel) {
-        if (contest != null && contest.is_private && this.commons.isObjectEmpty(this.lbsUser)) {
+        if (contest != null && contest.is_private && AppCommons.isObjectEmpty(this.lbsUser)) {
             this.router.navigateByUrl('/contests');
         }
     }

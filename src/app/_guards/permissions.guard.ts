@@ -20,8 +20,8 @@ export class PermissionsGuard implements CanActivate {
     canActivate(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-        let permission = route.data[this.PERMISSION];
-        if (this.authService.getCurrentUser() !== null && AppCommons.checkIfPermissionsExist(permission, this.authService.getCurrentUser().auth.permissions)) {
+        let permissions = route.data[this.PERMISSION];
+        if (this.authService.getCurrentUser() !== null && AppCommons.checkIfPermissionsExist(permissions, this.authService.getCurrentUser().auth.permissions)) {
             return true;
         } else {
             this.router.navigate(['']);

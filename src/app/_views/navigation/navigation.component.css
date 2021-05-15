@@ -91,11 +91,15 @@ a {
 
 #get_started {
     display: inline-block;
-    background: #67b0d1;
+    background-color: #004d99;
     padding: 6px 20px 6px 20px;
     color: #ffffff;
-    border-radius: 50px !important;
+    border-radius: 5px !important;
     transition: 0.3s;
     position: relative;
-    border-color: #67b0d1;
+    border-color: #1769ff;
+}
+
+#get_started:hover {
+    background-color: #172fff;
 }

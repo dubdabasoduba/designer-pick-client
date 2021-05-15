@@ -250,7 +250,8 @@ export const appConstants = {
     updateNewsLetters: "922effb8-c7c0-490d-9a35-e5d5c8be1d94",
     getAllNewsLetters: "92c0db4a-2275-487e-be6f-675305c0c0d5",
     deleteNewsLetters: "c88ba660-17a3-4100-918e-b09c9088fa4b",
-    readNewsLetters: "e1e53791-eaca-480d-b086-b307bc3a3dd0"
+    readNewsLetters: "e1e53791-eaca-480d-b086-b307bc3a3dd0",
+    accessAdminPage: "26b4c007-9de0-466c-92fb-650070144e0c",
 };
 
 

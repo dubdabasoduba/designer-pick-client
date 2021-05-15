@@ -4,7 +4,7 @@
  * This may be subject to prosecution according to the kenyan law
  */
 
-import {CategoryModel, ContactModel, PageModel, PersonModel} from '../_models';
+import {ContactModel, PageModel, PersonModel} from '../_models';
 import {appConstants} from './app.constants';
 import * as CryptoJS from 'crypto-js';
 import {PersonsService} from '../_services';
@@ -13,22 +13,29 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class AppCommons {
     /**
-     * Checks the user permissions to make sure the users are authorised to see of perform the actions they wish to perfom
-     * @param requiredPermissions {@link string}: The permission required to perform the action
+     * Checks the user permissions to make sure the users are authorised to see of perform the actions they wish to perform
+     * @param requiredPermissions {@link Array}: The permissions required to perform the action
      * @param assignedPermissions {@link Array}: The user assigned permissions
      */
-    public static checkIfPermissionsExist(requiredPermissions: string, assignedPermissions: []) {
+    public static checkIfPermissionsExist(requiredPermissions, assignedPermissions: []) {
         let hasPermissions = false
-        if (!AppCommons.isStringEmpty(requiredPermissions)) {
-            if (assignedPermissions !== null && assignedPermissions !== undefined) {
-                for (let i = 0; i < assignedPermissions.length; i++) {
+        let requiredPermissionsSize = requiredPermissions.length;
+        let assignedPermissionsSize = assignedPermissions.length;
+        if (!AppCommons.isObjectEmpty(requiredPermissions) && !AppCommons.isObjectEmpty(assignedPermissions)) {
+            let j = 0;
+            for (let i = 0; i < requiredPermissionsSize; i++) {
+                for (j = 0; j < assignedPermissionsSize; j++) {
                     // @ts-ignore
-                    if (assignedPermissions[i].uuid === requiredPermissions) {
-                        hasPermissions = true;
+                    if (requiredPermissions[i] == assignedPermissions[j].uuid) {
                         break;
                     }
                 }
+                if (j == assignedPermissionsSize) {
+                    return hasPermissions;
+                }
             }
+
+            hasPermissions = true;
         }
         return hasPermissions;
     }
@@ -74,18 +81,6 @@ export class AppCommons {
         }
 
         return paging;
-    }
-
-    public static getPagingUrl(paging: PageModel) {
-        let url = '';
-        if ((!this.isStringEmpty(String(paging.page)) || paging.page > 0) &&
-            (!this.isStringEmpty(String(paging.limit)) || paging.limit > 0) &&
-            !this.isStringEmpty(String(paging.paginate))) {
-            url = '?' + appConstants.pagination + paging.paginate + '&' + appConstants.page + paging.page + '&' +
-                appConstants.limit + paging.limit;
-        }
-
-        return url;
     }
 
     /**
@@ -179,26 +174,6 @@ export class AppCommons {
         return CryptoJS.AES.encrypt(password, key, {iv: iv}).toString();
     }
 
-    /**
-     * @desc Returns the user-contacts object
-     * @param contacts
-     * @author dubdabasoduba
-     */
-    public static fetchContacts(contacts: any) {
-        const contactDetails = [];
-        for (let j = 0; j < contacts.length; j++) {
-            const contact = new ContactModel();
-            contact.country = contacts[j].country;
-            contact.county = contacts[j].county;
-            contact.phone_number = contacts[j].phonenumber;
-            contact.email = contacts[j].email;
-            contact.is_main = Number(1)
-            contact._id = contacts[j]._id;
-            contactDetails.push(contact);
-        }
-
-        return contactDetails;
-    }
 
     /**
      * Get the main person or contests location.
@@ -380,6 +355,15 @@ export class AppCommons {
     }
 
     /**
+     * @desc Checks whether an object is empty/undefined. Returns a true if empty and false if not
+     * @param object
+     * @author dubdabasoduba
+     */
+    public static isObjectEmpty(object: any) {
+        return object === null || object === undefined || object === appConstants.emptyEntry;
+    }
+
+    /**
      * @desc Creates a contact model object
      * @param model {@link ContactModel}
      * @author dubdabasoduba
@@ -408,94 +392,6 @@ export class AppCommons {
             }
         });
         return contacts;
-    }
-
-
-    /**
-     * @desc Creates an categories model object
-     * @param model {@link CategoryModel}
-     * @author dubdabasoduba
-     */
-    public createIndustryObject(model: any) {
-        const industry = new CategoryModel();
-        industry.category = model.industry;
-        industry.main = true;
-        return industry;
-    }
-
-    /**
-     * @desc Updates the main categories of operation
-     * @param model {@link any}
-     * @param industries {@link any}
-     * @author dubdabasoduba
-     */
-    public updateIndustryObject(model: any, industries: any) {
-        industries.forEach((industry) => {
-            if (industry.main) {
-                industry.category = model.industry;
-            }
-        });
-        return industries;
-    }
-
-    /**
-     * @desc Checks whether an object is empty/undefined. Returns a true if empty and false if not
-     * @param object
-     * @author dubdabasoduba
-     */
-    public isObjectEmpty(object: any) {
-        return object === null || object === undefined || object === appConstants.emptyEntry;
-    }
-
-    /**
-     * @desc Retrieves the primary user-contacts for the contests
-     * @param contacts {@link Array}
-     * @return email {@link String}
-     * @author dubdabasoduba
-     */
-    public getDefaultEmail(contacts: any) {
-        let email = appConstants.emptyEntry;
-        contacts.forEach((contact) => {
-            if (contact.primary) {
-                email = contact.email;
-            }
-        });
-
-        return email;
-    }
-
-    /**
-     * @desc Retrieves the default phonenumber for the contests
-     * @param contacts {@link Array}
-     * @return phonenumber {@link String}
-     * @author dubdabasoduba
-     */
-    public getDefaultPhonenumber(contacts: any) {
-        let phonenumber = appConstants.emptyEntry;
-        contacts.forEach((contact) => {
-            if (contact.primary) {
-                phonenumber = contact.phonenumber;
-            }
-        });
-
-        return phonenumber;
-    }
-
-    /**
-     * @desc Retrieves the default contests categories
-     * @param industries {@link Array}
-     * @return category {@link String}
-     * @author dubdabasoduba
-     */
-    public getDefaultIndustry(industries: any) {
-        let category = appConstants.emptyEntry;
-        industries.forEach((industry) => {
-            if (industry.main && !AppCommons.isStringEmpty(industry.category._id)) {
-                category = industry.category._id;
-            }
-        });
-
-        return category;
     }
 
     public getPerson(personService: PersonsService, entityId: string) {

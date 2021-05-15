@@ -57,7 +57,6 @@ const appRoutes: Routes = [
     {
         path: 'sign-up',
         component: SignupComponent,
-        canActivate: [PermissionsGuard],
         runGuardsAndResolvers: 'always'
     },
     {path: 'sign-in', component: SigninComponent, runGuardsAndResolvers: 'always'},
@@ -68,13 +67,11 @@ const appRoutes: Routes = [
     }, {
         path: 'reset-password',
         component: RecoveryComponent,
-        canActivate: [PermissionsGuard],
         runGuardsAndResolvers: 'always'
     },
     {
         path: 'update-password/:userId/:token',
         component: UpdateComponent,
-        canActivate: [PermissionsGuard],
         runGuardsAndResolvers: 'always'
     },
     {path: 'how-it-works', component: HowItWorksComponent, runGuardsAndResolvers: 'always'},
@@ -167,136 +164,168 @@ const appRoutes: Routes = [
     },
     {
         path: 'admin', component: AdminMainPageComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
+        data: {permission: [appConstants.accessAdminPage]}
     },
     {
         path: 'categories', component: CategoriesComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
+        data: {permission: [appConstants.getAllCategories]}
     },
     {
         path: 'categories/:id', component: CategoriesComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
+        data: {permission: [appConstants.readCategory, appConstants.updateCategory, appConstants.deleteCategory]}
     },
     {
         path: 'contest-stages', component: ContestStagesComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
+        data: {permission: [appConstants.getAllContestStages]}
     },
     {
         path: 'contest-stage/:id', component: ContestStagesComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
+        data: {permission: [appConstants.readContestStage, appConstants.updateContestStage, appConstants.deleteContestStage]},
     },
     {
         path: 'logo-uses', component: LogoUsesComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
+        data: {permission: [appConstants.getAllLogoUses]}
     },
     {
         path: 'logo-uses/:id', component: LogoUsesComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
+        data: {permission: [appConstants.readLogoUses, appConstants.updateLogoUses, appConstants.deleteLogoUses]}
     },
     {
         path: 'countries', component: CountriesComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
+        data: {permission: [appConstants.getAllCountries]}
     },
     {
         path: 'countries/:id', component: CountriesComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
+        data: {permission: [appConstants.readCountry, appConstants.updateCountry, appConstants.deleteCountry]},
     },
     {
         path: 'permissions', component: PermissionsComponent,
         canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
-        data: {permission: appConstants.getAllPermissions}
+        data: {permission: [appConstants.getAllPermissions]}
     },
     {
         path: 'permissions/:id', component: PermissionsComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
+        data: {permission: [appConstants.readPermission, appConstants.updatePermission]}
     },
     {
         path: 'roles', component: RolesComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
+        data: {permission: [appConstants.getAllRoles]}
     },
     {
         path: 'role/:id', component: ViewRolesComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
+        data: {permission: [appConstants.updateRole, appConstants.getAllPermissions]}
     },
     {
         path: 'roles/add', component: AddEditRolesComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
+        data: {permission: [appConstants.updateRole]},
     },
     {
         path: 'roles/edit/:id', component: AddEditRolesComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
+        data: {permission: [appConstants.updateRole, appConstants.deleteRole]}
     },
     {
         path: 'api-keys', component: ApiKeysComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
+        data: {permission: [appConstants.getAllApiKeys]}
     },
     {
         path: 'api-keys/:id', component: ApiKeysComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
+        data: {permission: [appConstants.readApiKey, appConstants.updateApiKey, appConstants.deleteApiKey]}
     },
     {
         path: 'users', component: ViewUsersComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
+        data: {permission: [appConstants.getAllUsers]}
     },
     {
         path: 'user/:id/:userId', component: ViewUserComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
+        data: {permission: [appConstants.readUser]}
     },
     {
         path: 'users/assign-roles/:id/:userId', component: AssignUserRolesComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: "always"
+        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: "always",
+        data: {permission: [appConstants.readUser, appConstants.updateUser, appConstants.getAllRoles]}
     },
     {
         path: 'users/contacts/:id/:contactId', component: UserContactsComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: "always"
+        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: "always",
+        data: {permission: [appConstants.readUser, appConstants.updateUser]}
     },
     {
         path: 'users/contacts/:id', component: UserContactsComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: "always"
+        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: "always",
+        data: {permission: [appConstants.readUser, appConstants.updateUser]}
     },
     {
         path: 'users/add', component: AddEditUsersComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
+        data: {permission: [appConstants.updateUser]}
     },
     {
         path: 'users/edit/:id', component: AddEditUsersComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
+        data: {permission: [appConstants.updateUser, appConstants.getAllRoles]}
     },
     {
         path: 'payment/payment-modes', component: PaymentModesComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
+        data: {permission: [appConstants.getAllPaymentModes]}
     },
     {
         path: 'payment/payment-modes/:id', component: PaymentModesComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
+        data: {permission: [appConstants.readPaymentMode, appConstants.updatePaymentMode, appConstants.deletePaymentMode]}
     },
     {
         path: 'payment/commissions', component: CommissionsComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
+        data: {permission: [appConstants.getAllCommissions]}
     },
     {
         path: 'payment/commissions/:id', component: CommissionsComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
+        data: {permission: [appConstants.readCommission, appConstants.updateCommission, appConstants.deleteCommission]}
     },
     {
         path: 'payment/discounts', component: DiscountsComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
+        data: {permission: [appConstants.getAllDiscounts]}
     },
     {
         path: 'payment/discounts/:id', component: DiscountsComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
+        data: {permission: [appConstants.readDiscount, appConstants.updateDiscount, appConstants.deleteDiscount]}
     },
     {
         path: 'settings', component: SettingsComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
+        data: {permission: [appConstants.updateSetting, appConstants.getAllSettings, appConstants.readSetting]}
     },
     {
         path: 'news-letters-subscriptions', component: NewsLettersSubscriptionsComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
+        data: {permission: [appConstants.getAllNewsLetters]}
     },
     {
         path: 'news-letters-subscriptions/:id', component: NewsLettersSubscriptionsComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+        canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
+        data: {permission: [appConstants.readNewsLetters, appConstants.updateNewsLetters, appConstants.deleteNewsLetters]}
     },
 
     // probably should be cleared
@@ -309,7 +338,6 @@ const appRoutes: Routes = [
     {
         path: 'verify-email/:userId/:token',
         component: VerifyEmailComponent,
-        canActivate: [PermissionsGuard],
         runGuardsAndResolvers: 'always'
     },
     {
@@ -325,7 +353,7 @@ const appRoutes: Routes = [
     imports: [RouterModule.forRoot(appRoutes, {
         useHash: false,
         onSameUrlNavigation: 'reload',
-        relativeLinkResolution: 'legacy'
+        relativeLinkResolution: 'corrected'
     })],
     exports: [RouterModule]
 })

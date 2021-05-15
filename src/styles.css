@@ -612,7 +612,7 @@ section {
     background: #0066cc;
     padding: 6px 44px 8px 30px;
     color: #fff;
-    border-radius: 50px;
+    border-radius: 5px;
     transition: 0.3s;
     position: relative;
 }
@@ -625,7 +625,7 @@ section {
 }
 
 .about .content .about-btn:hover {
-    background: #7bbad7;
+    background: #172fff;
 }
 
 .about .icon-boxes .icon-box {
@@ -775,7 +775,7 @@ section {
 }
 
 .counts .count-box a:hover {
-    color: #6e9fb4;
+    color: #172fff;
 }
 
 /*--------------------------------------------------------------
@@ -805,7 +805,7 @@ section {
     letter-spacing: 1px;
     display: inline-block;
     padding: 8px 28px;
-    border-radius: 25px;
+    border-radius: 5px;
     transition: 0.5s;
     margin-top: 10px;
     border: 2px solid rgba(255, 255, 255, 0.5);
@@ -900,7 +900,7 @@ section {
 }
 
 .portfolio .portfolio-wrap .portfolio-links a + a {
-    border-left: 1px solid #8ec4dd;
+    border-left: 1px solid #172fff;
 }
 
 .portfolio .portfolio-wrap:hover::before {
@@ -1293,12 +1293,13 @@ section {
     background: #0066cc;
     border: 0;
     padding: 10px 24px;
+    border-radius: 5px;
     color: #fff;
     transition: 0.4s;
 }
 
 .contact .php-email-form button[type="submit"]:hover {
-    background: #8ec4dd;
+    background: #1790ff;
 }
 
 @-webkit-keyframes animate-loading {

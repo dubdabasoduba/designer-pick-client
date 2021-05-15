@@ -66,7 +66,7 @@ export class AddEditUsersComponent implements OnInit {
     }
 
     redirectToAssignRolesPage(person: PersonModel) {
-        if (!AppCommons.isStringEmpty(person.user_uuid)) {
+        if (!AppCommons.isStringEmpty(person.user_uuid) && this.model.account_type == '2') {
             this.router.navigateByUrl('/users/assign-roles/' + person.uuid + "/" + person.user_uuid);
         } else {
             this.router.navigateByUrl('/users');

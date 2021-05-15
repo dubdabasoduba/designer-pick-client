@@ -9,7 +9,6 @@ import {AppCommons, appConstants} from '../../_helpers';
 import {AlertService, AuthenticationService} from '../../_services';
 import {NavigationEnd, Router} from '@angular/router';
 import {SearchService} from '../../_services/search/search.service';
-import {ResponseModel} from '../../_models/response.model';
 
 @Component({
     selector: 'app-navigation',
@@ -27,7 +26,6 @@ export class NavigationComponent implements OnInit {
     public clickedDropdownElementsClass = "dropdown-menu dropdown-menu-right tx-13 show"
     is_staff: boolean = false;
     private showDropdown = false;
-    private responseModel = new ResponseModel();
 
     constructor(
         private authenticationService: AuthenticationService,
@@ -45,10 +43,10 @@ export class NavigationComponent implements OnInit {
             window.scrollTo(0, 0);
         });
         this.lbsUser = this.authenticationService.getCurrentUser();
-        if (!this.commons.isObjectEmpty(this.lbsUser) && AppCommons.isStringEmpty(this.lbsUser.user.profile_image)) {
+        if (!AppCommons.isObjectEmpty(this.lbsUser) && AppCommons.isStringEmpty(this.lbsUser.user.profile_image)) {
             this.lbsUser.user.profile_image = appConstants.defaultImageIcon;
         }
-        if (this.lbsUser.user.account_type === 2) {
+        if (!AppCommons.isObjectEmpty(this.lbsUser) && this.lbsUser.user.account_type === 2) {
             this.is_staff = true;
         }
     }

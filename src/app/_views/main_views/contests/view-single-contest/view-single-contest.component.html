@@ -20,7 +20,8 @@
                 <h4 class="mg-b-0">{{contest.business_name}} Logo Design Contest</h4>
             </div>
             <div class="mg-t-20 mg-sm-t-0">
-                <a class="btn btn-primary btn-block text-white" routerLink="/contests-add">Create a
+                <a *ngIf="contest.is_active == 1" class="btn btn-primary btn-block text-white"
+                   routerLink="/contests-add">Create a
                     Contest Like this</a>
             </div>
         </div>
@@ -78,7 +79,7 @@
                     </div><!--  col -->
                     <div class="col-sm-12 col-md-12 col-lg-12 mg-t-20 mg-sm-t-0 mg-lg-t-25">
                         <hr/>
-                        <div class="d-flex">
+                        <div *ngIf="contest.is_active == 1" class="d-flex">
                             <div class="profile-skillset flex-fill">
                                 <a class="btn btn-info btn-block text-white">Submit Entries</a>
                             </div>
@@ -172,34 +173,9 @@
                         </div><!-- media -->
                     </div>
                 </div><!-- card -->
-                <!--<div class="card mg-b-20 mg-lg-b-25">
-                    <div class="card-header pd-y-15 pd-x-20 d-flex align-items-center justify-content-between">
-                        <h6 class="tx-uppercase tx-semibold mg-b-0">Submitted Entries</h6>
-                    </div>&lt;!&ndash; card-header &ndash;&gt;
-                    <div class="card-body pd-25">
-                        <div class="media d-block d-sm-flex">
-                            <div class="wd-80 ht-80 bg-ui-04 rounded d-flex align-items-center justify-content-center">
-                                <i class="tx-white-7 wd-40 ht-40" data-feather="briefcase"></i>
-                            </div>
-                            <div class="media-body pd-t-25 pd-sm-t-0 pd-sm-l-25">
-                                <h5 class="mg-b-5">Area Sales Manager</h5>
-                                <p class="mg-b-3 tx-color-02"><span class="tx-medium tx-color-01">ThemePixels, Inc.</span>,
-                                    Bay Area, San Francisco, CA</p>
-                                <span class="d-block tx-13 tx-color-03">December 2016 - Present</span>
+                <div class="card mg-b-20 mg-lg-b-25">
 
-                                <ul class="pd-l-10 mg-0 mg-t-20 tx-13">
-                                    <li>Reaching the targets and goals set for my area.</li>
-                                    <li>Servicing the needs of my existing customers.</li>
-                                    <li>Maintaining the relationships with existing customers for
-                                        repeat business.
-                                    </li>
-                                    <li>Reporting to top managers.</li>
-                                    <li>Keeping up to date with the products.</li>
-                                </ul>
-                            </div>
-                        </div>&lt;!&ndash; media &ndash;&gt;
-                    </div>
-                </div>--><!-- card -->
+                </div><!-- card -->
             </div><!-- media-body -->
         </div><!-- media -->
     </div><!-- container -->

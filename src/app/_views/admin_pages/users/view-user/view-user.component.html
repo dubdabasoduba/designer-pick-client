@@ -63,18 +63,18 @@
                             <label><b>Date Updated:</b>&nbsp;{{person.date_updated}}</label>
                         </div>
                         <div class="col-md-4">
-                            <label *ngIf="person.is_active != null && person.is_active == 1"><b>PersonModel
+                            <label *ngIf="person.is_active != null && person.is_active == 1"><b>Person
                                 Status:</b>&nbsp;<span
                                     class="badge badge-pill badge-success">Active</span></label>
-                            <label *ngIf="person.is_active != null && person.is_active == 0"><b>PersonModel
+                            <label *ngIf="person.is_active != null && person.is_active == 0"><b>Person
                                 Status:</b>&nbsp;<span
                                     class="badge badge-pill badge-danger">De-activated</span></label>
                         </div>
                         <div class="col-md-4">
-                            <label *ngIf="person.is_verified != null && person.is_verified == 1"><b>PersonModel
+                            <label *ngIf="person.is_verified != null && person.is_verified == 1"><b>Person
                                 contacts:</b>&nbsp;<span
                                     class="badge badge-pill badge-success">Verified</span></label>
-                            <label *ngIf="person.is_verified != null && person.is_verified == 0"><b>PersonModel
+                            <label *ngIf="person.is_verified != null && person.is_verified == 0"><b>Person
                                 contacts:</b>&nbsp;<span
                                     class="badge badge-pill badge-danger">Not Verified</span></label>
                         </div>
@@ -116,7 +116,8 @@
                                               type="button"><i
                                 class="far fa-envelope"></i>&nbsp;Manage contacts&nbsp;</a>
                         </div>
-                        <div class="pd-10"><a class="btn btn-dark"
+                        <div *ngIf="person.account_type != null && person.account_type == '2'"
+                             class="pd-10"><a class="btn btn-dark"
                                               routerLink="/users/assign-roles/{{person.uuid}}/{{person.user_uuid}}"
                                               type="button"><i
                                 class="far fa-edit"></i>&nbsp;Assign Roles&nbsp;</a>
