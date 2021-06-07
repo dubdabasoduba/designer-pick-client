@@ -28,7 +28,7 @@ export class AddContestsComponent implements OnInit {
     public contest: ContestModel;
     public returnUrl: string;
     lbsUser: AuthenticatedUserModel;
-    public model = {};
+    public model = {industry: "", country: ""};
     public logoBriefModel = {logo_brief: ""};
     public logoBriefs: Array<LogoBriefModel> = []
     public countries: Array<CountryModel> = []

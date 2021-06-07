@@ -38,16 +38,21 @@ export class ViewSingleContestComponent implements OnInit {
         this.loading = true;
         this.contestsService.getDisplayContestById(this.contestUuid).subscribe(
             data => {
-                this.checkIfUserIdLoggedIn(data[0]);
-                this.contest = data[0];
-                this.contest.contest_period = AppCommons.calculateDays(this.contest.start_date, this.contest.end_date);
-                this.contest.start_date = AppCommons.formatDisplayDate(new Date(this.contest.start_date));
-                this.contest.end_date = AppCommons.formatDisplayDate(new Date(this.contest.end_date));
-                this.loading = false;
+                if (!AppCommons.isObjectEmpty(data[0])) {
+                    this.checkIfUserIdLoggedIn(data[0]);
+                    this.contest = data[0];
+                    this.contest.contest_period = AppCommons.calculateDays(this.contest.start_date, this.contest.end_date);
+                    this.contest.start_date = AppCommons.formatDisplayDate(new Date(this.contest.start_date));
+                    this.contest.end_date = AppCommons.formatDisplayDate(new Date(this.contest.end_date));
+                    this.loading = false;
+                } else {
+                    this.router.navigateByUrl(this.returnUrl);
+                }
             },
             error => {
                 this.alertService.error(error);
                 this.loading = false;
+                this.router.navigateByUrl(this.returnUrl);
             }
         );
     }

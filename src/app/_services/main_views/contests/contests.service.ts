@@ -31,6 +31,11 @@ export class ContestsService {
         return this.http.get(appConstants.baseApiV1Url + '/display-contest/' + contestId);
     }
 
+    getDraftContestById(contestId: string): Observable<ContestModel> {
+        // @ts-ignore
+        return this.http.get(appConstants.baseApiV1Url + '/draft-contest/' + contestId);
+    }
+
     getLogoBriefs(userId) {
         return this.http.get(appConstants.baseApiV1Url + '/user-logo-briefs/' + userId);
     }

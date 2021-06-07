@@ -64,6 +64,7 @@
                                         <input class="form-control"
                                                data-error="Subject field is required"
                                                id="business_name" name="business_name"
+                                               [(ngModel)]="model.business_name"
                                                placeholder="Please enter the business name"
                                                required="" type="email">
                                     </div>
@@ -75,6 +76,7 @@
                                                 data-error="Subject field is required"
                                                 id="business_slogan"
                                                 name="business_slogan"
+                                                [(ngModel)]="model.business_slogan"
                                                 placeholder="Please enter the business slogan"
                                                 required="" type="text">
                                     </div>
@@ -87,6 +89,7 @@
                                                   class="form-control"
                                                   id="business_description"
                                                   name="business_description"
+                                                  [(ngModel)]="model.business_description"
                                                   placeholder="Please enter the business description"
                                                   required=""
                                                   type="text"></textarea>
@@ -99,7 +102,7 @@
                                                 class="tx-danger">*</span></label>
                                         <select class="custom-select form-control"
                                                 id="industry"
-                                                name="industry"
+                                                name="industry" [(ngModel)]="model.industry"
                                                 title="Select the industry of Operation">
                                             <option selected value="">Select the industry of
                                                 Operation
@@ -113,7 +116,7 @@
                                                 class="tx-danger">*</span></label>
                                         <select class="custom-select form-control"
                                                 id="country"
-                                                name="country"
+                                                name="country" [(ngModel)]="model.country"
                                                 title="Select country of operation">
                                             <option selected value="">Select country of operation
                                             </option>
@@ -130,6 +133,7 @@
                                                class="form-control"
                                                id="comm_point_one"
                                                name="comm_point_one"
+                                               [(ngModel)]="model.comm_point_one"
                                                placeholder="Please enter the main communication point 1"
                                                required=""
                                                type="text">
@@ -141,6 +145,7 @@
                                                class="form-control"
                                                id="comm_point_two"
                                                name="comm_point_two"
+                                               [(ngModel)]="model.comm_point_two"
                                                placeholder="Please enter the main communication point 2"
                                                required=""
                                                type="text">
@@ -152,6 +157,7 @@
                                                class="form-control"
                                                id="comm_point_three"
                                                name="comm_point_three"
+                                               [(ngModel)]="model.comm_point_three"
                                                placeholder="Please enter the main communication point 3"
                                                required=""
                                                type="text">
@@ -167,6 +173,7 @@
                                                   data-error="Subject field is required"
                                                   id="target_audience"
                                                   name="target_audience"
+                                                  [(ngModel)]="model.target_audience"
                                                   placeholder="Please enter the target audience"
                                                   required=""
                                                   type="text"></textarea>
@@ -181,7 +188,7 @@
                                                   class="form-control"
                                                   data-error="Subject field is required"
                                                   id="style"
-                                                  name="style"
+                                                  name="style" [(ngModel)]="model.style"
                                                   placeholder="Please share some of your favorite fonts, colors and style:&nbsp;"
                                                   required=""
                                                   type="text"></textarea>
@@ -211,10 +218,10 @@
                                                class="form-control"
                                                data-error="Subject field is required"
                                                id="startDate"
-                                               name="startDate"
+                                               name="startDate"  [(ngModel)]="model.startDate"
                                                placeholder="Please enter the start date:&nbsp;"
                                                required=""
-                                               type="datetime-local">
+                                               type="date">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label>Contest end date<span
@@ -223,10 +230,10 @@
                                                class="form-control"
                                                data-error="Subject field is required"
                                                id="endDate"
-                                               name="endDate"
+                                               name="endDate" [(ngModel)]="model.endDate"
                                                placeholder="Please enter the end date:&nbsp;"
                                                required=""
-                                               type="datetime-local">
+                                               type="date">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label>Please enter the contest amount:&nbsp;<span
@@ -235,7 +242,7 @@
                                                class="form-control"
                                                data-error="Subject field is required"
                                                id="amount"
-                                               name="amount"
+                                               name="amount" [(ngModel)]="model.amount"
                                                placeholder="Please share some of your favorite fonts, colors and style:&nbsp;"
                                                required=""
                                                type="number"/>
@@ -246,7 +253,7 @@
                                         <div class="custom-control custom-switch">
                                             <input
                                                     class="custom-control-input"
-                                                    id="is_private" name="is_private"
+                                                    id="is_private" name="is_private" [(ngModel)]="model.is_private"
                                                     type="checkbox">
                                             <label class="custom-control-label" for="is_private">Is
                                                 a private contest?</label>
@@ -256,7 +263,7 @@
                                         <div class="custom-control custom-switch">
                                             <input
                                                     class="custom-control-input"
-                                                    id="is_featured" name="is_featured"
+                                                    id="is_featured" name="is_featured" [(ngModel)]="model.is_featured"
                                                     type="checkbox">
                                             <label class="custom-control-label" for="is_featured">Is
                                                 a featured contest?</label>
@@ -266,23 +273,23 @@
                                         <div class="custom-control custom-switch">
                                             <input
                                                     class="custom-control-input"
-                                                    id="is_highlighted" name="is_highlighted"
+                                                    id="is_highlighted" name="is_highlighted" [(ngModel)]="model.is_highlighted"
                                                     type="checkbox">
                                             <label class="custom-control-label"
                                                    for="is_highlighted">Is a highlighted
                                                 contest?</label>
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-3">
+                                   <!-- <div class="form-group col-md-3">
                                         <div class="custom-control custom-switch">
                                             <input
                                                     class="custom-control-input"
-                                                    id="is_active" name="is_active"
+                                                    id="is_active" name="is_active" [(ngModel)]="model.is_active"
                                                     type="checkbox">
                                             <label class="custom-control-label" for="is_active">Deactivate/Activate
                                                 contest</label>
                                         </div>
-                                    </div>
+                                    </div>-->
                                 </div>
                                 <br/>
                                 <div class="form-row">
