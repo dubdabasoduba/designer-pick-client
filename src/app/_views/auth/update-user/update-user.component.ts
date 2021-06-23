@@ -8,6 +8,7 @@ import {Component, OnInit} from '@angular/core';
 import {AlertService, AuthenticationService, PersonsService} from '../../../_services';
 import {AppCommons, appConstants} from '../../../_helpers';
 import {ActivatedRoute, Router} from '@angular/router';
+import {PersonModel} from "../../../_models";
 
 @Component({
     selector: 'app-update-user',
@@ -18,7 +19,7 @@ export class UpdateUserComponent implements OnInit {
     loading = false;
     public personUuid: string;
     public model: any = {};
-    private person: any;
+    public person: PersonModel;
     private oldEmail: string;
     private contactUuid: string;
     private userUuid: string;
@@ -126,13 +127,13 @@ export class UpdateUserComponent implements OnInit {
             this.person.name = this.model.name;
             this.person.description = this.model.description;
             this.person.email = this.oldEmail;
-            this.person.forceUpdate = false;
+            this.person.force_update = false;
             this.person.dob = this.model.dob;
             this.person.gender = this.model.gender;
             this.person.account_type = this.model.account_type;
-            this.person.profile_image = this.model.profile_image;
+            this.person.iconImage = this.model.profile_image;
             this.person.uuid = this.personUuid;
-            this.person.phonenumber = this.model.phonenumber;
+            this.person.phone_number = this.model.phonenumber;
             this.person.contact_uuid = this.contactUuid;
             this.person.user_uuid = this.userUuid;
             return this.person;

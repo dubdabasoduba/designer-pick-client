@@ -7,6 +7,7 @@ import {
     ProfileService
 } from "../../../_services";
 import {ActivatedRoute, Router} from "@angular/router";
+import {PersonModel} from "../../../_models";
 
 @Component({
     selector: 'app-update-user-details',
@@ -17,7 +18,7 @@ export class UpdateUserDetailsComponent implements OnInit {
     public imageIcon = appConstants.defaultImageIcon;
     loading = false;
     public model: any = {};
-    public person: any;
+    public person: PersonModel;
     public personUuid: string;
     public returnUrl: string;
     private oldEmail: string;

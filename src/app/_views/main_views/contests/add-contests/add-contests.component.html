@@ -34,11 +34,11 @@
                                     <div class="form-group col-md-12">
                                         <label>Select Existing Logo briefs:&nbsp;<span
                                                 class="tx-danger">*</span></label>
-                                        <select [(ngModel)]="logoBriefModel.logo_brief"
-                                                class="custom-select form-control"
+                                        <select class="custom-select form-control"
                                                 id="logo_brief"
                                                 name="logo_brief"
-                                                title="Select Existing Logo brief">
+                                                title="Select Existing Logo brief"
+                                                (change)="getLogoBriefs($event)">
                                             <option selected value="">Select Existing Logo brief
                                             </option>
                                             <option *ngFor="let logoBrief of logoBriefs"
@@ -92,6 +92,7 @@
                                                   [(ngModel)]="model.business_description"
                                                   placeholder="Please enter the business description"
                                                   required=""
+                                                  rows="5"
                                                   type="text"></textarea>
                                     </div>
                                 </div>
@@ -198,18 +199,64 @@
                                 <div class="form-row">
                                     <label>Where will the logo be used:&nbsp;<span
                                             class="tx-danger">*&nbsp;&nbsp;&nbsp;</span></label>
-                                    <div *ngFor="let logoUse of logoUses;"
-                                         class="form-group col-md-2">
+                                    <div class="form-group col-md-2">
                                         <div class="custom-control custom-checkbox">
-                                            <input (change)="updateLogoUses(logoUse.uuid)"
-                                                   class="custom-control-input"
-                                                   id="logo_use_{{logoUse.uuid}}"
+                                            <input class="custom-control-input"
+                                                   [(ngModel)]="model.tv"
+                                                   id="logo_use_tv"
+                                                   name="logo_use_tv"
                                                    type="checkbox">
                                             <label class="custom-control-label"
-                                                   for="logo_use_{{logoUse.uuid}}">{{logoUse.name}}</label>
+                                                   for="logo_use_tv">TV</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <div class="custom-control custom-checkbox">
+                                            <input class="custom-control-input"
+                                                   [(ngModel)]="model.signs"
+                                                   id="logo_use_signs"
+                                                   name="logo_use_signs"
+                                                   type="checkbox">
+                                            <label class="custom-control-label"
+                                                   for="logo_use_signs">Billboards & Signs</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <div class="custom-control custom-checkbox">
+                                            <input class="custom-control-input"
+                                                   [(ngModel)]="model.website"
+                                                   id="logo_use_website"
+                                                   name="logo_use_website"
+                                                   type="checkbox">
+                                            <label class="custom-control-label"
+                                                   for="logo_use_website">Website</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <div class="custom-control custom-checkbox">
+                                            <input class="custom-control-input"
+                                                   [(ngModel)]="model.branding"
+                                                   id="logo_use_branding"
+                                                   name="logo_use_branding"
+                                                   type="checkbox">
+                                            <label class="custom-control-label"
+                                                   for="logo_use_branding">Mugs & T-shirt
+                                                Branding</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <div class="custom-control custom-checkbox">
+                                            <input class="custom-control-input"
+                                                   [(ngModel)]="model.print"
+                                                   id="logo_use_print"
+                                                   name="logo_use_print"
+                                                   type="checkbox">
+                                            <label class="custom-control-label"
+                                                   for="logo_use_print">Print</label>
                                         </div>
                                     </div>
                                 </div>
+                                <br/>
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label>Contest start date<span
@@ -218,7 +265,7 @@
                                                class="form-control"
                                                data-error="Subject field is required"
                                                id="startDate"
-                                               name="startDate"  [(ngModel)]="model.startDate"
+                                               name="startDate" [(ngModel)]="model.startDate"
                                                placeholder="Please enter the start date:&nbsp;"
                                                required=""
                                                type="date">
@@ -253,7 +300,8 @@
                                         <div class="custom-control custom-switch">
                                             <input
                                                     class="custom-control-input"
-                                                    id="is_private" name="is_private" [(ngModel)]="model.is_private"
+                                                    id="is_private" name="is_private"
+                                                    [(ngModel)]="model.is_private"
                                                     type="checkbox">
                                             <label class="custom-control-label" for="is_private">Is
                                                 a private contest?</label>
@@ -263,7 +311,8 @@
                                         <div class="custom-control custom-switch">
                                             <input
                                                     class="custom-control-input"
-                                                    id="is_featured" name="is_featured" [(ngModel)]="model.is_featured"
+                                                    id="is_featured" name="is_featured"
+                                                    [(ngModel)]="model.is_featured"
                                                     type="checkbox">
                                             <label class="custom-control-label" for="is_featured">Is
                                                 a featured contest?</label>
@@ -273,23 +322,24 @@
                                         <div class="custom-control custom-switch">
                                             <input
                                                     class="custom-control-input"
-                                                    id="is_highlighted" name="is_highlighted" [(ngModel)]="model.is_highlighted"
+                                                    id="is_highlighted" name="is_highlighted"
+                                                    [(ngModel)]="model.is_highlighted"
                                                     type="checkbox">
                                             <label class="custom-control-label"
                                                    for="is_highlighted">Is a highlighted
                                                 contest?</label>
                                         </div>
                                     </div>
-                                   <!-- <div class="form-group col-md-3">
-                                        <div class="custom-control custom-switch">
-                                            <input
-                                                    class="custom-control-input"
-                                                    id="is_active" name="is_active" [(ngModel)]="model.is_active"
-                                                    type="checkbox">
-                                            <label class="custom-control-label" for="is_active">Deactivate/Activate
-                                                contest</label>
-                                        </div>
-                                    </div>-->
+                                    <!-- <div class="form-group col-md-3">
+                                         <div class="custom-control custom-switch">
+                                             <input
+                                                     class="custom-control-input"
+                                                     id="is_active" name="is_active" [(ngModel)]="model.is_active"
+                                                     type="checkbox">
+                                             <label class="custom-control-label" for="is_active">Deactivate/Activate
+                                                 contest</label>
+                                         </div>
+                                     </div>-->
                                 </div>
                                 <br/>
                                 <div class="form-row">

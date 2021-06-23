@@ -19,7 +19,7 @@ import {
     ContestsService,
     ContestStagesService,
     CountriesService,
-    DiscountsService,
+    DiscountsService, LogoBriefsService,
     LogoUsesService,
     PagerService,
     PaymentModesService,
@@ -147,7 +147,7 @@ import {NewsLettersSubscriptionsComponent} from "./_views/admin_pages/news-lette
         PermissionsGuard, AlertService, CategoryService, CountriesService, ProfileService,
         PagerService, PermissionsService, ApiKeysService, ProfileService, ContactService,
         CommissionsService, PaymentModesService, SettingsService, DiscountsService, ContestStagesService,
-        ContestsService, LogoUsesService,
+        ContestsService, LogoUsesService, LogoBriefsService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: RequestInterceptor,

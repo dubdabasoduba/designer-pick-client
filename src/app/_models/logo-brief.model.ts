@@ -7,4 +7,6 @@ export class LogoBriefModel extends DefaultModel {
     business_description: string;
     main_communication_points: string;
     target_audience: string;
+    industry: string;
+    country: string;
 }
