@@ -35,4 +35,12 @@ export class ContestsService {
         // @ts-ignore
         return this.http.get(appConstants.baseApiV1Url + '/draft-contest/' + contestId);
     }
+
+    updateContest(contest: ContestModel): Observable<ContestModel> {
+        return this.http.put<ContestModel>(appConstants.baseApiV1Url + appConstants.contestsUrl + contest.uuid, contest);
+    }
+
+    addContest(contest: ContestModel): Observable<ContestModel> {
+        return this.http.post<ContestModel>(appConstants.baseApiV1Url + appConstants.contestsUrl, contest);
+    }
 }

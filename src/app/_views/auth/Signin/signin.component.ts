@@ -7,7 +7,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AlertService, AuthenticationService, UserService} from '../../../_services';
-import {appConstants} from '../../../_helpers';
+import {AppCommons, appConstants} from '../../../_helpers';
+import {AuthenticatedUserModel} from "../../../_models";
 
 @Component({
     selector: 'app-sign-in',
@@ -33,18 +34,27 @@ export class SigninComponent implements OnInit {
         this.loginSuccessfulReturnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
 
+    /**
+     * Performs the login functionality
+     */
     login() {
-        this.loading = true;
-        this.authenticationService.login(this.model.username, this.model.password).subscribe(
-            data => {
-                this.generateRedirectUrlForProfiles(data);
-                this.forceUserUpdate(data);
-            },
-            error => {
-                this.alertService.error(error);
-                this.loading = false;
-            }
-        );
+        if (AppCommons.isStringEmpty(this.model.username)) {
+            this.alertService.error('Username is required');
+        } else if (AppCommons.isStringEmpty(this.model.password)) {
+            this.alertService.error('Password is required');
+        } else {
+            this.loading = true;
+            this.authenticationService.login(this.model.username, this.model.password).subscribe(
+                data => {
+                    this.generateRedirectUrlForProfiles(data);
+                    this.forceUserUpdate(data);
+                },
+                error => {
+                    this.alertService.error(error);
+                    this.loading = false;
+                }
+            );
+        }
     }
 
     private generateRedirectUrlForProfiles(lbsUser) {
@@ -63,9 +73,9 @@ export class SigninComponent implements OnInit {
      * @desc Forces the Users to update their details before starting the use of the system.
      * @param data {@link Object}
      */
-    private forceUserUpdate(data: any) {
-        if (data.forceUpdate) {
-            this.router.navigateByUrl(appConstants.profileUpdateUrl + data.person);
+    private forceUserUpdate(data: AuthenticatedUserModel) {
+        if (data.auth.forceUpdate) {
+            this.router.navigateByUrl(appConstants.profileUpdateUrl + data.user.person);
         } else {
             this.router.navigateByUrl(this.redirectUrl);
         }

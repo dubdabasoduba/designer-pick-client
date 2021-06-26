@@ -34,7 +34,7 @@ export class ContestsComponent implements OnInit {
 
     redirectToSign(contest: string) {
         if (!AppCommons.isObjectEmpty(this.lbsUser)) {
-            this.router.navigateByUrl('/contests/' + contest);
+            AppCommons.displaySingleContest(this.router, contest, "active", this.router.url);
         } else {
             this.router.navigate([appConstants.authSIgnInUrl], {
                 queryParams: {
@@ -42,6 +42,10 @@ export class ContestsComponent implements OnInit {
                 }
             });
         }
+    }
+
+    displaySingleContest(contest: string) {
+        AppCommons.displaySingleContest(this.router, contest, "active", this.router.url);
     }
 
     /**
@@ -69,6 +73,7 @@ export class ContestsComponent implements OnInit {
     private formatContests(contests: any) {
         for (let i = 0; i < contests.length; i++) {
             let contest = new ContestModel();
+            contest.title = contests[i].title;
             contest.business_name = contests[i].business_name;
             contest.start_date = AppCommons.formatDisplayDate(new Date(contests[i].start_date));
             contest.end_date = AppCommons.formatDisplayDate(new Date(contests[i].end_date));

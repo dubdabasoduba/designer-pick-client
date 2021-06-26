@@ -11,6 +11,7 @@ import 'rxjs/add/operator/toPromise';
 import {HttpClient} from '@angular/common/http';
 import {tap} from 'rxjs/operators';
 import {AuthenticatedUserModel, UserModel} from '../../_models';
+import {Observable} from "rxjs/Observable";
 
 @Injectable({
     providedIn: 'root'
@@ -28,7 +29,8 @@ export class AuthenticationService {
         return response;
     }
 
-    login(username: string, password: string) {
+    login(username: string, password: string): Observable<AuthenticatedUserModel>  {
+        // @ts-ignore
         return this.http.post(appConstants.baseApiV1Url + '/auth/login', {
             username: username, password: AppCommons.generatePasswordHash(password)
         }).pipe(tap(response => AuthenticationService.setSession(response)));

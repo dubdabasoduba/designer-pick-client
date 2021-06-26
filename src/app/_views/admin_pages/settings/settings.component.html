@@ -26,6 +26,60 @@
         <div class="row">
             <div class="col-lg-12 col-xl-12">
                 <fieldset class="form-fieldset">
+                    <legend>Edit&nbsp;Initial Contest Stage Settings</legend>
+                    <form #f="ngForm" (ngSubmit)="f.form.valid && saveContestStage()" novalidate>
+                        <div class="form-row">
+                            <div class="form-group col-lg-5">
+                                <label>Setting name:&nbsp;<span
+                                        class="tx-danger">*</span></label>
+                                <input [(ngModel)]="contestStageModel.name" class="form-control"
+                                       data-error="Subject field is required"
+                                       id="name" name="name"
+                                       placeholder="Please give the setitng name"
+                                       readonly
+                                       required="" type="text">
+                            </div>
+                            <div class="form-group col-lg-7">
+                                <label>Select commission:&nbsp;<span
+                                        class="tx-danger">*</span></label>
+                                <select [(ngModel)]="contestStageModel.value"
+                                        class="form-control" class="custom-select form-control"
+                                        id="value"
+                                        name="value" title="Select contest stage">
+                                    <option selected value="">Select contest stage</option>
+                                    <option *ngFor="let contestStage of contestStages"
+                                            value="{{contestStage.uuid}}">{{contestStage.name}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <div class="custom-control custom-switch">
+                                    <input [(ngModel)]="commissionModel.is_active"
+                                           class="custom-control-input"
+                                           id="is_active" name="is_active"
+                                           type="checkbox">
+                                    <label class="custom-control-label" for="is_active">Deactivate/Activate
+                                        Initial Contest Stage</label>
+                                </div>
+
+                            </div>
+                            <div class="form-group col-md-4"></div>
+                            <div class="form-group col-md-2">
+                                <button class="btn btn-primary btn-block">Update Initial Contest
+                                    Stage
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </fieldset>
+            </div><!-- col -->
+        </div><!-- row -->
+        <br/>
+        <div class="row">
+            <div class="col-lg-12 col-xl-12">
+                <fieldset class="form-fieldset">
                     <legend>Edit&nbsp;Commission Settings</legend>
                     <form #f="ngForm" (ngSubmit)="f.form.valid && saveCommissions()" novalidate>
                         <div class="form-row">

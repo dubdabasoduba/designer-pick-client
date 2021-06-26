@@ -16,7 +16,8 @@ export class ContestStagesService {
     constructor(private http: HttpClient) {
     }
 
-    getContentsStages() {
+    getContentsStages(): Observable<Array<ContestStageModel>> {
+        // @ts-ignore
         return this.http.get(appConstants.baseApiV1Url + '/contest-stages');
     }
 

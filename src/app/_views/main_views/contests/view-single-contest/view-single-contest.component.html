@@ -10,14 +10,15 @@
             <div>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-style1 mg-b-10">
+                            <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
                         <li class="breadcrumb-item"><a routerLink="/contests">Contests</a></li>
                         <li aria-current="page"
-                            class="breadcrumb-item active">{{contest.business_name}} Logo Design
+                            class="breadcrumb-item active">{{contest.business_name}} | {{contest.title}} Logo Design
                             Contest
                         </li>
                     </ol>
                 </nav>
-                <h4 class="mg-b-0">{{contest.business_name}} Logo Design Contest</h4>
+                <h4 class="mg-b-0">{{contest.business_name}} | {{contest.title}}  Logo Design Contest</h4>
             </div>
             <div class="mg-t-20 mg-sm-t-0">
                 <a *ngIf="contest.is_active == 1" class="btn btn-primary btn-block text-white"
@@ -34,12 +35,12 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-12 align-content-center">
                         <div class="avatar-contest">
-                            <img alt="{{contest.business_name}}"
+                            <img alt="{{contest.business_name}} | {{contest.title}} "
                                  src="../../../../../assets/img/contest-image.png">
                         </div>
                     </div><!--  col -->
                     <div class="col-sm-12 col-md-12 col-lg-12 mg-t-20 mg-sm-t-0 mg-lg-t-25">
-                        <h5 class="mg-b-2 tx-spacing&#45;&#45;1">{{contest.business_name}}&nbsp;Logo
+                        <h5 class="mg-b-2 tx-spacing&#45;&#45;1">{{contest.business_name}}&nbsp; | {{contest.title}}&nbsp;Logo
                             Design Contest&nbsp;
                             <svg *ngIf="contest.is_featured" class="bi bi-patch-check-fill"
                                  data-placement="bottom"
@@ -82,14 +83,6 @@
                         <div *ngIf="contest.is_active == 1" class="d-flex">
                             <div class="profile-skillset flex-fill">
                                 <a class="btn btn-info btn-block text-white">Submit Entries</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-12 col-lg-12 mg-t-20 mg-sm-t-0 mg-lg-t-25">
-                        <hr/>
-                        <div *ngIf="contest.is_active == 1" class="d-flex">
-                            <div class="profile-skillset flex-fill">
-                                <a class="btn btn-info btn-block text-white">Edit Contest</a>
                             </div>
                         </div>
                     </div>

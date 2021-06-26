@@ -9,9 +9,26 @@ import {appConstants} from './app.constants';
 import * as CryptoJS from 'crypto-js';
 import {PersonsService} from '../_services';
 import {Injectable} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Injectable()
 export class AppCommons {
+    /**
+     * Redirects the to the view single contest page.
+     * @param router
+     * @param contest
+     * @param type
+     * @param returnUrl
+     */
+    public static displaySingleContest(router: Router, contest: string, type: string, returnUrl: string) {
+        router.navigate(['/contests/' + contest], {
+            queryParams: {
+                type: type,
+                returnUrl: returnUrl
+            }
+        });
+    }
+
     /**
      * Checks the user permissions to make sure the users are authorised to see of perform the actions they wish to perform
      * @param requiredPermissions {@link Array}: The permissions required to perform the action

@@ -24,8 +24,8 @@
 <div class="content">
     <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
         <div class="media d-block d-lg-flex">
-            <div *ngIf="logoBriefs.length > 0" class="media-body mg-t-40 mg-lg-t-0 pd-lg-x-10">
-                <div class="row">
+            <div class="media-body mg-t-40 mg-lg-t-0 pd-lg-x-10">
+                <div *ngIf="logoBriefs.length > 0" class="row">
                     <div class="col-md-12 col-xl-12">
                         <fieldset class="form-fieldset">
                             <legend>Select Existing Logo brief</legend>
@@ -58,6 +58,19 @@
                             <form #f="ngForm" (ngSubmit)="f.form.valid && addContest()"
                                   novalidate>
                                 <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label>Contest Title:&nbsp;<span
+                                                class="tx-danger">*</span></label>
+                                        <input class="form-control"
+                                               data-error="Contests title field is required"
+                                               id="title" name="title"
+                                               [(ngModel)]="model.title"
+                                               placeholder="Please enter the contest title"
+                                               required="" type="text">
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label>Business name:&nbsp;<span
                                                 class="tx-danger">*</span></label>
@@ -66,7 +79,7 @@
                                                id="business_name" name="business_name"
                                                [(ngModel)]="model.business_name"
                                                placeholder="Please enter the business name"
-                                               required="" type="email">
+                                               required="" type="text">
                                     </div>
                                     <div class="form-group col-md-8">
                                         <label>Business slogan:&nbsp;<span
@@ -265,7 +278,7 @@
                                                class="form-control"
                                                data-error="Subject field is required"
                                                id="startDate"
-                                               name="startDate" [(ngModel)]="model.startDate"
+                                               name="startDate" [(ngModel)]="model.start_date"
                                                placeholder="Please enter the start date:&nbsp;"
                                                required=""
                                                type="date">
@@ -277,7 +290,7 @@
                                                class="form-control"
                                                data-error="Subject field is required"
                                                id="endDate"
-                                               name="endDate" [(ngModel)]="model.endDate"
+                                               name="endDate" [(ngModel)]="model.end_date"
                                                placeholder="Please enter the end date:&nbsp;"
                                                required=""
                                                type="date">

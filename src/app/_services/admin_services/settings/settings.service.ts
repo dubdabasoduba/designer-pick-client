@@ -12,7 +12,8 @@ export class SettingsService {
     constructor(private http: HttpClient) {
     }
 
-    getSettings() {
+    getSettings(): Observable<Array<SettingsModel>> {
+        // @ts-ignore
         return this.http.get(appConstants.baseApiV1Url + '/settings');
     }
 

@@ -1,8 +1,8 @@
 import {DefaultModel} from "./default.model";
 
 export class SettingsModel extends DefaultModel {
-    settings_key: string;
-    settings_value: {
+    setting_key: string;
+    setting_value: {
         settings: {
             name: string;
             value: string;

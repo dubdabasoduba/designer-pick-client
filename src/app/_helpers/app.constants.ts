@@ -105,10 +105,11 @@ export const appConstants = {
      * The settings keys for the platform
      */
     commissions: "commissions",
-    privateListingAmount: "private_listing_amount",
-    highlightAmount: "highlight_amount",
+    contest_stage: "contest_stage",
+    private_listing_amount: "private_listing_amount",
+    highlight_amount: "highlight_amount",
     listingAmount: "listing_amount",
-    featuringAmount: "featuring_amount",
+    featuring_amount: "featuring_amount",
     handlingAmount: "handling_amount",
     supportHours: "support_hours",
 
@@ -156,7 +157,8 @@ export const appConstants = {
     personEntityUrl: '/person-contests/',
 
     // contests url endpoints
-    entityUrl: '/contests/',
+    contestsUrl: '/contest',
+    contestUrl: '/contest/',
     entitiesUrl: '/entities',
     schoolUrl: '/designers',
     companiesUrl: '/companies',

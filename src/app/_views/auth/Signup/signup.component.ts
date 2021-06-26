@@ -31,7 +31,6 @@ export class SignupComponent implements OnInit {
 
     register() {
         this.loading = true;
-        console.log(this.model);
         if (AppCommons.isStringEmpty(this.model.name)) {
             this.alertService.error('Full name is required');
         } else if (AppCommons.isStringEmpty(this.model.account_type)) {

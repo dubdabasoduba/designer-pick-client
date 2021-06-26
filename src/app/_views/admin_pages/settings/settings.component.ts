@@ -5,8 +5,13 @@
  */
 
 import {Component, OnInit} from '@angular/core';
-import {CommissionsModel, SettingsModel} from "../../../_models";
-import {AlertService, CommissionsService, SettingsService} from "../../../_services";
+import {CommissionsModel, ContestStageModel, SettingsModel} from "../../../_models";
+import {
+    AlertService,
+    CommissionsService,
+    ContestStagesService,
+    SettingsService
+} from "../../../_services";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AppCommons, appConstants} from "../../../_helpers";
 
@@ -19,7 +24,9 @@ export class SettingsComponent implements OnInit {
     loading = false;
     public settings: Array<SettingsModel> = [];
     public commissions: Array<CommissionsModel> = [];
+    public contestStages: Array<ContestStageModel> = [];
     public commissionModel = {name: "", value: "", is_active: 1, uuid: "", setting_key: ""};
+    public contestStageModel = {name: "", value: "", is_active: 1, uuid: "", setting_key: ""};
     public privateListingModel = {name: "", value: "", is_active: 1, uuid: "", setting_key: ""};
     public highLightingModel = {name: "", value: "", is_active: 1, uuid: "", setting_key: ""};
     public featuringModel = {name: "", value: "", is_active: 1, uuid: "", setting_key: ""};
@@ -32,9 +39,8 @@ export class SettingsComponent implements OnInit {
     loggedInUser: string;
 
     constructor(
-        private settingsService: SettingsService,
-        private commissionsService: CommissionsService,
-        private alertService: AlertService,
+        private settingsService: SettingsService, private contestStagesService: ContestStagesService,
+        private commissionsService: CommissionsService, private alertService: AlertService,
         private route: ActivatedRoute, private router: Router
     ) {
     }
@@ -42,9 +48,9 @@ export class SettingsComponent implements OnInit {
     private static createSettingsModel(model: { is_active: number; name: string; value: string; uuid: string; setting_key: string }) {
         let setting = new SettingsModel();
         setting.uuid = model.uuid;
-        setting.settings_key = model.setting_key;
+        setting.setting_key = model.setting_key;
         setting.is_active = model.is_active;
-        setting.settings_value = {
+        setting.setting_value = {
             settings: {
                 name: model.name, value: model.value
             }
@@ -62,6 +68,7 @@ export class SettingsComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.getContestStages();
         this.getCommissions();
         this.getSettings();
     }
@@ -69,6 +76,12 @@ export class SettingsComponent implements OnInit {
     saveCommissions() {
         this.loading = false;
         let model = this.commissionModel;
+        this.saveSettings(model);
+    }
+
+    saveContestStage() {
+        this.loading = false;
+        let model = this.contestStageModel;
         this.saveSettings(model);
     }
 
@@ -170,18 +183,20 @@ export class SettingsComponent implements OnInit {
         for (let i = 0; i < data.length; i++) {
             if (data[i].setting_key == appConstants.commissions) {
                 SettingsComponent.setModel(data[i], this.commissionModel);
-            } else if (data[i].setting_key == appConstants.privateListingAmount) {
+            } else if (data[i].setting_key == appConstants.private_listing_amount) {
                 SettingsComponent.setModel(data[i], this.privateListingModel);
-            } else if (data[i].setting_key == appConstants.highlightAmount) {
+            } else if (data[i].setting_key == appConstants.highlight_amount) {
                 SettingsComponent.setModel(data[i], this.highLightingModel);
             } else if (data[i].setting_key == appConstants.listingAmount) {
                 SettingsComponent.setModel(data[i], this.listingModel);
-            } else if (data[i].setting_key == appConstants.featuringAmount) {
+            } else if (data[i].setting_key == appConstants.featuring_amount) {
                 SettingsComponent.setModel(data[i], this.featuringModel);
             } else if (data[i].setting_key == appConstants.handlingAmount) {
                 SettingsComponent.setModel(data[i], this.handlingFeeModel);
             } else if (data[i].setting_key == appConstants.supportHours) {
                 SettingsComponent.setModel(data[i], this.supportHoursModel);
+            } else if (data[i].setting_key == appConstants.contest_stage) {
+                SettingsComponent.setModel(data[i], this.contestStageModel);
             }
         }
     }
@@ -191,6 +206,20 @@ export class SettingsComponent implements OnInit {
         this.commissionsService.getCommissions().subscribe(
             data => {
                 this.formatCommission(data);
+                this.loading = false;
+            },
+            error => {
+                this.alertService.error(error);
+                this.loading = false;
+            }
+        );
+    }
+
+    private getContestStages() {
+        this.loading = true;
+        this.contestStagesService.getContentsStages().subscribe(
+            data => {
+                this.contestStages = data;
                 this.loading = false;
             },
             error => {

@@ -15,4 +15,5 @@ export class ContestModel extends LogoBriefModel {
     is_private_amount_charged: number;
     is_highlighted: boolean;
     is_highlighted_amount_charged: number;
+    title: string;
 }

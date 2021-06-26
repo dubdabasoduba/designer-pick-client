@@ -14,6 +14,7 @@ export class ViewSingleContestComponent implements OnInit {
     public contest: ContestModel;
     public contestUuid: string;
     public returnUrl: string;
+    contest_type: string;
     lbsUser: AuthenticatedUserModel;
 
     constructor(
@@ -30,13 +31,48 @@ export class ViewSingleContestComponent implements OnInit {
         this.route.params.subscribe(params => {
             this.contestUuid = params[appConstants.id];
         });
-        this.returnUrl = this.router.url;
-        this.getContest();
+        this.route.queryParams.subscribe(params => {
+            this.contest_type = params["type"];
+            this.returnUrl = params["returnUrl"];
+        });
+        if (!AppCommons.isStringEmpty(this.contest_type)) {
+            if (this.contest_type == "active") {
+                this.getContest();
+            } else {
+                this.getDraftContest();
+            }
+        } else {
+            this.alertService.error("The contest status is required");
+            this.router.navigateByUrl(this.returnUrl);
+        }
     }
 
     private getContest() {
         this.loading = true;
         this.contestsService.getDisplayContestById(this.contestUuid).subscribe(
+            data => {
+                if (!AppCommons.isObjectEmpty(data[0])) {
+                    this.checkIfUserIdLoggedIn(data[0]);
+                    this.contest = data[0];
+                    this.contest.contest_period = AppCommons.calculateDays(this.contest.start_date, this.contest.end_date);
+                    this.contest.start_date = AppCommons.formatDisplayDate(new Date(this.contest.start_date));
+                    this.contest.end_date = AppCommons.formatDisplayDate(new Date(this.contest.end_date));
+                    this.loading = false;
+                } else {
+                    this.router.navigateByUrl(this.returnUrl);
+                }
+            },
+            error => {
+                this.alertService.error(error);
+                this.loading = false;
+                this.router.navigateByUrl(this.returnUrl);
+            }
+        );
+    }
+
+    private getDraftContest() {
+        this.loading = true;
+        this.contestsService.getDraftContestById(this.contestUuid).subscribe(
             data => {
                 if (!AppCommons.isObjectEmpty(data[0])) {
                     this.checkIfUserIdLoggedIn(data[0]);
