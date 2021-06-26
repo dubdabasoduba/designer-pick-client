@@ -5,8 +5,10 @@
  */
 
 import {Component, OnInit} from '@angular/core';
-import {AlertService} from '../../../../_services';
-import {ResponseModel} from '../../../../_models/response.model';
+import {AlertService, AuthenticationService} from '../../../../_services';
+import {AuthenticatedUserModel} from "../../../../_models";
+import {appConstants} from "../../../../_helpers";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
     selector: 'app-acquisitions',
@@ -15,15 +17,18 @@ import {ResponseModel} from '../../../../_models/response.model';
 })
 export class ClientsDashboardComponent implements OnInit {
     loading = false;
-    public acquisitions = [];
-    private investments = [];
-    private responseModel = new ResponseModel();
+    public userId: string
+    lbsUser: AuthenticatedUserModel;
 
     constructor(
-        private alertService: AlertService) {
+        private alertService: AlertService, private authenticationService: AuthenticationService,
+        private router: Router, private route: ActivatedRoute) {
     }
 
     ngOnInit() {
-        //this.getRecentAcquisitions();
+        this.lbsUser = this.authenticationService.getCurrentUser();
+        this.route.params.subscribe(params => {
+            this.userId = params[appConstants.id];
+        });
     }
 }

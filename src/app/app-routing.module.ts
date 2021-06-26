@@ -51,6 +51,8 @@ import {FaqComponent} from "./_views/main_views/faq/faq.component";
 import {PolicyComponent} from "./_views/main_views/policy/policy.component";
 import {TosComponent} from "./_views/main_views/tos/tos.component";
 import {NewsLettersSubscriptionsComponent} from "./_views/admin_pages/news-letters-subscriptions/news-letters--subscriptions.component";
+import {ClientLiveContestsComponent} from "./_views/dashboards/clients-dashboard/client-live-contests/client-live-contests.component";
+import {ClientEndedContestsComponent} from "./_views/dashboards/clients-dashboard/client-ended-contests/client-ended-contests.component";
 
 const appRoutes: Routes = [
     {path: '', component: HomeComponent, runGuardsAndResolvers: 'always'},
@@ -95,6 +97,22 @@ const appRoutes: Routes = [
     {
         path: 'contests-edit/:id', component: AddContestsComponent,
         canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'contests/client/live/:id', component: ClientLiveContestsComponent,
+        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'contests/client/ended/:id',
+        component: ClientEndedContestsComponent,
+        canActivate: [AuthGuard],
+        runGuardsAndResolvers: 'always'
+    },
+    {
+        path: 'contests/client/judging/:id',
+        component: ClientEndedContestsComponent,
+        canActivate: [AuthGuard],
+        runGuardsAndResolvers: 'always'
     },
     {path: 'designers', component: DesignersComponent, runGuardsAndResolvers: 'always'},
     {
