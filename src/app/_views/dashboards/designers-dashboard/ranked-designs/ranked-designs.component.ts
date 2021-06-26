@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-ranked-designs',
-  templateUrl: './ranked-designs.component.html',
-  styleUrls: ['./ranked-designs.component.css']
+    selector: 'app-ranked-designs',
+    templateUrl: './ranked-designs.component.html',
+    styleUrls: ['./ranked-designs.component.css']
 })
 export class RankedDesignsComponent implements OnInit {
 
-  constructor() { }
+    constructor() {
+    }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+    }
 
 }

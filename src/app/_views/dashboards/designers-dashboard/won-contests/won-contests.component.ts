@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-won-contests',
-  templateUrl: './won-contests.component.html',
-  styleUrls: ['./won-contests.component.css']
+    selector: 'app-won-contests',
+    templateUrl: './won-contests.component.html',
+    styleUrls: ['./won-contests.component.css']
 })
 export class WonContestsComponent implements OnInit {
 
-  constructor() { }
+    constructor() {
+    }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+    }
 
 }
