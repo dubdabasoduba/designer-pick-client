@@ -5,17 +5,17 @@
  */
 
 import {Component, OnInit} from '@angular/core';
-import {AlertService} from '../../../_services';
-import {ResponseModel} from '../../../_models/response.model';
+import {AlertService} from '../../../../_services';
+import {ResponseModel} from '../../../../_models/response.model';
 
 @Component({
-    selector: 'app-funding',
-    templateUrl: './designers-dashboard.component.html',
-    styleUrls: ['./designers-dashboard.component.css']
+    selector: 'app-acquisitions',
+    templateUrl: './clients-dashboard.component.html',
+    styleUrls: ['./clients-dashboard.component.css']
 })
-export class DesignersDashboardComponent implements OnInit {
+export class ClientsDashboardComponent implements OnInit {
     loading = false;
-    public fundings = [];
+    public acquisitions = [];
     private investments = [];
     private responseModel = new ResponseModel();
 
@@ -24,6 +24,6 @@ export class DesignersDashboardComponent implements OnInit {
     }
 
     ngOnInit() {
-        //this.getRecentFunding();
+        //this.getRecentAcquisitions();
     }
 }

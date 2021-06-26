@@ -25,6 +25,8 @@ export class NavigationComponent implements OnInit {
     public defaultDropdownElementsClass = "dropdown-menu dropdown-menu-right tx-13"
     public clickedDropdownElementsClass = "dropdown-menu dropdown-menu-right tx-13 show"
     is_staff: boolean = false;
+    is_client: boolean = false;
+    is_designer: boolean = false;
     private showDropdown = false;
 
     constructor(
@@ -48,6 +50,12 @@ export class NavigationComponent implements OnInit {
         }
         if (!AppCommons.isObjectEmpty(this.lbsUser) && this.lbsUser.user.account_type === 2) {
             this.is_staff = true;
+        }
+        if (!AppCommons.isObjectEmpty(this.lbsUser) && this.lbsUser.user.account_type === 0) {
+            this.is_client = true;
+        }
+        if (!AppCommons.isObjectEmpty(this.lbsUser) && this.lbsUser.user.account_type === 1) {
+            this.is_designer = true;
         }
     }
 

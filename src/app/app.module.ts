@@ -41,8 +41,8 @@ import {AppComponent} from './app.component';
 import {HomeComponent} from './_views/main_views/home/home.component';
 import {ContestsComponent} from './_views/main_views/contests/view-contests/contests.component';
 import {AlertComponent} from './_views/alert/alert.component';
-import {ClientsDashboardComponent} from './_views/dashboards/clients-dashboard/clients-dashboard.component';
-import {DesignersDashboardComponent} from './_views/dashboards/designers-dashboard/designers-dashboard.component';
+import {ClientsDashboardComponent} from './_views/dashboards/clients-dashboard/dashboard/clients-dashboard.component';
+import {DesignersDashboardComponent} from './_views/dashboards/designers-dashboard/dashboard/designers-dashboard.component';
 import {HowItWorksComponent} from './_views/main_views/how-it-works/how-it-works.component';
 import {SettingsComponent} from './_views/admin_pages/settings/settings.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
@@ -82,6 +82,14 @@ import {PolicyComponent} from './_views/main_views/policy/policy.component';
 import {TosComponent} from './_views/main_views/tos/tos.component';
 import {FooterComponent} from './_views/main_views/footer/footer.component';
 import {NewsLettersSubscriptionsComponent} from "./_views/admin_pages/news-letters-subscriptions/news-letters--subscriptions.component";
+import { LiveContestsComponent } from './_views/dashboards/designers-dashboard/live-contests/live-contests.component';
+import { JudgingContestsComponent } from './_views/dashboards/designers-dashboard/judging-contests/judging-contests.component';
+import { EndedContestsComponent } from './_views/dashboards/designers-dashboard/ended-contests/ended-contests.component';
+import { RankedDesignsComponent } from './_views/dashboards/designers-dashboard/ranked-designs/ranked-designs.component';
+import { WonContestsComponent } from './_views/dashboards/designers-dashboard/won-contests/won-contests.component';
+import { ClientEndedContestsComponent } from './_views/dashboards/clients-dashboard/client-ended-contests/client-ended-contests.component';
+import { ClientLiveContestsComponent } from './_views/dashboards/clients-dashboard/client-live-contests/client-live-contests.component';
+import { ClientJudgingContestsComponent } from './_views/dashboards/clients-dashboard/client-judging-contests/client-judging-contests.component';
 
 @NgModule({
     declarations: [
@@ -135,7 +143,15 @@ import {NewsLettersSubscriptionsComponent} from "./_views/admin_pages/news-lette
         PolicyComponent,
         TosComponent,
         FooterComponent,
-        NewsLettersSubscriptionsComponent
+        NewsLettersSubscriptionsComponent,
+        LiveContestsComponent,
+        JudgingContestsComponent,
+        EndedContestsComponent,
+        RankedDesignsComponent,
+        WonContestsComponent,
+        ClientEndedContestsComponent,
+        ClientLiveContestsComponent,
+        ClientJudgingContestsComponent
     ],
     imports: [
         BrowserModule,
