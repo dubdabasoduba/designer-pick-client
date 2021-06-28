@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthenticatedUserModel} from "../../../../_models";
+import {AuthenticatedUserModel, ContestModel} from "../../../../_models";
 import {AlertService, AuthenticationService} from "../../../../_services";
 import {ActivatedRoute, Router} from "@angular/router";
 import {appConstants} from "../../../../_helpers";
@@ -11,8 +11,9 @@ import {appConstants} from "../../../../_helpers";
 })
 export class ClientJudgingContestsComponent implements OnInit {
     loading = false;
-    public userId: string
     lbsUser: AuthenticatedUserModel;
+    public userId: string
+    public contests: Array<ContestModel>;
 
     constructor(
         private alertService: AlertService, private authenticationService: AuthenticationService,

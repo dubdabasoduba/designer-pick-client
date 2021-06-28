@@ -6,7 +6,7 @@
 
 import {Component, OnInit} from '@angular/core';
 import {AlertService, AuthenticationService} from '../../../../_services';
-import {AuthenticatedUserModel} from "../../../../_models";
+import {AuthenticatedUserModel, ContestModel} from "../../../../_models";
 import {appConstants} from "../../../../_helpers";
 import {ActivatedRoute, Router} from "@angular/router";
 
@@ -17,8 +17,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class ClientsDashboardComponent implements OnInit {
     loading = false;
-    public userId: string
     lbsUser: AuthenticatedUserModel;
+    public userId: string;
 
     constructor(
         private alertService: AlertService, private authenticationService: AuthenticationService,

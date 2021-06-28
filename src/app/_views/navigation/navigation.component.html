@@ -55,32 +55,33 @@
                 <h6 class="tx-semibold mg-b-5">{{lbsUser.user.name}}</h6>
                 <p class="mg-b-25 tx-12 tx-color-03">@{{lbsUser.user.username}}</p>
                 <a class="dropdown-item" routerLink="/profile/{{lbsUser.user.person}}"
-                   routerLinkActive="active">&nbsp;&nbsp;<i
-                        data-feather="edit-3"></i>&nbsp;My profile</a>
+                   routerLinkActive="active">&nbsp;&nbsp;<i data-feather="edit-3"></i>&nbsp;My
+                    profile</a>
                 <a class="dropdown-item"
                    routerLink="/profile/change-password/{{lbsUser.user.person}}"
-                   routerLinkActive="active">&nbsp;&nbsp;<i
-                        data-feather="lock"></i>&nbsp;Change Password</a>
+                   routerLinkActive="active">&nbsp;&nbsp;<i data-feather="lock"></i>&nbsp;Change
+                    Password</a>
                 <a class="dropdown-item" routerLink="/profile/contacts/{{lbsUser.user.person}}"
                    routerLinkActive="active">&nbsp;&nbsp;<i
                         data-feather="mail"></i>&nbsp;Contacts</a>
                 <a class="dropdown-item" routerLink="/profile/inbox/{{lbsUser.user.person}}"
-                   routerLinkActive="active">&nbsp;&nbsp;<i
-                        data-feather="inbox"></i>&nbsp;Inbox</a>
+                   routerLinkActive="active">&nbsp;&nbsp;<i data-feather="inbox"></i>&nbsp;Inbox</a>
                 <div *ngIf="is_staff" class="dropdown-divider"></div>
                 <a *ngIf="is_staff" class="dropdown-item" routerLink="/admin"
                    routerLinkActive="active">&nbsp;&nbsp;<i data-feather="users"></i>&nbsp;System
                     Administrator</a>
                 <div *ngIf="is_client" class="dropdown-divider"></div>
-                <a *ngIf="is_client" class="dropdown-item" routerLink="/client-dashboard/{{lbsUser.user.person}}"
-                   routerLinkActive="active">&nbsp;&nbsp;<i data-feather="users"></i>&nbsp;Client Dashboard</a>
+                <a *ngIf="is_client" class="dropdown-item"
+                   routerLink="/client-dashboard/{{lbsUser.user.person}}" routerLinkActive="active">&nbsp;&nbsp;<i
+                        data-feather="users"></i>&nbsp;Client Dashboard</a>
                 <div *ngIf="is_designer" class="dropdown-divider"></div>
-                <a *ngIf="is_designer" class="dropdown-item" routerLink="/designers-dashboard/{{lbsUser.user.person}}"
-                   routerLinkActive="active">&nbsp;&nbsp;<i data-feather="users"></i>&nbsp;Designer Dashboard</a>
+                <a *ngIf="is_designer" class="dropdown-item"
+                   routerLink="/designers-dashboard/{{lbsUser.user.person}}"
+                   routerLinkActive="active">&nbsp;&nbsp;<i data-feather="users"></i>&nbsp;Designer
+                    Dashboard</a>
                 <div class="dropdown-divider"></div>
                 <a (click)="signOut()" class="dropdown-item">&nbsp;&nbsp;<i
-                        data-feather="log-out"></i>Sign
-                    Out</a>
+                        data-feather="log-out"></i>Sign Out</a>
             </div><!-- dropdown-menu -->
         </div><!-- dropdown -->
     </div><!-- navbar-right -->

@@ -29,5 +29,43 @@
 </div><!-- content -->
 
 <div class="content">
+    <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
+        <div class="row">
+            <div class="col-lg-12 col-xl-12">
+                <div class="row row-md mg-b-25 pd-l-20-f pd-r-20-f">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover table-md mg-b-0" id="live_contests">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th class="text-center" scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Duration</th>
+                                <th scope="col">Entries</th>
+                                <th scope="col">Amount</th>
+                                <th class="text-center" scope="col">Is Active</th>
+                                <th class="text-center" scope="col">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let contest of contests; let i = index">
+                                <td class="text-center">{{i + 1}}</td>
+                                <td>{{contest.title}}</td>
+                                <td>{{contest.durations}}</td>
+                                <td>{{contest.entries}}</td>
+                                <td>{{contest.amount}}</td>
+                                <td>{{contest.is_active}}</td>
+                                <td class="text-right">
+                                    <a class="btn btn-info btn-xs"><i
+                                            class="fas fa-unlock text-white"></i></a>&nbsp;
+                                    <a class="btn btn-secondary btn-xs"><i class="fas fa-cogs"></i></a>&nbsp;
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div><!-- row -->
+            </div><!-- col -->
+        </div><!-- row -->
+    </div><!-- container -->
 </div>
 <br/>

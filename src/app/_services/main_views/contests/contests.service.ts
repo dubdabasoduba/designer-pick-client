@@ -22,18 +22,23 @@ export class ContestsService {
         return this.http.get(appConstants.baseApiV1Url + '/designer/' + personId);
     }
 
+    getContestsByPersonId(personId: string): Observable<Array<ContestModel>> {
+        // @ts-ignore
+        return this.http.get(`${appConstants.baseApiV1Url}/display-live-contests/${personId}`);
+    }
+
     getDisplayContests() {
-        return this.http.get(appConstants.baseApiV1Url + '/display-contests');
+        return this.http.get(`${appConstants.baseApiV1Url}/display-contests`);
     }
 
     getDisplayContestById(contestId: string): Observable<ContestModel> {
         // @ts-ignore
-        return this.http.get(appConstants.baseApiV1Url + '/display-contest/' + contestId);
+        return this.http.get(`${appConstants.baseApiV1Url}/display-contest/${contestId}`);
     }
 
     getDraftContestById(contestId: string): Observable<ContestModel> {
         // @ts-ignore
-        return this.http.get(appConstants.baseApiV1Url + '/draft-contest/' + contestId);
+        return this.http.get(`${appConstants.baseApiV1Url}/draft-contest/${contestId}`);
     }
 
     updateContest(contest: ContestModel): Observable<ContestModel> {

@@ -53,6 +53,7 @@ import {TosComponent} from "./_views/main_views/tos/tos.component";
 import {NewsLettersSubscriptionsComponent} from "./_views/admin_pages/news-letters-subscriptions/news-letters--subscriptions.component";
 import {ClientLiveContestsComponent} from "./_views/dashboards/clients-dashboard/client-live-contests/client-live-contests.component";
 import {ClientEndedContestsComponent} from "./_views/dashboards/clients-dashboard/client-ended-contests/client-ended-contests.component";
+import {ClientJudgingContestsComponent} from "./_views/dashboards/clients-dashboard/client-judging-contests/client-judging-contests.component";
 
 const appRoutes: Routes = [
     {path: '', component: HomeComponent, runGuardsAndResolvers: 'always'},
@@ -99,8 +100,10 @@ const appRoutes: Routes = [
         canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
     },
     {
-        path: 'contests/client/live/:id', component: ClientLiveContestsComponent,
-        canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+        path: 'contests/client/live/:id',
+        component: ClientLiveContestsComponent,
+        canActivate: [AuthGuard],
+        runGuardsAndResolvers: 'always'
     },
     {
         path: 'contests/client/ended/:id',
@@ -110,7 +113,7 @@ const appRoutes: Routes = [
     },
     {
         path: 'contests/client/judging/:id',
-        component: ClientEndedContestsComponent,
+        component: ClientJudgingContestsComponent,
         canActivate: [AuthGuard],
         runGuardsAndResolvers: 'always'
     },

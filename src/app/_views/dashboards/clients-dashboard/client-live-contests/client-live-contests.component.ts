@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthenticatedUserModel} from "../../../../_models";
-import {AlertService, AuthenticationService} from "../../../../_services";
+import {AuthenticatedUserModel, ContestModel} from "../../../../_models";
+import {AlertService, AuthenticationService, ContestsService} from "../../../../_services";
 import {ActivatedRoute, Router} from "@angular/router";
 import {appConstants} from "../../../../_helpers";
 
@@ -11,12 +11,14 @@ import {appConstants} from "../../../../_helpers";
 })
 export class ClientLiveContestsComponent implements OnInit {
     loading = false;
-    public userId: string
     lbsUser: AuthenticatedUserModel;
+    public userId: string
+    public contests: Array<ContestModel>
+
 
     constructor(
         private alertService: AlertService, private authenticationService: AuthenticationService,
-        private router: Router, private route: ActivatedRoute) {
+        private router: Router, private route: ActivatedRoute, private contestsService: ContestsService) {
     }
 
     ngOnInit() {
@@ -24,6 +26,19 @@ export class ClientLiveContestsComponent implements OnInit {
         this.route.params.subscribe(params => {
             this.userId = params[appConstants.id];
         });
+        this.getLiveContests();
     }
 
+    private getLiveContests() {
+        this.loading = true;
+        this.contestsService.getContestsByPersonId(this.userId).subscribe(
+            data => {
+                this.loading = false;
+            },
+            error => {
+                this.alertService.error(error);
+                this.loading = false;
+            }
+        );
+    }
 }

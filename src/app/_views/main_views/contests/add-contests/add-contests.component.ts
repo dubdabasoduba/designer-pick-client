@@ -262,16 +262,16 @@ export class AddContestsComponent implements OnInit {
     private combineLogoUses() {
         let logoUse: string = "";
         if (this.model.tv) {
-            logoUse += "TV,"
+            logoUse += "TV, "
         }
         if (this.model.branding) {
-            logoUse += "Branding,"
+            logoUse += "Branding, "
         }
         if (this.model.signs) {
-            logoUse += "Signs,"
+            logoUse += "Signs, "
         }
         if (this.model.website) {
-            logoUse += "website,"
+            logoUse += "website, "
         }
         if (this.model.print) {
             logoUse += "Print,"
