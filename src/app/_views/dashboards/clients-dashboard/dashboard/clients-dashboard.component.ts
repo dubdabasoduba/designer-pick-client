@@ -5,8 +5,8 @@
  */
 
 import {Component, OnInit} from '@angular/core';
-import {AlertService, AuthenticationService} from '../../../../_services';
-import {AuthenticatedUserModel, ContestModel} from "../../../../_models";
+import {AlertService, AuthenticationService, ContestsService} from '../../../../_services';
+import {AuthenticatedUserModel} from "../../../../_models";
 import {appConstants} from "../../../../_helpers";
 import {ActivatedRoute, Router} from "@angular/router";
 
@@ -19,10 +19,11 @@ export class ClientsDashboardComponent implements OnInit {
     loading = false;
     lbsUser: AuthenticatedUserModel;
     public userId: string;
+    public liveContests: number;
 
     constructor(
         private alertService: AlertService, private authenticationService: AuthenticationService,
-        private router: Router, private route: ActivatedRoute) {
+        private router: Router, private route: ActivatedRoute, private contestsService: ContestsService) {
     }
 
     ngOnInit() {
@@ -30,5 +31,21 @@ export class ClientsDashboardComponent implements OnInit {
         this.route.params.subscribe(params => {
             this.userId = params[appConstants.id];
         });
+        this.getLiveContests();
     }
+
+    private getLiveContests() {
+        this.loading = true;
+        this.contestsService.getContestsByPersonId(this.lbsUser.user.uuid).subscribe(
+            data => {
+                this.liveContests = data.length;
+                this.loading = false;
+            },
+            error => {
+                this.alertService.error(error);
+                this.loading = false;
+            }
+        );
+    }
+
 }

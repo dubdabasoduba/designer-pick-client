@@ -52,9 +52,9 @@ export class ViewSingleContestComponent implements OnInit {
         this.contestsService.getDisplayContestById(this.contestUuid).subscribe(
             data => {
                 if (!AppCommons.isObjectEmpty(data[0])) {
-                    this.checkIfUserIdLoggedIn(data[0]);
+                    this.checkIfUserIsLoggedIn(data[0]);
                     this.contest = data[0];
-                    this.contest.contest_period = AppCommons.calculateDays(this.contest.start_date, this.contest.end_date);
+                    this.contest.duration = AppCommons.calculateDays(this.contest.start_date, this.contest.end_date);
                     this.contest.start_date = AppCommons.formatDisplayDate(new Date(this.contest.start_date));
                     this.contest.end_date = AppCommons.formatDisplayDate(new Date(this.contest.end_date));
                     this.loading = false;
@@ -75,9 +75,9 @@ export class ViewSingleContestComponent implements OnInit {
         this.contestsService.getDraftContestById(this.contestUuid).subscribe(
             data => {
                 if (!AppCommons.isObjectEmpty(data[0])) {
-                    this.checkIfUserIdLoggedIn(data[0]);
+                    this.checkIfUserIsLoggedIn(data[0]);
                     this.contest = data[0];
-                    this.contest.contest_period = AppCommons.calculateDays(this.contest.start_date, this.contest.end_date);
+                    this.contest.duration = AppCommons.calculateDays(this.contest.start_date, this.contest.end_date);
                     this.contest.start_date = AppCommons.formatDisplayDate(new Date(this.contest.start_date));
                     this.contest.end_date = AppCommons.formatDisplayDate(new Date(this.contest.end_date));
                     this.loading = false;
@@ -93,7 +93,7 @@ export class ViewSingleContestComponent implements OnInit {
         );
     }
 
-    private checkIfUserIdLoggedIn(contest: ContestModel) {
+    private checkIfUserIsLoggedIn(contest: ContestModel) {
         if (contest != null && contest.is_private && AppCommons.isObjectEmpty(this.lbsUser)) {
             this.router.navigateByUrl('/contests');
         }

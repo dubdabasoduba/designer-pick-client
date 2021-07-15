@@ -34,30 +34,39 @@
             <div class="col-lg-12 col-xl-12">
                 <div class="row row-md mg-b-25 pd-l-20-f pd-r-20-f">
                     <div class="table-responsive">
-                        <table class="table table-striped table-hover table-md mg-b-0" id="live_contests">
+                        <table class="table table-striped table-hover table-md mg-b-0"
+                               id="live_contests">
                             <thead class="thead-dark">
                             <tr>
                                 <th class="text-center" scope="col">#</th>
                                 <th scope="col">Name</th>
+                                <th scope="col">Stage</th>
                                 <th scope="col">Duration</th>
-                                <th scope="col">Entries</th>
-                                <th scope="col">Amount</th>
+                                <th class="text-center"scope="col">Entries</th>
+                                <th class="text-center" scope="col">Amount</th>
+                                <th scope="col">End Date</th>
                                 <th class="text-center" scope="col">Is Active</th>
                                 <th class="text-center" scope="col">Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr *ngFor="let contest of contests; let i = index">
+                            <tr *ngFor="let contest of allContests; let i = index">
                                 <td class="text-center">{{i + 1}}</td>
                                 <td>{{contest.title}}</td>
-                                <td>{{contest.durations}}</td>
-                                <td>{{contest.entries}}</td>
-                                <td>{{contest.amount}}</td>
-                                <td>{{contest.is_active}}</td>
+                                <td>{{contest.stage}}</td>
+                                <td>{{contest.duration}}</td>
+                                <td class="text-center">{{contest.entries}}</td>
+                                <td class="text-center">{{contest.amount}}</td>
+                                <td>{{contest.end_date}}</td>
+                                <td class="text-center">
+                                    <span *ngIf="contest.is_active != null && contest.is_active == 1"
+                                          class="badge badge-pill badge-success">Active</span>
+                                    <span *ngIf="contest.is_active != null && contest.is_active == 0"
+                                          class="badge badge-pill badge-light">Draft</span>
+                                </td>
                                 <td class="text-right">
-                                    <a class="btn btn-info btn-xs"><i
-                                            class="fas fa-unlock text-white"></i></a>&nbsp;
-                                    <a class="btn btn-secondary btn-xs"><i class="fas fa-cogs"></i></a>&nbsp;
+                                    <a class="btn btn-info btn-xs" routerLink="/contests-edit/{{contest.uuid}}"><i class="fas fa-edit text-white"></i></a>&nbsp;
+                                    <a class="btn btn-secondary btn-xs" (click)="displaySingleContest(contest.uuid, contest.is_active)"><i class="fas fa-eye"></i></a>&nbsp;
                                 </td>
                             </tr>
                             </tbody>

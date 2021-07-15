@@ -8,7 +8,7 @@ export class ContestModel extends LogoBriefModel {
     amount: string;
     stage: string;
     logo_brief: string;
-    contest_period: string;
+    duration: string;
     is_featured: boolean;
     is_featured_charged_amount: number;
     is_private: boolean;
@@ -16,6 +16,5 @@ export class ContestModel extends LogoBriefModel {
     is_highlighted: boolean;
     is_highlighted_amount_charged: number;
     title: string;
-    durations: string;
     entries: string;
 }
