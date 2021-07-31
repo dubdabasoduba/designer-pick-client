@@ -32,9 +32,9 @@
 					<div *ngFor="let contest of contests; let i = index" class="col-md-3 mg-t-20">
 						<div class="card card-event">
 							<img *ngIf="contest.is_private" alt="" class="card-img-top"
-							     src="../../../../../assets/img/private-contest.png">
+							     src="../../../../../assets/images/private-contest.png">
 							<img *ngIf="!contest.is_private" alt="" class="card-img-top"
-							     src="../../../../../assets/img/img27.jpg">
+							     src="../../../../../assets/images/img27.jpg">
 							<div *ngIf="!contest.is_highlighted" class="card-body tx-13">
 								<h5 *ngIf="!contest.is_private"><a
 										(click)="displaySingleContest(contest.uuid)">{{contest.title}}

@@ -6,12 +6,12 @@
 import {RouterModule, Routes} from '@angular/router';
 import {ContestsComponent} from './_views/main_views/contests/view-contests/contests.component';
 import {DesignersComponent} from './_views/main_views/designers/designers/designers.component';
-import {SignupComponent} from './_views/auth/Signup/signup.component';
-import {SigninComponent} from './_views/auth/Signin/signin.component';
-import {RecoveryComponent} from './_views/auth/recovery/recovery.component';
-import {UpdateComponent} from './_views/auth/update-password/update.component';
+import {SignupComponent} from './_views/authentication/Signup/signup.component';
+import {SigninComponent} from './_views/authentication/Signin/signin.component';
+import {RecoveryComponent} from './_views/authentication/recovery/recovery.component';
+import {UpdateComponent} from './_views/authentication/update-password/update.component';
 import {CategoriesComponent} from './_views/admin_pages/categories/categories.component';
-import {VerifyEmailComponent} from './_views/auth/verify-email/verify.component';
+import {VerifyEmailComponent} from './_views/authentication/verify-email/verify.component';
 import {ClientsDashboardComponent} from './_views/dashboards/clients-dashboard/dashboard/clients-dashboard.component';
 import {DesignersDashboardComponent} from './_views/dashboards/designers-dashboard/dashboard/designers-dashboard.component';
 import {appConstants} from './_helpers';
@@ -20,7 +20,7 @@ import {ProfileComponent} from './_views/profile/user-profile/profile.component'
 import {ContactsComponent} from './_views/profile/contacts/contacts.component';
 import {NgModule} from '@angular/core';
 import {HowItWorksComponent} from './_views/main_views/how-it-works/how-it-works.component';
-import {UpdateUserComponent} from './_views/auth/update-user/update-user.component';
+import {UpdateUserComponent} from './_views/authentication/update-user/update-user.component';
 import {CountriesComponent} from "./_views/admin_pages/countries/countries.component";
 import {PermissionsComponent} from "./_views/admin_pages/permissions/permissions.component";
 import {RolesComponent} from "./_views/admin_pages/roles/roles/roles.component";
@@ -363,7 +363,7 @@ const appRoutes: Routes = [
 	},
 	{
 		path: 'connect-facebook',
-		redirectTo: '/' + appConstants.baseApiV1Url + '/auth/connect-facebook',
+		redirectTo: '/' + appConstants.baseApiV1Url + '/authentication/connect-facebook',
 		pathMatch: 'full',
 		runGuardsAndResolvers: 'always'
 	},

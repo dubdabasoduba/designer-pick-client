@@ -6,7 +6,7 @@
 
 export * from './alerts/alert.service';
 export * from './admin_services/user/user.service';
-export * from './auth/authentication.service';
+export * from './authentication/authentication.service';
 export * from './main_views/person/persons.service';
 export * from './admin_services/categories/category.service';
 export * from './admin_services/countries/countries.service';

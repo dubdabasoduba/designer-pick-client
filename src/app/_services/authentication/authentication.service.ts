@@ -31,13 +31,13 @@ export class AuthenticationService {
 	
 	login(username: string, password: string): Observable<AuthenticatedUserModel> {
 		// @ts-ignore
-		return this.http.post(appConstants.baseApiV1Url + '/auth/login', {
+		return this.http.post(appConstants.baseApiV1Url + '/authentication/login', {
 			username: username, password: AppCommons.generatePasswordHash(password)
 		}).pipe(tap(response => AuthenticationService.setSession(response)));
 	}
 	
 	resetPasswordRequest(username: string) {
-		return this.http.post(appConstants.baseApiV1Url + '/auth/reset-password', {
+		return this.http.post(appConstants.baseApiV1Url + '/authentication/reset-password', {
 			username: username
 		});
 	}
@@ -49,7 +49,7 @@ export class AuthenticationService {
 	}
 	
 	updatePasswordAfterReset(userId: string, verificationCode: string, password: string, confirmPassword: string) {
-		return this.http.post(appConstants.baseApiV1Url + '/auth/update-password', {
+		return this.http.post(appConstants.baseApiV1Url + '/authentication/update-password', {
 			uuid: userId,
 			reset_code: verificationCode,
 			password: AppCommons.generatePasswordHash(password),
@@ -58,13 +58,13 @@ export class AuthenticationService {
 	}
 	
 	verifyAccount(userId: string, verificationCode: string) {
-		return this.http.post(appConstants.baseApiV1Url + '/auth/verify-account', {
+		return this.http.post(appConstants.baseApiV1Url + '/authentication/verify-account', {
 			uuid: userId, verification_code: verificationCode
 		});
 	}
 	
 	updatePasswordFormProfile(user: UserModel) {
-		return this.http.post(appConstants.baseApiV1Url + '/auth/profile/update-password', {
+		return this.http.post(appConstants.baseApiV1Url + '/authentication/profile/update-password', {
 			uuid: user.uuid,
 			password: AppCommons.generatePasswordHash(user.password),
 			confirmPassword: AppCommons.generatePasswordHash(user.confirmPassword)
@@ -73,7 +73,7 @@ export class AuthenticationService {
 	
 	logout() {
 		localStorage.removeItem(this._lbsUser);
-		this.http.get(appConstants.baseApiV1Url + '/auth/logout');
+		this.http.get(appConstants.baseApiV1Url + '/authentication/logout');
 	}
 	
 	resendVerification(username: string) {

@@ -84,7 +84,9 @@ export class UpdateUserComponent implements OnInit {
 		this.model.name = appConstants.emptyEntry;
 		this.model.phonenumber = appConstants.emptyEntry;
 		this.model.account_type = appConstants.emptyEntry;
+		this.model.paypal_use = appConstants.emptyEntry;
 		this.model.email = appConstants.emptyEntry;
+		this.model.paypal_email = appConstants.emptyEntry;
 		this.model.dob = appConstants.emptyEntry;
 		this.model.gender = appConstants.emptyEntry;
 		this.model.account_type = appConstants.emptyEntry;

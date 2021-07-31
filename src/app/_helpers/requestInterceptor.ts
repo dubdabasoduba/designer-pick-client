@@ -37,7 +37,7 @@ export class RequestInterceptor implements HttpInterceptor {
 	}
 	
 	/**
-	 * Attaches the auth tokens to allow the CRUD functions to run.
+	 * Attaches the authentication tokens to allow the CRUD functions to run.
 	 * @param httpRequest {@link Object}
 	 * @param request {@link Request}
 	 * @param apiKey {@link String}

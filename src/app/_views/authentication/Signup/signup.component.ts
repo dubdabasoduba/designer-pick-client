@@ -69,7 +69,9 @@ export class SignupComponent implements OnInit {
 	
 	private setEmptyModel() {
 		this.model.account_type = appConstants.emptyEntry;
+		this.model.paypal_use = appConstants.emptyEntry;
 		this.model.email = appConstants.emptyEntry;
+		this.model.paypal_email = appConstants.emptyEntry;
 		this.model.confirmPassword = appConstants.emptyEntry;
 		this.model.password = appConstants.emptyEntry;
 		this.model.username = appConstants.emptyEntry;

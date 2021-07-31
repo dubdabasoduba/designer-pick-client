@@ -48,7 +48,7 @@ export const appConstants = {
 	yearly: 'Yearly',
 	monthly: 'Monthly',
 	weekly: 'Weekly',
-	defaultImageIcon: 'assets/img/avatars/default.png',
+	defaultImageIcon: 'assets/images/avatars/default.png',
 	
 	/*
 	 * System error and success helpers
@@ -147,9 +147,9 @@ export const appConstants = {
 	annualAcquisitionsCount: '/summary/annual-designers-dashboard',
 	weeklyAcquisitionsCount: '/summary/weekly-designers-dashboard',
 	
-	// auth url endpoints
-	resendCodeUrl: '/auth/resend-verification',
-	passwordChangeUrl: '/auth/password-change',
+	// authentication url endpoints
+	resendCodeUrl: '/authentication/resend-verification',
+	passwordChangeUrl: '/authentication/password-change',
 	
 	// person url endpoints
 	personUrl: '/person/',
@@ -168,7 +168,7 @@ export const appConstants = {
 	
 	// profile url endpoints
 	initiateClaimProfileUrl: '/profile/initiate-claim',
-	finalizeClaimProfileUrl: '/auth/finalize-claim',
+	finalizeClaimProfileUrl: '/authentication/finalize-claim',
 	
 	// founders url endpoints
 	founderUrl: '/founder',

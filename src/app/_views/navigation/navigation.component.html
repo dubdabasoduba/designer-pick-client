@@ -47,11 +47,11 @@
 			<a (click)="displayProfileDropDown()" aria-expanded="true" class="dropdown-link"
 			   data-display="static" data-toggle="dropdown" href="#">
 				<div class="avatar avatar-sm"><img alt="" class="rounded-circle"
-				                                   src="assets/img/img1.png"></div>
+				                                   src="../../../assets/images/img1.png"></div>
 			</a><!-- dropdown-link -->
 			<div [ngClass]="defaultDropdownElementsClass">
 				<div class="avatar avatar-lg mg-b-15"><img alt="" class="rounded-circle"
-				                                           src="assets/img/img1.png"></div>
+				                                           src="../../../assets/images/img1.png"></div>
 				<h6 class="tx-semibold mg-b-5">{{lbsUser.user.name}}</h6>
 				<p class="mg-b-25 tx-12 tx-color-03">@{{lbsUser.user.username}}</p>
 				<a class="dropdown-item" routerLink="/profile/{{lbsUser.user.person}}"

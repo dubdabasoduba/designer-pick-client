@@ -32,12 +32,12 @@ import {
 } from './_services';
 
 import {DesignersComponent} from './_views/main_views/designers/designers/designers.component';
-import {SignupComponent} from './_views/auth/Signup/signup.component';
-import {SigninComponent} from './_views/auth/Signin/signin.component';
-import {RecoveryComponent} from './_views/auth/recovery/recovery.component';
-import {UpdateComponent} from './_views/auth/update-password/update.component';
+import {SignupComponent} from './_views/authentication/Signup/signup.component';
+import {SigninComponent} from './_views/authentication/Signin/signin.component';
+import {RecoveryComponent} from './_views/authentication/recovery/recovery.component';
+import {UpdateComponent} from './_views/authentication/update-password/update.component';
 import {CategoriesComponent} from './_views/admin_pages/categories/categories.component';
-import {VerifyEmailComponent} from './_views/auth/verify-email/verify.component';
+import {VerifyEmailComponent} from './_views/authentication/verify-email/verify.component';
 import {AppComponent} from './app.component';
 import {HomeComponent} from './_views/main_views/home/home.component';
 import {ContestsComponent} from './_views/main_views/contests/view-contests/contests.component';
@@ -51,7 +51,7 @@ import {AppCommons, RequestInterceptor, ResponseInterceptor} from './_helpers';
 import {ProfileComponent} from './_views/profile/user-profile/profile.component';
 import {ContactsComponent} from './_views/profile/contacts/contacts.component';
 import {NavigationComponent} from './_views/navigation/navigation.component';
-import {UpdateUserComponent} from './_views/auth/update-user/update-user.component';
+import {UpdateUserComponent} from './_views/authentication/update-user/update-user.component';
 import {CountriesComponent} from "./_views/admin_pages/countries/countries.component";
 import {PermissionsComponent} from "./_views/admin_pages/permissions/permissions.component";
 import {RolesComponent} from './_views/admin_pages/roles/roles/roles.component';

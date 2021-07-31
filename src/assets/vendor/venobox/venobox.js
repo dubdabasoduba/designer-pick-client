@@ -327,7 +327,7 @@
 						} else if (obj.data('vbtype') == 'video') {
 							loadVid(autoplay);
 						} else {
-							content.html('<img src="' + dest + '">');
+							content.html('<images src="' + dest + '">');
 							preloadFirst();
 						}
 						option.cb_post_open(obj, gallIndex, thenext, theprev);
@@ -487,7 +487,7 @@
 						} else if (destination.data('vbtype') == 'video') {
 							loadVid(autoplay);
 						} else {
-							content.html('<img src="' + dest + '">');
+							content.html('<images src="' + dest + '">');
 							preloadFirst();
 						}
 						obj = destination;
@@ -794,7 +794,7 @@
 						'background': bgcolor
 					});
 					
-					$('img.vbox-figlio').on('dragstart', function (event) {
+					$('images.vbox-figlio').on('dragstart', function (event) {
 						event.preventDefault();
 					});
 					
