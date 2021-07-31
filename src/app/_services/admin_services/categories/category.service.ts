@@ -12,33 +12,33 @@ import {Observable} from "rxjs";
 
 @Injectable()
 export class CategoryService {
-
-    constructor(private http: HttpClient) {
-    }
-
-    getCategories() {
-        return this.http.get(appConstants.baseApiV1Url + '/categories');
-    }
-
-    getCategory(id: string): Observable<CategoryModel> {
-        // @ts-ignore
-        return this.http.get(appConstants.baseApiV1Url + '/category/' + id);
-    }
-
-    removeCategory(id: string) {
-        return this.http.delete(appConstants.baseApiV1Url + '/category/' + id);
-    }
-
-    addCategory(category: CategoryModel) {
-        return this.http.post(appConstants.baseApiV1Url + '/category', category);
-    }
-
-    updateCategory(category: CategoryModel) {
-        return this.http.put(appConstants.baseApiV1Url + '/category/' + category.uuid, category);
-    }
-
-    getIndustries(paginate: boolean) {
-        return this.http.get(appConstants.baseApiV1Url + '/industries' + '?' + appConstants.pagination + paginate);
-    }
-
+	
+	constructor(private http: HttpClient) {
+	}
+	
+	getCategories() {
+		return this.http.get(appConstants.baseApiV1Url + '/categories');
+	}
+	
+	getCategory(id: string): Observable<CategoryModel> {
+		// @ts-ignore
+		return this.http.get(appConstants.baseApiV1Url + '/category/' + id);
+	}
+	
+	removeCategory(id: string) {
+		return this.http.delete(appConstants.baseApiV1Url + '/category/' + id);
+	}
+	
+	addCategory(category: CategoryModel) {
+		return this.http.post(appConstants.baseApiV1Url + '/category', category);
+	}
+	
+	updateCategory(category: CategoryModel) {
+		return this.http.put(appConstants.baseApiV1Url + '/category/' + category.uuid, category);
+	}
+	
+	getIndustries(paginate: boolean) {
+		return this.http.get(appConstants.baseApiV1Url + '/industries' + '?' + appConstants.pagination + paginate);
+	}
+	
 }

@@ -9,21 +9,21 @@ import {AlertService} from '../../../../_services';
 import {ResponseModel} from '../../../../_models/response.model';
 
 @Component({
-    selector: 'app-funding',
-    templateUrl: './designers-dashboard.component.html',
-    styleUrls: ['./designers-dashboard.component.css']
+	selector: 'app-funding',
+	templateUrl: './designers-dashboard.component.html',
+	styleUrls: ['./designers-dashboard.component.css']
 })
 export class DesignersDashboardComponent implements OnInit {
-    loading = false;
-    public fundings = [];
-    private investments = [];
-    private responseModel = new ResponseModel();
-
-    constructor(
-        private alertService: AlertService) {
-    }
-
-    ngOnInit() {
-        //this.getRecentFunding();
-    }
+	loading = false;
+	public fundings = [];
+	private investments = [];
+	private responseModel = new ResponseModel();
+	
+	constructor(
+		private alertService: AlertService) {
+	}
+	
+	ngOnInit() {
+		//this.getRecentFunding();
+	}
 }

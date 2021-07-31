@@ -5,132 +5,132 @@
   -->
 <app-navigation></app-navigation>
 <div class="content content-fixed bd-b">
-    <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
-        <div class="d-sm-flex align-items-center justify-content-between">
-            <div>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb breadcrumb-style1 mg-b-10">
-                        <li class="breadcrumb-item"><a routerLink="/admin">Admin</a></li>
-                        <li class="breadcrumb-item"><a routerLink="/users">Manage Users</a></li>
-                        <li aria-current="page" class="breadcrumb-item active">View User</li>
-                    </ol>
-                </nav>
-                <h4 class="mg-b-0">View User</h4>
-            </div>
-            <div class="search-form mg-t-20 mg-sm-t-0">
-                <a class="btn btn-primary text-white" routerLink="/users/add" type="button">Add
-                    User</a>
-            </div>
-        </div>
-    </div><!-- container -->
+	<div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
+		<div class="d-sm-flex align-items-center justify-content-between">
+			<div>
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb breadcrumb-style1 mg-b-10">
+						<li class="breadcrumb-item"><a routerLink="/admin">Admin</a></li>
+						<li class="breadcrumb-item"><a routerLink="/users">Manage Users</a></li>
+						<li aria-current="page" class="breadcrumb-item active">View User</li>
+					</ol>
+				</nav>
+				<h4 class="mg-b-0">View User</h4>
+			</div>
+			<div class="search-form mg-t-20 mg-sm-t-0">
+				<a class="btn btn-primary text-white" routerLink="/users/add" type="button">Add
+					User</a>
+			</div>
+		</div>
+	</div><!-- container -->
 </div><!-- content -->
 <div class="content">
-    <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
-        <div class="row">
-            <div class="col-lg-12 col-xl-12">
-                <fieldset class="form-fieldset">
-                    <legend>{{person.name}}&nbsp;user details</legend>
-                    <br/>
-                    <h6>User Details</h6>
-                    <hr/>
-                    <div class="row mg-l-10 mg-r-10">
-                        <br/>
-                        <div class="col-md-4">
-                            <label><b>Name:</b>&nbsp;{{person.name}}</label>
-                        </div>
-                        <div class="col-md-4">
-                            <label><b>Username:</b>&nbsp;{{person.username}}</label>
-                        </div>
-                        <div class="col-md-4">
-                            <label><b>Date of Birth:</b>&nbsp;{{person.dob}}</label>
-                        </div>
-                        <div class="col-md-4">
-                            <label *ngIf="person.gender != null && person.gender == '1'"><b>Gender:</b>&nbsp;<span
-                                    class="badge badge-pill badge-warning">Male</span></label>
-                            <label *ngIf="person.gender != null && person.gender == '0'"><b>Gender:</b>&nbsp;<span
-                                    class="badge badge-pill badge-info">Female</span></label>
-                        </div>
-                        <div class="col-md-4"><label><b>Email Address:</b>&nbsp;{{person.email}}
-                        </label></div>
-                        <div class="col-md-4"><label><b>Phone
-                            Number:</b>&nbsp;{{person.phone_number}}</label></div>
-                        <div class="col-md-4"><label><b>Location:</b>&nbsp;{{person.location}}
-                        </label></div>
-                        <div class="col-md-4">
-                            <label><b>Date Created:</b>&nbsp;{{person.date_created}}</label>
-                        </div>
-                        <div class="col-md-4">
-                            <label><b>Date Updated:</b>&nbsp;{{person.date_updated}}</label>
-                        </div>
-                        <div class="col-md-4">
-                            <label *ngIf="person.is_active != null && person.is_active == 1"><b>Person
-                                Status:</b>&nbsp;<span
-                                    class="badge badge-pill badge-success">Active</span></label>
-                            <label *ngIf="person.is_active != null && person.is_active == 0"><b>Person
-                                Status:</b>&nbsp;<span
-                                    class="badge badge-pill badge-danger">De-activated</span></label>
-                        </div>
-                        <div class="col-md-4">
-                            <label *ngIf="person.is_verified != null && person.is_verified == 1"><b>Person
-                                contacts:</b>&nbsp;<span
-                                    class="badge badge-pill badge-success">Verified</span></label>
-                            <label *ngIf="person.is_verified != null && person.is_verified == 0"><b>Person
-                                contacts:</b>&nbsp;<span
-                                    class="badge badge-pill badge-danger">Not Verified</span></label>
-                        </div>
-                        <div class="col-md-4">
-                            <label *ngIf="person.account_type != null && person.account_type == '1'"><b>Account
-                                Type:</b>&nbsp;<span
-                                    class="badge badge-pill badge-light">Designer</span></label>
-                            <label *ngIf="person.account_type != null && person.account_type == '0'"><b>Account
-                                Type:</b>&nbsp;<span
-                                    class="badge badge-pill badge-secondary">Client</span></label>
-                            <label *ngIf="person.account_type != null && person.account_type == '2'"><b>Account
-                                Type:</b>&nbsp;<span
-                                    class="badge badge-pill badge-dark">Staff</span></label>
-                        </div>
-                    </div>
-                    <br/>
-                    <h6>Assigned Roles</h6>
-                    <hr/>
-                    <div class="row mg-l-10 mg-r-10">
-                        <br/>
-                        <div *ngFor="let role of userRoles;" class="col-md-4">
-                            <div class="custom-control custom-checkbox">
-                                <input checked class="custom-control-input"
-                                       disabled id="assigned-Role" type="checkbox">
-                                <label class="custom-control-label"
-                                       for="assigned-Role">{{role.name}}</label>
-                            </div>
-                        </div>
-                    </div>
-                    <br/>
-                    <div class="d-flex flex-row-reverse mg-b-20">
-                        <div class="pd-10"><a (click)="removePerson(person.uuid)"
-                                              class="btn btn-danger text-white"
-                                              type="button"><i
-                                class="fas fa-trash-alt text-white"></i>&nbsp;Delete
-                            User&nbsp;</a></div>
-                        <div class="pd-10"><a class="btn btn-light"
-                                              routerLink="/users/contacts/{{person.uuid}}"
-                                              type="button"><i
-                                class="far fa-envelope"></i>&nbsp;Manage contacts&nbsp;</a>
-                        </div>
-                        <div *ngIf="person.account_type != null && person.account_type == '2'"
-                             class="pd-10"><a class="btn btn-dark"
-                                              routerLink="/users/assign-roles/{{person.uuid}}/{{person.user_uuid}}"
-                                              type="button"><i
-                                class="far fa-edit"></i>&nbsp;Assign Roles&nbsp;</a>
-                        </div>
-                        <div class="pd-10"><a class="btn btn-info text-white"
-                                              routerLink="/users/edit/{{personId}}"
-                                              type="button"><i
-                                class="far fa-edit"></i>&nbsp;Edit User&nbsp;</a>
-                        </div>
-                    </div>
-                </fieldset>
-            </div><!-- col -->
-        </div><!-- row -->
-    </div><!-- container -->
+	<div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
+		<div class="row">
+			<div class="col-lg-12 col-xl-12">
+				<fieldset class="form-fieldset">
+					<legend>{{person.name}}&nbsp;user details</legend>
+					<br/>
+					<h6>User Details</h6>
+					<hr/>
+					<div class="row mg-l-10 mg-r-10">
+						<br/>
+						<div class="col-md-4">
+							<label><b>Name:</b>&nbsp;{{person.name}}</label>
+						</div>
+						<div class="col-md-4">
+							<label><b>Username:</b>&nbsp;{{person.username}}</label>
+						</div>
+						<div class="col-md-4">
+							<label><b>Date of Birth:</b>&nbsp;{{person.dob}}</label>
+						</div>
+						<div class="col-md-4">
+							<label *ngIf="person.gender != null && person.gender == '1'"><b>Gender:</b>&nbsp;<span
+									class="badge badge-pill badge-warning">Male</span></label>
+							<label *ngIf="person.gender != null && person.gender == '0'"><b>Gender:</b>&nbsp;<span
+									class="badge badge-pill badge-info">Female</span></label>
+						</div>
+						<div class="col-md-4"><label><b>Email Address:</b>&nbsp;{{person.email}}
+						</label></div>
+						<div class="col-md-4"><label><b>Phone
+							Number:</b>&nbsp;{{person.phone_number}}</label></div>
+						<div class="col-md-4"><label><b>Location:</b>&nbsp;{{person.location}}
+						</label></div>
+						<div class="col-md-4">
+							<label><b>Date Created:</b>&nbsp;{{person.date_created}}</label>
+						</div>
+						<div class="col-md-4">
+							<label><b>Date Updated:</b>&nbsp;{{person.date_updated}}</label>
+						</div>
+						<div class="col-md-4">
+							<label *ngIf="person.is_active != null && person.is_active == 1"><b>Person
+								Status:</b>&nbsp;<span
+									class="badge badge-pill badge-success">Active</span></label>
+							<label *ngIf="person.is_active != null && person.is_active == 0"><b>Person
+								Status:</b>&nbsp;<span
+									class="badge badge-pill badge-danger">De-activated</span></label>
+						</div>
+						<div class="col-md-4">
+							<label *ngIf="person.is_verified != null && person.is_verified == 1"><b>Person
+								contacts:</b>&nbsp;<span
+									class="badge badge-pill badge-success">Verified</span></label>
+							<label *ngIf="person.is_verified != null && person.is_verified == 0"><b>Person
+								contacts:</b>&nbsp;<span
+									class="badge badge-pill badge-danger">Not Verified</span></label>
+						</div>
+						<div class="col-md-4">
+							<label *ngIf="person.account_type != null && person.account_type == '1'"><b>Account
+								Type:</b>&nbsp;<span
+									class="badge badge-pill badge-light">Designer</span></label>
+							<label *ngIf="person.account_type != null && person.account_type == '0'"><b>Account
+								Type:</b>&nbsp;<span
+									class="badge badge-pill badge-secondary">Client</span></label>
+							<label *ngIf="person.account_type != null && person.account_type == '2'"><b>Account
+								Type:</b>&nbsp;<span
+									class="badge badge-pill badge-dark">Staff</span></label>
+						</div>
+					</div>
+					<br/>
+					<h6>Assigned Roles</h6>
+					<hr/>
+					<div class="row mg-l-10 mg-r-10">
+						<br/>
+						<div *ngFor="let role of userRoles;" class="col-md-4">
+							<div class="custom-control custom-checkbox">
+								<input checked class="custom-control-input"
+								       disabled id="assigned-Role" type="checkbox">
+								<label class="custom-control-label"
+								       for="assigned-Role">{{role.name}}</label>
+							</div>
+						</div>
+					</div>
+					<br/>
+					<div class="d-flex flex-row-reverse mg-b-20">
+						<div class="pd-10"><a (click)="removePerson(person.uuid)"
+						                      class="btn btn-danger text-white"
+						                      type="button"><i
+								class="fas fa-trash-alt text-white"></i>&nbsp;Delete
+							User&nbsp;</a></div>
+						<div class="pd-10"><a class="btn btn-light"
+						                      routerLink="/users/contacts/{{person.uuid}}"
+						                      type="button"><i
+								class="far fa-envelope"></i>&nbsp;Manage contacts&nbsp;</a>
+						</div>
+						<div *ngIf="person.account_type != null && person.account_type == '2'"
+						     class="pd-10"><a class="btn btn-dark"
+						                      routerLink="/users/assign-roles/{{person.uuid}}/{{person.user_uuid}}"
+						                      type="button"><i
+								class="far fa-edit"></i>&nbsp;Assign Roles&nbsp;</a>
+						</div>
+						<div class="pd-10"><a class="btn btn-info text-white"
+						                      routerLink="/users/edit/{{personId}}"
+						                      type="button"><i
+								class="far fa-edit"></i>&nbsp;Edit User&nbsp;</a>
+						</div>
+					</div>
+				</fieldset>
+			</div><!-- col -->
+		</div><!-- row -->
+	</div><!-- container -->
 </div><!-- content -->
 

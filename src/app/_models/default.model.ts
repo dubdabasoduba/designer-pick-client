@@ -5,15 +5,15 @@
  */
 
 export class DefaultModel {
-    date_added: string;
-    date_created: string;
-    date_updated: string;
-    updated_by: string;
-    created_by: string;
-    entityIconImage: string;
-    status: any;
-    id: string;
-    _id: string;
-    uuid: string;
-    is_active: number;
+	date_added: string;
+	date_created: string;
+	date_updated: string;
+	updated_by: string;
+	created_by: string;
+	entityIconImage: string;
+	status: any;
+	id: string;
+	_id: string;
+	uuid: string;
+	is_active: number;
 }

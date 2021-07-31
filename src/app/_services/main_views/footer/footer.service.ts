@@ -5,14 +5,14 @@ import {Observable} from "rxjs";
 import {appConstants} from "../../../_helpers";
 
 @Injectable({
-    providedIn: 'root'
+	providedIn: 'root'
 })
 export class FooterService {
-
-    constructor(private http: HttpClient) {
-    }
-
-    subscribeToNewsLetter(newsLettersSubscriptionsModel: NewsLettersSubscriptionsModel): Observable<NewsLettersSubscriptionsModel> {
-        return this.http.post<NewsLettersSubscriptionsModel>(appConstants.baseApiV1Url + appConstants.subscribeToNewsLetterUrl, newsLettersSubscriptionsModel);
-    }
+	
+	constructor(private http: HttpClient) {
+	}
+	
+	subscribeToNewsLetter(newsLettersSubscriptionsModel: NewsLettersSubscriptionsModel): Observable<NewsLettersSubscriptionsModel> {
+		return this.http.post<NewsLettersSubscriptionsModel>(appConstants.baseApiV1Url + appConstants.subscribeToNewsLetterUrl, newsLettersSubscriptionsModel);
+	}
 }

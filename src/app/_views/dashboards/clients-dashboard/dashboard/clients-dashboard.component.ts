@@ -11,41 +11,41 @@ import {appConstants} from "../../../../_helpers";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
-    selector: 'app-acquisitions',
-    templateUrl: './clients-dashboard.component.html',
-    styleUrls: ['./clients-dashboard.component.css']
+	selector: 'app-acquisitions',
+	templateUrl: './clients-dashboard.component.html',
+	styleUrls: ['./clients-dashboard.component.css']
 })
 export class ClientsDashboardComponent implements OnInit {
-    loading = false;
-    lbsUser: AuthenticatedUserModel;
-    public userId: string;
-    public liveContests: number;
-
-    constructor(
-        private alertService: AlertService, private authenticationService: AuthenticationService,
-        private router: Router, private route: ActivatedRoute, private contestsService: ContestsService) {
-    }
-
-    ngOnInit() {
-        this.lbsUser = this.authenticationService.getCurrentUser();
-        this.route.params.subscribe(params => {
-            this.userId = params[appConstants.id];
-        });
-        this.getLiveContests();
-    }
-
-    private getLiveContests() {
-        this.loading = true;
-        this.contestsService.getContestsByPersonId(this.lbsUser.user.uuid).subscribe(
-            data => {
-                this.liveContests = data.length;
-                this.loading = false;
-            },
-            error => {
-                this.alertService.error(error);
-                this.loading = false;
-            }
-        );
-    }
-
+	loading = false;
+	lbsUser: AuthenticatedUserModel;
+	public userId: string;
+	public liveContests: number;
+	
+	constructor(
+		private alertService: AlertService, private authenticationService: AuthenticationService,
+		private router: Router, private route: ActivatedRoute, private contestsService: ContestsService) {
+	}
+	
+	ngOnInit() {
+		this.lbsUser = this.authenticationService.getCurrentUser();
+		this.route.params.subscribe(params => {
+			this.userId = params[appConstants.id];
+		});
+		this.getLiveContests();
+	}
+	
+	private getLiveContests() {
+		this.loading = true;
+		this.contestsService.getContestsByPersonId(this.lbsUser.user.uuid).subscribe(
+			data => {
+				this.liveContests = data.length;
+				this.loading = false;
+			},
+			error => {
+				this.alertService.error(error);
+				this.loading = false;
+			}
+		);
+	}
+	
 }

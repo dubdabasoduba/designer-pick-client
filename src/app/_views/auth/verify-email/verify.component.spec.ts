@@ -9,23 +9,23 @@ import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {VerifyEmailComponent} from './verify.component';
 
 describe('VerifyEmailComponent', () => {
-    let component: VerifyEmailComponent;
-    let fixture: ComponentFixture<VerifyEmailComponent>;
-
-    beforeEach(waitForAsync(() => {
-        TestBed.configureTestingModule({
-            declarations: [VerifyEmailComponent]
-        })
-            .compileComponents();
-    }));
-
-    beforeEach(() => {
-        fixture = TestBed.createComponent(VerifyEmailComponent);
-        component = fixture.componentInstance;
-        fixture.detectChanges();
-    });
-
-    it('should be created', () => {
-        expect(component).toBeTruthy();
-    });
+	let component: VerifyEmailComponent;
+	let fixture: ComponentFixture<VerifyEmailComponent>;
+	
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+				declarations: [VerifyEmailComponent]
+			})
+			.compileComponents();
+	}));
+	
+	beforeEach(() => {
+		fixture = TestBed.createComponent(VerifyEmailComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
+	
+	it('should be created', () => {
+		expect(component).toBeTruthy();
+	});
 });

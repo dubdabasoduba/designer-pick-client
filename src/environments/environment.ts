@@ -10,7 +10,7 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-    production: false,
-    baseApiUrl: 'http://rekast.server/',
-    apiKey: '===$2y$10$WxHfCRVuddwDKO88pwK5VOsSOiKYNxufCDyJwcywDKInCFwOM3GKO'
+	production: false,
+	baseApiUrl: 'http://lbs.server/',
+	apiKey: '===$2y$10$WxHfCRVuddwDKO88pwK5VOsSOiKYNxufCDyJwcywDKInCFwOM3GKO'
 };

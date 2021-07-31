@@ -10,42 +10,42 @@ import {AlertService, AuthenticationService} from '../../../_services';
 import {appConstants} from '../../../_helpers';
 
 @Component({
-    selector: 'app-update-password',
-    templateUrl: './update.component.html',
-    styleUrls: ['./update.component.css']
+	selector: 'app-update-password',
+	templateUrl: './update.component.html',
+	styleUrls: ['./update.component.css']
 })
 export class UpdateComponent implements OnInit {
-    model: any = {};
-    userId: string;
-    resetCode: string;
-    loading = false;
-
-    constructor(
-        private route: ActivatedRoute,
-        private alertService: AlertService,
-        private authenticationService: AuthenticationService) {
-    }
-
-    ngOnInit() {
-        this.route.params.subscribe(params => {
-                this.userId = params['userId'];
-                this.resetCode = params['token'];
-            }
-        );
-    }
-
-    updatePassword() {
-        this.loading = true;
-        this.authenticationService.updatePasswordAfterReset(this.userId, this.resetCode, this.model.password,
-            this.model.confirmPassword)
-            .subscribe(
-                data => {
-                    this.alertService.success(appConstants.passwordResetSuccessful, false);
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                }
-            );
-    }
+	model: any = {};
+	userId: string;
+	resetCode: string;
+	loading = false;
+	
+	constructor(
+		private route: ActivatedRoute,
+		private alertService: AlertService,
+		private authenticationService: AuthenticationService) {
+	}
+	
+	ngOnInit() {
+		this.route.params.subscribe(params => {
+				this.userId = params['userId'];
+				this.resetCode = params['token'];
+			}
+		);
+	}
+	
+	updatePassword() {
+		this.loading = true;
+		this.authenticationService.updatePasswordAfterReset(this.userId, this.resetCode, this.model.password,
+				this.model.confirmPassword)
+			.subscribe(
+				data => {
+					this.alertService.success(appConstants.passwordResetSuccessful, false);
+				},
+				error => {
+					this.alertService.error(error);
+					this.loading = false;
+				}
+			);
+	}
 }

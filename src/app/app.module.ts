@@ -10,24 +10,25 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import {
-    AlertService,
-    ApiKeysService,
-    AuthenticationService,
-    CategoryService,
-    CommissionsService,
-    ContactService,
-    ContestsService,
-    ContestStagesService,
-    CountriesService,
-    DiscountsService, LogoBriefsService,
-    LogoUsesService,
-    PagerService,
-    PaymentModesService,
-    PermissionsService,
-    PersonsService,
-    ProfileService,
-    SettingsService,
-    UserService
+	AlertService,
+	ApiKeysService,
+	AuthenticationService,
+	CategoryService,
+	CommissionsService,
+	ContactService,
+	ContestsService,
+	ContestStagesService,
+	CountriesService,
+	DiscountsService,
+	LogoBriefsService,
+	LogoUsesService,
+	PagerService,
+	PaymentModesService,
+	PermissionsService,
+	PersonsService,
+	ProfileService,
+	SettingsService,
+	UserService
 } from './_services';
 
 import {DesignersComponent} from './_views/main_views/designers/designers/designers.component';
@@ -82,98 +83,100 @@ import {PolicyComponent} from './_views/main_views/policy/policy.component';
 import {TosComponent} from './_views/main_views/tos/tos.component';
 import {FooterComponent} from './_views/main_views/footer/footer.component';
 import {NewsLettersSubscriptionsComponent} from "./_views/admin_pages/news-letters-subscriptions/news-letters--subscriptions.component";
-import { LiveContestsComponent } from './_views/dashboards/designers-dashboard/live-contests/live-contests.component';
-import { JudgingContestsComponent } from './_views/dashboards/designers-dashboard/judging-contests/judging-contests.component';
-import { EndedContestsComponent } from './_views/dashboards/designers-dashboard/ended-contests/ended-contests.component';
-import { RankedDesignsComponent } from './_views/dashboards/designers-dashboard/ranked-designs/ranked-designs.component';
-import { WonContestsComponent } from './_views/dashboards/designers-dashboard/won-contests/won-contests.component';
-import { ClientEndedContestsComponent } from './_views/dashboards/clients-dashboard/client-ended-contests/client-ended-contests.component';
-import { ClientLiveContestsComponent } from './_views/dashboards/clients-dashboard/client-live-contests/client-live-contests.component';
-import { ClientJudgingContestsComponent } from './_views/dashboards/clients-dashboard/client-judging-contests/client-judging-contests.component';
+import {LiveContestsComponent} from './_views/dashboards/designers-dashboard/live-contests/live-contests.component';
+import {JudgingContestsComponent} from './_views/dashboards/designers-dashboard/judging-contests/judging-contests.component';
+import {EndedContestsComponent} from './_views/dashboards/designers-dashboard/ended-contests/ended-contests.component';
+import {RankedDesignsComponent} from './_views/dashboards/designers-dashboard/ranked-designs/ranked-designs.component';
+import {WonContestsComponent} from './_views/dashboards/designers-dashboard/won-contests/won-contests.component';
+import {ClientEndedContestsComponent} from './_views/dashboards/clients-dashboard/client-ended-contests/client-ended-contests.component';
+import {ClientLiveContestsComponent} from './_views/dashboards/clients-dashboard/client-live-contests/client-live-contests.component';
+import {ClientJudgingContestsComponent} from './_views/dashboards/clients-dashboard/client-judging-contests/client-judging-contests.component';
+import {LocationStrategy, PathLocationStrategy} from "@angular/common";
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        DesignersDashboardComponent,
-        HomeComponent,
-        ContestsComponent,
-        AlertComponent,
-        DesignersComponent,
-        DesignersDashboardComponent,
-        ClientsDashboardComponent,
-        SignupComponent,
-        SigninComponent,
-        RecoveryComponent,
-        UpdateComponent,
-        CategoriesComponent,
-        VerifyEmailComponent,
-        HowItWorksComponent,
-        SettingsComponent,
-        ProfileComponent,
-        ContactsComponent,
-        NavigationComponent,
-        UpdateUserComponent,
-        CountriesComponent,
-        PermissionsComponent,
-        RolesComponent,
-        ViewRolesComponent,
-        AddEditRolesComponent,
-        ApiKeysComponent,
-        ViewUsersComponent,
-        AssignUserRolesComponent,
-        AddEditUsersComponent,
-        UpdateCredentialsComponent,
-        ViewUserComponent,
-        ChatsComponent,
-        PaymentModesComponent,
-        CommissionsComponent,
-        UserContactsComponent,
-        UpdateUserDetailsComponent,
-        DesignerProfileComponent,
-        ClientProfilesComponent,
-        ContactFormComponent,
-        DiscountsComponent,
-        AdminMainPageComponent,
-        ProfileMainPageComponent,
-        ContestStagesComponent,
-        AddContestsComponent,
-        LogoUsesComponent,
-        ViewSingleContestComponent,
-        FaqComponent,
-        PolicyComponent,
-        TosComponent,
-        FooterComponent,
-        NewsLettersSubscriptionsComponent,
-        LiveContestsComponent,
-        JudgingContestsComponent,
-        EndedContestsComponent,
-        RankedDesignsComponent,
-        WonContestsComponent,
-        ClientEndedContestsComponent,
-        ClientLiveContestsComponent,
-        ClientJudgingContestsComponent
-    ],
-    imports: [
-        BrowserModule,
-        FormsModule,
-        HttpClientModule,
-        AppRoutingModule
-    ],
-    providers: [AuthGuard, AuthenticationService, AlertService, UserService, PersonsService,
-        PermissionsGuard, AlertService, CategoryService, CountriesService, ProfileService,
-        PagerService, PermissionsService, ApiKeysService, ProfileService, ContactService,
-        CommissionsService, PaymentModesService, SettingsService, DiscountsService, ContestStagesService,
-        ContestsService, LogoUsesService, LogoBriefsService,
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: RequestInterceptor,
-            multi: true
-        }, {
-            provide: HTTP_INTERCEPTORS,
-            useClass: ResponseInterceptor,
-            multi: true
-        }, AppCommons],
-    bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		DesignersDashboardComponent,
+		HomeComponent,
+		ContestsComponent,
+		AlertComponent,
+		DesignersComponent,
+		DesignersDashboardComponent,
+		ClientsDashboardComponent,
+		SignupComponent,
+		SigninComponent,
+		RecoveryComponent,
+		UpdateComponent,
+		CategoriesComponent,
+		VerifyEmailComponent,
+		HowItWorksComponent,
+		SettingsComponent,
+		ProfileComponent,
+		ContactsComponent,
+		NavigationComponent,
+		UpdateUserComponent,
+		CountriesComponent,
+		PermissionsComponent,
+		RolesComponent,
+		ViewRolesComponent,
+		AddEditRolesComponent,
+		ApiKeysComponent,
+		ViewUsersComponent,
+		AssignUserRolesComponent,
+		AddEditUsersComponent,
+		UpdateCredentialsComponent,
+		ViewUserComponent,
+		ChatsComponent,
+		PaymentModesComponent,
+		CommissionsComponent,
+		UserContactsComponent,
+		UpdateUserDetailsComponent,
+		DesignerProfileComponent,
+		ClientProfilesComponent,
+		ContactFormComponent,
+		DiscountsComponent,
+		AdminMainPageComponent,
+		ProfileMainPageComponent,
+		ContestStagesComponent,
+		AddContestsComponent,
+		LogoUsesComponent,
+		ViewSingleContestComponent,
+		FaqComponent,
+		PolicyComponent,
+		TosComponent,
+		FooterComponent,
+		NewsLettersSubscriptionsComponent,
+		LiveContestsComponent,
+		JudgingContestsComponent,
+		EndedContestsComponent,
+		RankedDesignsComponent,
+		WonContestsComponent,
+		ClientEndedContestsComponent,
+		ClientLiveContestsComponent,
+		ClientJudgingContestsComponent
+	],
+	imports: [
+		BrowserModule,
+		FormsModule,
+		HttpClientModule,
+		AppRoutingModule
+	],
+	providers: [AuthGuard, AuthenticationService, AlertService, UserService, PersonsService,
+		PermissionsGuard, AlertService, CategoryService, CountriesService, ProfileService,
+		PagerService, PermissionsService, ApiKeysService, ProfileService, ContactService,
+		CommissionsService, PaymentModesService, SettingsService, DiscountsService, ContestStagesService,
+		ContestsService, LogoUsesService, LogoBriefsService,
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: RequestInterceptor,
+			multi: true
+		}, {
+			provide: HTTP_INTERCEPTORS,
+			useClass: ResponseInterceptor,
+			multi: true
+		}, AppCommons,
+		Location, {provide: LocationStrategy, useClass: PathLocationStrategy}],
+	bootstrap: [AppComponent]
 })
 export class AppModule {
 }

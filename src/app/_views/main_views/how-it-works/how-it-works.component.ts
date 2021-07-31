@@ -7,15 +7,15 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component({
-    selector: 'app-result',
-    templateUrl: './how-it-works.component.html',
-    styleUrls: ['./how-it-works.component.css']
+	selector: 'app-result',
+	templateUrl: './how-it-works.component.html',
+	styleUrls: ['./how-it-works.component.css']
 })
 export class HowItWorksComponent implements OnInit {
-
-    constructor() {
-    }
-
-    ngOnInit(): void {
-    }
+	
+	constructor() {
+	}
+	
+	ngOnInit(): void {
+	}
 }

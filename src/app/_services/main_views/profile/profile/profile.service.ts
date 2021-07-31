@@ -9,20 +9,20 @@ import {HttpClient} from '@angular/common/http';
 import {appConstants} from '../../../../_helpers';
 
 @Injectable({
-    providedIn: 'root'
+	providedIn: 'root'
 })
 export class ProfileService {
-    constructor(
-        private http: HttpClient
-    ) {
-    }
-
-    uploadImage(image: any, userId: string) {
-        return this.http.post(appConstants.baseApiV1Url + appConstants.uploadAvatarUrl + userId, {icon: image});
-    }
-
-    deactivateAccount(userDetails: any) {
-        return this.http.post(appConstants.baseApiV1Url + appConstants.deactivateAccountUrl + userDetails.entity, userDetails);
-    }
-
+	constructor(
+		private http: HttpClient
+	) {
+	}
+	
+	uploadImage(image: any, userId: string) {
+		return this.http.post(appConstants.baseApiV1Url + appConstants.uploadAvatarUrl + userId, {icon: image});
+	}
+	
+	deactivateAccount(userDetails: any) {
+		return this.http.post(appConstants.baseApiV1Url + appConstants.deactivateAccountUrl + userDetails.entity, userDetails);
+	}
+	
 }
