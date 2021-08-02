@@ -4,70 +4,85 @@
   ~ This may be subject to prosecution according to the kenyan law
   -->
 <header class="navbar navbar-header navbar-header-fixed">
-    <a class="burger-menu" href="#" id="mainMenuOpen"><i data-feather="menu"></i></a>
-    <div class="navbar-brand">
-        <a class="df-logo" routerLink="/">Logo<span>247&nbsp;Designs</span></a>
-    </div><!-- navbar-brand -->
-    <div class="navbar-menu-wrapper" id="navbarMenu">
-        <div class="navbar-menu-header">
-            <a class="df-logo" routerLink="/">Logo<span>247&nbsp;Designs</span></a>
-            <a href="#" id="mainMenuClose"><i data-feather="x"></i></a>
-        </div><!-- navbar-menu-header -->
-        <ul class="nav navbar-menu">
-            <li class="nav-label pd-l-20 pd-lg-l-25 d-lg-none">Main Navigation</li>
-            <li *ngIf="lbsUser" class="nav-item" routerLinkActive="active">
-                <a class="nav-link" routerLink="/profile/{{lbsUser.user.person}}"><i
-                        data-feather="pie-chart"></i> Profile</a>
-            </li>
-            <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" routerLink="/contests"><i
-                        data-feather="package"></i>Contests</a>
-            </li>
-            <li class="nav-item " routerLinkActive="active">
-                <a class="nav-link" routerLink="/designers"><i data-feather="layers"></i> Designers</a>
-            </li>
-            <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" routerLink="/how-it-works"><i data-feather="box"></i> How it
-                    works ? </a>
-            </li>
-        </ul>
-    </div><!-- navbar-menu-wrapper -->
-    <div class="navbar-right">
-        <a *ngIf="!lbsUser" class="btn btn-secondary" id="get_started" routerLink="/sign-in">&nbsp;Get
-            Started&nbsp;<i class="bx bx-chevron-right"></i></a>
-        <div *ngIf="lbsUser" [ngClass]="defaultDropdownMainClass">
-            <a (click)="displayProfileDropDown()" aria-expanded="true" class="dropdown-link"
-               data-display="static" data-toggle="dropdown" href="#">
-                <div class="avatar avatar-sm"><img alt="" class="rounded-circle"
-                                                   src="assets/img/img1.png"></div>
-            </a><!-- dropdown-link -->
-            <div [ngClass]="defaultDropdownElementsClass">
-                <div class="avatar avatar-lg mg-b-15"><img alt="" class="rounded-circle"
-                                                           src="assets/img/img1.png"></div>
-                <h6 class="tx-semibold mg-b-5">{{lbsUser.user.name}}</h6>
-                <p class="mg-b-25 tx-12 tx-color-03">@{{lbsUser.user.username}}</p>
-                <a class="dropdown-item" routerLink="/profile/{{lbsUser.user.person}}"
-                   routerLinkActive="active">&nbsp;&nbsp;<i
-                        data-feather="edit-3"></i>&nbsp;My profile</a>
-                <a class="dropdown-item"
-                   routerLink="/profile/change-password/{{lbsUser.user.person}}"
-                   routerLinkActive="active">&nbsp;&nbsp;<i
-                        data-feather="lock"></i>&nbsp;Change Password</a>
-                <a class="dropdown-item" routerLink="/profile/contacts/{{lbsUser.user.person}}"
-                   routerLinkActive="active">&nbsp;&nbsp;<i
-                        data-feather="mail"></i>&nbsp;Contacts</a>
-                <a class="dropdown-item" routerLink="/profile/inbox/{{lbsUser.user.person}}"
-                   routerLinkActive="active">&nbsp;&nbsp;<i
-                        data-feather="inbox"></i>&nbsp;Inbox</a>
-                <div *ngIf="is_staff" class="dropdown-divider"></div>
-                <a *ngIf="is_staff" class="dropdown-item" routerLink="/admin"
-                   routerLinkActive="active">&nbsp;&nbsp;<i data-feather="users"></i>&nbsp;System
-                    Administrator</a>
-                <div class="dropdown-divider"></div>
-                <a (click)="signOut()" class="dropdown-item">&nbsp;&nbsp;<i
-                        data-feather="log-out"></i>Sign
-                    Out</a>
-            </div><!-- dropdown-menu -->
-        </div><!-- dropdown -->
-    </div><!-- navbar-right -->
+	<a class="burger-menu" href="#" id="mainMenuOpen"><i data-feather="menu"></i></a>
+	<div class="navbar-brand">
+		<a class="df-logo" routerLink="/">Logo<span>247&nbsp;Designs</span></a>
+	</div><!-- navbar-brand -->
+	<div class="navbar-menu-wrapper" id="navbarMenu">
+		<div class="navbar-menu-header">
+			<a class="df-logo" routerLink="/">Logo<span>247&nbsp;Designs</span></a>
+			<a href="#" id="mainMenuClose"><i data-feather="x"></i></a>
+		</div><!-- navbar-menu-header -->
+		<ul class="nav navbar-menu">
+			<li class="nav-label pd-l-20 pd-lg-l-25 d-lg-none">Main Navigation</li>
+			<li *ngIf="is_client" class="nav-item" routerLinkActive="active">
+				<a class="nav-link" routerLink="/client-dashboard/{{lbsUser.user.person}}"><i
+						data-feather="pie-chart"></i><b>&nbsp;Client Dashboard</b></a>
+			</li>
+			<li *ngIf="is_designer" class="nav-item" routerLinkActive="active">
+				<a class="nav-link" routerLink="/designers-dashboard/{{lbsUser.user.person}}"><i
+						data-feather="pie-chart"></i><b>&nbsp;Designer Dashboard</b></a>
+			</li>
+			<li *ngIf="is_staff" class="nav-item" routerLinkActive="active">
+				<a class="nav-link" routerLink="/profile/{{lbsUser.user.person}}"><i
+						data-feather="pie-chart"></i><b>&nbsp;Profile</b></a>
+			</li>
+			<li class="nav-item" routerLinkActive="active">
+				<a class="nav-link" routerLink="/contests"><i
+						data-feather="package"></i><b>&nbsp;Contests</b></a>
+			</li>
+			<li class="nav-item " routerLinkActive="active">
+				<a class="nav-link" routerLink="/designers"><i data-feather="layers"></i><b>&nbsp;Designers</b></a>
+			</li>
+			<li class="nav-item" routerLinkActive="active">
+				<a class="nav-link" routerLink="/how-it-works"><i data-feather="box"></i><b>&nbsp;How
+					it works?</b></a>
+			</li>
+		</ul>
+	</div><!-- navbar-menu-wrapper -->
+	<div class="navbar-right">
+		<a *ngIf="!lbsUser" class="btn btn-secondary" id="get_started" routerLink="/sign-in">&nbsp;Get
+			Started&nbsp;<i class="bx bx-chevron-right"></i></a>
+		<div *ngIf="lbsUser" [ngClass]="defaultDropdownMainClass">
+			<a (click)="displayProfileDropDown()" aria-expanded="true" class="dropdown-link"
+			   data-display="static" data-toggle="dropdown" href="#">
+				<div class="avatar avatar-sm"><img alt="" class="rounded-circle"
+				                                   src="../../../assets/images/img1.png"></div>
+			</a><!-- dropdown-link -->
+			<div [ngClass]="defaultDropdownElementsClass">
+				<div class="avatar avatar-lg mg-b-15"><img alt="" class="rounded-circle"
+				                                           src="../../../assets/images/img1.png"></div>
+				<h6 class="tx-semibold mg-b-5">{{lbsUser.user.name}}</h6>
+				<p class="mg-b-25 tx-12 tx-color-03">@{{lbsUser.user.username}}</p>
+				<a class="dropdown-item" routerLink="/profile/{{lbsUser.user.person}}"
+				   routerLinkActive="active">&nbsp;&nbsp;<i data-feather="edit-3"></i>&nbsp;My
+					profile</a>
+				<a class="dropdown-item"
+				   routerLink="/profile/change-password/{{lbsUser.user.person}}"
+				   routerLinkActive="active">&nbsp;&nbsp;<i data-feather="lock"></i>&nbsp;Change
+					Password</a>
+				<a class="dropdown-item" routerLink="/profile/contacts/{{lbsUser.user.person}}"
+				   routerLinkActive="active">&nbsp;&nbsp;<i
+						data-feather="mail"></i>&nbsp;Contacts</a>
+				<a class="dropdown-item" routerLink="/profile/inbox/{{lbsUser.user.person}}"
+				   routerLinkActive="active">&nbsp;&nbsp;<i data-feather="inbox"></i>&nbsp;Inbox</a>
+				<div *ngIf="is_staff" class="dropdown-divider"></div>
+				<a *ngIf="is_staff" class="dropdown-item" routerLink="/admin"
+				   routerLinkActive="active">&nbsp;&nbsp;<i data-feather="users"></i>&nbsp;System
+					Administrator</a>
+				<div *ngIf="is_client" class="dropdown-divider"></div>
+				<a *ngIf="is_client" class="dropdown-item"
+				   routerLink="/client-dashboard/{{lbsUser.user.person}}" routerLinkActive="active">&nbsp;&nbsp;<i
+						data-feather="users"></i>&nbsp;Client Dashboard</a>
+				<div *ngIf="is_designer" class="dropdown-divider"></div>
+				<a *ngIf="is_designer" class="dropdown-item"
+				   routerLink="/designers-dashboard/{{lbsUser.user.person}}"
+				   routerLinkActive="active">&nbsp;&nbsp;<i data-feather="users"></i>&nbsp;Designer
+					Dashboard</a>
+				<div class="dropdown-divider"></div>
+				<a (click)="signOut()" class="dropdown-item">&nbsp;&nbsp;<i
+						data-feather="log-out"></i>Sign Out</a>
+			</div><!-- dropdown-menu -->
+		</div><!-- dropdown -->
+	</div><!-- navbar-right -->
 </header><!-- navbar -->

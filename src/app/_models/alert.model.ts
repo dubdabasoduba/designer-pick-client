@@ -5,13 +5,13 @@
  */
 
 export class AlertModel {
-    type: AlertType;
-    message: string;
+	type: AlertType;
+	message: string;
 }
 
 export enum AlertType {
-    Success,
-    Error,
-    Info,
-    Warning
+	Success,
+	Error,
+	Info,
+	Warning
 }

@@ -12,28 +12,28 @@ import {CountryModel} from "../../../_models";
 
 @Injectable()
 export class CountriesService {
-
-    constructor(private http: HttpClient) {
-    }
-
-    getCountries() {
-        return this.http.get(appConstants.baseApiV1Url + appConstants.countriesUrl);
-    }
-
-    getCountry(countryId: string): Observable<CountryModel> {
-        // @ts-ignore
-        return this.http.get(appConstants.baseApiV1Url + appConstants.countryUrl + countryId);
-    }
-
-    removeCountry(id: string) {
-        return this.http.delete(appConstants.baseApiV1Url + '/country/' + id);
-    }
-
-    addCountry(country: CountryModel) {
-        return this.http.post(appConstants.baseApiV1Url + '/country', country);
-    }
-
-    updateCountry(country: CountryModel) {
-        return this.http.put(appConstants.baseApiV1Url + '/country/' + country.uuid, country);
-    }
+	
+	constructor(private http: HttpClient) {
+	}
+	
+	getCountries() {
+		return this.http.get(appConstants.baseApiV1Url + appConstants.countriesUrl);
+	}
+	
+	getCountry(countryId: string): Observable<CountryModel> {
+		// @ts-ignore
+		return this.http.get(appConstants.baseApiV1Url + appConstants.countryUrl + countryId);
+	}
+	
+	removeCountry(id: string) {
+		return this.http.delete(appConstants.baseApiV1Url + '/country/' + id);
+	}
+	
+	addCountry(country: CountryModel) {
+		return this.http.post(appConstants.baseApiV1Url + '/country', country);
+	}
+	
+	updateCountry(country: CountryModel) {
+		return this.http.put(appConstants.baseApiV1Url + '/country/' + country.uuid, country);
+	}
 }

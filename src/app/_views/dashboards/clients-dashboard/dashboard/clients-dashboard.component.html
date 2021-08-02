@@ -1,0 +1,97 @@
+<!--
+  ~ Copyright (c) 2019. The content in this file is Protected by the copyright laws of kenya and owned by Re.Kast Limited.
+  ~ Reproducing it in any way or using it without permission from Re.Kast Limited will be a violation of kenyan copyrights law.
+  ~ This may be subject to prosecution according to the kenyan law
+  -->
+<app-navigation></app-navigation>
+<div class="content content-fixed bd-b">
+	<div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
+		<div class="d-sm-flex align-items-center justify-content-between">
+			<div>
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb breadcrumb-style1 mg-b-10">
+						<li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+						<li class="breadcrumb-item"><a routerLink="/contests">All Contests</a></li>
+						<li aria-current="page" class="breadcrumb-item active">Client Dashboard
+						</li>
+					</ol>
+				</nav>
+				<h4 class="mg-b-0">Client Dashboard</h4>
+			</div>
+			<div class="mg-t-20 mg-sm-t-0">
+				<a class="btn btn-primary btn-block text-white"
+				   routerLink="/contests-add">Create a Contest</a>
+			</div>
+		</div>
+	</div><!-- container -->
+</div><!-- content -->
+
+<div class="content">
+	<div class="container">
+		<!-- ======= Counts Section ======= -->
+		<section class="counts  section-bg" id="counts">
+			<div class="container">
+				<div class="row no-gutters">
+					<div class="col-lg-4 col-md-6 d-md-flex align-items-md-stretch">
+						<div class="count-box">
+							<i class="icofont-document-folder"></i>
+							<span data-toggle="counter-up">{{liveContests}}</span>
+							<p><strong>Lives Contest</strong> Currently running contests</p>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6 d-md-flex align-items-md-stretch">
+						<div class="count-box">
+							<i class="icofont-live-support"></i>
+							<span data-toggle="counter-up">1,463</span>
+							<p><strong>Judging Contests</strong> Currently judging contests</p>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6 d-md-flex align-items-md-stretch">
+						<div class="count-box">
+							<i class="icofont-simple-smile"></i>
+							<span data-toggle="counter-up">232</span>
+							<p><strong>Ended Contests</strong> Closed contests</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section><!-- End Counts Section -->
+		<!-- ======= Services Section ======= -->
+		<section class="services" id="services">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
+						<div class="icon-box" data-aos="fade-up">
+							<div class="icon"><i class="icofont-document-folder"></i></div>
+							<h4 class="title"><a routerLink="/contests/client/live/{{userId}}">Live
+								Contests</a></h4>
+							<p class="description">This page lists all the live both active and
+								draft contests the user has</p>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
+						<div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+							<div class="icon"><i class="icofont-live-support"></i></div>
+							<h4 class="title"><a routerLink="/contests/client/judging/{{userId}}">Judging
+								Contests</a></h4>
+							<p class="description">This page lists all the active contests that the
+								users has started judging</p>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
+						<div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+							<div class="icon"><i class="icofont-simple-smile"></i></div>
+							<h4 class="title"><a routerLink="/contests/client/ended/{{userId}}">Ended
+								contest</a>
+							</h4>
+							<p class="description">This page lists all the closed contests that the
+								user has.</p>
+						</div>
+					</div>
+				</div>
+				<br/>
+			</div>
+		</section><!-- End Services Section -->
+	</div><!-- content -->
+</div>
+<br/>

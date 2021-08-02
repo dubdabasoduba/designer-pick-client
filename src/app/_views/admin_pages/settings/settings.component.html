@@ -5,370 +5,432 @@
   -->
 <app-navigation></app-navigation>
 <div class="content content-fixed bd-b">
-    <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
-        <div class="d-sm-flex align-items-center justify-content-between">
-            <div>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb breadcrumb-style1 mg-b-10">
-                        <li class="breadcrumb-item"><a routerLink="/admin">Admin</a></li>
-                        <li aria-current="page" class="breadcrumb-item active">Manage Settings
-                        </li>
-                    </ol>
-                </nav>
-                <h4 class="mg-b-0">Manage Settings</h4>
-            </div>
-        </div>
-    </div><!-- container -->
+	<div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
+		<div class="d-sm-flex align-items-center justify-content-between">
+			<div>
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb breadcrumb-style1 mg-b-10">
+						<li class="breadcrumb-item"><a routerLink="/admin">Admin</a></li>
+						<li aria-current="page" class="breadcrumb-item active">Manage Settings
+						</li>
+					</ol>
+				</nav>
+				<h4 class="mg-b-0">Manage Settings</h4>
+			</div>
+		</div>
+	</div><!-- container -->
 </div><!-- content -->
 
 <div class="content">
-    <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
-        <div class="row">
-            <div class="col-lg-12 col-xl-12">
-                <fieldset class="form-fieldset">
-                    <legend>Edit&nbsp;Commission Settings</legend>
-                    <form #f="ngForm" (ngSubmit)="f.form.valid && saveCommissions()" novalidate>
-                        <div class="form-row">
-                            <div class="form-group col-lg-5">
-                                <label>Setting name:&nbsp;<span
-                                        class="tx-danger">*</span></label>
-                                <input [(ngModel)]="commissionModel.name" class="form-control"
-                                       data-error="Subject field is required"
-                                       id="name" name="name" readonly
-                                       placeholder="Please give the setitng name"
-                                       required="" type="text">
-                            </div>
-                            <div class="form-group col-lg-7">
-                                <label>Select commission:&nbsp;<span
-                                        class="tx-danger">*</span></label>
-                                <select [(ngModel)]="commissionModel.value"
-                                        class="form-control" class="custom-select form-control"
-                                        id="value"
-                                        name="value" title="Select commission">
-                                    <option selected value="">Select commission</option>
-                                    <option *ngFor="let commission of commissions"
-                                            value="{{commission.uuid}}">{{commission.name}}
-                                        -- {{commission.percentage}}&#x00025;</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <div class="custom-control custom-switch">
-                                    <input [(ngModel)]="commissionModel.is_active"
-                                           class="custom-control-input"
-                                           id="is_active" name="is_active"
-                                           type="checkbox">
-                                    <label class="custom-control-label" for="is_active">Deactivate/Activate
-                                        commissions</label>
-                                </div>
-
-                            </div>
-                            <div class="form-group col-md-4"></div>
-                            <div class="form-group col-md-2">
-                                <button class="btn btn-primary btn-block">Update Commission</button>
-                            </div>
-                        </div>
-                    </form>
-                </fieldset>
-            </div><!-- col -->
-        </div><!-- row -->
-        <br/>
-        <div class="row">
-            <div class="col-lg-12 col-xl-12">
-                <fieldset class="form-fieldset">
-                    <legend>Edit&nbsp;Private Listing Fee</legend>
-                    <form #f="ngForm" (ngSubmit)="f.form.valid && savePrivateListing()" novalidate>
-                        <div class="form-row">
-                            <div class="form-group col-lg-5">
-                                <label>Setting name:&nbsp;<span
-                                        class="tx-danger">*</span></label>
-                                <input [(ngModel)]="privateListingModel.name" class="form-control"
-                                       data-error="Subject field is required"
-                                       id="name" name="name" readonly
-                                       placeholder="Please give the setting name"
-                                       required="" type="text">
-                            </div>
-                            <div class="form-group col-lg-7">
-                                <label>Add private listing amount:&nbsp;<span
-                                        class="tx-danger">*</span></label>
-                                <input [(ngModel)]="privateListingModel.value"
-                                        autocomplete="off" class="form-control"
-                                        data-error="Subject field is required" id="value"
-                                        name="value"
-                                        placeholder="Place give the setting value"
-                                        type="number" min="10">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <div class="custom-control custom-switch">
-                                    <input [(ngModel)]="privateListingModel.is_active"
-                                            class="custom-control-input"
-                                            id="is_active" name="is_active"
-                                            type="checkbox">
-                                    <label class="custom-control-label" for="is_active">Deactivate/Activate
-                                        Private Listing Fee</label>
-                                </div>
-
-                            </div>
-                            <div class="form-group col-md-4"></div>
-                            <div class="form-group col-md-2">
-                                <button class="btn btn-primary btn-block">Update Private Listing
-                                    Fee
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </fieldset>
-            </div><!-- col -->
-        </div><!-- row -->
-        <br/>
-        <div class="row">
-            <div class="col-lg-12 col-xl-12">
-                <fieldset class="form-fieldset">
-                    <legend>Edit&nbsp;Highlighting Fee</legend>
-                    <form #f="ngForm" (ngSubmit)="f.form.valid && saveHighLightAmount()" novalidate>
-                        <div class="form-row">
-                            <div class="form-group col-lg-5">
-                                <label>Setting name:&nbsp;<span
-                                        class="tx-danger">*</span></label>
-                                <input [(ngModel)]="highLightingModel.name" class="form-control"
-                                       data-error="Subject field is required"
-                                       id="name" name="name" readonly
-                                       placeholder="Please give the setting name"
-                                       required="" type="text">
-                            </div>
-                            <div class="form-group col-lg-7">
-                                <label>Add highlighting fee:&nbsp;<span
-                                        class="tx-danger">*</span></label>
-                                <input  [(ngModel)]="highLightingModel.value"
-                                        autocomplete="off" class="form-control"
-                                        data-error="Subject field is required" id="value"
-                                        name="value"
-                                        placeholder="Place give the setting value"
-                                        type="number" min="10">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <div class="custom-control custom-switch">
-                                    <input  [(ngModel)]="highLightingModel.is_active"
-                                            class="custom-control-input"
-                                            id="is_active" name="is_active"
-                                            type="checkbox">
-                                    <label class="custom-control-label" for="is_active">Deactivate/Activate
-                                        Highlighting Fee</label>
-                                </div>
-
-                            </div>
-                            <div class="form-group col-md-4"></div>
-                            <div class="form-group col-md-2">
-                                <button class="btn btn-primary btn-block">Update Highlighting Fee
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </fieldset>
-            </div><!-- col -->
-        </div><!-- row -->
-        <br/>
-        <div class="row">
-            <div class="col-lg-12 col-xl-12">
-                <fieldset class="form-fieldset">
-                    <legend>Edit&nbsp;Featuring Fee</legend>
-                    <form #f="ngForm" (ngSubmit)="f.form.valid && saveFeaturing()" novalidate>
-                        <div class="form-row">
-                            <div class="form-group col-lg-5">
-                                <label>Setting name:&nbsp;<span
-                                        class="tx-danger">*</span></label>
-                                <input [(ngModel)]="featuringModel.name" class="form-control"
-                                       data-error="Subject field is required"
-                                       id="name" name="name" readonly
-                                       placeholder="Please give the setting name"
-                                       required="" type="text">
-                            </div>
-                            <div class="form-group col-lg-7">
-                                <label>Add featuring fee:&nbsp;<span
-                                        class="tx-danger">*</span></label>
-                                <input  [(ngModel)]="featuringModel.value"
-                                        autocomplete="off" class="form-control"
-                                        data-error="Subject field is required" id="description"
-                                        name="description"
-                                        placeholder="Place give the setting value"
-                                        type="number" min="10">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <div class="custom-control custom-switch">
-                                    <input  [(ngModel)]="featuringModel.value"
-                                            class="custom-control-input"
-                                            id="is_active" name="is_active"
-                                            type="checkbox">
-                                    <label class="custom-control-label" for="is_active">Deactivate/Activate
-                                        Featuring Fee</label>
-                                </div>
-
-                            </div>
-                            <div class="form-group col-md-4"></div>
-                            <div class="form-group col-md-2">
-                                <button class="btn btn-primary btn-block">Update Featuring Fee
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </fieldset>
-            </div><!-- col -->
-        </div><!-- row -->
-        <br/>
-        <div class="row">
-            <div class="col-lg-12 col-xl-12">
-                <fieldset class="form-fieldset">
-                    <legend>Edit&nbsp;Listing Fee</legend>
-                    <form #f="ngForm" (ngSubmit)="f.form.valid && saveListing()" novalidate>
-                        <div class="form-row">
-                            <div class="form-group col-lg-5">
-                                <label>Setting name:&nbsp;<span
-                                        class="tx-danger">*</span></label>
-                                <input [(ngModel)]="listingModel.name" class="form-control"
-                                       data-error="Subject field is required"
-                                       id="name" name="name" readonly
-                                       placeholder="Please give the setting name"
-                                       required="" type="text">
-                            </div>
-                            <div class="form-group col-lg-7">
-                                <label>Add Lisiting fee:&nbsp;<span
-                                        class="tx-danger">*</span></label>
-                                <input  [(ngModel)]="listingModel.value"
-                                        autocomplete="off" class="form-control"
-                                        data-error="Subject field is required" id="description"
-                                        name="description"
-                                        placeholder="Place give the setting value"
-                                        type="number" min="10">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <div class="custom-control custom-switch">
-                                    <input  [(ngModel)]="listingModel.value"
-                                            class="custom-control-input"
-                                            id="is_active" name="is_active"
-                                            type="checkbox">
-                                    <label class="custom-control-label" for="is_active">Deactivate/Activate
-                                        Listing Fee</label>
-                                </div>
-
-                            </div>
-                            <div class="form-group col-md-4"></div>
-                            <div class="form-group col-md-2">
-                                <button class="btn btn-primary btn-block">Update Listing Fee
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </fieldset>
-            </div><!-- col -->
-        </div><!-- row -->
-        <br/>
-        <div class="row">
-            <div class="col-lg-12 col-xl-12">
-                <fieldset class="form-fieldset">
-                    <legend>Edit&nbsp;Handling Fee Percentage</legend>
-                    <form #f="ngForm" (ngSubmit)="f.form.valid " novalidate>
-                        <div class="form-row">
-                            <div class="form-group col-lg-5">
-                                <label>Setting name:&nbsp;<span
-                                        class="tx-danger">*</span></label>
-                                <input [(ngModel)]="handlingFeeModel.name" class="form-control"
-                                       data-error="Subject field is required"
-                                       id="name" name="name" readonly
-                                       placeholder="Please give the setting name"
-                                       required="" type="text">
-                            </div>
-                            <div class="form-group col-lg-7">
-                                <label>Add handling fee percentage:&nbsp;<span
-                                        class="tx-danger">*</span></label>
-                                <input  [(ngModel)]="handlingFeeModel.value"
-                                        autocomplete="off" class="form-control"
-                                        data-error="Subject field is required" id="description"
-                                        name="description"
-                                        placeholder="Place give the setting value"
-                                        type="number" min="5">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <div class="custom-control custom-switch">
-                                    <input  [(ngModel)]="handlingFeeModel.value"
-                                            class="custom-control-input"
-                                            id="is_active" name="is_active"
-                                            type="checkbox">
-                                    <label class="custom-control-label" for="is_active">Deactivate/Activate
-                                        Handling Fee Percentage</label>
-                                </div>
-
-                            </div>
-                            <div class="form-group col-md-2"></div>
-                            <div class="form-group col-md-4">
-                                <button class="btn btn-primary btn-block">Update Handling Fee
-                                    Percentage
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </fieldset>
-            </div><!-- col -->
-        </div><!-- row -->
-        <br/>
-        <div class="row">
-            <div class="col-lg-12 col-xl-12">
-                <fieldset class="form-fieldset">
-                    <legend>Edit&nbsp;Number of support hours</legend>
-                    <form #f="ngForm" (ngSubmit)="f.form.valid && saveSupportHour()" novalidate>
-                        <div class="form-row">
-                            <div class="form-group col-lg-5">
-                                <label>Setting name:&nbsp;<span
-                                        class="tx-danger">*</span></label>
-                                <input [(ngModel)]="supportHoursModel.name" class="form-control"
-                                       data-error="Subject field is required"
-                                       id="name" name="name" readonly
-                                       placeholder="Please give the setting name"
-                                       required="" type="text">
-                            </div>
-                            <div class="form-group col-lg-7">
-                                <label>Add support hours:&nbsp;<span
-                                        class="tx-danger">*</span></label>
-                                <input  [(ngModel)]="supportHoursModel.value"
-                                        autocomplete="off" class="form-control"
-                                        data-error="Subject field is required" id="description"
-                                        name="description"
-                                        placeholder="Place give the setting value"
-                                        type="number" min="5">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <div class="custom-control custom-switch">
-                                    <input  [(ngModel)]="supportHoursModel.value"
-                                            class="custom-control-input"
-                                            id="is_active" name="is_active"
-                                            type="checkbox">
-                                    <label class="custom-control-label" for="is_active">Deactivate/Activate
-                                        Support hours</label>
-                                </div>
-
-                            </div>
-                            <div class="form-group col-md-4"></div>
-                            <div class="form-group col-md-2">
-                                <button class="btn btn-primary btn-block">Update support hours
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </fieldset>
-            </div><!-- col -->
-        </div><!-- row -->
-    </div><!-- container -->
+	<div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
+		<div class="row">
+			<div class="col-lg-12 col-xl-12">
+				<fieldset class="form-fieldset">
+					<legend>Edit&nbsp;Initial Contest Stage Settings</legend>
+					<form #f="ngForm" (ngSubmit)="f.form.valid && saveContestStage()" novalidate>
+						<div class="form-row">
+							<div class="form-group col-lg-5">
+								<label>Setting name:&nbsp;<span
+										class="tx-danger">*</span></label>
+								<input [(ngModel)]="contestStageModel.name" class="form-control"
+								       data-error="Subject field is required"
+								       id="name" name="name"
+								       placeholder="Please give the setting name"
+								       readonly
+								       required="" type="text">
+							</div>
+							<div class="form-group col-lg-7">
+								<label>Select commission:&nbsp;<span
+										class="tx-danger">*</span></label>
+								<select [(ngModel)]="contestStageModel.value"
+								        class="form-control" class="custom-select form-control"
+								        id="value"
+								        name="value" title="Select contest stage">
+									<option selected value="">Select contest stage</option>
+									<option *ngFor="let contestStage of contestStages"
+									        value="{{contestStage.uuid}}">{{contestStage.name}}
+									</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<div class="custom-control custom-switch">
+									<input [(ngModel)]="commissionModel.is_active"
+									       class="custom-control-input"
+									       id="is_active" name="is_active"
+									       type="checkbox">
+									<label class="custom-control-label" for="is_active">Deactivate/Activate
+										Initial Contest Stage</label>
+								</div>
+							
+							</div>
+							<div class="form-group col-md-4"></div>
+							<div class="form-group col-md-2">
+								<button class="btn btn-primary btn-block">Update Initial Contest
+									Stage
+								</button>
+							</div>
+						</div>
+					</form>
+				</fieldset>
+			</div><!-- col -->
+		</div><!-- row -->
+		<br/>
+		<div class="row">
+			<div class="col-lg-12 col-xl-12">
+				<fieldset class="form-fieldset">
+					<legend>Edit&nbsp;Commission Settings</legend>
+					<form #f="ngForm" (ngSubmit)="f.form.valid && saveCommissions()" novalidate>
+						<div class="form-row">
+							<div class="form-group col-lg-5">
+								<label>Setting name:&nbsp;<span
+										class="tx-danger">*</span></label>
+								<input [(ngModel)]="commissionModel.name" class="form-control"
+								       data-error="Subject field is required"
+								       id="name" name="name"
+								       placeholder="Please give the setting name"
+								       readonly
+								       required="" type="text">
+							</div>
+							<div class="form-group col-lg-7">
+								<label>Select commission:&nbsp;<span
+										class="tx-danger">*</span></label>
+								<select [(ngModel)]="commissionModel.value"
+								        class="form-control" class="custom-select form-control"
+								        id="value"
+								        name="value" title="Select commission">
+									<option selected value="">Select commission</option>
+									<option *ngFor="let commission of commissions"
+									        value="{{commission.uuid}}">{{commission.name}}
+										-- {{commission.percentage}}&#x00025;
+									</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<div class="custom-control custom-switch">
+									<input [(ngModel)]="commissionModel.is_active"
+									       class="custom-control-input"
+									       id="is_active" name="is_active"
+									       type="checkbox">
+									<label class="custom-control-label" for="is_active">Deactivate/Activate
+										commissions</label>
+								</div>
+							
+							</div>
+							<div class="form-group col-md-4"></div>
+							<div class="form-group col-md-2">
+								<button class="btn btn-primary btn-block">Update Commission</button>
+							</div>
+						</div>
+					</form>
+				</fieldset>
+			</div><!-- col -->
+		</div><!-- row -->
+		<br/>
+		<div class="row">
+			<div class="col-lg-12 col-xl-12">
+				<fieldset class="form-fieldset">
+					<legend>Edit&nbsp;Private Listing Fee</legend>
+					<form #f="ngForm" (ngSubmit)="f.form.valid && savePrivateListing()" novalidate>
+						<div class="form-row">
+							<div class="form-group col-lg-5">
+								<label>Setting name:&nbsp;<span
+										class="tx-danger">*</span></label>
+								<input [(ngModel)]="privateListingModel.name" class="form-control"
+								       data-error="Subject field is required"
+								       id="name" name="name"
+								       placeholder="Please give the setting name"
+								       readonly
+								       required="" type="text">
+							</div>
+							<div class="form-group col-lg-7">
+								<label>Add private listing amount:&nbsp;<span
+										class="tx-danger">*</span></label>
+								<input [(ngModel)]="privateListingModel.value"
+								       autocomplete="off" class="form-control"
+								       data-error="Subject field is required" id="value"
+								       min="10"
+								       name="value"
+								       placeholder="Place give the setting value" type="number">
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<div class="custom-control custom-switch">
+									<input [(ngModel)]="privateListingModel.is_active"
+									       class="custom-control-input"
+									       id="is_active" name="is_active"
+									       type="checkbox">
+									<label class="custom-control-label" for="is_active">Deactivate/Activate
+										Private Listing Fee</label>
+								</div>
+							
+							</div>
+							<div class="form-group col-md-4"></div>
+							<div class="form-group col-md-2">
+								<button class="btn btn-primary btn-block">Update Private Listing
+									Fee
+								</button>
+							</div>
+						</div>
+					</form>
+				</fieldset>
+			</div><!-- col -->
+		</div><!-- row -->
+		<br/>
+		<div class="row">
+			<div class="col-lg-12 col-xl-12">
+				<fieldset class="form-fieldset">
+					<legend>Edit&nbsp;Highlighting Fee</legend>
+					<form #f="ngForm" (ngSubmit)="f.form.valid && saveHighLightAmount()" novalidate>
+						<div class="form-row">
+							<div class="form-group col-lg-5">
+								<label>Setting name:&nbsp;<span
+										class="tx-danger">*</span></label>
+								<input [(ngModel)]="highLightingModel.name" class="form-control"
+								       data-error="Subject field is required"
+								       id="name" name="name"
+								       placeholder="Please give the setting name"
+								       readonly
+								       required="" type="text">
+							</div>
+							<div class="form-group col-lg-7">
+								<label>Add highlighting fee:&nbsp;<span
+										class="tx-danger">*</span></label>
+								<input [(ngModel)]="highLightingModel.value"
+								       autocomplete="off" class="form-control"
+								       data-error="Subject field is required" id="value"
+								       min="10"
+								       name="value"
+								       placeholder="Place give the setting value" type="number">
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<div class="custom-control custom-switch">
+									<input [(ngModel)]="highLightingModel.is_active"
+									       class="custom-control-input"
+									       id="is_active" name="is_active"
+									       type="checkbox">
+									<label class="custom-control-label" for="is_active">Deactivate/Activate
+										Highlighting Fee</label>
+								</div>
+							
+							</div>
+							<div class="form-group col-md-4"></div>
+							<div class="form-group col-md-2">
+								<button class="btn btn-primary btn-block">Update Highlighting Fee
+								</button>
+							</div>
+						</div>
+					</form>
+				</fieldset>
+			</div><!-- col -->
+		</div><!-- row -->
+		<br/>
+		<div class="row">
+			<div class="col-lg-12 col-xl-12">
+				<fieldset class="form-fieldset">
+					<legend>Edit&nbsp;Featuring Fee</legend>
+					<form #f="ngForm" (ngSubmit)="f.form.valid && saveFeaturing()" novalidate>
+						<div class="form-row">
+							<div class="form-group col-lg-5">
+								<label>Setting name:&nbsp;<span
+										class="tx-danger">*</span></label>
+								<input [(ngModel)]="featuringModel.name" class="form-control"
+								       data-error="Subject field is required"
+								       id="name" name="name"
+								       placeholder="Please give the setting name"
+								       readonly
+								       required="" type="text">
+							</div>
+							<div class="form-group col-lg-7">
+								<label>Add featuring fee:&nbsp;<span
+										class="tx-danger">*</span></label>
+								<input [(ngModel)]="featuringModel.value"
+								       autocomplete="off" class="form-control"
+								       data-error="Subject field is required" id="description"
+								       min="10"
+								       name="description"
+								       placeholder="Place give the setting value" type="number">
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<div class="custom-control custom-switch">
+									<input [(ngModel)]="featuringModel.value"
+									       class="custom-control-input"
+									       id="is_active" name="is_active"
+									       type="checkbox">
+									<label class="custom-control-label" for="is_active">Deactivate/Activate
+										Featuring Fee</label>
+								</div>
+							
+							</div>
+							<div class="form-group col-md-4"></div>
+							<div class="form-group col-md-2">
+								<button class="btn btn-primary btn-block">Update Featuring Fee
+								</button>
+							</div>
+						</div>
+					</form>
+				</fieldset>
+			</div><!-- col -->
+		</div><!-- row -->
+		<br/>
+		<div class="row">
+			<div class="col-lg-12 col-xl-12">
+				<fieldset class="form-fieldset">
+					<legend>Edit&nbsp;Listing Fee</legend>
+					<form #f="ngForm" (ngSubmit)="f.form.valid && saveListing()" novalidate>
+						<div class="form-row">
+							<div class="form-group col-lg-5">
+								<label>Setting name:&nbsp;<span
+										class="tx-danger">*</span></label>
+								<input [(ngModel)]="listingModel.name" class="form-control"
+								       data-error="Subject field is required"
+								       id="name" name="name"
+								       placeholder="Please give the setting name"
+								       readonly
+								       required="" type="text">
+							</div>
+							<div class="form-group col-lg-7">
+								<label>Add Lisiting fee:&nbsp;<span
+										class="tx-danger">*</span></label>
+								<input [(ngModel)]="listingModel.value"
+								       autocomplete="off" class="form-control"
+								       data-error="Subject field is required" id="description"
+								       min="10"
+								       name="description"
+								       placeholder="Place give the setting value" type="number">
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<div class="custom-control custom-switch">
+									<input [(ngModel)]="listingModel.value"
+									       class="custom-control-input"
+									       id="is_active" name="is_active"
+									       type="checkbox">
+									<label class="custom-control-label" for="is_active">Deactivate/Activate
+										Listing Fee</label>
+								</div>
+							
+							</div>
+							<div class="form-group col-md-4"></div>
+							<div class="form-group col-md-2">
+								<button class="btn btn-primary btn-block">Update Listing Fee
+								</button>
+							</div>
+						</div>
+					</form>
+				</fieldset>
+			</div><!-- col -->
+		</div><!-- row -->
+		<br/>
+		<div class="row">
+			<div class="col-lg-12 col-xl-12">
+				<fieldset class="form-fieldset">
+					<legend>Edit&nbsp;Handling Fee Percentage</legend>
+					<form #f="ngForm" (ngSubmit)="f.form.valid " novalidate>
+						<div class="form-row">
+							<div class="form-group col-lg-5">
+								<label>Setting name:&nbsp;<span
+										class="tx-danger">*</span></label>
+								<input [(ngModel)]="handlingFeeModel.name" class="form-control"
+								       data-error="Subject field is required"
+								       id="name" name="name"
+								       placeholder="Please give the setting name"
+								       readonly
+								       required="" type="text">
+							</div>
+							<div class="form-group col-lg-7">
+								<label>Add handling fee percentage:&nbsp;<span
+										class="tx-danger">*</span></label>
+								<input [(ngModel)]="handlingFeeModel.value"
+								       autocomplete="off" class="form-control"
+								       data-error="Subject field is required" id="description"
+								       min="5"
+								       name="description"
+								       placeholder="Place give the setting value" type="number">
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<div class="custom-control custom-switch">
+									<input [(ngModel)]="handlingFeeModel.value"
+									       class="custom-control-input"
+									       id="is_active" name="is_active"
+									       type="checkbox">
+									<label class="custom-control-label" for="is_active">Deactivate/Activate
+										Handling Fee Percentage</label>
+								</div>
+							
+							</div>
+							<div class="form-group col-md-2"></div>
+							<div class="form-group col-md-4">
+								<button class="btn btn-primary btn-block">Update Handling Fee
+									Percentage
+								</button>
+							</div>
+						</div>
+					</form>
+				</fieldset>
+			</div><!-- col -->
+		</div><!-- row -->
+		<br/>
+		<div class="row">
+			<div class="col-lg-12 col-xl-12">
+				<fieldset class="form-fieldset">
+					<legend>Edit&nbsp;Number of support hours</legend>
+					<form #f="ngForm" (ngSubmit)="f.form.valid && saveSupportHour()" novalidate>
+						<div class="form-row">
+							<div class="form-group col-lg-5">
+								<label>Setting name:&nbsp;<span
+										class="tx-danger">*</span></label>
+								<input [(ngModel)]="supportHoursModel.name" class="form-control"
+								       data-error="Subject field is required"
+								       id="name" name="name"
+								       placeholder="Please give the setting name"
+								       readonly
+								       required="" type="text">
+							</div>
+							<div class="form-group col-lg-7">
+								<label>Add support hours:&nbsp;<span
+										class="tx-danger">*</span></label>
+								<input [(ngModel)]="supportHoursModel.value"
+								       autocomplete="off" class="form-control"
+								       data-error="Subject field is required" id="description"
+								       min="5"
+								       name="description"
+								       placeholder="Place give the setting value" type="number">
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<div class="custom-control custom-switch">
+									<input [(ngModel)]="supportHoursModel.value"
+									       class="custom-control-input"
+									       id="is_active" name="is_active"
+									       type="checkbox">
+									<label class="custom-control-label" for="is_active">Deactivate/Activate
+										Support hours</label>
+								</div>
+							
+							</div>
+							<div class="form-group col-md-4"></div>
+							<div class="form-group col-md-2">
+								<button class="btn btn-primary btn-block">Update support hours
+								</button>
+							</div>
+						</div>
+					</form>
+				</fieldset>
+			</div><!-- col -->
+		</div><!-- row -->
+	</div><!-- container -->
 </div><!-- content -->
 

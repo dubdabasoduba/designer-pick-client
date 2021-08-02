@@ -6,9 +6,9 @@
 import {DefaultModel} from './default.model';
 
 export class ContestStageModel extends DefaultModel {
-    name: string;
-    description: string;
-    main: any;
-    contestStage: string;
-    contestStageId: string;
+	name: string;
+	description: string;
+	main: any;
+	contestStage: string;
+	contestStageId: string;
 }

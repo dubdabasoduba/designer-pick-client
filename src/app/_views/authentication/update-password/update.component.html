@@ -1,0 +1,58 @@
+<!--
+  ~ Copyright (c) 2019. The content in this file is Protected by the copyright laws of kenya and owned by Re.Kast Limited.
+  ~ Reproducing it in any way or using it without permission from Re.Kast Limited will be a violation of kenyan copyrights law.
+  ~ This may be subject to prosecution according to the kenyan law
+  -->
+<app-navigation></app-navigation>
+<div class="content content-fixed content-auth">
+	<div class="container">
+		<div class="media align-items-stretch justify-content-center ht-100p pos-relative">
+			<div class="sign-in-wrapper mg-lg-r-50 mg-xl-r-60">
+				<div class="pd-t-20 wd-100p">
+					<h4 class="tx-color-01 mg-b-5">Reset Password</h4>
+					<p class="tx-color-03 tx-16 mg-b-40">Welcome back! Please update your password
+						to continue using the service.</p>
+					<app-alert></app-alert>
+					<form #f="ngForm" (ngSubmit)="f.form.valid && updatePassword()"
+					      id="updatePassword" novalidate>
+						<div class="form-group">
+							<div class="d-flex justify-content-between mg-b-5">
+								<label class="mg-b-0-f">Password:&nbsp;<span
+										class="tx-danger">*</span></label>
+							</div>
+							<input [(ngModel)]="model.password" autocomplete="off"
+							       class="form-control" data-error="Password field is required"
+							       id="password" name="password"
+							       placeholder="Enter new password" required="" type="password">
+						</div>
+						<div class="form-group">
+							<div class="d-flex justify-content-between mg-b-5">
+								<label class="mg-b-0-f">Confirm Password:&nbsp;<span
+										class="tx-danger">*</span></label>
+							</div>
+							<input [(ngModel)]="model.confirmPassword" class="form-control"
+							       data-error="Confirm password field is required"
+							       id="confirmPassword" name="confirmPassword"
+							       placeholder="Confirm new Password"
+							       required="" type="password">
+						</div>
+						<button class="btn btn-brand-02 btn-block" id="updatePasswordButton"
+						        type="submit">Reset password
+						</button>
+					</form>
+					<div class="tx-13 mg-t-20 tx-center">Don't have an account? <a
+							routerLink="/sign-up">&nbsp;Sign Up</a></div>
+					<div class="tx-13 mg-t-20 tx-center">Already have an account? <a
+							routerLink="/sign-in">&nbsp;Sign
+						In</a></div>
+				</div>
+			</div><!-- sign-wrapper -->
+			<div class="media-body align-items-center d-none d-lg-flex">
+				<div class="mx-wd-600">
+					<img alt="" class="img-fluid" src="../../../../assets/images/img15.png">
+				</div>
+			</div>
+		</div><!-- media -->
+	</div><!-- container -->
+</div>
+

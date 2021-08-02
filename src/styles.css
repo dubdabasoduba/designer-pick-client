@@ -45,11 +45,11 @@ body {
 }
 
 a {
-    color: #67b0d1;
+    color: #CC66CC;
 }
 
 a:hover {
-    color: #8ec4dd;
+    color: #ac39ac;
     text-decoration: none;
 }
 
@@ -68,7 +68,7 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 50px;
     right: 15px;
     bottom: 15px;
-    background: #67b0d1;
+    background: #004d99;
     color: #fff;
     transition: display 0.5s ease-in-out;
     z-index: 99999;
@@ -83,7 +83,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .back-to-top:hover {
     color: #fff;
-    background: #86c0da;
+    background: #0066cc;
     transition: background 0.2s ease-in-out;
 }
 
@@ -158,7 +158,7 @@ h1, h2, h3, h4, h5, h6 {
 .nav-menu a {
     display: block;
     position: relative;
-    color: #2f4d5a;
+    color: #004d99;
     padding: 20px 15px;
     transition: 0.3s;
     font-size: 13px;
@@ -218,7 +218,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-menu .drop-down ul a:hover, .nav-menu .drop-down ul .active > a, .nav-menu .drop-down ul li:hover > a {
-    color: #67b0d1;
+    color: #0066cc;
 }
 
 .nav-menu .drop-down > a:after {
@@ -308,14 +308,14 @@ h1, h2, h3, h4, h5, h6 {
 .mobile-nav a {
     display: block;
     position: relative;
-    color: #2f4d5a;
+    color: #004d99;
     padding: 10px 20px;
     font-weight: 500;
     outline: none;
 }
 
 .mobile-nav a:hover, .mobile-nav .active > a, .mobile-nav li:hover > a {
-    color: #67b0d1;
+    color: #0066cc;
     text-decoration: none;
 }
 
@@ -498,7 +498,7 @@ section {
     font-weight: bold;
     position: relative;
     margin-bottom: 30px;
-    color: #2f4d5a;
+    color: #004d99;
     z-index: 2;
 }
 
@@ -510,7 +510,7 @@ section {
     transform: translate(-50%, -50%);
     width: 122px;
     height: 66px;
-    background: url(assets/img/section-title-bg.png) no-repeat;
+    background: url(assets/images/section-title-bg.png) no-repeat;
     z-index: -1;
 }
 
@@ -570,7 +570,7 @@ section {
 # About
 --------------------------------------------------------------*/
 .about {
-    background: url("assets/img/about-bg.jpg") center center no-repeat;
+    background: url("assets/images/about-bg.jpg") center center no-repeat;
     background-size: cover;
     padding: 60px 0;
     position: relative;
@@ -599,7 +599,7 @@ section {
 .about .content h3 {
     font-weight: 700;
     font-size: 34px;
-    color: #2f4d5a;
+    color: #004d99;
     margin-bottom: 30px;
 }
 
@@ -609,10 +609,10 @@ section {
 
 .about .content .about-btn {
     display: inline-block;
-    background: #67b0d1;
+    background: #0066cc;
     padding: 6px 44px 8px 30px;
     color: #fff;
-    border-radius: 50px;
+    border-radius: 5px;
     transition: 0.3s;
     position: relative;
 }
@@ -625,7 +625,7 @@ section {
 }
 
 .about .content .about-btn:hover {
-    background: #7bbad7;
+    background: #172fff;
 }
 
 .about .icon-boxes .icon-box {
@@ -634,7 +634,7 @@ section {
 
 .about .icon-boxes .icon-box i {
     font-size: 40px;
-    color: #67b0d1;
+    color: #0066cc;
     margin-bottom: 10px;
 }
 
@@ -688,7 +688,7 @@ section {
 }
 
 .services .icon-box:hover::before {
-    background: #67b0d1;
+    background: #0066cc;
     top: 0;
     border-radius: 0px;
 }
@@ -700,7 +700,7 @@ section {
 .services .icon i {
     font-size: 48px;
     line-height: 1;
-    color: #67b0d1;
+    color: #0066cc;
     transition: all 0.3s ease-in-out;
 }
 
@@ -743,7 +743,7 @@ section {
 .counts .count-box i {
     display: block;
     font-size: 44px;
-    color: #67b0d1;
+    color: #0066cc;
     float: left;
 }
 
@@ -752,7 +752,7 @@ section {
     line-height: 40px;
     display: block;
     font-weight: 700;
-    color: #2f4d5a;
+    color: #004d99;
     margin-left: 60px;
 }
 
@@ -761,28 +761,28 @@ section {
     margin: 0 0 0 60px;
     font-family: "Raleway", sans-serif;
     font-size: 14px;
-    color: #49788c;
+    color: #004080;
 }
 
 .counts .count-box a {
     font-weight: 600;
     display: block;
     margin-top: 20px;
-    color: #49788c;
+    color: #004080;
     font-size: 15px;
     font-family: "Poppins", sans-serif;
     transition: ease-in-out 0.3s;
 }
 
 .counts .count-box a:hover {
-    color: #6e9fb4;
+    color: #172fff;
 }
 
 /*--------------------------------------------------------------
 # Cta
 --------------------------------------------------------------*/
 .cta {
-    background: linear-gradient(rgba(103, 176, 209, 0.8), rgba(103, 176, 209, 0.8)), url("assets/img/cta-bg.jpg") fixed center center;
+    background: linear-gradient(rgba(103, 176, 209, 0.8), rgba(103, 176, 209, 0.8)), url("assets/images/cta-bg.jpg") fixed center center;
     background-size: cover;
     padding: 60px 0;
 }
@@ -805,7 +805,7 @@ section {
     letter-spacing: 1px;
     display: inline-block;
     padding: 8px 28px;
-    border-radius: 25px;
+    border-radius: 5px;
     transition: 0.5s;
     margin-top: 10px;
     border: 2px solid rgba(255, 255, 255, 0.5);
@@ -841,13 +841,13 @@ section {
     font-weight: 600;
     line-height: 1;
     text-transform: uppercase;
-    color: #2f4d5a;
+    color: #004d99;
     margin-bottom: 5px;
     transition: all 0.3s ease-in-out;
 }
 
 .portfolio #portfolio-flters li:hover, .portfolio #portfolio-flters li.filter-active {
-    color: #67b0d1;
+    color: #0066cc;
 }
 
 .portfolio #portfolio-flters li:last-child {
@@ -900,7 +900,7 @@ section {
 }
 
 .portfolio .portfolio-wrap .portfolio-links a + a {
-    border-left: 1px solid #8ec4dd;
+    border-left: 1px solid #172fff;
 }
 
 .portfolio .portfolio-wrap:hover::before {
@@ -947,7 +947,7 @@ section {
 }
 
 .portfolio-details .portfolio-details-carousel .owl-dot.active {
-    background-color: #67b0d1 !important;
+    background-color: #0066cc !important;
 }
 
 .portfolio-details .portfolio-info {
@@ -1088,7 +1088,7 @@ section {
 }
 
 .testimonials .owl-dot.active {
-    background-color: #67b0d1 !important;
+    background-color: #0066cc !important;
 }
 
 @media (max-width: 767px) {
@@ -1117,7 +1117,7 @@ section {
     right: 20px;
     background: #fff;
     padding: 20px 0;
-    color: #2f4d5a;
+    color: #004d99;
     box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
     max-height: 95px;
     overflow: hidden;
@@ -1132,7 +1132,7 @@ section {
     font-weight: 700;
     margin-bottom: 10px;
     font-size: 16px;
-    color: #2f4d5a;
+    color: #004d99;
     position: relative;
     padding-bottom: 10px;
 }
@@ -1164,7 +1164,7 @@ section {
 }
 
 .team .member .social a:hover {
-    color: #67b0d1;
+    color: #0066cc;
 }
 
 .team .member .social i {
@@ -1195,7 +1195,7 @@ section {
 
 .contact .info-box i {
     font-size: 32px;
-    color: #67b0d1;
+    color: #0066cc;
     border-radius: 50%;
     padding: 8px;
     border: 2px dotted #f0f7fa;
@@ -1278,7 +1278,7 @@ section {
 }
 
 .contact .php-email-form input:focus, .contact .php-email-form textarea:focus {
-    background-color: #67b0d1;
+    background-color: #0066cc;
 }
 
 .contact .php-email-form input {
@@ -1290,15 +1290,16 @@ section {
 }
 
 .contact .php-email-form button[type="submit"] {
-    background: #67b0d1;
+    background: #0066cc;
     border: 0;
     padding: 10px 24px;
+    border-radius: 5px;
     color: #fff;
     transition: 0.4s;
 }
 
 .contact .php-email-form button[type="submit"]:hover {
-    background: #8ec4dd;
+    background: #1790ff;
 }
 
 @-webkit-keyframes animate-loading {
@@ -1323,7 +1324,7 @@ section {
 # Footer
 --------------------------------------------------------------*/
 #footer {
-    background: #263f49;
+    background: #0066cc;
     padding: 0 0 30px 0;
     color: #fff;
     font-size: 14px;
@@ -1337,8 +1338,8 @@ section {
     margin-top: -90px;
     margin-bottom: 15px;
     background: white;
-    color: #2f4d5a;
-    border-top: 4px solid #67b0d1;
+    color: #000000;
+    border-top: 4px solid #004d99;
     text-align: center;
     padding: 30px 20px;
 }
@@ -1361,7 +1362,7 @@ section {
 #footer .footer-top .social-links a {
     font-size: 18px;
     display: inline-block;
-    background: #2f4d5a;
+    background: #004d99;
     color: #fff;
     line-height: 1;
     padding: 8px 0;
@@ -1374,7 +1375,7 @@ section {
 }
 
 #footer .footer-top .social-links a:hover {
-    background: #67b0d1;
+    background: #0066cc;
     color: #fff;
     text-decoration: none;
 }
@@ -1399,7 +1400,7 @@ section {
 
 #footer .footer-top .footer-links ul i {
     padding-right: 2px;
-    color: #b5d9e9;
+    color: #004d99;
     font-size: 18px;
     line-height: 1;
 }
@@ -1422,7 +1423,7 @@ section {
 }
 
 #footer .footer-top .footer-links ul a:hover {
-    color: #a2cfe3;
+    color: #004080;
 }
 
 #footer .footer-top .footer-newsletter form {
@@ -1448,18 +1449,18 @@ section {
     background: none;
     font-size: 16px;
     padding: 0 20px;
-    background: #67b0d1;
+    background: #004d99;
     color: #fff;
     transition: 0.3s;
     border-radius: 4px;
 }
 
 #footer .footer-top .footer-newsletter form input[type="submit"]:hover {
-    background: #409cc5;
+    background: #0066cc;
 }
 
 #footer .copyright {
-    border-top: 1px solid #385b6b;
+    border-top: 1px solid #004d99;
     text-align: center;
     padding-top: 30px;
 }
@@ -1470,6 +1471,19 @@ section {
     font-size: 13px;
     color: #fff;
 }
+
+#footer .credits a {
+    color: #ffffff;
+}
+
+#footer .credits a:hover {
+    color: #004d99;
+}
+
+#footer .credits a:focus {
+    color: #004d99;
+}
+
 
 @media (max-width: 575px) {
     #footer .footer-top .footer-info {
@@ -1482,7 +1496,7 @@ section {
 --------------------------------------------------------------------------*/
 
 .thead-dark {
-    background-color: #263f49 !important;
+    background-color: #0066cc !important;
 }
 
 /*------------------------------------------------------------------------

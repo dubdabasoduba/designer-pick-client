@@ -14,54 +14,54 @@ import {environment} from '../../environments/environment';
 
 @Injectable()
 export class RequestInterceptor implements HttpInterceptor {
-
-    constructor(public authService: AuthenticationService) {
-    }
-
-    /**
-     * @desc Intercepts the http request and adds in the authorization headers for the server
-     * @param request {@link HttpRequest<any>}
-     * @param next
-     * @return request with headers
-     * @author dubdabasoduba
-     */
-    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        if (this.authService.getCurrentUser() && this.authService.getToken()) {
-            let httpRequest = null;
-            httpRequest = this.attachTokens(httpRequest, request, environment.apiKey);
-            return next.handle(httpRequest);
-        } else {
-            const httpRequest = request.clone({setHeaders: {Authorization: environment.apiKey}});
-            return next.handle(httpRequest);
-        }
-    }
-
-    /**
-     * Attaches the auth tokens to allow the CRUD functions to run.
-     * @param httpRequest {@link Object}
-     * @param request {@link Request}
-     * @param apiKey {@link String}
-     * @author dubdabasoduba
-     */
-    private attachTokens(httpRequest, request: HttpRequest<any>, apiKey: string) {
-        httpRequest = request.clone({
-            setHeaders: {
-                Authorization: "Bearer " + this.authService.getToken() + apiKey
-            }
-        });
-        this.setCurrentUser(httpRequest);
-        return httpRequest;
-    }
-
-    /**
-     * Sets the currently logged in user id to request body
-     * @param httpRequest {@link Object}
-     * @author dubdabasoduba
-     */
-    private setCurrentUser(httpRequest) {
-        if (httpRequest.body !== null) {
-            httpRequest.body.currentUser = this.authService.getCurrentUser().user.uuid;
-        }
-    }
+	
+	constructor(public authService: AuthenticationService) {
+	}
+	
+	/**
+	 * @desc Intercepts the http request and adds in the authorization headers for the server
+	 * @param request {@link HttpRequest<any>}
+	 * @param next
+	 * @return request with headers
+	 * @author dubdabasoduba
+	 */
+	intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+		if (this.authService.getCurrentUser() && this.authService.getToken()) {
+			let httpRequest = null;
+			httpRequest = this.attachTokens(httpRequest, request, environment.apiKey);
+			return next.handle(httpRequest);
+		} else {
+			const httpRequest = request.clone({setHeaders: {Authorization: environment.apiKey}});
+			return next.handle(httpRequest);
+		}
+	}
+	
+	/**
+	 * Attaches the authentication tokens to allow the CRUD functions to run.
+	 * @param httpRequest {@link Object}
+	 * @param request {@link Request}
+	 * @param apiKey {@link String}
+	 * @author dubdabasoduba
+	 */
+	private attachTokens(httpRequest, request: HttpRequest<any>, apiKey: string) {
+		httpRequest = request.clone({
+			setHeaders: {
+				Authorization: "Bearer " + this.authService.getToken() + apiKey
+			}
+		});
+		this.setCurrentUser(httpRequest);
+		return httpRequest;
+	}
+	
+	/**
+	 * Sets the currently logged in user id to request body
+	 * @param httpRequest {@link Object}
+	 * @author dubdabasoduba
+	 */
+	private setCurrentUser(httpRequest) {
+		if (httpRequest.body !== null) {
+			httpRequest.body.currentUser = this.authService.getCurrentUser().user.uuid;
+		}
+	}
 }
 

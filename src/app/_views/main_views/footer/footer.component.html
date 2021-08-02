@@ -1,0 +1,82 @@
+<!-- ======= Footer ======= -->
+<footer id="footer">
+	<div class="footer-top">
+		<div class="container">
+			<div class="row">
+				
+				<div class="col-lg-4 col-md-6">
+					<div class="footer-info" data-aos="fade-up" data-aos-delay="50">
+						<h3>Logo247 Designs</h3>
+						<p class="pb-3"><em>If you have any questions or need help, please fill out
+							the form below. We do our best to respond within 1 business day.</em>
+						</p>
+						<p>
+							Kwa Vonza <br>
+							Kitui, Kenya<br><br>
+							<strong>Phone:</strong> +254 725 319 340<br>
+							<strong>Email:</strong> contact@logo247designs.com<br>
+						</p>
+						<div class="social-links mt-3">
+							<a class="twitter" href="#"><i class="bx bxl-twitter"></i></a>
+							<a class="facebook" href="#"><i class="bx bxl-facebook"></i></a>
+							<a class="instagram" href="#"><i class="bx bxl-instagram"></i></a>
+							<a class="google-plus" href="#"><i class="bx bxl-skype"></i></a>
+							<a class="linkedin" href="#"><i class="bx bxl-linkedin"></i></a>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-lg-2 col-md-6 footer-links" data-aos="fade-up" data-aos-delay="150">
+					<h4>Site map</h4>
+					<ul>
+						<li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+						<li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+						<li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+						<li><i class="bx bx-chevron-right"></i> <a
+								routerLink="how-it-works/terms-of-service">Terms of service</a>
+						</li>
+						<li><i class="bx bx-chevron-right"></i> <a
+								routerLink="how-it-works/privacy-policy">Privacy policy</a></li>
+					</ul>
+				</div>
+				
+				<div class="col-lg-2 col-md-6 footer-links" data-aos="fade-up" data-aos-delay="250">
+					<h4>Important Links</h4>
+					<ul>
+						<li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
+						<li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+						<li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a>
+						</li>
+						<li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+						<li><i class="bx bx-chevron-right"></i> <a routerLink="how-it-works/faqs">Frequently
+							Asked Questions</a></li>
+					</ul>
+				</div>
+				
+				<div class="col-lg-4 col-md-6 footer-newsletter" data-aos="fade-up"
+				     data-aos-delay="350">
+					<h4>Our Newsletter</h4>
+					<p>Please feel free to subscribe to our news letter in order to get frequent
+						updates</p>
+					<form #f="ngForm" (ngSubmit)="f.form.valid && subscribeNewsLetter()" novalidate>
+						<input [(ngModel)]="model.email" id="email" name="email" required="required"
+						       type="email"/><input
+							type="submit" value="Subscribe"/>
+					</form>
+					<app-alert></app-alert>
+				</div>
+			
+			</div>
+		</div>
+	</div>
+	
+	<div class="container">
+		<div class="copyright">
+			&copy;&nbsp;Copyright <strong><span>Logo247 Designs</span></strong>. All Rights Reserved
+		</div>
+		<div class="credits">
+			Designed by <a href="https://api-crafttech.com/" target="_blank"><b>Api-Craft
+			Technology</b></a>
+		</div>
+	</div>
+</footer><!-- End Footer -->

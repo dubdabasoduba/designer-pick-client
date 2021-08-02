@@ -9,23 +9,23 @@ import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {CategoriesComponent} from './categories.component';
 
 describe('IndustryComponent', () => {
-    let component: CategoriesComponent;
-    let fixture: ComponentFixture<CategoriesComponent>;
-
-    beforeEach(waitForAsync(() => {
-        TestBed.configureTestingModule({
-            declarations: [CategoriesComponent]
-        })
-            .compileComponents();
-    }));
-
-    beforeEach(() => {
-        fixture = TestBed.createComponent(CategoriesComponent);
-        component = fixture.componentInstance;
-        fixture.detectChanges();
-    });
-
-    it('should be created', () => {
-        expect(component).toBeTruthy();
-    });
+	let component: CategoriesComponent;
+	let fixture: ComponentFixture<CategoriesComponent>;
+	
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+				declarations: [CategoriesComponent]
+			})
+			.compileComponents();
+	}));
+	
+	beforeEach(() => {
+		fixture = TestBed.createComponent(CategoriesComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
+	
+	it('should be created', () => {
+		expect(component).toBeTruthy();
+	});
 });

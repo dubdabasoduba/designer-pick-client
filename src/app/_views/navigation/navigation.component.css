@@ -3,65 +3,6 @@
  * Reproducing it in any way or using it without permission from Re.Kast Limited will be a violation of kenyan copyrights law.
  * This may be subject to prosecution according to the kenyan law
  */
-
-.rekast-search {
-    width: 700px !important;
-    margin-top: 20px !important;
-}
-
-.sidebar-style {
-    margin-top: 20% !important;
-}
-
-#basic-addon1 {
-    color: #FFFFFF;
-    margin: 0 !important;
-    border-radius: 0 2px 2px 0 !important;
-}
-
-#search {
-    border-radius: 2px 0 0 2px !important;
-}
-
-a {
-    font-weight: normal !important;
-}
-
-#setting-dropdown li:hover {
-    background-color: #EB977A !important;
-}
-
-#setting-dropdown li:hover > a {
-    color: #FFFFFF !important;
-}
-
-.btn-primary-salmon, .sweet-alert button.confirm, .wizard > .actions a {
-    background-color: #EB977A !important;
-    border: 1px solid #eba07a !important;
-    border-radius: 5px;
-    color: #FFFFFF !important;
-    cursor: pointer;
-    transition: all ease-in 0.3s;
-}
-
-.btn-primary-salmon:focus, .sweet-alert button.confirm, .wizard > .actions a:focus {
-    background-color: #eb847a !important;
-    border: 1px solid #EB977A !important;
-    border-radius: 5px;
-    color: #FFFFFF !important;
-    cursor: pointer;
-    transition: all ease-in 0.3s;
-}
-
-.btn-primary-salmon:hover, .sweet-alert button.confirm, .wizard > .actions a:hover {
-    background-color: #eb847a !important;
-    border: 1px solid #EB977A !important;
-    border-radius: 5px;
-    color: #FFFFFF !important;
-    cursor: pointer;
-    transition: all ease-in 0.3s;
-}
-
 .btn-primary-blue, .sweet-alert button.confirm, .wizard > .actions a {
     background-color: #1769ff !important;
     border: 1px solid #1790ff !important;
@@ -91,11 +32,19 @@ a {
 
 #get_started {
     display: inline-block;
-    background: #67b0d1;
+    background-color: #004d99;
     padding: 6px 20px 6px 20px;
     color: #ffffff;
-    border-radius: 50px !important;
+    border-radius: 5px !important;
     transition: 0.3s;
     position: relative;
-    border-color: #67b0d1;
+    border-color: #1769ff;
+}
+
+#get_started:hover {
+    background-color: #172fff;
+}
+
+.nav .navbar-menu li {
+
 }
