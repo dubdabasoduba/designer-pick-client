@@ -26,3 +26,4 @@ export * from './admin_services/logo_uses/logo-uses.service';
 export * from './main_views/footer/footer.service';
 export * from './admin_services/news_letters/news-letters-subscriptions.service';
 export * from './admin_services/logo_briefs/logo-briefs.service';
+export * from './paypal/email/paypal-email.service'
