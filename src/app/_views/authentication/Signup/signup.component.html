@@ -35,7 +35,7 @@
 							<div class="form-group col-md-4">
 								<label>Is Paypal Email?:&nbsp;<span
 										class="tx-danger">*</span></label>
-								<select [(ngModel)]="model.paypal_use"
+								<select [(ngModel)]="model.paypal_use" (change)="isPayPalEmail($event)"
 								        class="form-control" class="custom-select form-control"
 								        id="paypal_use"
 								        name="paypal_use" title="Select user type">
@@ -44,7 +44,7 @@
 									<option value="0">No</option>
 								</select>
 							</div>
-							<div class="form-group col-md-12">
+							<div class="form-group col-md-12" *ngIf="showPayPalEmail">
 								<label>Paypal Email address:&nbsp;<span class="tx-danger">*</span></label>
 								<input #email="ngModel" [(ngModel)]="model.paypal_email"
 								       autocomplete="off" class="form-control"

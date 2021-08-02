@@ -22,8 +22,4 @@ export class UserService {
 	createUser(user: UserModel) {
 		return this.http.post(appConstants.baseApiV1Url + '/authentication/register', user);
 	}
-	
-	claim(user) {
-		return this.http.post(appConstants.baseApiV1Url + '/authentication/register', user);
-	}
 }

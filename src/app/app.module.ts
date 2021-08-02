@@ -23,7 +23,7 @@ import {
 	LogoBriefsService,
 	LogoUsesService,
 	PagerService,
-	PaymentModesService,
+	PaymentModesService, PaypalEmailService,
 	PermissionsService,
 	PersonsService,
 	ProfileService,
@@ -165,7 +165,7 @@ import {LocationStrategy, PathLocationStrategy} from "@angular/common";
 		PermissionsGuard, AlertService, CategoryService, CountriesService, ProfileService,
 		PagerService, PermissionsService, ApiKeysService, ProfileService, ContactService,
 		CommissionsService, PaymentModesService, SettingsService, DiscountsService, ContestStagesService,
-		ContestsService, LogoUsesService, LogoBriefsService,
+		ContestsService, LogoUsesService, LogoBriefsService, PaypalEmailService,
 		{
 			provide: HTTP_INTERCEPTORS,
 			useClass: RequestInterceptor,

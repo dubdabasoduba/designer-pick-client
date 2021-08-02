@@ -6,8 +6,9 @@
 
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AlertService, UserService} from '../../../_services';
+import {AlertService, PaypalEmailService, UserService} from '../../../_services';
 import {AppCommons, appConstants} from '../../../_helpers';
+import {PaypalEmailModel} from "../../../_models";
 
 @Component({
 	selector: 'app-sign-up',
@@ -16,13 +17,12 @@ import {AppCommons, appConstants} from '../../../_helpers';
 })
 export class SignupComponent implements OnInit {
 	model: any = {};
-	loading = false;
+	showPayPalEmail = false;
+	private loading = false;
 	
 	constructor(
-		private route: ActivatedRoute,
-		private router: Router,
-		private userService: UserService,
-		private alertService: AlertService) {
+		private route: ActivatedRoute, private router: Router, private userService: UserService,
+		private alertService: AlertService, private payPalEmailService: PaypalEmailService) {
 	}
 	
 	ngOnInit() {
@@ -39,6 +39,10 @@ export class SignupComponent implements OnInit {
 			this.alertService.error('Username is required');
 		} else if (AppCommons.isStringEmpty(this.model.email)) {
 			this.alertService.error('Email Address is required');
+		} else if (AppCommons.isStringEmpty(this.model.paypal_use)) {
+			this.alertService.error('Please confirm if the email added it the paypal email address');
+		} else if ((AppCommons.isStringEmpty(this.model.paypal_use) || this.model.paypal_use == "0") && AppCommons.isStringEmpty(this.model.paypal_email)) {
+			this.alertService.error('Paypal Email Address is required');
 		} else if (AppCommons.isStringEmpty(this.model.password)) {
 			this.alertService.error('Password is required');
 		} else if (AppCommons.isStringEmpty(this.model.confirmPassword)) {
@@ -55,9 +59,11 @@ export class SignupComponent implements OnInit {
 			
 			this.userService.createUser(clientData).subscribe(
 				data => {
-					this.alertService.success(appConstants.registrationSuccessful, false);
-					this.loading = false;
-					this.router.navigate(['/sign-in']);
+					// @ts-ignore
+					if (!AppCommons.isObjectEmpty(data) && !AppCommons.isStringEmpty(data.uuid)) {
+						// @ts-ignore
+						this.savePayPalEmail(data.uuid, data.user_uuid)
+					}
 				},
 				error => {
 					this.alertService.error(error);
@@ -65,6 +71,32 @@ export class SignupComponent implements OnInit {
 				}
 			);
 		}
+	}
+	
+	savePayPalEmail(personUuid: string, userUuid: string) {
+		this.payPalEmailService.addPayPalEmail(this.generatePayPalEmail(personUuid, userUuid)).subscribe(
+			data => {
+				this.alertService.success(appConstants.registrationSuccessful, false);
+				this.loading = false;
+				this.router.navigate(['/sign-in']);
+			}, error => {
+				this.alertService.error(error.data);
+				this.loading = false;
+			}
+		)
+	}
+	
+	generatePayPalEmail(personUuid: string, userUuid: string) {
+		let payPalEmail = new PaypalEmailModel();
+		payPalEmail.email = this.model.paypal_use == "0" ? this.model.paypal_email : this.model.email;
+		payPalEmail.person = personUuid;
+		payPalEmail.created_by = userUuid;
+		return payPalEmail;
+	}
+	
+	isPayPalEmail(event: any) {
+		let isPayPalEmail = event.target.value;
+		this.showPayPalEmail = isPayPalEmail != null && !AppCommons.isStringEmpty(isPayPalEmail) && isPayPalEmail == "0";
 	}
 	
 	private setEmptyModel() {
