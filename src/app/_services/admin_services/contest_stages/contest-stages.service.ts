@@ -7,8 +7,8 @@
 import {Injectable} from '@angular/core';
 import {appConstants} from '../../../_helpers';
 import {HttpClient} from '@angular/common/http';
-import {ContestStageModel} from "../../../_models";
-import {Observable} from "rxjs";
+import {ContestStageModel} from '../../../_models';
+import {Observable} from 'rxjs';
 
 @Injectable()
 export class ContestStagesService {

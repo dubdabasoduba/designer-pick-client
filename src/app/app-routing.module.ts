@@ -21,39 +21,39 @@ import {ContactsComponent} from './_views/profile/contacts/contacts.component';
 import {NgModule} from '@angular/core';
 import {HowItWorksComponent} from './_views/main_views/how-it-works/how-it-works.component';
 import {UpdateUserComponent} from './_views/authentication/update-user/update-user.component';
-import {CountriesComponent} from "./_views/admin_pages/countries/countries.component";
-import {PermissionsComponent} from "./_views/admin_pages/permissions/permissions.component";
-import {RolesComponent} from "./_views/admin_pages/roles/roles/roles.component";
-import {ViewRolesComponent} from "./_views/admin_pages/roles/view-roles/view-roles.component";
-import {AddEditRolesComponent} from "./_views/admin_pages/roles/add-edit-roles/add-edit-roles.component";
-import {ApiKeysComponent} from "./_views/admin_pages/api-keys/api-keys.component";
-import {ViewUsersComponent} from "./_views/admin_pages/users/view-users/view-users.component";
-import {AssignUserRolesComponent} from "./_views/admin_pages/users/assign-user-roles/assign-user-roles.component";
-import {AddEditUsersComponent} from "./_views/admin_pages/users/add-edit-users/add-edit-users.component";
-import {UpdateCredentialsComponent} from "./_views/profile/update-credentials/update-credentials.component";
-import {ViewUserComponent} from "./_views/admin_pages/users/view-user/view-user.component";
-import {UserContactsComponent} from "./_views/admin_pages/users/user-contacts/user-contacts.component";
-import {HomeComponent} from "./_views/main_views/home/home.component";
-import {PaymentModesComponent} from "./_views/admin_pages/payment-modes/payment-modes.component";
-import {CommissionsComponent} from "./_views/admin_pages/commissions/commissions.component";
-import {SettingsComponent} from "./_views/admin_pages/settings/settings.component";
-import {ChatsComponent} from "./_views/profile/chats/chats.component";
-import {UpdateUserDetailsComponent} from "./_views/profile/update-user-details/update-user-details.component";
-import {DesignerProfileComponent} from "./_views/main_views/designers/designer-profile/designer-profile.component";
-import {DiscountsComponent} from "./_views/admin_pages/discounts/discounts.component";
-import {ProfileMainPageComponent} from "./_views/profile/profile-main-page/profile-main-page.component";
-import {AdminMainPageComponent} from "./_views/admin_pages/admin-main-page/admin-main-page.component";
-import {ContestStagesComponent} from "./_views/admin_pages/contest-stages/contest-stages.component";
-import {LogoUsesComponent} from "./_views/admin_pages/logo-uses/logo-uses.component";
-import {ViewSingleContestComponent} from "./_views/main_views/contests/view-single-contest/view-single-contest.component";
-import {AddContestsComponent} from "./_views/main_views/contests/add-contests/add-contests.component";
-import {FaqComponent} from "./_views/main_views/faq/faq.component";
-import {PolicyComponent} from "./_views/main_views/policy/policy.component";
-import {TosComponent} from "./_views/main_views/tos/tos.component";
-import {NewsLettersSubscriptionsComponent} from "./_views/admin_pages/news-letters-subscriptions/news-letters--subscriptions.component";
-import {ClientLiveContestsComponent} from "./_views/dashboards/clients-dashboard/client-live-contests/client-live-contests.component";
-import {ClientEndedContestsComponent} from "./_views/dashboards/clients-dashboard/client-ended-contests/client-ended-contests.component";
-import {ClientJudgingContestsComponent} from "./_views/dashboards/clients-dashboard/client-judging-contests/client-judging-contests.component";
+import {CountriesComponent} from './_views/admin_pages/countries/countries.component';
+import {PermissionsComponent} from './_views/admin_pages/permissions/permissions.component';
+import {RolesComponent} from './_views/admin_pages/roles/roles/roles.component';
+import {ViewRolesComponent} from './_views/admin_pages/roles/view-roles/view-roles.component';
+import {AddEditRolesComponent} from './_views/admin_pages/roles/add-edit-roles/add-edit-roles.component';
+import {ApiKeysComponent} from './_views/admin_pages/api-keys/api-keys.component';
+import {ViewUsersComponent} from './_views/admin_pages/users/view-users/view-users.component';
+import {AssignUserRolesComponent} from './_views/admin_pages/users/assign-user-roles/assign-user-roles.component';
+import {AddEditUsersComponent} from './_views/admin_pages/users/add-edit-users/add-edit-users.component';
+import {UpdateCredentialsComponent} from './_views/profile/update-credentials/update-credentials.component';
+import {ViewUserComponent} from './_views/admin_pages/users/view-user/view-user.component';
+import {UserContactsComponent} from './_views/admin_pages/users/user-contacts/user-contacts.component';
+import {HomeComponent} from './_views/main_views/home/home.component';
+import {PaymentModesComponent} from './_views/admin_pages/payment-modes/payment-modes.component';
+import {CommissionsComponent} from './_views/admin_pages/commissions/commissions.component';
+import {SettingsComponent} from './_views/admin_pages/settings/settings.component';
+import {ChatsComponent} from './_views/profile/chats/chats.component';
+import {UpdateUserDetailsComponent} from './_views/profile/update-user-details/update-user-details.component';
+import {DesignerProfileComponent} from './_views/main_views/designers/designer-profile/designer-profile.component';
+import {DiscountsComponent} from './_views/admin_pages/discounts/discounts.component';
+import {ProfileMainPageComponent} from './_views/profile/profile-main-page/profile-main-page.component';
+import {AdminMainPageComponent} from './_views/admin_pages/admin-main-page/admin-main-page.component';
+import {ContestStagesComponent} from './_views/admin_pages/contest-stages/contest-stages.component';
+import {LogoUsesComponent} from './_views/admin_pages/logo-uses/logo-uses.component';
+import {ViewSingleContestComponent} from './_views/main_views/contests/view-single-contest/view-single-contest.component';
+import {AddContestsComponent} from './_views/main_views/contests/add-contests/add-contests.component';
+import {FaqComponent} from './_views/main_views/faq/faq.component';
+import {PolicyComponent} from './_views/main_views/policy/policy.component';
+import {TosComponent} from './_views/main_views/tos/tos.component';
+import {NewsLettersSubscriptionsComponent} from './_views/admin_pages/news-letters-subscriptions/news-letters--subscriptions.component';
+import {ClientLiveContestsComponent} from './_views/dashboards/clients-dashboard/client-live-contests/client-live-contests.component';
+import {ClientEndedContestsComponent} from './_views/dashboards/clients-dashboard/client-ended-contests/client-ended-contests.component';
+import {ClientJudgingContestsComponent} from './_views/dashboards/clients-dashboard/client-judging-contests/client-judging-contests.component';
 
 const appRoutes: Routes = [
 	{path: '', component: HomeComponent, runGuardsAndResolvers: 'always'},
@@ -280,17 +280,17 @@ const appRoutes: Routes = [
 	},
 	{
 		path: 'users/assign-roles/:id/:userId', component: AssignUserRolesComponent,
-		canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: "always",
+		canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
 		data: {permission: [appConstants.readUser, appConstants.updateUser, appConstants.getAllRoles]}
 	},
 	{
 		path: 'users/contacts/:id/:contactId', component: UserContactsComponent,
-		canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: "always",
+		canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
 		data: {permission: [appConstants.readUser, appConstants.updateUser]}
 	},
 	{
 		path: 'users/contacts/:id', component: UserContactsComponent,
-		canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: "always",
+		canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
 		data: {permission: [appConstants.readUser, appConstants.updateUser]}
 	},
 	{

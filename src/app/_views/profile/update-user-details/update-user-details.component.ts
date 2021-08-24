@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {AppCommons, appConstants} from "../../../_helpers";
+import {AppCommons, appConstants} from '../../../_helpers';
 import {
 	AlertService,
 	AuthenticationService,
 	PersonsService,
 	ProfileService
-} from "../../../_services";
-import {ActivatedRoute, Router} from "@angular/router";
-import {PersonModel} from "../../../_models";
+} from '../../../_services';
+import {ActivatedRoute, Router} from '@angular/router';
+import {PersonModel} from '../../../_models';
 
 @Component({
 	selector: 'app-update-user-details',
@@ -115,7 +115,7 @@ export class UpdateUserDetailsComponent implements OnInit {
 			data => {
 				this.authenticationService.setForceUpdateState(false);
 				this.authenticationService.setName(this.model.name);
-				this.alertService.success("User details updated successfully");
+				this.alertService.success('User details updated successfully');
 				this.loading = false;
 			},
 			error => {

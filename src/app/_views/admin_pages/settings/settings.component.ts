@@ -5,15 +5,15 @@
  */
 
 import {Component, OnInit} from '@angular/core';
-import {CommissionsModel, ContestStageModel, SettingsModel} from "../../../_models";
+import {CommissionsModel, ContestStageModel, SettingsModel} from '../../../_models';
 import {
 	AlertService,
 	CommissionsService,
 	ContestStagesService,
 	SettingsService
-} from "../../../_services";
-import {ActivatedRoute, Router} from "@angular/router";
-import {AppCommons, appConstants} from "../../../_helpers";
+} from '../../../_services';
+import {ActivatedRoute, Router} from '@angular/router';
+import {AppCommons, appConstants} from '../../../_helpers';
 
 @Component({
 	selector: 'app-settings',
@@ -25,14 +25,14 @@ export class SettingsComponent implements OnInit {
 	public settings: Array<SettingsModel> = [];
 	public commissions: Array<CommissionsModel> = [];
 	public contestStages: Array<ContestStageModel> = [];
-	public commissionModel = {name: "", value: "", is_active: 1, uuid: "", setting_key: ""};
-	public contestStageModel = {name: "", value: "", is_active: 1, uuid: "", setting_key: ""};
-	public privateListingModel = {name: "", value: "", is_active: 1, uuid: "", setting_key: ""};
-	public highLightingModel = {name: "", value: "", is_active: 1, uuid: "", setting_key: ""};
-	public featuringModel = {name: "", value: "", is_active: 1, uuid: "", setting_key: ""};
-	public listingModel = {name: "", value: "", is_active: 1, uuid: "", setting_key: ""};
-	public handlingFeeModel = {name: "", value: "", is_active: 1, uuid: "", setting_key: ""};
-	public supportHoursModel = {name: "", value: "", is_active: 1, uuid: "", setting_key: ""};
+	public commissionModel = {name: '', value: '', is_active: 1, uuid: '', setting_key: ''};
+	public contestStageModel = {name: '', value: '', is_active: 1, uuid: '', setting_key: ''};
+	public privateListingModel = {name: '', value: '', is_active: 1, uuid: '', setting_key: ''};
+	public highLightingModel = {name: '', value: '', is_active: 1, uuid: '', setting_key: ''};
+	public featuringModel = {name: '', value: '', is_active: 1, uuid: '', setting_key: ''};
+	public listingModel = {name: '', value: '', is_active: 1, uuid: '', setting_key: ''};
+	public handlingFeeModel = {name: '', value: '', is_active: 1, uuid: '', setting_key: ''};
+	public supportHoursModel = {name: '', value: '', is_active: 1, uuid: '', setting_key: ''};
 	public countryId: string;
 	mySubscription: any;
 	setting = new SettingsModel();
@@ -46,7 +46,7 @@ export class SettingsComponent implements OnInit {
 	}
 	
 	private static createSettingsModel(model: { is_active: number; name: string; value: string; uuid: string; setting_key: string }) {
-		let setting = new SettingsModel();
+		const setting = new SettingsModel();
 		setting.uuid = model.uuid;
 		setting.setting_key = model.setting_key;
 		setting.is_active = model.is_active;
@@ -59,7 +59,7 @@ export class SettingsComponent implements OnInit {
 	}
 	
 	private static setModel(data: any, model: any) {
-		let setting_value = JSON.parse(data.setting_value);
+		const setting_value = JSON.parse(data.setting_value);
 		model.uuid = data.uuid;
 		model.setting_key = data.setting_key;
 		model.name = setting_value.settings.name;
@@ -75,49 +75,49 @@ export class SettingsComponent implements OnInit {
 	
 	saveCommissions() {
 		this.loading = false;
-		let model = this.commissionModel;
+		const model = this.commissionModel;
 		this.saveSettings(model);
 	}
 	
 	saveContestStage() {
 		this.loading = false;
-		let model = this.contestStageModel;
+		const model = this.contestStageModel;
 		this.saveSettings(model);
 	}
 	
 	savePrivateListing() {
 		this.loading = false;
-		let model = this.privateListingModel;
+		const model = this.privateListingModel;
 		this.saveSettings(model);
 	}
 	
 	saveHighLightAmount() {
 		this.loading = false;
-		let model = this.highLightingModel;
+		const model = this.highLightingModel;
 		this.saveSettings(model);
 	}
 	
 	saveListing() {
 		this.loading = false;
-		let model = this.listingModel;
+		const model = this.listingModel;
 		this.saveSettings(model);
 	}
 	
 	saveFeaturing() {
 		this.loading = false;
-		let model = this.featuringModel;
+		const model = this.featuringModel;
 		this.saveSettings(model);
 	}
 	
 	saveHandling() {
 		this.loading = false;
-		let model = this.handlingFeeModel;
+		const model = this.handlingFeeModel;
 		this.saveSettings(model);
 	}
 	
 	saveSupportHour() {
 		this.loading = false;
-		let model = this.supportHoursModel;
+		const model = this.supportHoursModel;
 		this.saveSettings(model);
 	}
 	
@@ -127,7 +127,7 @@ export class SettingsComponent implements OnInit {
 		} else if (model.is_active == undefined) {
 			this.alertService.error(appConstants.statusError);
 		} else if (model.value === appConstants.emptyEntry || model.value == undefined) {
-			this.alertService.error("The value is required");
+			this.alertService.error('The value is required');
 		} else {
 			if (AppCommons.isStringEmpty(model.uuid)) {
 				this.createSettings(model);
@@ -148,7 +148,7 @@ export class SettingsComponent implements OnInit {
 				this.alertService.error(error);
 				this.loading = false;
 			}
-		)
+		);
 	}
 	
 	private updateSettings(model: { is_active: number; name: string; value: string; uuid: string; setting_key: string }) {
@@ -162,7 +162,7 @@ export class SettingsComponent implements OnInit {
 				this.alertService.error(error);
 				this.loading = false;
 			}
-		)
+		);
 	}
 	
 	private getSettings() {
@@ -232,7 +232,7 @@ export class SettingsComponent implements OnInit {
 	private formatCommission(data: any) {
 		this.commissions = [];
 		for (let i = 0; i < data.length; i++) {
-			let commissionsModel = new CommissionsModel();
+			const commissionsModel = new CommissionsModel();
 			commissionsModel.name = data[i].name;
 			commissionsModel.percentage = data[i].percentage;
 			commissionsModel.uuid = data[i].uuid;

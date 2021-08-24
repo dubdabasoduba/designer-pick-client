@@ -20,13 +20,13 @@ export class NavigationComponent implements OnInit {
 	lbsUser: AuthenticatedUserModel;
 	title = appConstants.appTitle;
 	public model: any = {};
-	public defaultDropdownMainClass = "dropdown dropdown-profile"
-	public clickedDropdownMainClass = "dropdown dropdown-profile show"
-	public defaultDropdownElementsClass = "dropdown-menu dropdown-menu-right tx-13"
-	public clickedDropdownElementsClass = "dropdown-menu dropdown-menu-right tx-13 show"
-	is_staff: boolean = false;
-	is_client: boolean = false;
-	is_designer: boolean = false;
+	public defaultDropdownMainClass = 'dropdown dropdown-profile';
+	public clickedDropdownMainClass = 'dropdown dropdown-profile show';
+	public defaultDropdownElementsClass = 'dropdown-menu dropdown-menu-right tx-13';
+	public clickedDropdownElementsClass = 'dropdown-menu dropdown-menu-right tx-13 show';
+	is_staff = false;
+	is_client = false;
+	is_designer = false;
 	private showDropdown = false;
 	
 	constructor(

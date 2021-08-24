@@ -19,9 +19,9 @@ export class CategoriesComponent implements OnInit, OnDestroy {
 	loading = false;
 	public categories: Array<CategoryModel> = [];
 	public model = {
-		name: "",
-		description: "",
-		is_active: "",
+		name: '',
+		description: '',
+		is_active: '',
 	};
 	public categoryId: string;
 	mySubscription: any;
@@ -78,7 +78,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
 	}
 	
 	removeCategory(categoryId: string) {
-		if (confirm("Are you sure you want to delete this category?")) {
+		if (confirm('Are you sure you want to delete this category?')) {
 			this.loading = true;
 			this.categoryService.removeCategory(categoryId).subscribe(
 				data => {
@@ -120,7 +120,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
 			data => {
 				this.category = data;
 				this.loading = false;
-				this.populateModel(data)
+				this.populateModel(data);
 			},
 			error => {
 				this.alertService.error(error);
@@ -155,7 +155,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
 				this.alertService.error(error);
 				this.loading = false;
 			}
-		)
+		);
 	}
 	
 	private updateCategory() {
@@ -169,7 +169,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
 				this.alertService.error(error);
 				this.loading = false;
 			}
-		)
+		);
 	}
 	
 	private populateModel(data: any) {
@@ -188,7 +188,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
 	private formatCategories(data: any) {
 		this.categories = [];
 		for (let i = 0; i < data.length; i++) {
-			let category = new CategoryModel();
+			const category = new CategoryModel();
 			category.name = data[i].name;
 			category.description = data[i].description;
 			category.date_created = AppCommons.formatDisplayDate(new Date(data[i].date_created));

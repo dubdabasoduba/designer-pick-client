@@ -4,10 +4,10 @@ import {
 	AuthenticationService,
 	PermissionsService,
 	RolesService
-} from "../../../../_services";
-import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
-import {AppCommons, appConstants} from "../../../../_helpers";
-import {PermissionModel, RolesModel} from "../../../../_models";
+} from '../../../../_services';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {AppCommons, appConstants} from '../../../../_helpers';
+import {PermissionModel, RolesModel} from '../../../../_models';
 
 @Component({
 	selector: 'app-add-edit-roles',
@@ -17,9 +17,9 @@ import {PermissionModel, RolesModel} from "../../../../_models";
 export class AddEditRolesComponent implements OnInit, OnDestroy, DoCheck {
 	loading = false;
 	public model = {
-		name: "",
-		description: "",
-		is_active: ""
+		name: '',
+		description: '',
+		is_active: ''
 	};
 	public roleId: string;
 	mySubscription: any;
@@ -86,7 +86,7 @@ export class AddEditRolesComponent implements OnInit, OnDestroy, DoCheck {
 	assignPermissions(permission: string) {
 		for (let i = 0; i < this.permissions.length; i++) {
 			if (permission === this.permissions[i].uuid) {
-				this.assignedPermissions.push(this.permissions[i])
+				this.assignedPermissions.push(this.permissions[i]);
 				this.permissions.splice(i, 1);
 				break;
 			}
@@ -96,7 +96,7 @@ export class AddEditRolesComponent implements OnInit, OnDestroy, DoCheck {
 	unAssignPermissions(permission: string) {
 		for (let i = 0; i < this.assignedPermissions.length; i++) {
 			if (permission === this.assignedPermissions[i].uuid) {
-				this.permissions.push(this.assignedPermissions[i])
+				this.permissions.push(this.assignedPermissions[i]);
 				this.assignedPermissions.splice(i, 1);
 				break;
 			}
@@ -114,7 +114,7 @@ export class AddEditRolesComponent implements OnInit, OnDestroy, DoCheck {
 				this.alertService.error(error);
 				this.loading = false;
 			}
-		)
+		);
 	}
 	
 	private addRole() {
@@ -128,7 +128,7 @@ export class AddEditRolesComponent implements OnInit, OnDestroy, DoCheck {
 				this.alertService.error(error);
 				this.loading = false;
 			}
-		)
+		);
 	}
 	
 	private createRole() {
@@ -147,12 +147,12 @@ export class AddEditRolesComponent implements OnInit, OnDestroy, DoCheck {
 	}
 	
 	private createRolePermissions() {
-		let permissions = "";
-		for (let permission of this.assignedPermissions) {
-			permissions += permission.uuid + ",";
+		let permissions = '';
+		for (const permission of this.assignedPermissions) {
+			permissions += permission.uuid + ',';
 		}
 		
-		return permissions.trim().replace(/,\s*$/, ""); //removes a trailing comma;
+		return permissions.trim().replace(/,\s*$/, ''); // removes a trailing comma;
 	}
 	
 	private getRole() {
@@ -161,7 +161,7 @@ export class AddEditRolesComponent implements OnInit, OnDestroy, DoCheck {
 			data => {
 				this.role = data;
 				this.loading = false;
-				this.populateModel(data)
+				this.populateModel(data);
 			},
 			error => {
 				this.alertService.error(error);
@@ -182,7 +182,7 @@ export class AddEditRolesComponent implements OnInit, OnDestroy, DoCheck {
 	 */
 	private getPermissions() {
 		this.loading = true;
-		let searchQuery = "is_active=" + 1;
+		const searchQuery = 'is_active=' + 1;
 		this.permissionsService.getSearchPermissions(searchQuery).subscribe(
 			data => {
 				this.permissions = this.formatPermissions(data);
@@ -220,14 +220,14 @@ export class AddEditRolesComponent implements OnInit, OnDestroy, DoCheck {
 	}
 	
 	private formatPermissions(data: any) {
-		let permissions: Array<PermissionModel> = [];
+		const permissions: Array<PermissionModel> = [];
 		for (let i = 0; i < data.length; i++) {
-			let permission = new PermissionModel();
+			const permission = new PermissionModel();
 			permission.name = data[i].name;
 			permission.uuid = data[i].uuid;
 			permissions.push(permission);
 		}
 		
-		return permissions
+		return permissions;
 	}
 }

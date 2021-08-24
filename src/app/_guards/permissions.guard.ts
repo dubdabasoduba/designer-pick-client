@@ -8,7 +8,7 @@ import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {Observable} from 'rxjs';
 import {AuthenticationService} from '../_services';
-import {AppCommons} from "../_helpers";
+import {AppCommons} from '../_helpers';
 
 @Injectable({providedIn: 'root'})
 export class PermissionsGuard implements CanActivate {
@@ -20,8 +20,9 @@ export class PermissionsGuard implements CanActivate {
 	canActivate(
 		route: ActivatedRouteSnapshot,
 		state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-		let permissions = route.data[this.PERMISSION];
-		if (this.authService.getCurrentUser() !== null && AppCommons.checkIfPermissionsExist(permissions, this.authService.getCurrentUser().auth.permissions)) {
+		const permissions = route.data[this.PERMISSION];
+		if (this.authService.getCurrentUser() !== null &&
+			AppCommons.checkIfPermissionsExist(permissions, this.authService.getCurrentUser().auth.permissions)) {
 			return true;
 		} else {
 			this.router.navigate(['']);

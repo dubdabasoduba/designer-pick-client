@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthenticationService} from "../../../_services";
-import {AppCommons, appConstants} from "../../../_helpers";
+import {AuthenticationService} from '../../../_services';
+import {AppCommons, appConstants} from '../../../_helpers';
 
 @Component({
 	selector: 'app-admin-main-page',
@@ -19,7 +19,7 @@ export class AdminMainPageComponent implements OnInit {
 	
 	public checkPermissions(requiredPermission: string): boolean {
 		let hasPermission = false;
-		let requiredPermissions = [requiredPermission]
+		const requiredPermissions = [requiredPermission];
 		if (this.authService.getCurrentUser() !== null && AppCommons.checkIfPermissionsExist(requiredPermissions, this.authService.getCurrentUser().auth.permissions)) {
 			hasPermission = true;
 		}

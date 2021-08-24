@@ -1,4 +1,4 @@
-import {LogoBriefModel} from "./logo-brief.model";
+import {LogoBriefModel} from './logo-brief.model';
 
 export class ContestModel extends LogoBriefModel {
 	style: string;

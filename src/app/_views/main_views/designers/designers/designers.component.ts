@@ -5,8 +5,8 @@
  */
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AlertService, AuthenticationService, PersonsService} from "../../../../_services";
-import {PersonModel} from "../../../../_models";
+import {AlertService, AuthenticationService, PersonsService} from '../../../../_services';
+import {PersonModel} from '../../../../_models';
 
 @Component({
 	selector: 'app-entity',
@@ -24,12 +24,12 @@ export class DesignersComponent implements OnInit {
 	}
 	
 	private static getPersonInitials(data: any, i: number) {
-		let initials = data[i].name.match(/\b\w/g) || [];
+		const initials = data[i].name.match(/\b\w/g) || [];
 		return ((initials.shift() || '') + (initials.pop() || '')).toUpperCase();
 	}
 	
 	ngOnInit() {
-		this.getPersons("1")
+		this.getPersons('1');
 	}
 	
 	/**
@@ -51,8 +51,8 @@ export class DesignersComponent implements OnInit {
 	
 	private formatPermissions(data: any) {
 		for (let i = 0; i < data.length; i++) {
-			let person = new PersonModel();
-			let initials = DesignersComponent.getPersonInitials(data, i);
+			const person = new PersonModel();
+			const initials = DesignersComponent.getPersonInitials(data, i);
 			
 			person.name = data[i].name;
 			person.username = data[i].username;

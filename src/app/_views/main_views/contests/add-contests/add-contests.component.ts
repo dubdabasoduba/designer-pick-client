@@ -6,7 +6,7 @@ import {
 	CountryModel,
 	LogoBriefModel,
 	SettingsModel
-} from "../../../../_models";
+} from '../../../../_models';
 import {
 	AlertService,
 	AuthenticationService,
@@ -16,9 +16,9 @@ import {
 	LogoBriefsService,
 	LogoUsesService,
 	SettingsService
-} from "../../../../_services";
-import {AppCommons, appConstants} from "../../../../_helpers";
-import {ActivatedRoute, Router} from "@angular/router";
+} from '../../../../_services';
+import {AppCommons, appConstants} from '../../../../_helpers';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
 	selector: 'app-add-contests',
@@ -32,35 +32,35 @@ export class AddContestsComponent implements OnInit {
 	lbsUser: AuthenticatedUserModel;
 	public contestUuid: string;
 	public model = {
-		industry: "",
-		country: "",
-		title: "",
-		business_name: "",
-		business_slogan: "",
-		business_description: "",
-		comm_point_one: "",
-		comm_point_two: "",
-		comm_point_three: "",
-		target_audience: "",
-		style: "",
-		start_date: "",
-		end_date: "",
-		amount: "",
-		is_private: "",
-		is_featured: "",
-		is_highlighted: "",
-		tv: "",
-		signs: "",
-		website: "",
-		branding: "",
-		print: ""
+		industry: '',
+		country: '',
+		title: '',
+		business_name: '',
+		business_slogan: '',
+		business_description: '',
+		comm_point_one: '',
+		comm_point_two: '',
+		comm_point_three: '',
+		target_audience: '',
+		style: '',
+		start_date: '',
+		end_date: '',
+		amount: '',
+		is_private: '',
+		is_featured: '',
+		is_highlighted: '',
+		tv: '',
+		signs: '',
+		website: '',
+		branding: '',
+		print: ''
 	};
 	public logoBrief: LogoBriefModel;
-	public logoBriefs: Array<LogoBriefModel> = []
-	public countries: Array<CountryModel> = []
-	public industries: Array<CategoryModel> = []
+	public logoBriefs: Array<LogoBriefModel> = [];
+	public countries: Array<CountryModel> = [];
+	public industries: Array<CategoryModel> = [];
 	public contestId: string;
-	settings: Array<SettingsModel> = []
+	settings: Array<SettingsModel> = [];
 	selectedLogoBriefId: string;
 	newContest: ContestModel;
 	
@@ -113,7 +113,7 @@ export class AddContestsComponent implements OnInit {
 		} else if (AppCommons.isStringEmpty(this.model.style)) {
 			this.alertService.error('Contest style is required');
 		} else {
-			let logoBrief = this.createLogoUsesPayload();
+			const logoBrief = this.createLogoUsesPayload();
 			this.newContest = this.createContestPayload();
 			
 			if (!AppCommons.isStringEmpty(logoBrief.uuid)) {
@@ -129,7 +129,7 @@ export class AddContestsComponent implements OnInit {
 	 * @param event
 	 */
 	getLogoBriefs(event: any) {
-		let logoBriefUuid = event.target.value;
+		const logoBriefUuid = event.target.value;
 		if (logoBriefUuid != null && !AppCommons.isStringEmpty(logoBriefUuid)) {
 			this.getLogoBrief(logoBriefUuid);
 			this.selectedLogoBriefId = logoBriefUuid;
@@ -145,7 +145,7 @@ export class AddContestsComponent implements OnInit {
 				this.createContest(this.newContest);
 			}
 		} else {
-			this.alertService.error("Error occurred! Please contact system administrator");
+			this.alertService.error('Error occurred! Please contact system administrator');
 		}
 	}
 	
@@ -155,7 +155,7 @@ export class AddContestsComponent implements OnInit {
 			data => {
 				// @ts-ignore
 				this.loading = false;
-				AppCommons.displaySingleContest(this.router, data.uuid, "draft", this.router.url);
+				AppCommons.displaySingleContest(this.router, data.uuid, 'draft', this.router.url);
 			},
 			error => {
 				this.alertService.error(error);
@@ -185,7 +185,7 @@ export class AddContestsComponent implements OnInit {
 			data => {
 				// @ts-ignore
 				this.loading = false;
-				AppCommons.displaySingleContest(this.router, data.uuid, "draft", this.router.url);
+				AppCommons.displaySingleContest(this.router, data.uuid, 'draft', this.router.url);
 			},
 			error => {
 				this.alertService.error(error);
@@ -210,7 +210,7 @@ export class AddContestsComponent implements OnInit {
 	}
 	
 	private createLogoUsesPayload() {
-		let logoBriefs = new LogoBriefModel();
+		const logoBriefs = new LogoBriefModel();
 		if (!AppCommons.isStringEmpty(this.selectedLogoBriefId)) {
 			logoBriefs.uuid = this.selectedLogoBriefId;
 			logoBriefs.updated_by = this.lbsUser.user.uuid;
@@ -229,22 +229,22 @@ export class AddContestsComponent implements OnInit {
 	}
 	
 	private combineMainCommunicationPoints() {
-		let mainCommunicationPoints = "";
+		let mainCommunicationPoints = '';
 		if (!AppCommons.isStringEmpty(this.model.comm_point_one)) {
-			mainCommunicationPoints += this.model.comm_point_one + ";"
+			mainCommunicationPoints += this.model.comm_point_one + ';';
 		}
 		if (!AppCommons.isStringEmpty(this.model.comm_point_two)) {
-			mainCommunicationPoints += this.model.comm_point_two + ";"
+			mainCommunicationPoints += this.model.comm_point_two + ';';
 		}
 		if (!AppCommons.isStringEmpty(this.model.comm_point_three)) {
-			mainCommunicationPoints += this.model.comm_point_three
+			mainCommunicationPoints += this.model.comm_point_three;
 		}
 		
 		return mainCommunicationPoints;
 	}
 	
 	private createContestPayload() {
-		let contest = new ContestModel();
+		const contest = new ContestModel();
 		if (!AppCommons.isStringEmpty(this.contestUuid)) {
 			contest.uuid = this.contestUuid;
 			contest.updated_by = this.lbsUser.user.uuid;
@@ -256,11 +256,11 @@ export class AddContestsComponent implements OnInit {
 		contest.start_date = this.model.start_date;
 		contest.end_date = this.model.end_date;
 		contest.is_featured = !!this.model.is_featured;
-		contest.is_featured_charged_amount = this.getSettingValue(appConstants.featuring_amount)
+		contest.is_featured_charged_amount = this.getSettingValue(appConstants.featuring_amount);
 		contest.is_highlighted = !!this.model.is_highlighted;
-		contest.is_highlighted_amount_charged = this.getSettingValue(appConstants.highlight_amount)
+		contest.is_highlighted_amount_charged = this.getSettingValue(appConstants.highlight_amount);
 		contest.is_private = !!this.model.is_private;
-		contest.is_private_amount_charged = this.getSettingValue(appConstants.private_listing_amount)
+		contest.is_private_amount_charged = this.getSettingValue(appConstants.private_listing_amount);
 		contest.is_active = 0;
 		contest.stage = this.getSettingValue(appConstants.contest_stage);
 		contest.amount = this.model.amount;
@@ -271,21 +271,21 @@ export class AddContestsComponent implements OnInit {
 	}
 	
 	private combineLogoUses() {
-		let logoUse: string = "";
+		let logoUse = '';
 		if (this.model.tv) {
-			logoUse += "TV, "
+			logoUse += 'TV, ';
 		}
 		if (this.model.branding) {
-			logoUse += "Branding, "
+			logoUse += 'Branding, ';
 		}
 		if (this.model.signs) {
-			logoUse += "Signs, "
+			logoUse += 'Signs, ';
 		}
 		if (this.model.website) {
-			logoUse += "website, "
+			logoUse += 'website, ';
 		}
 		if (this.model.print) {
-			logoUse += "Print,"
+			logoUse += 'Print,';
 		}
 		
 		return logoUse;
@@ -297,12 +297,12 @@ export class AddContestsComponent implements OnInit {
 	 * @private
 	 */
 	private getSettingValue(setting_key: string): any {
-		let value: string = "";
+		let value = '';
 		for (let i = 0; i < this.settings.length; i++) {
-			let selectedSetting = this.settings[i];
+			const selectedSetting = this.settings[i];
 			if (selectedSetting.setting_key == setting_key) {
 				// @ts-ignore
-				let settingsValue = JSON.parse(selectedSetting.setting_value);
+				const settingsValue = JSON.parse(selectedSetting.setting_value);
 				return value = settingsValue.settings.value;
 			}
 		}
@@ -317,7 +317,7 @@ export class AddContestsComponent implements OnInit {
 		this.logoBriefService.getUserLogoBriefs(this.lbsUser.user.uuid).subscribe(
 			data => {
 				// @ts-ignore
-				this.logoBriefs = data
+				this.logoBriefs = data;
 			},
 			error => {
 				this.alertService.error(error);
@@ -366,7 +366,7 @@ export class AddContestsComponent implements OnInit {
 	 * @private
 	 */
 	private updateCommSection() {
-		let comms = this.logoBrief.main_communication_points.split(';');
+		const comms = this.logoBrief.main_communication_points.split(';');
 		if (comms != undefined && comms.length > 0) {
 			if (comms.length > 2) {
 				this.model.comm_point_three = comms[2];
@@ -390,7 +390,7 @@ export class AddContestsComponent implements OnInit {
 		this.countryService.getCountries().subscribe(
 			data => {
 				// @ts-ignore
-				this.countries = data
+				this.countries = data;
 			},
 			error => {
 				this.alertService.error(error);
@@ -408,7 +408,7 @@ export class AddContestsComponent implements OnInit {
 		this.industryService.getCategories().subscribe(
 			data => {
 				// @ts-ignore
-				this.industries = data
+				this.industries = data;
 			},
 			error => {
 				this.alertService.error(error);
@@ -431,6 +431,6 @@ export class AddContestsComponent implements OnInit {
 				this.alertService.error(error);
 				this.loading = false;
 			}
-		)
+		);
 	}
 }

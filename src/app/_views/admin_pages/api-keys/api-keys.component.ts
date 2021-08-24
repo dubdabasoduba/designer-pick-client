@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ApiKeyModel} from "../../../_models";
-import {AlertService, ApiKeysService, AuthenticationService} from "../../../_services";
-import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
-import {AppCommons, appConstants} from "../../../_helpers";
+import {ApiKeyModel} from '../../../_models';
+import {AlertService, ApiKeysService, AuthenticationService} from '../../../_services';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {AppCommons, appConstants} from '../../../_helpers';
 
 @Component({
 	selector: 'app-api-keys',
@@ -13,10 +13,10 @@ export class ApiKeysComponent implements OnInit {
 	loading = false;
 	public apiKeys: Array<ApiKeyModel> = [];
 	public model = {
-		name: "",
-		api_key: "",
-		expiry: "",
-		is_active: ""
+		name: '',
+		api_key: '',
+		expiry: '',
+		is_active: ''
 	};
 	public apiKeyId: string;
 	mySubscription: any;
@@ -116,7 +116,7 @@ export class ApiKeysComponent implements OnInit {
 			data => {
 				this.apiKey = data;
 				this.loading = false;
-				this.populateModel(data)
+				this.populateModel(data);
 			},
 			error => {
 				this.alertService.error(error);
@@ -152,7 +152,7 @@ export class ApiKeysComponent implements OnInit {
 				this.alertService.error(error);
 				this.loading = false;
 			}
-		)
+		);
 	}
 	
 	private updateApiKey() {
@@ -166,7 +166,7 @@ export class ApiKeysComponent implements OnInit {
 				this.alertService.error(error);
 				this.loading = false;
 			}
-		)
+		);
 	}
 	
 	private populateModel(data: any) {
@@ -187,7 +187,7 @@ export class ApiKeysComponent implements OnInit {
 	private formatApiKeys(data: any) {
 		this.apiKeys = [];
 		for (let i = 0; i < data.length; i++) {
-			let apiKey = new ApiKeyModel();
+			const apiKey = new ApiKeyModel();
 			apiKey.api_key = data[i].api_key;
 			apiKey.expiry = data[i].expiry;
 			apiKey.name = data[i].name;

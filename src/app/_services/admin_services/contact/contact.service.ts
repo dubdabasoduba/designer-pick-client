@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {appConstants} from "../../../_helpers";
-import {Observable} from "rxjs";
-import {ContactModel} from "../../../_models";
+import {HttpClient} from '@angular/common/http';
+import {appConstants} from '../../../_helpers';
+import {Observable} from 'rxjs';
+import {ContactModel} from '../../../_models';
 
 @Injectable({
 	providedIn: 'root'
@@ -13,12 +13,12 @@ export class ContactService {
 	}
 	
 	getContacts(id: string) {
-		return this.http.get(appConstants.baseApiV1Url + "/contacts/" + id);
+		return this.http.get(appConstants.baseApiV1Url + '/contacts/' + id);
 	}
 	
 	getContact(contactId: string): Observable<ContactModel> {
 		// @ts-ignore
-		return this.http.get(appConstants.baseApiV1Url + "/contact/" + contactId);
+		return this.http.get(appConstants.baseApiV1Url + '/contact/' + contactId);
 	}
 	
 	removeContact(id: string) {

@@ -1,4 +1,4 @@
-import {DefaultModel} from "./default.model";
+import {DefaultModel} from './default.model';
 
 export class SettingsModel extends DefaultModel {
 	setting_key: string;
@@ -7,5 +7,5 @@ export class SettingsModel extends DefaultModel {
 			name: string;
 			value: string;
 		}
-	}
+	};
 }

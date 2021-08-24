@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {RolesModel} from "../../../../_models";
-import {AlertService, RolesService} from "../../../../_services";
-import {AppCommons} from "../../../../_helpers";
+import {RolesModel} from '../../../../_models';
+import {AlertService, RolesService} from '../../../../_services';
+import {AppCommons} from '../../../../_helpers';
 
 @Component({
 	selector: 'app-roles',
@@ -39,7 +39,7 @@ export class RolesComponent implements OnInit {
 	
 	private formatPermissions(data: any) {
 		for (let i = 0; i < data.length; i++) {
-			let role = new RolesModel();
+			const role = new RolesModel();
 			role.name = data[i].name;
 			role.description = data[i].description;
 			role.date_created = AppCommons.formatDisplayDate(new Date(data[i].date_created));

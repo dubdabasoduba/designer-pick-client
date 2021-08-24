@@ -53,16 +53,16 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 					'assets/js/dashboard-one.js',
 					'assets/lib/js-cookie/js.cookie.js',
 					'assets/js/tooltip.js',
-					"assets/vendor/jquery.easing/jquery.easing.min.js",
-					"assets/vendor/php-email-form/validate.js",
-					"assets/vendor/waypoints/jquery.waypoints.min.js",
-					"assets/vendor/counterup/counterup.min.js",
-					"assets/vendor/isotope-layout/isotope.pkgd.min.js",
-					"assets/vendor/venobox/venobox.min.js",
-					"assets/vendor/owl.carousel/owl.carousel.min.js",
-					"assets/vendor/aos/aos.js",
-					"assets/js/main.js",
-					"assets/js/jquery.dataTables.min.js"
+					'assets/vendor/jquery.easing/jquery.easing.min.js',
+					'assets/vendor/php-email-form/validate.js',
+					'assets/vendor/waypoints/jquery.waypoints.min.js',
+					'assets/vendor/counterup/counterup.min.js',
+					'assets/vendor/isotope-layout/isotope.pkgd.min.js',
+					'assets/vendor/venobox/venobox.min.js',
+					'assets/vendor/owl.carousel/owl.carousel.min.js',
+					'assets/vendor/aos/aos.js',
+					'assets/js/main.js',
+					'assets/js/jquery.dataTables.min.js'
 				];
 				
 				jsFiles.forEach((jsFile) => {

@@ -8,7 +8,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AlertService, AuthenticationService, CountriesService} from '../../../_services';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {AppCommons, appConstants} from '../../../_helpers';
-import {CountryModel} from "../../../_models";
+import {CountryModel} from '../../../_models';
 
 @Component({
 	selector: 'app-countries',
@@ -19,10 +19,10 @@ export class CountriesComponent implements OnInit, OnDestroy {
 	loading = false;
 	public countries: Array<CountryModel> = [];
 	public model = {
-		name: "",
-		code: "",
-		short_name: "",
-		is_active: ""
+		name: '',
+		code: '',
+		short_name: '',
+		is_active: ''
 	};
 	public countryId: string;
 	mySubscription: any;
@@ -79,7 +79,7 @@ export class CountriesComponent implements OnInit, OnDestroy {
 	}
 	
 	removeCountry(countryId: string) {
-		if (confirm("Are you sure you want to delete this country?")) {
+		if (confirm('Are you sure you want to delete this country?')) {
 			this.loading = true;
 			this.countriesService.removeCountry(countryId).subscribe(
 				data => {
@@ -121,7 +121,7 @@ export class CountriesComponent implements OnInit, OnDestroy {
 			data => {
 				this.country = data;
 				this.loading = false;
-				this.populateModel(data)
+				this.populateModel(data);
 			},
 			error => {
 				this.alertService.error(error);
@@ -157,7 +157,7 @@ export class CountriesComponent implements OnInit, OnDestroy {
 				this.alertService.error(error);
 				this.loading = false;
 			}
-		)
+		);
 	}
 	
 	private updateCountry() {
@@ -171,7 +171,7 @@ export class CountriesComponent implements OnInit, OnDestroy {
 				this.alertService.error(error);
 				this.loading = false;
 			}
-		)
+		);
 	}
 	
 	private populateModel(data: any) {
@@ -192,7 +192,7 @@ export class CountriesComponent implements OnInit, OnDestroy {
 	private formatCountries(data: any) {
 		this.countries = [];
 		for (let i = 0; i < data.length; i++) {
-			let country = new CountryModel();
+			const country = new CountryModel();
 			country.name = data[i].name;
 			country.code = data[i].code;
 			country.short_name = data[i].short_name;

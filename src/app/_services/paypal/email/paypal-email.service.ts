@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {appConstants} from "../../../_helpers";
-import {Observable} from "rxjs";
-import {HttpClient} from "@angular/common/http";
-import {PaypalEmailModel} from "../../../_models";
+import {appConstants} from '../../../_helpers';
+import {Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {PaypalEmailModel} from '../../../_models';
 
 @Injectable({
 	providedIn: 'root'
@@ -13,12 +13,12 @@ export class PaypalEmailService {
 	}
 	
 	getPayPalEmails(id: string) {
-		return this.http.get(appConstants.baseApiV1Url + "/paypal-details/" + id);
+		return this.http.get(appConstants.baseApiV1Url + '/paypal-details/' + id);
 	}
 	
 	getPayPalEmail(paypalDetailId: string): Observable<PaypalEmailModel> {
 		// @ts-ignore
-		return this.http.get(appConstants.baseApiV1Url + "/paypal-detail/" + paypalDetailId);
+		return this.http.get(appConstants.baseApiV1Url + '/paypal-detail/' + paypalDetailId);
 	}
 	
 	removePayPalEmail(id: string) {

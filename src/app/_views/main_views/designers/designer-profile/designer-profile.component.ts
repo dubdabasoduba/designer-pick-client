@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {AppCommons, appConstants} from "../../../../_helpers";
+import {AppCommons, appConstants} from '../../../../_helpers';
 import {
 	AlertService,
 	AuthenticationService,
 	PersonsService,
 	ProfileService
-} from "../../../../_services";
-import {ActivatedRoute, Router} from "@angular/router";
+} from '../../../../_services';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
 	selector: 'app-designer-profile',

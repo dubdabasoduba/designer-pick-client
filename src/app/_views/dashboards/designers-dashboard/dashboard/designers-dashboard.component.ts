@@ -24,6 +24,6 @@ export class DesignersDashboardComponent implements OnInit {
 	}
 	
 	ngOnInit() {
-		//this.getRecentFunding();
+		// this.getRecentFunding();
 	}
 }

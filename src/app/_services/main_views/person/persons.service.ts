@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
 import {appConstants} from '../../../_helpers';
 import {HttpClient} from '@angular/common/http';
 import {PersonModel} from '../../../_models';
-import {Observable} from "rxjs";
+import {Observable} from 'rxjs';
 
 @Injectable()
 export class PersonsService {
@@ -17,11 +17,11 @@ export class PersonsService {
 	}
 	
 	getPeople(accountType: string) {
-		return this.http.get(appConstants.baseApiV1Url + appConstants.peopleUrl + "?account_type=" + accountType);
+		return this.http.get(appConstants.baseApiV1Url + appConstants.peopleUrl + '?account_type=' + accountType);
 	}
 	
 	getDesigners(accountType: string) {
-		return this.http.get(appConstants.baseApiV1Url + '/designers' + "?account_type=" + accountType);
+		return this.http.get(appConstants.baseApiV1Url + '/designers' + '?account_type=' + accountType);
 	}
 	
 	getDesignerById(personId: string): Observable<PersonModel> {
