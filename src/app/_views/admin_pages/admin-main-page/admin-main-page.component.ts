@@ -20,7 +20,8 @@ export class AdminMainPageComponent implements OnInit {
 	public checkPermissions(requiredPermission: string): boolean {
 		let hasPermission = false;
 		const requiredPermissions = [requiredPermission];
-		if (this.authService.getCurrentUser() !== null && AppCommons.checkIfPermissionsExist(requiredPermissions, this.authService.getCurrentUser().auth.permissions)) {
+		if (this.authService.getCurrentUser() !== null
+			&& AppCommons.checkIfPermissionsExist(requiredPermissions, this.authService.getCurrentUser().auth.permissions)) {
 			hasPermission = true;
 		}
 		return hasPermission;

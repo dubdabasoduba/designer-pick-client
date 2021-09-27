@@ -1508,6 +1508,9 @@ table.dataTable thead .sorting {
     position: unset !important;
 }
 
+table.dataTable {
+     border: 0 !important;
+}
 
 /*--------------------------------------------------------------
 # App Features
