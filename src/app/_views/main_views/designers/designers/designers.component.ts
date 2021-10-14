@@ -18,8 +18,10 @@ export class DesignersComponent implements OnInit {
 	loading = false;
 	public people: Array<PersonModel> = [];
 	
-	constructor(private personsService: PersonsService, private alertService: AlertService,
-	            private authenticationService: AuthenticationService, private router: Router,
+	constructor(private personsService: PersonsService,
+	            private alertService: AlertService,
+	            private authenticationService: AuthenticationService,
+	            private router: Router,
 	            private route: ActivatedRoute) {
 	}
 	
