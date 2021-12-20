@@ -4,7 +4,7 @@
  * This may be subject to prosecution according to the kenyan law
  */
 
-import {DefaultModel} from "./default.model";
+import {DefaultModel} from './default.model';
 
 export class ContactModel extends DefaultModel {
 	_id: string;

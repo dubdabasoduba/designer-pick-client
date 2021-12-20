@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {appConstants} from "../../../_helpers";
-import {Observable} from "rxjs";
-import {ContestModel, PersonModel} from "../../../_models";
+import {HttpClient} from '@angular/common/http';
+import {appConstants} from '../../../_helpers';
+import {Observable} from 'rxjs';
+import {ContestModel, PersonModel} from '../../../_models';
 
 @Injectable({
 	providedIn: 'root'

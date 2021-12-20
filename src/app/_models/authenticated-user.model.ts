@@ -17,5 +17,5 @@ export class AuthenticatedUserModel {
 		update_on_first_login: number;
 		permissions: [];
 		password: string;
-	}
+	};
 }

@@ -1,8 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {LogoUsesModel} from "../../../_models";
-import {AlertService, AuthenticationService, LogoUsesService} from "../../../_services";
-import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
-import {AppCommons, appConstants} from "../../../_helpers";
+import {LogoUsesModel} from '../../../_models';
+import {AlertService, AuthenticationService, LogoUsesService} from '../../../_services';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {AppCommons, appConstants} from '../../../_helpers';
 
 @Component({
 	selector: 'app-logo-uses',
@@ -13,9 +13,9 @@ export class LogoUsesComponent implements OnInit, OnDestroy {
 	loading = false;
 	public logoUses: Array<LogoUsesModel> = [];
 	public model = {
-		name: "",
-		description: "",
-		is_active: "",
+		name: '',
+		description: '',
+		is_active: '',
 	};
 	public logoUseId: string;
 	mySubscription: any;
@@ -72,7 +72,7 @@ export class LogoUsesComponent implements OnInit, OnDestroy {
 	}
 	
 	removeLogoUses(logoUsesId: string) {
-		if (confirm("Are you sure you want to delete this logo uses?")) {
+		if (confirm('Are you sure you want to delete this logo uses?')) {
 			this.loading = true;
 			this.logoUsesService.removeLogoUse(logoUsesId).subscribe(
 				data => {
@@ -114,7 +114,7 @@ export class LogoUsesComponent implements OnInit, OnDestroy {
 			data => {
 				this.logoUse = data;
 				this.loading = false;
-				this.populateModel(data)
+				this.populateModel(data);
 			},
 			error => {
 				this.alertService.error(error);
@@ -149,7 +149,7 @@ export class LogoUsesComponent implements OnInit, OnDestroy {
 				this.alertService.error(error);
 				this.loading = false;
 			}
-		)
+		);
 	}
 	
 	private updateLogoUses() {
@@ -163,7 +163,7 @@ export class LogoUsesComponent implements OnInit, OnDestroy {
 				this.alertService.error(error);
 				this.loading = false;
 			}
-		)
+		);
 	}
 	
 	private populateModel(data: any) {
@@ -182,7 +182,7 @@ export class LogoUsesComponent implements OnInit, OnDestroy {
 	private formatLogoUses(data: any) {
 		this.logoUses = [];
 		for (let i = 0; i < data.length; i++) {
-			let logoUses = new LogoUsesModel();
+			const logoUses = new LogoUsesModel();
 			logoUses.name = data[i].name;
 			logoUses.description = data[i].description;
 			logoUses.date_created = AppCommons.formatDisplayDate(new Date(data[i].date_created));

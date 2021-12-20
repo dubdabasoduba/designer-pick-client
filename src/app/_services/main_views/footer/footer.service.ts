@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {NewsLettersSubscriptionsModel} from "../../../_models";
-import {Observable} from "rxjs";
-import {appConstants} from "../../../_helpers";
+import {HttpClient} from '@angular/common/http';
+import {NewsLettersSubscriptionsModel} from '../../../_models';
+import {Observable} from 'rxjs';
+import {appConstants} from '../../../_helpers';
 
 @Injectable({
 	providedIn: 'root'

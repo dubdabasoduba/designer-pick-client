@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {appConstants} from "../../../_helpers";
-import {Observable} from "rxjs";
-import {LogoBriefModel} from "../../../_models";
+import {HttpClient} from '@angular/common/http';
+import {appConstants} from '../../../_helpers';
+import {Observable} from 'rxjs';
+import {LogoBriefModel} from '../../../_models';
 
 @Injectable({
 	providedIn: 'root'
@@ -23,10 +23,10 @@ export class LogoBriefsService {
 	}
 	
 	updateLogoBrief(logoBrief: LogoBriefModel): Observable<LogoBriefModel> {
-		return this.http.put<LogoBriefModel>(appConstants.baseApiV1Url + "/logo-brief/" + logoBrief.uuid, logoBrief);
+		return this.http.put<LogoBriefModel>(appConstants.baseApiV1Url + '/logo-brief/' + logoBrief.uuid, logoBrief);
 	}
 	
 	addLogoBrief(logoBrief: LogoBriefModel): Observable<LogoBriefModel> {
-		return this.http.post<LogoBriefModel>(appConstants.baseApiV1Url + "/logo-brief", logoBrief);
+		return this.http.post<LogoBriefModel>(appConstants.baseApiV1Url + '/logo-brief', logoBrief);
 	}
 }

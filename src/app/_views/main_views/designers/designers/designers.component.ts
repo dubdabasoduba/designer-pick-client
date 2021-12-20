@@ -5,8 +5,8 @@
  */
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AlertService, AuthenticationService, PersonsService} from "../../../../_services";
-import {PersonModel} from "../../../../_models";
+import {AlertService, AuthenticationService, PersonsService} from '../../../../_services';
+import {PersonModel} from '../../../../_models';
 
 @Component({
 	selector: 'app-entity',
@@ -29,7 +29,7 @@ export class DesignersComponent implements OnInit {
 	}
 	
 	ngOnInit() {
-		this.getPersons("1")
+		this.getPersons('1');
 	}
 	
 	/**

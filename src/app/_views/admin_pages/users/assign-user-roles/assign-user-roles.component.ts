@@ -1,8 +1,8 @@
 import {Component, DoCheck, OnInit} from '@angular/core';
-import {PersonModel, RolesModel} from "../../../../_models";
-import {AlertService, PersonsService, RolesService} from "../../../../_services";
-import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
-import {AppCommons, appConstants} from "../../../../_helpers";
+import {PersonModel, RolesModel} from '../../../../_models';
+import {AlertService, PersonsService, RolesService} from '../../../../_services';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {AppCommons, appConstants} from '../../../../_helpers';
 
 @Component({
 	selector: 'app-assign-user-roles',
@@ -43,14 +43,14 @@ export class AssignUserRolesComponent implements OnInit, DoCheck {
 			roles.push(role);
 		}
 		
-		return roles
+		return roles;
 	}
 	
 	ngOnInit(): void {
 		this.route.params.subscribe(params => {
 			this.userId = params[appConstants.userId];
 			this.personId = params[appConstants.id];
-		})
+		});
 		
 		this.redirectUrl = '/user/' + this.personId + '/' + this.userId;
 		
@@ -76,7 +76,7 @@ export class AssignUserRolesComponent implements OnInit, DoCheck {
 	assignRoles(role: string) {
 		for (let i = 0; i < this.roles.length; i++) {
 			if (role === this.roles[i].uuid) {
-				this.assignedRoles.push(this.roles[i])
+				this.assignedRoles.push(this.roles[i]);
 				this.roles.splice(i, 1);
 				break;
 			}
@@ -86,7 +86,7 @@ export class AssignUserRolesComponent implements OnInit, DoCheck {
 	unAssignRoles(role: string) {
 		for (let i = 0; i < this.assignedRoles.length; i++) {
 			if (role === this.assignedRoles[i].uuid) {
-				this.roles.push(this.assignedRoles[i])
+				this.roles.push(this.assignedRoles[i]);
 				this.assignedRoles.splice(i, 1);
 				break;
 			}
@@ -131,7 +131,7 @@ export class AssignUserRolesComponent implements OnInit, DoCheck {
 	 */
 	private getRoles() {
 		this.loading = true;
-		let searchQuery = "is_active=1";
+		let searchQuery = 'is_active=1';
 		this.rolesService.getSearchRoles(searchQuery).subscribe(
 			data => {
 				this.roles = AssignUserRolesComponent.formatRoles(data, false);

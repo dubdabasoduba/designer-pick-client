@@ -8,7 +8,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AlertService, AuthenticationService, UserService} from '../../../_services';
 import {AppCommons, appConstants} from '../../../_helpers';
-import {AuthenticatedUserModel} from "../../../_models";
+import {AuthenticatedUserModel} from '../../../_models';
 
 @Component({
 	selector: 'app-sign-in',

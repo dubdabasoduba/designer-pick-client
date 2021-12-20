@@ -1,4 +1,4 @@
-import {DefaultModel} from "./default.model";
+import {DefaultModel} from './default.model';
 
 export class DiscountsModel extends DefaultModel {
 	name: string;

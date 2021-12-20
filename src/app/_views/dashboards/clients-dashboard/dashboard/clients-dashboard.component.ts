@@ -6,9 +6,9 @@
 
 import {Component, OnInit} from '@angular/core';
 import {AlertService, AuthenticationService, ContestsService} from '../../../../_services';
-import {AuthenticatedUserModel} from "../../../../_models";
-import {appConstants} from "../../../../_helpers";
-import {ActivatedRoute, Router} from "@angular/router";
+import {AuthenticatedUserModel} from '../../../../_models';
+import {appConstants} from '../../../../_helpers';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
 	selector: 'app-acquisitions',

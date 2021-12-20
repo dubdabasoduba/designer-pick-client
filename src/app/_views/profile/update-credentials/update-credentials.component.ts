@@ -1,13 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {AppCommons, appConstants} from "../../../_helpers";
-import {
-	AlertService,
-	AuthenticationService,
-	PersonsService,
-	ProfileService
-} from "../../../_services";
-import {ActivatedRoute, Router} from "@angular/router";
-import {PersonModel, UserModel} from "../../../_models";
+import {AppCommons, appConstants} from '../../../_helpers';
+import {AlertService, AuthenticationService, PersonsService, ProfileService} from '../../../_services';
+import {ActivatedRoute, Router} from '@angular/router';
+import {PersonModel, UserModel} from '../../../_models';
 
 @Component({
 	selector: 'app-update-credentials',
@@ -21,10 +16,10 @@ export class UpdateCredentialsComponent implements OnInit {
 	public personUuid: string;
 	public returnUrl: string;
 	public model = {
-		old_password: "",
-		new_password: "",
-		confirm_new_password: ""
-	}
+		old_password: '',
+		new_password: '',
+		confirm_new_password: ''
+	};
 	
 	constructor(
 		private authenticationService: AuthenticationService,
@@ -82,7 +77,7 @@ export class UpdateCredentialsComponent implements OnInit {
 		this.loading = true;
 		this.authenticationService.updatePasswordFormProfile(this.createUser()).subscribe(
 			data => {
-				this.alertService.success("Password updated successfully");
+				this.alertService.success('Password updated successfully');
 				this.loading = false;
 				this.signOut();
 			},

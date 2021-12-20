@@ -7,8 +7,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {appConstants} from '../../../_helpers';
-import {Observable} from "rxjs";
-import {CountryModel} from "../../../_models";
+import {Observable} from 'rxjs';
+import {CountryModel} from '../../../_models';
 
 @Injectable()
 export class CountriesService {

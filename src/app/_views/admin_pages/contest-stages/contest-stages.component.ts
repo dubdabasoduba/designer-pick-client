@@ -1,8 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ContestStageModel} from "../../../_models";
-import {AlertService, AuthenticationService, ContestStagesService} from "../../../_services";
-import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
-import {AppCommons, appConstants} from "../../../_helpers";
+import {ContestStageModel} from '../../../_models';
+import {AlertService, AuthenticationService, ContestStagesService} from '../../../_services';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {AppCommons, appConstants} from '../../../_helpers';
 
 @Component({
 	selector: 'app-contest-stages',
@@ -13,9 +13,9 @@ export class ContestStagesComponent implements OnInit, OnDestroy {
 	loading = false;
 	public contestStages: Array<ContestStageModel> = [];
 	public model = {
-		name: "",
-		description: "",
-		is_active: "",
+		name: '',
+		description: '',
+		is_active: '',
 	};
 	public contestStageId: string;
 	mySubscription: any;
@@ -72,7 +72,7 @@ export class ContestStagesComponent implements OnInit, OnDestroy {
 	}
 	
 	removeContestStage(contestStageId: string) {
-		if (confirm("Are you sure you want to delete this contest stage?")) {
+		if (confirm('Are you sure you want to delete this contest stage?')) {
 			this.loading = true;
 			this.contestStagesService.removeContentsStage(contestStageId).subscribe(
 				data => {
@@ -114,7 +114,7 @@ export class ContestStagesComponent implements OnInit, OnDestroy {
 			data => {
 				this.contestStage = data;
 				this.loading = false;
-				this.populateModel(data)
+				this.populateModel(data);
 			},
 			error => {
 				this.alertService.error(error);
@@ -149,7 +149,7 @@ export class ContestStagesComponent implements OnInit, OnDestroy {
 				this.alertService.error(error);
 				this.loading = false;
 			}
-		)
+		);
 	}
 	
 	private updateContestStage() {
@@ -163,7 +163,7 @@ export class ContestStagesComponent implements OnInit, OnDestroy {
 				this.alertService.error(error);
 				this.loading = false;
 			}
-		)
+		);
 	}
 	
 	private populateModel(data: any) {
@@ -182,7 +182,7 @@ export class ContestStagesComponent implements OnInit, OnDestroy {
 	private formatContestStages(data: any) {
 		this.contestStages = [];
 		for (let i = 0; i < data.length; i++) {
-			let contestStage = new ContestStageModel();
+			const contestStage = new ContestStageModel();
 			contestStage.name = data[i].name;
 			contestStage.description = data[i].description;
 			contestStage.date_created = AppCommons.formatDisplayDate(new Date(data[i].date_created));

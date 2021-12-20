@@ -46,7 +46,7 @@ export class RequestInterceptor implements HttpInterceptor {
 	private attachTokens(httpRequest, request: HttpRequest<any>, apiKey: string) {
 		httpRequest = request.clone({
 			setHeaders: {
-				Authorization: "Bearer " + this.authService.getToken() + apiKey
+				Authorization: 'Bearer ' + this.authService.getToken() + apiKey
 			}
 		});
 		this.setCurrentUser(httpRequest);

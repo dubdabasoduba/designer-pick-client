@@ -6,9 +6,9 @@
 
 import {Component, OnInit} from '@angular/core';
 import {AlertService, AuthenticationService, ContestsService} from '../../../../_services';
-import {AuthenticatedUserModel, ContestModel} from "../../../../_models";
-import {AppCommons, appConstants} from "../../../../_helpers";
-import {Router} from "@angular/router";
+import {AuthenticatedUserModel, ContestModel} from '../../../../_models';
+import {AppCommons, appConstants} from '../../../../_helpers';
+import {Router} from '@angular/router';
 
 @Component({
 	selector: 'app-entities',
@@ -34,18 +34,18 @@ export class ContestsComponent implements OnInit {
 	
 	redirectToSign(contest: string) {
 		if (!AppCommons.isObjectEmpty(this.lbsUser)) {
-			AppCommons.displaySingleContest(this.router, contest, "active", this.router.url);
+			AppCommons.displaySingleContest(this.router, contest, 'active', this.router.url);
 		} else {
 			this.router.navigate([appConstants.authSIgnInUrl], {
 				queryParams: {
-					returnUrl: "/contests/" + contest
+					returnUrl: '/contests/' + contest
 				}
 			});
 		}
 	}
 	
 	displaySingleContest(contest: string) {
-		AppCommons.displaySingleContest(this.router, contest, "active", this.router.url);
+		AppCommons.displaySingleContest(this.router, contest, 'active', this.router.url);
 	}
 	
 	/**
@@ -55,7 +55,7 @@ export class ContestsComponent implements OnInit {
 		this.loading = true;
 		this.contestsService.getDisplayContests().subscribe(
 			data => {
-				this.formatContests(data)
+				this.formatContests(data);
 				this.loading = false;
 			},
 			error => {

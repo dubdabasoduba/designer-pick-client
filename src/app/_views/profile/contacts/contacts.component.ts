@@ -5,16 +5,10 @@
  */
 
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {
-	AlertService,
-	AuthenticationService,
-	ContactService,
-	PersonsService,
-	ProfileService
-} from '../../../_services';
+import {AlertService, AuthenticationService, ContactService, PersonsService, ProfileService} from '../../../_services';
 import {AppCommons, appConstants} from '../../../_helpers';
-import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
-import {ContactModel, PersonModel} from "../../../_models";
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {ContactModel, PersonModel} from '../../../_models';
 
 @Component({
 	selector: 'app-profile-contacts',
@@ -28,11 +22,11 @@ export class ContactsComponent implements OnInit, OnDestroy {
 	mySubscription: any;
 	public contacts: Array<ContactModel> = [];
 	public model = {
-		email: "",
-		location: "",
-		phone_number: "",
-		is_main: "",
-		is_active: ""
+		email: '',
+		location: '',
+		phone_number: '',
+		is_main: '',
+		is_active: ''
 	};
 	public personId: string;
 	public contactId: string;
@@ -79,11 +73,11 @@ export class ContactsComponent implements OnInit, OnDestroy {
 	addEditContact() {
 		this.loading = false;
 		if (this.model.email == appConstants.emptyEntry || this.model.email == undefined) {
-			this.alertService.error("The email address is required");
+			this.alertService.error('The email address is required');
 		} else if (this.model.phone_number === appConstants.emptyEntry || this.model.phone_number == undefined) {
-			this.alertService.error("The phone number is required");
+			this.alertService.error('The phone number is required');
 		} else if (this.model.location === appConstants.emptyEntry || this.model.location == undefined) {
-			this.alertService.error("The location is required");
+			this.alertService.error('The location is required');
 		} else if (this.model.is_active === appConstants.emptyEntry || this.model.is_active == undefined) {
 			this.alertService.error(appConstants.statusError);
 		} else {
@@ -96,13 +90,13 @@ export class ContactsComponent implements OnInit, OnDestroy {
 	}
 	
 	removeContact(contactId: string) {
-		if (confirm("Are you sure you want to delete this contact?")) {
+		if (confirm('Are you sure you want to delete this contact?')) {
 			this.loading = true;
 			this.contactService.removeContact(contactId).subscribe(
 				data => {
-					this.router.navigateByUrl("/profile/contacts/" + this.personId);
+					this.router.navigateByUrl('/profile/contacts/' + this.personId);
 					this.loading = false;
-					this.alertService.success("User contact deleted successfully");
+					this.alertService.success('User contact deleted successfully');
 				},
 				error => {
 					this.alertService.error(error);
@@ -153,7 +147,7 @@ export class ContactsComponent implements OnInit, OnDestroy {
 			data => {
 				this.contact = data;
 				this.loading = false;
-				this.populateModel(data)
+				this.populateModel(data);
 			},
 			error => {
 				this.alertService.error(error);
@@ -184,14 +178,14 @@ export class ContactsComponent implements OnInit, OnDestroy {
 		this.contactService.addContact(this.createContact()).subscribe(
 			data => {
 				this.loading = false;
-				this.router.navigateByUrl("/profile/contacts/" + this.personId);
-				this.alertService.success("User contact added successfully");
+				this.router.navigateByUrl('/profile/contacts/' + this.personId);
+				this.alertService.success('User contact added successfully');
 			},
 			error => {
 				this.alertService.error(error);
 				this.loading = false;
 			}
-		)
+		);
 	}
 	
 	private updateContact() {
@@ -199,14 +193,14 @@ export class ContactsComponent implements OnInit, OnDestroy {
 		this.contactService.updateContact(this.createContact()).subscribe(
 			data => {
 				this.loading = false;
-				this.router.navigateByUrl("/profile/contacts/" + this.personId);
-				this.alertService.success("User contact updated successfully");
+				this.router.navigateByUrl('/profile/contacts/' + this.personId);
+				this.alertService.success('User contact updated successfully');
 			},
 			error => {
 				this.alertService.error(error);
 				this.loading = false;
 			}
-		)
+		);
 	}
 	
 	private populateModel(data: any) {

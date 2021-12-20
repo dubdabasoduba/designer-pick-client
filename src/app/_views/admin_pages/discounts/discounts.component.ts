@@ -1,8 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {DiscountsModel} from "../../../_models";
-import {AlertService, AuthenticationService, DiscountsService} from "../../../_services";
-import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
-import {AppCommons, appConstants} from "../../../_helpers";
+import {DiscountsModel} from '../../../_models';
+import {AlertService, AuthenticationService, DiscountsService} from '../../../_services';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {AppCommons, appConstants} from '../../../_helpers';
 
 @Component({
 	selector: 'app-discounts',
@@ -13,10 +13,10 @@ export class DiscountsComponent implements OnInit, OnDestroy {
 	loading = false;
 	public discounts: Array<DiscountsModel> = [];
 	public model = {
-		name: "",
-		code: "",
+		name: '',
+		code: '',
 		percentage: 0,
-		is_active: "",
+		is_active: '',
 	};
 	public discountId: string;
 	mySubscription: any;
@@ -64,7 +64,7 @@ export class DiscountsComponent implements OnInit, OnDestroy {
 		} else if (this.model.is_active === appConstants.emptyEntry || this.model.is_active == undefined) {
 			this.alertService.error(appConstants.statusError);
 		} else if (this.model.code === appConstants.emptyEntry || this.model.code == undefined) {
-			this.alertService.error("Discount code is required");
+			this.alertService.error('Discount code is required');
 		} else {
 			if (AppCommons.isStringEmpty(this.discountId)) {
 				this.adddiscount();
@@ -75,7 +75,7 @@ export class DiscountsComponent implements OnInit, OnDestroy {
 	}
 	
 	removeDiscount(discountId: string) {
-		if (confirm("Are you sure you want to delete this discount?")) {
+		if (confirm('Are you sure you want to delete this discount?')) {
 			this.loading = true;
 			this.discountsService.removeDiscount(discountId).subscribe(
 				data => {
@@ -117,7 +117,7 @@ export class DiscountsComponent implements OnInit, OnDestroy {
 			data => {
 				this.discount = data;
 				this.loading = false;
-				this.populateModel(data)
+				this.populateModel(data);
 			},
 			error => {
 				this.alertService.error(error);
@@ -153,7 +153,7 @@ export class DiscountsComponent implements OnInit, OnDestroy {
 				this.alertService.error(error);
 				this.loading = false;
 			}
-		)
+		);
 	}
 	
 	private updatediscount() {
@@ -167,7 +167,7 @@ export class DiscountsComponent implements OnInit, OnDestroy {
 				this.alertService.error(error);
 				this.loading = false;
 			}
-		)
+		);
 	}
 	
 	private populateModel(data: any) {
@@ -188,7 +188,7 @@ export class DiscountsComponent implements OnInit, OnDestroy {
 	private formatdiscount(data: any) {
 		this.discounts = [];
 		for (let i = 0; i < data.length; i++) {
-			let discountsModel = new DiscountsModel();
+			const discountsModel = new DiscountsModel();
 			discountsModel.name = data[i].name;
 			discountsModel.code = data[i].code;
 			discountsModel.percentage = data[i].percentage;

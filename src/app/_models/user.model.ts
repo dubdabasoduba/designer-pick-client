@@ -4,7 +4,7 @@
  * This may be subject to prosecution according to the kenyan law
  */
 
-import {DefaultModel} from "./default.model";
+import {DefaultModel} from './default.model';
 
 export class UserModel extends DefaultModel {
 	username: string;
@@ -16,6 +16,6 @@ export class UserModel extends DefaultModel {
 	type: string;
 	forceUpdate: boolean;
 	person: string;
-	name: string
+	name: string;
 	account_type: number;
 }

@@ -8,7 +8,7 @@ import {Component, OnInit} from '@angular/core';
 import {AlertService, AuthenticationService, PersonsService} from '../../../_services';
 import {AppCommons, appConstants} from '../../../_helpers';
 import {ActivatedRoute, Router} from '@angular/router';
-import {PersonModel} from "../../../_models";
+import {PersonModel} from '../../../_models';
 
 @Component({
 	selector: 'app-update-user',

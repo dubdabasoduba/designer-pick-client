@@ -8,7 +8,7 @@ import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {Observable} from 'rxjs';
 import {AuthenticationService} from '../_services';
-import {AppCommons} from "../_helpers";
+import {AppCommons} from '../_helpers';
 
 @Injectable({providedIn: 'root'})
 export class PermissionsGuard implements CanActivate {
