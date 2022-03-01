@@ -1,14 +1,14 @@
+/*
+ * Copyright (c) 2022. The content in this file is Protected by the copyright laws of kenya and owned by Logo247 Designs.
+ * Reproducing it in any way or using it without permission from Logo Bidding System will be a violation of kenyan copyrights law.
+ * This may be subject to prosecution according to the kenyan law
+ */
+
 import {Component, OnInit} from '@angular/core';
-import {PermissionModel, PersonModel} from "../../../../_models";
-import {
-	AlertService,
-	AuthenticationService,
-	PermissionsService,
-	PersonsService,
-	RolesService
-} from "../../../../_services";
-import {ActivatedRoute, Router} from "@angular/router";
-import {AppCommons, appConstants} from "../../../../_helpers";
+import {PermissionModel, PersonModel} from '../../../../_models';
+import {AlertService, AuthenticationService, PermissionsService, PersonsService, RolesService} from '../../../../_services';
+import {ActivatedRoute, Router} from '@angular/router';
+import {AppCommons, appConstants} from '../../../../_helpers';
 
 @Component({
 	selector: 'app-add-edit-users',
@@ -18,12 +18,12 @@ import {AppCommons, appConstants} from "../../../../_helpers";
 export class AddEditUsersComponent implements OnInit {
 	loading = false;
 	public model = {
-		name: "",
-		username: "",
-		email: "",
-		phone_number: "",
-		account_type: "",
-		is_active: ""
+		name: '',
+		username: '',
+		email: '',
+		phone_number: '',
+		account_type: '',
+		is_active: ''
 	};
 	public personId: string;
 	loggedInUser: string;
@@ -67,7 +67,7 @@ export class AddEditUsersComponent implements OnInit {
 	
 	redirectToAssignRolesPage(person: PersonModel) {
 		if (!AppCommons.isStringEmpty(person.user_uuid) && this.model.account_type == '2') {
-			this.router.navigateByUrl('/users/assign-roles/' + person.uuid + "/" + person.user_uuid);
+			this.router.navigateByUrl('/users/assign-roles/' + person.uuid + '/' + person.user_uuid);
 		} else {
 			this.router.navigateByUrl('/users');
 		}
@@ -84,7 +84,7 @@ export class AddEditUsersComponent implements OnInit {
 				this.alertService.error(error);
 				this.loading = false;
 			}
-		)
+		);
 	}
 	
 	private addUser() {
@@ -98,7 +98,7 @@ export class AddEditUsersComponent implements OnInit {
 				this.alertService.error(error);
 				this.loading = false;
 			}
-		)
+		);
 	}
 	
 	private createUser() {
@@ -124,7 +124,7 @@ export class AddEditUsersComponent implements OnInit {
 			data => {
 				this.person = data[0];
 				this.loading = false;
-				this.populateModel(data[0])
+				this.populateModel(data[0]);
 			},
 			error => {
 				this.alertService.error(error);

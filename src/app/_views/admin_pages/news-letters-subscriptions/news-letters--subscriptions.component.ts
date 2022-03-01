@@ -1,12 +1,14 @@
+/*
+ * Copyright (c) 2022. The content in this file is Protected by the copyright laws of kenya and owned by Logo247 Designs.
+ * Reproducing it in any way or using it without permission from Logo Bidding System will be a violation of kenyan copyrights law.
+ * This may be subject to prosecution according to the kenyan law
+ */
+
 import {Component, OnInit} from '@angular/core';
-import {NewsLettersSubscriptionsModel} from "../../../_models";
-import {
-	AlertService,
-	AuthenticationService,
-	NewsLettersSubscriptionsService
-} from "../../../_services";
-import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
-import {AppCommons, appConstants} from "../../../_helpers";
+import {NewsLettersSubscriptionsModel} from '../../../_models';
+import {AlertService, AuthenticationService, NewsLettersSubscriptionsService} from '../../../_services';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {AppCommons, appConstants} from '../../../_helpers';
 
 @Component({
 	selector: 'app-news-letters-subscriptions',
@@ -17,8 +19,8 @@ export class NewsLettersSubscriptionsComponent implements OnInit {
 	loading = false;
 	public newsLettersSubscriptions: Array<NewsLettersSubscriptionsModel> = [];
 	public model = {
-		email: "",
-		is_active: ""
+		email: '',
+		is_active: ''
 	};
 	public newsLettersSubscriptionsId: string;
 	mySubscription: any;
@@ -61,7 +63,7 @@ export class NewsLettersSubscriptionsComponent implements OnInit {
 	addEditNewsLetterSubscriptions() {
 		this.loading = false;
 		if (this.model.email == appConstants.emptyEntry || this.model.email == undefined) {
-			this.alertService.error("Email subscription");
+			this.alertService.error('Email subscription');
 		} else if (this.model.is_active === appConstants.emptyEntry || this.model.is_active == undefined) {
 			this.alertService.error(appConstants.statusError);
 		} else {
@@ -74,7 +76,7 @@ export class NewsLettersSubscriptionsComponent implements OnInit {
 	}
 	
 	removeNewsLetterSubscriptions(apiKeyId: string) {
-		if (confirm("Are you sure you want to delete this news letter subscription?")) {
+		if (confirm('Are you sure you want to delete this news letter subscription?')) {
 			this.loading = true;
 			this.newsLettersService.removeNewsLettersSubscriptions(apiKeyId).subscribe(
 				data => {
@@ -116,7 +118,7 @@ export class NewsLettersSubscriptionsComponent implements OnInit {
 			data => {
 				this.newsLetter = data;
 				this.loading = false;
-				this.populateModel(data)
+				this.populateModel(data);
 			},
 			error => {
 				this.alertService.error(error);
@@ -150,7 +152,7 @@ export class NewsLettersSubscriptionsComponent implements OnInit {
 				this.alertService.error(error);
 				this.loading = false;
 			}
-		)
+		);
 	}
 	
 	private updateNewsLetterSubscriptions() {
@@ -164,7 +166,7 @@ export class NewsLettersSubscriptionsComponent implements OnInit {
 				this.alertService.error(error);
 				this.loading = false;
 			}
-		)
+		);
 	}
 	
 	private populateModel(data: any) {
@@ -181,7 +183,7 @@ export class NewsLettersSubscriptionsComponent implements OnInit {
 	private formatNewsLettersSubscriptions(data: any) {
 		this.newsLettersSubscriptions = [];
 		for (let i = 0; i < data.length; i++) {
-			let newsLettersModel = new NewsLettersSubscriptionsModel();
+			const newsLettersModel = new NewsLettersSubscriptionsModel();
 			newsLettersModel.email = data[i].email;
 			newsLettersModel.date_created = AppCommons.formatDisplayDate(new Date(data[i].date_created));
 			newsLettersModel.date_updated = AppCommons.formatDisplayDate(AppCommons.convertStringToDate(data[i].date_updated));

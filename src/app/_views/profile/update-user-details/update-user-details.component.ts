@@ -1,13 +1,14 @@
+/*
+ * Copyright (c) 2022. The content in this file is Protected by the copyright laws of kenya and owned by Logo247 Designs.
+ * Reproducing it in any way or using it without permission from Logo Bidding System will be a violation of kenyan copyrights law.
+ * This may be subject to prosecution according to the kenyan law
+ */
+
 import {Component, OnInit} from '@angular/core';
-import {AppCommons, appConstants} from "../../../_helpers";
-import {
-	AlertService,
-	AuthenticationService,
-	PersonsService,
-	ProfileService
-} from "../../../_services";
-import {ActivatedRoute, Router} from "@angular/router";
-import {PersonModel} from "../../../_models";
+import {AppCommons, appConstants} from '../../../_helpers';
+import {AlertService, AuthenticationService, PersonsService, ProfileService} from '../../../_services';
+import {ActivatedRoute, Router} from '@angular/router';
+import {PersonModel} from '../../../_models';
 
 @Component({
 	selector: 'app-update-user-details',
@@ -115,7 +116,7 @@ export class UpdateUserDetailsComponent implements OnInit {
 			data => {
 				this.authenticationService.setForceUpdateState(false);
 				this.authenticationService.setName(this.model.name);
-				this.alertService.success("User details updated successfully");
+				this.alertService.success('User details updated successfully');
 				this.loading = false;
 			},
 			error => {

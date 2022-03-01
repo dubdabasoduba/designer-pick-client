@@ -1,8 +1,14 @@
+/*
+ * Copyright (c) 2022. The content in this file is Protected by the copyright laws of kenya and owned by Logo247 Designs.
+ * Reproducing it in any way or using it without permission from Logo Bidding System will be a violation of kenyan copyrights law.
+ * This may be subject to prosecution according to the kenyan law
+ */
+
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {CommissionsModel} from "../../../_models";
-import {AlertService, AuthenticationService, CommissionsService} from "../../../_services";
-import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
-import {AppCommons, appConstants} from "../../../_helpers";
+import {CommissionsModel} from '../../../_models';
+import {AlertService, AuthenticationService, CommissionsService} from '../../../_services';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {AppCommons, appConstants} from '../../../_helpers';
 
 @Component({
 	selector: 'app-commissions',
@@ -13,10 +19,10 @@ export class CommissionsComponent implements OnInit, OnDestroy {
 	loading = false;
 	public commissions: Array<CommissionsModel> = [];
 	public model = {
-		name: "",
+		name: '',
 		percentage: 0,
-		is_active: "",
-		description: ""
+		is_active: '',
+		description: ''
 	};
 	public commissionId: string;
 	mySubscription: any;
@@ -73,7 +79,7 @@ export class CommissionsComponent implements OnInit, OnDestroy {
 	}
 	
 	removeCommission(commissionId: string) {
-		if (confirm("Are you sure you want to delete this commission?")) {
+		if (confirm('Are you sure you want to delete this commission?')) {
 			this.loading = true;
 			this.commissionsService.removeCommission(commissionId).subscribe(
 				data => {
@@ -115,7 +121,7 @@ export class CommissionsComponent implements OnInit, OnDestroy {
 			data => {
 				this.commission = data;
 				this.loading = false;
-				this.populateModel(data)
+				this.populateModel(data);
 			},
 			error => {
 				this.alertService.error(error);
@@ -151,7 +157,7 @@ export class CommissionsComponent implements OnInit, OnDestroy {
 				this.alertService.error(error);
 				this.loading = false;
 			}
-		)
+		);
 	}
 	
 	private updateCommission() {
@@ -165,7 +171,7 @@ export class CommissionsComponent implements OnInit, OnDestroy {
 				this.alertService.error(error);
 				this.loading = false;
 			}
-		)
+		);
 	}
 	
 	private populateModel(data: any) {
@@ -186,7 +192,7 @@ export class CommissionsComponent implements OnInit, OnDestroy {
 	private formatCommission(data: any) {
 		this.commissions = [];
 		for (let i = 0; i < data.length; i++) {
-			let commissionsModel = new CommissionsModel();
+			const commissionsModel = new CommissionsModel();
 			commissionsModel.name = data[i].name;
 			commissionsModel.percentage = data[i].percentage;
 			commissionsModel.description = data[i].description;

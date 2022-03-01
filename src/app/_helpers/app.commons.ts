@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2019. The content in this file is Protected by the copyright laws of kenya and owned by Re.Kast Limited.
- * Reproducing it in any way or using it without permission from Re.Kast Limited will be a violation of kenyan copyrights law.
+ * Copyright (c) 2019-2022. The content in this file is Protected by the copyright laws of kenya and owned by Logo247 Designs.
+ * Reproducing it in any way or using it without permission from Logo Bidding System will be a violation of kenyan copyrights law.
  * This may be subject to prosecution according to the kenyan law
  */
 
@@ -9,7 +9,7 @@ import {appConstants} from './app.constants';
 import * as CryptoJS from 'crypto-js';
 import {PersonsService} from '../_services';
 import {Injectable} from '@angular/core';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Injectable()
 export class AppCommons {
@@ -35,9 +35,9 @@ export class AppCommons {
 	 * @param assignedPermissions {@link Array}: The user assigned permissions
 	 */
 	public static checkIfPermissionsExist(requiredPermissions, assignedPermissions: []) {
-		let hasPermissions = false
-		let requiredPermissionsSize = requiredPermissions.length;
-		let assignedPermissionsSize = assignedPermissions.length;
+		let hasPermissions = false;
+		const requiredPermissionsSize = requiredPermissions.length;
+		const assignedPermissionsSize = assignedPermissions.length;
 		if (!AppCommons.isObjectEmpty(requiredPermissions) && !AppCommons.isObjectEmpty(assignedPermissions)) {
 			let j = 0;
 			for (let i = 0; i < requiredPermissionsSize; i++) {
@@ -58,7 +58,7 @@ export class AppCommons {
 	}
 	
 	public static calculateDays(startDate: string, endDate: string) {
-		let difference = "";
+		let difference = '';
 		if (!AppCommons.isStringEmpty(startDate) && !AppCommons.isStringEmpty(endDate)) {
 			let diffInMilliSeconds = Math.abs(new Date(endDate).getTime() - new Date(startDate).getTime()) / 1000;
 			
@@ -215,7 +215,7 @@ export class AppCommons {
 	 * @return {number} -- The age from the date of birth
 	 */
 	public static calculateAge(dob) {
-		let age: number
+		let age: number;
 		if (!this.isStringEmpty(dob)) {
 			const today = new Date();
 			const birthDate = new Date(dob);

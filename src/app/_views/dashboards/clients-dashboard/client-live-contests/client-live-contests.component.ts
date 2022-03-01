@@ -1,8 +1,14 @@
+/*
+ * Copyright (c) 2022. The content in this file is Protected by the copyright laws of kenya and owned by Logo247 Designs.
+ * Reproducing it in any way or using it without permission from Logo Bidding System will be a violation of kenyan copyrights law.
+ * This may be subject to prosecution according to the kenyan law
+ */
+
 import {Component, OnInit} from '@angular/core';
-import {AuthenticatedUserModel, ContestModel} from "../../../../_models";
-import {AlertService, AuthenticationService, ContestsService} from "../../../../_services";
-import {ActivatedRoute, Router} from "@angular/router";
-import {AppCommons, appConstants} from "../../../../_helpers";
+import {AuthenticatedUserModel, ContestModel} from '../../../../_models';
+import {AlertService, AuthenticationService, ContestsService} from '../../../../_services';
+import {ActivatedRoute, Router} from '@angular/router';
+import {AppCommons, appConstants} from '../../../../_helpers';
 
 @Component({
 	selector: 'app-client-live-contests',
@@ -12,8 +18,8 @@ import {AppCommons, appConstants} from "../../../../_helpers";
 export class ClientLiveContestsComponent implements OnInit {
 	loading = false;
 	lbsUser: AuthenticatedUserModel;
-	public userId: string
-	public allContests: Array<ContestModel>
+	public userId: string;
+	public allContests: Array<ContestModel>;
 	
 	
 	constructor(
@@ -24,7 +30,7 @@ export class ClientLiveContestsComponent implements OnInit {
 	private static generateNewContest(contest: ContestModel) {
 		let newContest = new ContestModel();
 		newContest.uuid = contest.uuid;
-		newContest.title = contest.business_name + " | " + contest.title;
+		newContest.title = contest.business_name + ' | ' + contest.title;
 		newContest.stage = contest.stage;
 		newContest.amount = contest.amount;
 		newContest.is_featured = contest.is_featured;
@@ -46,9 +52,9 @@ export class ClientLiveContestsComponent implements OnInit {
 	}
 	
 	displaySingleContest(contest: string, isActive: number) {
-		let status = "active";
+		let status = 'active';
 		if (isActive == 0) {
-			status = "draft"
+			status = 'draft';
 		}
 		AppCommons.displaySingleContest(this.router, contest, status, this.router.url);
 	}
@@ -68,7 +74,7 @@ export class ClientLiveContestsComponent implements OnInit {
 	}
 	
 	private updateLiveContests(contests: Array<ContestModel>) {
-		let newContests = []
+		let newContests = [];
 		for (let i = 0; i < contests.length; i++) {
 			let contest = contests[i];
 			newContests.push(ClientLiveContestsComponent.generateNewContest(contest));

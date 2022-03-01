@@ -1,13 +1,14 @@
+/*
+ * Copyright (c) 2022. The content in this file is Protected by the copyright laws of kenya and owned by Logo247 Designs.
+ * Reproducing it in any way or using it without permission from Logo Bidding System will be a violation of kenyan copyrights law.
+ * This may be subject to prosecution according to the kenyan law
+ */
+
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ContactModel, PersonModel} from "../../../../_models";
-import {
-	AlertService,
-	AuthenticationService,
-	ContactService,
-	PersonsService
-} from "../../../../_services";
-import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
-import {AppCommons, appConstants} from "../../../../_helpers";
+import {ContactModel, PersonModel} from '../../../../_models';
+import {AlertService, AuthenticationService, ContactService, PersonsService} from '../../../../_services';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {AppCommons, appConstants} from '../../../../_helpers';
 
 @Component({
 	selector: 'app-contacts',
@@ -18,11 +19,11 @@ export class UserContactsComponent implements OnInit, OnDestroy {
 	loading = false;
 	public contacts: Array<ContactModel> = [];
 	public model = {
-		email: "",
-		location: "",
-		phone_number: "",
-		is_main: "",
-		is_active: ""
+		email: '',
+		location: '',
+		phone_number: '',
+		is_main: '',
+		is_active: ''
 	};
 	public contactId: string;
 	public personId: string;
@@ -74,11 +75,11 @@ export class UserContactsComponent implements OnInit, OnDestroy {
 	addEditContact() {
 		this.loading = false;
 		if (this.model.email == appConstants.emptyEntry || this.model.email == undefined) {
-			this.alertService.error("The email address is required");
+			this.alertService.error('The email address is required');
 		} else if (this.model.phone_number === appConstants.emptyEntry || this.model.phone_number == undefined) {
-			this.alertService.error("The phone number is required");
+			this.alertService.error('The phone number is required');
 		} else if (this.model.location === appConstants.emptyEntry || this.model.location == undefined) {
-			this.alertService.error("The location is required");
+			this.alertService.error('The location is required');
 		} else if (this.model.is_active === appConstants.emptyEntry || this.model.is_active == undefined) {
 			this.alertService.error(appConstants.statusError);
 		} else {
@@ -91,11 +92,11 @@ export class UserContactsComponent implements OnInit, OnDestroy {
 	}
 	
 	removeContact(contactId: string) {
-		if (confirm("Are you sure you want to delete this contact?")) {
+		if (confirm('Are you sure you want to delete this contact?')) {
 			this.loading = true;
 			this.contactService.removeContact(contactId).subscribe(
 				data => {
-					this.router.navigateByUrl("/users/contacts/" + this.personId);
+					this.router.navigateByUrl('/users/contacts/' + this.personId);
 					this.loading = false;
 				},
 				error => {
@@ -152,7 +153,7 @@ export class UserContactsComponent implements OnInit, OnDestroy {
 			data => {
 				this.contact = data;
 				this.loading = false;
-				this.populateModel(data)
+				this.populateModel(data);
 			},
 			error => {
 				this.alertService.error(error);
@@ -189,7 +190,7 @@ export class UserContactsComponent implements OnInit, OnDestroy {
 				this.alertService.error(error);
 				this.loading = false;
 			}
-		)
+		);
 	}
 	
 	private updateContact() {
@@ -197,13 +198,13 @@ export class UserContactsComponent implements OnInit, OnDestroy {
 		this.contactService.updateContact(this.createContact()).subscribe(
 			data => {
 				this.loading = false;
-				this.router.navigateByUrl("/users/contacts/" + this.personId);
+				this.router.navigateByUrl('/users/contacts/' + this.personId);
 			},
 			error => {
 				this.alertService.error(error);
 				this.loading = false;
 			}
-		)
+		);
 	}
 	
 	private populateModel(data: any) {

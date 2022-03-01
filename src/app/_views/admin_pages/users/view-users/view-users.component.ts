@@ -1,8 +1,14 @@
+/*
+ * Copyright (c) 2022. The content in this file is Protected by the copyright laws of kenya and owned by Logo247 Designs.
+ * Reproducing it in any way or using it without permission from Logo Bidding System will be a violation of kenyan copyrights law.
+ * This may be subject to prosecution according to the kenyan law
+ */
+
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {PersonModel} from "../../../../_models";
-import {AlertService, AuthenticationService, PersonsService} from "../../../../_services";
-import {AppCommons} from "../../../../_helpers";
-import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
+import {PersonModel} from '../../../../_models';
+import {AlertService, AuthenticationService, PersonsService} from '../../../../_services';
+import {AppCommons} from '../../../../_helpers';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 
 @Component({
 	selector: 'app-view-users',
@@ -12,8 +18,8 @@ import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 export class ViewUsersComponent implements OnInit, OnDestroy {
 	loading = false;
 	public model = {
-		user_account: ""
-	}
+		user_account: ''
+	};
 	public people: Array<PersonModel> = [];
 	mySubscription: any;
 	private accountType: string;
@@ -41,7 +47,7 @@ export class ViewUsersComponent implements OnInit, OnDestroy {
 	
 	ngOnInit(): void {
 		this.route.queryParamMap.subscribe(params => {
-			this.accountType = params.get("account_type");
+			this.accountType = params.get('account_type');
 		});
 		this.model.user_account = this.accountType;
 		if (this.model.user_account != null && !AppCommons.isStringEmpty(this.model.user_account) && this.model.user_account != undefined) {
@@ -55,7 +61,7 @@ export class ViewUsersComponent implements OnInit, OnDestroy {
 		this.loading = true;
 		this.authenticationService.resetPasswordRequest(username).subscribe(
 			data => {
-				this.router.navigateByUrl("/users?account_type=" + this.model.user_account)
+				this.router.navigateByUrl('/users?account_type=' + this.model.user_account);
 				this.loading = false;
 			},
 			error => {
@@ -69,7 +75,7 @@ export class ViewUsersComponent implements OnInit, OnDestroy {
 		this.people = [];
 		this.model.user_account = event.target.value;
 		if (this.model.user_account != null && !AppCommons.isStringEmpty(this.model.user_account) && this.model.user_account != undefined) {
-			this.router.navigateByUrl("/users?account_type=" + this.model.user_account)
+			this.router.navigateByUrl('/users?account_type=' + this.model.user_account);
 		}
 	}
 	
@@ -92,13 +98,13 @@ export class ViewUsersComponent implements OnInit, OnDestroy {
 	
 	private formatPermissions(data: any) {
 		for (let i = 0; i < data.length; i++) {
-			let person = new PersonModel();
+			const person = new PersonModel();
 			person.name = data[i].name;
 			person.username = data[i].username;
 			person.phone_number = data[i].phone_number;
 			person.email = data[i].email;
-			let age = String(AppCommons.calculateAge(AppCommons.convertStringToDate(data[i].dob)));
-			person.age = age == "undefined" ? "--" : age;
+			const age = String(AppCommons.calculateAge(AppCommons.convertStringToDate(data[i].dob)));
+			person.age = age == 'undefined' ? '--' : age;
 			person.account_type = data[i].account_type;
 			person.date_created = AppCommons.formatDisplayDate(new Date(data[i].date_created));
 			person.date_updated = AppCommons.formatDisplayDate(AppCommons.convertStringToDate(data[i].date_updated));

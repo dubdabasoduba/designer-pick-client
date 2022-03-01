@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2022. The content in this file is Protected by the copyright laws of kenya and owned by Logo247 Designs.
+ * Reproducing it in any way or using it without permission from Logo Bidding System will be a violation of kenyan copyrights law.
+ * This may be subject to prosecution according to the kenyan law
+ */
+
 export class AuthenticatedUserModel {
 	user: {
 		uuid: string;
@@ -17,5 +23,5 @@ export class AuthenticatedUserModel {
 		update_on_first_login: number;
 		permissions: [];
 		password: string;
-	}
+	};
 }

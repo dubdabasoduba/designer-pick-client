@@ -1,8 +1,14 @@
+/*
+ * Copyright (c) 2022. The content in this file is Protected by the copyright laws of kenya and owned by Logo247 Designs.
+ * Reproducing it in any way or using it without permission from Logo Bidding System will be a violation of kenyan copyrights law.
+ * This may be subject to prosecution according to the kenyan law
+ */
+
 import {Component, OnInit} from '@angular/core';
-import {AppCommons, appConstants} from "../../../../_helpers";
-import {AlertService, AuthenticationService, ContestsService} from "../../../../_services";
-import {ActivatedRoute, Router} from "@angular/router";
-import {AuthenticatedUserModel, ContestModel} from "../../../../_models";
+import {AppCommons, appConstants} from '../../../../_helpers';
+import {AlertService, AuthenticationService, ContestsService} from '../../../../_services';
+import {ActivatedRoute, Router} from '@angular/router';
+import {AuthenticatedUserModel, ContestModel} from '../../../../_models';
 
 @Component({
 	selector: 'app-view-single-contest',
@@ -32,17 +38,17 @@ export class ViewSingleContestComponent implements OnInit {
 			this.contestUuid = params[appConstants.id];
 		});
 		this.route.queryParams.subscribe(params => {
-			this.contest_type = params["type"];
-			this.returnUrl = params["returnUrl"];
+			this.contest_type = params['type'];
+			this.returnUrl = params['returnUrl'];
 		});
 		if (!AppCommons.isStringEmpty(this.contest_type)) {
-			if (this.contest_type == "active") {
+			if (this.contest_type == 'active') {
 				this.getContest();
 			} else {
 				this.getDraftContest();
 			}
 		} else {
-			this.alertService.error("The contest status is required");
+			this.alertService.error('The contest status is required');
 			this.router.navigateByUrl(this.returnUrl);
 		}
 	}

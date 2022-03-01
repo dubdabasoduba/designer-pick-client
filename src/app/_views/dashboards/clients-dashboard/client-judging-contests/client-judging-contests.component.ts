@@ -1,8 +1,14 @@
+/*
+ * Copyright (c) 2022. The content in this file is Protected by the copyright laws of kenya and owned by Logo247 Designs.
+ * Reproducing it in any way or using it without permission from Logo Bidding System will be a violation of kenyan copyrights law.
+ * This may be subject to prosecution according to the kenyan law
+ */
+
 import {Component, OnInit} from '@angular/core';
-import {AuthenticatedUserModel, ContestModel} from "../../../../_models";
-import {AlertService, AuthenticationService} from "../../../../_services";
-import {ActivatedRoute, Router} from "@angular/router";
-import {appConstants} from "../../../../_helpers";
+import {AuthenticatedUserModel, ContestModel} from '../../../../_models';
+import {AlertService, AuthenticationService} from '../../../../_services';
+import {ActivatedRoute, Router} from '@angular/router';
+import {appConstants} from '../../../../_helpers';
 
 @Component({
 	selector: 'app-client-judging-contests',
@@ -12,7 +18,7 @@ import {appConstants} from "../../../../_helpers";
 export class ClientJudgingContestsComponent implements OnInit {
 	loading = false;
 	lbsUser: AuthenticatedUserModel;
-	public userId: string
+	public userId: string;
 	public contests: Array<ContestModel>;
 	
 	constructor(

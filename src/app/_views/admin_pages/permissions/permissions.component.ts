@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2019. The content in this file is Protected by the copyright laws of kenya and owned by Re.Kast Limited.
- * Reproducing it in any way or using it without permission from Re.Kast Limited will be a violation of kenyan copyrights law.
+ * Copyright (c) 2019-2022. The content in this file is Protected by the copyright laws of kenya and owned by Logo247 Designs.
+ * Reproducing it in any way or using it without permission from Logo Bidding System will be a violation of kenyan copyrights law.
  * This may be subject to prosecution according to the kenyan law
  */
 
@@ -8,7 +8,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AlertService, AuthenticationService, PermissionsService} from '../../../_services';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {AppCommons, appConstants} from '../../../_helpers';
-import {PermissionModel} from "../../../_models";
+import {PermissionModel} from '../../../_models';
 
 @Component({
 	selector: 'app-countries',
@@ -19,9 +19,9 @@ export class PermissionsComponent implements OnInit, OnDestroy {
 	loading = false;
 	public permissions: Array<PermissionModel> = [];
 	public model = {
-		name: "",
-		description: "",
-		is_active: ""
+		name: '',
+		description: '',
+		is_active: ''
 	};
 	public permissionId: string;
 	mySubscription: any;
@@ -80,7 +80,7 @@ export class PermissionsComponent implements OnInit, OnDestroy {
 	
 	formatPermissions(data: any) {
 		for (let i = 0; i < data.length; i++) {
-			let permission = new PermissionModel();
+			const permission = new PermissionModel();
 			permission.name = data[i].name;
 			permission.description = data[i].description;
 			permission.date_created = AppCommons.formatDisplayDate(new Date(data[i].date_created));
@@ -106,7 +106,7 @@ export class PermissionsComponent implements OnInit, OnDestroy {
 				this.alertService.error(error);
 				this.loading = false;
 			}
-		)
+		);
 	}
 	
 	/**
@@ -114,7 +114,7 @@ export class PermissionsComponent implements OnInit, OnDestroy {
 	 * @private
 	 */
 	private createPermission() {
-		let permission = this.permission;
+		const permission = this.permission;
 		permission.updated_by = this.loggedInUser;
 		permission.name = this.model.name;
 		permission.description = this.model.description;
@@ -150,7 +150,7 @@ export class PermissionsComponent implements OnInit, OnDestroy {
 			data => {
 				this.permission = data;
 				this.loading = false;
-				this.populateModel(data)
+				this.populateModel(data);
 			},
 			error => {
 				this.alertService.error(error);

@@ -1,13 +1,7 @@
 /*
- * VenoBox - jQuery Plugin
- * version: 1.9.0
- * @requires jQuery >= 1.7.0
- *
- * Examples at http://veno.es/venobox/
- * License: MIT License
- * License URI: https://github.com/nicolafranchini/VenoBox/blob/master/LICENSE
- * Copyright 2013-2020 Nicola Franchini - @nicolafranchini
- *
+ * Copyright (c) 2022. The content in this file is Protected by the copyright laws of kenya and owned by Logo247 Designs.
+ * Reproducing it in any way or using it without permission from Logo Bidding System will be a violation of kenyan copyrights law.
+ * This may be subject to prosecution according to the kenyan law
  */
 
 /* global jQuery */

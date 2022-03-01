@@ -1,8 +1,14 @@
+/*
+ * Copyright (c) 2022. The content in this file is Protected by the copyright laws of kenya and owned by Logo247 Designs.
+ * Reproducing it in any way or using it without permission from Logo Bidding System will be a violation of kenyan copyrights law.
+ * This may be subject to prosecution according to the kenyan law
+ */
+
 import {Component, OnInit} from '@angular/core';
-import {RolesModel} from "../../../../_models";
-import {AlertService, RolesService} from "../../../../_services";
-import {AppCommons, appConstants} from "../../../../_helpers";
-import {ActivatedRoute, Router} from "@angular/router";
+import {RolesModel} from '../../../../_models';
+import {AlertService, RolesService} from '../../../../_services';
+import {AppCommons, appConstants} from '../../../../_helpers';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
 	selector: 'app-view-roles',
@@ -32,7 +38,7 @@ export class ViewRolesComponent implements OnInit {
 	}
 	
 	removeRole(id: string) {
-		if (confirm("Are you sure you want to delete this role?")) {
+		if (confirm('Are you sure you want to delete this role?')) {
 			this.loading = true;
 			this.rolesService.removeRole(id).subscribe(
 				data => {

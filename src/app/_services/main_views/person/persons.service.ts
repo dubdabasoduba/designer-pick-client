@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2019. The content in this file is Protected by the copyright laws of kenya and owned by Re.Kast Limited.
- * Reproducing it in any way or using it without permission from Re.Kast Limited will be a violation of kenyan copyrights law.
+ * Copyright (c) 2019-2022. The content in this file is Protected by the copyright laws of kenya and owned by Logo247 Designs.
+ * Reproducing it in any way or using it without permission from Logo Bidding System will be a violation of kenyan copyrights law.
  * This may be subject to prosecution according to the kenyan law
  */
 
@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
 import {appConstants} from '../../../_helpers';
 import {HttpClient} from '@angular/common/http';
 import {PersonModel} from '../../../_models';
-import {Observable} from "rxjs";
+import {Observable} from 'rxjs';
 
 @Injectable()
 export class PersonsService {
@@ -17,11 +17,11 @@ export class PersonsService {
 	}
 	
 	getPeople(accountType: string) {
-		return this.http.get(appConstants.baseApiV1Url + appConstants.peopleUrl + "?account_type=" + accountType);
+		return this.http.get(appConstants.baseApiV1Url + appConstants.peopleUrl + '?account_type=' + accountType);
 	}
 	
 	getDesigners(accountType: string) {
-		return this.http.get(appConstants.baseApiV1Url + '/designers' + "?account_type=" + accountType);
+		return this.http.get(appConstants.baseApiV1Url + '/designers' + '?account_type=' + accountType);
 	}
 	
 	getDesignerById(personId: string): Observable<PersonModel> {
