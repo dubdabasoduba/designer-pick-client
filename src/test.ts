@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2019. The content in this file is Protected by the copyright laws of kenya and owned by Re.Kast Limited.
- * Reproducing it in any way or using it without permission from Re.Kast Limited will be a violation of kenyan copyrights law.
+ * Copyright (c) 2019-2022. The content in this file is Protected by the copyright laws of kenya and owned by Logo247 Designs.
+ * Reproducing it in any way or using it without permission from Logo Bidding System will be a violation of kenyan copyrights law.
  * This may be subject to prosecution according to the kenyan law
  */
 
@@ -13,10 +13,7 @@ import 'zone.js/dist/jasmine-patch';
 import 'zone.js/dist/async-test';
 import 'zone.js/dist/fake-async-test';
 import {getTestBed} from '@angular/core/testing';
-import {
-	BrowserDynamicTestingModule,
-	platformBrowserDynamicTesting
-} from '@angular/platform-browser-dynamic/testing';
+import {BrowserDynamicTestingModule, platformBrowserDynamicTesting} from '@angular/platform-browser-dynamic/testing';
 
 // Unfortunately there's no typing for the `__karma__` variable. Just declare it as any.
 declare const __karma__: any;
@@ -29,7 +26,9 @@ __karma__.loaded = function () {
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(
 	BrowserDynamicTestingModule,
-	platformBrowserDynamicTesting()
+	platformBrowserDynamicTesting(), {
+		teardown: {destroyAfterEach: false}
+	}
 );
 // Then we find all the tests.
 const context = require.context('./', true, /\.spec\.ts$/);

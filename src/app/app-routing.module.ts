@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2019. The content in this file is Protected by the copyright laws of kenya and owned by Re.Kast Limited.
- * Reproducing it in any way or using it without permission from Re.Kast Limited will be a violation of kenyan copyrights law.
+ * Copyright (c) 2019-2022. The content in this file is Protected by the copyright laws of kenya and owned by Logo247 Designs.
+ * Reproducing it in any way or using it without permission from Logo Bidding System will be a violation of kenyan copyrights law.
  * This may be subject to prosecution according to the kenyan law
  */
 import {RouterModule, Routes} from '@angular/router';
@@ -50,10 +50,16 @@ import {AddContestsComponent} from './_views/main_views/contests/add-contests/ad
 import {FaqComponent} from './_views/main_views/faq/faq.component';
 import {PolicyComponent} from './_views/main_views/policy/policy.component';
 import {TosComponent} from './_views/main_views/tos/tos.component';
-import {NewsLettersSubscriptionsComponent} from './_views/admin_pages/news-letters-subscriptions/news-letters--subscriptions.component';
+import {
+	NewsLettersSubscriptionsComponent
+} from './_views/admin_pages/news-letters-subscriptions/news-letters--subscriptions.component';
 import {ClientLiveContestsComponent} from './_views/dashboards/clients-dashboard/client-live-contests/client-live-contests.component';
-import {ClientEndedContestsComponent} from './_views/dashboards/clients-dashboard/client-ended-contests/client-ended-contests.component';
-import {ClientJudgingContestsComponent} from './_views/dashboards/clients-dashboard/client-judging-contests/client-judging-contests.component';
+import {
+	ClientEndedContestsComponent
+} from './_views/dashboards/clients-dashboard/client-ended-contests/client-ended-contests.component';
+import {
+	ClientJudgingContestsComponent
+} from './_views/dashboards/clients-dashboard/client-judging-contests/client-judging-contests.component';
 
 const appRoutes: Routes = [
 	{path: '', component: HomeComponent, runGuardsAndResolvers: 'always'},

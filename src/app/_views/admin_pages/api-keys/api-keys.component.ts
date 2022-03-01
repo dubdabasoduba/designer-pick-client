@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2022. The content in this file is Protected by the copyright laws of kenya and owned by Logo247 Designs.
+ * Reproducing it in any way or using it without permission from Logo Bidding System will be a violation of kenyan copyrights law.
+ * This may be subject to prosecution according to the kenyan law
+ */
+
 import {Component, OnInit} from '@angular/core';
 import {ApiKeyModel} from '../../../_models';
 import {AlertService, ApiKeysService, AuthenticationService} from '../../../_services';
@@ -23,9 +29,8 @@ export class ApiKeysComponent implements OnInit {
 	apiKey = new ApiKeyModel();
 	loggedInUser: string;
 	
-	constructor(private apiKeysService: ApiKeysService, private alertService: AlertService,
-	            private route: ActivatedRoute, private router: Router,
-	            private authenticationService: AuthenticationService) {
+	constructor(private apiKeysService: ApiKeysService, private alertService: AlertService, private route: ActivatedRoute,
+	            private router: Router, private authenticationService: AuthenticationService) {
 		this.router.routeReuseStrategy.shouldReuseRoute = function () {
 			return false;
 		};

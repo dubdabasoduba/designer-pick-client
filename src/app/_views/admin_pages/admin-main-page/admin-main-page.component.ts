@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2022. The content in this file is Protected by the copyright laws of kenya and owned by Logo247 Designs.
+ * Reproducing it in any way or using it without permission from Logo Bidding System will be a violation of kenyan copyrights law.
+ * This may be subject to prosecution according to the kenyan law
+ */
+
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../../../_services';
 import {AppCommons, appConstants} from '../../../_helpers';
@@ -20,8 +26,8 @@ export class AdminMainPageComponent implements OnInit {
 	public checkPermissions(requiredPermission: string): boolean {
 		let hasPermission = false;
 		const requiredPermissions = [requiredPermission];
-		if (this.authService.getCurrentUser() !== null
-			&& AppCommons.checkIfPermissionsExist(requiredPermissions, this.authService.getCurrentUser().auth.permissions)) {
+		if (this.authService.getCurrentUser() !== null && AppCommons.checkIfPermissionsExist(requiredPermissions,
+			this.authService.getCurrentUser().auth.permissions)) {
 			hasPermission = true;
 		}
 		return hasPermission;

@@ -1,17 +1,12 @@
 /*
- * Copyright (c) 2019. The content in this file is Protected by the copyright laws of kenya and owned by Re.Kast Limited.
- * Reproducing it in any way or using it without permission from Re.Kast Limited will be a violation of kenyan copyrights law.
+ * Copyright (c) 2019-2022. The content in this file is Protected by the copyright laws of kenya and owned by Logo247 Designs.
+ * Reproducing it in any way or using it without permission from Logo Bidding System will be a violation of kenyan copyrights law.
  * This may be subject to prosecution according to the kenyan law
  */
 
 import {Component, OnInit} from '@angular/core';
 import {CommissionsModel, ContestStageModel, SettingsModel} from '../../../_models';
-import {
-	AlertService,
-	CommissionsService,
-	ContestStagesService,
-	SettingsService
-} from '../../../_services';
+import {AlertService, CommissionsService, ContestStagesService, SettingsService} from '../../../_services';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AppCommons, appConstants} from '../../../_helpers';
 
@@ -45,7 +40,9 @@ export class SettingsComponent implements OnInit {
 	) {
 	}
 	
-	private static createSettingsModel(model: { is_active: number; name: string; value: string; uuid: string; setting_key: string }) {
+	private static createSettingsModel(model: {
+		is_active: number; name: string; value: string; uuid: string; setting_key: string
+	}) {
 		const setting = new SettingsModel();
 		setting.uuid = model.uuid;
 		setting.setting_key = model.setting_key;

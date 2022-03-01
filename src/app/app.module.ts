@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2019. The content in this file is Protected by the copyright laws of kenya and owned by Re.Kast Limited.
- * Reproducing it in any way or using it without permission from Re.Kast Limited will be a violation of kenyan copyrights law.
+ * Copyright (c) 2019-2022. The content in this file is Protected by the copyright laws of kenya and owned by Logo247 Designs.
+ * Reproducing it in any way or using it without permission from Logo Bidding System will be a violation of kenyan copyrights law.
  * This may be subject to prosecution according to the kenyan law
  */
 
@@ -23,7 +23,8 @@ import {
 	LogoBriefsService,
 	LogoUsesService,
 	PagerService,
-	PaymentModesService, PaypalEmailService,
+	PaymentModesService,
+	PaypalEmailService,
 	PermissionsService,
 	PersonsService,
 	ProfileService,
@@ -82,15 +83,21 @@ import {FaqComponent} from './_views/main_views/faq/faq.component';
 import {PolicyComponent} from './_views/main_views/policy/policy.component';
 import {TosComponent} from './_views/main_views/tos/tos.component';
 import {FooterComponent} from './_views/main_views/footer/footer.component';
-import {NewsLettersSubscriptionsComponent} from './_views/admin_pages/news-letters-subscriptions/news-letters--subscriptions.component';
+import {
+	NewsLettersSubscriptionsComponent
+} from './_views/admin_pages/news-letters-subscriptions/news-letters--subscriptions.component';
 import {LiveContestsComponent} from './_views/dashboards/designers-dashboard/live-contests/live-contests.component';
 import {JudgingContestsComponent} from './_views/dashboards/designers-dashboard/judging-contests/judging-contests.component';
 import {EndedContestsComponent} from './_views/dashboards/designers-dashboard/ended-contests/ended-contests.component';
 import {RankedDesignsComponent} from './_views/dashboards/designers-dashboard/ranked-designs/ranked-designs.component';
 import {WonContestsComponent} from './_views/dashboards/designers-dashboard/won-contests/won-contests.component';
-import {ClientEndedContestsComponent} from './_views/dashboards/clients-dashboard/client-ended-contests/client-ended-contests.component';
+import {
+	ClientEndedContestsComponent
+} from './_views/dashboards/clients-dashboard/client-ended-contests/client-ended-contests.component';
 import {ClientLiveContestsComponent} from './_views/dashboards/clients-dashboard/client-live-contests/client-live-contests.component';
-import {ClientJudgingContestsComponent} from './_views/dashboards/clients-dashboard/client-judging-contests/client-judging-contests.component';
+import {
+	ClientJudgingContestsComponent
+} from './_views/dashboards/clients-dashboard/client-judging-contests/client-judging-contests.component';
 import {LocationStrategy, PathLocationStrategy} from '@angular/common';
 
 @NgModule({
