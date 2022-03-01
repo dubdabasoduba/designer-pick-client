@@ -24,7 +24,7 @@ export class ContestsComponent implements OnInit {
 		private authenticationService: AuthenticationService,
 		private contestsService: ContestsService,
 		private alertService: AlertService,
-		private router: Router, ) {
+		private router: Router ) {
 	}
 	
 	ngOnInit() {

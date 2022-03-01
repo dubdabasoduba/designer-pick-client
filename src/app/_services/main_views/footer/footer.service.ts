@@ -19,6 +19,7 @@ export class FooterService {
 	}
 	
 	subscribeToNewsLetter(newsLettersSubscriptionsModel: NewsLettersSubscriptionsModel): Observable<NewsLettersSubscriptionsModel> {
-		return this.http.post<NewsLettersSubscriptionsModel>(appConstants.baseApiV1Url + appConstants.subscribeToNewsLetterUrl, newsLettersSubscriptionsModel);
+		return this.http.post<NewsLettersSubscriptionsModel>(appConstants.baseApiV1Url + appConstants.subscribeToNewsLetterUrl,
+			newsLettersSubscriptionsModel);
 	}
 }

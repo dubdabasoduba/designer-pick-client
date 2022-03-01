@@ -5,14 +5,7 @@
  */
 
 import {Component, OnInit} from '@angular/core';
-import {
-	AuthenticatedUserModel,
-	CategoryModel,
-	ContestModel,
-	CountryModel,
-	LogoBriefModel,
-	SettingsModel
-} from '../../../../_models';
+import {AuthenticatedUserModel, CategoryModel, ContestModel, CountryModel, LogoBriefModel, SettingsModel} from '../../../../_models';
 import {
 	AlertService,
 	AuthenticationService,
