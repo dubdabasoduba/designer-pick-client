@@ -4,7 +4,7 @@
  * This may be subject to prosecution according to the kenyan law
  */
 
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ApiKeyModel} from '../../../_models';
 import {AlertService, ApiKeysService, AuthenticationService} from '../../../_services';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
@@ -15,7 +15,7 @@ import {AppCommons, appConstants} from '../../../_helpers';
 	templateUrl: './api-keys.component.html',
 	styleUrls: ['./api-keys.component.css']
 })
-export class ApiKeysComponent implements OnInit {
+export class ApiKeysComponent implements OnInit, OnDestroy {
 	loading = false;
 	public apiKeys: Array<ApiKeyModel> = [];
 	public model = {
@@ -65,15 +65,17 @@ export class ApiKeysComponent implements OnInit {
 		this.loading = false;
 		if (this.model.name == appConstants.emptyEntry || this.model.name == undefined) {
 			this.alertService.error(appConstants.nameError);
-		} else if (this.model.api_key === appConstants.emptyEntry || this.model.api_key == undefined) {
-			this.alertService.error(appConstants.apiKeyError);
 		} else if (this.model.is_active === appConstants.emptyEntry || this.model.is_active == undefined) {
 			this.alertService.error(appConstants.statusError);
 		} else {
 			if (AppCommons.isStringEmpty(this.apiKeyId)) {
 				this.addApiKey();
 			} else {
-				this.updateApiKey();
+				if (this.model.api_key === appConstants.emptyEntry || this.model.api_key == undefined) {
+					this.alertService.error(appConstants.apiKeyError);
+				} else {
+					this.updateApiKey();
+				}
 			}
 		}
 	}
