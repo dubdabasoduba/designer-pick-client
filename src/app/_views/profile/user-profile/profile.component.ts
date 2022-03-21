@@ -8,6 +8,7 @@ import {Component, OnInit} from '@angular/core';
 import {AppCommons, appConstants} from '../../../_helpers';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AlertService, AuthenticationService, PersonsService, ProfileService} from '../../../_services';
+import {PersonModel} from '../../../_models';
 
 @Component({
 	selector: 'app-profile',
@@ -17,7 +18,7 @@ import {AlertService, AuthenticationService, PersonsService, ProfileService} fro
 export class ProfileComponent implements OnInit {
 	public imageIcon = appConstants.defaultImageIcon;
 	loading = false;
-	public person: any;
+	public person: PersonModel;
 	public personUuid: string;
 	public returnUrl: string;
 	

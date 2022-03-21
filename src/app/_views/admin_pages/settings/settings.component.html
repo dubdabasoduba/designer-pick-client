@@ -37,14 +37,13 @@
 								       id="name" name="name"
 								       placeholder="Please give the setting name"
 								       readonly
-								       required="" type="text">
+								       required="true" type="text">
 							</div>
 							<div class="form-group col-lg-7">
-								<label>Select commission:&nbsp;<span
+								<label>Select initial contest stage:&nbsp;<span
 										class="tx-danger">*</span></label>
 								<select [(ngModel)]="contestStageModel.value"
-								        class="form-control" class="custom-select form-control"
-								        id="value"
+								        class="custom-select form-control" id="value"
 								        name="value" title="Select contest stage">
 									<option selected value="">Select contest stage</option>
 									<option *ngFor="let contestStage of contestStages"
@@ -91,14 +90,13 @@
 								       id="name" name="name"
 								       placeholder="Please give the setting name"
 								       readonly
-								       required="" type="text">
+								       required="true" type="text">
 							</div>
 							<div class="form-group col-lg-7">
 								<label>Select commission:&nbsp;<span
 										class="tx-danger">*</span></label>
 								<select [(ngModel)]="commissionModel.value"
-								        class="form-control" class="custom-select form-control"
-								        id="value"
+								        class="custom-select form-control" id="value"
 								        name="value" title="Select commission">
 									<option selected value="">Select commission</option>
 									<option *ngFor="let commission of commissions"

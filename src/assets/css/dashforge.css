@@ -1642,7 +1642,7 @@ pre code {
 
 @media (min-width: 1200px) {
     .container {
-        max-width: 1140px;
+        max-width: 1600px;
     }
 }
 
@@ -1674,7 +1674,7 @@ pre code {
 
 @media (min-width: 1200px) {
     .container, .container-sm, .container-md, .container-lg, .container-xl {
-        max-width: 1350px;
+        max-width: 1600px;
     }
 }
 
@@ -13571,7 +13571,7 @@ textarea.form-control {
 
 .avatar-contest {
     position: relative;
-    width: 200px;
+    width: 100% !important;
     height: 150px;
     border-radius: 10px;
 }
