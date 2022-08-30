@@ -30,7 +30,7 @@ export class ApiKeysComponent implements OnInit, OnDestroy {
 	loggedInUser: string;
 	
 	constructor(private apiKeysService: ApiKeysService, private alertService: AlertService, private route: ActivatedRoute,
-	            private router: Router, private authenticationService: AuthenticationService) {
+				private router: Router, private authenticationService: AuthenticationService) {
 		this.router.routeReuseStrategy.shouldReuseRoute = function () {
 			return false;
 		};
