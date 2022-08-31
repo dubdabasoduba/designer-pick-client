@@ -5,13 +5,10 @@
  */
 
 import {Injectable} from '@angular/core';
-import 'rxjs/add/operator/map';
 import {AppCommons, appConstants} from '../../_helpers';
-import 'rxjs/add/operator/toPromise';
 import {HttpClient} from '@angular/common/http';
-import {tap} from 'rxjs/operators';
 import {AuthenticatedUserModel, UserModel} from '../../_models';
-import {Observable} from 'rxjs/Observable';
+import {Observable, tap} from 'rxjs';
 
 @Injectable({
 	providedIn: 'root'

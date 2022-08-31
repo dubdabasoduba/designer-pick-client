@@ -5,8 +5,7 @@
  */
 import {Injectable} from '@angular/core';
 import {NavigationStart, Router} from '@angular/router';
-import {Observable} from 'rxjs/Observable';
-import {Subject} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {AlertModel, AlertType} from '../../_models';
 
 @Injectable()
@@ -56,7 +55,7 @@ export class AlertService {
 	}
 	
 	clear() {
-		this.subject.next();
+		this.subject.complete();
 	}
 	
 }

@@ -5,12 +5,11 @@
  */
 
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/catch';
+
 import {AuthenticationService} from '../_services';
 import {Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
+import {Observable} from 'rxjs';
 
 @Injectable()
 export class RequestInterceptor implements HttpInterceptor {

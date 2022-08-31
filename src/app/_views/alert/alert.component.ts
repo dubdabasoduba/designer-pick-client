@@ -7,7 +7,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AlertModel, AlertType} from '../../_models';
 import {AlertService} from '../../_services';
 import {Observable, Subscription} from 'rxjs';
-import 'rxjs/add/observable/timer';
 
 @Component({
 	selector: 'app-alert',
@@ -65,9 +64,11 @@ export class AlertComponent implements OnInit, OnDestroy {
 	}
 	
 	public setTimer() {
-		this.timer = Observable.timer(5000);
 		this.subscription = this.timer.subscribe(() => {
 			this.alerts = this.alerts.filter(x => x !== this.alert);
+			setTimeout(() => {
+				this.subscription.unsubscribe();
+			}, 5000);
 		});
 	}
 }

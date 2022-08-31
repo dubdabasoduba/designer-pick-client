@@ -4,10 +4,8 @@
  * This may be subject to prosecution according to the kenyan law
  */
 import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/catch';
-import {throwError} from 'rxjs';
+
+import {catchError, map, Observable, throwError} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import {AppCommons} from './app.commons';
@@ -36,25 +34,29 @@ export class ResponseInterceptor implements HttpInterceptor {
 	 * @author dubdabasoduba
 	 */
 	intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-		return next.handle(request).map(data => {
-			if (!AppCommons.isObjectEmpty(data)) {
-				if (data instanceof HttpResponse) {
-					data = data.clone({
-						body: ResponseInterceptor.formatResponse(data.body)
-					});
+		return next.handle(request).pipe(
+			catchError((error: HttpErrorResponse) => {
+				if (error.status === 401 || error.status === 403) {
+					this.redirectToLogin(request.url);
+				} else {
+					if (error instanceof HttpErrorResponse) {
+						error = ResponseInterceptor.formatResponse(error.error);
+					}
 				}
-				return data;
-			}
-		}).catch((error: any) => {
-			if (error.status === 401 || error.status === 403) {
-				this.redirectToLogin(error.url);
-			} else {
-				if (error instanceof HttpErrorResponse) {
-					error = ResponseInterceptor.formatResponse(error.error);
+				return throwError(error);
+			}), map((event: HttpEvent<any>) => {
+					if (!AppCommons.isObjectEmpty(event)) {
+						if (event instanceof HttpResponse) {
+							if (event.body.response) {
+								event = event.clone({body: ResponseInterceptor.formatResponse(event.body)});
+							}
+						}
+						
+						return event;
+					}
 				}
-			}
-			return throwError(error);
-		});
+			)
+		);
 	}
 	
 	/**
