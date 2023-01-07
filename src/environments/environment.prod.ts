@@ -6,6 +6,6 @@
 
 export const environment = {
 	production: true,
-	baseApiUrl: 'http://lbs.server/',
+	baseApiUrl: 'http://dp.server/',
 	apiKey: '===$2y$10$WxHfCRVuddwDKO88pwK5VOsSOiKYNxufCDyJwcywDKInCFwOM3GKO'
 };
