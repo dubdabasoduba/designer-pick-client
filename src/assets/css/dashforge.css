@@ -1133,7 +1133,7 @@ body {
     color: #000000;
     text-align: left;
     background-color: #fff;
-    position: relative !important;
+    /*position: relative !important;*/
     min-height: 90% !important;
 }
 

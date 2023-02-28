@@ -20,6 +20,7 @@ export class ClientsDashboardComponent implements OnInit {
 	lbsUser: AuthenticatedUserModel;
 	public userId: string;
 	public liveContests: number;
+	public draftContests: number;
 	
 	constructor(
 		private alertService: AlertService, private authenticationService: AuthenticationService,

@@ -99,6 +99,9 @@ import {
 	ClientJudgingContestsComponent
 } from './_views/dashboards/clients-dashboard/client-judging-contests/client-judging-contests.component';
 import {LocationStrategy, PathLocationStrategy} from '@angular/common';
+import {
+	ClientDraftContestsComponent
+} from './_views/dashboards/clients-dashboard/client-draft-contests/client-draft-contests.component';
 
 @NgModule({
 	declarations: [
@@ -160,7 +163,8 @@ import {LocationStrategy, PathLocationStrategy} from '@angular/common';
 		WonContestsComponent,
 		ClientEndedContestsComponent,
 		ClientLiveContestsComponent,
-		ClientJudgingContestsComponent
+		ClientJudgingContestsComponent,
+		ClientDraftContestsComponent
 	],
 	imports: [
 		BrowserModule,

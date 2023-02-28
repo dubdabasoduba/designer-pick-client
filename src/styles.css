@@ -19,7 +19,7 @@
 @import '../src/assets/css/dashforge.profile.css';
 @import '../src/assets/css/fontawesome.css';
 @import '../src/assets/vendor/icofont/icofont.min.css';
-@import '../src/assets/vendor/boxicons/css/boxicons.min.css';
+@import '../src/assets/vendor/boxicons/css/boxicons.css';
 @import '../src/assets/vendor/venobox/venobox.css';
 @import '../src/assets/vendor/owl.carousel/assets/owl.carousel.min.css';
 @import '../src/assets/vendor/aos/aos.css';
@@ -1328,6 +1328,8 @@ section {
     padding: 0 0 30px 0;
     color: #fff;
     font-size: 14px;
+    bottom: 0 !important;
+    width: 100% !important;
 }
 
 #footer .footer-top {

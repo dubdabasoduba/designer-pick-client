@@ -32,21 +32,28 @@
 		<section class="counts  section-bg" id="counts">
 			<div class="container">
 				<div class="row no-gutters">
-					<div class="col-lg-4 col-md-6 d-md-flex align-items-md-stretch">
+					<div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+						<div class="count-box">
+							<i class="icofont-cart"></i>
+							<span data-toggle="counter-up">{{liveContests}}</span>
+							<p><strong>Draft Contest</strong> All draft contests</p>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
 						<div class="count-box">
 							<i class="icofont-document-folder"></i>
 							<span data-toggle="counter-up">{{liveContests}}</span>
 							<p><strong>Lives Contest</strong> Currently running contests</p>
 						</div>
 					</div>
-					<div class="col-lg-4 col-md-6 d-md-flex align-items-md-stretch">
+					<div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
 						<div class="count-box">
 							<i class="icofont-live-support"></i>
 							<span data-toggle="counter-up">1,463</span>
 							<p><strong>Judging Contests</strong> Currently judging contests</p>
 						</div>
 					</div>
-					<div class="col-lg-4 col-md-6 d-md-flex align-items-md-stretch">
+					<div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
 						<div class="count-box">
 							<i class="icofont-simple-smile"></i>
 							<span data-toggle="counter-up">232</span>
@@ -60,16 +67,23 @@
 		<section class="services" id="services">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
+					<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+						<div class="icon-box" data-aos="fade-up">
+							<div class="icon"><i class="icofont-cart"></i></div>
+							<h4 class="title"><a routerLink="/contests/client/draft/{{userId}}">Draft
+								Contests</a></h4>
+							<p class="description">This page lists all the draft contests the user has</p>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
 						<div class="icon-box" data-aos="fade-up">
 							<div class="icon"><i class="icofont-document-folder"></i></div>
 							<h4 class="title"><a routerLink="/contests/client/live/{{userId}}">Live
 								Contests</a></h4>
-							<p class="description">This page lists all the live both active and
-								draft contests the user has</p>
+							<p class="description">This page lists all the active and contests the user has</p>
 						</div>
 					</div>
-					<div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
+					<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
 						<div class="icon-box" data-aos="fade-up" data-aos-delay="100">
 							<div class="icon"><i class="icofont-live-support"></i></div>
 							<h4 class="title"><a routerLink="/contests/client/judging/{{userId}}">Judging
@@ -78,7 +92,7 @@
 								users has started judging</p>
 						</div>
 					</div>
-					<div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
+					<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
 						<div class="icon-box" data-aos="fade-up" data-aos-delay="200">
 							<div class="icon"><i class="icofont-simple-smile"></i></div>
 							<h4 class="title"><a routerLink="/contests/client/ended/{{userId}}">Ended

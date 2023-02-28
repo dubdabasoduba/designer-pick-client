@@ -37,6 +37,7 @@ export class ViewSingleContestComponent implements OnInit {
 		this.route.params.subscribe(params => {
 			this.contestUuid = params[appConstants.id];
 		});
+		// todo Check the contest status from the DB also confirm that the logged in user is the owner of the contest before display. Otherwise display the relevant page
 		this.route.queryParams.subscribe(params => {
 			this.contest_type = params['type'];
 			this.returnUrl = params['returnUrl'];

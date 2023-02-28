@@ -87,6 +87,11 @@
 								<a class="btn btn-info btn-block text-white">Submit Entries</a>
 							</div>
 						</div>
+						<div *ngIf="contest.is_active == 0" class="d-flex">
+							<div class="profile-skillset flex-fill">
+								<a class="btn btn-info btn-block text-white">Make Payments</a>
+							</div>
+						</div>
 					</div>
 					<div class="col-sm-6 col-md-5 col-lg mg-t-40">
 						<label class="tx-sans tx-10 tx-semibold tx-uppercase tx-color-01 tx-spacing-1 mg-b-15">Explore</label>

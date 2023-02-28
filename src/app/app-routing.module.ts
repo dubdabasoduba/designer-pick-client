@@ -60,6 +60,9 @@ import {
 import {
 	ClientJudgingContestsComponent
 } from './_views/dashboards/clients-dashboard/client-judging-contests/client-judging-contests.component';
+import {
+	ClientDraftContestsComponent
+} from './_views/dashboards/clients-dashboard/client-draft-contests/client-draft-contests.component';
 
 const appRoutes: Routes = [
 	{path: '', component: HomeComponent, runGuardsAndResolvers: 'always'},
@@ -104,6 +107,12 @@ const appRoutes: Routes = [
 	{
 		path: 'contests-edit/:id', component: AddContestsComponent,
 		canActivate: [AuthGuard], runGuardsAndResolvers: 'always'
+	},
+	{
+		path: 'contests/client/draft/:id',
+		component: ClientDraftContestsComponent,
+		canActivate: [AuthGuard],
+		runGuardsAndResolvers: 'always'
 	},
 	{
 		path: 'contests/client/live/:id',
@@ -354,7 +363,7 @@ const appRoutes: Routes = [
 		canActivate: [AuthGuard, PermissionsGuard], runGuardsAndResolvers: 'always',
 		data: {permission: [appConstants.readNewsLetters, appConstants.updateNewsLetters, appConstants.deleteNewsLetters]}
 	},
-	
+
 	// probably should be cleared
 	{
 		path: 'profile/user-contacts/:id',
@@ -378,9 +387,8 @@ const appRoutes: Routes = [
 
 @NgModule({
 	imports: [RouterModule.forRoot(appRoutes, {
-    useHash: true,
-    onSameUrlNavigation: 'reload'
-})],
+		useHash: true, onSameUrlNavigation: 'reload'
+	})],
 	exports: [RouterModule]
 })
 export class AppRoutingModule {
